@@ -11,10 +11,7 @@ class Currency(Base):
     isocode = Column(String, unique=True)
     symbol = Column(String, unique=True)
 
-    black_market_rates = relationship(
-        "BlackMarketRate", back_populates="currency")
-    official_market_rates = relationship(
-        "OfficialMarketRate", back_populates="currency")
+    rates = relationship("Rate", back_populates="currency")
 
 
 class Rate(Base):
