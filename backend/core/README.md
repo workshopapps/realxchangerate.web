@@ -2,8 +2,8 @@
 
 ## SETUP
 
-- Clone the repo 
-`git clone https://github.com/workshopapps/realxchangerate.web.git`
+- Clone the repo
+  `git clone https://github.com/workshopapps/realxchangerate.web.git`
 
 - Run: `git pull origin dev`
 
@@ -14,18 +14,31 @@
 - Run the following commands
 
 ```python
+# macOS and linuxOS
 python3 -m venv venv
 
+# windowsOS using python alias
+py -m venv venv
+
+# activate on macOS and linuxOS
 source venv/bin/activate
 
-pip3 install -r requirements.txt
+# activate on Windows (cmd.exe)
+venv\Scripts\activate.bat
 
-uvicorn main:app --reload 
+# activate on Windows (PowerShell)
+venv\Scripts\Activate.ps1
+
+pip3 install -r requirements.txt #or
+
+uvicorn main:app --reload
 
 # App starts on Go to http://127.0.0.1:8000
 ```
 
 ## PUSHING YOUR CODE AND MAKING A PULL REQUEST
+
+- Run: `./test_script.sh`. Make sure all tests pass.
 
 - Run `git branch`. It should show that you are on your current branch
 
