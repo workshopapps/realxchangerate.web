@@ -14,11 +14,11 @@
 - Run the following commands
 
 ```python
-virtualenv env
+python3 -m venv venv
 
-source env/bin/activate
+source venv/bin/activate
 
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 
 uvicorn main:app --reload 
 
