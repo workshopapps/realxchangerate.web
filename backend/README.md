@@ -1,6 +1,13 @@
 # BACKEND
 
-This project folder setup represents a microservice architecture
+## Getting Started
+
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+
+### Prerequisites
+
+You'll need `python@3.8` and `postgresql@12` (for database) installed on your system to run the project.
+
 ## SETUP
 
 - Clone the repo
@@ -13,6 +20,10 @@ This project folder setup represents a microservice architecture
 - change directory to the micro-service you are to work on `cd backend/<micro-service>`
 
 - Run the following commands
+
+### Installing
+
+Run the following command to install all the project dependencies.
 
 ```python
 # macOS and linuxOS
@@ -30,25 +41,50 @@ venv\Scripts\activate.bat
 # activate on Windows (PowerShell)
 venv\Scripts\Activate.ps1
 
-pip3 install -r requirements.txt 
+pip3 install -r requirements.txt
 
-uvicorn main:app --reload
+uvicorn app.main:app --reload
 
 # App starts on Go to http://127.0.0.1:8000
 ```
 
-## PUSHING YOUR CODE AND MAKING A PULL REQUEST
+Make sure your local PostgreSQL server is running on `http://localhost:5432`. Then, create a new database called `fastapi_db`.
 
-- Run: `./test_script.sh`. Make sure all tests pass.
+```shell script
+psql postgres
+postgres=# create database fastapi_db;
+```
 
-- Run `git branch`. It should show that you are on your current branch
+**Note:** If you have a different database URL, set it in the `.env.example` environment file and rename it to `.env`.
 
-- Run: `git add .`
+Now, run the `prestart.sh` script that'll create the tables and add initial data.
 
-- Run: `git commit -m "< COMMIT MESSAGE >"`
+```shell script
+./prestart.sh
+```
 
-- Run: `git pull origin dev`
+If there are any changes to the `SQLALCHEMY_DATABASE_URI` key in the `.env` file, please run the `prestart.sh` script again.
 
-- Run: `git push origin < BRANCH_NAME >`
+### Running
 
-- Go to the repository and create a pull request.
+After all the above mentioned steps, you can start the application using the following command:
+
+```shell script
+uvicorn app.main:app --reload
+```
+
+The application will be available at https://localhost:8000.
+
+## Development
+
+These instructions will provide you some useful information on developing this application.
+
+## Testing
+
+The application unit tests are inside the `app/tests` module.
+
+Run the following command in the terminal to execute the application unit tests.
+
+```shell script
+pytest app/tests
+```
