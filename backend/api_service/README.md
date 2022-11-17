@@ -1,6 +1,5 @@
-# BACKEND
+# API SERVICE
 
-This project folder setup represents a microservice architecture
 ## SETUP
 
 - Clone the repo
@@ -30,7 +29,7 @@ venv\Scripts\activate.bat
 # activate on Windows (PowerShell)
 venv\Scripts\Activate.ps1
 
-pip3 install -r requirements.txt 
+pip3 install -r requirements.txt
 
 uvicorn main:app --reload
 
