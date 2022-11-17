@@ -3,6 +3,10 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
 SQLALCHEMY_DATABASE_URL = "sqlite:///./db/db.db"
+
+# SQLALCHEMY_DATABASE_URL = dialect+driver: // username: password@host: port/database
+# SQLALCHEMY_DATABASE_URL = mysql+mysqlconnector://<user>:<password>@<host>[:<port>]/<dbname>1
+# SQLALCHEMY_DATABASE_URL = mysql+mysqldb://scott:tiger@localhost/foo"
 # SQLALCHEMY_DATABASE_URL = "postgresql://user:password@postgresserver/db"
 
 engine = create_engine(

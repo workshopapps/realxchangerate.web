@@ -18,7 +18,7 @@ def get_db():
         db.close()
 
 
-get_db()
+# get_db()
 
 app = FastAPI()
 
