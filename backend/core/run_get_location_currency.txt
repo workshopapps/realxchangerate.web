@@ -1,0 +1,16 @@
+How to make sure get_location_currency runs fine
+
+1. Install dependencies
+	```pip install -r requirements.txt```
+2. Install chromedriver and add to path
+	* download driver from here: https://chromedriver.storage.googleapis.com/108.0.5359.22/chromedriver_linux64.zip
+		```wget https://chromedriver.storage.googleapis.com/108.0.5359.22/chromedriver_linux64.zip```
+	* unzip downloaded zip file
+	* Move to a location in path by running the following command
+		* Check directories in path
+			```echo $PATH```
+		* move driver to one of them
+			e.g
+			```mv chromedriver /usr/local/bin/```
+
+You are now ready to run file

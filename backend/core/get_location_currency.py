@@ -10,11 +10,13 @@ from selenium.webdriver.common.by import By
 from slugify import slugify
 
 from db.database import SessionLocal
-from db.models import Currency, Rate
+from db.models import Currency
 
 """
     This script defines get_location_currency function which returns the
     currency object for a given IP address.
+
+    READ: run_get_location_currency.txt
 """
 
 API_KEY = "b0b7305ef6774ea2b2ba9d23b7ee0355"
