@@ -2,7 +2,6 @@
 import json
 import re
 from sys import argv
-from time import sleep
 
 import requests
 from selenium import webdriver
@@ -36,6 +35,8 @@ def validate_ip(ip):
         Raise:
             TypeError: if ip is not a string
             ValueError: if ip is not a valid ipv4 address
+        
+        Returns: True
     """
     # Check that IP address is a string
     if type(ip) is not str:
@@ -44,6 +45,8 @@ def validate_ip(ip):
     # Check that IP address is a valid IPV4 address
     if re.match(IP_REGEX, ip) is None:
         raise ValueError("IP address is invalid")
+    
+    return True
 
 
 def get_location_currency(ip):
@@ -82,32 +85,38 @@ def get_location_currency(ip):
     else:
         # Scrape from alternative website
         # Open Chrome
-        driver = webdriver.Chrome()
-        # Open webpage
-        driver.get(WEB_URL)
-        # input ip address
-        input_ip = driver.find_element(By.NAME, "LOOKUPADDRESS")
-        input_ip.send_keys(ip)
-        # submit
-        submit = driver.find_element(
-            By.CSS_SELECTOR, "div div div form button")
-        submit.click()
+        try:
+            driver = webdriver.Chrome()
+            # Open webpage
+            driver.get(WEB_URL)
+            # input ip address
+            input_ip = driver.find_element(By.NAME, "LOOKUPADDRESS")
+            input_ip.send_keys(ip)
+            # submit
+            submit = driver.find_element(
+                By.CSS_SELECTOR, "div div div form button")
+            submit.click()
 
-        # get result
-        information = driver.find_element(
-            By.XPATH, "//*[@id='fl-post-1165']/div/div/"
-            + "div[1]/div/div[2]/div/div[1]/div/div[2]"
-            + "/div/div/div/div[1]/div[1]/p[7]/span[2]")
-        country = information.text
-        # Close selenium
-        driver.close()
+            # get result
+            information = driver.find_element(
+                By.XPATH, "//*[@id='fl-post-1165']/div/div/"
+                + "div[1]/div/div[2]/div/div[1]/div/div[2]"
+                + "/div/div/div/div[1]/div[1]/p[7]/span[2]")
+            country = information.text
+            # Close selenium
+            driver.close()
 
-        # Get country object from database
-        currency = session.query(Currency).filter(
-            Currency.slug == slugify(country)).first()
+            # Get country object from database
+            currency = session.query(Currency).filter(
+                Currency.slug == slugify(country)).first()
 
-        return currency
-        # print(f"An error occured: {response.status_code}")
+            return currency
+        except Exception:
+            # Error occurred while trying to get location currency
+            # return Nigeria
+            nigeria = session.query(
+                Currency).filter(Currency.slug == slugify("Nigeria").first())
+            return nigeria
 
 
 if __name__ == "__main__":
