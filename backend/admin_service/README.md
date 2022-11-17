@@ -1,6 +1,5 @@
-# BACKEND
+# ADMIN API
 
-This project folder setup represents a microservice architecture
 ## SETUP
 
 - Clone the repo
