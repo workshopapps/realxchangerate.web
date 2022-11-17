@@ -12,7 +12,7 @@ class Currency(Base):
     symbol = Column(String, unique=True)
 
     rates = relationship(
-        "Rate", back_populates="currency")
+        "Rate", back_populates="currency", cascade="all, delete")
 
 
 class Rate(Base):
@@ -26,7 +26,8 @@ class Rate(Base):
     last_updated = Column(DateTime)
     currency_id = Column(Integer, ForeignKey("currencies.id"))
 
-    currency = relationship("Currency", back_populates="rates")
+    currency = relationship(
+        "Currency", back_populates="rates", passive_deletes=True)
 
 
 class Admin(Base):
