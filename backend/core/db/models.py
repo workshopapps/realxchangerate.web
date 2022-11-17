@@ -1,6 +1,8 @@
-from sqlalchemy import Column, ForeignKey, Integer, Float, DateTime, String, Boolean
+from slugify import slugify
+from sqlalchemy import Boolean, Column, DateTime, Float, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
-from .database import Base, engine
+
+from db.database import Base, engine
 
 
 class Currency(Base):
@@ -10,6 +12,7 @@ class Currency(Base):
     country = Column(String, unique=True, index=True, nullable=False)
     isocode = Column(String, nullable=False)
     symbol = Column(String, unique=True)
+    slug = Column(String, nullable=False, unique=True)
 
     rates = relationship("Rate", back_populates="currency")
 
