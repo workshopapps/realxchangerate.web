@@ -1,1 +1,0 @@
-1. Team API keys need to be generated and replaced with private API Keys as environment variables

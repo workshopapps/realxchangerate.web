@@ -2,7 +2,7 @@ from typing import Dict
 
 from fastapi.testclient import TestClient
 
-from app.core import settings
+from core import settings
 
 
 def test_create_product(client: TestClient):

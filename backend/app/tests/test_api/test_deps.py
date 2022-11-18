@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
 import unittest
 
-from slugify import slugify
-
-from get_location import get_location, validate_ip
+from api.deps import get_location, validate_ip
 
 """Unit tests for get_location_currency module"""
 
