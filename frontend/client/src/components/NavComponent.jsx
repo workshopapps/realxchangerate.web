@@ -10,7 +10,6 @@ const NavComponent = () => {
     setIsOpen(!isOpen)
   }
 
-  console.log(isOpen)
   return (
     <Grid
       sx={{
