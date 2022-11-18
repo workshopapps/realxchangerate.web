@@ -1,6 +1,7 @@
 from sqlalchemy import Column, Integer, String, Float, DateTime
 
 from app.database.base_class import Base
+from datetime import datetime
 
 
 class Rate(Base):
