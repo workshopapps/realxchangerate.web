@@ -2,7 +2,8 @@ venv/
 .vscode/
 __pycache__/
 test.db
-
+env
+.env
 # OS generated files #
 ######################
 .DS_Store

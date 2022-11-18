@@ -3,8 +3,8 @@ from typing import Optional, List
 from sqlalchemy.orm import Session
 
 from app.crud.base import CRUDBase
-from app.models.product import Product
-from app.schemas import ProductCreate, ProductUpdate
+from app.models.currency import Currency
+from app.schemas.currency import Currency as currency_schema
 
 
 class CRUDProduct(CRUDBase[Product, ProductCreate, ProductUpdate]):
