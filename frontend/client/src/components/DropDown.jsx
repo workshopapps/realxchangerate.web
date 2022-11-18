@@ -13,8 +13,8 @@ import {
       <>
         <Accordion
           style={{
-            "background-color": "inherit",
-            "box-shadow": "none",
+            backgroundColor: "inherit",
+            boxShadow: "none",
             color: "#F8FAFC",
             width: "200px",
             border: "none",
@@ -47,9 +47,10 @@ import {
               lineHeight="20px"
               color="#F8FAFC"
               letterSpacing="0.001em"
+              textAlign="center"
             >
               {Items.map((item) => (
-                <Link href="#" color="inherit">
+                <Link href="#" color="inherit" key={Items.indexOf(item)}>
                   {item}
                 </Link>
               ))}

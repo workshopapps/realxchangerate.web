@@ -23,7 +23,7 @@ const Footer = () => {
             alignItems="flex-start"
             gap="16px"
             sx={{
-              fontSize: { xs: "14px", sm: "12px", lg: "14px" },
+              fontSize: { xs: "14px" },
               lineHeight: { xs: "20px" },
               fontWeight: { xs: "400" },
               width: { sm: "173.33px" },
@@ -66,7 +66,7 @@ const Footer = () => {
             alignItems="flex-start"
             gap="16px"
             sx={{
-              fontSize: { xs: "14px", sm: "12px", lg: "14px" },
+              fontSize: { xs: "14px" },
               lineHeight: { xs: "20px" },
               fontWeight: { xs: "400" },
               width: { sm: "173.33px" },
@@ -100,7 +100,7 @@ const Footer = () => {
             alignItems="flex-start"
             gap="16px"
             sx={{
-              fontSize: { xs: "14px", sm: "12px", lg: "14px" },
+              fontSize: { xs: "14px" },
               lineHeight: { xs: "20px" },
               fontWeight: { xs: "400" },
               width: { sm: "173.33px" },
@@ -124,6 +124,18 @@ const Footer = () => {
             <Link href="#" color="inherit">
               Historical currency exchange
             </Link>
+
+            <Link href="#" color="inherit">
+              Glossary
+            </Link>
+
+            <Link href="#" color="inherit">
+              Online Advertising
+            </Link>
+
+            <Link href="#" color="inherit">
+              Ambassadors
+            </Link>
           </Stack>
 
           <Stack
@@ -131,7 +143,7 @@ const Footer = () => {
             alignItems="flex-start"
             gap="16px"
             sx={{
-              fontSize: { xs: "14px", sm: "12px", lg: "14px" },
+              fontSize: { xs: "14px" },
               lineHeight: { xs: "20px" },
               fontWeight: { xs: "400" },
               width: { sm: "173.33px" },
@@ -162,7 +174,7 @@ const Footer = () => {
             alignItems="flex-start"
             gap="16px"
             sx={{
-              fontSize: { xs: "14px", sm: "12px", lg: "14px" },
+              fontSize: { xs: "14px" },
               lineHeight: { xs: "20px" },
               fontWeight: { xs: "400" },
               width: { sm: "173.33px" },
@@ -199,7 +211,7 @@ const Footer = () => {
             alignItems="flex-start"
             gap="16px"
             sx={{
-              fontSize: { xs: "14px", sm: "12px", lg: "14px" },
+              fontSize: { xs: "14px" },
               lineHeight: { xs: "20px" },
               fontWeight: { xs: "400" },
               width: { sm: "173.33px" },
@@ -225,6 +237,9 @@ const Footer = () => {
             </Link>
             <Link href="#" color="inherit">
               Cookie Policy
+            </Link>
+            <Link href="#" color="inherit">
+              Compliance
             </Link>
           </Stack>
         </Box>
@@ -254,11 +269,28 @@ const Footer = () => {
           <DropDown title={"Links"} Items={["Convert", "News", "Contact Us"]} />
           <DropDown
             title={"Resources"}
-            Items={["Currency Encyclopedia", "Historical currency exchange"]}
+            Items={[
+              "Currency Encyclopedia",
+              "Historical currency exchange",
+              "Glossary",
+              "Online Advertising",
+              "Ambassadors",
+            ]}
           />
           <DropDown title={"Product"} Items={["API", "Integration matrix"]} />
-          <DropDown title={"Support"} Items={["Help Centre", "FAQ", "File a complaint", "Fraud Report"]} />
-          <DropDown title={"Legal"} Items={["Private Policy", "Terms and Conditions", "Cookie Policy"]}/>
+          <DropDown
+            title={"Support"}
+            Items={["Help Centre", "FAQ", "File a complaint", "Fraud Report"]}
+          />
+          <DropDown
+            title={"Legal"}
+            Items={[
+              "Private Policy",
+              "Terms and Conditions",
+              "Cookie Policy",
+              "Compliance",
+            ]}
+          />
         </Box>
 
         <Box margin="20px 0px">
