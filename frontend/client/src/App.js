@@ -8,7 +8,7 @@ import Convert from "./pages/Convert";
 import Contact from "./pages/Contact";
 import HelpCenter from "./pages/HelpCenter";
 import News from "./pages/News";
-import FAQ from "./pages/FAQ";
+import Faq from "./pages/Faq";
 import IntegrationMatrix from "./pages/IntegrationMatrix";
 import Partnerships from "./pages/Partnerships";
 import CurrencyEncyclopedia from "./pages/CurrencyEncyclopedia";
@@ -39,7 +39,7 @@ function App() {
             <Route path="/contact" element={<Contact/>} /> 
             <Route path="/help-center" element={<HelpCenter/>} /> 
             <Route path="/news" element={<News/>} />
-            <Route path="/faq" element={<FAQ/>} /> 
+            <Route path="/faq" element={<Faq/>} /> 
             <Route path="/integration-matrix" element={<IntegrationMatrix/>} />
             <Route path="/partnerships" element={<Partnerships/>} /> 
             <Route path="/currency-encyclopedia" element={<CurrencyEncyclopedia/>} />
