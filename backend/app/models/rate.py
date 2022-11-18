@@ -1,4 +1,5 @@
-from sqlalchemy import Column, Integer, String, Float, DateTime
+from sqlalchemy import Column, Integer, String, Float, DateTime,ForeignKey
+from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 from app.database.base_class import Base
 from datetime import datetime
@@ -12,7 +13,7 @@ class Rate(Base):
     official_sell = Column(Float)
     parallel_buy = Column(Float)
     parallel_sell = Column(Float)
-    last_updated = Column(DateTime(timezone=True, server_default=func.now()))
+    last_updated = Column(DateTime(timezone=True))
     currency_id = Column(Integer, ForeignKey("currencies.id"))
 
     currency = relationship(
