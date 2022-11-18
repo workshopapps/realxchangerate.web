@@ -1,8 +1,10 @@
 from fastapi import APIRouter
 
-from app.api.v1 import products
-from app.api.v1 import index
+from app.api.v1 import currency
+from app.api.v1 import admin
+from app.api.v1 import rate
 
 api_router = APIRouter()
-api_router.include_router(products.router, prefix="/products", tags=["products"])
-api_router.include_router(index.router, prefix="/index", tags=["index"])
+api_router.include_router(currency.router, prefix="/currency", tags=["currencies"])
+api_router.include_router(admin.router, prefix="/admin", tags=["currencies"])
+api_router.include_router(rate.router, prefix="/rate", tags=["currencies"])

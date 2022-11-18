@@ -7,11 +7,3 @@ from app import schemas, crud
 from app.api.deps import get_db
 
 router = APIRouter()
-
-
-@router.get("")
-def index():
-    """
-    Return Hello World.
-    """
-    return {"message": "Hello World"}
