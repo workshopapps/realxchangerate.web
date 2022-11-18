@@ -1,14 +1,14 @@
-from typing import Optional
+from typing import Optional, Any
 
 from pydantic import BaseModel
 
 
 class RateBase(BaseModel):
     official_buy: float
-    official_buy: float
+    official_sell: float
+    parallel_buy: float
     parallel_sell: float
-    parallel_sell: float
-    last_updated = datetime.now().strftime('%c')
+    last_updated = Any
 
 
 class RateCreate(RateBase):
