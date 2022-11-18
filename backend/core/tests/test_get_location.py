@@ -3,9 +3,7 @@ import unittest
 
 from slugify import slugify
 
-from core.get_location_currency import get_location_currency, validate_ip
-from db.database import SessionLocal
-from db.models import Currency
+from get_location import get_location, validate_ip
 
 """Unit tests for get_location_currency module"""
 
@@ -30,15 +28,7 @@ class TestGetLocationCurrency(unittest.TestCase):
 		self.assertTrue(validate_ip("204.44.112.40"))
 	
 	def test_get_location_currency_nigeria(self):
-		session = SessionLocal()
-		nigeria = session.query(Currency).filter(
-			Currency.slug == slugify("Nigeria").first()
-		)
-		self.assertEqual(nigeria, get_location_currency("102.216.201.112"))
+		self.assertEqual("Nigeria", get_location("102.216.201.112"))
 	
 	def test_get_location_currency_us(self):
-		session = SessionLocal()
-		us = session.query(Currency).filter(
-			Currency.slug == slugify("United States").first()
-		)
-		self.assertEqual(us, get_location_currency("204.44.112.40"))
+		self.assertEqual("United States", get_location("204.44.112.40"))
