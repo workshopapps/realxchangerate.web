@@ -1,5 +1,7 @@
 import React from "react";
 import bgImage from "../Pages/Partnerships/assets/images/bg-image.png";
+
+// styles
 import {
   StyledHeroSection,
   HeroContent,
@@ -9,7 +11,10 @@ import {
 const PartnershipsHero = () => {
   return (
     <StyledHeroSection>
+      {/* background image */}
       <img src={bgImage} alt="bg-img" />
+
+      {/* hero text */}
       <HeroContent>
         <h1>Affiliate and Referral Partner Programs</h1>
         <h3>

@@ -1,6 +1,8 @@
 import React from "react";
 import groupIcon from "../Pages/Partnerships/assets/svg/GroupIcon.svg";
 import ReferralPartnersType from "./ReferralPartnersType";
+
+// styles
 import {
   PartnersHeader,
   PartnersDescription,
