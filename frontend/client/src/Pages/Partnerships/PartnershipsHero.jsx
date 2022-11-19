@@ -1,12 +1,12 @@
 import React from "react";
-import bgImage from "../Pages/Partnerships/assets/images/bg-image.png";
+import bgImage from "./assets/images/bg-image.png";
 
 // styles
 import {
   StyledHeroSection,
   HeroContent,
   Button,
-} from "../Pages/Partnerships/styles/HeroSection.styles";
+} from "./styles/HeroSection.styles";
 
 const PartnershipsHero = () => {
   return (

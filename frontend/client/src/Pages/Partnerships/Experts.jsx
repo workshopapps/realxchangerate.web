@@ -1,8 +1,8 @@
 import React from "react";
-import ExpertImage from "../Pages/Partnerships/assets/images/ExpertImage.png";
+import ExpertImage from "./assets/images/ExpertImage.png";
 
 // stytles
-import { StyledExperts } from "../Pages/Partnerships/styles/Experts.styles";
+import { StyledExperts } from "./styles/Experts.styles";
 
 const Experts = () => {
   return (

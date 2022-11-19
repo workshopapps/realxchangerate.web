@@ -1,12 +1,12 @@
 import React from "react";
-import groupIcon from "../Pages/Partnerships/assets/svg/GroupIcon.svg";
+import groupIcon from "./assets/svg/GroupIcon.svg";
 import ReferralPartnersType from "./ReferralPartnersType";
 
 // styles
 import {
   PartnersHeader,
   PartnersDescription,
-} from "../Pages/Partnerships/styles/ReferralPartners.styles";
+} from "./styles/ReferralPartners.styles";
 
 const ReferralPartners = () => {
   return (

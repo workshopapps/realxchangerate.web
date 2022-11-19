@@ -1,13 +1,10 @@
 import React from "react";
 
 // styles
-import {
-  StyledPartnersType,
-  Button,
-} from "../Pages/Partnerships/styles/ReferralPartners.styles";
+import { StyledPartnersType, Button } from "./styles/ReferralPartners.styles";
 
 // data for introducers and affliate section
-import {PartnersTypeArray} from "../Pages/Partnerships/assets/data";
+import { PartnersTypeArray } from "./assets/data";
 
 const ReferralPartnersType = () => {
   return (

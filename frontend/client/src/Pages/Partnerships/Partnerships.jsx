@@ -1,8 +1,8 @@
 import React from "react";
-import PartnershipHero from "../../components/PartnershipsHero";
-import ReferralPartners from "../../components/ReferralPartners";
-import Experts from "../../components/Experts";
-import WhyChoose from "../../components/WhyChoose";
+import PartnershipHero from "./PartnershipsHero";
+import ReferralPartners from "./ReferralPartners";
+import Experts from "./Experts";
+import WhyChoose from "./WhyChoose";
 
 const Partnerships = () => {
   return (

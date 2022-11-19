@@ -1,10 +1,10 @@
 import React from "react";
 
 // styles
-import { StyledWhyChoose } from "../Pages/Partnerships/styles/WhyChoose.styles";
+import { StyledWhyChoose } from "./styles/WhyChoose.styles";
 
 // why choose data
-import { WhyChooseArray } from "../Pages/Partnerships/assets/data";
+import { WhyChooseArray } from "./assets/data";
 
 const WhyChoose = () => {
   return (
