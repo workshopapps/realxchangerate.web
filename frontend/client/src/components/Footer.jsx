@@ -56,7 +56,7 @@ const Footer = () => {
             <Link href="#" color="inherit">
               Press
             </Link>
-            <Link href="#" color="inherit">
+            <Link href="/bod" color="inherit">
               Board of directors
             </Link>
           </Stack>
