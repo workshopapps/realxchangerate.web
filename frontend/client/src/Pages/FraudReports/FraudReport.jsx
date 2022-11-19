@@ -1,10 +1,10 @@
 import { Box, Typography, Stack, styled } from "@mui/material";
 import React from "react";
 
-import ads from "../Assets/Images/ads.png"
-import confident from "../Assets/Images/confident.png"
-import registered from "../Assets/Images/registered.png";
-import payments from "../Assets/Images/payments.png"
+import ads from "../../assets/images/ads.png"
+import confident from "../../assets/images/confident.png"
+import registered from "../../assets/images/registered.png";
+import payments from "../../assets/images/payments.png"
 
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
