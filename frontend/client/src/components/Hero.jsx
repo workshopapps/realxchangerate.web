@@ -10,6 +10,8 @@ const Hero = () => {
     font-family: "Inter", sans-serif;
     margin-top: 100px;
     margin-bottom: 50px;
+    max-width: 1600px;
+    margin: auto;
 
     @media screen and (max-width: 400px) {
       flex-direction: column;
