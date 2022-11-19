@@ -91,6 +91,29 @@ const StyledHero = styled.section`
       flex-basis: 50%;
     }
   }
+  @media only screen and (max-width: 1170px) {
+    padding: 10rem 6rem 13.5rem 6rem;
+    flex-direction: column;
+    .hero-text {
+      margin: 0 auto;
+    }
+    h1 {
+      font-size: 2.8rem;
+      margin-bottom: 2.4rem;
+    }
+    p {
+      width: 100%;
+      margin-bottom: 2rem;
+    }
+    button {
+      padding: 1.2rem 1.8rem;
+      width: 11.5rem;
+      height: 4.4rem;
+    }
+    .hero-image {
+      margin: 0 auto;
+    }
+  }
   @media only screen and (max-width: 42rem) {
     padding: 10rem 2rem 13.5rem 2rem;
     flex-direction: column;
