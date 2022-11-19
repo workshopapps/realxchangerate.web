@@ -33,6 +33,7 @@ import {
 } from './Pages';
 import GlobalStyle from './styles/Globalstyle';
 
+
 function App() {
   return (
     <>
@@ -67,11 +68,12 @@ function App() {
               path='/historical-currency-exchange'
               element={<HistoricalCurrencyExchange />}
             />
-            <Route path='/fraud-report' element={<FraudReport />} />
-            <Route path='/CookiePolicy' element={<CookiePolicy />} />
-            <Route path='/glossary' element={<Glossary />} />
-            <Route path='/advertising' element={<OnlineAdvertising />} />
-            <Route path='/ambassadors' element={<Ambassadors />} />
+
+            <Route path="/fraud-report" element={<FraudReport />} />
+            <Route path="/Cookie-policy" element={<CookiePolicy />} />
+            <Route path="/glossary" element={<Glossary />} />
+            <Route path="/advertising" element={<OnlineAdvertising />} />
+            <Route path="/ambassadors" element={<Ambassadors />} />
             {/*---==== end of Contents Sections  ====---*/}
           </Routes>
           <Footer />
