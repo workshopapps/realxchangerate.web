@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import relationship
 
-from app.database.base_class import Base
+from database.base_class import Base
 
 
 class Currency(Base):

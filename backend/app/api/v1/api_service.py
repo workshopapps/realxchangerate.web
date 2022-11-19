@@ -4,9 +4,9 @@ from typing import Any
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
-from app.api.deps import get_db
-from app.utils import get_binancep2p_rate, format_binance_response_data, make_official_rate_request
-from app.models import Rate, Currency
+from api.deps import get_db
+from utils import get_binancep2p_rate, format_binance_response_data, make_official_rate_request
+from models import Rate, Currency
 from datetime import datetime
 
 router = APIRouter()
@@ -15,7 +15,7 @@ router = APIRouter()
 @router.get("/rates")
 async def get_currency_rates_from_external_apis(db: Session = Depends(get_db)) -> Any:
     """
-    This endpoint gets exchange rates from third-party API's and update the database. 
+    This endpoint gets exchange rates from third-party API's and update the database.
     Cron-job.org (https://cron-job.org/) calls this endpoint every 2 hours to update the rates.
     Base Currency: `USD`
     """

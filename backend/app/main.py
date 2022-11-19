@@ -1,9 +1,9 @@
 import uvicorn
 
 from fastapi import FastAPI
-from .api.v1 import getcurrency
-from app.api.v1 import api_router
-from app.core import settings
+from api.v1 import getcurrency
+from api.v1 import api_router
+from core import settings
 
 app = FastAPI(title=settings.PROJECT_NAME)
 

@@ -1,1 +1,1 @@
-from app.crud.currency import currency
+from .currency import currency
