@@ -7,10 +7,9 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
-import Footer from "../components/Footer";
 import HorizontalNewsCard from "../components/HorizontalNewsCard";
 import MainNewsCard from "../components/MainNewsCard";
-import NavComponent from "../components/NavComponent";
+
 import StoriesNews from "../components/StoriesNews";
 import { news, stories } from "../staticData";
 export default function News() {
