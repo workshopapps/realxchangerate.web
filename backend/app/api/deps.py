@@ -4,11 +4,14 @@ import re
 from sys import argv
 from typing import Generator
 
+from app.database.session import SessionLocal
 import requests
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
+
 from app.database.session import SessionLocal
+
 
 """
     This module defines the app dependencies.
@@ -101,3 +104,4 @@ def get_location(ip):
             # Error occurred while trying to get location currency
             # return Nigeria
             return country
+
