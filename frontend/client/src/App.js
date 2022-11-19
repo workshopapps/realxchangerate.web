@@ -6,6 +6,7 @@ import Footer from './components/Footer';
 import Home from "./pages/Home";
 import Convert from "./pages/Convert";
 import Contact from "./pages/Contact";
+import Compliance from "./pages/Compliance";
 import HelpCenter from "./pages/HelpCenter";
 import News from "./pages/News";
 import Faq from "./pages/Faq";
@@ -31,12 +32,13 @@ function App() {
   return (
     <Router>
       <div className="App">
+        <NavComponent />
         <Routes >
-          <NavComponent />
           {/*---==== Contents Sections  ====---*/}
             <Route path="/" element={<Home/>} /> 
             <Route path="/convert" element={<Convert/>} />
-            <Route path="/contact" element={<Contact/>} /> 
+            <Route path="/contact" element={<Contact/>} />
+            <Route path="/compliance" element={<Compliance/>} /> 
             <Route path="/help-center" element={<HelpCenter/>} /> 
             <Route path="/news" element={<News/>} />
             <Route path="/faq" element={<Faq/>} /> 
@@ -58,8 +60,8 @@ function App() {
             <Route path="/advertising" element={<OnlineAdvertising/>} />
             <Route path="/ambassadors" element={<Ambassadors/>} />
           {/*---==== end of Contents Sections  ====---*/}
-          <Footer />
         </Routes >
+        <Footer />
       </div>
     </Router>
   );
