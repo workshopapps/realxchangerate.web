@@ -37,7 +37,7 @@
 =======
     "test2": "react-scripts test",
     "eject": "react-scripts eject",
-    "prepare": "husky install",
+    "prepare": "cd ../.. && husky install frontend/client/.husky",
     "test": "jest"
 >>>>>>> fef0643ee2081506197bf17c8bc0609ebeb885f3
   },
