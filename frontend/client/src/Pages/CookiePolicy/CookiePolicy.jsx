@@ -1,7 +1,12 @@
+import React from 'react'
+import CookiePolicyMain from '../../components/CookiePolicyMain'
+
 const CookiePolicy = () => {
-    return (
-        <div>Cookie Policy Page</div>
-    )
+  return (
+    <>
+    <CookiePolicyMain/>
+    </>
+  )
 }
 
-export default CookiePolicy;
+export default CookiePolicy
