@@ -31,7 +31,7 @@ import {
   OnlineAdvertising,
   Ambassadors,
 } from "./Pages";
-import GlobalStyle from "./styles/Globalstyle";
+import GlobalStyle from "./styles/Globalstyles";
 
 function App() {
   return (
