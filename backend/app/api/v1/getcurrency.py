@@ -11,7 +11,7 @@ from app.models.currency import Currency
 router = APIRouter()
 
 #endpoint to return list of all currencies from the db
-@router.get("/currencies/",tags=["currency"],response_model=list[schemas.Currency])
+@router.get("/currencies/",tags=["currency"],response_model=List[schemas.Currency])
 async def get_currency(skip: int = 0, limit: int = 100,db: Session = Depends(get_db)):
     currencies = crud.currency.get_multi(db, skip= skip, limit = limit)
    
