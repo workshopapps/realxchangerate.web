@@ -64,14 +64,12 @@ const CardWrapper = styled.section`
       text-align: center;
     }
 
-    @media (min-width: 700px){
-        .card-wrapper {
-          background-color: red;
-            grid-template-columns: 1fr 1fr;
-          }
-    }
+    // @media (min-width: 700px){
+    //     .card-wrapper {
+    //         grid-template-columns: 1fr 1fr;
+    //       }
+    // }
 
-  }
 `;
 
 export default CardWrapper;
