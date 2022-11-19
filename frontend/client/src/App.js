@@ -30,7 +30,7 @@ import {
   Glossary,
   OnlineAdvertising,
   Ambassadors,
-} from "./pages";
+} from "./Pages";
 import GlobalStyle from "./styles/Globalstyle";
 
 function App() {
