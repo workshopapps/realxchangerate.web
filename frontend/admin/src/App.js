@@ -20,6 +20,7 @@ function App() {
 						<Route path='/*' element={<Error />} />
 					</Route>
 					<Route path='/login' element={<LoginPage />} />
+					<Route path='/forgot-password' element={<ForgotPassword />} />
 				</Routes>
 			</BrowserRouter>
 		</ThemeProvider>

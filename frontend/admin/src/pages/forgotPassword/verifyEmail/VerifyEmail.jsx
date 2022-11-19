@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { OtpForm } from '../form/formStyles';
+import { OtpForm } from './verifyEmailstyles';
 import VerifyInput from '../verifyInput/VerifyInput';
 
 const VerifyEmail = () => {

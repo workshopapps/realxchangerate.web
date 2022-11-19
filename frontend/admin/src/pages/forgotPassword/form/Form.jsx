@@ -13,15 +13,21 @@ const Form = ({ toggle }) => {
 		<Container>
 			<form className='form' onSubmit={(e) => handleSubmit(e)}>
 				<h2>Forgot password</h2>
-				<label htmlFor='email'>Email</label>
-				<input
-					type='email'
-					id='email'
-					placeholder='eg. mail@example.com'
-					value={email}
-					onChange={(e) => setEmail(e.target.value)}
-				/>
-				<button onClick={() => toggle()}>Reset password</button>
+				<div className='validateInput'>
+					<label htmlFor='email'>Email</label>
+					<input
+						className='emailInput'
+						type='email'
+						id='email'
+						placeholder='eg. mail@example.com'
+						value={email}
+						onChange={(e) => setEmail(e.target.value)}
+						required
+					/>
+				</div>
+				<button className='button' onClick={() => toggle(email)}>
+					Reset password
+				</button>
 			</form>
 			<p>Don’t have an account? Sign up</p>
 		</Container>
