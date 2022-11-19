@@ -38,7 +38,6 @@ function App() {
           <Route path="/" element={<Home/>} /> 
             <Route path="/convert" element={<Convert/>} />
             <Route path="/contact" element={<Contact/>} />
-            <Route path="/compliance" element={<Compliance/>} /> 
             <Route path="/help-center" element={<HelpCenter/>} /> 
             <Route path="/news" element={<News/>} />
             <Route path="/faq" element={<Faq/>} /> 
