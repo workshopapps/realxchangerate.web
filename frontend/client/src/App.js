@@ -36,7 +36,6 @@ import ErrorPage from "./Pages/404/ErrorPage";
 
 import SingleNews from "./Pages/SingleNews/SingleNews";
 
-
 function App() {
   return (
     <>
@@ -52,7 +51,7 @@ function App() {
             <Route path="/compliance" element={<Compliance />} />
             <Route path="/help-center" element={<HelpCenter />} />
             <Route path="/news" element={<News />} />
-            
+
             {/* Adding path for one news  */}
             <Route path="/news/:id" element={<SingleNews />} />
 
