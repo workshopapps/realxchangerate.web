@@ -30,10 +30,10 @@ import {
   Glossary,
   OnlineAdvertising,
   Ambassadors,
-
 } from "./Pages";
-
 import GlobalStyle from "./styles/Globalstyle";
+
+import SingleNews from "./Pages/SingleNews/SingleNews";
 
 
 function App() {
@@ -51,6 +51,10 @@ function App() {
             <Route path="/compliance" element={<Compliance />} />
             <Route path="/help-center" element={<HelpCenter />} />
             <Route path="/news" element={<News />} />
+            
+            {/* Adding path for one news  */}
+            <Route path="/news/:id" element={<SingleNews />} />
+
             <Route path="/faq" element={<Faq />} />
             <Route path="/integration-matrix" element={<IntegrationMatrix />} />
             <Route path="/partnerships" element={<Partnerships />} />
@@ -71,7 +75,7 @@ function App() {
               element={<HistoricalCurrencyExchange />}
             />
             <Route path="/fraud-report" element={<FraudReport />} />
-            <Route path="/CookiePolicy" element={<CookiePolicy />} />
+            <Route path="/Cookie-policy" element={<CookiePolicy />} />
             <Route path="/glossary" element={<Glossary />} />
             <Route path="/advertising" element={<OnlineAdvertising />} />
             <Route path="/ambassadors" element={<Ambassadors />} />
