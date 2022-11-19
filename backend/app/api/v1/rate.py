@@ -11,7 +11,7 @@ router = APIRouter()
 
 #  get rates ofbject for a spcific isocode
 @router.get('/{isocode}')
-def getCurrency(isocode, db:Session = Depends(get_db)):
+def getRate(isocode, db:Session = Depends(get_db)):
     currency = crud.currency.get_currency_by_isocode(db, isocode=isocode)
     if currency == None:
         return {
