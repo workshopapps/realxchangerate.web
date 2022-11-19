@@ -33,7 +33,11 @@ const Footer = () => {
           >
             <Typography
               sx={{
-                fontSize: { xs: "19px", sm: "15px", lg: "19px" },
+                fontSize: {
+                  xs: "19px",
+                  sm: "15px",
+                  lg: "19px",
+                },
                 lineHeight: { xs: "23px" },
                 fontWeight: { xs: "700" },
               }}
@@ -41,22 +45,22 @@ const Footer = () => {
             >
               Company
             </Typography>
-            <Link href="/about" color="inherit">
+            <Link href="#" color="inherit">
               About Us
             </Link>
-            <Link href="/careers" color="inherit">
+            <Link href="#" color="inherit">
               Careers
             </Link>
-            <Link href="/partnerships" color="inherit">
+            <Link href="#" color="inherit">
               Patnerships
             </Link>
-            <Link href="/teams" color="inherit">
+            <Link href="#" color="inherit">
               Meet the team
             </Link>
-            <Link href="/press" color="inherit">
+            <Link href="#" color="inherit">
               Press
             </Link>
-            <Link href="/bod" color="inherit">
+            <Link href="#" color="inherit">
               Board of directors
             </Link>
           </Stack>
@@ -76,7 +80,11 @@ const Footer = () => {
           >
             <Typography
               sx={{
-                fontSize: { xs: "19px", sm: "15px", lg: "19px" },
+                fontSize: {
+                  xs: "19px",
+                  sm: "15px",
+                  lg: "19px",
+                },
                 lineHeight: { xs: "23px" },
                 fontWeight: { xs: "700" },
               }}
@@ -84,13 +92,13 @@ const Footer = () => {
             >
               Links
             </Typography>
-            <Link href="/convert" color="inherit">
+            <Link href="#" color="inherit">
               Convert
             </Link>
-            <Link href="/news" color="inherit">
+            <Link href="#" color="inherit">
               News
             </Link>
-            <Link href="/contact" color="inherit">
+            <Link href="#" color="inherit">
               Contact Us
             </Link>
           </Stack>
@@ -110,7 +118,11 @@ const Footer = () => {
           >
             <Typography
               sx={{
-                fontSize: { xs: "19px", sm: "15px", lg: "19px" },
+                fontSize: {
+                  xs: "19px",
+                  sm: "15px",
+                  lg: "19px",
+                },
                 lineHeight: { xs: "23px" },
                 fontWeight: { xs: "700" },
               }}
@@ -118,22 +130,22 @@ const Footer = () => {
             >
               Resources
             </Typography>
-            <Link href="/currency-encyclopedia" color="inherit">
+            <Link href="#" color="inherit">
               Currency Encyclopedia
             </Link>
-            <Link href="/historical-currency-exchange" color="inherit">
+            <Link href="#" color="inherit">
               Historical currency exchange
             </Link>
 
-            <Link href="/glossary" color="inherit">
+            <Link href="#" color="inherit">
               Glossary
             </Link>
 
-            <Link href="/advertising" color="inherit">
+            <Link href="#" color="inherit">
               Online Advertising
             </Link>
 
-            <Link href="/ambassadors" color="inherit">
+            <Link href="#" color="inherit">
               Ambassadors
             </Link>
           </Stack>
@@ -153,7 +165,11 @@ const Footer = () => {
           >
             <Typography
               sx={{
-                fontSize: { xs: "19px", sm: "15px", lg: "19px" },
+                fontSize: {
+                  xs: "19px",
+                  sm: "15px",
+                  lg: "19px",
+                },
                 lineHeight: { xs: "23px" },
                 fontWeight: { xs: "700" },
               }}
@@ -161,10 +177,10 @@ const Footer = () => {
             >
               Product
             </Typography>
-            <Link href="/api" color="inherit">
+            <Link href="#" color="inherit">
               API
             </Link>
-            <Link href="/integration-matrix" color="inherit">
+            <Link href="#" color="inherit">
               Integration matrix
             </Link>
           </Stack>
@@ -184,7 +200,11 @@ const Footer = () => {
           >
             <Typography
               sx={{
-                fontSize: { xs: "19px", sm: "15px", lg: "19px" },
+                fontSize: {
+                  xs: "19px",
+                  sm: "15px",
+                  lg: "19px",
+                },
                 lineHeight: { xs: "23px" },
                 fontWeight: { xs: "700" },
               }}
@@ -195,13 +215,13 @@ const Footer = () => {
             <Link href="/help-center" color="inherit">
               Help Center
             </Link>
-            <Link href="/faq" color="inherit">
+            <Link href="#" color="inherit">
               FAQ
             </Link>
-            <Link href="/complaint" color="inherit">
+            <Link href="#" color="inherit">
               File a complaint
             </Link>
-            <Link href="/fraud-report" color="inherit">
+            <Link href="#" color="inherit">
               Fraud report
             </Link>
           </Stack>
@@ -221,7 +241,11 @@ const Footer = () => {
           >
             <Typography
               sx={{
-                fontSize: { xs: "19px", sm: "15px", lg: "19px" },
+                fontSize: {
+                  xs: "19px",
+                  sm: "15px",
+                  lg: "19px",
+                },
                 lineHeight: { xs: "23px" },
                 fontWeight: { xs: "700" },
               }}
@@ -232,13 +256,13 @@ const Footer = () => {
             <Link href="#" color="inherit">
               Privacy Policy
             </Link>
-            <Link href="/terms" color="inherit">
+            <Link href="#" color="inherit">
               Terms and Conditions
             </Link>
-            <Link href="/CookiePolicy" color="inherit">
+            <Link href="#" color="inherit">
               Cookie Policy
             </Link>
-            <Link href="/compliance" color="inherit">
+            <Link href="#" color="inherit">
               Compliance
             </Link>
           </Stack>
@@ -265,20 +289,10 @@ const Footer = () => {
               "Press",
               "Board of directors",
             ]}
-            Links={[
-              "about",
-              "careers",
-              "partnerships",
-              "teams",
-              "press",
-              "bod",
-            ]}
           />
-
           <DropDown
             title={"Links"}
             Items={["Convert", "News", "Contact Us"]}
-            Links={["convert", "news", "contact"]}
           />
           <DropDown
             title={"Resources"}
@@ -289,23 +303,19 @@ const Footer = () => {
               "Online Advertising",
               "Ambassadors",
             ]}
-            Links={[
-              "currency-encyclopedia",
-              "historical-currency-exchange",
-              "glossary",
-              "advertising",
-              "ambassadors",
-            ]}
           />
           <DropDown
             title={"Product"}
             Items={["API", "Integration matrix"]}
-            Links={["api", "integration-matrix"]}
           />
           <DropDown
             title={"Support"}
-            Items={["Help Centre", "FAQ", "File a complaint", "Fraud Report"]}
-            Links={["help-center", "faq", "complaint", "fraud-report"]}
+            Items={[
+              "Help Centre",
+              "FAQ",
+              "File a complaint",
+              "Fraud Report",
+            ]}
           />
           <DropDown
             title={"Legal"}
@@ -315,7 +325,6 @@ const Footer = () => {
               "Cookie Policy",
               "Compliance",
             ]}
-            Links={["#", "terms", "CookiePolicy", "compliance"]}
           />
         </Box>
 
