@@ -18,17 +18,15 @@ const DropDown = ({ title, Items }) => {
           color: "#F8FAFC",
           width: "200px",
           border: "none",
-          padding: '10px'
         }}
       >
         <AccordionSummary
           aria-controls="panel1a-content"
           id="panel1a-header"
-          expandIcon={<img src="assets/svg/downArrow.svg" alt="down_arrow" />}
+          expandIcon={<img src="assets/svg/DownArrow.svg" alt="down_arrow" />}
         >
           <Typography
             marginRight="5px"
-            color='#fff'
             sx={{
               fontSize: { xs: "19px" },
               lineHeight: { xs: "23px" },
@@ -49,9 +47,10 @@ const DropDown = ({ title, Items }) => {
             lineHeight="20px"
             color="#F8FAFC"
             letterSpacing="0.001em"
+            textAlign="center"
           >
-            {Items.map((item, index) => (
-              <Link href="#" color="inherit" key={index} style={{ textDecoration: 'none' }}>
+            {Items.map((item) => (
+              <Link href="#" color="inherit" key={Items.indexOf(item)}>
                 {item}
               </Link>
             ))}
