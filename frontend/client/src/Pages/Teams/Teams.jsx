@@ -1,6 +1,6 @@
 const Teams = () => {
     return (
-        <div>Teams Page</div>
+        <div>Teams!</div>
     )
 }
 
