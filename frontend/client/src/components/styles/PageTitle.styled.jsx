@@ -5,7 +5,7 @@ export const PageTitle = styled.h1 `
     letter-spacing: -0.04em;
     color: #0F172A;
     font-family: 'inter-bold', sans-serif;
-    margin: 50px 0;
+    margin: 56px 0 0;
 
     @media(max-width: 600px) {
         font-size: 28px;
