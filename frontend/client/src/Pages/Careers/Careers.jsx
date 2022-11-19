@@ -112,7 +112,7 @@ function Careers() {
               Join a group of talented and fun individuals working together to
               create a new economic model. Come join us!
             </h6>
-            <HashLink smooth to={"/#Roles"}>
+            <HashLink smooth to={"/careers/#Roles"}>
               <Button>See open roles</Button>
             </HashLink>
           </HeroText>
