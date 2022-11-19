@@ -1,6 +1,8 @@
 import { Box, Grid, Typography } from "@mui/material";
 import React, { useState } from "react";
 import DrawerComponent from "./Drawer";
+import {Link} from "react-router-dom";
+import { DownArrow, NavFlag, MenuIcon } from "../assets/index"
 
 const NavComponent = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -51,28 +53,27 @@ const NavComponent = () => {
         color="#94A3B8"
       >
         <Box gap="6px" display="flex">
-          <img src="assets/svg/flag.svg" alt="flagImage" />
-          <img src="assets/svg/DownArrow.svg" alt="arrow" />
+          <img src={NavFlag} alt="flagImage" />
+          <img src={DownArrow} alt="arrow" />
         </Box>
 
-        <Typography>Home</Typography>
+        <Link to="/" color="inherit">Home</Link>
 
-        <Typography>Convert</Typography>
+        <Link to="/convert" color="inherit">Convert</Link>
 
-        <Typography>Currency Profile</Typography>
+        <Link to="#" color="inherit">Currency Profile</Link>
 
-        <Typography>News</Typography>
+        <Link to="/news" color="inherit">News</Link>
 
-        <Typography>Contact</Typography>
+        <Link to="/contact" color="inherit">Contact</Link>
       </Grid>
-
       <Box
         p="12px"
         sx={{ display: { xs: "flex", sm: "none" } }}
         cursor="pointer"
         onClick={() => setIsOpen(true)}
       >
-        <img src="assets/svg/MenuIcon.svg" alt="MenuIcon" />
+        <img src={MenuIcon} alt="MenuIcon" />
       </Box>
       <DrawerComponent isOpen={isOpen} setIsOpen={HandleDrawerState} navItems={["Home", "Convert", "Currency Profile", "News", "Contact"]}/>
     </Grid>
