@@ -1,4 +1,4 @@
-import { Benefits, Cards, Faqs, Hero } from "./components";
+import { ApiGlobalStyle, Benefits, Cards, Faqs, Hero } from "./components";
 
 const Api = () => {
   return (
