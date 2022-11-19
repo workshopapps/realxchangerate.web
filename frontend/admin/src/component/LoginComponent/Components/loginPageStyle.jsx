@@ -15,6 +15,8 @@ export const LoginSection = styled.section`
       font-weight: 700;
       font-size: 2.5rem;
       line-height: 1.5rem;
+      text-align: center;
+      margin-bottom: 1.5rem;
       color: #0f172a;
       span {
         color: #0062ff;
