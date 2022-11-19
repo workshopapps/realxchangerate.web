@@ -277,12 +277,12 @@ const StyledBenefits = styled.section`
   }
   @media only screen and (max-width: 42rem) {
     padding: 4rem 2rem;
-    height: 56rem;
+    height: 60rem;
     div {
       padding: 2.4rem;
-      width: 100%;
-      position: static;
-      transform: translateY(0);
+      width: 88%;
+      left: 50%;
+      transform: translate(-50%, -50%);
     }
     h5 {
       font-size: 1.8rem;
