@@ -198,7 +198,7 @@ const Footer = () => {
             <Link href="#" color="inherit">
               FAQ
             </Link>
-            <Link href="#" color="inherit">
+            <Link href="complaint" color="inherit">
               File a complaint
             </Link>
             <Link href="#" color="inherit">
