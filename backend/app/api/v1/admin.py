@@ -7,3 +7,4 @@ from app import schemas, crud
 from app.api.deps import get_db
 
 router = APIRouter()
+
