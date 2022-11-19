@@ -739,6 +739,7 @@ const OpenRoles = styled.div`
 const OpenRolesWrapper = styled(Section)``;
 const OpenRolesContent = styled.div`
   padding-top: 150px;
+  padding-bottom: 50px;
   width: min(86%, 1200px);
   & h3 {
     margin-bottom: 12px;

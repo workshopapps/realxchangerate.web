@@ -48,3 +48,6 @@ virtualenv==20.16.7
 virtualenv-clone==0.5.7
 wsproto==1.2.0
 zipp==3.10.0
+bcrypt==4.0.1
+python-jose==3.3.0
+python-multipart==0.0.5
