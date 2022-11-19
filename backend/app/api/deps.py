@@ -8,7 +8,7 @@ import requests
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
-# from app.database.session import SessionLocal
+from app.database.session import SessionLocal
 
 """
     This module defines the app dependencies.
