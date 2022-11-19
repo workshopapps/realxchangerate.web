@@ -36,8 +36,6 @@ def getfiveRates(isocode, db:Session = Depends(get_db)):
         }
     return {"success":True, "status_code":200, "data": {"currency":currency, "rate":rate}}
 
-<<<<<<< HEAD
-
 @router.get('/ip/{ip}')
 def get_ip_currency(ip, db:Session = Depends(get_db)):
     # Get country
