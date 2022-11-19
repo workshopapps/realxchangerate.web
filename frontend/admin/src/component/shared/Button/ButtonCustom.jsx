@@ -19,19 +19,19 @@ const ButtonCustom = ({ children, disabled, icon }) => {
           lineHeight: "20px",
           padding: "6px 12px",
           whiteSpace: "nowrap",
-          borderRadius: theme.$styled.borderRadius.sm,
+          borderRadius: "4px",
         }),
-        // {
+        // {theme.$styled.borderRadius.sm
         //   "&:hover": {
         //     color: "#000",
         //   },
         // },
-        (theme) => ({
-          "&.Mui-disabled": {
-            color: theme.$styled.colors.text400,
-            backgroundColor: theme.$styled.colors.text200,
-          },
-        }),
+        // (theme) => ({
+        //   "&.Mui-disabled": {
+        //     color: theme.$styled.colors.text400,
+        //     backgroundColor: theme.$styled.colors.text200,
+        //   },
+        // }),
       ]}
     >
       {children}
