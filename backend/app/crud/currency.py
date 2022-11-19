@@ -1,4 +1,4 @@
-from typing import Optional, List
+from typing import Optional, List, Any
 
 from sqlalchemy.orm import Session
 
@@ -10,7 +10,8 @@ from app.schemas.currency import CurrencyCreate, CurrencyUpdate
 
 class CRUDCurrency(CRUDBase[Currency, CurrencyCreate, CurrencyUpdate]):
     # Declare model specific CRUD operation methods.
-    pass
+    def get_currency_by_isocode(self, db:Session, isocode:str) -> Any:
+        return db.query(Currency).filter(Currency.isocode == isocode).first()
 
 
 currency = CRUDCurrency(Currency)
