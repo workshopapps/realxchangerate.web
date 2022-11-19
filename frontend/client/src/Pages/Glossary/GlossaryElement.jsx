@@ -172,7 +172,7 @@ export const Parent = styled.div`
     padding: 50px 17px;
   }
 `;
-
+//
 export const Box = styled.div`
   min-width: 243px;
   max-width: 243px;
