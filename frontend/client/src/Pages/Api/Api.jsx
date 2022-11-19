@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import { createGlobalStyle } from "styled-components";
-import heroImage from '../assets/Api page assets/heroImage.png'
-import padlock from '../assets/Api page assets/padlock.png'
-import rocket from '../assets/Api page assets/rocket.png'
-import dart from '../assets/Api page assets/dart.png'
-import bg from '../assets/Api page assets/bg.png'
+import heroImage from '../../assets/Api page assets/heroImage.png'
+import padlock from '../../assets/Api page assets/padlock.png'
+import rocket from '../../assets/Api page assets/rocket.png'
+import dart from '../../assets/Api page assets/dart.png'
+import bg from '../../assets/Api page assets/bg.png'
 import { useState } from "react";
 
 const ApiGlobalStyle = createGlobalStyle`
@@ -207,43 +207,43 @@ const StyledCards = styled.section`
   } ;
 `;
 const Cards = () => {
-    const cardContent = [
+  const cardContent = [
+    {
+      id: 1,
+      icon: rocket,
+      heading: 'Swift and Simple Integration',
+      body: `Our exchange rate API is built for developers. We make it easy to plug-in to your existing software. You'll receive SDKs for Java, NodeJS, PHP, and Python.`,
+    },
+    {
+      id: 2,
+      icon: dart,
+      heading: 'Credible and Accurate',
+      body: 'To ensure accuracy and authenticity, diversify your FX sources. We provide currency rates from central banks so you can satisfy the legal requirements for financial compliance at your business.',
+    },
+    {
+      id: 3,
+      icon: padlock,
+      heading: 'Secure and Reliable',
+      body: 'A dedicated Internet connection, the GET HTTP technique, the REST protocol, and HTTPS security. Further, we provide fully redundant servers and UTC timestamps.',
+    }
+  ]
+  return (
+    <StyledCards>
+      <ul>
         {
-            id: 1,
-            icon: rocket,
-            heading: 'Swift and Simple Integration',
-            body: `Our exchange rate API is built for developers. We make it easy to plug-in to your existing software. You'll receive SDKs for Java, NodeJS, PHP, and Python.`,
-        },
-        {
-            id: 2,
-            icon: dart,
-            heading: 'Credible and Accurate',
-            body: 'To ensure accuracy and authenticity, diversify your FX sources. We provide currency rates from central banks so you can satisfy the legal requirements for financial compliance at your business.',
-        },
-        {
-            id: 3,
-            icon: padlock,
-            heading: 'Secure and Reliable',
-            body: 'A dedicated Internet connection, the GET HTTP technique, the REST protocol, and HTTPS security. Further, we provide fully redundant servers and UTC timestamps.',
+          cardContent.map((i) => {
+            return (
+              <li key={i.id}>
+                <div className={`icon${i.id}`}><img src={i.icon} alt={`Card ${i.id}`} /></div>
+                <h6>{i.heading}</h6>
+                <p>{i.body}</p>
+              </li>
+            )
+          })
         }
-    ]
-    return (
-        <StyledCards>
-            <ul>
-                {
-                    cardContent.map((i) => {
-                        return (
-                            <li key={i.id}>
-                                <div className={`icon${i.id}`}><img src={i.icon} alt={`Card ${i.id}`} /></div>
-                                <h6>{i.heading}</h6>
-                                <p>{i.body}</p>
-                            </li>
-                        )
-                    })
-                }
-            </ul>
-        </StyledCards>
-    )
+      </ul>
+    </StyledCards>
+  )
 }
 const StyledBenefits = styled.section`
   width: 100vw;
@@ -341,84 +341,84 @@ const StyledFaqs = styled.section`
   }
 `;
 const Faqs = () => {
-    const [faqs, setFaqs] = useState([
-        {
-            id: 1,
-            question: 'How to get access to the API?',
-            isOpen: false,
-        },
-        {
-            id: 2,
-            question: 'How does it work?',
-            isOpen: false,
-        },
-        {
-            id: 3,
-            question: `Can't find what you are looking for?`,
-            isOpen: false,
-        },
-    ])
-    const handleReveal = (faq) => {
-        setFaqs(faqs.map(j => {
-            if (j.id === faq.id && !j.isOpen) {
-                return { ...j, isOpen: true }
+  const [faqs, setFaqs] = useState([
+    {
+      id: 1,
+      question: 'How to get access to the API?',
+      isOpen: false,
+    },
+    {
+      id: 2,
+      question: 'How does it work?',
+      isOpen: false,
+    },
+    {
+      id: 3,
+      question: `Can't find what you are looking for?`,
+      isOpen: false,
+    },
+  ])
+  const handleReveal = (faq) => {
+    setFaqs(faqs.map(j => {
+      if (j.id === faq.id && !j.isOpen) {
+        return { ...j, isOpen: true }
 
-            } else if (j.id === faq.id && j.isOpen) {
-                return { ...j, isOpen: false }
-            } else {
-                return { ...j, isOpen: false }
-            }
-        }))
-    }
-    return (
-        <StyledFaqs>
-            <h4>Frequently Asked Questions</h4>
-            <ul>
-                {
-                    faqs.map((i) => {
-                        return (
-                            <li key={i.id} onClick={() => handleReveal(i)}>
-                                <div className="reveal-trigger" style={{ transform: `${i.isOpen ? 'rotate(45deg)' : 'rotate(0)'}` }}>
-                                    <div></div>
-                                    <div></div>
-                                </div>
-                                <p>{i.question}</p>
-                            </li>
-                        )
-                    })
-                }
-            </ul>
-        </StyledFaqs>
-    )
+      } else if (j.id === faq.id && j.isOpen) {
+        return { ...j, isOpen: false }
+      } else {
+        return { ...j, isOpen: false }
+      }
+    }))
+  }
+  return (
+    <StyledFaqs>
+      <h4>Frequently Asked Questions</h4>
+      <ul>
+        {
+          faqs.map((i) => {
+            return (
+              <li key={i.id} onClick={() => handleReveal(i)}>
+                <div className="reveal-trigger" style={{ transform: `${i.isOpen ? 'rotate(45deg)' : 'rotate(0)'}` }}>
+                  <div></div>
+                  <div></div>
+                </div>
+                <p>{i.question}</p>
+              </li>
+            )
+          })
+        }
+      </ul>
+    </StyledFaqs>
+  )
 }
 const Api = () => {
-    return (
-        <div className="fro-51-api">
-            <ApiGlobalStyle />
-            <StyledHero>
-                <div className="hero-text">
-                    <h1>The Most Reliable Currency Data API in the World</h1>
-                    <p>
-                        Our currency exchange rate API offers real-time, precise, and dependable currency exchange data for hundreds of different global currencies and has years of FX and currency knowledge. StreetRate proprietary rates are sourced from financial data providers and central bank.
-                    </p>
-                    <button>Get  Started</button>
-                </div>
-                <div className="hero-image">
-                    <img src={heroImage} alt='Hero SVG' />
-                </div>
-            </StyledHero>
-            <Cards />
-            <StyledBenefits>
-                <div>
-                    <h5>Real-time, Accurate and Credible Data for World Currencies</h5>
-                    <p>
-                        Auditors, accountants, hedge fund managers, treasurers, software developers and product managers use our API to track FX movements accurately and consistently. The ability to automate your exchange rate retrieval processes will put your auditors at ease and give your finance department accurate rates they can trust. The simple and flexible functionality of our API accurately tracks FX movements and eliminates manual errors. Supports JSON, XML and CSV formats.
-                    </p>
-                </div>
-            </StyledBenefits>
-            <Faqs />
+  return (
+    <div className="fro-51-api">
+      <ApiGlobalStyle />
+      <StyledHero>
+        <div className="hero-text">
+          <h1>The Most Reliable Currency Data API in the World</h1>
+          <p>
+            Our currency exchange rate API offers real-time, precise, and dependable currency exchange data for hundreds of different global currencies and has years of FX and currency knowledge. StreetRate proprietary rates are sourced from financial data providers and central bank.
+          </p>
+          <button>Get  Started</button>
         </div>
-    )
+        <div className="hero-image">
+          <img src={heroImage} alt='Hero SVG' />
+        </div>
+      </StyledHero>
+      <Cards />
+      <StyledBenefits>
+        <div>
+          <h5>Real-time, Accurate and Credible Data for World Currencies</h5>
+          <p>
+            Auditors, accountants, hedge fund managers, treasurers, software developers and product managers use our API to track FX movements accurately and consistently. The ability to automate your exchange rate retrieval processes will put your auditors at ease and give your finance department accurate rates they can trust. The simple and flexible functionality of our API accurately tracks FX movements and eliminates manual errors. Supports JSON, XML and CSV formats.
+          </p>
+        </div>
+      </StyledBenefits>
+      <Faqs />
+    </div>
+  )
 }
 
 export default Api;
