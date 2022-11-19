@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 export const Container = styled.section`
   padding: 0 1rem;
+  max-width: 1536px;
+  margin: 0 auto;
 
   @media (min-width: 768px) {
     padding: 0;
