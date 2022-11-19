@@ -32,6 +32,7 @@ import {
   Ambassadors,
 } from "./Pages";
 import GlobalStyle from "./styles/Globalstyle";
+import ErrorPage from "./Pages/404/ErrorPage";
 
 import SingleNews from "./Pages/SingleNews/SingleNews";
 
@@ -79,6 +80,7 @@ function App() {
             <Route path="/glossary" element={<Glossary />} />
             <Route path="/advertising" element={<OnlineAdvertising />} />
             <Route path="/ambassadors" element={<Ambassadors />} />
+            <Route path="*" element={<ErrorPage />} />
             {/*---==== end of Contents Sections  ====---*/}
           </Routes>
           <Footer />
