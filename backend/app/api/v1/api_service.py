@@ -22,7 +22,7 @@ async def get_currency_rates_from_external_apis(db: Session = Depends(get_db)) -
     base_currency = "USD"
     currency_list = []
     try:
-        all_currencies =  db.query(Currency).all()
+        all_currencies = db.query(Currency).all()
         for currency in all_currencies:
             currency_list.append(currency.isocode)
             currency_code = currency.isocode
@@ -31,7 +31,8 @@ async def get_currency_rates_from_external_apis(db: Session = Depends(get_db)) -
             official_rate = make_official_rate_request(
                 base_currency=base_currency, currency_list=currency_list)
             parallel_buy, parallel_sell = formatted_data["buy_rate"], formatted_data["sell_rate"]
-            official_buy, official_sell = official_rate["rates"][currency_code], official_rate["rates"][currency_code],
+            official_buy, official_sell = official_rate["rates"][
+                currency_code], official_rate["rates"][currency_code],
 
             rate_obj = Rate(currency_id=currency.id, official_buy=official_buy, official_sell=official_sell,
                             parallel_buy=parallel_buy, parallel_sell=parallel_sell, last_updated=datetime.now())
@@ -39,9 +40,9 @@ async def get_currency_rates_from_external_apis(db: Session = Depends(get_db)) -
             db.commit()
 
         return {
-                "success": True,
-                "message": f"Rates updated successfully.",
-            }
+            "success": True,
+            "message": f"Rates updated successfully.",
+        }
     except Exception as e:
         logging.error(e)
         return {"success": False, "message": "Unable to update rates"}
