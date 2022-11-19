@@ -30,7 +30,7 @@ import {
   Glossary,
   OnlineAdvertising,
   Ambassadors,
-} from "./pages";
+} from "./Pages";
 
 function App() {
   return (
