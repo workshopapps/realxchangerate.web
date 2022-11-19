@@ -67,7 +67,7 @@ function App() {
               path="/historical-currency-exchange"
               element={<HistoricalCurrencyExchange />}
             />
-            <Route path="/fraud-report" element={<FraudReport />} />
+            {/* <Route path="/fraud-report" element={<FraudReport />} /> */}
             <Route path="/Cookie-policy" element={<CookiePolicy />} />
             <Route path="/glossary" element={<Glossary />} />
             <Route path="/advertising" element={<OnlineAdvertising />} />
