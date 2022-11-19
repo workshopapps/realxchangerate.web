@@ -20,45 +20,6 @@ Contributions are always welcome!
 
 ### - Client
 
-.
-├── docs
-│   └── readme.md
-├── node_modules
-│   ├── ~
-├── public
-│   ├── assets
-├── src
-│   ├── assets
-│   │   ├── css
-│   │   ├── fonts
-│   ├── components
-| |
-│   ├── pages
-│   │   ├── About
-│   │   ├── Ambassadors
-│   │   ├── Api
-│   │   ├── BoardOfDirectors
-│   │   ├── Careers
-│   │   ├── Compliance
-│   │   ├── Contact
-│   │   ├── Converter
-│   │   ├── CookiePolicy
-│   │   ├── CurrencyEncyclopedia
-│   │   ├── Faq
-│   │   ├── FileComplaints
-│   │   ├── FraudReports
-│   │   ├── Glossary
-│   │   ├── HelpCenter
-│   │   ├── HistoricalCurrencyExchange
-│   │   ├── Home
-│   │   ├── IntegrationMatrix
-│   │   ├── News
-│   │   ├── OnlineAdvertising
-│   │   ├── Partnerships
-│   │   ├── Press
-│   │   ├── Teams
-│   │   ├── TermsAndConditions
-│   └── styles
 
 # Getting Started with Running the app
 
