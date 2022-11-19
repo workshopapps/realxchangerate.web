@@ -32,8 +32,7 @@ import {
   Ambassadors,
 
 } from "./Pages";
-=======
-} from "./pages";
+
 import GlobalStyle from "./styles/Globalstyle";
 
 
