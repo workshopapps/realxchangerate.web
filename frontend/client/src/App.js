@@ -6,6 +6,7 @@ import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import Convert from "./pages/Convert";
 import Contact from "./pages/Contact";
+import Compliance from "./pages/Compliance";
 import HelpCenter from "./pages/HelpCenter";
 import News from "./pages/News";
 import Faq from "./pages/Faq";
@@ -26,7 +27,6 @@ import CookiePolicy from "./pages/CookiePolicy";
 import Glossary from "./pages/Glossary";
 import OnlineAdvertising from "./pages/OnlineAdvertising";
 import Ambassadors from "./pages/Ambassadors";
-import Compliance from "./Pages/Compliance";
 
 function App() {
   return (
@@ -37,7 +37,8 @@ function App() {
           {/*---==== Contents Sections  ====---*/}
           <Route path="/" element={<Home/>} /> 
             <Route path="/convert" element={<Convert/>} />
-            <Route path="/contact" element={<Contact/>} /> 
+            <Route path="/contact" element={<Contact/>} />
+            <Route path="/compliance" element={<Compliance/>} /> 
             <Route path="/help-center" element={<HelpCenter/>} /> 
             <Route path="/news" element={<News/>} />
             <Route path="/faq" element={<Faq/>} /> 
