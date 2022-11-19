@@ -9,11 +9,15 @@ import {
     Text,
     SubSection,
     SubTitle,
-} from "./styles";
+} from "./HelpCenter.style";
 
 const HelpCenter = () => {
     return (
-        <Container maxWidth="xl">
+        <Container
+            style={{
+                maxWidth: "1440px",
+            }}
+        >
             <Wrapper>
                 <Title position={{ align: "left" }}>Help Center</Title>
                 <Header>Hi, How can we help?</Header>
@@ -37,20 +41,35 @@ const HelpCenter = () => {
                         <Text>International Contact: +62 528 124 5600</Text>
                     </SubSection>
                 </Section>
-                <Title position={{ align: "left", marginTop: "60px" }}>
+                <Title
+                    position={{
+                        align: "left",
+                        marginTop: "60px",
+                    }}
+                    style={{
+                        marginBottom: "30px",
+                    }}
+                >
                     Popular FAQs{" "}
                 </Title>
-                <Grid container spacing={5} alignItems="stretch">
+                <Grid
+                    container
+                    style={{
+                        marginBottom: "80px",
+                    }}
+                    spacing={5}
+                    alignItems="stretch"
+                >
                     <Grid item xs={12} sm={4}>
                         <Section>
                             <SubTitle>
                                 What is the best time to exchange my money?
                             </SubTitle>
                             <Text>
-                                Most trading happens in the UK and US market, so
-                                8am GMT to 5pm EST, is when the market is mostly
-                                liquid and the difference between the bid and
-                                ask rates is minimal.
+                                Most trading happens in the UK and US market,
+                                8am GMT - 5pm, is when the market is mostly
+                                liquid and the difference between the rates is
+                                minimal.
                             </Text>
                         </Section>
                     </Grid>

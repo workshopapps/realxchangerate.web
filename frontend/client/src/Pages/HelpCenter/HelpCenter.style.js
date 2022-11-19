@@ -50,9 +50,7 @@ export const Paragraph = styled.p`
 export const Section = styled.section`
     background: #f8fafc;
     border-radius: 12px;
-    padding-top: 20px;
-    padding-right: 20px;
-    padding-left: 20px;
+    padding: 20px;
     height: 100%;
 `;
 
