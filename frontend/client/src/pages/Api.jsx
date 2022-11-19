@@ -141,7 +141,7 @@ const StyledCards = styled.section`
     display: flex;
     width: 100%;
     justify-content: space-between;
-    transform: translateY(-10rem);
+    transform: translateY(-10.5rem);
   }
   li {
     background-color: #f8fafc;
@@ -183,16 +183,26 @@ const StyledCards = styled.section`
       height: auto;
     }
   }
+  @media only screen and (max-width: 1170px) {
+    ul {
+      flex-direction: column;
+      gap: 2.4rem;
+    }
+    li {
+      width: 100%;
+      max-width: 80rem;
+      margin: 0 auto;
+    }
+  }
   @media only screen and (max-width: 42rem) {
     padding: 2.4rem 2rem 0 2rem;
     background-color: #f1f5f9;
     ul {
-      flex-direction: column;
-      transform: translateY(-8rem);
-      gap: 2.4rem;
+      transform: translateY(-11rem);
     }
     li {
       flex-basis: 100%;
+      padding: 2.4rem;
     }
   } ;
 `;
