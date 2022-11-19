@@ -1,16 +1,20 @@
 import React from "react";
 import ExpertImage from "../Pages/Partnerships/assets/images/ExpertImage.png";
+
+// stytles
 import { StyledExperts } from "../Pages/Partnerships/styles/Experts.styles";
 
 const Experts = () => {
   return (
     <StyledExperts>
       <div className="expert-profile">
+        {/* expert image, name and title */}
         <img src={ExpertImage} alt="expert" />
         <h1>Sotonye Briggs</h1>
         <h3>Strategic Partnerships</h3>
       </div>
 
+      {/* expert description */}
       <div className="expert-details">
         <h1>Street Rates Currency Experts</h1>
         <p>
