@@ -2,6 +2,8 @@ import { Box, Grid, Typography } from "@mui/material";
 import React, { useState } from "react";
 import DrawerComponent from "./Drawer";
 import MenuIcon from "@mui/icons-material/Menu";
+import {Link} from "react-router-dom";
+import { DownArrow, NavFlag, MenuIcon } from "../assets/index"
 
 const NavComponent = () => {
     const [isOpen, setIsOpen] = useState(false);
