@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import padlock from './assets/padlock.png'
-import rocket from './assets/rocket.png'
-import dart from './assets/dart.png'
+import padlock from '../assets/padlock.png'
+import rocket from '../assets/rocket.png'
+import dart from '../assets/dart.png'
 
 const StyledCards = styled.section`
   padding: 0 12rem;
@@ -12,7 +12,7 @@ const StyledCards = styled.section`
     display: flex;
     width: 100%;
     justify-content: space-between;
-    transform: translateY(-10.5rem);
+    transform: translateY(-10rem);
   }
   li {
     background-color: #f8fafc;
@@ -45,7 +45,7 @@ const StyledCards = styled.section`
     padding: 0 8rem;
     background-color: #fff;
     ul {
-      transform: translateY(-9rem);
+      transform: translateY(-10rem);
     }
     li {
       padding: 4rem 2.4rem;
@@ -69,7 +69,7 @@ const StyledCards = styled.section`
     padding: 2.4rem 2rem 0 2rem;
     background-color: #f1f5f9;
     ul {
-      transform: translateY(-11rem);
+      transform: translateY(-10.9rem);
     }
     li {
       flex-basis: 100%;
