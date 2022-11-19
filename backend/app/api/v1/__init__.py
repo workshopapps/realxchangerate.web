@@ -3,6 +3,9 @@ from fastapi import APIRouter
 from app.api.v1 import currency
 from app.api.v1 import admin
 from app.api.v1 import rate
+from app.api.v1 import auth
+
+from app.api.v1 import api_service
 
 api_router = APIRouter()
 api_router.include_router(
