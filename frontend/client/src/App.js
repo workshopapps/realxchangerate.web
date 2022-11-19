@@ -31,9 +31,12 @@ import {
   OnlineAdvertising,
   Ambassadors,
 } from "./Pages";
+import GlobalStyle from "./styles/Globalstyle";
 
 function App() {
   return (
+    <>
+    <GlobalStyle />
     <Router>
       <div className="App">
         <NavComponent />
@@ -74,6 +77,7 @@ function App() {
         <Footer />
       </div>
     </Router>
+    </>
   );
 }
 
