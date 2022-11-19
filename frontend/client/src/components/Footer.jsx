@@ -33,7 +33,11 @@ const Footer = () => {
           >
             <Typography
               sx={{
-                fontSize: { xs: "19px", sm: "15px", lg: "19px" },
+                fontSize: {
+                  xs: "19px",
+                  sm: "15px",
+                  lg: "19px",
+                },
                 lineHeight: { xs: "23px" },
                 fontWeight: { xs: "700" },
               }}
@@ -76,7 +80,11 @@ const Footer = () => {
           >
             <Typography
               sx={{
-                fontSize: { xs: "19px", sm: "15px", lg: "19px" },
+                fontSize: {
+                  xs: "19px",
+                  sm: "15px",
+                  lg: "19px",
+                },
                 lineHeight: { xs: "23px" },
                 fontWeight: { xs: "700" },
               }}
@@ -110,7 +118,11 @@ const Footer = () => {
           >
             <Typography
               sx={{
-                fontSize: { xs: "19px", sm: "15px", lg: "19px" },
+                fontSize: {
+                  xs: "19px",
+                  sm: "15px",
+                  lg: "19px",
+                },
                 lineHeight: { xs: "23px" },
                 fontWeight: { xs: "700" },
               }}
@@ -153,7 +165,11 @@ const Footer = () => {
           >
             <Typography
               sx={{
-                fontSize: { xs: "19px", sm: "15px", lg: "19px" },
+                fontSize: {
+                  xs: "19px",
+                  sm: "15px",
+                  lg: "19px",
+                },
                 lineHeight: { xs: "23px" },
                 fontWeight: { xs: "700" },
               }}
@@ -205,6 +221,46 @@ const Footer = () => {
               Fraud report
             </Link>
           </Stack>
+          <Stack
+            direction="column"
+            alignItems="flex-start"
+            gap="16px"
+            sx={{
+              fontSize: { xs: "14px" },
+              lineHeight: { xs: "20px" },
+              fontWeight: { xs: "400" },
+              width: { sm: "173.33px" },
+            }}
+            color="#F8FAFC"
+            letterSpacing="0.001em"
+          >
+            <Typography
+              sx={{
+                fontSize: {
+                  xs: "19px",
+                  sm: "15px",
+                  lg: "19px",
+                },
+                lineHeight: { xs: "23px" },
+                fontWeight: { xs: "700" },
+              }}
+              letterSpacing="-0.02em"
+            >
+              Support
+            </Typography>
+            <Link href="/help-center" color="inherit">
+              Help Center
+            </Link>
+            <Link href="#" color="inherit">
+              FAQ
+            </Link>
+            <Link href="complaint" color="inherit">
+              File a complaint
+            </Link>
+            <Link href="#" color="inherit">
+              Fraud report
+            </Link>
+          </Stack>
 
           <Stack
             direction="column"
@@ -221,7 +277,11 @@ const Footer = () => {
           >
             <Typography
               sx={{
-                fontSize: { xs: "19px", sm: "15px", lg: "19px" },
+                fontSize: {
+                  xs: "19px",
+                  sm: "15px",
+                  lg: "19px",
+                },
                 lineHeight: { xs: "23px" },
                 fontWeight: { xs: "700" },
               }}
@@ -306,7 +366,12 @@ const Footer = () => {
         >
           <Typography
             sx={{
-              fontSize: { xs: "19px", sm: "20px", md: "24px", lg: "19px" },
+              fontSize: {
+                xs: "19px",
+                sm: "20px",
+                md: "24px",
+                lg: "19px",
+              },
               lineHeight: { xs: "23px" },
               fontWeight: { xs: "800" },
             }}

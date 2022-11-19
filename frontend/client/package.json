@@ -16,19 +16,21 @@
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.39.4",
     "react-icons": "^4.6.0",
-    "react-router-dom": "^6.4.3",
     "react-scripts": "5.0.1",
+    "react-router-dom": "^6.4.3",
     "redux": "^4.2.0",
     "styled-components": "^5.3.6",
-    "web-vitals": "^2.1.4",
-    "yup": "^0.32.11"
+    "yup": "^0.32.11",
+    "@mui/base": "^5.0.0-alpha.106",
+    "iconsax-react": "^0.0.8",
+    "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test2": "react-scripts test",
     "eject": "react-scripts eject",
-    "prepare": "husky install",
+    "prepare": "cd ../.. && husky install frontend/client/.husky",
     "test": "jest"
   },
   "eslintConfig": {
