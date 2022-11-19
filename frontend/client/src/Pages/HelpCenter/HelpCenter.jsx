@@ -17,9 +17,15 @@ const HelpCenter = () => {
             style={{
                 maxWidth: "1440px",
             }}
+            sx={{
+                paddingLeft: { xs: 2, sm: 2, md: 2, lg: 9, xl: 9 },
+                paddingRight: { xs: 2, sm: 2, md: 2, lg: 9, xl: 9 },
+            }}
         >
             <Wrapper>
-                <Title position={{ align: "left" }}>Help Center</Title>
+                <Title position={{ align: "left", marginTop: "10px" }}>
+                    Help Center
+                </Title>
                 <Header>Hi, How can we help?</Header>
                 <Paragraph>
                     Welcome to the StreetRate Help Center Portal. Here you will
