@@ -3,32 +3,32 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import NavComponent from "./components/NavComponent";
 import Footer from "./components/Footer";
 
-import {
-  About,
-  Ambassadors,
-  Api,
-  BoardOfDirectors,
-  Careers,
-  Compliance,
-  Contact,
-  Convert,
-  CookiePolicy,
-  CurrencyEncyclopedia,
-  Faq,
-  FileAComplaint,
-  FraudReport,
-  Glossary,
-  HelpCenter,
-  HistoricalCurrencyExchange,
-  Home,
-  IntegrationMatrix,
-  News,
-  OnlineAdvertising,
-  Partnerships,
-  Press,
-  Teams,
-  TermsAndConditions,
-} from "./Pages";
+import './assets/css/style.css';
+
+import Home from "./pages/Home";
+import Convert from "./pages/Convert";
+import Contact from "./pages/Contact";
+import Compliance from "./pages/Compliance";
+import HelpCenter from "./pages/HelpCenter";
+import News from "./pages/News";
+import Faq from "./pages/Faq";
+import IntegrationMatrix from "./pages/IntegrationMatrix";
+import Partnerships from "./pages/Partnerships";
+import CurrencyEncyclopedia from "./pages/CurrencyEncyclopedia";
+import TermsAndConditions from "./pages/TermsAndConditions";
+import Press from "./pages/Press";
+import Careers from "./pages/Careers";
+import About from "./pages/About";
+import Teams from "./pages/Teams";
+import FileAComplaint from "./pages/FileAComplaint";
+import Api from "./pages/Api";
+import BoardOfDirectors from "./pages/BoardOfDirectors";
+import HistoricalCurrencyExchange from "./pages/HistoricalCurrencyExchange";
+import FraudReport from "./pages/FraudReport";
+import CookiePolicy from "./pages/CookiePolicy";
+import Glossary from "./pages/Glossary";
+import OnlineAdvertising from "./pages/OnlineAdvertising";
+import Ambassadors from "./pages/Ambassadors";
 
 function App() {
   return (
