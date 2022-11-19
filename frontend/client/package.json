@@ -17,6 +17,8 @@
     "react-scripts": "5.0.1",
     "redux": "^4.2.0",
     "styled-components": "^5.3.6",
+    "@mui/base": "^5.0.0-alpha.106",
+    "iconsax-react": "^0.0.8",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
