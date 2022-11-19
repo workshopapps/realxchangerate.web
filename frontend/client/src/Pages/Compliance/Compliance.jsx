@@ -1,11 +1,12 @@
 import { Box, Typography, useMediaQuery, Stack, Link } from "@mui/material";
 import React from "react";
+import {BackgroundImage, BackgroundImageMobile, RightArrow} from "./assets/";
 
 const Complaince = () => {
   const mobileScreen = useMediaQuery("(max-width:481px)");
   const backgroundImage = mobileScreen
-    ? "assets/png/background_mobile.png"
-    : "assets/png/background.png";
+    ? BackgroundImageMobile
+    : BackgroundImage;
   return (
     <Box minHeight="calc(100vh - 580px)">
       <Box width="100%" margin="0px" padding="0px">
@@ -226,7 +227,7 @@ const Complaince = () => {
               borderRadius="5px"
             >
               <Typography>Certifications</Typography>
-              <img src="assets/svg/RightArrow.svg" alt="right_arrow" />
+              <img src={RightArrow} alt="right_arrow" />
             </Box>
 
             <Box
@@ -239,7 +240,7 @@ const Complaince = () => {
               borderRadius="5px"
             >
               <Typography>Standards</Typography>
-              <img src="assets/svg/RightArrow.svg" alt="right_arrow" />
+              <img src={RightArrow} alt="right_arrow" />
             </Box>
 
             <Box
@@ -252,7 +253,7 @@ const Complaince = () => {
               borderRadius="5px"
             >
               <Typography>Public certificates</Typography>
-              <img src="assets/svg/RightArrow.svg" alt="right_arrow" />
+              <img src={RightArrow} alt="right_arrow" />
             </Box>
           </Stack>
         </Stack>
