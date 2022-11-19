@@ -4,7 +4,7 @@ import DropDown from "./DropDown";
 
 const Footer = () => {
   return (
-    <Box backgroundColor="#00296B" marginTop="50px">
+    <Box backgroundColor="#00296B" marginTop="0"  >
       <Box
         margin="0px auto"
         pt="56px"
@@ -23,7 +23,7 @@ const Footer = () => {
             alignItems="flex-start"
             gap="16px"
             sx={{
-              fontSize: { xs: "14px" },
+              fontSize: { xs: "14px", sm: "12px", lg: "14px" },
               lineHeight: { xs: "20px" },
               fontWeight: { xs: "400" },
               width: { sm: "173.33px" },
@@ -37,26 +37,26 @@ const Footer = () => {
                 lineHeight: { xs: "23px" },
                 fontWeight: { xs: "700" },
               }}
-              letterSpacing="-0.02em"
+              color="#f8fafc"
             >
               Company
             </Typography>
-            <Link href="#" color="inherit">
+            <Link href="#" color="inherit" style={{ textDecoration: 'none' }}>
               About Us
             </Link>
-            <Link href="#" color="inherit">
+            <Link href="#" color="inherit" style={{ textDecoration: 'none' }}>
               Careers
             </Link>
-            <Link href="#" color="inherit">
-              Patnerships
+            <Link href="#" color="inherit" style={{ textDecoration: 'none' }}>
+              Partnerships
             </Link>
-            <Link href="#" color="inherit">
+            <Link href="#" color="inherit" style={{ textDecoration: 'none' }}>
               Meet the team
             </Link>
-            <Link href="#" color="inherit">
+            <Link href="#" color="inherit" style={{ textDecoration: 'none' }}>
               Press
             </Link>
-            <Link href="#" color="inherit">
+            <Link href="#" color="inherit" style={{ textDecoration: 'none' }}>
               Board of directors
             </Link>
           </Stack>
@@ -66,7 +66,7 @@ const Footer = () => {
             alignItems="flex-start"
             gap="16px"
             sx={{
-              fontSize: { xs: "14px" },
+              fontSize: { xs: "14px", sm: "12px", lg: "14px" },
               lineHeight: { xs: "20px" },
               fontWeight: { xs: "400" },
               width: { sm: "173.33px" },
@@ -80,17 +80,17 @@ const Footer = () => {
                 lineHeight: { xs: "23px" },
                 fontWeight: { xs: "700" },
               }}
-              letterSpacing="-0.02em"
+              color="#f8fafc"
             >
               Links
             </Typography>
-            <Link href="#" color="inherit">
+            <Link href="#" color="inherit" style={{ textDecoration: 'none' }}>
               Convert
             </Link>
-            <Link href="#" color="inherit">
+            <Link href="#" color="inherit" style={{ textDecoration: 'none' }}>
               News
             </Link>
-            <Link href="#" color="inherit">
+            <Link href="#" color="inherit" style={{ textDecoration: 'none' }}>
               Contact Us
             </Link>
           </Stack>
@@ -100,7 +100,7 @@ const Footer = () => {
             alignItems="flex-start"
             gap="16px"
             sx={{
-              fontSize: { xs: "14px" },
+              fontSize: { xs: "14px", sm: "12px", lg: "14px" },
               lineHeight: { xs: "20px" },
               fontWeight: { xs: "400" },
               width: { sm: "173.33px" },
@@ -114,27 +114,15 @@ const Footer = () => {
                 lineHeight: { xs: "23px" },
                 fontWeight: { xs: "700" },
               }}
-              letterSpacing="-0.02em"
+              color="#f8fafc"
             >
               Resources
             </Typography>
-            <Link href="#" color="inherit">
+            <Link href="#" color="inherit" style={{ textDecoration: 'none' }}>
               Currency Encyclopedia
             </Link>
-            <Link href="#" color="inherit">
+            <Link href="#" color="inherit" style={{ textDecoration: 'none' }}>
               Historical currency exchange
-            </Link>
-
-            <Link href="#" color="inherit">
-              Glossary
-            </Link>
-
-            <Link href="#" color="inherit">
-              Online Advertising
-            </Link>
-
-            <Link href="#" color="inherit">
-              Ambassadors
             </Link>
           </Stack>
 
@@ -143,7 +131,7 @@ const Footer = () => {
             alignItems="flex-start"
             gap="16px"
             sx={{
-              fontSize: { xs: "14px" },
+              fontSize: { xs: "14px", sm: "12px", lg: "14px" },
               lineHeight: { xs: "20px" },
               fontWeight: { xs: "400" },
               width: { sm: "173.33px" },
@@ -157,14 +145,14 @@ const Footer = () => {
                 lineHeight: { xs: "23px" },
                 fontWeight: { xs: "700" },
               }}
-              letterSpacing="-0.02em"
+              color="#f8fafc"
             >
               Product
             </Typography>
-            <Link href="#" color="inherit">
+            <Link href="#" color="inherit" style={{ textDecoration: 'none' }}>
               API
             </Link>
-            <Link href="#" color="inherit">
+            <Link href="#" color="inherit" style={{ textDecoration: 'none' }}>
               Integration matrix
             </Link>
           </Stack>
@@ -174,7 +162,7 @@ const Footer = () => {
             alignItems="flex-start"
             gap="16px"
             sx={{
-              fontSize: { xs: "14px" },
+              fontSize: { xs: "14px", sm: "12px", lg: "14px" },
               lineHeight: { xs: "20px" },
               fontWeight: { xs: "400" },
               width: { sm: "173.33px" },
@@ -188,20 +176,20 @@ const Footer = () => {
                 lineHeight: { xs: "23px" },
                 fontWeight: { xs: "700" },
               }}
-              letterSpacing="-0.02em"
+              color="#f8fafc"
             >
               Support
             </Typography>
-            <Link href="#" color="inherit">
+            <Link href="#" color="inherit" style={{ textDecoration: 'none' }}>
               Help Center
             </Link>
-            <Link href="#" color="inherit">
+            <Link href="#" color="inherit" style={{ textDecoration: 'none' }}>
               FAQ
             </Link>
-            <Link href="#" color="inherit">
+            <Link href="#" color="inherit" style={{ textDecoration: 'none' }}>
               File a complaint
             </Link>
-            <Link href="#" color="inherit">
+            <Link href="#" color="inherit" style={{ textDecoration: 'none' }}>
               Fraud report
             </Link>
           </Stack>
@@ -211,7 +199,7 @@ const Footer = () => {
             alignItems="flex-start"
             gap="16px"
             sx={{
-              fontSize: { xs: "14px" },
+              fontSize: { xs: "14px", sm: "12px", lg: "14px" },
               lineHeight: { xs: "20px" },
               fontWeight: { xs: "400" },
               width: { sm: "173.33px" },
@@ -225,21 +213,19 @@ const Footer = () => {
                 lineHeight: { xs: "23px" },
                 fontWeight: { xs: "700" },
               }}
-              letterSpacing="-0.02em"
+              color="#f8fafc"
+
             >
               Legal
             </Typography>
-            <Link href="#" color="inherit">
+            <Link href="#" color="inherit" style={{ textDecoration: 'none' }}>
               Privacy Policy
             </Link>
-            <Link href="#" color="inherit">
+            <Link href="#" color="inherit" style={{ textDecoration: 'none' }}>
               Terms and Conditions
             </Link>
-            <Link href="#" color="inherit">
+            <Link href="#" color="inherit" style={{ textDecoration: 'none' }}>
               Cookie Policy
-            </Link>
-            <Link href="#" color="inherit">
-              Compliance
             </Link>
           </Stack>
         </Box>
@@ -269,31 +255,14 @@ const Footer = () => {
           <DropDown title={"Links"} Items={["Convert", "News", "Contact Us"]} />
           <DropDown
             title={"Resources"}
-            Items={[
-              "Currency Encyclopedia",
-              "Historical currency exchange",
-              "Glossary",
-              "Online Advertising",
-              "Ambassadors",
-            ]}
+            Items={["Currency Encyclopedia", "Historical currency exchange"]}
           />
           <DropDown title={"Product"} Items={["API", "Integration matrix"]} />
-          <DropDown
-            title={"Support"}
-            Items={["Help Centre", "FAQ", "File a complaint", "Fraud Report"]}
-          />
-          <DropDown
-            title={"Legal"}
-            Items={[
-              "Private Policy",
-              "Terms and Conditions",
-              "Cookie Policy",
-              "Compliance",
-            ]}
-          />
+          <DropDown title={"Support"} Items={["Help Centre", "FAQ", "File a complaint", "Fraud Report"]} />
+          <DropDown title={"Legal"} Items={["Private Policy", "Terms and Conditions", "Cookie Policy"]} />
         </Box>
 
-        <Box margin="20px 0px">
+        <Box margin="40px 0 20px 0">
           <hr style={{ height: "1px", backgroundColor: "#CBD5E1" }} />
         </Box>
 
@@ -303,6 +272,7 @@ const Footer = () => {
           justifyContent="space-between"
           alignItems="center"
           color="#F8FAFC"
+          paddingBottom='40px'
         >
           <Typography
             sx={{
@@ -311,6 +281,7 @@ const Footer = () => {
               fontWeight: { xs: "800" },
             }}
             letterSpacing="-0.02em"
+            color="#fff"
           >
             Street Rate
           </Typography>
@@ -322,12 +293,13 @@ const Footer = () => {
               fontWeight: { xs: "400" },
             }}
             letterSpacing="-0.02em"
+            color="#fff"
           >
             © 2022 Bevel All rights reserved.
           </Typography>
         </Box>
       </Box>
-    </Box>
+    </Box >
   );
 };
 
