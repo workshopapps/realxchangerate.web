@@ -7,8 +7,9 @@ import {
     Typography,
   } from "@mui/material";
   import React from "react";
+  import {DownArrow} from "../assets"
   
-  const DropDown = ({ title, Items }) => {
+  const DropDown = ({ title, Items, Links }) => {
     return (
       <>
         <Accordion
@@ -23,7 +24,7 @@ import {
           <AccordionSummary
             aria-controls="panel1a-content"
             id="panel1a-header"
-            expandIcon={<img src="assets/svg/DownArrow.svg" alt="down_arrow" />}
+            expandIcon={<img src={DownArrow} alt="down_arrow" />}
           >
             <Typography
               marginRight="5px"
@@ -50,7 +51,7 @@ import {
               textAlign="center"
             >
               {Items.map((item) => (
-                <Link href="#" color="inherit" key={Items.indexOf(item)}>
+                <Link href={`/${Links[Items.indexOf(item)]}`} color="inherit" key={Items.indexOf(item)}>
                   {item}
                 </Link>
               ))}

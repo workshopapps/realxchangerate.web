@@ -1,7 +1,7 @@
-import { BrowserRouter as Router, Routes , Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import NavComponent from './components/NavComponent';
-import Footer from './components/Footer';
+import NavComponent from "./components/NavComponent";
+import Footer from "./components/Footer";
 
 import Home from "./pages/Home";
 import Convert from "./pages/Convert";
@@ -26,15 +26,16 @@ import CookiePolicy from "./pages/CookiePolicy";
 import Glossary from "./pages/Glossary";
 import OnlineAdvertising from "./pages/OnlineAdvertising";
 import Ambassadors from "./pages/Ambassadors";
+import Compliance from "./Pages/Compliance";
 
 function App() {
   return (
     <Router>
       <div className="App">
-        <Routes >
-          <NavComponent />
+        <NavComponent />
+        <Routes>
           {/*---==== Contents Sections  ====---*/}
-            <Route path="/" element={<Home/>} /> 
+          <Route path="/" element={<Home/>} /> 
             <Route path="/convert" element={<Convert/>} />
             <Route path="/contact" element={<Contact/>} /> 
             <Route path="/help-center" element={<HelpCenter/>} /> 
@@ -57,9 +58,10 @@ function App() {
             <Route path="/glossary" element={<Glossary/>} /> 
             <Route path="/advertising" element={<OnlineAdvertising/>} />
             <Route path="/ambassadors" element={<Ambassadors/>} />
+          <Route path="/compliance" element={<Compliance />} />
           {/*---==== end of Contents Sections  ====---*/}
-          <Footer />
-        </Routes >
+        </Routes>
+        <Footer />
       </div>
     </Router>
   );
