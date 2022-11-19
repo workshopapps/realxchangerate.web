@@ -5,8 +5,8 @@ from sqlalchemy.orm import Session
 
 from app import schemas, crud
 from app.api.deps import get_db
-from v1.currency import get_currencies
-from v1.auth import get_current_active_user
+from .currency import get_currencies
+from .auth import get_current_active_user
 
 router = APIRouter()
 
