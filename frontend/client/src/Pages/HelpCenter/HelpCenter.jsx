@@ -17,6 +17,10 @@ const HelpCenter = () => {
             style={{
                 maxWidth: "1440px",
             }}
+            sx={{
+                padding: { xs: 2, sm: 2, md: 2, xl: 0 },
+            }}
+            margin="0px auto"
         >
             <Wrapper>
                 <Title position={{ align: "left" }}>Help Center</Title>
@@ -57,7 +61,8 @@ const HelpCenter = () => {
                     style={{
                         marginBottom: "80px",
                     }}
-                    spacing={5}
+                    columnSpacing={2}
+                    rowSpacing={5}
                     alignItems="stretch"
                 >
                     <Grid item xs={12} sm={4}>
