@@ -4,7 +4,7 @@ import DropDown from "./DropDown";
 
 const Footer = () => {
   return (
-    <Box backgroundColor="#00296B" marginTop="50px">
+    <Box backgroundColor="#00296B">
       <Box
         margin="0px auto"
         pt="56px"
