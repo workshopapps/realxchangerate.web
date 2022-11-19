@@ -1,5 +1,5 @@
 import React from "react";
-import { Hero, LiveRate } from "../components";
+import { Hero, LiveRate } from "./";
 
 const Home = () => {
   return (
