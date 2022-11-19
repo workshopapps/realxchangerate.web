@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import DrawerComponent from "./Drawer";
 import { Link } from "react-router-dom";
 import { DownArrow, NavFlag, MenuIcon } from "../assets/index";
-import { NavWrapper } from "./styles/NavBar.styled";
 
 const NavComponent = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,7 +12,40 @@ const NavComponent = () => {
   };
 
   return (
-    <NavWrapper>
+    <Grid
+      sx={{
+        maxWidth: { xs: "90%", sm: "95%", md: "84%" },
+        minHeight: { xs: "56px", sm: "100px" },
+        justifyContent: { xs: "space-between" },
+      }}
+      minHeight="100px"
+      display="flex"
+      margin="0px auto"
+      flexDirection="row"
+    >
+      <Grid display="flex" justifyContent="center" alignItems="center">
+        <Link to={"/"}>
+          <Typography
+            sx={{
+              fontSize: {
+                xs: "23px",
+                sm: "17px",
+                md: "24px",
+                lg: "29px",
+                xl: "34px",
+              },
+              lineHeight: { xs: "28px", sm: "40px" },
+              fontWeight: { xs: "600", sm: "700" },
+            }}
+            color="#00296B"
+            letterSpacing="-0.04em"
+            role="heading"
+          >
+            Street Rate
+          </Typography>
+        </Link>
+      </Grid>
+
       <Grid
         className="push"
         sx={{
@@ -94,6 +126,7 @@ const NavComponent = () => {
         >
           <img src={MenuIcon} alt="MenuIcon" />
         </Box>
+<<<<<<< HEAD
         <DrawerComponent
           isOpen={isOpen}
           setIsOpen={HandleDrawerState}
@@ -101,6 +134,43 @@ const NavComponent = () => {
         />
       </Grid>
     </NavWrapper>
+=======
+
+        <Link to="/" color="inherit">
+          Home
+        </Link>
+
+        <Link to="/convert" color="inherit">
+          Convert
+        </Link>
+
+        <Link to="#" color="inherit">
+          Currency Profile
+        </Link>
+
+        <Link to="/news" color="inherit">
+          News
+        </Link>
+
+        <Link to="/contact" color="inherit">
+          Contact
+        </Link>
+      </Grid>
+      <Box
+        p="12px"
+        sx={{ display: { xs: "flex", sm: "none" } }}
+        cursor="pointer"
+        onClick={() => setIsOpen(true)}
+      >
+        <img src={MenuIcon} alt="MenuIcon" />
+      </Box>
+      <DrawerComponent
+        isOpen={isOpen}
+        setIsOpen={HandleDrawerState}
+        navItems={["Home", "Convert", "Currency Profile", "News", "Contact"]}
+      />
+    </Grid>
+>>>>>>> 1864d07ef8d903920bab93204c71eada97cc7fe1
   );
 };
 
