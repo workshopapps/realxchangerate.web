@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Link, Stack, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 
 const CookiePolicyMain = () => {
   return (
