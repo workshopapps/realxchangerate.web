@@ -6,13 +6,13 @@ WORKDIR /home/app
 
 COPY package.json .
 
-COPY package-lock.json .
+# COPY package-lock.json .
 
-RUN npm cache clean --force
+# RUN npm cache clean --force
 
-RUN npm config set registry http://registry.npmjs.org
+# RUN npm config set registry http://registry.npmjs.org
 
-RUN npm ci
+RUN npm i
 
 COPY . .
 
@@ -20,7 +20,7 @@ ENV NODE_ENV production
 
 EXPOSE 3000
 
-RUN npm run build
+# RUN npm run build
 
-# CMD [ "npm", "start" ]
-CMD [ "npx", "serve", "build" ]
+CMD [ "npm", "start" ]
+# CMD [ "npx", "serve", "build" ]
