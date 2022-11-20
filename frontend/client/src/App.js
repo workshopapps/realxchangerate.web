@@ -46,7 +46,7 @@ function App() {
           <NavComponent />
           <Routes>
             {/*---==== Contents Sections  ====---*/}
-            <Route path="/" element={<Welcome />} />
+            <Route path="/" element={<Home />} />
             <Route path="/convert" element={<Convert />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/compliance" element={<Compliance />} />
