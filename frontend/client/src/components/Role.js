@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import active from "../Pages/Careers/assets/Active.svg";
+import active from "../pages/Careers/assets/Active.svg";
 import Button from "./CareerButton";
 
 function Role({ title, content, tag1, tag2, tag3 }) {

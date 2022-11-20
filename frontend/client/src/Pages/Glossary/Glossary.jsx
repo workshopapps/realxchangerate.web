@@ -1,8 +1,5 @@
 import React from "react";
 import {
-  Container,
-  Heading,
-  Title,
   Search,
   Parent,
   Items,

@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Typography, Grid } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { US, Ghana, Canada, Australia, Japan } from "../assets";
 
 const CurrencyProfile = () => {
