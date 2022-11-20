@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const StyledLayout = styled.div`
     display: grid;
- 
     grid-template-columns: 20% 1fr;
     /* grid-template-rows: 120px 1fr; */
 
