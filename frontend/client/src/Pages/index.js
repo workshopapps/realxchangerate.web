@@ -17,8 +17,10 @@ export { default as Teams } from "./Teams/Teams";
 export { default as Api } from "./Api/Api";
 export { default as BoardOfDirectors } from "./BoardOfDirectors/BoardOfDirectors";
 export { default as HistoricalCurrencyExchange } from "./HistoricalCurrencyExchange/HistoricalCurrencyExchange";
-export { default as FraudReport } from "./FraudReports/FraudReport";
+export { default as FraudReport } from "./FraudReport/FraudReport";
 export { default as CookiePolicy } from "./CookiePolicy/CookiePolicy";
 export { default as Glossary } from "./Glossary/Glossary";
 export { default as OnlineAdvertising } from "./OnlineAdvertising/OnlineAdvertising";
 export { default as Ambassadors } from "./Ambassadors/Ambassadors";
+export { default as Welcome } from "./Welcome/Welcome";
+
