@@ -10,8 +10,8 @@ from .auth import get_current_active_user
 
 router = APIRouter()
 
-@router.post("/", response_model=schemas.Admin)
-def create_admin(*,db: Session = Depends(get_db), admin_in: schemas.AdminCreate, current_admin: models.Admin = Depends(get_current_active_user)) -> Any:
+@router.post("/create/", response_model=schemas.Admin)
+def create_admin(*,db: Session = Depends(get_db), admin_in: schemas.AdminCreate) -> Any:
     """
     Create Admin
     """
@@ -23,3 +23,11 @@ def create_admin(*,db: Session = Depends(get_db), admin_in: schemas.AdminCreate,
         )
     admin = crud.admin.create(db, obj_in=admin_in)
     return admin
+
+@router.post("/create/currency/", response_model=List[schemas.Currency])
+async def create_currency(*,db: Session = Depends(get_db), currency_in: schemas.CurrencyCreate, current_admin: models.Admin = Depends(get_current_active_user)) -> Any:
+    """
+    Create new currency
+    """
+    currency = crud.currency.create(db=db, obj_in=currency_in)
+    return currency
