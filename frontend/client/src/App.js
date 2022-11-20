@@ -29,6 +29,7 @@ import {
   Glossary,
   OnlineAdvertising,
   Ambassadors,
+  Home,
   Welcome,
 } from "./Pages";
 import GlobalStyle from "./styles/Globalstyle";
