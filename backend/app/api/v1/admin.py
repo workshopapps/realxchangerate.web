@@ -4,10 +4,9 @@ from app import schemas, models
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 
-from models import Admin
 from app import schemas, crud
 from app.api.deps import get_db
-from auth import get_current_active_user
+from .auth import get_current_active_user
 
 router = APIRouter()
 
