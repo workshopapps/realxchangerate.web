@@ -8,7 +8,7 @@
   gather_facts: false
   # environment:
   # Add more env vars here
-  - task:
+  task:
     - name: "Test"
       become: yes
       shell: git --version
@@ -22,4 +22,3 @@
     - ansible_python_interpreter: /usr/bin/python3
     - ansible_host_key_checking: false
     - ansible_stdout_callback: yaml
-
