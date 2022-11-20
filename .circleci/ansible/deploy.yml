@@ -8,7 +8,7 @@
   gather_facts: false
   # environment:
   # Add more env vars here
-  task:
+  tasks:
     - name: "Test"
       become: yes
       shell: git --version
