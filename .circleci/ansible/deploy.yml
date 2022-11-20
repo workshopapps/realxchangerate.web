@@ -19,19 +19,10 @@
     # - name: "change directory"
     #   become: yes
     #   shell: cd /home/ubuntu/realxchangerate.web & cat docker-compose.yml
-    # - name: "Stop all services"
-    #   community.docker.docker_compose:
-    #     project_src: flask
-    #     build: false
-    #     stopped: true
-    #   register: output
+
     - name: "Stop docker"
-      become: true
-      community.docker.docker_compose:
-        project_src: flask
-        build: false
-        stopped: true
-      # shell: /home/ubuntu/realxchangerate.web/docker-compose down
+      become: yes
+      shell: /usr/bin/docker-compose down
 
     - name: "Start docker"
       become: yes
