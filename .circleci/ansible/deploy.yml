@@ -11,7 +11,7 @@
   tasks:
     - name: "Test"
       become: yes
-      shell: ls -l
+      shell: cd ls -l
       register: command_output
     - debug:
         var: command_output.stdout_lines

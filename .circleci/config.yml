@@ -276,28 +276,29 @@ jobs:
 
 workflows:
   default:
+  # testing
     jobs:
-      - build-frontend-client
-      # - build-frontend-admin
-      - build-backend
+      # - build-frontend-client
+      # # - build-frontend-admin
+      # - build-backend
       # - test-frontend-client
       # - test-frontend-admin
       # - test-backend
-      - build-frontend-client-docker-image:
-          requires: [build-frontend-client] #remember to channge to test
-          filters:
-            branches:
-              only: [merge-dev]
+      # - build-frontend-client-docker-image:
+      #     requires: [build-frontend-client] #remember to channge to test
+      #     filters:
+      #       branches:
+      #         only: [merge-dev]
 
-      - build-backend-docker-image:
-          requires: [build-backend] #remember to channge to test
-          filters:
-            branches:
-              only: [merge-dev]
+      # - build-backend-docker-image:
+      #     requires: [build-backend] #remember to channge to test
+      #     filters:
+      #       branches:
+      #         only: [merge-dev]
 
       - deploy-docker-compose:
-          requires:
-            [
-              build-frontend-client-docker-image,
-              build-frontend-client-docker-image,
-            ]
+          # requires:
+          #   [
+          #     build-frontend-client-docker-image,
+          #     build-frontend-client-docker-image,
+          #   ]
