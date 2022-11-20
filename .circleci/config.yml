@@ -190,7 +190,7 @@ jobs:
       - run:
           name: Push Image to docker hub
           command: |
-            docker login -u {{ DOCKER_USERNAME }} -p {{ DOCKER_PASSWORD }}
+            docker login -u ${DOCKER_USERNAME }} -p ${DOCKER_PASSWORD}
             docker tag app-be hacklight/test-fe
             docker push hacklight/test-fe
 
