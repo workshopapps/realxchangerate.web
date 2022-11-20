@@ -190,11 +190,9 @@ jobs:
       - run:
           name: Push Image to docker hub
           command: |
-            if [ "${CIRCLE_BRANCH}" == "merge-dev" ]; then
-              docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
-              docker tag app hacklight/xchange-fe-client
-              docker push hacklight/xchange-fe-client
-            fi
+            docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
+            docker tag app hacklight/xchange-fe-client
+            docker push hacklight/xchange-fe-client
 
   build-backend-docker-image:
     docker:
