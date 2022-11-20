@@ -30,8 +30,15 @@ import {
   Glossary,
   OnlineAdvertising,
   Ambassadors,
-  Welcome,
   Home,
+  Welcome,
+<<<<<<< HEAD
+<<<<<<< HEAD
+  Home,
+=======
+>>>>>>> 6af6b42d36ad5136bb43b3dd82358b85ed99379f
+=======
+>>>>>>> 048c076e840ce006d0a5a665a7a75f3d825fa627
 } from "./Pages";
 import GlobalStyle from "./styles/Globalstyle";
 import ErrorPage from "./Pages/404/ErrorPage";
@@ -87,7 +94,7 @@ function App() {
             <Route path="/glossary" element={<Glossary />} />
             <Route path="/advertising" element={<OnlineAdvertising />} />
             <Route path="/ambassadors" element={<Ambassadors />} />
-            <Route path="*" element={<ErrorPage />} />
+            <Route path="/*" element={<ErrorPage />} />
             {/*---==== end of Contents Sections  ====---*/}
           </Routes>
           <Footer />
