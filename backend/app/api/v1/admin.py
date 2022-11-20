@@ -31,3 +31,9 @@ async def create_currency(*,db: Session = Depends(get_db), currency_in: schemas.
     """
     currency = crud.currency.create(db=db, obj_in=currency_in)
     return currency
+
+#authenticates that the admin is logged in then returns all the currencies in the database with the get_currencies function
+@router.get("/currencies", response_model=List[schemas.Currency])
+async def currencies(user = Depends(get_current_active_user)):
+    return get_currencies()
+
