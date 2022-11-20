@@ -1,8 +1,8 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import Avatar from "@mui/material/Avatar";
 import Tooltip from "@mui/material/Tooltip";
@@ -10,30 +10,22 @@ import MenuItem from "@mui/material/MenuItem";
 import { ReactComponent as InboxIcon } from "../../../assets/icons/menu_mail.svg";
 import { ReactComponent as ProfileIcon } from "../../../assets/icons/menu_profile.svg";
 import { ReactComponent as SettingIcon } from "../../../assets/icons/menu_setting.svg";
+import { ReactComponent as LogoutIcon } from "../../../assets/icons/logout.svg";
 import {
   StyledAvatarMenuProfile,
   StyledAvatarMenuProfilePreview,
   StyledAvatarMenuWrapper,
+  StyledAvatarMenuOption,
+  StyledAvatarMenuOptions,
+  StyledAvatarMenuLogout,
+  StyledOprionsWrapper,
 } from "./HeaderAvatar.styled";
 import AvatarLoader from "../../shared/AvatarLoader/AvatarLoader";
 
-const menuItems = [
-  {
-    option: "Inbox",
-    icon: <InboxIcon />,
-  },
-  {
-    option: "My Profile",
-    icon: <ProfileIcon />,
-  },
-  {
-    option: "Account settings",
-    icon: <SettingIcon />,
-  },
-];
-
 function HeaderAvatar({ userData }) {
   const [anchorElUser, setAnchorElUser] = useState(null);
+
+  const navigate = useNavigate();
 
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
@@ -58,7 +50,7 @@ function HeaderAvatar({ userData }) {
       </Tooltip>
 
       <Menu
-        sx={{ mt: "45px" }}
+        sx={{ mt: "45px", pt: "0px" }}
         id="menu-appbar"
         anchorEl={anchorElUser}
         anchorOrigin={{
@@ -74,20 +66,57 @@ function HeaderAvatar({ userData }) {
         onClose={handleCloseUserMenu}
       >
         <StyledAvatarMenuWrapper>
-          <StyledAvatarMenuProfile>
+          <StyledAvatarMenuProfile
+            onClick={() => {
+              handleCloseUserMenu();
+              navigate("/account");
+            }}
+          >
             <AvatarLoader alt={userData.name} image={userData.pfp_url} />
 
             <StyledAvatarMenuProfilePreview>
-              <h4>Mikey Doe</h4>
-              <p>mikey.doe@example.com</p>
+              <h4>{userData.name}</h4>
+              <p>{userData.email}</p>
             </StyledAvatarMenuProfilePreview>
           </StyledAvatarMenuProfile>
         </StyledAvatarMenuWrapper>
-        {menuItems.map((item, index) => (
-          <MenuItem key={index} onClick={handleCloseUserMenu}>
-            <Typography textAlign="center">{item.option}</Typography>
+
+        <StyledOprionsWrapper>
+          <StyledAvatarMenuOptions>
+            <MenuItem onClick={handleCloseUserMenu}>
+              <StyledAvatarMenuOption>
+                <div className="icon">
+                  <InboxIcon />
+                </div>
+                <p className="option">Inbox</p>
+              </StyledAvatarMenuOption>
+            </MenuItem>
+            <MenuItem onClick={handleCloseUserMenu}>
+              <StyledAvatarMenuOption>
+                <div className="icon">
+                  <ProfileIcon />
+                </div>
+                <p className="option">My Profile</p>
+              </StyledAvatarMenuOption>
+            </MenuItem>
+          </StyledAvatarMenuOptions>
+
+          <MenuItem onClick={handleCloseUserMenu}>
+            <StyledAvatarMenuOption>
+              <div className="icon">
+                <SettingIcon />
+              </div>
+              <p className="option">Settings</p>
+            </StyledAvatarMenuOption>
           </MenuItem>
-        ))}
+
+          <StyledAvatarMenuLogout onClick={handleCloseUserMenu}>
+            <div className="icon">
+              <LogoutIcon />
+            </div>
+            <p>Logout</p>
+          </StyledAvatarMenuLogout>
+        </StyledOprionsWrapper>
       </Menu>
     </Box>
   );

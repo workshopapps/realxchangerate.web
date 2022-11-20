@@ -11,8 +11,8 @@ export const StyledMessagesWrapper = styled.div`
 export const StyledMessages = styled.ul`
     margin-top: 8px;
 
-    height: 216px;
-    overflow-y: auto;
+    /* height: 216px;
+    overflow-y: auto; */
 
     display: flex;
     flex-direction: column;
