@@ -30,7 +30,7 @@ import {
   OnlineAdvertising,
   Ambassadors,
   Welcome,
-} from "./pages";
+} from "./Pages";
 import GlobalStyle from "./styles/Globalstyle";
 import ErrorPage from "./pages/404/ErrorPage";
 
