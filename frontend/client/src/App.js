@@ -36,6 +36,8 @@ import GlobalStyle from "./styles/Globalstyle";
 import ErrorPage from "./Pages/404/ErrorPage";
 
 import SingleNews from "./Pages/SingleNews/SingleNews";
+import Article from "./Pages/Press/Article/Article";
+import PressNews from "./Pages/Press/PressRelease/News"
 
 function App() {
   return (
@@ -65,6 +67,8 @@ function App() {
             />
             <Route path="/terms" element={<TermsAndConditions />} />
             <Route path="/press" element={<Press />} />
+            <Route path="/press/news" element={<PressNews />} />
+            <Route path="/press/article" element={<Article />} />
             <Route path="/careers" element={<Careers />} />
             <Route path="/about" element={<About />} />
             <Route path="/complaint" element={<FileAComplaint />} />
