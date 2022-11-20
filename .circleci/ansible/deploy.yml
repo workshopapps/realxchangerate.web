@@ -8,18 +8,21 @@
   gather_facts: false
   # environment:
   # Add more env vars here
-  - task:
+  tasks:
     - name: "Test"
       become: yes
       shell: git --version
-    - name: "Stop docker"
+    - name: "change directory"
       become: yes
-      shell: docker-compose down
-    - name: "Start docker"
-      become: yes
-      shell: docker-compose up -d
+      shell: cd realxchangerate.web
+      # will re-enable it when the frontend developers code build properly
+    # - name: "Stop docker"
+    #   become: yes
+    #   shell: docker-compose down
+    # - name: "Start docker"
+    #   become: yes
+    #   shell: docker-compose up -d
   vars:
     - ansible_python_interpreter: /usr/bin/python3
     - ansible_host_key_checking: false
     - ansible_stdout_callback: yaml
-

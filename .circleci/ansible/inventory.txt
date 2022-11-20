@@ -1,2 +1,2 @@
 [web]
-44.203.211.6
+44.203.211.6 ansible_ssh_common_args='-o StrictHostKeyChecking=no'

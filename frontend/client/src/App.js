@@ -32,9 +32,12 @@ import {
   Home,
   Welcome,
 <<<<<<< HEAD
+<<<<<<< HEAD
   Home,
 =======
 >>>>>>> 6af6b42d36ad5136bb43b3dd82358b85ed99379f
+=======
+>>>>>>> 048c076e840ce006d0a5a665a7a75f3d825fa627
 } from "./Pages";
 import GlobalStyle from "./styles/Globalstyle";
 import ErrorPage from "./Pages/404/ErrorPage";
