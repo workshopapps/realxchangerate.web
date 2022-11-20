@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@craco/craco": "^7.0.0",
     "@mui/material": "^5.10.14",
     "@mui/styled-engine-sc": "^5.10.14",
     "@reduxjs/toolkit": "^1.9.0",
@@ -18,12 +19,12 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "craco start",
+    "build": "craco build",
     "test2": "react-scripts test",
     "eject": "react-scripts eject",
     "prepare": "husky install",
-    "test": "jest"
+    "test": "craco test"
   },
   "eslintConfig": {
     "extends": [
