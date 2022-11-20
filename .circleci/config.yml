@@ -450,24 +450,42 @@ jobs:
 workflows:
   default:
     jobs:
-      - build-frontend-client
-      - build-frontend-admin
-      - build-backend
-      # - test-frontend-client:
-      #     requires: [build-frontend-client]
-      # - test-frontend-admin:
-      #     requires: [build-frontend-admin]
-      # - test-backend:
-      #     requires: [build-backend]
+      - build-frontend-client:
+          filters:
+            branches:
+              only: [master]
+      - build-frontend-admin:
+          filters:
+            branches:
+              only: [master]
+      - build-backend:
+          filters:
+            branches:
+              only: [master]
+      - test-frontend-client:
+          requires: [build-frontend-client]
+          filters:
+            branches:
+              only: [master]
+      - test-frontend-admin:
+          requires: [build-frontend-admin]
+          filters:
+            branches:
+              only: [master]
+      - test-backend:
+          requires: [build-backend]
+          filters:
+            branches:
+              only: [master]
       # - scan-backend:
       #     requires: [build-backend]
       # - scan-frontend:
       #     requires: [build-frontend]
       # - deploy-infrastructure:
       #     requires: [test-frontend, test-backend]
-      #     filters:
-      #       branches:
-      #         only: [master]
+      # filters:
+      #   branches:
+      #     only: [master]
       # - configure-infrastructure:
       #     requires: [deploy-infrastructure]
       # - run-migrations:
