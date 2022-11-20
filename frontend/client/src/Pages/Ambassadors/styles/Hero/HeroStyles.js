@@ -43,7 +43,7 @@ const Wrapper = styled.section`
     }
 
     @media (min-width: 1100px) {
-      margin-top: 0;
+      margin-top: 70px;
       margin-left: 5%;
       width: 35vw;
 
