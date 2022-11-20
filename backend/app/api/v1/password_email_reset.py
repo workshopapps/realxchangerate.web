@@ -1,6 +1,5 @@
 from typing import Any, List
 from fastapi import APIRouter, Depends, HTTPException, status, BackgroundTasks
-from send_email import send_email_background,send_email_async
 from sqlalchemy.orm import Session
 import uuid
 from app import schemas, crud
@@ -22,7 +21,7 @@ def get_token():
     return authenticate_token()
 
 @router.get("/dashboard")
-def logged_in():
+def dashboard():
     return "message: Welcome to your dashboard!"
 
     

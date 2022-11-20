@@ -4,12 +4,12 @@ from fastapi import FastAPI
 from fastapi_mail import FastMail, MessageSchema,ConnectionConfig
 from starlette.requests import Request
 from pydantic import EmailStr, BaseModel
-from app.api.v1.forgot_password import logged_in
+from app.api.v1 import password_email_reset
 from typing import List
 from app.email_util.email_utils import random
 app = FastAPI()
-from dotenv import load_dotenv
-load_dotenv('.env')
+# from dotenv import load_dotenv
+# load_dotenv('.env')
 
 class EmailSchema(BaseModel):
    email: EmailStr
@@ -18,11 +18,11 @@ class TokenSChema(BaseModel):
    token: str
 
 conf = ConnectionConfig(
-    MAIL_USERNAME = os.getenv('MAIL_USERNAME'),
-    MAIL_PASSWORD = os.getenv('MAIL_PASSWORD'),
-    MAIL_FROM = os.getenv('MAIL_FROM'),
-    MAIL_PORT = int(os.getenv('MAIL_PORT')),
-    MAIL_SERVER = os.getenv('MAIL_SERVER'),
+    MAIL_USERNAME = 'Genevieve',
+    MAIL_PASSWORD = 12345,
+    MAIL_FROM = 'ejibe750@gmail.com',
+    MAIL_PORT = 587,
+    MAIL_SERVER = 'smtp.gmail.com',
     MAIL_FROM_NAME = os.getenv('MAIN_FROM_NAME'),
     MAIL_TLS=True,
     MAIL_SSL=False
@@ -56,7 +56,7 @@ async def sending_mail(email: EmailSchema):
 
 def authenticate_token(token: TokenSChema):
     if token == FastMail.send_message['code']:
-        return logged_in()
+        return password_email_reset.dashboard()
     else:
         return "message: Invalid Token"
 
