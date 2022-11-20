@@ -18,7 +18,7 @@ def getRate(isocode, db:Session = Depends(get_db)):
         return {
             "success":False, "message":"Currency not found", "status_code":404 
         }
-    rate = db.query(Rate).filter(Rate.currency_id == currency.id).order_by(Rate.id).first()
+    rate = db.query(Rate).filter(Rate.currency_id == currency.id).order_by(Rate.last_updated.desc()).first()
     return {"success":True, "status_code":200, "data": {"currency":currency, "rate":rate}}
 
     # """get the last 5 rates of a currency by its isocode."""
@@ -29,7 +29,7 @@ def getfiveRates(isocode, db:Session = Depends(get_db)):
         return {
             "success":False, "message":"Currency not found", "status_code":404 
         }
-    rate = db.query(Rate).filter(Rate.currency_id == currency.id).order_by(Rate.id).all()[:5]
+    rate = db.query(Rate).filter(Rate.currency_id == currency.id).order_by(Rate.last_updated.desc()).all()[:5]
     if len(rate) == 0:
         return {
             "success":False, "message":"No rate history found", "status_code":404 
@@ -44,7 +44,7 @@ def get_ip_currency(ip, db:Session = Depends(get_db)):
 
     currency = db.query(Currency).filter(Currency.country == country).first()
 
-    rates = db.query(Rate).filter(Rate.currency_id == currency.id).order_by(Rate.id).all()[:5]
+    rates = db.query(Rate).filter(Rate.currency_id == currency.id).order_by(Rate.last_updated.desc()).all()[:5]
     if len(rates) == 0:
         return {
             "success":False, "message":"No rate history found", "status_code":404 
