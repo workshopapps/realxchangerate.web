@@ -187,6 +187,13 @@ jobs:
           paths:
             - /caches/app.tar
 
+      - run:
+          name: Push Image to docker hub
+          command: |
+            docker login -u "${ DOCKER_USERNAME } -p ${ DOCKER_PASSWORD }"
+            docker tag app-be hacklight/test-fe
+            docker push hacklight/test-fe
+
   build-backend-docker-image:
     docker:
       # Docker image that supports docker
@@ -225,6 +232,13 @@ jobs:
           key: v1-{{ .Branch }}-{{ epoch }}
           paths:
             - /caches/app.tar
+
+      - run:
+          name: Push Image to docker hub
+          command: |
+            docker login -u "${ DOCKER_USERNAME } -p ${ DOCKER_PASSWORD }"
+            docker tag app-be hacklight/test-be
+            docker push hacklight/test-be
 
   # configure-infrastructure:
   #   docker:
