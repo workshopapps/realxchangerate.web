@@ -14,6 +14,8 @@ RUN npm cache clean --force
 
 RUN npm i
 
+RUN npm i -g serve
+
 COPY . .
 
 ENV NODE_ENV production
