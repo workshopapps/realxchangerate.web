@@ -7,7 +7,7 @@ import usa from "../assets/usa.svg";
 import aud from "../assets/aud.svg";
 
 
-import { Image, Text } from "./EncPopularStyles";
+import { Image, ImageCont, Text } from "./EncPopularStyles";
 import {
   CurrencyContainer,
   CurrencyWrapper,
@@ -22,30 +22,54 @@ const EnPopCurrencies = () => {
     <CurrencyContainer>
       <Header>Popular Currencies</Header>
       <CurrencyWrapper>
+
         <ImageWrapper>
-          <Image src={gbp} alt="gbp__img" />
+          <ImageCont>
+            <Image src={gbp} alt="gbp__img" />
+          </ImageCont>
+
           <Text>GBP-Bristish Pound</Text>
         </ImageWrapper>
+
         <ImageWrapper>
-          <Image src={eur} alt="eur__img" />
+          <ImageCont>
+            <Image src={eur} alt="eur__img" />
+          </ImageCont>
+
           <Text>EUR-Euro</Text>
         </ImageWrapper>
+
         <ImageWrapper>
-          <Image  src={canada} alt="globe__img" />
+          <ImageCont>
+            <Image src={canada} alt="globe__img" />
+          </ImageCont>
           <Text>CAD-Canadian Dollar</Text>
         </ImageWrapper>
+
         <ImageWrapper>
-          <Image src={japan} alt="globe__img" />
+          <ImageCont>
+            <Image src={japan} alt="globe__img" />
+          </ImageCont>
+
           <Text>JPY-Japanese Yen</Text>
         </ImageWrapper>
+
         <ImageWrapper>
-          <Image src={usa} alt="globe__img" />
+          <ImageCont>
+            <Image src={usa} alt="globe__img" />
+          </ImageCont>
+
           <Text>USD-US Dollar</Text>
         </ImageWrapper>
+
         <ImageWrapper>
-          <Image src={aud} alt="globe__img" />
+          <ImageCont>
+            <Image src={aud} alt="globe__img" />
+          </ImageCont>
+
           <Text>AUD-Australian Dollar</Text>
         </ImageWrapper>
+        
       </CurrencyWrapper>
     </CurrencyContainer>
   );
