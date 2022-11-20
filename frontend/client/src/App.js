@@ -69,7 +69,7 @@ function App() {
             <Route path="/press" element={<Press />} />
             <Route path="/press/news" element={<PressNews />} />
             <Route path="/press/article" element={<Article />} />
-            {/* <Route path="/careers" element={<Careers />} /> */}
+            <Route path="/careers" element={<Careers />} />
             <Route path="/about" element={<About />} />
             <Route path="/complaint" element={<FileAComplaint />} />
             <Route path="/teams" element={<Teams />} />

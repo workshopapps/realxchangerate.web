@@ -10,7 +10,7 @@ export { default as Partnerships } from "./Partnerships/Partnerships";
 export { default as CurrencyEncyclopedia } from "./CurrencyEncyclopedia/CurrencyEncyclopedia";
 export { default as TermsAndConditions } from "./TermsAndConditions/TermsAndConditions";
 export { default as Press } from "./Press/Press";
-// export { default as Careers } from "./Careers/Careers";
+export { default as Careers } from "./Careers/Careers";
 export { default as About } from "./About/About";
 export { default as FileAComplaint } from "./FileComplaints/FileAComplaint";
 export { default as Teams } from "./Teams/Teams";
