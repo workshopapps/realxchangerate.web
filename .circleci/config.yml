@@ -190,11 +190,9 @@ jobs:
       - run:
           name: Push Image to docker hub
           command: |
-            if [ "${CIRCLE_BRANCH}" == "merge-dev" ]; then
-              docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
-              docker tag app hacklight/xchange-fe-client
-              docker push hacklight/xchange-fe-client
-            fi
+            docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
+            docker tag app hacklight/xchange-fe-client
+            docker push hacklight/xchange-fe-client
 
   build-backend-docker-image:
     docker:
@@ -278,28 +276,29 @@ jobs:
 
 workflows:
   default:
+    # testing
     jobs:
-      - build-frontend-client
-      # - build-frontend-admin
-      - build-backend
+      # - build-frontend-client
+      # # - build-frontend-admin
+      # - build-backend
       # - test-frontend-client
       # - test-frontend-admin
       # - test-backend
-      - build-frontend-client-docker-image:
-          requires: [build-frontend-client] #remember to channge to test
-          filters:
-            branches:
-              only: [merge-dev]
+      # - build-frontend-client-docker-image:
+      #     requires: [build-frontend-client] #remember to channge to test
+      #     filters:
+      #       branches:
+      #         only: [merge-dev]
 
-      - build-backend-docker-image:
-          requires: [build-backend] #remember to channge to test
-          filters:
-            branches:
-              only: [merge-dev]
+      # - build-backend-docker-image:
+      #     requires: [build-backend] #remember to channge to test
+      #     filters:
+      #       branches:
+      #         only: [merge-dev]
 
-      - deploy-docker-compose:
-          requires:
-            [
-              build-frontend-client-docker-image,
-              build-frontend-client-docker-image,
-            ]
+      - deploy-docker-compose
+        # requires:
+        #   [
+        #     build-frontend-client-docker-image,
+        #     build-frontend-client-docker-image,
+        #   ]
