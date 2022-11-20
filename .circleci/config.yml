@@ -276,7 +276,7 @@ jobs:
 
 workflows:
   default:
-  # testing
+    # testing
     jobs:
       # - build-frontend-client
       # # - build-frontend-admin
@@ -296,9 +296,9 @@ workflows:
       #       branches:
       #         only: [merge-dev]
 
-      - deploy-docker-compose:
-          # requires:
-          #   [
-          #     build-frontend-client-docker-image,
-          #     build-frontend-client-docker-image,
-          #   ]
+      - deploy-docker-compose
+        # requires:
+        #   [
+        #     build-frontend-client-docker-image,
+        #     build-frontend-client-docker-image,
+        #   ]
