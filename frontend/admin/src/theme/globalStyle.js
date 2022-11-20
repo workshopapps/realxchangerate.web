@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
     html {
@@ -13,11 +13,11 @@ export const GlobalStyle = createGlobalStyle`
         overflow: hidden;
         height: 100vh;
 
-        background: ${props => props.theme.$styled.colors.body};
+        background: ${(props) => props.theme.$styled.colors.body};
         padding: 0;
         margin: 0;
 
-        color: ${props => props.theme.$styled.colors.text900};
+        color: ${(props) => props.theme.$styled.colors.text900};
         font-weight: 400;
     }
 
@@ -29,4 +29,4 @@ export const GlobalStyle = createGlobalStyle`
     a {
         text-decoration: none;
     }
-`
+`;
