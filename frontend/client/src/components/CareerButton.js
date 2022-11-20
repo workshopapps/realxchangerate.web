@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import down from "../pages/Careers/assets/down.svg";
+import down from "../Pages/Careers/assets/down.svg";
 function Button({ cta, children }) {
   return (
     <>
