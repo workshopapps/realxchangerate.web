@@ -19,7 +19,7 @@ import {
   RightBottom,
   Head,
 } from "./GlossaryElement";
-
+// test
 function Glossary() {
   const boxes = [
     {
