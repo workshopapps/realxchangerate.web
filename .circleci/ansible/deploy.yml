@@ -13,8 +13,6 @@
       become: yes
       shell: ls .
       register: output
-    - debug:
-        var: command_output.stdout_lines
 
     # - name: "change directory"
     #   become: yes
