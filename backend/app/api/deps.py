@@ -2,16 +2,12 @@
 import json
 import re
 from sys import argv
+from time import sleep
 from typing import Generator
 
-from app.database.session import SessionLocal
 import requests
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-
 
 from app.database.session import SessionLocal
-
 
 """
     This module defines the app dependencies.
@@ -20,7 +16,7 @@ from app.database.session import SessionLocal
 
 API_KEY = "b0b7305ef6774ea2b2ba9d23b7ee0355"  # argv[1]
 API_URL = "https://ipgeolocation.abstractapi.com/v1/"
-WEB_URL = "https://whatismyipaddress.com/ip/"  # Alternative source
+
 # IP address' regex pattern
 IP_REGEX = r"^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.)" \
     + r"{3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$"
@@ -76,32 +72,16 @@ def get_location(ip):
 
         return country
     else:
-        # Scrape from alternative website
-        # Open Chrome
-        try:
-            driver = webdriver.Chrome()
-            # Open webpage
-            driver.get(WEB_URL)
-            # input ip address
-            input_ip = driver.find_element(By.NAME, "LOOKUPADDRESS")
-            input_ip.send_keys(ip)
-            # submit
-            submit = driver.find_element(
-                By.CSS_SELECTOR, "div div div form button")
-            submit.click()
-
-            # get result
-            information = driver.find_element(
-                By.XPATH, "//*[@id='fl-post-1165']/div/div/"
-                + "div[1]/div/div[2]/div/div[1]/div/div[2]"
-                + "/div/div/div/div[1]/div[1]/p[7]/span[2]")
-            country = information.text
-            # Close selenium
-            driver.close()
-
+        # Try again
+        # wait 5 seconds
+        sleep(5)
+        response = requests.get(f"{API_URL}?api_key={API_KEY}&ip_address={ip}")
+        if response.status_code == 200:
+            # request was successful, convert response to dictionary
+            response = json.loads(response.content)
+            country = response['country']
             return country
-        except Exception:
-            # Error occurred while trying to get location currency
-            # return Nigeria
-            return country
+        else:
+            # Error
+            return "Nigeria"
 

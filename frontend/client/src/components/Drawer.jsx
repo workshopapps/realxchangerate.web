@@ -35,6 +35,7 @@ import {
         fontWeight="400"
         lineHeight="24px"
         color="#94A3B8"
+        fontSize="14px"
       >
         <Link to="/" color="inherit">
           Home

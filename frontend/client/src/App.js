@@ -30,6 +30,7 @@ import {
   Glossary,
   OnlineAdvertising,
   Ambassadors,
+  Welcome,
 } from "./Pages";
 import GlobalStyle from "./styles/Globalstyle";
 import ErrorPage from "./Pages/404/ErrorPage";
@@ -45,7 +46,7 @@ function App() {
           <NavComponent />
           <Routes>
             {/*---==== Contents Sections  ====---*/}
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Welcome />} />
             <Route path="/convert" element={<Convert />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/compliance" element={<Compliance />} />
