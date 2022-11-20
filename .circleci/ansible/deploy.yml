@@ -2,9 +2,9 @@
 - name: "configuration play."
   hosts: web
   user: ubuntu
-  become: true
-  become_method: sudo
-  become_user: root
+  # become: true
+  # become_method: sudo
+  # become_user: root
   gather_facts: false
   # environment:
   # Add more env vars here
@@ -21,7 +21,6 @@
     #   shell: cd /home/ubuntu/realxchangerate.web & cat docker-compose.yml
 
     - name: "Stop docker"
-      become: yes
       shell: |
         ls -l
         cd realxchangerate.web/
