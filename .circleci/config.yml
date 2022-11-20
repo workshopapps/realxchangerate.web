@@ -298,7 +298,7 @@ workflows:
     # testing
     jobs:
       - build-frontend-client
-      # # - build-frontend-admin
+        # - build-frontend-admin
       - build-backend
       # - test-frontend-client
       # - test-frontend-admin
