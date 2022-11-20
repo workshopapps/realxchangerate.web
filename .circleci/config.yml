@@ -243,9 +243,11 @@ jobs:
   deploy-images:
     docker:
       # Docker image that supports docker
-      - image: docker:17.05.0-ce-git
+      - image: circleci/openjdk:8-jdk
     steps:
       - checkout
+      - add_ssh_keys:
+          fingerprints: ["09:86:cf:93:4e:a9:6f:70:4a:20:c2:63:f5:e2:48:6c"]
       - run:
           name: Deploy
           command: |
