@@ -80,7 +80,7 @@ function App() {
             <Route path="/glossary" element={<Glossary />} />
             <Route path="/advertising" element={<OnlineAdvertising />} />
             <Route path="/ambassadors" element={<Ambassadors />} />
-            <Route path="*" element={<ErrorPage />} />
+            <Route path="/*" element={<ErrorPage />} />
             {/*---==== end of Contents Sections  ====---*/}
           </Routes>
           <Footer />
