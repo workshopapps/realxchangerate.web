@@ -29,8 +29,12 @@ import {
   Glossary,
   OnlineAdvertising,
   Ambassadors,
-  Welcome,
   Home,
+  Welcome,
+<<<<<<< HEAD
+  Home,
+=======
+>>>>>>> 6af6b42d36ad5136bb43b3dd82358b85ed99379f
 } from "./Pages";
 import GlobalStyle from "./styles/Globalstyle";
 import ErrorPage from "./Pages/404/ErrorPage";
