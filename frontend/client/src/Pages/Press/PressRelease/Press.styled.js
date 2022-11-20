@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-width: 1440px;
+// width: 1440px;
 max-width: 100%;
 /* padding: 0 20px; */
 margin: 0 auto;
@@ -20,7 +20,7 @@ background: #00296B;
 width: 100%;
 padding: 64px 66px;
 color: #fff;
-max-width: 1101px;
+// max-width: 1101px;
 margin: 0 auto;
 
 h5 {
@@ -57,6 +57,7 @@ h1 {
 
     Button {
         margin-left: 1rem;
+        font-size: 1.5rem;
     }
 }
 
@@ -68,7 +69,7 @@ color: ${({primary}) =>(primary ? "#ffffff" : "#0062FF" )};
 
 padding: 16px 20px;
 gap: 8px;
-font-size:1rem ;
+font-size: 1.5rem ;
 /* background-color: #0062FF; */
 /* color: #fff; */
 border: 1px solid #0062FF;
@@ -88,7 +89,7 @@ gap: 1.5rem;
 padding: 4rem 6rem;
 
 @media screen and (max-width: 480px) {
-    font-size: 1rem;
+    font-size: 1.5rem;
     padding: 4rem 0rem;
     
 }
@@ -109,18 +110,17 @@ a {
 }
 
 @media screen and (max-width: 480px) {
-    font-size: 1rem;
+    font-size: 1.5rem;
     /* padding: .5rem 1rem; */
     flex-direction: column;
     a {
-        font-size: 1rem;
+        font-size: 1.5rem;
     }
 }
 `
 
-export const NavItems = styled.div`
+export const NavLinks = styled.div`
 display: flex;
-/* justify-content: space-between; */
 gap: 1.5rem;
 
 @media screen and (min-width: 481px){
@@ -128,25 +128,48 @@ gap: 1.5rem;
 }
 
 @media screen and (max-width: 480px) {
-    font-size: 1rem;
-    padding: .5rem 1rem;
+    font-size: 1.5rem;
+    padding: .5rem 2rem;
     gap: 1rem;
     a {
-        font-size: 1rem;
+        font-size: 1.5rem;
     }
 }
 `
 
-export const Search = styled.input`
+export const NavItems = styled.div`
+display: flex;
+justify-content: center;
+gap: 1.5rem;
+
+@media screen and (min-width: 481px){
+    justify-content: center;
+}
+
+@media screen and (max-width: 480px) {
+    font-size: 1.5rem;
+    padding: .5rem 1rem;
+    gap: 1rem;
+    a {
+        font-size: 1.5rem;
+    }
+}
+`
+
+export const Search = styled.div`
 outline: none;
 padding: 12px 16px ;
 border: 1px solid #CBD5E1;
 border-radius: 14px;
 
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+    gap: 4rem;
+
 @media screen and (max-width: 480px) {
-    font-size: 1rem;
+    font-size: 1.5rem;
     padding: .5rem;
-    width: 203px;
     border-radius: 4px;
 
 }
@@ -172,13 +195,18 @@ export const Cards = styled.div`
 display: grid;
 grid-template-columns: repeat(3, 1fr);
 
-gap: 1rem;
+gap: 4rem;
+
+@media screen and (max-width:1024px) {
+    grid-template-columns: repeat(2, 1fr);
+}
 
 @media screen and (max-width: 480px) {
     font-size: 1rem;
     padding: .5rem 1rem;
     grid-template-columns: repeat(1, 1fr);
     justify-items: center;
+    gap: 1.rem;
 }
 `
 
@@ -193,7 +221,7 @@ export const Card = styled.div`
 
  img {
     /* width: 100%; */
-    margin: 0 1.5rem 1rem;
+    margin: 0 2.5rem 1rem;
     border-radius: .5rem;
  }
 
@@ -204,7 +232,7 @@ export const Card = styled.div`
     margin: 1rem 1.5rem .5rem;
     background: #49c96d80;
     color: #20A144;
-    padding: 2px 5px;
+    padding: 8px 5px;
     width: max-content;
     font-size: 12px;
     line-height: 1rem;
@@ -212,7 +240,7 @@ export const Card = styled.div`
  }
 
  h3 {
-    margin: 0 1.5rem;
+    margin: 12px 1.5rem;
     color: #131825; 
  }
 
@@ -238,9 +266,16 @@ export const Card = styled.div`
     height: 1px;
  }
 
+ @media screen and (max-width: 1024px) {
+    max-width: 300px;
+}
+
  @media screen and (max-width: 480px) {
     max-width: 300px;
 
+    h3 {
+        font-weight: 400;
+    }
 }
 `
 
@@ -282,6 +317,9 @@ padding: 0 164px;
 gap: 64px;
 
 @media screen and (max-width: 1024px) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4rem;
     font-size: 1rem;
     padding: 2.5rem 8rem;
 }
@@ -292,18 +330,24 @@ gap: 64px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 1rem;
+    gap: 2rem;
 }
 `
 
 export const TeamCard = styled.div`
-
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 h1 {
     margin-bottom: 20px;
 }
 
 img {
     border-radius: .5rem;
+}
+
+@media screen and (max-width:480px){
+    max-width: 132px;   
 }
 
 `
@@ -348,3 +392,6 @@ margin-bottom: 12px;
 }
 `
 
+export const SearchIcon = styled.div`
+font-size: 1.5rem;
+`

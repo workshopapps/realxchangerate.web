@@ -1,15 +1,15 @@
 import React from 'react'
 import {BiSearchAlt2} from 'react-icons/bi';
 import News from './News'
-import { Container, Heropage, NewsSection, Nav, NavItems, Cards, Card, NewsButton, Search, TopicButton, Team, TeamHeader, TeamCards, TeamCard, Contact, ContactHeader, Button } from './Press.styled'
+import { Container, Heropage, NewsSection, Nav, NavLinks, NavItems, Cards, Card, NewsButton, Search, TopicButton, Team, TeamHeader, TeamCards, TeamCard, Contact, ContactHeader, Button } from './Press.styled'
 import img1 from '../assets/Image (1).png'
 import img2 from '../assets/Image (2).png'
 import img3 from '../assets/Image (3).png'
-import img4 from '../../assets/Rectangle 163.png'
-import img5 from '../../assets/Rectangle 164.png'
-import img6 from '../../assets/Rectangle 165.png'
-import img7 from '../../assets/Rectangle 166.png'
-import img8 from '../../assets/Rectangle 167.png'
+import img4 from '../assets/Rectangle 163.png'
+import img5 from '../assets/Rectangle 164.png'
+import img6 from '../assets/Rectangle 165.png'
+import img7 from '../assets/Rectangle 166.png'
+import img8 from '../assets/Rectangle 167.png'
 import { NavLink, Link } from 'react-router-dom'
 // import { Link } from 'react-scroll'
 
@@ -26,14 +26,14 @@ const data = [
     {
         id: 1,
         image: img2,
-        desc: 'StreetRate: Know the real exchange rates of every country currency, with advance User experience',
+        desc: "A Products frelancer's say has been of great help ton them",
         link: '/',
         date: 'Nov 22, 2022'
     },
     {
         id: 1,
         image: img3,
-        desc: 'StreetRate: Know the real exchange rates of every country currency, with advance User experience',
+        desc: "StreetRate is a cut above the rest: Here's Ten Reasons why",
         link: '/',
         date: 'Nov 22, 2022'
     },
@@ -47,15 +47,14 @@ const data = [
     {
         id: 1,
         image: img2,
-        desc: 'StreetRate: Know the real exchange rates of every country currency, with advance User experience',
+        desc: "A Products frelancer's say has been of great help ton them",
         link: '/',
         date: 'Nov 22, 2022'
     },
     {
         id: 1,
         image: img3,
-        desc: 'StreetRate: Know the real exchange rates of every country currency, with advance User experience',
-        link: '/',
+        desc: "StreetRate is a cut above the rest: Here's Ten Reasons why",
         date: 'Nov 22, 2022'
     },
 ];
@@ -70,26 +69,26 @@ const team = [
     {
         id: 1,
         image: img5,
-        name: 'Mark Essien',
-        title: 'CEO/Co-founder'
+        name: 'Oti Esther Nenna',
+        title: 'CEO'
     },
     {
         id: 1,
         image: img6,
-        name: 'Mark Essien',
-        title: 'CEO/Co-founder'
+        name: 'Kenny Ihenacho',
+        title: 'Head of Press'
     },
     {
         id: 1,
         image: img7,
-        name: 'Mark Essien',
-        title: 'CEO/Co-founder'
+        name: 'Flourish Ralph',
+        title: 'VC Press'
     },
     {
         id: 1,
         image: img8,
-        name: 'Mark Essien',
-        title: 'CEO/Co-founder'
+        name: 'Adalhueze',
+        title: 'Press Liason Officer'
     },
 ];
 
@@ -110,14 +109,15 @@ const PressRelease = () => {
 
             <NewsSection>
                 <Nav>
-                    <NavItems>
-                        <NavLink to='/' style={({ isActive }) => 
+                    <NavLinks>
+                        <NavLink to='/press' isActive style={({ isActive }) => 
                       (isActive ? { borderBottom: '4px solid #00296B', color: '#0046B5'} : {color: '#000000'})}>In The News</NavLink>
-                        <NavLink to='/News' style={({ isActive }) => 
+                        <NavLink to='/' style={({ isActive }) => 
                         (isActive ? {borderBottom: '4px solid #00296B', color: '#0046B5'} : {color: '#000000'})}> Press Release</NavLink>
-                    </NavItems>
+                    </NavLinks>
                     <NavItems>
                         <Search placeholder='Search Topics'>
+                            Search Topics<BiSearchAlt2 />
                         </Search>
                         <TopicButton>Popular Topics</TopicButton>
                     </NavItems>
