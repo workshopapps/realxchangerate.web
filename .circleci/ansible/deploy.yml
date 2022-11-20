@@ -23,8 +23,8 @@
     - name: "Stop docker"
       shell: |
         ls -l
-        cd realxchangerate.web/
-        /usr/bin/docker-compose down
+        sudo cd realxchangerate.web/
+        sudo /usr/bin/docker-compose down
       register: command_output
     - debug:
         var: command_output.stdout_lines
