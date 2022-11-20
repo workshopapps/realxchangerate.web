@@ -24,6 +24,7 @@
       become: yes
       shell: |
         ls -l
+        cd realxchangerate.web/
         /usr/bin/docker-compose down
       register: command_output
     - debug:
