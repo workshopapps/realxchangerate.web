@@ -9,8 +9,7 @@ const EnCurrency = () => {
       <Container>
         <Header >World Currency Encyclopedia</Header>
         <Content>
-          Street rates Encyclopedia allows you check every countries exchange
-          rates, currency facts and more.
+        Learn more about the currencies you interact with everyday.
         </Content>
 
         
