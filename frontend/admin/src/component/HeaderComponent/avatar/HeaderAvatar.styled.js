@@ -7,6 +7,7 @@ export const StyledAvatarMenuWrapper = styled.div`
     width: 320px;
 `
 export const StyledAvatarMenuProfile = styled.div`
+    cursor: pointer;
     display: flex;
     flex-direction: row;
     align-items: center;

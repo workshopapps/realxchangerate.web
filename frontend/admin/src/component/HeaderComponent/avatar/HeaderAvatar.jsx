@@ -1,5 +1,6 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
@@ -23,6 +24,8 @@ import AvatarLoader from "../../shared/AvatarLoader/AvatarLoader";
 
 function HeaderAvatar({ userData }) {
   const [anchorElUser, setAnchorElUser] = useState(null);
+
+  const navigate = useNavigate();
 
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
@@ -63,12 +66,17 @@ function HeaderAvatar({ userData }) {
         onClose={handleCloseUserMenu}
       >
         <StyledAvatarMenuWrapper>
-          <StyledAvatarMenuProfile>
+          <StyledAvatarMenuProfile
+            onClick={() => {
+              handleCloseUserMenu();
+              navigate("/account");
+            }}
+          >
             <AvatarLoader alt={userData.name} image={userData.pfp_url} />
 
             <StyledAvatarMenuProfilePreview>
-              <h4>Mikey Doe</h4>
-              <p>mikey.doe@example.com</p>
+              <h4>{userData.name}</h4>
+              <p>{userData.email}</p>
             </StyledAvatarMenuProfilePreview>
           </StyledAvatarMenuProfile>
         </StyledAvatarMenuWrapper>
