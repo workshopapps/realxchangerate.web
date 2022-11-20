@@ -83,13 +83,13 @@ const OnlineAdvertising = () => {
 					<Li>Must be on transparent background with no border</Li>
 					<Li>Only one logo per advertiser allowed- no seperate logos for rate tables and lightbox</Li>
 				</ul>
-                
-            <Figure><img src={hr} alt="line throgh" /></Figure>
+
+			<Figure><img src={hr} alt="line throgh" /></Figure>
+
 
 			<div>
 				<StyledH3>Contact one of our sales representatives</StyledH3>
-				<StyledP>Kindly reach out to our sales representatives for complaints, registrations and more enquires via email on <a href="mailto:hello@streetrate.com" target="_blank" rel="noopener noreferrer" style={{ color: "#3381FF" }} >hello@streetrate.com,</a> you can as well
-					reach out to us via the livechat on the app. </StyledP>
+				<StyledP>Kindly reach out to our sales representatives for complaints, registrations and more enquires via email on <a href="mailto:hello@streetrate.com" target="_blank" rel="noopener noreferrer" style={{ color: "#3381FF" }} >hello@streetrate.com,</a> you can as well reach out to us via the livechat on the app. </StyledP>
 			</div>
 
 		</MainDiv>
@@ -98,10 +98,9 @@ const OnlineAdvertising = () => {
 
 const MainDiv = styled.div`
 	max-width: 90vw;
-	margin: auto;
+	margin: 2vh auto 8vh;
 	font-family: Inter;
-  color: #0F172A;
-
+	color: #0F172A;
   @media (min-width: 481px) {
     max-width: 87vw;
   }
@@ -116,6 +115,7 @@ const StyledH1 = styled.h1`
 	line-height: 32px;
 	letter-spacing: 0em;
 	text-align: left;
+	margin-bottom: 2vh;
 	@media (min-width: 769px) {
 		font-size: 48px;
 		font-weight: 700;
@@ -130,7 +130,8 @@ const StyledH3 = styled.h3`
 	line-height: 28px;
 	letter-spacing: 0em;
 	text-align: left;
-	margin-buttom: 4vh;
+	margin-top: 2vh;
+	margin-bottom: 4vh;
   @media (min-width: 769px) {
 		font-size: 28px;
 		font-weight: 700;
@@ -145,7 +146,8 @@ const StyledH4 = styled.h4`
 	line-height: 28px;
 	letter-spacing: 0em;
 	text-align: left;
-	margin-buttom: 2vh;
+	margin-top: 2vh;
+	margin-bottom: 2vh;
 `;
 
 const StyledP = styled.p`
@@ -154,7 +156,7 @@ const StyledP = styled.p`
 	line-height: 20px;
 	letter-spacing: 0.001em;
 	text-align: left;
-	margin-buttom: 4vh;
+	margin-bottom: 4vh;
 	@media (min-width: 769px) {
 		font-family: Inter;
 		font-size: 18px;
@@ -167,13 +169,15 @@ const StyledP = styled.p`
 const Figure = styled.figure`
   margin-top: 2vh;
   margin-left: 0;
-  margin-buttom: 2vh;
+  margin-bottom: 2vh;
 `
 
 const StatsDiv = styled.div`
   width: 65%;
 	display: flex;
 	flex-direction: column;
+	margin-top: 3vh;
+	margin-bottom: 3vh;
   @media (min-width: 481px) {
     width: 80%;
   }
@@ -209,7 +213,6 @@ const Stat = styled.p`
 	line-height: 20px;
 	letter-spacing: -0.02em;
 	text-align: left;
-  margin-top: -1.8em;
 	@media (min-width: 769px) {
 		font-size: 22px;
 		font-weight: 600;
@@ -224,6 +227,7 @@ const Period = styled.div`
 	letter-spacing: 0em;
 	text-align: left;
 	color: #6474AB;
+	margin-top: 2vh;
 	@media (min-width: 769px) {
 		font-size: 20px;
 		font-weight: 400;
@@ -237,8 +241,8 @@ const Li = styled.li`
 	font-weight: 400;
 	line-height: 20px;
 	letter-spacing: 0.001em;
-	margin-buttom: 2vh;
-  margin-left: -1vw;
+	margin-left: 2vw;
+	margin-bottom: 2vh;
 `;
 
 
