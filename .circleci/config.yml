@@ -240,39 +240,63 @@ jobs:
             docker tag app-be hacklight/test-be
             docker push hacklight/test-be
 
-  deploy-docker-compose:
+  deploy-images:
     docker:
-      # Docker image here that supports Ansible
-      - image: python:3.7-alpine3.11
+      # Docker image that supports docker
+      - image: docker:17.05.0-ce-git
     steps:
-      # Checkout code from git
       - checkout
-      - add_ssh_keys:
-          fingerprints: ["09:86:cf:93:4e:a9:6f:70:4a:20:c2:63:f5:e2:48:6c"]
-      # attach workspace
-      - attach_workspace:
-          at: ~/
       - run:
-          name: Install openssh
+          name: Deploy
           command: |
-            apk add --update openssh
-      - run:
-          name: Install dependencies
-          command: |
-            apk add --update tar gzip && apk add --update ansible
-            pip install awscli
-      - run:
-          name: install node and npm
-          command: |
-            apk add --update nodejs npm
-      - run:
-          name: Deploy backend code
-          no_output_timeout: 30m
-          command: |
-            cd .circleci/ansible
-            echo "Contents  of the inventory.txt file is :"
-            cat inventory.txt
-            ansible-playbook -i inventory.txt deploy.yml
+
+            sleep 5
+            SSH to the server to deploy
+            # TODO Change to your username
+            EC2_USERNAME=ubuntu
+
+            EC2_PUBLIC_DNS=44.203.211.6
+            ssh -o StrictHostKeyChecking=no $EC2_USERNAME@$EC2_PUBLIC_DNS \
+            # other commands
+            # TODO Perform steps to deploy
+            ./run.sh
+            # .
+            # .
+            # .
+
+  # deploy-docker-compose:
+  #   docker:
+  #     # Docker image here that supports Ansible
+  #     - image: python:3.7-alpine3.11
+  #   steps:
+  #     # Checkout code from git
+  #     - checkout
+  #     - add_ssh_keys:
+  #         fingerprints: ["09:86:cf:93:4e:a9:6f:70:4a:20:c2:63:f5:e2:48:6c"]
+  #     # attach workspace
+  #     - attach_workspace:
+  #         at: ~/
+  #     - run:
+  #         name: Install openssh
+  #         command: |
+  #           apk add --update openssh
+  #     - run:
+  #         name: Install dependencies
+  #         command: |
+  #           apk add --update tar gzip && apk add --update ansible
+  #           pip install awscli
+  #     - run:
+  #         name: install node and npm
+  #         command: |
+  #           apk add --update nodejs npm
+  #     - run:
+  #         name: Deploy backend code
+  #         no_output_timeout: 30m
+  #         command: |
+  #           cd .circleci/ansible
+  #           echo "Contents  of the inventory.txt file is :"
+  #           cat inventory.txt
+  #           ansible-playbook -i inventory.txt deploy.yml
 
 workflows:
   default:
@@ -296,7 +320,7 @@ workflows:
             branches:
               only: [merge-dev]
 
-      - deploy-docker-compose:
+      - deploy-images:
           requires:
             [
               build-frontend-client-docker-image,
