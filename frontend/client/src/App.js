@@ -15,6 +15,7 @@ import {
   IntegrationMatrix,
   Partnerships,
   CurrencyEncyclopedia,
+  CurrencyEncyclopediaDetail,
   TermsAndConditions,
   Press,
   Careers,
@@ -61,16 +62,18 @@ function App() {
             <Route path="/compliance" element={<Compliance />} />
             <Route path="/help-center" element={<HelpCenter />} />
             <Route path="/news" element={<News />} />
-
             {/* Adding path for one news  */}
             <Route path="/news/:id" element={<SingleNews />} />
-
             <Route path="/faq" element={<Faq />} />
             <Route path="/integration-matrix" element={<IntegrationMatrix />} />
             <Route path="/partnerships" element={<Partnerships />} />
             <Route
               path="/currency-encyclopedia"
               element={<CurrencyEncyclopedia />}
+            />{" "}
+            <Route
+              path="/currency-encyclopedia/:country"
+              element={<CurrencyEncyclopediaDetail />}
             />
             <Route path="/terms" element={<TermsAndConditions />} />
             <Route path="/press" element={<Press />} />
