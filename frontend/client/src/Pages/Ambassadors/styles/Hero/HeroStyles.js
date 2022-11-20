@@ -16,10 +16,10 @@ const Wrapper = styled.section`
 
   
   header {
-    margin-top: 60px;
+    margin-top: 70px;
 
     h3 {
-      text-align: center;
+      
       font-size: 28px;
       margin-bottom: 20px;
       color: #2B2B2B;
@@ -31,9 +31,18 @@ const Wrapper = styled.section`
         font-size: 48px;
         line-height: 56px;
       }
+
+      @media(max-width: 425px){
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 28px;
+        line-height: 32px;
+        text-align: center;
+      }
     }
     article {
-      text-align: center;
+      
       font-size: 18px;
       font-style: normal;
       font-weight: 400;
@@ -133,7 +142,7 @@ const Wrapper = styled.section`
       margin-top: 30px;
       padding-top: 100px;
       display: grid;
-      gap: 1em;
+      gap: 22px;
       grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
 
       .indi-img-box {
@@ -142,7 +151,8 @@ const Wrapper = styled.section`
         align-items: center;
         margin-bottom: 20px;
         h2 {
-          margin-bottom: 0px;
+          margin-bottom: 8px;
+          margin-top: 8px;
 
           @media (min-width: 725px){
             font-style: normal;
