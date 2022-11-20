@@ -3,67 +3,73 @@ import React from "react";
 import DropDown from "./DropDown";
 
 const Footer = () => {
-  return (
-    <Box backgroundColor="#00296B" marginTop="50px">
-      <Box
-        margin="0px auto"
-        pt="56px"
-        sx={{
-          maxWidth: { xs: "84%", sm: "90%", md: "84%" },
-        }}
-      >
-        <Box
-          sx={{
-            display: { xs: "none", sm: "flex" },
-            gap: { md: "32px" },
-          }}
-        >
-          <Stack
-            direction="column"
-            alignItems="flex-start"
-            gap="16px"
-            sx={{
-              fontSize: { xs: "14px" },
-              lineHeight: { xs: "20px" },
-              fontWeight: { xs: "400" },
-              width: { sm: "173.33px" },
-            }}
-            color="#F8FAFC"
-            letterSpacing="0.001em"
-          >
-            <Typography
-              sx={{
-                fontSize: {
-                  xs: "19px",
-                  sm: "15px",
-                  lg: "19px",
-                },
-                lineHeight: { xs: "23px" },
-                fontWeight: { xs: "700" },
-              }}
-              letterSpacing="-0.02em"
+    return (
+        <Box backgroundColor="#00296B">
+            <Box
+                margin="0px auto"
+                pt="56px"
+                style={{
+                    maxWidth: "1440px",
+                    boxSizing: "border-box",
+                }}
+                sx={{
+                    paddingLeft: { xs: 2, sm: 2, md: 2, lg: 9, xl: 9 },
+                    paddingRight: { xs: 2, sm: 2, md: 2, lg: 9, xl: 9 },
+                }}
             >
-              Company
-            </Typography>
-            <Link href="#" color="inherit">
-              About Us
-            </Link>
-            <Link href="#" color="inherit">
-              Careers
-            </Link>
-            <Link href="#" color="inherit">
-              Patnerships
-            </Link>
-            <Link href="#" color="inherit">
-              Meet the team
-            </Link>
-            <Link href="#" color="inherit">
-              Press
-            </Link>
-            <Link href="#" color="inherit">
-              Board of directors
-            </Link>
-          </Stack>
+                <Box
+                    sx={{
+                        display: { xs: "none", sm: "flex" },
+                        gap: { md: "32px" },
+                    }}
+                >
+                    <Stack
+                        flex="auto"
+                        direction="column"
+                        alignItems="flex-start"
+                        gap="16px"
+                        sx={{
+                            fontSize: { xs: "14px" },
+                            lineHeight: { xs: "20px" },
+                            fontWeight: { xs: "400" },
+                            width: { sm: "173.33px" },
+                        }}
+                        color="#F8FAFC"
+                        letterSpacing="0.001em"
+                    >
+                        <Typography
+                            sx={{
+                                fontSize: {
+                                    xs: "19px",
+                                    sm: "15px",
+                                    lg: "19px",
+                                },
+                                lineHeight: { xs: "23px" },
+                                fontWeight: { xs: "700" },
+                            }}
+                            letterSpacing="-0.02em"
+                        >
+                            Company
+                        </Typography>
+                        <Link href="/about" color="inherit">
+                            About Us
+                        </Link>
+                        <Link href="/careers" color="inherit">
+                            Careers
+                        </Link>
+                        <Link href="/partnerships" color="inherit">
+                            Patnerships
+                        </Link>
+                        <Link href="/teams" color="inherit">
+                            Meet the team
+                        </Link>
+                        <Link href="/press" color="inherit">
+                            Press
+                        </Link>
+                        <Link href="/bod" color="inherit">
+                            Board of directors
+                        </Link>
+                    </Stack>
 
                     <Stack
                         flex="auto"
