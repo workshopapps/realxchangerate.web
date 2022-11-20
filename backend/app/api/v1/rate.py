@@ -36,6 +36,7 @@ def getfiveRates(isocode, db:Session = Depends(get_db)):
         }
     return {"success":True, "status_code":200, "data": {"currency":currency, "rate":rate}}
 
+<<<<<<< HEAD
 
 @router.get('/ip/{ip}')
 def get_ip_currency(ip, db:Session = Depends(get_db)):
@@ -50,3 +51,25 @@ def get_ip_currency(ip, db:Session = Depends(get_db)):
             "success":False, "message":"No rate history found", "status_code":404 
         }
     return {"success":True, "status_code":200, "data": {"currency":currency, "rate":rates}}
+
+router = APIRouter()
+
+@router.get("", response_model=List[schemas.Rate])
+def get_rate(db: Session = Depends(get_db), skip: int = 0, limit: int = 100) -> Any:
+    """
+    get all rates.
+    """
+    rate = crud.rate.get_multi(db, skip=skip, limit=limit)
+    if not rate:
+        raise HTTPException(status_code = status.HTTP_404_NOT_FOUND, detail = "rates are not available at the moment")
+    return rate
+
+
+@router.post("/create", response_model=schemas.Rate)
+def add_Rate(*, db: Session = Depends(get_db), rate_in: schemas.RateCreate) -> Any:
+    """
+    add new rates.
+    """
+    rate = crud.rate.create(db, obj_in=rate_in)
+    return rate
+
