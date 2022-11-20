@@ -459,7 +459,7 @@ workflows:
       # - test-frontend-admin
       # - test-backend
       - build-frontend-client-docker-image:
-          requires: [test-frontend]
+          requires: [build-frontend-client] #remember to channge to test
           filters:
             branches:
               only: [merger]
