@@ -5,6 +5,7 @@ import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import Messages from "../shared/MessagesComponent/Messages";
 import CurrencyNotifications from "../shared/CurrencyNotifications/CurrencyNotification";
+import TrendingConversions from "../TrendingConversions/TrendingConversions";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -27,8 +28,8 @@ const DashboardLayout = () => {
             <CurrencyNotifications />
           </Grid>
 
-          <Grid item xs={4}>
-            <Item>xs=4</Item>
+          <Grid item xs={12} lg={5}>
+            <TrendingConversions />
           </Grid>
 
           <Grid item xs={8}>
