@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import countryFlag from "../assets/svg/AudFlag.svg";
 import CurrencyCard from "./CurrencyCard";
+import Ticker from "react-ticker";
 
 const Liveprice = () => {
   const CURRENCIES = [
@@ -71,11 +72,12 @@ const Liveprice = () => {
   ];
 
   const Wrapper = styled.section`
-    max-width: 1440px;
     margin: auto;
     display: flex;
     padding: 0 1rem;
     gap: 50px;
+    overflow: hidden;
+    padding-bottom: 40px;
 
     /* THIS IS TO HIDE THE OVERFLOW SCROLL BAR INTHE MACTHES SECTION */
     -ms-overflow-style: none; /* IE and Edge */
