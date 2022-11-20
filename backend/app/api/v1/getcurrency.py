@@ -13,6 +13,7 @@ router = APIRouter()
 #endpoint to return list of all currencies from the db
 @router.get("/currencies/",tags=["currencies"],response_model=list[schemas.Currency])
 async def get_currencies(skip: int = 0, limit: int = 100,db: Session = Depends(get_db)):
+
     currencies = crud.currency.get_multi(db, skip= skip, limit = limit)
    
     return currencies
