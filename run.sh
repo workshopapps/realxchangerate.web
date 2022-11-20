@@ -12,7 +12,8 @@ sudo docker-compose down
 # wait for 20 seconds
 sleep 20
 
-sudo docker-compose up
+# sudo docker-compose up
+docker-compose up -d --force-recreate --no-deps --build
 
 
 echo "Thank you for running with us"
