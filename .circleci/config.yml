@@ -192,7 +192,7 @@ jobs:
           command: |
             if [ "${CIRCLE_BRANCH}" == "merge-dev" ]; then
               docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
-              docker tag app-be hacklight/test-fe
+              docker tag app hacklight/test-fe
               docker push hacklight/test-fe
             fi
 
