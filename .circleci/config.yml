@@ -252,8 +252,7 @@ jobs:
           name: Deploy
           command: |
 
-            sleep 5
-            SSH to the server to deploy
+            # SSH to the server to deploy
             # TODO Change to your username
             EC2_USERNAME=ubuntu
 
@@ -304,27 +303,27 @@ workflows:
   default:
     # testing
     jobs:
-      - build-frontend-client
-      # # - build-frontend-admin
-      - build-backend
-      # - test-frontend-client
-      # - test-frontend-admin
-      # - test-backend
-      - build-frontend-client-docker-image:
-          requires: [build-frontend-client] #remember to channge to test
-          filters:
-            branches:
-              only: [merge-dev]
+      # - build-frontend-client
+      # # # - build-frontend-admin
+      # - build-backend
+      # # - test-frontend-client
+      # # - test-frontend-admin
+      # # - test-backend
+      # - build-frontend-client-docker-image:
+      #     requires: [build-frontend-client] #remember to channge to test
+      #     filters:
+      #       branches:
+      #         only: [merge-dev]
 
-      - build-backend-docker-image:
-          requires: [build-backend] #remember to channge to test
-          filters:
-            branches:
-              only: [merge-dev]
+      # - build-backend-docker-image:
+      #     requires: [build-backend] #remember to channge to test
+      #     filters:
+      #       branches:
+      #         only: [merge-dev]
 
-      - deploy-images:
-          requires:
-            [
-              build-frontend-client-docker-image,
-              build-frontend-client-docker-image,
-            ]
+      - deploy-images
+        # requires:
+        #   [
+        #     build-frontend-client-docker-image,
+        #     build-frontend-client-docker-image,
+        #   ]
