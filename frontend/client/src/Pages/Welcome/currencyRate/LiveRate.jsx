@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import countryFlag from "../assets/svg/AudFlag.svg";
 import CurrencyCard from "./CurrencyCard";
-import Ticker from "react-ticker";
 
 const Liveprice = () => {
   const CURRENCIES = [

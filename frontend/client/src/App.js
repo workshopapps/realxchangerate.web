@@ -6,7 +6,6 @@ import Footer from "./components/Footer";
 import "./assets/css/style.css";
 
 import {
-  Home,
   Convert,
   Contact,
   Compliance,
@@ -31,6 +30,7 @@ import {
   OnlineAdvertising,
   Ambassadors,
   Welcome,
+  Home,
 } from "./Pages";
 import GlobalStyle from "./styles/Globalstyle";
 import ErrorPage from "./Pages/404/ErrorPage";
@@ -46,7 +46,7 @@ function App() {
           <NavComponent />
           <Routes>
             {/*---==== Contents Sections  ====---*/}
-            <Route path="/" element={<Welcome />} />
+            <Route path="/" element={<Home />} />
             <Route path="/convert" element={<Convert />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/compliance" element={<Compliance />} />
