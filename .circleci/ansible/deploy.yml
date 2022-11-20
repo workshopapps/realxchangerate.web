@@ -11,8 +11,10 @@
   tasks:
     - name: "Test"
       become: yes
-      shell: ls .
-      register: output
+      shell: ls -l
+      register: command_output
+    - debug:
+        var: command_output.stdout_lines
 
     # - name: "change directory"
     #   become: yes
