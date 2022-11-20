@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+<<<<<<< HEAD
+=======
+    "@craco/craco": "^7.0.0",
+>>>>>>> 10f41caa6512b7f93355e5a059e0f587df62ff70
     "@mui/material": "^5.10.14",
     "@mui/styled-engine-sc": "^5.10.14",
     "@reduxjs/toolkit": "^1.9.0",
@@ -18,13 +22,12 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "craco start",
+    "build": "CI=false && craco build",
     "test2": "react-scripts test",
     "eject": "react-scripts eject",
-    "prepare": "husky install"
-
+    "prepare": "husky install",
+    "test": "craco test"
   },
   "eslintConfig": {
     "extends": [

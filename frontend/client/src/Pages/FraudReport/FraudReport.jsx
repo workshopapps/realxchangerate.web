@@ -164,7 +164,7 @@ const List = () => {
         {content.map(item => <ListItem className="list-item">
 
             <ListItemImageBox>
-                <img height="100%" width="100%" src={item.img} />
+                <img height="100%" width="100%" alt="img" src={item.img} />
             </ListItemImageBox>
             <ListItemTextBox
 

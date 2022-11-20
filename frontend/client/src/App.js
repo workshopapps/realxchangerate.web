@@ -6,7 +6,6 @@ import Footer from "./components/Footer";
 import "./assets/css/style.css";
 
 import {
-  Home,
   Convert,
   Contact,
   Compliance,
@@ -31,11 +30,11 @@ import {
   OnlineAdvertising,
   Ambassadors,
   Welcome,
-} from "./Pages";
+} from "./pages";
 import GlobalStyle from "./styles/Globalstyle";
-import ErrorPage from "./Pages/404/ErrorPage";
+import ErrorPage from "./pages/404/ErrorPage";
 
-import SingleNews from "./Pages/SingleNews/SingleNews";
+import SingleNews from "./pages/SingleNews/SingleNews";
 
 function App() {
   return (
@@ -46,7 +45,7 @@ function App() {
           <NavComponent />
           <Routes>
             {/*---==== Contents Sections  ====---*/}
-            <Route path="/" element={<Welcome />} />
+            <Route path="/" element={<Home />} />
             <Route path="/convert" element={<Convert />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/compliance" element={<Compliance />} />
