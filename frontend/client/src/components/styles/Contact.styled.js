@@ -65,6 +65,28 @@ export const Flex = styled.div`
 `;
 
 export const FormSection = styled.div`
+ .successMessage-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.3);
+
+    p {
+      background: white;
+      height: 200px;
+      width: 60%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 1rem;
+      border-radius: 10px;
+    }
+  }
   h2 {
     font-weight: 500;
     font-size: 1.5rem;
