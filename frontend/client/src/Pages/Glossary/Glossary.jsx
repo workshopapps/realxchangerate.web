@@ -24,38 +24,39 @@ function Glossary() {
   const boxes = [
     {
       name: "A",
-      items: ["Account", "Asset", "ABX Index", "Aa3"],
+      items: ["Agent", "Appreciation", "Ask Rate", "Aa3"],
     },
 
     {
       name: "B",
-      items: ["Account", "Barter", "Budget", "Backwardation"],
+      items: ["Base Currency", "Bank Account", "Buy Rate", "Bank Fee"],
     },
 
     {
       name: "C",
       items: [
-        "Consumption",
+        "Central Bank",
 
-        "Cost of capital",
-        "Consumer Surplus",
-        "Cost Benefit Analysis",
+        "Cheque",
+        "Comission",
+        "Commission",
+        "Credit Card",
       ],
     },
 
     {
       name: "D",
-      items: ["Deviation", "Deposit Insurance", "Deregulation", "Dept"],
+      items: ["Debit card", "Deposit", "Delivary", "Dept"],
     },
 
     {
       name: "E",
-      items: ["Account", "Asset", "ABX", "Aa3"],
+      items: ["ECB", "EBT", "EBIT", "EPS"],
     },
 
     {
       name: "F",
-      items: ["Factor", "FDI", "Fair Trade", "Financial Center"],
+      items: ["Fee", "FDI", "Fair Trade", "Foreign Exchange"],
     },
 
     {
@@ -81,7 +82,7 @@ function Glossary() {
     },
     {
       name: "L",
-      items: ["Liquidity", "Lock-in", "Long Run", "Luxuries"],
+      items: ["Liquidity", "Lock-in", "Long Run", "Limit Order"],
     },
     {
       name: "M",
