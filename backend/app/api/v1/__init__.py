@@ -14,5 +14,5 @@ api_router.include_router(currency.router, prefix="/currency", tags=["currencies
 api_router.include_router(admin.router, prefix="/admin", tags=["currencies"])
 api_router.include_router(rate.router, prefix="/rate", tags=["currencies"])
 api_router.include_router(auth.router,tags=["auth"])
-api_router.include_router(forgot_password.router, tags=["forgot_password"])
+api_router.include_router(forgot_password.router)
 api_router.include_router(api_service.router, prefix="/service", tags=["services"])

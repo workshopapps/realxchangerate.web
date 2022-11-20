@@ -10,7 +10,7 @@ from fastapi.responses import RedirectResponse
 from starlette.responses import JSONResponse
 
 
-router = APIRouter(prefix = "/api/v1")
+router = APIRouter()
 
 @router.post("/forgot_password")
 def get_email():
