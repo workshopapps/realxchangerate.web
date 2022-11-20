@@ -11,11 +11,14 @@
   tasks:
     - name: "Test"
       become: yes
-      shell: git --version
+      shell: ls .
+      register: output
+    - debug:
+        var: command_output.stdout_lines
 
-    - name: "change directory"
-      become: yes
-      shell: cd /home/ubuntu/realxchangerate.web & cat docker-compose.yml
+    # - name: "change directory"
+    #   become: yes
+    #   shell: cd /home/ubuntu/realxchangerate.web & cat docker-compose.yml
 
     - name: "Stop docker"
       become: yes
