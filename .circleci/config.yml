@@ -190,9 +190,11 @@ jobs:
       - run:
           name: Push Image to docker hub
           command: |
-            docker login -u ${DOCKER_USERNAME }} -p ${DOCKER_PASSWORD}
-            docker tag app-be hacklight/test-fe
-            docker push hacklight/test-fe
+            if [ "${CIRCLE_BRANCH}" == "merger" ]; then
+              docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
+              docker tag app-be hacklight/test-fe
+              docker push hacklight/test-fe
+            fi
 
   build-backend-docker-image:
     docker:
