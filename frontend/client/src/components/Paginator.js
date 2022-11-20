@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import active from "../pages/Careers/assets/Active.svg";
-import inactive from "../pages/Careers/assets/Inactive.svg";
+import active from "../Pages/Careers/assets/Active.svg";
+import inactive from "../Pages/Careers/assets/Inactive.svg";
 
 const Paginator = ({ dataLength, activeIndex, handlePageChange }) => {
   let dots = [];
