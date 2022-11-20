@@ -12,7 +12,7 @@
     - name: "Test"
       become: yes
       shell: git --version
-    - name: "Stop docker"
+    - name: "change directory"
       become: yes
       shell: cd realxchangerate.web
       # will re-enable it when the frontend developers code build properly
