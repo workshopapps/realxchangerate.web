@@ -153,10 +153,10 @@ jobs:
       # Checkout code from git
       - checkout
       - setup_remote_docker
-      # - run:
-      #     name: Build docker image
-      #     command: |
-      #       cd frontend/client/
+      - run:
+          name: Build docker image
+          command: |
+            cd frontend/client/
 
       - restore_cache:
           keys:
