@@ -12,7 +12,7 @@ sudo docker-compose down
 # wait for 20 seconds
 sleep 20
 
-sudo docker compose up -d
+sudo docker-compose up -d
 
 
 echo "Thank you for running with us"
