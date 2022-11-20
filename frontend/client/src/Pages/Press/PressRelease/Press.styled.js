@@ -91,7 +91,6 @@ padding: 4rem 6rem;
 @media screen and (max-width: 480px) {
     font-size: 1.5rem;
     padding: 4rem 0rem;
-    
 }
 `
 
