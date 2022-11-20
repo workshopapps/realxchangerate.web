@@ -123,7 +123,7 @@ jobs:
       - run:
           name: Test admin Frontend
           command: |
-            cd frontend
+            cd frontend/client/
             npm install
             npm run test
 
@@ -455,10 +455,10 @@ workflows:
           filters:
             branches:
               only: [merger]
-      - build-frontend-admin:
-          filters:
-            branches:
-              only: [merger]
+      # - build-frontend-admin:
+      #     filters:
+      #       branches:
+      #         only: [merger]
       - build-backend:
           filters:
             branches:
@@ -468,11 +468,11 @@ workflows:
           filters:
             branches:
               only: [merger]
-      - test-frontend-admin:
-          requires: [build-frontend-admin]
-          filters:
-            branches:
-              only: [merger]
+      # - test-frontend-admin:
+      #     requires: [build-frontend-admin]
+      #     filters:
+      #       branches:
+      #         only: [merger]
       - test-backend:
           requires: [build-backend]
           filters:
