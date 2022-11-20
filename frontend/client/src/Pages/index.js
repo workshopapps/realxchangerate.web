@@ -8,6 +8,7 @@ export { default as Faq } from "./Faq/Faq";
 export { default as IntegrationMatrix } from "./IntegrationMatrix/IntegrationMatrix";
 export { default as Partnerships } from "./Partnerships/Partnerships";
 export { default as CurrencyEncyclopedia } from "./CurrencyEncyclopedia/CurrencyEncyclopedia";
+export { default as CurrencyEncyclopediaDetail } from "./CurrencyEncyclopediaDetail/CurrencyEncyclopediaDetail";
 export { default as TermsAndConditions } from "./TermsAndConditions/TermsAndConditions";
 export { default as Press } from "./Press/Press";
 export { default as Careers } from "./Careers/Careers";
@@ -22,3 +23,5 @@ export { default as CookiePolicy } from "./CookiePolicy/CookiePolicy";
 export { default as Glossary } from "./Glossary/Glossary";
 export { default as OnlineAdvertising } from "./OnlineAdvertising/OnlineAdvertising";
 export { default as Ambassadors } from "./Ambassadors/Ambassadors";
+export { default as Welcome } from "./Welcome/Welcome";
+

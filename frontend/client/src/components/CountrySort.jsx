@@ -33,7 +33,8 @@ const grey = {
 const StyledButton = styled("button")(
   ({ theme }) => `
   font-family: IBM Plex Sans, sans-serif;
-  font-size: 0.875rem;
+  
+  font-size:16px
   box-sizing: border-box;
   min-height: calc(1.5em + 22px);
   min-width: 320px;
@@ -109,6 +110,7 @@ const StyledOption = styled(OptionUnstyled)(
   padding: 8px;
   border-radius: 5px;
   cursor: default;
+  
   
 
   &:last-of-type {
