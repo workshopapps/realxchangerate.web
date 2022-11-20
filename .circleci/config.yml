@@ -513,13 +513,13 @@ workflows:
           requires: [build-frontend-client] #remember to channge to test
           filters:
             branches:
-              only: [merger]
+              only: [merge-dev]
 
       - build-backend-docker-image:
           requires: [build-backend] #remember to channge to test
           filters:
             branches:
-              only: [merger]
+              only: [merge-dev]
       # - configure-infrastructure:
       #     requires: [deploy-infrastructure]
       # - run-migrations:
