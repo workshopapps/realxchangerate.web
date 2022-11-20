@@ -19,15 +19,11 @@
 
     - name: "Stop docker"
       become: yes
-      shell: |
-        cd /home/ubuntu/realxchangerate.web
-        docker-compose down
+      shell: /home/ubuntu/realxchangerate.web/docker-compose down
 
     - name: "Start docker"
       become: yes
-      shell: |
-        cd /home/ubuntu/realxchangerate.web
-        docker-compose up -d
+      shell: /home/ubuntu/realxchangerate.web docker-compose up -d
 
   vars:
     - ansible_python_interpreter: /usr/bin/python3
