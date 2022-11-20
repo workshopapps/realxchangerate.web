@@ -57,7 +57,7 @@ const Footer = () => {
             <Link href="#" color="inherit">
               Meet the team
             </Link>
-            <Link href="/press" color="inherit">
+            <Link href="#" color="inherit">
               Press
             </Link>
             <Link href="#" color="inherit">
