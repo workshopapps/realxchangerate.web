@@ -187,6 +187,45 @@ jobs:
           paths:
             - /caches/app.tar
 
+  build-backend-docker-image:
+    docker:
+      # Docker image that supports docker
+      - image: docker:17.05.0-ce-git
+    steps:
+      # Checkout code from git
+      - checkout
+
+      - setup_remote_docker
+
+      - restore_cache:
+          keys:
+            - v1-{{ .Branch }}
+          # paths:
+          #   - /caches/app.tar
+
+      - run:
+          name: Load Docker image layer cache
+          command: |
+            set +o pipefail
+            docker load -i /caches/app.tar | true
+
+      - run:
+          name: Build application Docker image
+          command: |
+            cd backend
+            docker build --cache-from=app-be -t app-be .
+
+      - run:
+          name: Save Docker image layer cache
+          command: |
+            mkdir -p /caches
+            docker save -o /caches/app.tar app-be
+
+      - save_cache:
+          key: v1-{{ .Branch }}-{{ epoch }}
+          paths:
+            - /caches/app.tar
+
   # configure-infrastructure:
   #   docker:
   #     - image: python:3.7-alpine3.11
@@ -461,6 +500,12 @@ workflows:
       # - test-backend
       - build-frontend-client-docker-image:
           requires: [build-frontend-client] #remember to channge to test
+          filters:
+            branches:
+              only: [merger]
+
+      - build-backend-docker-image:
+          requires: [build-backend] #remember to channge to test
           filters:
             branches:
               only: [merger]
