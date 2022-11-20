@@ -5,7 +5,6 @@ import {
 
    
   CurrencyContainer,
-  CurrencyWrapper,
   Header,
   ImageRateWrapper,
   ImageTable,
@@ -26,7 +25,7 @@ const EnCurrenciesRate = () => {
         <ImageWrapper>
           <ImageTable src={table} alt="table__img" />
         </ImageWrapper>
-        <CurrencyWrapper></CurrencyWrapper>
+       
       </RateWrapper>
     </CurrencyContainer>
   );

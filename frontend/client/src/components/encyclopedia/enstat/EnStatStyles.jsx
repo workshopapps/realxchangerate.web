@@ -29,12 +29,12 @@ export const Header = styled.h1`
 
 export const Table = styled.div`
   width: 100%;
-  margin:48px 0px 148px 339px;
+  margin:48px 0px 148px 50%;
 
 
   @media screen and (max-width: 768px) {
     height: 250px;
-    margin:0px 16px 0px 16px;
+    margin:0px 16px 0px 50%;
     width:100%;
   }
 `;

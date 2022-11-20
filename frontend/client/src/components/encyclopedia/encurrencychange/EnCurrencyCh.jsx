@@ -3,9 +3,9 @@ import { Button, ButtonWrapper, Container, CurrencyContainer,Header, HorizontalR
 import flag from '../assets/canada.svg'
 
 
-const EnCurrencyCh = () => {
+const EnCurrencyCh = ({display,color}) => {
   return (
-    <CurrencyContainer >
+    <CurrencyContainer display={display} color={color}>
       <Container>
         <Header>Currency set for canadian Dollar (CAD)</Header>
         <img src={flag} alt="" style={{ width: "7%" }} />

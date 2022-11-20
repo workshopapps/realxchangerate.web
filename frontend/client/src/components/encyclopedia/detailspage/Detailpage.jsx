@@ -11,7 +11,7 @@ const Detailpage = () => {
       <div>
         <EnCurrencyCh />
 
-        <EnDetail />
+        <EnDetail  />
       </div>
 
       <EnStat />

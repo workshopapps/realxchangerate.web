@@ -42,7 +42,7 @@ export const CurrencyWrapper = styled.div`
 export const ImageRateWrapper = styled.div`
   height: 50%;
   width: 50%;
-  margin: 75px 0px 137.11px 120px;
+  margin: 75px 0px 137.11px 10%;
   @media screen and (max-width: 768px) {
     padding: 1em;
     margin: 0px;

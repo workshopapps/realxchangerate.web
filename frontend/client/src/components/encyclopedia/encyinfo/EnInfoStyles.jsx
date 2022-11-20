@@ -6,6 +6,7 @@ export const CurrencyContainer = styled.div`
   background: #00296b;
   display:flex;
   justify-content:space-between;
+  padding: 58px 0px 58px 0px ;
 
   @media screen and (min-width:350px) and (max-width: 550px) {
     height: 263px;
@@ -22,10 +23,11 @@ export const Header = styled.h1`
   line-height: 40px;
   height: 80px;
   color: #ffffff;
-  padding: 209px 0px 225px 223px;
+  // background-color:red;
+  padding: 190px 0px 225px 5%;
   width: 30%;
 
-  @media screen and (min-width: 350px) and (max-width: 550px) {
+  @media screen and (min-width: 350px) and (max-width: 800px) {
     padding: 65px 0px 66px 16px;
     width: 60%;
   }

@@ -1,19 +1,20 @@
 import styled from "styled-components";
 
-
-
 export const CurrencyContainer = styled.div`
   width: 45%;
-  height: 398px;
-  background: #f6faff;
-  border-radius: 4px;
-  display:none;
+  height: 378px;
+  margin: 0px 60px 0px 0px;
 
-   @media screen and (min-width: 350px) and (max-width: 550px) {
-    display:block;
-  height: 468px;
-    width:90%;
-     margin:60px 16px 54px 16px;
+  border-radius: 4px;
+  display: ${({ display }) => (display ? "" : "none")};
+  background: ${({ color }) => (color ? "white" : " #f6faff")};
+
+  @media screen and (min-width: 350px) and (max-width: 800px) {
+    display: block;
+    display: ${({ display }) => (!display ? "block" : "none")};
+    height: 468px;
+    width: 90%;
+    margin: 60px 16px 54px 16px;
   }
 `;
 export const Container = styled.div`
@@ -43,7 +44,6 @@ export const Header = styled.h1`
   }
 `;
 
-
 export const Text = styled.p`
   color: #2f343f;
   font-family: "Inter";
@@ -53,7 +53,6 @@ export const Text = styled.p`
   line-height: 18px;
 
   @media screen and (max-width: 768px) {
-   
   }
 `;
 
@@ -71,7 +70,7 @@ export const TextHighlight = styled.p`
   font-size: 22px;
   line-height: 28px;
   color: #131825;
-  padding-left :18px;
+  padding-left: 18px;
   @media screen and (max-width: 768px) {
   }
 `;
