@@ -3,30 +3,31 @@ import { BrowserRouter as Router, Routes , Route } from "react-router-dom";
 import NavComponent from './components/NavComponent';
 import Footer from './components/Footer';
 
-import Home from "./pages/Home";
-import Convert from "./pages/Convert";
-import Contact from "./pages/Contact";
-import Compliance from "./pages/Compliance";
-import HelpCenter from "./pages/HelpCenter";
-import News from "./pages/News";
-import Faq from "./pages/Faq";
-import IntegrationMatrix from "./pages/IntegrationMatrix";
-import Partnerships from "./pages/Partnerships";
-import CurrencyEncyclopedia from "./pages/CurrencyEncyclopedia";
-import TermsAndConditions from "./pages/TermsAndConditions";
-import Press from "./pages/Press";
-import Careers from "./pages/Careers";
-import About from "./pages/About";
-import Teams from "./pages/Teams";
-import FileAComplaint from "./pages/FileAComplaint";
-import Api from "./pages/Api";
-import BoardOfDirectors from "./pages/BoardOfDirectors";
-import HistoricalCurrencyExchange from "./pages/HistoricalCurrencyExchange";
-import FraudReport from "./pages/FraudReport";
-import CookiePolicy from "./pages/CookiePolicy";
-import Glossary from "./pages/Glossary";
-import OnlineAdvertising from "./pages/OnlineAdvertising";
-import Ambassadors from "./pages/Ambassadors";
+// import Home from "../../client/src/Pages/Home"
+// import Convert from "../../client/src/pages/Convert";
+// import Contact from "../../client/src/pages/Contact";
+// import Compliance from "../../client/src/pages/Compliance";
+// import HelpCenter from "../../client/src/pages/HelpCenter";
+// import News from "../../client/src/pages/News";
+// import Faq from "../../client/src/pages/Faq";
+// import IntegrationMatrix from "../../client/src/pages/IntegrationMatrix";
+// import Partnerships from "../../client/src/pages/Partnerships";
+import CurrencyEncyclopedia from "../../client/src/Pages/CurrencyEncyclopedia";
+import CurrencyEncyclopediaDetail from "./Pages/CurrencyEncyclopediaDetail";
+// import TermsAndConditions from "../../client/src/pages/TermsAndConditions";
+// import Press from "../../client/src/pages/Press";
+// import Careers from "../../client/src/pages/Careers";
+// import About from "../../client/src/pages/About";
+// import Teams from "../../client/src/pages/Teams";
+// import FileAComplaint from "../../client/src/pages/FileAComplaint";
+// import Api from "../../client/src/pages/Api";
+// import BoardOfDirectors from "../../client/src/pages/BoardOfDirectors";
+// import HistoricalCurrencyExchange from "../../client/src/pages/HistoricalCurrencyExchange";
+// import FraudReport from "../../client/src/pages/FraudReport";
+// import CookiePolicy from "../../client/src/pages/CookiePolicy";
+// import Glossary from "../../client/src/pages/Glossary";
+// import OnlineAdvertising from "../../client/src/pages/OnlineAdvertising";
+// import Ambassadors from "../../client/src/Pages/Ambassadors";
 
 function App() {
   return (
@@ -35,7 +36,7 @@ function App() {
         <NavComponent />
         <Routes >
           {/*---==== Contents Sections  ====---*/}
-            <Route path="/" element={<Home/>} /> 
+            {/* <Route path="/" element={<Home/>} /> 
             <Route path="/convert" element={<Convert/>} />
             <Route path="/contact" element={<Contact/>} />
             <Route path="/compliance" element={<Compliance/>} /> 
@@ -43,9 +44,10 @@ function App() {
             <Route path="/news" element={<News/>} />
             <Route path="/faq" element={<Faq/>} /> 
             <Route path="/integration-matrix" element={<IntegrationMatrix/>} />
-            <Route path="/partnerships" element={<Partnerships/>} /> 
+            <Route path="/partnerships" element={<Partnerships/>} />  */}
             <Route path="/currency-encyclopedia" element={<CurrencyEncyclopedia/>} />
-            <Route path="/terms" element={<TermsAndConditions/>} /> 
+            <Route path="/currency-encyclopedia/:country" element={<CurrencyEncyclopediaDetail/>} />
+            {/* <Route path="/terms" element={<TermsAndConditions/>} /> 
             <Route path="/press" element={<Press/>} />
             <Route path="/careers" element={<Careers/>} /> 
             <Route path="/about" element={<About/>} />
@@ -58,8 +60,8 @@ function App() {
             <Route path="/CookiePolicy" element={<CookiePolicy/>} />
             <Route path="/glossary" element={<Glossary/>} /> 
             <Route path="/advertising" element={<OnlineAdvertising/>} />
-            <Route path="/ambassadors" element={<Ambassadors/>} />
-          {/*---==== end of Contents Sections  ====---*/}
+            <Route path="/ambassadors" element={<Ambassadors/>} />  */}
+          {/* ---==== end of Contents Sections  ====--- */}
         </Routes >
         <Footer />
       </div>
