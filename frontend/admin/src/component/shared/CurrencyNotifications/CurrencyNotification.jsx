@@ -44,18 +44,6 @@ const data = [
     rate: 483,
     priceUdated: true,
   },
-  {
-    market: "Abuja BDC",
-    growth: true,
-    rate: 897,
-    priceUdated: true,
-  },
-  {
-    market: "Benin BDC",
-    growth: true,
-    rate: 870,
-    priceUdated: true,
-  },
 ];
 
 function CurrencyNotifications() {
