@@ -22,7 +22,12 @@
 
     - name: "Stop docker"
       become: yes
-      shell: /usr/bin/docker-compose down
+      shell: |
+        ls -l
+        /usr/bin/docker-compose down
+      register: command_output
+    - debug:
+        var: command_output.stdout_lines
 
     - name: "Start docker"
       become: yes
