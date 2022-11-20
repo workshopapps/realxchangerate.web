@@ -32,9 +32,9 @@ import {
   Welcome,
 } from "./Pages";
 import GlobalStyle from "./styles/Globalstyle";
-import ErrorPage from "./pages/404/ErrorPage";
+import ErrorPage from "./Pages/404/ErrorPage";
 
-import SingleNews from "./pages/SingleNews/SingleNews";
+import SingleNews from "./Pages/SingleNews/SingleNews";
 
 function App() {
   return (
