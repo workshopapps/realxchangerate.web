@@ -1,8 +1,12 @@
 import React from 'react'
+import {Box} from "@mui/material"
+import CurrencyProfile from './components/CurrencyProfile'
 
 function Welcome() {
   return (
-    <div>Welcome</div>
+    <Box maxWidth="100%">
+      <CurrencyProfile />
+    </Box>
   )
 }
 
