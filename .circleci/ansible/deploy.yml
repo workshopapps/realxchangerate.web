@@ -11,7 +11,7 @@
   tasks:
     - name: "Test"
       become: yes
-      shell: cd realxchangerate.web && ls -l
+      shell: cd realxchangerate.web && ls -l && /usr/bin/docker-compose
       register: command_output
     - debug:
         var: command_output.stdout_lines
