@@ -8,6 +8,7 @@ import crud
 from api.deps import get_db
 from models.rate import Rate
 from models.currency import Currency
+from api.deps import get_location
 router = APIRouter()
 
 #  get rates ofbject for a spcific isocode
@@ -40,4 +41,21 @@ def getfiveRates(isocode, db: Session = Depends(get_db)):
         return {
             "success": False, "message": "No rate history found", "status_code": 404
         }
+
     return {"success": True, "status_code": 200, "data": {"currency": currency, "rate": rate}}
+
+
+@router.get('/ip/{ip}')
+def get_ip_currency(ip, db: Session = Depends(get_db)):
+    # Get country
+    country = get_location(ip)
+
+    currency = db.query(Currency).filter(Currency.country == country).first()
+
+    rates = db.query(Rate).filter(Rate.currency_id ==
+                                  currency.id).order_by(Rate.id).all()[:5]
+    if len(rates) == 0:
+        return {
+            "success": False, "message": "No rate history found", "status_code": 404
+        }
+    return {"success": True, "status_code": 200, "data": {"currency": currency, "rate": rates}}
