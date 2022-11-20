@@ -49,7 +49,7 @@ export const InfoText = styled.p`
 export const BtnsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 0.6rem;
+  gap: 1rem;
 `;
 
 export const GetStartedBtn = styled.button`
