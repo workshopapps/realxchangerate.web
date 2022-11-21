@@ -11,7 +11,7 @@
 
         @media screen and (max-width: 750px) {
       
-          height: 798px;
+          height: 418px;
           padding: 1em;
           display: flex;
           flex-direction: column;
@@ -63,16 +63,14 @@
         }
       `;     
     
-       export const Select = styled.select`
-         background: #ffffff;
-         border-radius: 4px;
-         height: 56px;
+       export const Select = styled.div`
+        
          width:40%;
         margin-top:69px;
 
          @media screen and (min-width: 350px) (max-width: 550px) {
-        
-           padding: 1em;
+           width:80%;
+          
          }
        `;     
     
@@ -91,15 +89,21 @@
        `;     
                                                            
             export const ImageWrapper = styled.div`
-              width: 60%;
+              width: 65%;
               @media screen and (min-width: 350px) and (max-width: 550px) {
-                padding-right: 15em;
+                display:none;
+      
                 margin-left: 0px;
                 align-item: left;
                 width: 90%;
               }
             `;     
-                                                                  
+                                                       export const Image = styled.img`
+                                                         width: 100%;
+                                                         @media screen and (min-width: 350px) and (max-width: 550px) {
+                                                           width: 100%;
+                                                         }
+                                                       `;     
                                                             
                                                              
                                                               
