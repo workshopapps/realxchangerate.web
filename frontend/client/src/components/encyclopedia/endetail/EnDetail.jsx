@@ -19,7 +19,7 @@ const EnCurrency = () => {
       </h2>
       <Wrap>
         {" "}
-        <img src={canada} alt="" style={{ width: "2% " }} /> CAD - Canadian
+        <img src={canada} alt="" style={{ width: "20px " }} /> CAD - Canadian
         Dollar
       </Wrap>
       <Text
