@@ -1,25 +1,30 @@
-import logo from './logo.svg';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { ThemeProvider } from 'styled-components';
 import './App.css';
+import Layout from './layout/Layout';
+import Account from './pages/Account/Account';
+import Dashboard from './pages/Dashboard/Dashboard';
+import Error from './pages/Error/Error';
+import Login from './pages/Login/Login';
+import { GlobalStyle } from './theme/globalStyle';
+import { theme } from './theme/theme';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<ThemeProvider theme={theme}>
+			<BrowserRouter>
+				<GlobalStyle />
+				<Routes>
+					<Route path='/' element={<Layout />}>
+						<Route index element={<Dashboard />} />
+						<Route path='/account' element={<Account />} />
+						<Route path='/*' element={<Error />} />
+					</Route>
+					<Route path='/login' element={<Login />} />
+				</Routes>
+			</BrowserRouter>
+		</ThemeProvider>
+	);
 }
 
 export default App;
