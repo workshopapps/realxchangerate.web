@@ -1,7 +1,7 @@
 import styled from "styled-components";
 export const CurrencyContainer = styled.div`
   width: 100%;
-  height: 515px;
+  height: 514px;
   align-items: left;
   background: #00296b;
   display: flex;
