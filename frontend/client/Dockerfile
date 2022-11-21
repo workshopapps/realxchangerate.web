@@ -8,7 +8,7 @@ COPY package.json .
 
 # COPY package-lock.json .
 
-# RUN npm cache clean --force
+RUN npm cache clean --force
 
 # RUN npm config set registry http://registry.npmjs.org
 
