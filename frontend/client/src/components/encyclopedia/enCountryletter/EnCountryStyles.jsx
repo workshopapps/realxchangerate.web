@@ -10,7 +10,7 @@ export const CurrencyContainer = styled.div`
 
   @media screen and (min-width: 350px) and (max-width: 550px) {
     width: 90%;
-    height: 398px;
+    height: 500px;
     padding: 1em;
     overflow:hidden;
   }
@@ -23,15 +23,21 @@ export const Header = styled.h1`
   line-height: 20px;
   color: #1e293b;
   letter-spacing: 0.001em;
-  padding:29px 0px 14px 120px;
+  padding: 29px 0px 14px 120px;
+
+  @media screen and (min-width: 350px) and (max-width: 550px) {
+    font-size: 14px;
+    line-height: 20px;
+    padding: 29px 0px 12px 10px;
+  }
 
   @media screen and (max-width: 768px) {
-    margin-right: 1em;
-    font-size: 1.8em;\
-      padding:29px 0px 12px 10px;
-    cursor: pointer;
+    padding: 29px 0px 12px 10px;
+   
   }
 `;
+
+
 export const CounrtryOptionWrapper = styled.div`
   align-items: center;
   width: 80%;
@@ -41,12 +47,11 @@ export const CounrtryOptionWrapper = styled.div`
   justify-content: space-evenly;
 
   @media screen and (min-width: 350px) and (max-width: 550px) {
-    // word-wrap: break-word;
-    // overflow-x: scroll;
+  
     padding: 0px 0px 34px 10%;
     width: 100%;
     height: 20%;
-    // scroll-x: hidden;
+ 
   }
 `;
 
@@ -73,12 +78,14 @@ export const Text = styled.p`
   color: #94a3b8;
   padding-left: 5px;
 
-  @media screen and (max-width: 768px) {
-    // margin-left: 0.6em;
-    font-size: 18px;
+
+  @media screen and (min-width: 350px) and (max-width: 550px) {
+    font-weight: 600;
+    font-size: 12px;
     line-height: 18px;
-    padding-left: 3px;
+    padding-left: 7px;
   }
+
 `;
 
 
@@ -138,21 +145,31 @@ export const Indicator = styled.p`
 export const CountryCurrencyWrapper = styled.div`
   width: 90%;
   display: grid;
-  gap:6%;
+  gap: 6%;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
   padding: 0px 0px 0px 120px;
   align-items: center;
 
   @media screen and (min-width: 350px) and (max-width: 550px) {
-    height:20px;
+    height: 60px;
     padding: 1em;
-    grid-template-columns: 1fr 1fr ;
+    grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
-    padding-bottom:86px;
-    
+    padding-bottom: 86px;
+    overflow: hidden;
   }
 `;
+
+export const Img = styled.img`
+width:7%;
+
+  @media screen and (min-width: 350px) and (max-width: 550px) {
+    width:10%;
+
+  }
+`;
+
 
 
 
