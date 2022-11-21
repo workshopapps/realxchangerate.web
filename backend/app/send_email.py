@@ -1,9 +1,12 @@
 import os
-from fastapi import BackgroundTasks
-from fastapi import FastAPI
+from decouple import config
+from fastapi import FastAPI, Depends, HTTPException
 from fastapi_mail import FastMail, MessageSchema,ConnectionConfig
 from starlette.requests import Request
 from pydantic import EmailStr, BaseModel
+from app import schemas, crud
+from app.api.deps import get_db
+from sqlalchemy.orm import Session
 from app.api.v1 import password_email_reset
 from typing import List
 from app.email_util.email_utils import random
@@ -18,20 +21,26 @@ class TokenSChema(BaseModel):
    token: str
 
 conf = ConnectionConfig(
-    MAIL_USERNAME = 'Genevieve',
-    MAIL_PASSWORD = 12345,
-    MAIL_FROM = 'ejibe750@gmail.com',
-    MAIL_PORT = 587,
-    MAIL_SERVER = 'smtp.gmail.com',
-    MAIL_FROM_NAME = os.getenv('MAIN_FROM_NAME'),
-    MAIL_TLS=True,
-    MAIL_SSL=False
+    MAIL_USERNAME = config('MAIL_USERNAME'),
+    MAIL_PASSWORD = config('MAIL_PASSWORD'),
+    MAIL_FROM = config('MAIL_FROM'),
+    MAIL_PORT = config('MAIL_PORT', cast=int),
+    MAIL_SERVER = config('MAIL_SERVER'),
+    MAIL_TLS = config('MAIL_TLS', cast=bool),
+    MAIL_SSL = config('MAIL_SSL', cast=bool)
 )
 
 
-async def sending_mail(email: EmailSchema):
-           
-	template = """
+
+
+async def sending_mail(email: EmailSchema, admin_in: schemas.AdminCreate, db: Session = Depends(get_db)):
+    admin_email = crud.admin.get_by_email(db, email=admin_in.email)
+    if not admin_email:
+        raise HTTPException(
+            status_code = 404,
+            detail = "Email address does not exist, please enter a valid email"
+        )
+    template = """
 		<html>
 		<body>
 		
@@ -42,15 +51,15 @@ async def sending_mail(email: EmailSchema):
 		</body>
 		</html>
 		"""
-	message = MessageSchema(
+    message = MessageSchema(
 		subject="Reset-password Token",
 		recipients=email.dict().get("email"), 
 		body=template,
 		subtype="html"
 		)
 
-	fm = FastMail(conf)
-	await fm.send_message(message, {'code' : f'{random(6)}'})
+    fm = FastMail(conf)
+    await fm.send_message(message, {'code' : f'{random(6)}'})
 
 
 
