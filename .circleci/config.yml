@@ -157,8 +157,8 @@ jobs:
           name: Push Image to docker hub
           command: |
             docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
-            docker tag app hacklight/xchange-fe-client
-            docker push hacklight/xchange-fe-client
+            docker tag app hacklight/xchange-fe-client:v1
+            docker push hacklight/xchange-fe-client:v1
 
   build-backend-docker-image:
     docker:
@@ -203,8 +203,8 @@ jobs:
           name: Push Image to docker hub
           command: |
             docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
-            docker tag app-be hacklight/test-be
-            docker push hacklight/test-be
+            docker tag app-be hacklight/test-be:v1
+            docker push hacklight/test-be:v1
 
   deploy-images-using-ssh:
     docker:
