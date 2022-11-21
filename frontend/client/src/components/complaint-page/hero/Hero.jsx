@@ -33,7 +33,7 @@ const Hero = () => {
           </div>
         </div>
       </HeroWrapper>
-      <FormModal toggleModal={toggleModal} modalOpen={modalOpen}/>
+      <FormModal toggleModal={toggleModal} modalOpen={modalOpen} />
     </>
   );
 };

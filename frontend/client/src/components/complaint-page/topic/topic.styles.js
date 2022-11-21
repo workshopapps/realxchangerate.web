@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const TopicWrapper = styled.section`
-margin-top: 146px;
+  margin-top: 146px;
 
   .container h1 {
     font-weight: 400;
@@ -25,21 +25,18 @@ margin-top: 146px;
   @media screen and (max-width: 600px) {
     margin-top: 42px;
     .container h1 {
-        font-size: 1.3rem;
-        line-height: 1.68rem;
-        text-align: center;
-      }
-      .container p {
-        font-size: 1rem;
-        line-height: 1.1rem;
-        text-align: center;
-        max-width: 15rem;
-        // margin: 0 auto;
-      }
-    
+      font-size: 1.3rem;
+      line-height: 1.68rem;
+      text-align: center;
+    }
+    .container p {
+      font-size: 1rem;
+      line-height: 1.1rem;
+      text-align: center;
+      max-width: 15rem;
+      // margin: 0 auto;
+    }
   }
 `;
 
 export default TopicWrapper;
-
-
