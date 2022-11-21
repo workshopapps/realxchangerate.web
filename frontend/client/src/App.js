@@ -1,4 +1,9 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  HashRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 
 import NavComponent from "./components/NavComponent";
 import Footer from "./components/Footer";
@@ -30,7 +35,6 @@ import {
   OnlineAdvertising,
   Ambassadors,
   Home,
-  Welcome,
 } from "./Pages";
 import GlobalStyle from "./styles/Globalstyle";
 import ErrorPage from "./Pages/404/ErrorPage";
@@ -80,7 +84,9 @@ function App() {
             <Route path="/glossary" element={<Glossary />} />
             <Route path="/advertising" element={<OnlineAdvertising />} />
             <Route path="/ambassadors" element={<Ambassadors />} />
+            <Route path="/ddff" element={<ErrorPage />} />
             <Route path="/*" element={<ErrorPage />} />
+            <Route path="*" element={<Navigate to={"/ddff"} />} />
             {/*---==== end of Contents Sections  ====---*/}
           </Routes>
           <Footer />
