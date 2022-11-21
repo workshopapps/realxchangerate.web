@@ -12,6 +12,10 @@ sudo docker-compose down
 # wait for 20 seconds
 sleep 20
 
+#sudo docker-compose up -d
+
+sudo docker system prune -a -f
+
 sudo docker-compose up -d
 
 
