@@ -1,11 +1,12 @@
 import styled from "styled-components";
 import hr from "./images/hr.svg";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 
 const OnlineAdvertising = () => {
 
 	const period = "2020 monthly average";
 	return (
+		<Container>
 		<MainDiv>
 			<StyledH1>Advertising media kit</StyledH1>
 
@@ -22,25 +23,31 @@ const OnlineAdvertising = () => {
 			<StyledH3>Key stats</StyledH3>
 
 			<StatsDiv>
+				<MobileStatDiv>
 				<StatDiv>
 					<Number>23 million</Number>
 					<Stat>CONVERSION RATE VIEWS</Stat>
 					<Period>{period}</Period>
 				</StatDiv>
+				</MobileStatDiv>
 
+				<MobileStatDiv>
 				<StatDiv>
 					<Number>10 million</Number>
 					<Stat>USERS</Stat>
 					<Period>{period}</Period>
 				</StatDiv>
+				</MobileStatDiv>
 			</StatsDiv>
 
 			<StatsDiv>
+				<MobileStatDiv>
 				<StatDiv>
 					<Number>41 million</Number>
 					<Stat>OVERALL PAGE VIEWS</Stat>
 					<Period>{period}</Period>
 				</StatDiv>
+				</MobileStatDiv>
 
 				<StatDiv>
 					<Number>15 million</Number>
@@ -61,7 +68,7 @@ const OnlineAdvertising = () => {
 				<StyledP>Street Rate users are qualified, verified and ready to transact consumers who are interested in your fianacial products. Investments, auto and home equity advertisers are only charged if a consumer clicks on your company’s hyperlink. If they don’t click, you don’t pay! This means you only pay for qualified, engaged consumers who want to learn more about your services.</StyledP>
 
 				<StyledH4>Why advertise with us?</StyledH4>
-				<StyledP>We are a license company who gets her data from realiable sources such as national banks and the financial institution to provide accurate bank rates and as such we’ve built trust and intergrity. Our system supports Street Rate validation for 97 countries. We add support for new countries as soon as they officially adopt the Street Rate standard which will enable you or your services reach diverse people and countries. System security and data protection is important to us. <Link to="/" style={{ color: "#3381FF" }}>Learn more</Link> on what steps and technical measures we take to protect your data. For the years we’ve been providing services, more than 1000 companies have trusted us to validate payment details. </StyledP>					
+				<StyledP>We are a license company who gets her data from realiable sources such as national banks and the financial institution to provide accurate bank rates and as such we’ve built trust and intergrity. Our system supports Street Rate validation for 97 countries. We add support for new countries as soon as they officially adopt the Street Rate standard which will enable you or your services reach diverse people and countries. System security and data protection is important to us. <Link style={{ color: "#3381FF" }}>Learn more</Link> on what steps and technical measures we take to protect your data. For the years we’ve been providing services, more than 1000 companies have trusted us to validate payment details. </StyledP>					
         
         </div>
 
@@ -93,9 +100,25 @@ const OnlineAdvertising = () => {
 			</div>
 
 		</MainDiv>
+		</Container>
 	)
 }
 
+const Container = styled.div`
+	*, *::before, *::after {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+  }
+
+	img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center;
+  }
+
+`
 const MainDiv = styled.div`
 	max-width: 90vw;
 	margin: 2vh auto 8vh;
@@ -173,17 +196,23 @@ const Figure = styled.figure`
 `
 
 const StatsDiv = styled.div`
-  width: 65%;
+  width: 100%;
 	display: flex;
 	flex-direction: column;
+  @media (min-width: 481px) {
 	margin-top: 3vh;
 	margin-bottom: 3vh;
-  @media (min-width: 481px) {
     width: 80%;
   }
 	@media (min-width: 769px) {
 		flex-direction: row;
 		justify-content: space-between;	
+	}
+`
+
+const MobileStatDiv = styled.div`
+	@media (max-width: 480px) {
+		margin-bottom: 6vh;
 	}
 `
 
@@ -241,8 +270,11 @@ const Li = styled.li`
 	font-weight: 400;
 	line-height: 20px;
 	letter-spacing: 0.001em;
-	margin-left: 2vw;
+	margin-left: 4vw;
 	margin-bottom: 2vh;
+	@media (min-width: 769px) {
+		margin-left: 2vw
+	}
 `;
 
 
