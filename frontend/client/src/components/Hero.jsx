@@ -5,7 +5,8 @@ import styled from "styled-components";
 const Hero = () => {
   const Wrapper = styled.div`
     display: flex;
-    padding: 0 80px;
+    justify-content: space-between;
+    padding: 60px 80px;
     align-items: center;
     font-family: "Inter", sans-serif;
     margin-top: 100px;
@@ -19,7 +20,15 @@ const Hero = () => {
     }
 
     @media screen and (max-width: 768px) {
+      flex-direction: column;
+      gap: 48px;
       padding: 0 20px;
+      & :first-child {
+        order: 1;
+      }
+      & :last-child {
+        width: 80%;
+      }
     }
   `;
 
@@ -32,10 +41,11 @@ const Hero = () => {
       text-transform: uppercase;
       color: #0062ff;
       font-weight: 400;
+      font-size: 16px;
     }
 
     h2 {
-      font-size: 3rem;
+      font-size: 48px;
       font-weight: 800;
     }
 
@@ -43,11 +53,13 @@ const Hero = () => {
       margin-top: 20px;
       color: #555962;
       line-height: 28px;
+      font-size: 20px;
     }
 
     div {
       margin-top: 20px;
       display: flex;
+
       align-items: center;
 
       img {
@@ -76,7 +88,7 @@ const Hero = () => {
       margin-top: 20px;
 
       h2 {
-        font-size: 2rem;
+        font-size: 32px;
       }
 
       div {
@@ -86,35 +98,47 @@ const Hero = () => {
 
     @media screen and (max-width: 768px) {
       h2 {
-        font-size: 1.5rem;
+        font-size: 24px;
         margin-top: 5px;
       }
 
       p {
-        font-size: 0.9rem;
+        font-size: 14px;
         line-height: 20px;
       }
     }
   `;
 
   const Container2 = styled.div`
-    width: 60%;
+    width: 50%;
     margin-left: 10px;
     padding: 20px;
     border: 1px solid #e0e0e0;
     border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     h3 {
+      order: 1;
       text-align: center;
       padding: 10px 0;
+      font-size: 24px;
     }
 
     form {
+      order: 2;
       .amount {
         display: flex;
         flex-direction: column;
         margin: 30px 0;
         outline: none;
+        width: 100%;
+        gap: 6px;
+        align-items: center;
+        & label {
+          font-size: 16px;
+        }
       }
 
       label {
@@ -127,6 +151,7 @@ const Hero = () => {
         border: 1px solid #e0e0e0;
         border-radius: 5px;
         outline: none;
+        width: 100%;
       }
       select {
         text-decoration: none;
@@ -163,8 +188,7 @@ const Hero = () => {
       }
     }
 
-    @media screen and (max-width: 400px) {
-      width: 100%;
+    @media screen and (max-width: 768px) {
       margin-right: 0;
       text-align: center;
 
@@ -175,21 +199,30 @@ const Hero = () => {
 
         .currency {
           flex-direction: column;
+          & svg {
+            order: 2;
+          }
         }
 
         select:first-child {
           margin-right: 0px;
           margin-bottom: 20px;
+          order: 1;
+          width: 100%;
         }
 
         select:last-child {
           margin-left: 0px;
           margin-top: 20px;
+          order: 3;
+          width: 100%;
         }
       }
     }
 
     @media screen and (max-width: 768px) {
+      .currency {
+      }
     }
   `;
   return (

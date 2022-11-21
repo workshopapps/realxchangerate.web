@@ -20,6 +20,7 @@ import {
   IntegrationMatrix,
   Partnerships,
   CurrencyEncyclopedia,
+  CurrencyEncyclopediaDetail,
   TermsAndConditions,
   Press,
   Careers,
@@ -40,6 +41,8 @@ import GlobalStyle from "./styles/Globalstyle";
 import ErrorPage from "./Pages/404/ErrorPage";
 
 import SingleNews from "./Pages/SingleNews/SingleNews";
+import Article from "./Pages/Press/Article/Article";
+import PressNews from "./Pages/Press/PressRelease/News";
 
 function App() {
   return (
@@ -56,19 +59,23 @@ function App() {
             <Route path="/compliance" element={<Compliance />} />
             <Route path="/help-center" element={<HelpCenter />} />
             <Route path="/news" element={<News />} />
-
             {/* Adding path for one news  */}
             <Route path="/news/:id" element={<SingleNews />} />
-
             <Route path="/faq" element={<Faq />} />
             <Route path="/integration-matrix" element={<IntegrationMatrix />} />
             <Route path="/partnerships" element={<Partnerships />} />
             <Route
               path="/currency-encyclopedia"
               element={<CurrencyEncyclopedia />}
+            />{" "}
+            <Route
+              path="/currency-encyclopedia/:country"
+              element={<CurrencyEncyclopediaDetail />}
             />
             <Route path="/terms" element={<TermsAndConditions />} />
             <Route path="/press" element={<Press />} />
+            <Route path="/press/news" element={<PressNews />} />
+            <Route path="/press/article" element={<Article />} />
             <Route path="/careers" element={<Careers />} />
             <Route path="/about" element={<About />} />
             <Route path="/complaint" element={<FileAComplaint />} />

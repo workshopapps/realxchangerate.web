@@ -7,8 +7,8 @@ export const StyledWrapper = styled.div`
     border-radius: ${props => props.theme.$styled.borderRadius.md};
 `
 export const StyledAlerts = styled.ul`
-    height: 350px;
-    overflow-y: auto;
+    /* height: 350px;
+    overflow-y: auto; */
 
     display: flex;
     flex-direction: column;

@@ -1,36 +1,47 @@
 import styled from "styled-components";
 
 export const StyledDashboardLayout = styled.div`
-      display: grid;
+    display: grid;
  
     grid-template-columns: 20% 1fr;
- grid-template-rows: 140px 1fr;
+    /* grid-template-rows: 140px 1fr; */
 
- grid-template-areas:
+    grid-template-areas:
+    "messages messages notifications"
+    "messages messages notifications"
+    "currencies country notifications"
+    "currencies country conversions"
+    "currencies country conversions";
 
- "sidebar main main main"
- "sidebar main main main"
- "sidebar main main main"
- "sidebar main main main";
+    grid-gap: 12px;
 
- grid-gap: 18px;
+    /* height: 100vh; */
 
- height: 100vh;
+    #messages {
+     grid-area: messages;
+    }
+    #notifications {
+     grid-area: notifications;
+    }
+    #currencies {
+     grid-area: currencies;
+    }
+    #country {
+     grid-area: country;
+    }
+    #conversions {
+     grid-area: conversions;
+    }
 
- #sidebar {
-     grid-area: sidebar;
- }
- #content {
-     padding-right: 16px;
-     grid-area: main;
-     overflow-y: auto;
- }
 
-
- @media screen and (max-width: 375px) {
+ @media (max-width: 1080px) {
      grid-template-columns: 1fr;
-     grid-template-rows: 140px 1fr;
+     /* grid-template-rows: 140px 1fr; */
      grid-template-areas:
-         "main";
+        "messages"
+        "notifications"
+        "currencies"
+        "country"
+        "conversions";
  }
 `
