@@ -7,7 +7,6 @@ import {
   CurrencyContainer,
   Header,
   ImageRateWrapper,
-  ImageT,
   ImageTable,
   ImageWrapper,
   RateWrapper,
@@ -20,7 +19,7 @@ const EnCurrenciesRate = () => {
       <Header>Currencies Rates</Header>
       <RateWrapper>
         <ImageRateWrapper>
-          <ImageT src={rate} alt="rate__img" />
+          <img src={rate} alt="rate__img" />
         </ImageRateWrapper>
 
         <ImageWrapper>

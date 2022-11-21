@@ -7,6 +7,7 @@ import EnCurrenciesRate from '../../components/encyclopedia/encurrenciesrate/EnC
 const CurrencyEncyclopedia = () => {
   return <div>
    <EnCurrency/>
+   
    <EnCountryLetter /> 
    <EnPopCurrencies/>
    <EnCurrenciesRate/> 

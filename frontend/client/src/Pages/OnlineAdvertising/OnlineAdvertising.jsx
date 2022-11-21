@@ -1,12 +1,11 @@
 import styled from "styled-components";
 import hr from "./images/hr.svg";
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"
 
 const OnlineAdvertising = () => {
 
 	const period = "2020 monthly average";
 	return (
-		<Container>
 		<MainDiv>
 			<StyledH1>Advertising media kit</StyledH1>
 
@@ -23,31 +22,25 @@ const OnlineAdvertising = () => {
 			<StyledH3>Key stats</StyledH3>
 
 			<StatsDiv>
-				<MobileStatDiv>
 				<StatDiv>
 					<Number>23 million</Number>
 					<Stat>CONVERSION RATE VIEWS</Stat>
 					<Period>{period}</Period>
 				</StatDiv>
-				</MobileStatDiv>
 
-				<MobileStatDiv>
 				<StatDiv>
 					<Number>10 million</Number>
 					<Stat>USERS</Stat>
 					<Period>{period}</Period>
 				</StatDiv>
-				</MobileStatDiv>
 			</StatsDiv>
 
 			<StatsDiv>
-				<MobileStatDiv>
 				<StatDiv>
 					<Number>41 million</Number>
 					<Stat>OVERALL PAGE VIEWS</Stat>
 					<Period>{period}</Period>
 				</StatDiv>
-				</MobileStatDiv>
 
 				<StatDiv>
 					<Number>15 million</Number>
@@ -100,23 +93,9 @@ const OnlineAdvertising = () => {
 			</div>
 
 		</MainDiv>
-		</Container>
 	)
 }
 
-const Container = styled.div`
-	*, *::before, *::after {
-        padding: 0;
-        margin: 0;
-        box-sizing: border-box;
-  }
-	img {
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-		object-position: center;
-  }
-`
 const MainDiv = styled.div`
 	max-width: 90vw;
 	margin: 2vh auto 8vh;
@@ -194,23 +173,17 @@ const Figure = styled.figure`
 `
 
 const StatsDiv = styled.div`
-  width: 100%;
+  width: 65%;
 	display: flex;
 	flex-direction: column;
-  @media (min-width: 481px) {
 	margin-top: 3vh;
 	margin-bottom: 3vh;
+  @media (min-width: 481px) {
     width: 80%;
   }
 	@media (min-width: 769px) {
 		flex-direction: row;
 		justify-content: space-between;	
-	}
-`
-
-const MobileStatDiv = styled.div`
-	@media (max-width: 480px) {
-		margin-bottom: 6vh;
 	}
 `
 
@@ -268,11 +241,8 @@ const Li = styled.li`
 	font-weight: 400;
 	line-height: 20px;
 	letter-spacing: 0.001em;
-	margin-left: 4vw;
+	margin-left: 2vw;
 	margin-bottom: 2vh;
-	@media (min-width: 769px) {
-		margin-left: 2vw
-	}
 `;
 
 

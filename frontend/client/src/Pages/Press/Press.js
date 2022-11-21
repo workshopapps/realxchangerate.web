@@ -1,7 +1,7 @@
 import React from 'react'
-// import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import PressRelease from './PressRelease/PressRelease';
-// import Article from './Article/Article'
+import Article from './Article/Article'
 
 const Press = () => {
     return (

@@ -8,7 +8,7 @@ export const CurrencyContainer = styled.div`
   background: #e6efff;
 
   @media screen and (max-width: 768px) {
-    height: 362px;
+    height: 332px;
   }
 `;
 
@@ -56,8 +56,6 @@ export const Text = styled.p`
   letter-spacing: 0.001em;
   color: #2f343f;
   margin-top:35px;
-
-  
 
   @media screen and (max-width: 768px) {
 

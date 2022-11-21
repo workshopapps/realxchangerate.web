@@ -7,7 +7,6 @@ import {
   CurrencyContainer,
   CurrencyWrapper,
   Header,
-  Img,
   Indicator,
   Redirect,
   Text,
@@ -245,6 +244,8 @@ const EnCountryLetter = () => {
           {" "}
           <Text>Z</Text>
         </Redirect>
+
+       
       </CounrtryOptionWrapper>
 
       <CurrencyWrapper>
@@ -252,78 +253,114 @@ const EnCountryLetter = () => {
       </CurrencyWrapper>
       <CountryCurrencyWrapper>
         <CountryNames>
-          <Img src={letter} alt="" style={{ marginRight: "5px" }} />
-          GBP-Bristish Pound
-        </CountryNames>
-        <CountryNames>
-          <Img src={letter} alt="" style={{ marginRight: "5px" }} />
-          GBP-Bristish Pound
-        </CountryNames>
-        <CountryNames>
-          <Img src={letter} alt="" style={{ marginRight: "5px" }} />
-          GBP-Bristish Pound
-        </CountryNames>
-        <CountryNames>
-          <Img src={letter} alt="" style={{ marginRight: "5px" }} />
-          GBP-Bristish Pound
-        </CountryNames>
-        <CountryNames>
-          <Img src={letter} alt="" style={{ marginRight: "5px" }} />
-          GBP-Bristish Pound
-        </CountryNames>
-        <CountryNames>
-          <Img src={letter} alt="" style={{ marginRight: "5px" }} />
-          GBP-Bristish Pound
-        </CountryNames>
-        <CountryNames>
-          <Img src={letter} alt="" style={{ marginRight: "5px" }} />
-          GBP-Bristish Pound
-        </CountryNames>
-        <CountryNames>
-          <Img src={letter} alt="" style={{ marginRight: "5px" }} />
-          GBP-Bristish Pound
-        </CountryNames>
-        <CountryNames>
-          <Img src={letter} alt="" style={{ marginRight: "5px" }} />
-          GBP-Bristish Pound
-        </CountryNames>
-        <CountryNames>
-          <Img
+          <img
             src={letter}
             alt=""
-            style={{  marginRight: "5px" }}
+            style={{ width: "7%", marginRight: "5px" }}
           />
           GBP-Bristish Pound
         </CountryNames>
         <CountryNames>
-          <Img
+          <img
             src={letter}
             alt=""
-            style={{  marginRight: "5px" }}
+            style={{ width: "7%", marginRight: "5px" }}
           />
           GBP-Bristish Pound
         </CountryNames>
         <CountryNames>
-          <Img
+          <img
             src={letter}
             alt=""
-            style={{ marginRight: "5px" }}
+            style={{ width: "7%", marginRight: "5px" }}
           />
           GBP-Bristish Pound
         </CountryNames>
         <CountryNames>
-          <Img
+          <img
             src={letter}
             alt=""
-            style={{  marginRight: "5px" }}
+            style={{ width: "7%", marginRight: "5px" }}
           />
           GBP-Bristish Pound
         </CountryNames>
         <CountryNames>
-          <Img
+          <img
             src={letter}
             alt=""
-            style={{  marginRight: "5px" }}
+            style={{ width: "7%", marginRight: "5px" }}
+          />
+          GBP-Bristish Pound
+        </CountryNames>
+        <CountryNames>
+          <img
+            src={letter}
+            alt=""
+            style={{ width: "7%", marginRight: "5px" }}
+          />
+          GBP-Bristish Pound
+        </CountryNames>
+        <CountryNames>
+          <img
+            src={letter}
+            alt=""
+            style={{ width: "7%", marginRight: "5px" }}
+          />
+          GBP-Bristish Pound
+        </CountryNames>
+        <CountryNames>
+          <img
+            src={letter}
+            alt=""
+            style={{ width: "7%", marginRight: "5px" }}
+          />
+          GBP-Bristish Pound
+        </CountryNames>
+        <CountryNames>
+          <img
+            src={letter}
+            alt=""
+            style={{ width: "7%", marginRight: "5px" }}
+          />
+          GBP-Bristish Pound
+        </CountryNames>
+        <CountryNames>
+          <img
+            src={letter}
+            alt=""
+            style={{ width: "7%", marginRight: "5px" }}
+          />
+          GBP-Bristish Pound
+        </CountryNames>
+        <CountryNames>
+          <img
+            src={letter}
+            alt=""
+            style={{ width: "7%", marginRight: "5px" }}
+          />
+          GBP-Bristish Pound
+        </CountryNames>
+        <CountryNames>
+          <img
+            src={letter}
+            alt=""
+            style={{ width: "7%", marginRight: "5px" }}
+          />
+          GBP-Bristish Pound
+        </CountryNames>
+        <CountryNames>
+          <img
+            src={letter}
+            alt=""
+            style={{ width: "7%", marginRight: "5px" }}
+          />
+          GBP-Bristish Pound
+        </CountryNames>
+        <CountryNames>
+          <img
+            src={letter}
+            alt=""
+            style={{ width: "7%", marginRight: "5px" }}
           />
           GBP-Bristish Pound
         </CountryNames>

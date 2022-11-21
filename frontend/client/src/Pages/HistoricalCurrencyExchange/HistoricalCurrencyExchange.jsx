@@ -12,11 +12,12 @@ import TabPanelUnstyled from '@mui/base/TabPanelUnstyled';
 import { buttonUnstyledClasses } from '@mui/base/ButtonUnstyled';
 import TabUnstyled, { tabUnstyledClasses } from '@mui/base/TabUnstyled';
 import { Box, Typography, } from '@mui/material';
+import { MobileTable } from './syles/HistoricalCurrencyExchangeStyles';
+import { Table } from './syles/HistoricalCurrencyExchangeStyles';
 import { MobileViewWrapper } from './syles/HistoricalCurrencyExchangeStyles';
 import flag1 from "./images/Flag1.png"
 import arrow from "./images/arrow.png"
 import right from "./images/Vector.png"
-
 
 const blue = {
   50: '#F0F7FF',
@@ -84,64 +85,12 @@ const Calender = () => {
 const Currencies = ({name,img}) =>{
   return (
     <Box display="flex" alignItems="center">
-        <Box sx={{display:"flex",paddingLeft:"5px",paddingRight:"10px"}} alignItems="center">
-          <Typography marginRight="10px">{name}</Typography>
-          <img src={img} alt="" width="24px" height="17px" className='flag' />
-        </Box>
+      <Typography marginRight="10px">{name}</Typography>
+      <img src={img} alt="" width="24px" height="17px" className='flag' />
       <img src={right} alt="" width="6px" height="13px" />
     </Box>
   )
   
-}
-const MobileRowHeaderComponent = ({rate}) =>{
-  return (
-    <Box width="100%" backgroundColor="#F8FAFC" display="flex" fontSize="18px" height="44px" justifyContent="space-between" alignItems="center">
-        <Typography>Country</Typography>
-        
-        <Typography>{rate}</Typography>
-    </Box>
-  )
-}
-
-// const handleChange = (e,length) =>{
-//   const val =e
-//   if (e === 10){
-//     val=0;
-//   }
-//   else{
-//     e++
-//     val = e
-//   }
-//   return val
-// }
-
-const RowHeaderComponent = () =>{
-  return (
-    <Box width="100%" backgroundColor="#F8FAFC" display="flex" fontSize="18px" height="44px" justifyContent="space-between" alignItems="center">
-        <Typography>Country</Typography>
-        <Typography sx={{paddingLeft:"64px"}}>Bank Rates</Typography>
-        <Typography>Parallel Rates</Typography>
-    </Box>
-  )
-}
-
-const RowComponent = ({country,bank,parallel})=>{
-  return(
-    <Box display="flex" justifyContent="space-between" height="45px" alignItems="center" fontSize="18px"  borderBottomColor="gray" width="100%" sx={{ borderBottom: 1,borderColor: 'grey.500' }}>
-      {country}
-      <Typography>{bank}</Typography>
-      <Typography>{parallel}</Typography>
-    </Box>
-  )
-}
-
-const MobileRowComponent = ({country,rate})=>{
-  return(
-    <Box display="flex" justifyContent="space-between" height="45px" alignItems="center" fontSize="18px"  borderBottomColor="gray" width="100%" sx={{ borderBottom: 1,borderColor: 'grey.500' }}>
-      {country}
-      <Typography>{rate}</Typography>
-    </Box>
-  )
 }
 
 const Converter = () => {
@@ -170,28 +119,42 @@ const MobileView = ({data}) => {
           <NewTab>Parallel Rate</NewTab>
         </TabsList>
         <TabPanelUnstyled value={0}>
-          
-            <Box widht="100%">
-              <MobileRowHeaderComponent rate="Bank Rate"/>
+          <Box>
+            <MobileTable className=' w-full mt-6'>
+              <tr className='mobile_table font-inter font-normal text-[18px] bg-[#F8FAFC] h-[44px]'>
+                <th className='text-left pl-[24px]'>Country</th>
+                <th className='text-right pr-[24px]'>Bank Rate</th>
+              </tr>
               {data.map((val, key) => {
                 return (
-                  <MobileRowComponent country={val.country} rate={val.bank_rates}/>
+                  <tr key={key} className='border-b-2 h-[45px] text-[18px]'>
+                    <td className='rates2 pl-[24px]'>{val.country}</td>
+                    <td className='rates text-right pr-[24px]'>{val.bank_rates}</td>
+                    
+                  </tr>
                   
                 );
               })}
-            </Box>
-          
+            </MobileTable>
+          </Box>
         </TabPanelUnstyled>
         <TabPanelUnstyled value={1}>
-        <Box widht="100%">
-              <MobileRowHeaderComponent rate="Parallel Rate"/>
+          <Box className='w-full'>
+            <MobileTable className='w-full mt-6'>
+              <tr className='font-inter font-normal text-[18px] bg-[#F8FAFC] h-[44px] '>
+                <th className='text-left pl-[24px]'>Country</th>
+                <th className='text-right pr-[24px]'>Parallel Rates</th>
+              </tr>
               {data.map((val, key) => {
                 return (
-                  <MobileRowComponent country={val.country} rate={val.parallel_rates}/>
-                  
+                  <tr key={key} className='border-b-2 h-[45px] text-[18px]'>
+                    <td className=' rates2 pl-[24px]'>{val.country}</td>
+                    <td className=' rates text-right pr-[24px]'>{val.parallel_rates}</td>
+                  </tr>
                 );
               })}
-            </Box>
+            </MobileTable>
+          </Box>
         </TabPanelUnstyled>
       </TabsUnstyled>
     </MobileViewWrapper>
@@ -240,35 +203,36 @@ const MainComponent = ({ data }) => {
     <Box
       marginTop="44px"
       width='80%'
+      display='flex'
       flexDirection='column'
       alignItems='center'
       padding='0px'
-      display="flex"
-      marginBottom="50px"
     >
       <Box
         alignItems='center'
+        display='flex'
         width="100%"
-
-        sx={{display:{xs:'none',sm:"flex"}}} 
       
       
       >
-        <Box width="100%" display="flex" flexDirection="column">
-          <RowHeaderComponent/>
+        <Table>
+          <tr className='table_row '>
+            <th className='table_header one'>Country</th>
+            <th className='table_header two'>Bank Rates</th>
+            <th className='table_header three'>Parallel Rates</th>
+          </tr>
           {rows.map((val, key) => {
             return (
-              <RowComponent key={key} country={val.country} bank={val.bank_rates} parallel={val.parallel_rates}/>         
-                 // <tr key={key} className='table_row_two border-b-2 h-[45px] text-[18px]'>
-              //   <td className="one">{val.country}</td>
-              //   <td className="two">{val.bank_rates}</td>
-              //   <td className="three">{val.parallel_rates}</td>
-              // </tr>
+              <tr key={key} className='table_row_two border-b-2 h-[45px] text-[18px]'>
+                <td className="one">{val.country}</td>
+                <td className="two">{val.bank_rates}</td>
+                <td className="three">{val.parallel_rates}</td>
+              </tr>
             );
           })}
-        </Box>
+        </Table>
       </Box>
-      <Box display={{xs:'flex',sm:"none",}} width="100%" justifyContent="center" marginY="auto" >
+      <Box display={{sm:"hidden", md:"flex"}} width="100%" justifyContent="center" marginY="auto" >
         <MobileView data={rows} />
       </Box>
     </Box>

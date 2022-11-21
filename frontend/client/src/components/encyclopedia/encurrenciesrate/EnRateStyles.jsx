@@ -51,21 +51,11 @@ export const ImageRateWrapper = styled.div`
     height: 20%;
     width: 60%;
   }
-  @media screen (min-width: 950px) and (max-width: 1200px) {
+  @media screen (min-width: 1121px) and (max-width: 1200px) {
     display: none;
   }
 `;
 
-
-export const ImageT = styled.img`
-  height: 100%;       
-  width: 100%;          
-  @media screen and (min-width: 350px) and (max-width: 550px) {
-    height: 100%;
-    width: 100%;
-  }
-
-`;
 
 export const ImageTable = styled.img`
   height: 100%;
