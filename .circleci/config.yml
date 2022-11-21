@@ -170,34 +170,34 @@ jobs:
 
       - setup_remote_docker
 
-      - restore_cache:
-          keys:
-            - v1-{{ .Branch }}
+      # - restore_cache:
+      #     keys:
+      #       - v1-{{ .Branch }}
           # paths:
           #   - /caches/app.tar
 
-      - run:
-          name: Load Docker image layer cache
-          command: |
-            set +o pipefail
-            docker load -i /caches/app.tar | true
+      # - run:
+      #     name: Load Docker image layer cache
+      #     command: |
+      #       set +o pipefail
+      #       docker load -i /caches/app.tar | true
 
       - run:
           name: Build application Docker image
           command: |
             cd backend
-            docker build --cache-from=app-be -t app-be .
+            docker build -t app-be .
 
-      - run:
-          name: Save Docker image layer cache
-          command: |
-            mkdir -p /caches
-            docker save -o /caches/app.tar app-be
+      # - run:
+      #     name: Save Docker image layer cache
+      #     command: |
+      #       mkdir -p /caches
+      #       docker save -o /caches/app.tar app-be
 
-      - save_cache:
-          key: v1-{{ .Branch }}-{{ epoch }}
-          paths:
-            - /caches/app.tar
+      # - save_cache:
+      #     key: v1-{{ .Branch }}-{{ epoch }}
+      #     paths:
+      #       - /caches/app.tar
 
       - run:
           name: Push Image to docker hub
