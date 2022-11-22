@@ -5,6 +5,7 @@ import Layout from './layout/Layout';
 import Dashboard from './pages/Dashboard/Dashboard';
 import Error from './pages/Error/Error';
 import Login from './pages/Login/Login';
+import ForgotPassword from './pages/forgotPassword/ForgotPassword';
 import { GlobalStyle } from './theme/globalStyle';
 import { theme } from './theme/theme';
 
@@ -19,6 +20,7 @@ function App() {
 						<Route path='/*' element={<Error />} />
 					</Route>
 					<Route path='/login' element={<Login />} />
+					<Route path='/forgot_password' element={<ForgotPassword />} />
 				</Routes>
 			</BrowserRouter>
 		</ThemeProvider>
