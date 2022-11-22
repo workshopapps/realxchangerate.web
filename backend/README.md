@@ -1,18 +1,29 @@
 # BACKEND
 
-This project folder setup represents a microservice architecture
+## Getting Started
+
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+
+### Prerequisites
+
+You'll need `python@3.8` installed on your system to run the project.
+
 ## SETUP
 
 - Clone the repo
   `git clone https://github.com/workshopapps/realxchangerate.web.git`
 
-- Run: `git pull origin dev`
-
 - Checkout to the task branch `git checkout -b <NAME_OF_THE_TASK>`
 
-- change directory to the micro-service you are to work on `cd backend/<micro-service>`
+- Run: `git pull origin dev`
+
+- change directory to backend folder `cd backend`
 
 - Run the following commands
+
+### Installing
+
+Run the following command to install all the project dependencies.
 
 ```python
 # macOS and linuxOS
@@ -30,25 +41,32 @@ venv\Scripts\activate.bat
 # activate on Windows (PowerShell)
 venv\Scripts\Activate.ps1
 
-pip3 install -r requirements.txt 
+pip3 install -r requirements.txt
 
-uvicorn main:app --reload
+uvicorn app.main:app --reload
 
-# App starts on Go to http://127.0.0.1:8000
 ```
 
-## PUSHING YOUR CODE AND MAKING A PULL REQUEST
+### Running
 
-- Run: `./test_script.sh`. Make sure all tests pass.
+After all the above mentioned steps, you can start the application using the following command:
 
-- Run `git branch`. It should show that you are on your current branch
+```shell script
+uvicorn app.main:app --reload
+```
 
-- Run: `git add .`
+The application will be available at http://localhost:8000.
 
-- Run: `git commit -m "< COMMIT MESSAGE >"`
+## Development
 
-- Run: `git pull origin dev`
+These instructions will provide you some useful information on developing this application.
 
-- Run: `git push origin < BRANCH_NAME >`
+## Testing
 
-- Go to the repository and create a pull request.
+The application unit tests are inside the `app/tests` module.
+
+Run the following command in the terminal to execute the application unit tests.
+
+```shell script
+pytest app/tests
+```
