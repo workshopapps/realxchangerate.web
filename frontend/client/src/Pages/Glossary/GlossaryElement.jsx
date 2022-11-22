@@ -145,11 +145,20 @@ export const Search = styled.div`
   @media screen and (max-width: 834px) {
     max-width: 488px;
     height: 39px;
+    img {
+    }
   }
 
   @media screen and (max-width: 375px) {
     max-width: 253px;
     height: 27px;
+
+    img {
+      width: 15.83px;
+      height: 15.83px;
+      top: 1.67px;
+      left: 1.67px;
+    }
   }
 `;
 
@@ -172,7 +181,7 @@ export const Parent = styled.div`
     padding: 50px 17px;
   }
 `;
-//
+
 export const Box = styled.div`
   min-width: 243px;
   max-width: 243px;

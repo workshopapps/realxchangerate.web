@@ -1,7 +1,7 @@
 import React from 'react';
-import { Button, ButtonWrapper, Container, CurrencyContainer,Header, HorizontalRule, Option, Select, Text, TextHighlight } from './EnCurrenChStyles';
+import { Button, ButtonWrapper, Container, CurrencyContainer,Header, HorizontalRule,  Select, Text, TextHighlight } from './EnCurrenChStyles';
 import flag from '../assets/canada.svg'
-
+import CountrySort from '../../CountrySort'
 
 const EnCurrencyCh = ({display,color}) => {
   return (
@@ -15,24 +15,9 @@ const EnCurrencyCh = ({display,color}) => {
       <HorizontalRule />
       <TextHighlight>Change Currency</TextHighlight>
       <Container>
-        <Select name="" id="">
-          <Option value="">
-            {" "}
-            <img src={flag} alt="" style={{ width: "7%" }} /> CAD-canadian
-            Dollar
-          </Option>
-          <Option value="">
-            {" "}
-            <img src={flag} alt="" style={{ width: "7%" }} /> GEL-Georgian Lari
-          </Option>
-          <Option value="">
-            {" "}
-            <img src={flag} alt="" style={{ width: "7%" }} /> GGP-Guernsey Pound
-          </Option>
-          <Option value="">
-            {" "}
-            <img src={flag} alt="" style={{ width: "7%" }} /> GHS-Ghanaian Cedi
-          </Option>
+        <Select>
+          <CountrySort/>
+       
         </Select>
 
         <ButtonWrapper>

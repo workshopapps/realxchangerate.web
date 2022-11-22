@@ -11,15 +11,17 @@ export const Container = styled.div`
 
   @media screen and (min-width: 350px) and (max-width: 550px) {
     height: 325px;
-    width: 85%;
-    margin: 65px 0px 0px 10px;
+    width: 95%;
+    margin: 45px 15px 0px 15px;
   }
 `;
 export const Wrap = styled.span`
-  box-sizing: border-content;
+
   width: 100%;
   height: 471px;
+ padding: 10% 0  10% 0;
   align-items: center;
+  font-size:22px;
 
   @media screen and (min-width: 350px) (max-width: 550px) {
     height: 398px;

@@ -8,8 +8,6 @@ class RateBase(BaseModel):
     official_sell: float
     parallel_buy: float
     parallel_sell: float
-    last_updated: Any
-
 
 class RateCreate(RateBase):
     pass
@@ -17,6 +15,8 @@ class RateCreate(RateBase):
 
 class Rate(RateBase):
     id: int
-    currency_id: int
+    currency_id: Optional[int]
+    last_updated: Any
+    
     class Config:
         orm_mode = True

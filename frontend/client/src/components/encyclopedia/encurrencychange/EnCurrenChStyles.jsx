@@ -13,8 +13,9 @@ export const CurrencyContainer = styled.div`
     display: block;
     display: ${({ display }) => (!display ? "block" : "none")};
     height: 468px;
-    width: 90%;
-    margin: 60px 16px 54px 16px;
+    height: 325px;
+    width: 95%;
+    margin: 45px 15px 0px 15px;
   }
 `;
 export const Container = styled.div`
@@ -75,30 +76,11 @@ export const TextHighlight = styled.p`
   }
 `;
 
-export const Select = styled.select`
-  background: #f6faff;
-  opacity: 0.56;
-  border-radius: 4px;
-  height: 56px;
-  width: 32%;
-
-  @media screen and (max-width: 768px) {
-    height: 56px;
-  }
+export const Select = styled.div`
+ margin-top:5%;
 `;
 
-export const Option = styled.option`
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 20px;
-  color: #2f343f;
-  letter-spacing: 0.001em;
 
-  @media screen and (max-width: 768px) {
-  }
-`;
 
 export const Button = styled.button`
   background: #0062ff;

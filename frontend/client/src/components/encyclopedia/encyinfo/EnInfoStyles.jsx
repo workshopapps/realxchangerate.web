@@ -4,13 +4,13 @@ export const CurrencyContainer = styled.div`
   height: 514px;
   align-items: left;
   background: #00296b;
-  display:flex;
-  justify-content:space-between;
-  padding: 58px 0px 58px 0px ;
+  display: flex;
+  justify-content: space-between;
+  padding: 58px 0px 58px 0px;
 
-  @media screen and (min-width:350px) and (max-width: 550px) {
+  @media screen and (min-width: 350px) and (max-width: 550px) {
     height: 263px;
-   
+    padding: 8px 0px 8px 0px;
   }
 `;
 
@@ -23,12 +23,12 @@ export const Header = styled.h1`
   line-height: 40px;
   height: 80px;
   color: #ffffff;
-  // background-color:red;
+
   padding: 190px 0px 225px 5%;
   width: 30%;
 
   @media screen and (min-width: 350px) and (max-width: 800px) {
-    padding: 65px 0px 66px 16px;
+    padding: 45px 0px 66px 16px;
     width: 60%;
   }
 `;

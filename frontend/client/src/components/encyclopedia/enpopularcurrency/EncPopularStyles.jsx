@@ -8,7 +8,7 @@ export const CurrencyContainer = styled.div`
   background: #e6efff;
 
   @media screen and (max-width: 768px) {
-    height: 832px;
+    height: 362px;
   }
 `;
 
@@ -23,8 +23,7 @@ export const CurrencyWrapper = styled.div`
     display: grid;
     grid-template-columns: auto auto auto;
     grid-template-rows: auto auto auto;
-    // background-color: red;
-    margin: 0px;
+   
   }
 `;
 
@@ -47,14 +46,7 @@ export const Header = styled.h1`
 
 
 
-export const ImageWrapper = styled.div`
-  height: 470px;
-  width: 50%;
-  margin: 22px 41.07 22px 0px;
-  @media screen and (max-width: 768px) {
-    padding: 1em;
-  }
-`;
+
 export const Text = styled.p`
   font-family: "Inter";
   font-style: normal;
@@ -63,6 +55,9 @@ export const Text = styled.p`
   line-height: 20px;
   letter-spacing: 0.001em;
   color: #2f343f;
+  margin-top:35px;
+
+  
 
   @media screen and (max-width: 768px) {
 
@@ -71,11 +66,24 @@ export const Text = styled.p`
   }
 `;
 
-export const Image = styled.img`
-  height: 50px;
-  width: 80%;
-
+export const ImageCont = styled.div`
+  height: 30px;
+  width: 70px;
+ 
+ 
   @media screen and (max-width: 768px) {
-    width: 80%;
+    padding: 1em;
   }
+`;
+
+export const ImageWrapper = styled.div`
+  margin: 22px 41.07px 22px 0px;
+  @media screen and (max-width: 768px) {
+    margin: 12px 41.07px 0px 0px;
+  }
+`;
+
+export const Image = styled.img`
+
+  width: 100%;
 `;
