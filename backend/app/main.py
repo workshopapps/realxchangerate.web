@@ -2,7 +2,8 @@ import uvicorn
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from .api.v1 import getcurrency
+
+# from .api.v1 import getcurrency
 from app.api.v1 import api_router
 from app.core import settings
 
@@ -24,7 +25,7 @@ app.add_middleware(
 )
 
 app.include_router(api_router, prefix=settings.API_V1_STR)
-app.include_router(getcurrency.router)
+# app.include_router(getcurrency.router)
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
