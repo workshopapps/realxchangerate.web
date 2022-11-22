@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import unittest
 
-from api.deps import get_location, validate_ip
+from app.api.deps import get_location, validate_ip
 
 """Unit tests for get_location_currency module"""
 

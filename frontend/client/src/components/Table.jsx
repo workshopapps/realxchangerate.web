@@ -5,7 +5,10 @@ import { CountrySort } from ".";
 
 const Table = () => {
   const Table = styled.div`
-    padding: 0px 80px;
+    padding: 0px 20px;
+    max-width: 1440px;
+    margin: auto;
+    margin-top: 40px;
 
     table {
       border-spacing: 0px;
@@ -211,7 +214,7 @@ const Table = () => {
           </tbody>
         </table>
       </Table>
-      <Bottom>
+      <Bottom style={{ maxWidth: "1440px", margin: "auto" }}>
         <div>
           <div>
             <AddCircle size={32} variant="Bold" color="#0062ff" />
