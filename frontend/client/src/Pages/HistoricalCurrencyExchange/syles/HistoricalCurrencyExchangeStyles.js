@@ -1,4 +1,8 @@
 import styled from "styled-components";
+import { buttonUnstyledClasses } from '@mui/base/ButtonUnstyled';
+import TabUnstyled, { tabUnstyledClasses } from '@mui/base/TabUnstyled';
+import {blue} from "../constants"
+import TabsListUnstyled from '@mui/base/TabsListUnstyled';
 
 export const currencyImage = styled.div`
 display:flex;
@@ -127,3 +131,48 @@ export const MobileViewWrapper = styled.table`
     font-size:18px;
   }
 `
+
+export const NewTab = styled(TabUnstyled)`
+  font-family: Inter, sans-serif;
+  color: #64748b;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 600;
+  background-color: transparent;
+  width: 100%;
+  padding: 10px 12px;
+  margin: 6px 6px;
+  border: none;
+  border-radius: 7px;
+  display: flex;
+  justify-content: center;
+
+  &:hover {
+    background-color: ${blue[400]};
+  }
+
+  &:focus {
+    color: #fff;
+  }
+
+  &.${tabUnstyledClasses.selected} {
+    background-color: #fff;
+    color: ${blue[600]};
+  }
+
+  &.${buttonUnstyledClasses.disabled} {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+`;
+
+export const TabsList = styled(TabsListUnstyled)`
+  min-width: 400px;
+  background-color: ${blue[400]};
+  border-radius: 12px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: space-between;
+`;

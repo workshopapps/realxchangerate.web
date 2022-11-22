@@ -63,7 +63,7 @@ const NavComponent = () => {
           <img src={DownArrow} alt="arrow" />
         </Box>
 
-        <Link to="/" color="inherit">
+        <Link to="/" color="#94A3B8">
           Home
         </Link>
 
@@ -71,7 +71,7 @@ const NavComponent = () => {
           Convert
         </Link>
 
-        <Link to="#" color="inherit">
+        <Link to="/#" color="inherit">
           Currency Profile
         </Link>
 

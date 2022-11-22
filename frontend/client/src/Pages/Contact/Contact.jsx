@@ -64,9 +64,11 @@ const Contact = () => {
         <Stack
           sx={{
             maxWidth: { xs: "90%", sm: "470px", md: "589px" },
-            margin: { xs: "30px auto", sm: "60px auto" },
+            margin: { xs: "30px auto", sm: "60px 0px" },
             gap: { xs: "32px" },
           }}
+          alignItems="flex-start"
+          display="flex"
           direction="column"
         >
           <Typography
@@ -83,7 +85,7 @@ const Contact = () => {
 
           <Typography
             sx={{
-              fontSize: { xs: "14px", md: "16.5px" },
+              fontSize: { xs: "14px", md: "16px" },
               lineHeight: { xs: "17px", md: "24px" },
               fontWeight: { xs: "400" },
               width: { xs: "100%", sm: "425px", md: "507px" },

@@ -52,7 +52,7 @@ const ContactForm = () => {
       direction="column"
       sx={{
         gap: { xs: "24px", sm: "20px", md: "24px" },
-        maxWidth: { xs: "100%", sm: "327px", md: "375px" },
+        minWidth: { xs: "100%", sm: "327px", md: "375px" },
       }}
     >
       <Stack direction="column" letterSpacing="0.001em" gap="5px">
