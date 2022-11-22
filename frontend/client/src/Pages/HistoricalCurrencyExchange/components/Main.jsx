@@ -7,7 +7,7 @@ const MainComponent = ({ data }) => {
     return (
       <Box
         marginTop="44px"
-        width='80%'
+        width='100%'
         flexDirection='column'
         alignItems='center'
         padding='0px'

@@ -18,8 +18,9 @@ flex-direction:row;
 export const TopComponentWrapper = styled.section`
   display: flex;
   flex-direction: row;
-  width: 80%;
+  width: 84%;
   justify-content:center;
+  align-items:center;
   @media (max-width: 765px){
     align-items:center;
     padding-left: 16px;
