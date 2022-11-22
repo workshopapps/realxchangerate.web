@@ -20,7 +20,7 @@ export const CurrencyContainer = styled.div`
 
 export const Container = styled.div`
   box-sizing: border-content;
-  padding-left: 200px;
+  padding-left: 150px;
 
   @media screen and (min-width: 350px) and (max-width: 550px) {
     padding-left: 10px;

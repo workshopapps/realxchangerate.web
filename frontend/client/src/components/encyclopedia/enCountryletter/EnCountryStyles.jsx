@@ -58,8 +58,8 @@ export const CounrtryOptionWrapper = styled.div`
 export const Redirect = styled(LinkR)`
  
   text-decoration: none;
-  align-items: center;
-  
+  align-items: center;           
+
   cursor: pointer;
   &:hover {
     color: #00000f;
@@ -153,10 +153,9 @@ export const CountryCurrencyWrapper = styled.div`
 
   @media screen and (min-width: 350px) and (max-width: 550px) {
     height: 60px;
-    padding: 1em;
+    padding: 0px 0px 0px 10px;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
-    padding-bottom: 86px;
     overflow: hidden;
   }
 `;
