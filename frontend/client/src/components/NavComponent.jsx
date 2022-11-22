@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import DrawerComponent from "./Drawer";
 import { Link } from "react-router-dom";
 import { DownArrow, NavFlag, MenuIcon } from "../assets/index";
+// import { NavWrapper } from "./styles/NavBar.styled";
 
 const NavComponent = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,14 +17,13 @@ const NavComponent = () => {
       sx={{
         minHeight: { xs: "56px", sm: "100px" },
         justifyContent: { xs: "space-between" },
-        maxWidth: {xs:"90%", lg: "84%" },
+        maxWidth: { xs: "90%", lg: "84%" },
       }}
       minHeight="100px"
       display="flex"
       margin="0px auto"
       padding="0px"
       flexDirection="row"
-     
     >
       <Grid display="flex" justifyContent="center" alignItems="center">
         <Typography

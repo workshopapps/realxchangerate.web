@@ -33,10 +33,12 @@ const grey = {
 const StyledButton = styled("button")(
   ({ theme }) => `
   font-family: IBM Plex Sans, sans-serif;
-  font-size: 0.875rem;
+  
+  font-size:16px
   box-sizing: border-box;
   min-height: calc(1.5em + 22px);
-  min-width: 320px;
+  // min-width: 320px;
+  margin:20px;
   display: flex;
   padding: 12px;
   justify-content: space-between;
@@ -90,7 +92,6 @@ const StyledListbox = styled("ul")(
   box-sizing: border-box;
   padding: 6px;
   margin: 12px 0;
-  min-width: 320px;
   border-radius: 5px;
   overflow: auto;
   outline: 0px;
@@ -109,6 +110,7 @@ const StyledOption = styled(OptionUnstyled)(
   padding: 8px;
   border-radius: 5px;
   cursor: default;
+  
   
 
   &:last-of-type {

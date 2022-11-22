@@ -63,13 +63,7 @@ const CardWrapper = styled.section`
       line-height: 1.1rem;
       text-align: center;
     }
-
-    // @media (min-width: 700px){
-    //     .card-wrapper {
-    //         grid-template-columns: 1fr 1fr;
-    //       }
-    // }
-
+  }
 `;
 
 export default CardWrapper;

@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 export const NavWrapper = styled.div`
-  position: sticky;
+  /* position: sticky; */
   width: 100%;
   top: 0px;
-  height: 75px;
+  /* height: 70px; */
   padding-bottom: 10px;
   background-color: white;
   box-shadow: 1px 1px 2px 2px #a29d9d33;
@@ -13,5 +13,8 @@ export const NavWrapper = styled.div`
 
   .push {
     padding-bottom: 30px;
+    @media screen and (max-width: 768px) {
+      padding-top: 15px;
+    }
   }
 `;

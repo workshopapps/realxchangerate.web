@@ -26,7 +26,7 @@ export const StyledLayout = styled.div`
     }
 
 
-    @media screen and (max-width: 375px) {
+    @media screen and (max-width: 768px) {
         grid-template-columns: 1fr;
         /* grid-template-rows: 120px 1fr; */
         grid-template-areas:
