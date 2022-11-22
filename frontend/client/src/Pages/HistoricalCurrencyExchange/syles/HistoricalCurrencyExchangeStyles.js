@@ -90,9 +90,9 @@ justify-content:right;
 }
 .convert{
   height:44px;
-  width:300px;
-  @media (max-width:765px){
-     width:250px;
+  width:320px;
+  @media (max-width:450px){
+     width:300px;
 }
 }
 .arrow{
