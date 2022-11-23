@@ -9,6 +9,7 @@ const Experts = () => {
     <StyledExperts>
       <div className="expert-profile">
         {/* expert image, name and title */}
+        <h1>Street Rates Currency Experts</h1>
         <img src={ExpertImage} alt="expert" />
         <h1>Sotonye Briggs</h1>
         <h3>Strategic Partnerships</h3>
