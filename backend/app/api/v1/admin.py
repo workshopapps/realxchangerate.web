@@ -3,6 +3,8 @@ from app import schemas, models
 
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
+from app.models.rate import Rate
+from app.models.currency import Currency
 
 from app import schemas, crud
 from app.api.deps import get_db
@@ -10,6 +12,7 @@ from .auth import get_current_active_user
 
 router = APIRouter()
 
+<<<<<<< HEAD
 @router.post("/create/", response_model=schemas.Admin)
 def create_admin(*,db: Session = Depends(get_db), admin_in: schemas.AdminCreate) -> Any:
     """
@@ -37,3 +40,18 @@ async def create_currency(*,db: Session = Depends(get_db), currency_in: schemas.
 async def currencies(user = Depends(get_current_active_user)):
     return get_currencies()
 
+=======
+# @router.post("/add_currency")
+# def add_currency(isocode, db:Session = Depends(get_db)):
+
+
+@router.post("/add_currency")
+def post_currency(
+    *, db: Session = Depends(get_db), currency_in: schemas.CurrencyCreate
+) -> Any:
+    """
+    Create a new currency.
+    """
+    c = crud.currency.create(db, obj_in=currency_in)
+    return c
+>>>>>>> 8b430694981b7b817865668558bdf4f26d748c3f
