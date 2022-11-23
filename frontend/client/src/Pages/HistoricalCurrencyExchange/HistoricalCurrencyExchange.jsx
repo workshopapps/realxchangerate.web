@@ -18,7 +18,6 @@ const HistoricalCurrencyExchange = () => {
 };
 
 import styled from 'styled-components';
-import React from "react"
 import {
   TopComponentWrapper,
 } from './syles/HistoricalCurrencyExchangeStyles';
