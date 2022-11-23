@@ -9,8 +9,7 @@ from passlib.context import CryptContext
 from datetime import datetime, timedelta
 from ..deps import get_db
 
-import models
-import schemas
+from app import models, schemas
 
 SECRET_KEY = "c1b18fcda0e581be52b8b33641392b7c92e43d523a5d8c72633fa24af92eb5df"
 ALGORITHM = "HS256"

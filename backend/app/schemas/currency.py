@@ -4,6 +4,7 @@ from pydantic import BaseModel
 from .rate import Rate
 
 
+
 class CurrencyBase(BaseModel):
     country: str
     isocode: str

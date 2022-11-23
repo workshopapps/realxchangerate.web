@@ -4,7 +4,7 @@ from fastapi.encoders import jsonable_encoder
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
-from database.base_class import Base
+from app.database.base_class import Base
 
 ModelType = TypeVar("ModelType", bound=Base)
 CreateSchemaType = TypeVar("CreateSchemaType", bound=BaseModel)
@@ -50,7 +50,12 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
         return db_obj
 
     def remove(self, db: Session, *, model_id: int) -> ModelType:
+
         obj = db.query(self.model).get(model_id)
+
+        if obj is None:
+            return None
+
         db.delete(obj)
         db.commit()
         return obj

@@ -1,6 +1,7 @@
 import { ArrangeHorizontal } from "iconsax-react";
 import React from "react";
 import styled from "styled-components";
+import scanImage from "../assets/scan-image.png";
 
 const Hero = () => {
   const Wrapper = styled.div`
@@ -33,7 +34,7 @@ const Hero = () => {
   `;
 
   const Container1 = styled.div`
-    width: 40%;
+    max-width: 600px;
     margin-right: 10px;
 
     h5 {
@@ -236,11 +237,7 @@ const Hero = () => {
           normal valid equity.
         </p>
         <div>
-          <img src="/qr.svg" alt="" />
-          <img src="/arrow.svg" alt="" />
-          <p>
-            Scan to <br /> Download <br /> Streerates
-          </p>
+          <img src={scanImage} />
         </div>
         <div className="download">
           <a href="#!">

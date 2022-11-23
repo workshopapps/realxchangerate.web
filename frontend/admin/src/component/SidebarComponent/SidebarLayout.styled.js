@@ -12,7 +12,7 @@ export const StyledSidebarWrapper = styled.div`
 
     height: 100vh;
 
-    @media (max-width: 375px) {
+    @media (max-width: 768px) {
         display: none;
     }
 `;

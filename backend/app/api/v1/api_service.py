@@ -1,13 +1,13 @@
 from datetime import datetime
-from models import Rate, Currency
+from app.models import Rate, Currency
 import logging
 from typing import Any
 
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
-from api.deps import get_db
-from utils import get_binancep2p_rate, format_binance_response_data, make_official_rate_request
+from app.api.deps import get_db
+from app.utils import get_binancep2p_rate, format_binance_response_data, make_official_rate_request
 
 router = APIRouter()
 

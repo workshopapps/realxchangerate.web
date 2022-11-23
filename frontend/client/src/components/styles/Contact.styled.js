@@ -14,7 +14,7 @@ export const HeroSection = styled.div`
   background: url("/assets/png/contact-bg-mobile.png") center/cover;
   min-height: 343px;
   min-height: 298px;
-  margin: 2rem 0;
+  margin: 32px 0;
   width: 100%;
   display: flex;
   align-items: center;
@@ -48,8 +48,8 @@ export const HeroSection = styled.div`
 export const Flex = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 3.5rem;
-  margin-bottom: 4.5rem;
+  gap: 56px;
+  margin-bottom: 72px;
 
   @media (min-width: 768px) {
     flex-direction: row;
@@ -89,8 +89,8 @@ export const FormSection = styled.div`
   }
   h2 {
     font-weight: 500;
-    font-size: 1.5rem;
-    margin-bottom: 1.25rem;
+    font-size: 24px;
+    margin-bottom: 19px;
   }
 
   p {
@@ -99,10 +99,10 @@ export const FormSection = styled.div`
   }
 
   form {
-    margin-top: 1.5rem;
+    margin-top: 24px
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 24px;
     font-size: 14px;
     width: 100%;
 
@@ -136,7 +136,7 @@ export const FormSection = styled.div`
       width: 60%;
       color: #fafafa;
       margin-top: 1rem;
-      font-size: 1.125rem;
+      font-size: 18px;
       font-weight: 600;
       border-radius: 5px;
       border: none;
@@ -174,7 +174,7 @@ export const FormSection = styled.div`
       font-size: 40px;
     }
     p {
-      font-size: 1rem;
+      font-size: 16px;
     }
 
     form {
@@ -194,7 +194,7 @@ export const ContactInfoStyle = styled.div`
   margin: 0 -1rem;
 
   h3 {
-    font-size: 1.25rem;
+    font-size: 20px;
     font-weight: 500;
   }
 
@@ -233,7 +233,7 @@ export const ContactInfoStyle = styled.div`
     width: 40%;
 
     .contact-details {
-      padding-bottom: 4.6875rem;
+      padding-bottom:75px;
 
       div {
         margin-top: 1.5625rem;
@@ -267,6 +267,7 @@ export const ContactInfoStyle = styled.div`
 
       p {
         margin: 20px 0 32px;
+     
       }
 
       a {
@@ -282,7 +283,7 @@ export const ContactInfoStyle = styled.div`
 
     .contact-details div > span,
     .social-media p {
-      font-size: 1rem;
+      font-size: 16px;
     }
   }
 `;

@@ -5,7 +5,7 @@ import asyncio
 from typing import Any, Dict, List, Optional
 import aiohttp
 import requests
-from schemas import BinanceRequestSchema, BinanaceResponseSchema
+from app.schemas import BinanceRequestSchema, BinanaceResponseSchema
 
 binancep2p_endpoint = "https://p2p.binance.com/bapi/c2c/v2/friendly/c2c/adv/search"
 official_rate_endpoint = 'https://api.exchangerate.host/latest'

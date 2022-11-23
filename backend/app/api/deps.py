@@ -7,7 +7,7 @@ from typing import Generator
 
 import requests
 
-from database.session import SessionLocal
+from app.database.session import SessionLocal
 
 """
     This module defines the app dependencies.

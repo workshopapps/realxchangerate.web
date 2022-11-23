@@ -1,4 +1,4 @@
-from typing import List, Union
+from typing import List, Union, Optional
 
 from pydantic import BaseModel
 
@@ -17,3 +17,6 @@ class Admin(AdminBase):
 
     class Config:
         orm_mode = True
+
+class AdminUpdate(AdminBase):
+    password: Optional[str] = None
