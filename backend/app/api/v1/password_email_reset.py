@@ -18,6 +18,7 @@ from sqlalchemy.orm import Session
 from app.api.v1 import password_email_reset
 from typing import List
 from app.email_util.email_utils import random
+from app.crud import admin
 
 
 class EmailSchema(BaseModel):
@@ -82,9 +83,11 @@ def authenticate_token(token: TokenSChema):
     else:
         return "message: Invalid Token"
 
-@router.get("/dashboard")
-def dashboard():
-    return "message: Welcome to your dashboard!"
+@router.get("/reset_password")
+def reset_password():
+      admin.update()
+      admin.authenticate()
+      return "message: Welcome to your dashboard!"
 
     
 
