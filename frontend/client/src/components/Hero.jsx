@@ -2,8 +2,27 @@ import { ArrangeHorizontal } from "iconsax-react";
 import React from "react";
 import styled from "styled-components";
 import scanImage from "../assets/scan-image.png";
+import { noWCommas } from "../utils";
 
 const Hero = () => {
+  const [rates, setRates] = React.useState({});
+  const [convert, setconvert] = React.useState(1);
+  const endpoint =
+    process.env.NODE_ENV === "development"
+      ? "http://localhost:8000/api/rate/NGN"
+      : process.env.NODE_ENV === "production"
+      ? "https://my-second-app-dot-wise-philosophy-348109.oa.r.appspot.com/api/rate/NGN"
+      : "";
+  React.useEffect(() => {
+    const fetchRates = async () => {
+      const response = await fetch(endpoint);
+      const data = await response.json();
+      return data;
+    };
+    fetchRates().then((ratesData) => {
+      setRates(ratesData.data.rate);
+    });
+  }, [endpoint]);
   const Wrapper = styled.div`
     display: flex;
     justify-content: space-between;
@@ -249,37 +268,73 @@ const Hero = () => {
         </div>
       </Container1>
       <Container2>
-        <h3>Select a currency</h3>
+        {/* <h3>Select a currency</h3> */}
+        <Rate className="rate">
+          <div>
+            At the the parallel market,{" "}
+            <span className="convert"> {convert} </span>USD is
+          </div>
+          <div>
+            {" "}
+            <span className="rate">
+              {" "}
+              {noWCommas((rates.parallel_buy * Number(convert)).toFixed(2))}
+            </span>{" "}
+            <span> NGN</span>
+          </div>
+        </Rate>
         <form action="">
           <div className="amount">
             <label htmlFor="amount">Amount</label>
             <input
-              type="text"
+              type="number"
               name="amount"
               id="amount"
               placeholder="Enter amount"
+              value={convert}
+              onChange={(e) => setconvert(e.target.value)}
             />
           </div>
           <div className="currency">
             <select name="currency" id="currency1">
-              <option selected>Select a currency</option>
+              <option selected>USD</option>
               <option value="NG">Naira</option>
               <option value="NG">Naira</option>
               <option value="NG">Naira</option>
             </select>
             <ArrangeHorizontal size="32" color="#00296B" />
             <select name="currency" id="currency1">
-              <option selected>Select a currency</option>
+              <option selected>Naira</option>
               <option value="NG">Naira</option>
               <option value="NG">Naira</option>
               <option value="NG">Naira</option>
             </select>
           </div>
-          <button type="submit">Convert</button>
+          <button onClick={(e) => e.preventDefault()}>Convert</button>
         </form>
       </Container2>
     </Wrapper>
   );
 };
-
+const Rate = styled.div`
+  font-size: 1.7rem;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .rate,
+  .convert {
+    color: #0062ff;
+    font-weight: 700;
+  }
+  .rate {
+    font-size: 4rem;
+    order: 1 !important;
+  }
+  .convert {
+    font-size: 2.5rem;
+    order: 2 !important;
+  }
+`;
 export default Hero;
