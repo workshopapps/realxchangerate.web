@@ -228,14 +228,15 @@ const Country = ({name,image}) => {
 
 }
 
-const TopComponent = () => {
-  return (
-    <TopComponentWrapper>
-      <Calender />
-      <Converter />
-    </TopComponentWrapper>
-  );
-};
+// const 
+// Component = () => {
+//   return (
+//     <TopComponentWrapper>
+//       <Calender />
+//       <Converter />
+//     </TopComponentWrapper>
+//   );
+// };
 function createData(country, bank_rates, parallel_rates) {
     return { country, bank_rates, parallel_rates};
   }
