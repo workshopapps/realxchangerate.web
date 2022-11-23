@@ -44,7 +44,7 @@ const Hero = () => {
       gap: 48px;
       padding: 0 20px;
       & :first-child {
-        order: 1;
+        /* order: 1; */
       }
       & :last-child {
         width: 80%;
