@@ -12,9 +12,9 @@ from .auth import get_current_active_user
 
 router = APIRouter()
 
-<<<<<<< HEAD
+
 @router.post("/create/", response_model=schemas.Admin)
-def create_admin(*,db: Session = Depends(get_db), admin_in: schemas.AdminCreate) -> Any:
+def create_admin(*, db: Session = Depends(get_db), admin_in: schemas.AdminCreate) -> Any:
     """
     Create Admin
     """
@@ -27,20 +27,22 @@ def create_admin(*,db: Session = Depends(get_db), admin_in: schemas.AdminCreate)
     admin = crud.admin.create(db, obj_in=admin_in)
     return admin
 
+
 @router.post("/create/currency/", response_model=List[schemas.Currency])
-async def create_currency(*,db: Session = Depends(get_db), currency_in: schemas.CurrencyCreate, current_admin: models.Admin = Depends(get_current_active_user)) -> Any:
+async def create_currency(*, db: Session = Depends(get_db), currency_in: schemas.CurrencyCreate, current_admin: models.Admin = Depends(get_current_active_user)) -> Any:
     """
     Create new currency
     """
     currency = crud.currency.create(db=db, obj_in=currency_in)
     return currency
 
-#authenticates that the admin is logged in then returns all the currencies in the database with the get_currencies function
+# authenticates that the admin is logged in then returns all the currencies in the database with the get_currencies function
+
+
 @router.get("/currencies", response_model=List[schemas.Currency])
-async def currencies(user = Depends(get_current_active_user)):
+async def currencies(user=Depends(get_current_active_user)):
     return get_currencies()
 
-=======
 # @router.post("/add_currency")
 # def add_currency(isocode, db:Session = Depends(get_db)):
 
@@ -54,4 +56,3 @@ def post_currency(
     """
     c = crud.currency.create(db, obj_in=currency_in)
     return c
->>>>>>> 8b430694981b7b817865668558bdf4f26d748c3f
