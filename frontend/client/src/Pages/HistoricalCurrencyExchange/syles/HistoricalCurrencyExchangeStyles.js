@@ -1,11 +1,8 @@
 import styled from "styled-components";
-<<<<<<< HEAD
 import { buttonUnstyledClasses } from '@mui/base/ButtonUnstyled';
 import TabUnstyled, { tabUnstyledClasses } from '@mui/base/TabUnstyled';
 import {blue} from "../constants"
 import TabsListUnstyled from '@mui/base/TabsListUnstyled';
-=======
->>>>>>> 768f3c9a05590d3815b19a87f2b5bad6a61a9a03
 
 export const currencyImage = styled.div`
 display:flex;
@@ -21,14 +18,9 @@ flex-direction:row;
 export const TopComponentWrapper = styled.section`
   display: flex;
   flex-direction: row;
-<<<<<<< HEAD
   width: 84%;
   justify-content:center;
   align-items:center;
-=======
-  width: 80%;
-  justify-content:center;
->>>>>>> 768f3c9a05590d3815b19a87f2b5bad6a61a9a03
   @media (max-width: 765px){
     align-items:center;
     padding-left: 16px;

@@ -1,10 +1,7 @@
 import { ArrangeHorizontal } from "iconsax-react";
 import React from "react";
 import styled from "styled-components";
-<<<<<<< HEAD
 import scanImage from "../assets/scan-image.png";
-=======
->>>>>>> 768f3c9a05590d3815b19a87f2b5bad6a61a9a03
 import { noWCommas } from "../utils";
 
 const Hero = () => {
