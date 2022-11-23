@@ -29,7 +29,7 @@ import TabsListUnstyled from '@mui/base/TabsListUnstyled';
 import TabPanelUnstyled from '@mui/base/TabPanelUnstyled';
 import { buttonUnstyledClasses } from '@mui/base/ButtonUnstyled';
 import TabUnstyled, { tabUnstyledClasses } from '@mui/base/TabUnstyled';
-import { Box, Typography, } from '@mui/material';
+import { Typography } from '@mui/material';
 import { MobileViewWrapper } from './syles/HistoricalCurrencyExchangeStyles';
 import flag1 from "./images/Flag1.png"
 import arrow from "./images/arrow.png"
