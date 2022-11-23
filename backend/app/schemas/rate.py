@@ -11,6 +11,13 @@ class RateBase(BaseModel):
     last_updated: Any
 
 
+class RateUpdate(BaseModel):
+    official_buy: float
+    official_sell: float
+    parallel_buy: float
+    parallel_sell: float
+
+
 class RateCreate(RateBase):
     pass
 
