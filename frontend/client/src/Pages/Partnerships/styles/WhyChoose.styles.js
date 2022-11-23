@@ -1,36 +1,58 @@
 import styled from "styled-components";
 
 export const StyledWhyChoose = styled.section`
-  padding: 30px 0 200px;
+  padding: 30px 0 100px;
+  max-width: 1440px;
+  margin: 0 auto;
 
   .header {
     text-align: center;
-    font-size: 2.1rem;
+    font-size: 28px;
+    font-weight: 700px;
+    margin-bottom: 40px;
+    width: 100%;
 
     @media screen and (max-width: 480px) {
-      font-size: 1.8rem;
+      font-size: 25px;
+      width: 85%;
+      margin: 0 auto 40px;
     }
   }
 
   .WhyContainer {
-    margin-top: 100px;
     display: flex;
+    width: 90%;
+    max-width: 1440px;
+    margin: 0 auto;
     justify-content: space-around;
+    flex-wrap: wrap;
   }
 
   .listDiv {
-    flex-basis: 350px;
+    width: 30%;
     display: flex;
+    align-items: center;
+    text-align: center;
     flex-direction: column;
-    gap: 15px;
+    gap: 30px;
+    margin-top: 15px;
+
+    & h2 {
+      font-size: 25px;
+      font-weight: 700px;
+
+      @media screen and (max-width: 480px) {
+        font-size: 23px;
+      }
+    }
 
     & p {
       margin-top: 5px;
-      font-size: 1.5rem;
+      font-size: 23px;
       line-height: 1.5;
 
       @media screen and (max-width: 480px) {
-        font-size: 1.2rem;
+        font-size: 18px;
       }
     }
   }
@@ -40,20 +62,13 @@ export const StyledWhyChoose = styled.section`
 
     .WhyContainer {
       flex-direction: column;
-      gap: 30px;
+      gap: 15px;
       width: 80%;
-      margin: 40px auto 0;
+      margin: 0 auto;
     }
 
     .listDiv {
-      align-items: center;
-      text-align: center;
-    }
-  }
-
-  @media screen and (max-width: 500px) {
-    .header {
-      width: 80%;
+      width: 90%;
       margin: 0 auto;
     }
   }
