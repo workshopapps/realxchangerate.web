@@ -14,7 +14,6 @@ class AdminCreate(AdminBase):
 class Admin(AdminBase):
     id: int
     is_active: bool
-    token: str
 
     class Config:
         orm_mode = True

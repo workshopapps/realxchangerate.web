@@ -9,5 +9,4 @@ class Admin(Base):
     email = Column(String, unique=True, index=True)
     password = Column(String)
     is_active = Column(Boolean, default=True)
-    token = Column(String, default="")
 

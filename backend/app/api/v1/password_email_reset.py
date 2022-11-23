@@ -9,13 +9,14 @@ from starlette.responses import JSONResponse
 import os
 from decouple import config
 from fastapi import FastAPI, Depends, HTTPException
+from app.schemas.admin import AdminUpdate, AdminCreate
 from fastapi_mail import FastMail, MessageSchema,ConnectionConfig
 from starlette.requests import Request
 from pydantic import EmailStr, BaseModel
 from app import schemas, crud
 from app.api.deps import get_db
 from sqlalchemy.orm import Session
-from app.api.v1 import password_email_reset
+
 from typing import List
 from app.email_util.email_utils import random
 from app.crud import admin
@@ -40,7 +41,7 @@ conf = ConnectionConfig(
 
 router = APIRouter()
 
-code = random(6)
+# code = random(6)
 
 @router.post("/forgot_password")
 async def sending_mail(email: EmailSchema, admin_in: schemas.AdminCreate, db: Session = Depends(get_db)):
@@ -70,23 +71,18 @@ async def sending_mail(email: EmailSchema, admin_in: schemas.AdminCreate, db: Se
 
     fm = FastMail(conf)
     try:   
-        await fm.send_message(message, {'code' : f'{code}'})
+        await fm.send_message(message)
     except:
         return 'message: Your connection is not secure!'
     
     return JSONResponse(status_code=200, content={"message": "email has been sent"}) 
 
-@router.post("/auth/token", status_code=302)
-def authenticate_token(token: TokenSChema):
-    if token == code:
-        return "message: logged in"
-    else:
-        return "message: Invalid Token"
 
-@router.get("/reset_password")
+
+@router.post("/reset_password")
 def reset_password():
-      admin.update()
-      admin.authenticate()
+      admin.update(AdminUpdate)
+      admin.authenticate(AdminCreate)
       return "message: Welcome to your dashboard!"
 
     
