@@ -28,27 +28,8 @@ router = APIRouter()
 #     return admin
 
 
-# @router.post("/create/currency/", response_model=List[schemas.Currency])
-# async def create_currency(*, db: Session = Depends(get_db), currency_in: schemas.CurrencyCreate, current_admin: models.Admin = Depends(get_current_active_user)) -> Any:
-#     """
-#     Create new currency
-#     """
-#     currency = crud.currency.create(db=db, obj_in=currency_in)
-#     return currency
-
-# # authenticates that the admin is logged in then returns all the currencies in the database with the get_currencies function
-
-
-# @router.get("/currencies", response_model=List[schemas.Currency])
-# async def currencies(user=Depends(get_current_active_user)):
-#     return get_currencies()
-
-# # @router.post("/add_currency")
-# # def add_currency(isocode, db:Session = Depends(get_db)):
-
-
 @router.post("/add_currency")
-def post_currency(
+def add_currency(
     *, db: Session = Depends(get_db), currency_in: schemas.CurrencyCreate
 ) -> Any:
     """
@@ -69,11 +50,10 @@ def add_Rate(*, db: Session = Depends(get_db), rate_in: schemas.RateCreate) -> A
 
 @router.post("/delete_currency")
 def delete_currency(*, db: Session = Depends(get_db), isocode: str):
-    """[delete currency]
+    """delete currency and all associated rates
 
     Args:
-        isocode (str): [country isocode]
-        db (Session, optional): [description]. Defaults to Depends(get_db).
+        isocode (str): country isocode
     """
     currency = crud.currency.delete_currency_by_isocode(db, isocode=isocode)
     return currency
@@ -81,11 +61,10 @@ def delete_currency(*, db: Session = Depends(get_db), isocode: str):
 
 @router.post("/delete_rate")
 def delete_rate(*, db: Session = Depends(get_db), rate_id: int):
-    """[delete rate]
+    """delete selected rate
 
     Args:
-        rate_id (int): [rate id]
-        db (Session, optional): [description]. Defaults to Depends(get_db).
+        rate_id (int): rate id
     """
     rate = crud.rate.remove(db, model_id=rate_id)
-    return rate
+    return {"status": True, "message": "rate deleted!"}
