@@ -58,7 +58,7 @@ const Footer = () => {
               Careers
             </Link>
             <Link href="/#/partnerships" color="inherit">
-              Patnerships
+              Partnerships
             </Link>
             <Link href="/#/teams" color="inherit">
               Meet the team
@@ -295,7 +295,7 @@ const Footer = () => {
             Items={[
               "About Us",
               "Careers",
-              "Patnerships",
+              "Partnerships",
               "Meet the team",
               "Press",
               "Board of directors",

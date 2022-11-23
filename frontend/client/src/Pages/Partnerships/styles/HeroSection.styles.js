@@ -6,7 +6,7 @@ export const Button = styled.button`
   padding: 10px ${(props) => props.padding};
   border: none;
   align-self: flex-start;
-  font-size: 1.2rem;
+  font-size: 18px;
   font-weight: 700;
   border-radius: 5px;
 `;
@@ -18,13 +18,13 @@ export const StyledHeroSection = styled.section`
   height: 500px;
 
   & img {
-    opacity: 0.5;
+    opacity: 0.3;
     object-fit: cover;
     height: 100%;
     width: 100%;
   }
 
-  @media screen and (max-width: 800px) {
+  @media screen and (max-width: 900px) {
     height: 400px;
   }
 
@@ -44,45 +44,48 @@ export const HeroContent = styled.div`
   transform: translateY(-50%);
 
   & h1 {
-    font-size: 2.8rem;
-    font-weight: 700;
+    font-size: 42px;
+    font-weight: 800;
   }
 
   & h3 {
-    width: 80%;
-    font-size: 1.7rem;
+    width: 75%;
+    font-size: 25px;
     font-weight: 500;
     line-height: 1.3;
   }
 
   @media screen and (max-width: 1024px) {
     left: 70px;
+
     & h1 {
-      font-size: 2.5rem;
+      font-size: 29px;
       width: 90%;
     }
 
     & h3 {
-      font-size: 1.6rem;
+      font-size: 20px;
     }
 
     & button {
+      font-size: 18px;
       padding: 10px 50px;
     }
   }
 
-  @media screen and (max-width: 800px) {
+  @media screen and (max-width: 900px) {
     left: 70px;
     & h1 {
-      font-size: 2.3rem;
+      font-size: 32px;
       width: 90%;
     }
 
     & h3 {
-      font-size: 1.5rem;
+      font-size: 21px;
     }
 
     & button {
+      font-size: 17px;
       padding: 10px 30px;
     }
   }
@@ -91,36 +94,37 @@ export const HeroContent = styled.div`
     left: 30px;
 
     & h1 {
-      font-size: 1.8rem;
+      font-size: 28px;
       width: 90%;
     }
 
     & h3 {
-      font-size: 1.3rem;
-      width: 90%;
+      font-size: 18px;
+      width: 85%;
     }
 
     & button {
+      font-size: 17px;
       padding: 10px 30px;
     }
   }
 
-    @media screen and (max-width: 320px) {
+  @media screen and (max-width: 320px) {
     left: 30px;
 
     & h1 {
-      font-size: 1.5rem;
+      font-size: 23px;
       width: 90%;
     }
 
     & h3 {
-      font-size: 1rem;
+      font-size: 18px;
       width: 90%;
     }
 
     & button {
       padding: 10px 30px;
-      font-size: 0.8rem
+      font-size: 16px;
     }
   }
 `;
