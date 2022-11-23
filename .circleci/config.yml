@@ -278,11 +278,11 @@ workflows:
           requires: [build-backend] #remember to channge to test
           filters:
             branches:
-              only: [merge-dev]
+              only: [features]
 
       - deploy-images-using-ssh:
           requires:
             [
-              build-frontend-client-docker-image,
-              build-frontend-client-docker-image,
+              # build-frontend-client-docker-image,
+              build-backend-docker-image,
             ]
