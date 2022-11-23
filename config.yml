@@ -1,0 +1,285 @@
+version: 2.1
+
+jobs:
+  build-frontend-client:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - checkout
+      - restore_cache:
+          keys: [frontend-client-build]
+      - run:
+          name: Build front-end Client
+          command: |
+            cd frontend/client
+            # rm package-lock.json
+            npm install
+            npm run build
+      - save_cache:
+          paths: [frontend/client/node_modules]
+          key: frontend-client-build
+
+  build-frontend-admin:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - checkout
+      - restore_cache:
+          keys: [frontend-admin-build]
+      - run:
+          name: Build front-end admin
+          command: |
+            cd frontend/admin
+            rm package-lock.json
+            npm install
+            npm run build
+      - save_cache:
+          paths: [frontend/admin/node_modules]
+          key: frontend-admin-build
+
+  build-backend:
+    docker:
+      - image: circleci/python:3.7
+    steps:
+      - checkout
+      - restore_cache:
+          keys: [backend-build]
+      - run:
+          name: Back-end build
+          command: |
+            # Your code here
+            cd backend
+            python3 -m venv venv
+            . venv/bin/activate
+            pip install -r requirements.txt
+          #  exit 1
+      - save_cache:
+          paths: [backend/venv]
+          key: backend-build
+
+  test-frontend-client:
+    docker:
+      # Docker image here
+      - image: circleci/node:13.8.0
+    steps:
+      # Checkout code from git
+      - checkout
+      # Restore from cache
+      - restore_cache:
+          keys: [frontend-client-build]
+      # Your job code here
+      - run:
+          name: Test client Frontend
+          command: |
+            cd frontend/client/
+            npm install
+            npm run test
+
+  test-frontend-admin:
+    docker:
+      # Docker image here
+      - image: circleci/node:13.8.0
+    steps:
+      # Checkout code from git
+      - checkout
+      # Restore from cache
+      - restore_cache:
+          keys: [frontend-admin-build]
+      # Your job code here
+      - run:
+          name: Test admin Frontend
+          command: |
+            cd frontend/admin/
+            npm install
+            npm run test
+
+  test-backend:
+    docker:
+      # Docker image here
+      - image: circleci/python:3.7
+    steps:
+      # Checkout code from git
+      - checkout
+      # Restore from cache
+      - restore_cache:
+          keys: [backend-build]
+      # Your job code here
+      - run:
+          name: Test Backend
+          command: |
+            cd backend
+            . venv/bin/activate
+            pytest
+
+  build-frontend-client-docker-image:
+    docker:
+      # Docker image that supports docker
+      - image: docker:17.05.0-ce-git
+    steps:
+      # Checkout code from git
+      - checkout
+      - setup_remote_docker
+      # - run:
+      #     name: Build docker image
+      #     command: |
+      #       cd frontend/client/
+
+      - restore_cache:
+          keys:
+            - v1-{{ .Branch }}
+          # paths:
+          #   - /caches/app.tar
+
+      - run:
+          name: Load Docker image layer cache
+          command: |
+            set +o pipefail
+            docker load -i /caches/app.tar | true
+
+      - run:
+          name: Build application Docker image
+          command: |
+            cd frontend/client/
+            docker build --cache-from=app -t app .
+
+      - run:
+          name: Save Docker image layer cache
+          command: |
+            mkdir -p /caches
+            docker save -o /caches/app.tar app
+
+      - save_cache:
+          key: v1-{{ .Branch }}-{{ epoch }}
+          paths:
+            - /caches/app.tar
+
+      - run:
+          name: Push Image to docker hub
+          command: |
+            docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
+            docker tag app hacklight/xchange-fe-client:v1
+            docker push hacklight/xchange-fe-client:v1
+
+  build-backend-docker-image:
+    docker:
+      # Docker image that supports docker
+      - image: docker:17.05.0-ce-git
+    steps:
+      # Checkout code from git
+      - checkout
+
+      - setup_remote_docker
+
+      # - restore_cache:
+      #     keys:
+      #       - v1-{{ .Branch }}
+      # paths:
+      #   - /caches/app.tar
+
+      # - run:
+      #     name: Load Docker image layer cache
+      #     command: |
+      #       set +o pipefail
+      #       docker load -i /caches/app.tar | true
+
+      - run:
+          name: Build application Docker image
+          command: |
+            cd backend
+            docker build -t app-be .
+
+      # - run:
+      #     name: Save Docker image layer cache
+      #     command: |
+      #       mkdir -p /caches
+      #       docker save -o /caches/app.tar app-be
+
+      # - save_cache:
+      #     key: v1-{{ .Branch }}-{{ epoch }}
+      #     paths:
+      #       - /caches/app.tar
+
+      - run:
+          name: Push Image to docker hub
+          command: |
+            docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
+            docker tag app-be hacklight/test-be:v1
+            docker push hacklight/test-be:v1
+
+  deploy-images-using-ssh:
+    docker:
+      # Docker image that supports docker
+      - image: circleci/openjdk:8-jdk
+    steps:
+      - checkout
+      - add_ssh_keys:
+          fingerprints: ["09:86:cf:93:4e:a9:6f:70:4a:20:c2:63:f5:e2:48:6c"]
+      - run:
+          name: Deploy
+          command: |
+
+            # SSH to the server to deploy
+            EC2_USERNAME=ubuntu
+
+            EC2_PUBLIC_DNS=44.203.211.6
+            ssh -o StrictHostKeyChecking=no $EC2_USERNAME@$EC2_PUBLIC_DNS "/home/ubuntu/run.sh"
+
+  # deploy-docker-compose:
+  #   docker:
+  #     # Docker image here that supports Ansible
+  #     - image: python:3.7-alpine3.11
+  #   steps:
+  #     # Checkout code from git
+  #     - checkout
+  #     - add_ssh_keys:
+  #         fingerprints: ["09:86:cf:93:4e:a9:6f:70:4a:20:c2:63:f5:e2:48:6c"]
+  #     # attach workspace
+  #     - attach_workspace:
+  #         at: ~/
+  #     - run:
+  #         name: Install openssh
+  #         command: |
+  #           apk add --update openssh
+  #     - run:
+  #         name: Install dependencies
+  #         command: |
+  #           apk add --update tar gzip && apk add --update ansible
+  #           pip install awscli
+  #     - run:
+  #         name: install node and npm
+  #         command: |
+  #           apk add --update nodejs npm
+  #     - run:
+  #         name: Deploy backend code
+  #         no_output_timeout: 30m
+  #         command: |
+  #           cd .circleci/ansible
+  #           echo "Contents  of the inventory.txt file is :"
+  #           cat inventory.txt
+  #           ansible-playbook -i inventory.txt deploy.yml
+
+workflows:
+  default:
+    # testing
+    jobs:
+      - build-frontend-client
+      # - build-frontend-admin
+      - build-backend
+      # - test-frontend-client
+      # - test-frontend-admin
+      # - test-backend
+      - build-frontend-client-docker-image:
+          requires: [build-frontend-client] #remember to channge to test
+          filters:
+            branches:
+              only: [new_dev]
+
+      - build-backend-docker-image:
+          requires: [build-backend] #remember to channge to test
+          filters:
+            branches:
+              only: [new_dev]
+
+      - deploy-images-using-ssh:
+          requires:
+            [build-frontend-client-docker-image, build-backend-docker-image]
