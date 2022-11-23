@@ -58,6 +58,15 @@ def post_currency(
     return c
 
 
+@router.post("/add_rate", response_model=schemas.Rate)
+def add_Rate(*, db: Session = Depends(get_db), rate_in: schemas.RateCreate) -> Any:
+    """
+    add new rates.
+    """
+    rate = crud.rate.create(db, obj_in=rate_in)
+    return rate
+
+
 @router.post("/delete_currency")
 def delete_currency(*, db: Session = Depends(get_db), isocode: str):
     """[delete currency]
