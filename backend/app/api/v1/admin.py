@@ -66,5 +66,10 @@ def delete_rate(*, db: Session = Depends(get_db), rate_id: int):
     Args:
         rate_id (int): rate id
     """
-    rate = crud.rate.remove(db, model_id=rate_id)
+    if rate_id == 0:
+        return {"status": False, "message": "id starts from 1!"}
+    rate_query = crud.rate.remove(db, model_id=rate_id)
+    if rate_query is None:
+        return {"status": False, "message": "Not found!"}
+
     return {"status": True, "message": "rate deleted!"}
