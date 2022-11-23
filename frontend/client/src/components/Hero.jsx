@@ -287,28 +287,30 @@ const Hero = () => {
           <div className="amount">
             <label htmlFor="amount">Amount</label>
             <input
-              type="text"
+              type="number"
               name="amount"
               id="amount"
               placeholder="Enter amount"
+              value={convert}
+              onChange={(e) => setconvert(e.target.value)}
             />
           </div>
           <div className="currency">
             <select name="currency" id="currency1">
-              <option selected>Select a currency</option>
+              <option selected>USD</option>
               <option value="NG">Naira</option>
               <option value="NG">Naira</option>
               <option value="NG">Naira</option>
             </select>
             <ArrangeHorizontal size="32" color="#00296B" />
             <select name="currency" id="currency1">
-              <option selected>Select a currency</option>
+              <option selected>Naira</option>
               <option value="NG">Naira</option>
               <option value="NG">Naira</option>
               <option value="NG">Naira</option>
             </select>
           </div>
-          <button type="submit">Convert</button>
+          <button onClick={(e) => e.preventDefault()}>Convert</button>
         </form>
       </Container2>
     </Wrapper>
