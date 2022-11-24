@@ -75,7 +75,7 @@ def delete_rate(*, db: Session = Depends(get_db), rate_id: int):
     return {"status": True, "message": "rate deleted!"}
 
 
-@router.post('/update_currencies')
+@router.post('/update_currency')
 def update_currencies(iso_code: str, update_param: schemas.CurrencyUpdate, db: Session = Depends(get_db)):
     """
     this endpoint recives details to update a currency, it finds the currency in the database with the required iso code provided
