@@ -8,47 +8,34 @@ from app.models.currency import Currency
 
 from app import schemas, crud
 from app.api.deps import get_db
-from .auth import get_current_active_user
 
 router = APIRouter()
 
-<<<<<<< HEAD
-# @router.post("/add_currency")
-# def add_currency(isocode, db:Session = Depends(get_db)):
 
-
-@router.post("/add_currency")
-def post_currency(*, db: Session = Depends(get_db), currency_in: schemas.CurrencyCreate) -> Any:
-    
-=======
-
-# @router.post("/create/", response_model=schemas.Admin)
-# def create_admin(*, db: Session = Depends(get_db), admin_in: schemas.AdminCreate) -> Any:
-#     """
-#     Create Admin
-#     """
-#     admin = crud.admin.get_by_email(db, email=admin_in.email)
-#     if admin:
-#         raise HTTPException(
-#             status_code=400,
-#             detail="Admin with email already exists."
-#         )
-#     admin = crud.admin.create(db, obj_in=admin_in)
-#     return admin
+@router.post("/create/", response_model=schemas.Admin)
+def create_admin(*, db: Session = Depends(get_db), admin_in: schemas.AdminCreate) -> Any:
+    """
+    Create Admin
+    """
+    admin = crud.admin.get_by_email(db, email=admin_in.email)
+    if admin:
+        raise HTTPException(
+            status_code=400,
+            detail="Admin with email already exists."
+        )
+    admin = crud.admin.create(db, obj_in=admin_in)
+    return admin
 
 
 @router.post("/add_currency")
 def add_currency(
     *, db: Session = Depends(get_db), currency_in: schemas.CurrencyCreate
 ) -> Any:
->>>>>>> bd11517bb480bf85dc870226fb103841f5b6c945
     """
     Create a new currency.
     """
     c = crud.currency.create(db, obj_in=currency_in)
     return c
-<<<<<<< HEAD
-=======
 
 
 @router.post("/add_rate", response_model=schemas.Rate)
@@ -85,4 +72,3 @@ def delete_rate(*, db: Session = Depends(get_db), rate_id: int):
         return {"status": False, "message": "Not found!"}
 
     return {"status": True, "message": "rate deleted!"}
->>>>>>> bd11517bb480bf85dc870226fb103841f5b6c945

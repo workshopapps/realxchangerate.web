@@ -8,29 +8,12 @@ from jose import JWTError, jwt
 from passlib.context import CryptContext
 from datetime import datetime, timedelta
 from ..deps import get_db
-<<<<<<< HEAD
 from app.core import verify_password,settings
 from app import models,schemas
-=======
-
-from app import models, schemas
->>>>>>> bd11517bb480bf85dc870226fb103841f5b6c945
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="api/auth")
 router = APIRouter()
 
-<<<<<<< HEAD
-=======
-
-def verify_password(plain_password, hashed_password):
-    return pwd_context.verify(plain_password, hashed_password)
-
-
-def get_password_hash(password):
-    return pwd_context.hash(password)
-
-
->>>>>>> bd11517bb480bf85dc870226fb103841f5b6c945
 class Token(BaseModel):
     access_token: str
     token_type: str
@@ -94,6 +77,7 @@ def authenticate_user(db: Session, email: str, password: str):
 
     if not verify_password(password, user.password):
         return False
+
     return user
 
 
@@ -112,16 +96,11 @@ async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(
             detail="Incorrect username or password",
             headers={"WWW-Authenticate": "Bearer"},
         )
+   
     access_token_expires = timedelta(minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES)
     access_token = create_access_token(
-        data={"sub": user.email}, expires_delta=access_token_expires
-    )
+        data={"sub": user.email}, expires_delta=access_token_expires)
+    
     return {"access_token": access_token, "token_type": "bearer"}
 
 
-<<<<<<< HEAD
-=======
-@router.get("/test", response_model=schemas.Admin)
-async def read_users_me(current_user: schemas.Admin = Depends(get_current_active_user)):
-    return current_user
->>>>>>> bd11517bb480bf85dc870226fb103841f5b6c945
