@@ -8,24 +8,23 @@ from app.models.currency import Currency
 
 from app import schemas, crud
 from app.api.deps import get_db
-from .auth import get_current_active_user
 
 router = APIRouter()
 
 
-# @router.post("/create/", response_model=schemas.Admin)
-# def create_admin(*, db: Session = Depends(get_db), admin_in: schemas.AdminCreate) -> Any:
-#     """
-#     Create Admin
-#     """
-#     admin = crud.admin.get_by_email(db, email=admin_in.email)
-#     if admin:
-#         raise HTTPException(
-#             status_code=400,
-#             detail="Admin with email already exists."
-#         )
-#     admin = crud.admin.create(db, obj_in=admin_in)
-#     return admin
+@router.post("/create/", response_model=schemas.Admin)
+def create_admin(*, db: Session = Depends(get_db), admin_in: schemas.AdminCreate) -> Any:
+    """
+    Create Admin
+    """
+    admin = crud.admin.get_by_email(db, email=admin_in.email)
+    if admin:
+        raise HTTPException(
+            status_code=400,
+            detail="Admin with email already exists."
+        )
+    admin = crud.admin.create(db, obj_in=admin_in)
+    return {"success":True, "data":admin}
 
 
 @router.post("/add_currency")

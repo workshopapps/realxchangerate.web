@@ -11,7 +11,6 @@ flex-direction:row;
 .flag{
   margin-right:10px;
 }
-
 `
 
 
@@ -72,13 +71,10 @@ export const Table = styled.table`
     border-bottom:4px;
     border-color:gray;
   }
-
 `
 
 export const MobileTable = styled.table`
   width: 100%;
-
-
 `
 
 export const ConverterWrapper = styled.div`
@@ -91,9 +87,7 @@ justify-content:right;
 @media (max-width: 765px){
   justify-content:center;
   flex-direction:column;
-
 }
-.convert{
   height:44px;
   width:380px;
 }

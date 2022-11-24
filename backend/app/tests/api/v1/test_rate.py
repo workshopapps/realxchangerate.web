@@ -8,10 +8,10 @@ from app.tests.conftest import random_currency
 
 
 def test_read_currency(client: TestClient) -> None:
-    response = client.get(f"{settings.API_V1_STR}/rate/NGN")
+    response = client.get(f"{settings.API_V1_STR}/rate")
     rates = response.json()
     assert response.status_code == 200
-    assert type(rates) == dict
+    assert type(rates) == list
 
 
 def test_convert_currency(client: TestClient, random_currency: Dict[str, Any]) -> None:
