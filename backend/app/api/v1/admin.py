@@ -69,14 +69,14 @@ def delete_rate(*, db: Session = Depends(get_db), rate_id: int):
         rate_id (int): rate id
     """
     if rate_id == 0:
-        return {"success": False, "status_code": 404, "data": {"rate id": rate_id}, "message": "id starts from 1!"}
+        return {"success": False, "status_code": 404, "data": {"id": rate_id}, "message": "id starts from 1!"}
 
     rate_query = crud.rate.remove(db, model_id=rate_id)
 
     if rate_query is None:
-        return {"success": False, "status_code": 404, "data": {"rate id": rate_id}, "message": "Not found!"}
+        return {"success": False, "status_code": 404, "data": {"id": rate_id}, "message": "Not found!"}
 
-    return {"success": True, "status_code": 200, "data": {"rate id": rate_id}, "message": "rate deleted!"}
+    return {"success": True, "status_code": 200, "data": {"id": rate_id}, "message": "rate deleted!"}
 
 
 @router.post('/update_currency')
