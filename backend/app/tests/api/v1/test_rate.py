@@ -7,8 +7,8 @@ from app.core import settings
 
 
 def test_read_currency(client: TestClient) -> None:
-    response = client.get(f"{settings.API_V1_STR}/rate/NGN")
+    response = client.get(f"{settings.API_V1_STR}/rate")
     rates = response.json()
     assert response.status_code == 200
-    assert type(rates) == dict
+    assert type(rates) == list
 
