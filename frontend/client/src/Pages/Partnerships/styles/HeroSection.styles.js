@@ -17,16 +17,12 @@ export const StyledHeroSection = styled.section`
   background-color: black;
   height: 340px;
 
-
-
   & img {
     opacity: 0.3;
     object-fit: cover;
     height: 100%;
     width: 100%;
   }
-
-
 
   @media screen and (max-width: 900px) {
     height: 400px;
@@ -35,10 +31,10 @@ export const StyledHeroSection = styled.section`
   @media screen and (max-width: 480px) {
     height: 380px;
     & img {
-    opacity: 0.3;
-    object-fit: cover;
-    height: 30%;
-    width: 100%;
+      opacity: 0.3;
+      object-fit: cover;
+      height: 30%;
+      width: 100%;
     }
   }
 `;
@@ -53,22 +49,22 @@ export const HeroContent = styled.div`
   left: 100px;
   transform: translateY(-50%);
 
-  @media screen and (max-width: 395px){
-    background: #00296B;
+  @media screen and (max-width: 395px) {
+    background: #00296b;
     top: 60.6%;
     padding-bottom: 30px;
     padding-top: 10px;
   }
 
-  @media screen and (max-width: 480px){
-    background: #00296B;
+  @media screen and (max-width: 480px) {
+    background: #00296b;
     top: 64.6%;
     padding-bottom: 65px;
     padding-top: 30px;
   }
 
-  @media screen and (max-width: 420px){
-    background: #00296B;
+  @media screen and (max-width: 420px) {
+    background: #00296b;
     top: 65.6%;
     padding-bottom: 46px;
     padding-top: 43.5px;
@@ -77,9 +73,7 @@ export const HeroContent = styled.div`
   & h1 {
     font-size: 48px;
     font-weight: 600;
-   
   }
-
 
   & h3 {
     width: 75%;
@@ -87,7 +81,12 @@ export const HeroContent = styled.div`
     font-weight: 600;
     line-height: 1.3;
   }
-  
+
+  & button {
+    font-size: 17px;
+    padding: 10px 50px;
+    cursor: pointer;
+  }
 
   @media screen and (max-width: 1024px) {
     left: 70px;
@@ -104,6 +103,7 @@ export const HeroContent = styled.div`
     & button {
       font-size: 12px;
       padding: 10px 50px;
+      cursor: pointer;
     }
   }
 
@@ -125,8 +125,6 @@ export const HeroContent = styled.div`
   }
 
   @media screen and (max-width: 480px) {
-    
-
     & h1 {
       font-size: 33px;
       width: 90%;
@@ -159,13 +157,12 @@ export const HeroContent = styled.div`
       width: 100%;
     }
 
-    .contact-btn{
+    .contact-btn {
       display: flex;
       justify-content: center;
     }
 
     & button {
-      
       padding: 10px 30px;
       font-size: 16px;
     }
