@@ -85,8 +85,12 @@ def update_currencies(iso_code: str, update_param: schemas.CurrencyUpdate, db: S
 
     if not details:
         raise HTTPException(status_code=404, detail=f"No record found to update")
-
-    return crud.currency.update(db=db,db_obj=details, obj_in=update_param)
+    # update variable stores the updated currency in the database 
+    update = crud.currency.update(db=db,db_obj=details, obj_in=update_param)
+    return {
+            "success":True,
+            "data": update
+            }
 
 
 @router.post("/update_rate")
@@ -103,7 +107,11 @@ def  update_rate(iso_code: str, update_param: schemas.RateUpdate, db: Session = 
     rate = db.query(Rate).filter(Rate.currency_id == currency.id).order_by(Rate.last_updated.desc()).first()
     if not rate:
         raise HTTPException(status_code=404, detail=f"No rate for the currency found to update")
-    # the return function updates the rate in the database 
-    return crud.currency.update(db=db, db_obj=rate, obj_in=update_param)
+    # update variable stores the updated rate in the database 
+    update = crud.currency.update(db=db, db_obj=rate, obj_in=update_param)
+    return {   
+        "success":True,
+        "data": update
+        }
 
     
