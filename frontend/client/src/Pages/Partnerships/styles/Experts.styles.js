@@ -11,18 +11,18 @@ export const StyledExperts = styled.section`
   .expert-profile {
     & h1 {
       margin: 10px 0;
-      font-size: 2.1rem;
+      font-size: 23px;
 
       @media screen and (max-width: 480px) {
-        font-size: 1.6rem;
+        font-size: 20px;
       }
     }
 
-    & h2 {
-      font-size: 2rem;
+    & h3 {
+      font-size: 22px;
 
       @media screen and (max-width: 480px) {
-        font-size: 1.5rem;
+        font-size: 18px;
       }
     }
   }
@@ -34,19 +34,19 @@ export const StyledExperts = styled.section`
     justify-content: space-evenly;
 
     & h1 {
-      font-size: 1.8rem;
+      font-size: 25px;
 
       @media screen and (max-width: 480px) {
-        font-size: 1.6rem;
+        font-size: 23px;
       }
     }
 
     & p {
-      font-size: 1.2rem;
+      font-size: 21px;
       line-height: 1.5;
 
       @media screen and (max-width: 480px) {
-        font-size: 1.2rem;
+        font-size: 17px;
       }
     }
   }
@@ -54,10 +54,18 @@ export const StyledExperts = styled.section`
   @media screen and (max-width: 1240px) {
     flex-direction: column;
     align-items: center;
-    gap: 40px;
+    gap: 25px;
 
     .expert-profile {
       text-align: center;
+
+      & h1{
+        display: none;
+
+        @media screen and (max-width: 1240px){
+          display: block;
+        }
+      }
     }
 
     .expert-details {
@@ -71,6 +79,8 @@ export const StyledExperts = styled.section`
         width: 90%;
         margin: 0 auto;
         text-align: center;
+        font-weight: 400;
+        font-size: 18px;
       }
     }
   }

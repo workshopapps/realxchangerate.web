@@ -51,22 +51,22 @@ const Footer = () => {
             >
               Company
             </Typography>
-            <Link href="/about" color="inherit">
+            <Link href="/#/about" color="inherit">
               About Us
             </Link>
-            <Link href="/careers" color="inherit">
+            <Link href="/#/careers" color="inherit">
               Careers
             </Link>
-            <Link href="/partnerships" color="inherit">
+            <Link href="/#/partnerships" color="inherit">
               Patnerships
             </Link>
-            <Link href="/teams" color="inherit">
+            <Link href="/#/teams" color="inherit">
               Meet the team
             </Link>
-            <Link href="/press" color="inherit">
+            <Link href="/#/press" color="inherit">
               Press
             </Link>
-            <Link href="/bod" color="inherit">
+            <Link href="/#/bod" color="inherit">
               Board of directors
             </Link>
           </Stack>
@@ -99,13 +99,13 @@ const Footer = () => {
             >
               Links
             </Typography>
-            <Link href="/convert" color="inherit">
+            <Link href="/#/convert" color="inherit">
               Convert
             </Link>
-            <Link href="/news" color="inherit">
+            <Link href="/#/news" color="inherit">
               News
             </Link>
-            <Link href="/contact" color="inherit">
+            <Link href="/#/contact" color="inherit">
               Contact Us
             </Link>
           </Stack>
@@ -138,22 +138,22 @@ const Footer = () => {
             >
               Resources
             </Typography>
-            <Link href="/currency-encyclopedia" color="inherit">
+            <Link href="/#/currency-encyclopedia" color="inherit">
               Currency Encyclopedia
             </Link>
-            <Link href="/historical-currency-exchange" color="inherit">
+            <Link href="/#/historical-currency-exchange" color="inherit">
               Historical currency exchange
             </Link>
 
-            <Link href="/glossary" color="inherit">
+            <Link href="/#/glossary" color="inherit">
               Glossary
             </Link>
 
-            <Link href="/advertising" color="inherit">
+            <Link href="/#/advertising" color="inherit">
               Online Advertising
             </Link>
 
-            <Link href="/ambassadors" color="inherit">
+            <Link href="/#/ambassadors" color="inherit">
               Ambassadors
             </Link>
           </Stack>
@@ -186,10 +186,10 @@ const Footer = () => {
             >
               Product
             </Typography>
-            <Link href="/api" color="inherit">
+            <Link href="/#/api" color="inherit">
               API
             </Link>
-            <Link href="/integration-matrix" color="inherit">
+            <Link href="/#/integration-matrix" color="inherit">
               Integration matrix
             </Link>
           </Stack>
@@ -222,16 +222,16 @@ const Footer = () => {
             >
               Support
             </Typography>
-            <Link href="/help-center" color="inherit">
+            <Link href="/#/help-center" color="inherit">
               Help Center
             </Link>
-            <Link href="/faq" color="inherit">
+            <Link href="/#/faq" color="inherit">
               FAQ
             </Link>
-            <Link href="/complaint" color="inherit">
+            <Link href="/#/complaint" color="inherit">
               File a complaint
             </Link>
-            <Link href="/fraud-report" color="inherit">
+            <Link href="/#/fraud-report" color="inherit">
               Fraud report
             </Link>
           </Stack>
@@ -264,13 +264,13 @@ const Footer = () => {
             >
               Legal
             </Typography>
-            <Link href="#" color="inherit">
+            <Link href="/#/" color="inherit">
               Privacy Policy
             </Link>
             <Link href="/terms" color="inherit">
               Terms and Conditions
             </Link>
-            <Link href="/CookiePolicy" color="inherit">
+            <Link href="/#/CookiePolicy" color="inherit">
               Cookie Policy
             </Link>
             <Link href="/compliance" color="inherit">
