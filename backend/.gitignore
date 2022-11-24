@@ -1,7 +1,6 @@
 venv/
 .vscode/
 __pycache__/
-.db
 env
 .env
 # OS generated files #
