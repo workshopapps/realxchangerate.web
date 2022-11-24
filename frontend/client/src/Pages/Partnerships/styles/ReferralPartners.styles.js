@@ -6,39 +6,43 @@ export const Button = styled.button`
   padding: 10px ${(props) => props.padding};
   border: none;
   align-self: flex-start;
-  font-size: 1.2rem;
+  font-size: 18px;
   font-weight: 700;
   border-radius: 5px;
 
   @media screen and (max-width: 480px) {
-    font-size: 1rem;
+    font-size: 15px;
   }
 `;
 
 export const PartnersHeader = styled.div`
   width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
   text-align: center;
-  margin-top: 100px;
+  margin-top: 60px;
 
   & img {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
   }
 
   & h1 {
-    font-size: 2.1rem;
+    font-size: 25px;
+    font-weight: 700px;
   }
 
   @media screen and (max-width: 480px) {
     & h1 {
-      font-size: 1.6rem;
+      font-size: 23px;
     }
   }
 `;
 
 export const PartnersDescription = styled.p`
   width: 65%;
-  margin: 20px auto 120px;
-  font-size: 1.5rem;
+  max-width: 1440px;
+  margin: 15px auto 80px;
+  font-size: 23px;
   line-height: 1.5;
   text-align: center;
 
@@ -48,14 +52,15 @@ export const PartnersDescription = styled.p`
 
   @media screen and (max-width: 480px) {
     width: 90%;
-    font-size: 1.2rem;
+    font-size: 18px;
   }
 `;
 
 export const StyledPartnersType = styled.div`
   width: 85%;
-  margin: 0 auto 100px;
-  height: 470px;
+  max-width: 1440px;
+  margin: 0 auto 80px;
+  height: 450px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -70,28 +75,28 @@ export const StyledPartnersType = styled.div`
     gap: 30px;
 
     & h1 {
-      font-size: 2.1rem;
+      font-size: 25px;
 
       @media screen and (max-width: 480px) {
-        font-size: 1.6rem;
+        font-size: 20px;
       }
     }
 
     & p {
-      font-size: 1.5rem;
+      font-size: 23px;
       line-height: 1.5;
 
       @media screen and (max-width: 480px) {
-        font-size: 1.2rem;
+        font-size: 18px;
       }
     }
 
     & ul {
-      font-size: 1.5rem;
+      font-size: 23px;
       list-style-position: inside;
 
       @media screen and (max-width: 480px) {
-        font-size: 1.2rem;
+        font-size: 18px;
       }
 
       & li:nth-child(2) {

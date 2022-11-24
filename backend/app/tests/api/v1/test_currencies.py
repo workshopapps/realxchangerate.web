@@ -14,7 +14,7 @@ from app.core import settings
 
 
 def test_read_currencies(client: TestClient) -> None:
-    response = client.get(f"{settings.API_V1_STR}/currencies")
+    response = client.get(f"{settings.API_V1_STR}/currency")
     currencies = response.json()
     assert response.status_code == 200
     assert len(currencies) > 0
