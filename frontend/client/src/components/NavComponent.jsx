@@ -42,7 +42,9 @@ const NavComponent = () => {
           letterSpacing="-0.04em"
           role="heading"
         >
-          Street Rate
+          <Link to="/" style={{ color: "#0062FF" }}>
+            Street Rate
+          </Link>
         </Typography>
       </Grid>
 
@@ -63,23 +65,15 @@ const NavComponent = () => {
           <img src={DownArrow} alt="arrow" />
         </Box>
 
-        <Link to="/" color="inherit">
+        <Link to="/" style={{color:'#00296B'}}>
           Home
         </Link>
 
-        <Link to="/convert" color="inherit">
-          Convert
-        </Link>
-
-        <Link to="#" color="inherit">
-          Currency Profile
-        </Link>
-
-        <Link to="/news" color="inherit">
+        <Link to="/news" style={{color:'#00296B'}}>
           News
         </Link>
 
-        <Link to="/contact" color="inherit">
+        <Link to="/contact" style={{color:'#00296B'}}>
           Contact
         </Link>
       </Grid>

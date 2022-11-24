@@ -21,4 +21,5 @@ class CRUDRate(CRUDBase[Rate, RateCreate, RateBase]):
         return db.query(self.model).filter(self.model.currency_id == currency_id).order_by(self.model.last_updated.desc()).limit(limit).all()    
     pass
 
+
 rate = CRUDRate(Rate)
