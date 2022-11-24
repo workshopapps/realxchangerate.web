@@ -107,6 +107,7 @@ justify-content:right;
 
 export const MobileViewWrapper = styled.table`
   width: 100%;
+  padding:"12px 24px";
   .rates{
     height:44px;
     text-align:center;
@@ -131,7 +132,7 @@ export const NewTab = styled(TabUnstyled)`
   font-family: Inter, sans-serif;
   color: #64748b;
   cursor: pointer;
-  font-size: 0.875rem;
+  font-size: 12px;
   font-weight: 600;
   background-color: transparent;
   width: 100%;
@@ -162,7 +163,6 @@ export const NewTab = styled(TabUnstyled)`
 `;
 
 export const TabsList = styled(TabsListUnstyled)`
-  min-width: 400px;
   background-color: ${blue[400]};
   border-radius: 12px;
   margin-bottom: 16px;

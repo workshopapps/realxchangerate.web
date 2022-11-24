@@ -24,8 +24,8 @@ async def get_currency_rates_from_external_apis(db: Session = Depends(get_db)) -
     try:
         all_currencies = db.query(Currency).all()
         for currency in all_currencies:
-            currency_list.append(currency.isocode)
-            currency_code = currency.isocode
+            currency_list.append(currency.isocode.upper())
+            currency_code = currency.isocode.upper()
             resp_data = await get_binancep2p_rate(currency_code)
             formatted_data = await format_binance_response_data(resp_data)
             official_rate = make_official_rate_request(
