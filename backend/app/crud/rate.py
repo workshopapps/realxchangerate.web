@@ -1,14 +1,23 @@
-from typing import Optional, List
+
+from typing import Optional, List, Any
 
 from sqlalchemy.orm import Session
+from fastapi.encoders import jsonable_encoder
 from sqlalchemy import desc
 from app.crud.base import CRUDBase
-from app.models.rate import Rate
-# from app.schemas.currency import Currency as currency_schema
+from app. models import Rate
 from app.schemas.rate import RateCreate, RateBase
 
-
 class CRUDRate(CRUDBase[Rate, RateCreate, RateBase]):
+    def create(self, db:Session, obj_in: RateCreate) -> Rate:
+        obj_in_data = jsonable_encoder(obj_in)
+        db_oj = Rate(
+          **obj_in_data
+        )
+        db.add(db_oj)
+        db.commit()
+        db.refresh(db_oj)
+        return db_oj
     # Declare model specific CRUD operation methods.
     def get_rates_by_limit(self, db: Session, currency_id, skip: int = 0, limit: int = 15):
         """

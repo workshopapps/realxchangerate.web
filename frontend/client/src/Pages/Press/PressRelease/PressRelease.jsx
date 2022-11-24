@@ -116,7 +116,7 @@ const PressRelease = () => {
                     </NavLinks>
                     <NavItems>
                         <Search placeholder='Search Topics'>
-                            Search Topics<BiSearchAlt2 />
+                            <input className='search-input' type="text" placeholder='Search Topics' /><BiSearchAlt2 />
                         </Search>
                         <TopicButton>Popular Topics</TopicButton>
                     </NavItems>
