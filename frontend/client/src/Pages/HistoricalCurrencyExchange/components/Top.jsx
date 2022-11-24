@@ -1,25 +1,22 @@
-import { Box, Typography } from "@mui/material";
-import { Flag, RightArrow, Arrow } from "../assets/";
+import { Box, useMediaQuery } from "@mui/material";
+import { Flag, Flag2, Arrow, InverseArrow } from "../assets/";
+import AmountInput from "./AmountInput";
 
 const TopComponent = () => {
+  const mobileScreen = useMediaQuery("(max-width:481px)")
+  const CurrencyArrow = mobileScreen ? InverseArrow : Arrow
+  
   const CalendarStyle = {
     height: "44px",
     padding: "10px 12px",
     borderRadius: "6px",
     border: "1px solid #9B9DFD",
-    width: "278px",
+    width: "100%"
   };
 
-  const TextInput = {
-    border: "none",
-    width: "120px",
-    "::focus": {
-      border: "none",
-    },
-  };
   const Calender = () => {
     return (
-      <div>
+      <div style={{width: mobileScreen ? "45%" :"23%"}}>
         <input placeholder="Select date" type="date" style={CalendarStyle} />
       </div>
     );
@@ -32,80 +29,22 @@ const TopComponent = () => {
       alignItems="center"
       flexDirection="row"
       width="100%"
+      sx={{
+        flexDirection:{xs:"column", sm:"row"},
+        alignItems:{xs:"flex-start", sm:"center"},
+        gap:{xs:"20px"},
+        marginTop:{xs:"50px", sm:"auto"}
+      }}
     >
-      
-  
       <Calender />
-        <Box
-          display="flex"
-          flexDirection="row"
-          border="1px solid #9B9DFD"
-          alignItems="center"
-          padding="10px 12px"
-          height="44px"
-          width="380px"
-          gap="2px"
-          borderRadius="6px"
-        >
-          <Typography
-            fontSize="16px"
-            lineHeight="24px"
-            fontWeight="400"
-            color="#111827"
-          >
-            Amount
-          </Typography>
-          <input type="text" style={TextInput} />
-          <Typography
-            fontSize="16px"
-            lineHeight="20px"
-            fontWeight="400"
-            color="#6B7280"
-          >
-            US Dollar (USD)
-          </Typography>
-          <img src={Flag} alt="Flag" />
-          <img src={RightArrow} alt="arrow" />
-        </Box>
 
-        <Box>
-          <img src={Arrow} alt="icon"/>
-        </Box>
-
-
-        <Box
-          display="flex"
-          flexDirection="row"
-          border="1px solid #9B9DFD"
-          alignItems="center"
-          padding="10px 12px"
-          height="44px"
-          width="380px"
-          gap="2px"
-          borderRadius="6px"
-        >
-          <Typography
-            fontSize="16px"
-            lineHeight="24px"
-            fontWeight="400"
-            color="#111827"
-          >
-            Amount
-          </Typography>
-          <input type="text" style={TextInput} />
-          <Typography
-            fontSize="16px"
-            lineHeight="20px"
-            fontWeight="400"
-            color="#6B7280"
-          >
-            US Dollar (USD)
-          </Typography>
-          <img src={Flag} alt="Flag" />
-          <img src={RightArrow} alt="arrow" />
-        </Box>
+      <AmountInput flag={Flag} />
+      <Box display="flex" alignSelf="center" justifyContent="center" >
+        <img src={CurrencyArrow} alt="icon"/>
       </Box>
- 
+
+      <AmountInput flag={Flag2} />
+    </Box>
   );
 };
 

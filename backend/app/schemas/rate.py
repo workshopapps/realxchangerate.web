@@ -11,6 +11,13 @@ class RateBase(BaseModel):
     currency_id: int
 
 
+class RateUpdate(BaseModel):
+    official_buy: float
+    official_sell: float
+    parallel_buy: float
+    parallel_sell: float
+
+
 class RateCreate(RateBase):
     pass
 

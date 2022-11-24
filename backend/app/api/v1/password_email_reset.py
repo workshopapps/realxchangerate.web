@@ -20,9 +20,7 @@ def get_email():
 def get_token():
     return authenticate_token()
 
-@router.get("/dashboard")
-def dashboard():
-    return "message: Welcome to your dashboard!"
+
 
     
 
