@@ -1,13 +1,13 @@
 from typing import Any, List,  Optional, Union, Dict
 from fastapi import APIRouter, Depends, HTTPException, status, BackgroundTasks
 from sqlalchemy.orm import Session
-import jinja2
+import uuid
 from app import schemas, crud
 from app.api.deps import get_db
 from fastapi.responses import RedirectResponse
 from starlette.responses import JSONResponse
 import os
-from app.schemas.admin import Admin
+from app.models.admin import Admin
 from decouple import config
 from fastapi import FastAPI, Depends, HTTPException
 from app.schemas.admin import AdminUpdate, AdminCreate
@@ -60,7 +60,7 @@ async def sending_mail(email: EmailSchema, admin_in: schemas.AdminCreate, db: Se
                 <p>Hello !!! Did you request for a password reset?
                 <br></p>
                 <p> 
-                <a href="{{ url_for('reset_password', path='/api/forget_password/reset_password') }}" target="_blank">
+                <a href="{{ url_for('reset_password', path='api/forget_password/reset_password') }}" target="_blank">
                 click here to reset your password
             </a>
                 <p> If this is not you, secure your account by turning on 2-factor authentication<p>
@@ -85,15 +85,19 @@ async def sending_mail(email: EmailSchema, admin_in: schemas.AdminCreate, db: Se
 
 
 
-@router.post("/reset_password", status_code=200)
-def reset_password(*, 
-    db: Session = Depends(get_db), db_obj:Admin,  obj_in: Union[AdminUpdate, Dict[str, Any]]) -> Any:
-      password = crud.admin.update(db=db, db_obj=db_obj, obj_in=obj_in)
-      return password
-def login_with_password(*,
-db: Session = Depends(get_db), email: str, password: str) -> Any:
-    logging = crud.admin.authenticate(db=db, email=email, password=password)
-    return logging
+@router.post("/reset_password")
+def reset_password(*, email: str, password: str,
+    db: Session = Depends(get_db), obj_in: Union[AdminUpdate, Dict[str, Any]]) -> Any:
+      details = crud.admin.get_by_email(db=db, email=email)
+      if details:
+        password = crud.admin.update(db=db, db_obj=details, obj_in=obj_in)
+        return password
+      else:
+        return {"message": "user not found"}
+# def login_with_password(*,
+# db: Session = Depends(get_db), email: str, password: str) -> Any:
+#     logging = crud.admin.authenticate(db=db, email=email, password=password)
+#     return logging
 
     
 
