@@ -13,6 +13,10 @@ class CRUDCurrency(CRUDBase[Currency, CurrencyCreate, CurrencyUpdate]):
     # Declare model specific CRUD operation methods.
     def get_currency_by_isocode(self, db: Session, isocode: str) -> Any:
         return db.query(Currency).filter(Currency.isocode == isocode).first()
+    
+    def get_all_currencies(self, db:Session):
+        """Returns all currencies from the database"""
+        return db.query(Currency).all()
 
     def delete_currency_by_isocode(self, db: Session, isocode: str) -> dict:
         """This function deletes the currency associated with the isocode passed in.
