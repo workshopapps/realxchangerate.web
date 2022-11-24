@@ -34,18 +34,15 @@ def add_currency(
     """
     Create a new currency.
     """
-    c = crud.currency.create(db, obj_in=currency_in)
-    return c
 
-
-@router.post("/add_rate", response_model=schemas.Rate)
-def add_Rate(*, db: Session = Depends(get_db), rate_in: schemas.RateCreate) -> Any:
-    """
-    add new rates.
-    """
-    rate = crud.rate.create(db, obj_in=rate_in)
-    return rate
-
+    currency = crud.currency.create(db=db, obj_in=currency_in)
+    return currency
+@router.post("/add_rate", response_model=schemas.Rate, status_code=201)
+async def create_rate(*,db: Session = Depends(get_db), 
+    rate_in: schemas.RateCreate) -> Any:
+#    create new rates
+    rate = crud.rate.create(db=db, obj_in=rate_in)
+    return (rate)
 
 @router.post("/delete_currency")
 def delete_currency(*, db: Session = Depends(get_db), isocode: str):
