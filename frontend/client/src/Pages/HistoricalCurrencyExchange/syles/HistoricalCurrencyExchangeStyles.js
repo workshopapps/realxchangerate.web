@@ -90,7 +90,10 @@ justify-content:right;
 }
 .convert{
   height:44px;
-  width:380px;
+  width:320px;
+  @media (max-width:450px){
+     width:300px;
+}
 }
 .arrow{
   margin-left:14px;

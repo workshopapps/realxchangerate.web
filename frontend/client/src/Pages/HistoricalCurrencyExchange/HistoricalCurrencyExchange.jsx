@@ -171,7 +171,7 @@ const MobileView = ({data}) => {
         </TabsList>
         <TabPanelUnstyled value={0}>
           
-            <Box widht="100%">
+            <Box width="100%">
               <MobileRowHeaderComponent rate="Bank Rate"/>
               {data.map((val, key) => {
                 return (
@@ -183,7 +183,7 @@ const MobileView = ({data}) => {
           
         </TabPanelUnstyled>
         <TabPanelUnstyled value={1}>
-        <Box widht="100%">
+        <Box width="100%">
               <MobileRowHeaderComponent rate="Parallel Rate"/>
               {data.map((val, key) => {
                 return (
