@@ -7,7 +7,9 @@ import {
   CurrencyContainer,
   CurrencyWrapper,
   Header,
+  Img,
   Indicator,
+  Redirect,
   Text,
  
 } from "./EnCountryStyles";
@@ -18,32 +20,231 @@ const EnCountryLetter = () => {
       <Header>Select a country letter</Header>
 
       <CounrtryOptionWrapper>
-        <Text>A</Text>
-        <Text>B</Text>
-        <Text>C</Text>
-        <Text>D</Text>
-        <Text>E</Text>
-        <Text>F</Text>
-        <Text>G</Text>
-        <Text>H</Text>
-        <Text>I</Text>
-        <Text>J</Text>
-        <Text>K</Text>
-        <Text>L</Text>
-        <Text>M</Text>
-        <Text>N</Text>
-        <Text>O</Text>
-        <Text>P</Text>
-        <Text>Q</Text>
-        <Text>R</Text>
-        <Text>S</Text>
-        <Text>T</Text>
-        <Text>U</Text>
-        <Text>V</Text>
-        <Text>W</Text>
-        <Text>X</Text>
-        <Text>Y</Text>
-        <Text>Z</Text>
+        <Redirect
+          to="/currency-encyclopedia/:country"
+          spy={true}
+          smooth={true}
+          duration={500}
+        >
+          {" "}
+          <Text>A</Text>
+        </Redirect>
+        <Redirect
+          to="/currency-encyclopedia/:country"
+          spy={true}
+          smooth={true}
+          duration={500}
+        >
+          {" "}
+          <Text>B</Text>
+        </Redirect>
+        <Redirect
+          to="/currency-encyclopedia/:country"
+          spy={true}
+          smooth={true}
+          duration={500}
+        >
+          {" "}
+          <Text>C</Text>
+        </Redirect>
+        <Redirect
+          to="/currency-encyclopedia/:country"
+          spy={true}
+          smooth={true}
+          duration={500}
+        >
+          {" "}
+          <Text>D</Text>
+        </Redirect>
+        <Redirect
+          to="/currency-encyclopedia/:country"
+          spy={true}
+          smooth={true}
+          duration={500}
+        >
+          {" "}
+          <Text>E</Text>
+        </Redirect>
+        <Redirect
+          to="/currency-encyclopedia/:country"
+          spy={true}
+          smooth={true}
+          duration={500}
+        >
+          {" "}
+          <Text>G</Text>
+        </Redirect>
+        <Redirect
+          to="/currency-encyclopedia/:country"
+          spy={true}
+          smooth={true}
+          duration={500}
+        >
+          {" "}
+          <Text>H</Text>
+        </Redirect>
+        <Redirect
+          to="/currency-encyclopedia/:country"
+          spy={true}
+          smooth={true}
+          duration={500}
+        >
+          {" "}
+          <Text>I</Text>
+        </Redirect>
+        <Redirect
+          to="/currency-encyclopedia/:country"
+          spy={true}
+          smooth={true}
+          duration={500}
+        >
+          {" "}
+          <Text>J</Text>
+        </Redirect>
+        <Redirect
+          to="/currency-encyclopedia/:country"
+          spy={true}
+          smooth={true}
+          duration={500}
+        >
+          {" "}
+          <Text>K</Text>
+        </Redirect>
+        <Redirect
+          to="/currency-encyclopedia/:country"
+          spy={true}
+          smooth={true}
+          duration={500}
+        >
+          {" "}
+          <Text>L</Text>
+        </Redirect>
+        <Redirect
+          to="/currency-encyclopedia/:country"
+          spy={true}
+          smooth={true}
+          duration={500}
+        >
+          {" "}
+          <Text>M</Text>
+        </Redirect>
+        <Redirect
+          to="/currency-encyclopedia/:country"
+          spy={true}
+          smooth={true}
+          duration={500}
+        >
+          {" "}
+          <Text>N</Text>
+        </Redirect>
+        <Redirect
+          to="/currency-encyclopedia/:country"
+          spy={true}
+          smooth={true}
+          duration={500}
+        >
+          {" "}
+          <Text>O</Text>
+        </Redirect>
+        <Redirect
+          to="/currency-encyclopedia/:country"
+          spy={true}
+          smooth={true}
+          duration={500}
+        >
+          {" "}
+          <Text>P</Text>
+        </Redirect>
+        <Redirect
+          to="/currency-encyclopedia/:country"
+          spy={true}
+          smooth={true}
+          duration={500}
+        >
+          {" "}
+          <Text>Q</Text>
+        </Redirect>
+        <Redirect
+          to="/currency-encyclopedia/:country"
+          spy={true}
+          smooth={true}
+          duration={500}
+        >
+          {" "}
+          <Text>R</Text>
+        </Redirect>
+        <Redirect
+          to="/currency-encyclopedia/:country"
+          spy={true}
+          smooth={true}
+          duration={500}
+        >
+          {" "}
+          <Text>S</Text>
+        </Redirect>
+        <Redirect
+          to="/currency-encyclopedia/:country"
+          spy={true}
+          smooth={true}
+          duration={500}
+        >
+          {" "}
+          <Text>T</Text>
+        </Redirect>
+        <Redirect
+          to="/currency-encyclopedia/:country"
+          spy={true}
+          smooth={true}
+          duration={500}
+        >
+          {" "}
+          <Text>U</Text>
+        </Redirect>
+        <Redirect
+          to="/currency-encyclopedia/:country"
+          spy={true}
+          smooth={true}
+          duration={500}
+        >
+          {" "}
+          <Text>V</Text>
+        </Redirect>
+        <Redirect
+          to="/currency-encyclopedia/:country"
+          spy={true}
+          smooth={true}
+          duration={500}
+        >
+          {" "}
+          <Text>W</Text>
+        </Redirect>
+        <Redirect
+          to="/currency-encyclopedia/:country"
+          spy={true}
+          smooth={true}
+          duration={500}
+        >
+          {" "}
+          <Text>X</Text>
+        </Redirect>
+        <Redirect
+          to="/currency-encyclopedia/:country"
+          spy={true}
+          smooth={true}
+          duration={500}
+        >
+          {" "}
+          <Text>Y</Text>
+        </Redirect>
+        <Redirect
+          to="/currency-encyclopedia/:country"
+          spy={true}
+          smooth={true}
+          duration={500}
+        >
+          {" "}
+          <Text>Z</Text>
+        </Redirect>
       </CounrtryOptionWrapper>
 
       <CurrencyWrapper>
@@ -51,59 +252,80 @@ const EnCountryLetter = () => {
       </CurrencyWrapper>
       <CountryCurrencyWrapper>
         <CountryNames>
-          <img src={letter} alt="" /> GBP-Bristish Pound
-        </CountryNames>
-        <CountryNames>
-          <img src={letter} alt="" />
-           GBP-Bristish Pound
-        </CountryNames>
-        <CountryNames>
-          <img src={letter} alt="" />
-           GBP-Bristish Pound
-        </CountryNames>
-        <CountryNames>
-          <img src={letter} alt="" />
-           GBP-Bristish Pound
-        </CountryNames>
-        <CountryNames>
-          <img src={letter} alt="" />
-           GBP-Bristish Pound
-        </CountryNames>
-        <CountryNames>
-          <img src={letter} alt="" />
-           GBP-Bristish Pound
-        </CountryNames>
-        <CountryNames>
-          <img src={letter} alt="" />
-           GBP-Bristish Pound
-        </CountryNames>
-        <CountryNames>
-          <img src={letter} alt="" />
-           GBP-Bristish Pound
-        </CountryNames>
-        <CountryNames>
-          <img src={letter} alt="" />
-           GBP-Bristish Pound
-        </CountryNames>
-        <CountryNames>
-          <img src={letter} alt="" />
-           GBP-Bristish Pound
-        </CountryNames>
-        <CountryNames>
-          <img src={letter} alt="" />
-           GBP-Bristish Pound
-        </CountryNames>
-        <CountryNames>
-          <img src={letter} alt="" />
-           GBP-Bristish Pound
-        </CountryNames>
-        <CountryNames>
-          <img src={letter} alt="" />
+          <Img src={letter} alt="" style={{ marginRight: "5px" }} />
           GBP-Bristish Pound
         </CountryNames>
         <CountryNames>
-          <img src={letter} alt="" />
-           GBP-Bristish Pound
+          <Img src={letter} alt="" style={{ marginRight: "5px" }} />
+          GBP-Bristish Pound
+        </CountryNames>
+        <CountryNames>
+          <Img src={letter} alt="" style={{ marginRight: "5px" }} />
+          GBP-Bristish Pound
+        </CountryNames>
+        <CountryNames>
+          <Img src={letter} alt="" style={{ marginRight: "5px" }} />
+          GBP-Bristish Pound
+        </CountryNames>
+        <CountryNames>
+          <Img src={letter} alt="" style={{ marginRight: "5px" }} />
+          GBP-Bristish Pound
+        </CountryNames>
+        <CountryNames>
+          <Img src={letter} alt="" style={{ marginRight: "5px" }} />
+          GBP-Bristish Pound
+        </CountryNames>
+        <CountryNames>
+          <Img src={letter} alt="" style={{ marginRight: "5px" }} />
+          GBP-Bristish Pound
+        </CountryNames>
+        <CountryNames>
+          <Img src={letter} alt="" style={{ marginRight: "5px" }} />
+          GBP-Bristish Pound
+        </CountryNames>
+        <CountryNames>
+          <Img src={letter} alt="" style={{ marginRight: "5px" }} />
+          GBP-Bristish Pound
+        </CountryNames>
+        <CountryNames>
+          <Img
+            src={letter}
+            alt=""
+            style={{  marginRight: "5px" }}
+          />
+          GBP-Bristish Pound
+        </CountryNames>
+        <CountryNames>
+          <Img
+            src={letter}
+            alt=""
+            style={{  marginRight: "5px" }}
+          />
+          GBP-Bristish Pound
+        </CountryNames>
+        <CountryNames>
+          <Img
+            src={letter}
+            alt=""
+            style={{ marginRight: "5px" }}
+          />
+          GBP-Bristish Pound
+        </CountryNames>
+        <CountryNames>
+          <Img
+            src={letter}
+            alt=""
+            style={{  marginRight: "5px" }}
+          />
+          GBP-Bristish Pound
+        </CountryNames>
+        <CountryNames>
+          <Img
+            src={letter}
+            alt=""
+            style={{  marginRight: "5px" }}
+          />
+          GBP-Bristish Pound
         </CountryNames>
       </CountryCurrencyWrapper>
     </CurrencyContainer>

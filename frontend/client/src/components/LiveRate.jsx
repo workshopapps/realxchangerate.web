@@ -4,9 +4,10 @@ import { CountrySort } from "./";
 
 const LiveRate = () => {
   const Wrapper = styled.div`
-    padding: 0 80px;
+    padding: 40px 40px;
     margin: 70px 0;
-    width: 100%;
+    max-width: 1440px;
+    margin: auto;
     div {
       width: min(86%, 595px);
       h5 {

@@ -2,6 +2,7 @@ import Messages from "../shared/MessagesComponent/Messages";
 import CurrencyNotifications from "../shared/CurrencyNotifications/CurrencyNotification";
 import TrendingConversions from "../TrendingConversions/TrendingConversions";
 import { StyledDashboardLayout } from "./dashboardLayoutStyle";
+// import TrendingCurrencies from "../shared/TrendingCurrencies/TrendingCurrencies";
 
 const DashboardLayout = () => {
   return (
@@ -15,7 +16,7 @@ const DashboardLayout = () => {
           <CurrencyNotifications />
         </div>
 
-        <div id="currencies">{/*  */}</div>
+        <div id="currencies">{/* <TrendingCurrencies /> */}</div>
 
         <div id="country">{/*  */}</div>
 

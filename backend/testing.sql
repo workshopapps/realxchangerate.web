@@ -1,1 +1,1 @@
-SELECT * FROM admins
+SELECT * FROM currencies

@@ -1,0 +1,9 @@
+export { default as CallIcon } from "./svg/call-icon.svg";
+export { default as Facebook } from "./svg/facebook-logo.svg";
+export { default as Instagram } from "./svg/instagram-logo.svg";
+export { default as LinkedIn } from "./svg/linkedIn-logo.svg";
+export { default as Location } from "./svg/location-icon.svg";
+export { default as Message } from "./svg/message-icon.svg";
+export { default as Twitter } from "./svg/twitter-logo.svg";
+export { default as BackgroundImage } from "./png/contact-bg-desktop.png";
+export { default as BackgroundImageMobile } from "./png/contact-bg-mobile.png";

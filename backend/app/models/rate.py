@@ -1,8 +1,10 @@
-from sqlalchemy import Column, Integer, String, Float, DateTime,ForeignKey
+from datetime import datetime
+from email.policy import default
+from sqlalchemy import Column, Integer, String, Float, DateTime, ForeignKey
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 from app.database.base_class import Base
-from datetime import datetime
+import datetime
 
 
 class Rate(Base):
@@ -13,8 +15,8 @@ class Rate(Base):
     official_sell = Column(Float)
     parallel_buy = Column(Float)
     parallel_sell = Column(Float)
-    last_updated = Column(DateTime(timezone=True))
-    currency_id = Column(Integer, ForeignKey("currencies.id"))
+    last_updated = Column(DateTime, default=datetime.datetime.utcnow)
+    currency_id = Column(Integer, ForeignKey("currencies.id"), nullable=False)
 
     currency = relationship(
         "Currency", back_populates="rates", passive_deletes=True)
