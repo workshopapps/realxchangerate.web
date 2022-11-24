@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import SearchIcon from './assets/searchIcon.svg';
-import FaqCard from '../../components/FaqCard';
-import { faqData } from './FaqData';
+import React, { useState } from "react";
+import SearchIcon from "./assets/searchIcon.svg";
+import FaqCard from "./components/FaqCard";
+import { faqData } from "./FaqData";
 
 import {
   Container,
@@ -18,10 +18,10 @@ import {
   Question,
   Answer,
   GetInTouch,
-} from '../../components/styles/FaqPage.styled';
+} from "./styles/FaqPage.styled";
 
 const Faq = () => {
-  const [searchField, setSearchField] = useState('');
+  const [searchField, setSearchField] = useState("");
 
   const filteredFaq = faqData.filter((faq) => {
     return (
@@ -42,8 +42,8 @@ const Faq = () => {
         </TextWrapper>
         <SearchWrapper>
           <Searchgroup>
-            <img src={SearchIcon} alt='searchIcon' />
-            <Search placeholder='Search FAQs' onChange={handleChange} />
+            <img src={SearchIcon} alt="searchIcon" />
+            <Search placeholder="Search FAQs" onChange={handleChange} />
             <StyledButton onClick={handleChange}>Search</StyledButton>
           </Searchgroup>
         </SearchWrapper>
