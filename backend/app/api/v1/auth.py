@@ -1,4 +1,4 @@
-from fastapi import APIRouter,Request
+from fastapi import APIRouter, Request
 from pydantic import BaseModel
 from typing import Union
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
@@ -8,18 +8,37 @@ from jose import JWTError, jwt
 from passlib.context import CryptContext
 from datetime import datetime, timedelta
 from ..deps import get_db
+<<<<<<< HEAD
 from app.core import verify_password,settings
 from app import models,schemas
+=======
+
+from app import models, schemas
+>>>>>>> bd11517bb480bf85dc870226fb103841f5b6c945
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="api/auth")
 router = APIRouter()
 
+<<<<<<< HEAD
+=======
+
+def verify_password(plain_password, hashed_password):
+    return pwd_context.verify(plain_password, hashed_password)
+
+
+def get_password_hash(password):
+    return pwd_context.hash(password)
+
+
+>>>>>>> bd11517bb480bf85dc870226fb103841f5b6c945
 class Token(BaseModel):
     access_token: str
     token_type: str
 
+
 class TokenData(BaseModel):
     username: Union[str, None] = None
+
 
 def create_access_token(data: dict, expires_delta: Union[timedelta, None] = None):
     to_encode = data.copy()
@@ -41,11 +60,13 @@ def expire_access_token(data: dict, expires_delta: Union[timedelta, None] = None
     encoded_jwt = jwt.encode(to_encode, settings.SECRET_KEY, algorithm=settings.ALGORITHM)
     return encoded_jwt
 
-def get_user(db:Session, email: str):
+
+def get_user(db: Session, email: str):
     return db.query(models.Admin).filter(models.Admin.email == email).first()
    
 
-def get_current_user(db: Session = Depends(get_db),token: str = Depends(oauth2_scheme)):
+
+def get_current_user(db: Session = Depends(get_db), token: str = Depends(oauth2_scheme)):
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
         detail="Could not validate credentials",
@@ -65,7 +86,8 @@ def get_current_user(db: Session = Depends(get_db),token: str = Depends(oauth2_s
         raise credentials_exception
     return user
 
-def authenticate_user(db:Session, email: str, password: str):
+
+def authenticate_user(db: Session, email: str, password: str):
     user = get_user(db, email)
     if not user:
         return False
@@ -74,6 +96,7 @@ def authenticate_user(db:Session, email: str, password: str):
         return False
     return user
 
+
 def get_current_active_user(current_user: schemas.Admin = Depends(get_current_user)):
     if not current_user.is_active:
         raise HTTPException(status_code=400, detail="Inactive user")
@@ -81,7 +104,7 @@ def get_current_active_user(current_user: schemas.Admin = Depends(get_current_us
 
 
 @router.post("/auth", response_model=Token)
-async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(),db:Session = Depends(get_db)):
+async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db)):
     user = authenticate_user(db, form_data.username, form_data.password)
     if not user:
         raise HTTPException(
@@ -96,3 +119,9 @@ async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(
     return {"access_token": access_token, "token_type": "bearer"}
 
 
+<<<<<<< HEAD
+=======
+@router.get("/test", response_model=schemas.Admin)
+async def read_users_me(current_user: schemas.Admin = Depends(get_current_active_user)):
+    return current_user
+>>>>>>> bd11517bb480bf85dc870226fb103841f5b6c945

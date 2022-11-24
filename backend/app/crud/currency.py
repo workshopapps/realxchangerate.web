@@ -20,13 +20,8 @@ class CRUDCurrency(CRUDBase[Currency, CurrencyCreate, CurrencyUpdate]):
         INPUT: isocode: str
         OUTPUT: {'status': True, 'message': 'Deleted!'}
         """
-        if len(isocode) == 0:
-            return {"status": False, "message": "isocode cannot be empty!"}
 
-        if type(isocode) != str:
-            return {"status": False, "message": "isocode must be string!"}
-
-        currency = self.get_currency_by_isocode(isocode=isocode)
+        currency = self.get_currency_by_isocode(db, isocode=isocode)
 
         if currency == None:
             return {"status": False, "message": "Currency not found!"}

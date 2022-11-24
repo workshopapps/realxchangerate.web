@@ -12,4 +12,5 @@ class CRUDRate(CRUDBase[Rate, RateCreate, RateBase]):
     # Declare model specific CRUD operation methods.
     pass
 
+
 rate = CRUDRate(Rate)
