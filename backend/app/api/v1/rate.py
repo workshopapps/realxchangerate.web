@@ -15,7 +15,13 @@ router = APIRouter()
 
 
 @router.get('/{isocode}')
-def getRate(isocode, db: Session = Depends(get_db)):
+def get_rate_by_isocode(isocode, db: Session = Depends(get_db)):
+    """
+    Get rate of selected currency
+
+    Args:
+        isocode (str): Country isocode
+    """
     currency = crud.currency.get_currency_by_isocode(db, isocode=isocode)
     if currency == None:
         return {
@@ -29,7 +35,7 @@ def getRate(isocode, db: Session = Depends(get_db)):
 
 
 @router.get('/history/{isocode}')
-def getfiveRates(isocode, db: Session = Depends(get_db)):
+def get_five_rates(isocode, db: Session = Depends(get_db)):
     currency = crud.currency.get_currency_by_isocode(db, isocode=isocode)
     if currency == None:
         return {
@@ -45,7 +51,7 @@ def getfiveRates(isocode, db: Session = Depends(get_db)):
 
 
 @router.get('/ip/{ip}')
-def get_ip_currency(ip, db: Session = Depends(get_db)):
+def get_currency_by_ip(ip, db: Session = Depends(get_db)):
     # Get country
     country = get_location(ip)
 
@@ -60,11 +66,8 @@ def get_ip_currency(ip, db: Session = Depends(get_db)):
     return {"success": True, "status_code": 200, "data": {"currency": currency, "rate": rates}}
 
 
-router = APIRouter()
-
-
 @router.get("/", response_model=List[schemas.Rate])
-def get_rate(db: Session = Depends(get_db), skip: int = 0, limit: int = 100) -> Any:
+def get_all_rates(db: Session = Depends(get_db), skip: int = 0, limit: int = 100) -> Any:
     """
     get all rates.
     """
