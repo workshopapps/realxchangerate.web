@@ -24,7 +24,7 @@ def create_admin(*, db: Session = Depends(get_db), admin_in: schemas.AdminCreate
             detail="Admin with email already exists."
         )
     admin = crud.admin.create(db, obj_in=admin_in)
-    return {"success":True, "data":admin}
+    return {"success": True, "data": admin}
 
 
 @router.post("/add_currency")
@@ -37,12 +37,15 @@ def add_currency(
 
     currency = crud.currency.create(db=db, obj_in=currency_in)
     return currency
+
+
 @router.post("/add_rate", response_model=schemas.Rate, status_code=201)
-async def create_rate(*,db: Session = Depends(get_db), 
-    rate_in: schemas.RateCreate) -> Any:
-#    create new rates
+async def create_rate(*, db: Session = Depends(get_db),
+                      rate_in: schemas.RateCreate) -> Any:
+    #    create new rates
     rate = crud.rate.create(db=db, obj_in=rate_in)
     return (rate)
+
 
 @router.post("/delete_currency")
 def delete_currency(*, db: Session = Depends(get_db), isocode: str):
@@ -52,7 +55,10 @@ def delete_currency(*, db: Session = Depends(get_db), isocode: str):
         isocode (str): country isocode
     """
     currency = crud.currency.delete_currency_by_isocode(db, isocode=isocode)
-    return currency
+    if currency is None:
+        return {"success": False, "status_code": 404, "data": {"currency": currency}, "message": "currency not found!"}
+
+    return {"success": True, "status_code": 200, "data": {"currency": currency}, "message": "currency deleted!"}
 
 
 @router.post("/delete_rate")
@@ -63,12 +69,14 @@ def delete_rate(*, db: Session = Depends(get_db), rate_id: int):
         rate_id (int): rate id
     """
     if rate_id == 0:
-        return {"status": False, "message": "id starts from 1!"}
-    rate_query = crud.rate.remove(db, model_id=rate_id)
-    if rate_query is None:
-        return {"status": False, "message": "Not found!"}
+        return {"success": False, "status_code": 404, "data": {"rate id": rate_id}, "message": "id starts from 1!"}
 
-    return {"status": True, "message": "rate deleted!"}
+    rate_query = crud.rate.remove(db, model_id=rate_id)
+
+    if rate_query is None:
+        return {"success": False, "status_code": 404, "data": {"rate id": rate_id}, "message": "Not found!"}
+
+    return {"success": True, "status_code": 200, "data": {"rate id": rate_id}, "message": "rate deleted!"}
 
 
 @router.post('/update_currency')
@@ -80,17 +88,18 @@ def update_currencies(iso_code: str, update_param: schemas.CurrencyUpdate, db: S
     details = crud.currency.get_currency_by_isocode(db=db, isocode=iso_code)
 
     if not details:
-        raise HTTPException(status_code=404, detail=f"No record found to update")
-    # update variable stores the updated currency in the database 
-    update = crud.currency.update(db=db,db_obj=details, obj_in=update_param)
+        raise HTTPException(
+            status_code=404, detail=f"No record found to update")
+    # update variable stores the updated currency in the database
+    update = crud.currency.update(db=db, db_obj=details, obj_in=update_param)
     return {
-            "success":True,
-            "data": update
-            }
+        "success": True,
+        "data": update
+    }
 
 
 @router.post("/update_rate")
-def  update_rate(iso_code: str, update_param: schemas.RateUpdate, db: Session = Depends(get_db)):
+def update_rate(iso_code: str, update_param: schemas.RateUpdate, db: Session = Depends(get_db)):
     """
     This endpoint recives details to update a currency rate. It finds the rate in the database by locating
     the currency associated with it through the required iso code provided
@@ -100,14 +109,14 @@ def  update_rate(iso_code: str, update_param: schemas.RateUpdate, db: Session = 
     if not currency:
         raise HTTPException(status_code=404, detail=f"Currency not found")
     # rate collects the last updated rate stored in the database
-    rate = db.query(Rate).filter(Rate.currency_id == currency.id).order_by(Rate.last_updated.desc()).first()
+    rate = db.query(Rate).filter(Rate.currency_id == currency.id).order_by(
+        Rate.last_updated.desc()).first()
     if not rate:
-        raise HTTPException(status_code=404, detail=f"No rate for the currency found to update")
-    # update variable stores the updated rate in the database 
+        raise HTTPException(
+            status_code=404, detail=f"No rate for the currency found to update")
+    # update variable stores the updated rate in the database
     update = crud.currency.update(db=db, db_obj=rate, obj_in=update_param)
-    return {   
-        "success":True,
+    return {
+        "success": True,
         "data": update
-        }
-
-    
+    }
