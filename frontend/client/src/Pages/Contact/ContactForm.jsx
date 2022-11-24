@@ -1,11 +1,21 @@
-import React, { useState } from "react";
-import { FormSection } from "../../components/styles/Contact.styled";
+import React, { useState, useEffect } from "react";
+import { Button, DisabledButton } from "./styles/Contact.styled";
+import { Typography, Stack, TextField, } from "@mui/material";
 
 const ContactForm = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [succesMessage, setSucessMessage] = useState("");
+  const [btnDisabled, setBtnDisabled] = useState(true);
+
+  useEffect(() => {
+    if (name === "" || email === "" || message === "") {
+      setBtnDisabled(true);
+    } else {
+      setBtnDisabled(false);
+    }
+  }, [name, message, email]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -38,62 +48,106 @@ const ContactForm = () => {
   };
 
   return (
-    <FormSection>
-      {succesMessage && (
-        <div className="successMessage-container">
-          <p>{succesMessage}</p>
-        </div>
-      )}
-      <h2>
-        We would love to hear from you,
-        <br /> Get in touch with us
-      </h2>
-      <p>
-        To make inquiries about our services, you can leave us a message. We
-        promise to send you a response as soon as possible.
-      </p>
-      <form onSubmit={handleSubmit}>
-        <input type="hidden" name="_next" value="" />
-        <input type="hidden" name="_captcha" value="false" />
-        <div>
-          <label htmlFor="name">Your name</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder="Enter your name"
-          />
-        </div>
+    <Stack
+      direction="column"
+      sx={{
+        gap: { xs: "24px", sm: "20px", md: "24px" },
+        minWidth: { xs: "100%", sm: "327px", md: "375px" },
+      }}
+    >
+      <Stack direction="column" letterSpacing="0.001em" gap="5px">
+        <Typography
+          color="#0F172A"
+          sx={{
+            fontSize: { xs: "14px" },
+            lineHeight: { xs: "20px" },
+            fontWeight: { xs: "500" },
+          }}
+        >
+          Your name
+        </Typography>
+        <TextField
+          id="outlined-basic"
+          placeholder="Enter your name"
+          variant="outlined"
+          padding="10px 12px"
+          height="40px"
+          border="1px solid #D1D5DB"
+          sx={{
+            fontSize: "14px",
+            lineHeight: "20px",
+            fontWeight: "400",
+          }}
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+      </Stack>
 
-        <div>
-          <label htmlFor="email">Your email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Enter your email"
-          />
-        </div>
+      <Stack direction="column" letterSpacing="0.001em" gap="5px">
+        <Typography
+          color="#0F172A"
+          sx={{
+            fontSize: { xs: "14px" },
+            lineHeight: { xs: "20px" },
+            fontWeight: { xs: "500" },
+          }}
+        >
+          Your email
+        </Typography>
+        <TextField
+          id="outlined-basic"
+          variant="outlined"
+          placeholder="Enter your email"
+          padding="10px 12px"
+          height="40px"
+          border="1px solid #D1D5DB"
+          sx={{
+            fontSize: "14px",
+            lineHeight: "20px",
+            fontWeight: "400",
+          }}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+      </Stack>
 
-        <div>
-          <label htmlFor="message">Message</label>
-          <textarea
-            id="message"
-            name="message"
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            placeholder="How can we help you?"
-          />
-        </div>
-        <button type="submit" disabled={!name || !email || !message}>
-          Submit
-        </button>
-      </form>
-    </FormSection>
+      <Stack direction="column" letterSpacing="0.001em" gap="5px">
+        <Typography
+          color="#0F172A"
+          sx={{
+            fontSize: { xs: "14px" },
+            lineHeight: { xs: "20px" },
+            fontWeight: { xs: "500" },
+          }}
+        >
+          Message
+        </Typography>
+        <TextField
+          id="outlined-textarea"
+          multiline
+          placeholder="How can we help you?"
+          rows={10}
+          padding="10px 12px"
+          height="40px"
+          border="1px solid #D1D5DB"
+          sx={{
+            fontSize: "14px",
+            lineHeight: "20px",
+            fontWeight: "400",
+          }}
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+        />
+      </Stack>
+
+      <>
+        {btnDisabled ? (
+          <DisabledButton>Submit</DisabledButton>
+        ) : (
+          <Button onClick={(e) => handleSubmit(e)}>Submit</Button>
+        )}
+      </>
+    </Stack>
   );
 };
 

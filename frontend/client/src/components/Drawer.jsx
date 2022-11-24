@@ -45,7 +45,7 @@ import {
           Convert
         </Link>
 
-        <Link to="#" color="inherit">
+        <Link to="/" color="inherit">
           Currency Profile
         </Link>
 

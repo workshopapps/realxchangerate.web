@@ -173,8 +173,8 @@ jobs:
       # - restore_cache:
       #     keys:
       #       - v1-{{ .Branch }}
-          # paths:
-          #   - /caches/app.tar
+      # paths:
+      #   - /caches/app.tar
 
       # - run:
       #     name: Load Docker image layer cache
@@ -263,7 +263,7 @@ workflows:
     # testing
     jobs:
       - build-frontend-client
-        # - build-frontend-admin
+      # - build-frontend-admin
       - build-backend
       # - test-frontend-client
       # - test-frontend-admin
@@ -272,17 +272,14 @@ workflows:
           requires: [build-frontend-client] #remember to channge to test
           filters:
             branches:
-              only: [merge-dev]
+              only: [new_dev]
 
       - build-backend-docker-image:
           requires: [build-backend] #remember to channge to test
           filters:
             branches:
-              only: [merge-dev]
+              only: [new_dev]
 
       - deploy-images-using-ssh:
           requires:
-            [
-              build-frontend-client-docker-image,
-              build-frontend-client-docker-image,
-            ]
+            [build-frontend-client-docker-image, build-backend-docker-image]

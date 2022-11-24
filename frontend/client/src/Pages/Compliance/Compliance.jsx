@@ -1,6 +1,6 @@
 import { Box, Typography, useMediaQuery, Stack, Link } from "@mui/material";
 import React from "react";
-import {BackgroundImage, BackgroundImageMobile, RightArrow} from "./assets/";
+import { BackgroundImage, BackgroundImageMobile, RightArrow } from "./assets/";
 
 const Complaince = () => {
   const mobileScreen = useMediaQuery("(max-width:481px)");
@@ -189,7 +189,81 @@ const Complaince = () => {
                 Type 2 reports
               </Typography>
             </li>
+
+            <li>
+              <Typography
+                sx={{
+                  fontSize: { xs: "14px" },
+                  lineHeight: { xs: "20px", sm: "20px" },
+                  fontWeight: { xs: "400" },
+                }}
+                color="#1E293B"
+                letterSpacing="0.001em"
+              >
+                Careful controls on account creation, transaction monitoring,
+                reporting and overall system management and security
+              </Typography>
+            </li>
+
+            <li>
+              <Typography
+                sx={{
+                  fontSize: { xs: "14px" },
+                  lineHeight: { xs: "20px", sm: "20px" },
+                  fontWeight: { xs: "400" },
+                }}
+                color="#1E293B"
+                letterSpacing="0.001em"
+              >
+                Appropriate licenses to ensure the public has protections and
+                the market is fair and regulated
+              </Typography>
+            </li>
+
+            <li>
+              <Typography
+                sx={{
+                  fontSize: { xs: "14px" },
+                  lineHeight: { xs: "20px", sm: "20px" },
+                  fontWeight: { xs: "400" },
+                }}
+                color="#1E293B"
+                letterSpacing="0.001em"
+              >
+                Reliable financial control systems and methods to protect funds
+                (such as insurance)
+              </Typography>
+            </li>
+
+            <li>
+              <Typography
+                sx={{
+                  fontSize: { xs: "14px" },
+                  lineHeight: { xs: "20px", sm: "20px" },
+                  fontWeight: { xs: "400" },
+                }}
+                color="#1E293B"
+                letterSpacing="0.001em"
+              >
+                Procedures for audits and reviews
+              </Typography>
+            </li>
           </ul>
+
+          <Typography
+            sx={{
+              fontSize: { xs: "14px" },
+              lineHeight: { xs: "20px", sm: "20px" },
+              fontWeight: { xs: "400" },
+            }}
+            color="#1E293B"
+            letterSpacing="0.001em"
+          >
+            Proper identity verification is key; knowing who the customer is
+            becomes the first step in determining if the individual is
+            legitimate or has any connections to potential money laundering or
+            other criminal activities.
+          </Typography>
 
           <Stack
             sx={{

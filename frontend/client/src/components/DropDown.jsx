@@ -51,7 +51,7 @@ const DropDown = ({ title, Items, Links }) => {
             textAlign="center"
           >
             {Items.map((item) => (
-                <Link href={`/${Links[Items.indexOf(item)]}`} color="inherit" key={Items.indexOf(item)}>
+                <Link href={`/#/${Links[Items.indexOf(item)]}`} color="inherit" key={Items.indexOf(item)}>
                   {item}
                 </Link>
               ))}

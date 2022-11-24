@@ -1,4 +1,8 @@
 import styled from "styled-components";
+import { buttonUnstyledClasses } from '@mui/base/ButtonUnstyled';
+import TabUnstyled, { tabUnstyledClasses } from '@mui/base/TabUnstyled';
+import {blue} from "../constants"
+import TabsListUnstyled from '@mui/base/TabsListUnstyled';
 
 export const currencyImage = styled.div`
 display:flex;
@@ -7,15 +11,16 @@ flex-direction:row;
 .flag{
   margin-right:10px;
 }
-   
+
 `
 
 
 export const TopComponentWrapper = styled.section`
   display: flex;
   flex-direction: row;
-  width: 80%;
+  width: 84%;
   justify-content:center;
+  align-items:center;
   @media (max-width: 765px){
     align-items:center;
     padding-left: 16px;
@@ -40,7 +45,7 @@ export const Table = styled.table`
   width: 100%;
   font-size:18px;
   font-weight:400;
-  .table_row { 
+  .table_row {
     font-size:18px;
     background-color:#F8FAFC;
     height:44px;
@@ -67,13 +72,13 @@ export const Table = styled.table`
     border-bottom:4px;
     border-color:gray;
   }
-  
+
 `
 
 export const MobileTable = styled.table`
   width: 100%;
-  
-  
+
+
 `
 
 export const ConverterWrapper = styled.div`
@@ -86,7 +91,7 @@ justify-content:right;
 @media (max-width: 765px){
   justify-content:center;
   flex-direction:column;
-  
+
 }
 .convert{
   height:44px;
@@ -95,15 +100,15 @@ justify-content:right;
 .arrow{
   margin-left:14px;
   margin-right:14px;
-  
+
   @media (max-width: 765px){
     margin-top:20px;
     margin-bottom:10px;
     transform: rotate(90deg);
   }
 }
-  
-  
+
+
 `
 
 export const MobileViewWrapper = styled.table`
@@ -111,12 +116,12 @@ export const MobileViewWrapper = styled.table`
   .rates{
     height:44px;
     text-align:center;
-  } 
+  }
   .rates2{
     margin-left:15px;
   }
   display:none;
-  
+
   @media (max-width: 765px){
     justify-content:center;
     display:flex;
@@ -127,3 +132,48 @@ export const MobileViewWrapper = styled.table`
     font-size:18px;
   }
 `
+
+export const NewTab = styled(TabUnstyled)`
+  font-family: Inter, sans-serif;
+  color: #64748b;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 600;
+  background-color: transparent;
+  width: 100%;
+  padding: 10px 12px;
+  margin: 6px 6px;
+  border: none;
+  border-radius: 7px;
+  display: flex;
+  justify-content: center;
+
+  &:hover {
+    background-color: ${blue[400]};
+  }
+
+  &:focus {
+    color: #fff;
+  }
+
+  &.${tabUnstyledClasses.selected} {
+    background-color: #fff;
+    color: ${blue[600]};
+  }
+
+  &.${buttonUnstyledClasses.disabled} {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+`;
+
+export const TabsList = styled(TabsListUnstyled)`
+  min-width: 400px;
+  background-color: ${blue[400]};
+  border-radius: 12px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: space-between;
+`;
