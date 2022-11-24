@@ -1,11 +1,10 @@
 import React from "react";
-import Detailpage from "../../components/encyclopedia/detailspage/Detailpage";
-
+import Detailpage from "./components/detailspage/Detailpage";
 
 const CurrencyEncyclopediaDetail = () => {
   return (
     <div>
-      <Detailpage/>
+      <Detailpage />
     </div>
   );
 };

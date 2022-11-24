@@ -28,12 +28,12 @@ class CRUDCurrency(CRUDBase[Currency, CurrencyCreate, CurrencyUpdate]):
         currency = self.get_currency_by_isocode(db, isocode=isocode)
 
         if currency == None:
-            return {"status": False, "message": "Currency not found!"}
+            return None
 
         db.delete(currency)
         db.commit()
 
-        return {"status": True, "message": "Currency deleted!"}
+        return currency
 
 
 currency = CRUDCurrency(Currency)
