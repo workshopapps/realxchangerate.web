@@ -272,13 +272,13 @@ workflows:
           requires: [build-frontend-client] #remember to channge to test
           filters:
             branches:
-              only: [dev]
+              only: [main]
 
       - build-backend-docker-image:
           requires: [build-backend] #remember to channge to test
           filters:
             branches:
-              only: [dev]
+              only: [main]
 
       - deploy-images-using-ssh:
           requires:
