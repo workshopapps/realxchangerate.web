@@ -1,6 +1,7 @@
 import { ArrangeHorizontal } from "iconsax-react";
 import React from "react";
 import styled from "styled-components";
+import scanImage from "../assets/scan-image.png";
 import { noWCommas } from "../utils";
 
 const Hero = () => {
@@ -22,7 +23,6 @@ const Hero = () => {
       setRates(ratesData.data.rate);
     });
   }, [endpoint]);
-
   return (
     <Wrapper>
       <Container1>
@@ -34,11 +34,7 @@ const Hero = () => {
           normal valid equity.
         </p>
         <div>
-          <img src="/qr.svg" alt="" />
-          <img src="/arrow.svg" alt="" />
-          <p>
-            Scan to <br /> Download <br /> Streerates
-          </p>
+          <img src={scanImage} />
         </div>
         <div className="download">
           <a href="#!">
