@@ -7,7 +7,7 @@ from app.api.deps import get_db
 from fastapi.responses import RedirectResponse
 from starlette.responses import JSONResponse
 import os
-from app.models import Admin
+from app.schemas.admin import Admin
 from decouple import config
 from fastapi import FastAPI, Depends, HTTPException
 from app.schemas.admin import AdminUpdate, AdminCreate

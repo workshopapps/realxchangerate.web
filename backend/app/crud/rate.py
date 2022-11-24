@@ -7,7 +7,7 @@ from app.crud.base import CRUDBase
 from app. models import Rate
 from app.schemas.rate import RateCreate, RateBase
 
-class CRUDRate(CRUDBase[RateCreate, RateBase]):
+class CRUDRate(CRUDBase[Rate, RateCreate, RateBase]):
     def create(self, db:Session, obj_in: RateCreate) -> Rate:
         obj_in_data = jsonable_encoder(obj_in)
         db_oj = Rate(
