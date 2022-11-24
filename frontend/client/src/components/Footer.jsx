@@ -58,7 +58,7 @@ const Footer = () => {
               Careers
             </Link>
             <Link href="/#/partnerships" color="inherit">
-              Partnerships
+              Patnerships
             </Link>
             <Link href="/#/teams" color="inherit">
               Meet the team
@@ -153,7 +153,7 @@ const Footer = () => {
               Online Advertising
             </Link>
 
-            <Link href="/ambassadors" color="inherit">
+            <Link href="/#/ambassadors" color="inherit">
               Ambassadors
             </Link>
           </Stack>
@@ -264,16 +264,16 @@ const Footer = () => {
             >
               Legal
             </Typography>
-            <Link href="#" color="inherit">
+            <Link href="/#/" color="inherit">
               Privacy Policy
             </Link>
-            <Link href="/#/terms" color="inherit">
+            <Link href="/terms" color="inherit">
               Terms and Conditions
             </Link>
             <Link href="/#/CookiePolicy" color="inherit">
               Cookie Policy
             </Link>
-            <Link href="/#/compliance" color="inherit">
+            <Link href="/compliance" color="inherit">
               Compliance
             </Link>
           </Stack>
@@ -295,7 +295,7 @@ const Footer = () => {
             Items={[
               "About Us",
               "Careers",
-              "Partnerships",
+              "Patnerships",
               "Meet the team",
               "Press",
               "Board of directors",
