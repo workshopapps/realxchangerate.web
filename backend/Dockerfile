@@ -16,6 +16,8 @@ WORKDIR /home/app
 
 COPY . .
 
+RUN cp example.env .env
+
 COPY requirements.txt requirements.txt
 
 RUN pip install -r requirements.txt
