@@ -8,6 +8,7 @@ from app.api.deps import get_db
 from app.models.rate import Rate
 from app.models.currency import Currency
 from app.api.deps import get_location
+
 router = APIRouter()
 
 #  get rates ofbject for a spcific isocode
