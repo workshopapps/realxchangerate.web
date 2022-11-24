@@ -3,6 +3,7 @@ from typing import Optional, List, Any
 
 from sqlalchemy.orm import Session
 from fastapi.encoders import jsonable_encoder
+from sqlalchemy import desc
 from app.crud.base import CRUDBase
 from app. models import Rate
 from app.schemas.rate import RateCreate, RateBase
@@ -17,5 +18,18 @@ class CRUDRate(CRUDBase[Rate, RateCreate, RateBase]):
         db.commit()
         db.refresh(db_oj)
         return db_oj
+    # Declare model specific CRUD operation methods.
+
+    def get_rate_by_currency_id(self, db: Session, currency_id: int) -> Optional[Rate]:
+        """
+        Gets the latest rate of a currency using the currency_id.
+        """
+        return (
+            db.query(Rate)
+            .filter(Rate.currency_id == currency_id)
+            .order_by(desc(Rate.id))
+            .first()
+        )
+
 
 rate = CRUDRate(Rate)
