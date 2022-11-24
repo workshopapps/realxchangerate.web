@@ -1,80 +1,58 @@
+# Streets Rates
+
+This is the Streets Rates app Frontend Powered by [React](https://reactjs.org/) (Frontend)
+
+## Getting Started.
+
+Make sure you have nodejs installed by running the following command:
+
+```bash
+node -v
+```
 
 
-# Street Exchange Rate
+If the output is not the version of your nodejs installation, install nodejs from [here](https://nodejs.org/en/download/)
 
-Team Bevel Project.
+After installing nodejs install [npm](https://www.npmjs.com/package/npm)
+if you have it then install the project's dependencies:
+
+```bash
+npm install
+```
+
+## STARTING THE SERVER
+
+To start the whole application server
+
+```bash
+mpn start
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+### **Building**
+
+```bash
+npm run build
+```
+
+## Editor setup
+
+Install the eslint and prettier plugins in your editor so you can see linting problems while you code and have your code formatted by prettier when you save. We use eslint for js linting and prettier for code formatting. If formatOnSave doesn't work, try searching for instructions on how to configure format on save for your editor's prettier and eslint plugins.
 
 ## Contributing
 
-Contributions are always welcome!
+For detailed information on how to go about contributing to this project. Check out the
 
-### folder Structure 
+- [Contribution Guide](docs/Contributing.md)
 
-### - Admin
-
-### - Client
-.
-    ├── docs
-    │   └── readme.md
-    ├── node_modules
-    │   ├── ~
-    ├── public
-    │   ├── assets
-    ├── src
-    │   ├── assets
-    │   │   ├── css
-    │   │   ├── fonts
-    │   ├── components
-    |   |
-    │   ├── pages
-    │   │   ├── About
-    │   │   ├── Ambassadors
-    │   │   ├── Api
-    │   │   ├── BoardOfDirectors
-    │   │   ├── Careers
-    │   │   ├── Compliance
-    │   │   ├── Contact
-    │   │   ├── Converter
-    │   │   ├── CookiePolicy
-    │   │   ├── CurrencyEncyclopedia
-    │   │   ├── Faq
-    │   │   ├── FileComplaints
-    │   │   ├── FraudReports
-    │   │   ├── Glossary
-    │   │   ├── HelpCenter
-    │   │   ├── HistoricalCurrencyExchange
-    │   │   ├── Home
-    │   │   ├── IntegrationMatrix
-    │   │   ├── News
-    │   │   ├── OnlineAdvertising
-    │   │   ├── Partnerships
-    │   │   ├── Press
-    │   │   ├── Teams
-    │   │   ├── TermsAndConditions
-    │   └── styles
-# Getting Started with Running the app
-
-In the project directory, you can run:
-
-### `npm start`
-
-### `npm test`
-
-### `npm run build`
-
-Builds the app for production to the `build` folder
-
-
-## Run Locally
-
-Clone the project
+**Before send PR or making a merge make sure you code is properly formatted.** You can easily do that by running
 
 ```bash
-  git clone https://github.com/workshopapps/realxchangerate.web/
+yarn lint # to lint all files # in project directory
+yarn lint:js # to lint only js,jsx files # in project directory
+
+yarn prettify # to prettify files # in project directory
 ```
 
-Go to the project directory
-
-```bash
-  cd frontend
-```
+you can also lint for all files in the repo by running that command in the root folder.
