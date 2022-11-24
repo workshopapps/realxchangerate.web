@@ -10,9 +10,9 @@ router = APIRouter()
 
 
 @router.get("/", response_model=List[schemas.Currency])
-def get_currencies(db: Session = Depends(get_db), skip: int = 0, limit: int = 100) -> Any:
+def get_currencies_and_rates(db: Session = Depends(get_db), skip: int = 0, limit: int = 100) -> Any:
     """
-    get all currencies.
+    get all currencies and rates.
     """
     currencies = crud.currency.get_multi(db, skip=skip, limit=limit)
     return currencies
