@@ -26,12 +26,7 @@ app.add_middleware(
 )
 
 app.include_router(api_router, prefix=settings.API_V1_STR)
-<<<<<<< HEAD
-app.include_router(password_email_reset.router)
-app.include_router(getcurrency.router)
-=======
 # app.include_router(getcurrency.router)
->>>>>>> 768f3c9a05590d3815b19a87f2b5bad6a61a9a03
 
 
 if __name__ == "__main__":
