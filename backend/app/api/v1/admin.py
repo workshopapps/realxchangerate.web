@@ -38,8 +38,9 @@ def add_currency(
 
     currency = crud.currency.create(db=db, obj_in=currency_in)
     return currency
-@router.post("/create/rates", response_model=schemas.Rate, status_code=201)
-async def create_rate(*,db: Session = Depends(get_db), rate_in: schemas.RateCreate,  current_admin: models.Admin = Depends(get_current_active_user)) -> Any:
+@router.post("/add_rate", response_model=schemas.Rate, status_code=201)
+async def create_rate(*,db: Session = Depends(get_db), 
+    rate_in: schemas.RateCreate,  current_admin: models.Admin = Depends(get_current_active_user)) -> Any:
 #    create new rates
     rate = crud.rate.create(db=db, obj_in=rate_in)
     return (rate)
