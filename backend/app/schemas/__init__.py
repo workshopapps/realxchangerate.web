@@ -1,4 +1,4 @@
-from app.schemas.admin import AdminBase, AdminCreate, Admin
-from app.schemas.currency import CurrencyBase, CurrencyCreate, CurrencyUpdate, Currency
-from app.schemas.rate import RateBase, RateCreate, Rate
-from app.schemas.service import BinanceRequestSchema, BinanaceResponseSchema, BinanceAdv, BinanceResponseData
+from .admin import AdminBase, AdminCreate, Admin
+from .currency import CurrencyBase, CurrencyCreate, CurrencyUpdate, Currency
+from .rate import RateBase, RateCreate, Rate
+from .service import BinanceRequestSchema, BinanaceResponseSchema, BinanceAdv, BinanceResponseData

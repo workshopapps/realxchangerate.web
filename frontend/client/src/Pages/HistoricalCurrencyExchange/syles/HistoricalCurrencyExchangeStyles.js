@@ -11,7 +11,7 @@ flex-direction:row;
 .flag{
   margin-right:10px;
 }
-   
+
 `
 
 
@@ -45,7 +45,7 @@ export const Table = styled.table`
   width: 100%;
   font-size:18px;
   font-weight:400;
-  .table_row { 
+  .table_row {
     font-size:18px;
     background-color:#F8FAFC;
     height:44px;
@@ -72,13 +72,13 @@ export const Table = styled.table`
     border-bottom:4px;
     border-color:gray;
   }
-  
+
 `
 
 export const MobileTable = styled.table`
   width: 100%;
-  
-  
+
+
 `
 
 export const ConverterWrapper = styled.div`
@@ -91,7 +91,7 @@ justify-content:right;
 @media (max-width: 765px){
   justify-content:center;
   flex-direction:column;
-  
+
 }
 .convert{
   height:44px;
@@ -100,15 +100,15 @@ justify-content:right;
 .arrow{
   margin-left:14px;
   margin-right:14px;
-  
+
   @media (max-width: 765px){
     margin-top:20px;
     margin-bottom:10px;
     transform: rotate(90deg);
   }
 }
-  
-  
+
+
 `
 
 export const MobileViewWrapper = styled.table`
@@ -116,12 +116,12 @@ export const MobileViewWrapper = styled.table`
   .rates{
     height:44px;
     text-align:center;
-  } 
+  }
   .rates2{
     margin-left:15px;
   }
   display:none;
-  
+
   @media (max-width: 765px){
     justify-content:center;
     display:flex;

@@ -21,6 +21,7 @@ API_URL = "https://ipgeolocation.abstractapi.com/v1/"
 IP_REGEX = r"^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.)" \
     + r"{3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$"
 
+
 def get_db() -> Generator:
     try:
         db = SessionLocal()
@@ -35,7 +36,7 @@ def validate_ip(ip):
         Raise:
             TypeError: if ip is not a string
             ValueError: if ip is not a valid ipv4 address
-        
+
         Returns: True
     """
     # Check that IP address is a string
@@ -45,7 +46,7 @@ def validate_ip(ip):
     # Check that IP address is a valid IPV4 address
     if re.match(IP_REGEX, ip) is None:
         raise ValueError("IP address is invalid")
-    
+
     return True
 
 
@@ -84,4 +85,3 @@ def get_location(ip):
         else:
             # Error
             return "Nigeria"
-
