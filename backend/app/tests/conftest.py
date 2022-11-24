@@ -26,3 +26,13 @@ def random_product() -> Dict[str, str]:
         "name": "Test Product",
         "price": 80,
     }
+
+
+@pytest.fixture(scope="module")
+def random_currency() -> Dict[str, str]:
+    return {
+        "id": 1,
+        "country": "Nigeria",
+        "isocode": "NGN",
+        "sysmbol": "N"
+    }
