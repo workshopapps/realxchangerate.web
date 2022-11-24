@@ -24,7 +24,7 @@ def create_admin(*, db: Session = Depends(get_db), admin_in: schemas.AdminCreate
             detail="Admin with email already exists."
         )
     admin = crud.admin.create(db, obj_in=admin_in)
-    return admin
+    return {"success":True, "data":admin}
 
 
 @router.post("/add_currency")
