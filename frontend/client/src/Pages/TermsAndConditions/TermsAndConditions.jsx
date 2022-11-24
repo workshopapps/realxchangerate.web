@@ -1,6 +1,6 @@
 import { Container } from "@mui/material";
-import { PageTitle } from "../../components/styles/PageTitle.styled";
-import { TermsWrapper } from "../../components/styles/TermsWrapper.styled";
+import { PageTitle } from "./components/PageTitle.styled";
+import { TermsWrapper } from "./styles/TermsWrapper.styled";
 
 const TermsAndConditions = () => {
   return (

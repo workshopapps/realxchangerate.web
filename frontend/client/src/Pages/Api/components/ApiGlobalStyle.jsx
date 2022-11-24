@@ -31,8 +31,5 @@ export const ApiGlobalStyle = createGlobalStyle`
         color: #0f172a;
         font-weight: 800;
     }
-    p {
-        color: #555962;
-        line-height: 2.4rem;
-    }
+    
 `;

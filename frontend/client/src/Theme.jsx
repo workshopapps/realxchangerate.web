@@ -1,9 +1,9 @@
 import { createTheme } from "@mui/material";
-import "@fontsource/inter";
+// import "@fontsource/inter";
 
 const theme = createTheme({
   typography: {
-    fontFamily: 'Inter, sans-serif',
+    fontFamily: "Inter, sans-serif",
   },
 
   breakpoints: {

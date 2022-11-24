@@ -1,7 +1,9 @@
 from typing import List
 from pydantic import BaseModel
 
-from app.schemas.rate import Rate
+from .rate import Rate
+
+
 
 class CurrencyBase(BaseModel):
     country: str

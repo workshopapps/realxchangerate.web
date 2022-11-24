@@ -58,6 +58,14 @@ export const StyledExperts = styled.section`
 
     .expert-profile {
       text-align: center;
+
+      & h1{
+        display: none;
+
+        @media screen and (max-width: 1240px){
+          display: block;
+        }
+      }
     }
 
     .expert-details {
@@ -71,6 +79,8 @@ export const StyledExperts = styled.section`
         width: 90%;
         margin: 0 auto;
         text-align: center;
+        font-weight: 400;
+        font-size: 18px;
       }
     }
   }
