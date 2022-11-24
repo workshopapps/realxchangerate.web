@@ -56,11 +56,16 @@ async def sending_mail(email: EmailSchema, admin_in: schemas.AdminCreate, db: Se
             
 
                 <p>Hello !!! Did you request for a password reset?
-                <br>Here is your code: {{ body.code }} </p>
+                <br></p>
+                <p> 
+                <a href="{{ url_for('json', path='/data.json') }}" target="_blank">
+                click here to reset your password
+            </a>
                 <p> If this is not you, secure your account by turning on 2-factor authentication<p>
             </body>
             </html>
             """
+    
     message = MessageSchema(
             subject="Reset-password Token",
             recipients=email.dict().get("email"), 
