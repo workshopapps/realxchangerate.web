@@ -39,7 +39,7 @@ def get_rate_by_isocode(isocode, db: Session = Depends(get_db)):
 
 
 @router.get("/all/{isocode}")
-def get_all_rate_by_isocode(isocode, db: Session = Depends(get_db)):
+def get_all_rates_by_isocode(isocode, db: Session = Depends(get_db)):
     """
     Get all the rates of selected currency by isocode
 
