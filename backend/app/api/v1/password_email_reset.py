@@ -45,13 +45,13 @@ router = APIRouter()
 # code = random(6)
 
 @router.post("/forgot_password")
-async def sending_mail(email: EmailSchema, admin_in: schemas.AdminCreate, db: Session = Depends(get_db)):
-    admin_email = crud.admin.get_by_email(db, email=admin_in.email)
-    if not admin_email:
-        raise HTTPException(
-            status_code = 404,
-            detail = "Email address does not exist, please enter a valid email"
-        )
+async def sending_mail(email: EmailSchema):
+    # admin_email = crud.admin.get_by_email(db, email=admin_in.email)
+    # if not admin_email:
+    #     raise HTTPException(
+    #         status_code = 404,
+    #         detail = "Email address does not exist, please enter a valid email"
+    #     )
     template = """
             <html>
             <body>
@@ -76,10 +76,10 @@ async def sending_mail(email: EmailSchema, admin_in: schemas.AdminCreate, db: Se
             )
 
     fm = FastMail(conf)
-    try:   
-        await fm.send_message(message)
-    except:
-        return 'message: Your connection is not secure!'
+    # try:   
+    await fm.send_message(message)
+    # except:
+        # return 'message: Your connection is not secure!'
     
     return JSONResponse(status_code=200, content={"message": "email has been sent"}) 
 
