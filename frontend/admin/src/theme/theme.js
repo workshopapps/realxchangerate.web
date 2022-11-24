@@ -20,8 +20,8 @@ export const theme = createTheme({
       md: '8px',
     },
     colors: {
-      body: '#F8F8F8',
-      cardBackground: '#ffffff',
+      body: '#FFF',
+      sideBarBackground: '#F8FAFC',
 
       // gray
       text900: '#0F172A',
@@ -33,13 +33,30 @@ export const theme = createTheme({
       text50: '#F8FAFC',
 
       // blue
-      blue800: '#00368C',
+      blue50: '#E6EFFF',
 
       // red
       red500: '#EF4444',
 
       // green
+      green500: '#10B981',
       green50: '#ECFBF5',
     },
+    breakpoints: {
+      sm: '0px',
+      md: '600px',
+      lg: '900px',
+      xl: '1200px',
+    }
   }
 });
+
+
+// MUI Breakpoints
+
+// xs, extra-small: 0px
+// sm, small: 600px
+// md, medium: 900px
+// lg, large: 1200px
+// xl, extra-large: 1536px
+
