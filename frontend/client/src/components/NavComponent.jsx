@@ -1,32 +1,40 @@
 import { Box, Grid, Typography } from "@mui/material";
 import React, { useState } from "react";
 import DrawerComponent from "./Drawer";
+import { Link } from "react-router-dom";
+import { DownArrow, NavFlag, MenuIcon } from "../assets/index";
+// import { NavWrapper } from "./styles/NavBar.styled";
 
 const NavComponent = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-
   const HandleDrawerState = () => {
-    setIsOpen(!isOpen)
-  }
+    setIsOpen(!isOpen);
+  };
 
   return (
     <Grid
       sx={{
-        maxWidth: { xs: "90%", sm: "95%", md: "84%" },
         minHeight: { xs: "56px", sm: "100px" },
-        justifyContent: {xs:"space-between"}
+        justifyContent: { xs: "space-between" },
+        maxWidth: { xs: "90%", lg: "84%" },
       }}
       minHeight="100px"
       display="flex"
       margin="0px auto"
+      padding="0px"
       flexDirection="row"
-      
     >
       <Grid display="flex" justifyContent="center" alignItems="center">
         <Typography
           sx={{
-            fontSize: { xs: "23px", sm: "17px", md: "24px",lg:"29px", xl:"34px" },
+            fontSize: {
+              xs: "23px",
+              sm: "17px",
+              md: "24px",
+              lg: "29px",
+              xl: "34px",
+            },
             lineHeight: { xs: "28px", sm: "40px" },
             fontWeight: { xs: "600", sm: "700" },
           }}
@@ -34,7 +42,9 @@ const NavComponent = () => {
           letterSpacing="-0.04em"
           role="heading"
         >
-          Street Rate
+          <Link to="/" style={{ color: "#00296B" }}>
+            Street Rate
+          </Link>
         </Typography>
       </Grid>
 
@@ -51,30 +61,34 @@ const NavComponent = () => {
         color="#94A3B8"
       >
         <Box gap="6px" display="flex">
-          <img src="assets/svg/flag.svg" alt="flagImage" />
-          <img src="assets/svg/DownArrow.svg" alt="arrow" />
+          <img src={NavFlag} alt="flagImage" />
+          <img src={DownArrow} alt="arrow" />
         </Box>
 
-        <Typography>Home</Typography>
+        <Link to="/" style={{color:'#00296B'}}>
+          Home
+        </Link>
 
-        <Typography>Convert</Typography>
+        <Link to="/news" style={{color:'#00296B'}}>
+          News
+        </Link>
 
-        <Typography>Currency Profile</Typography>
-
-        <Typography>News</Typography>
-
-        <Typography>Contact</Typography>
+        <Link to="/contact" style={{color:'#00296B'}}>
+          Contact
+        </Link>
       </Grid>
-
       <Box
-        p="12px"
         sx={{ display: { xs: "flex", sm: "none" } }}
         cursor="pointer"
         onClick={() => setIsOpen(true)}
       >
-        <img src="assets/svg/MenuIcon.svg" alt="MenuIcon" />
+        <img src={MenuIcon} alt="MenuIcon" />
       </Box>
-      <DrawerComponent isOpen={isOpen} setIsOpen={HandleDrawerState} navItems={["Home", "Convert", "Currency Profile", "News", "Contact"]}/>
+      <DrawerComponent
+        isOpen={isOpen}
+        setIsOpen={HandleDrawerState}
+        navItems={["Home", "Convert", "Currency Profile", "News", "Contact"]}
+      />
     </Grid>
   );
 };

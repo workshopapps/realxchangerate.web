@@ -1,14 +1,11 @@
 import {
     Drawer,
-    List,
-    ListItem,
     Typography,
-    ListItemText,
     Divider,
     Box,
-    ListItemButton,
   } from "@mui/material";
   import React from "react";
+  import {Link } from "react-router-dom";
   
   const DrawerComponent = ({ isOpen, setIsOpen, navItems }) => {
     const drawer = (
@@ -29,15 +26,37 @@ import {
           Street Rate
         </Typography>
         <Divider />
-        <List>
-          {navItems.map((item) => (
-            <ListItem key={item} disablePadding>
-              <ListItemButton sx={{ textAlign: "center" }}>
-                <ListItemText primary={item} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
+        <Box
+        alignItems="center"
+        display="flex"
+        gap="20px"
+        marginTop="20px"
+        flexDirection="column"
+        fontWeight="400"
+        lineHeight="24px"
+        color="#94A3B8"
+        fontSize="14px"
+      >
+        <Link to="/" color="inherit">
+          Home
+        </Link>
+
+        <Link to="/convert" color="inherit">
+          Convert
+        </Link>
+
+        <Link to="/" color="inherit">
+          Currency Profile
+        </Link>
+
+        <Link to="/news" color="inherit">
+          News
+        </Link>
+
+        <Link to="/contact" color="inherit">
+          Contact
+        </Link>
+      </Box>
       </Box>
     );
   
@@ -47,6 +66,7 @@ import {
         {isOpen && (
           <Drawer
             variant="temporary"
+            anchor="right"
             open={isOpen}
             onClose={setIsOpen}
             ModalProps={{
