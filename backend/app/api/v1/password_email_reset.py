@@ -60,7 +60,7 @@ async def sending_mail(email: EmailSchema, admin_in: schemas.AdminCreate, db: Se
                 <p>Hello !!! Did you request for a password reset?
                 <br></p>
                 <p> 
-                <a href="{{ url_for('json', path='/reset_password') }}" target="_blank">
+                <a href="{{ url_for('json', path='/api/forget_password/reset_password') }}" target="_blank">
                 click here to reset your password
             </a>
                 <p> If this is not you, secure your account by turning on 2-factor authentication<p>
