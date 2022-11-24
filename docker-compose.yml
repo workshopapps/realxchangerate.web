@@ -1,19 +1,17 @@
-version: "3.1"
+version: "3"
+
 services:
-  frontend-client: 
-    image: hacklight/xchange-fe-client:latest # change this your docker registry uri
-    restart: always
-    ports:
-      - 3000:3000
-      
-  # frontend-admin: 
-  #   # image: hacklight/hngi9-fe-admin:1.0 # change this your docker registry uri
-  #   restart: always
-  #   ports:
-  #     - 3001:3000
-    
-  backend:
-    image: hacklight/xchange-be:v1 # change this your docker registry uri
-    restart: always
-    ports:
-      - 8000:8000
+    frontend:
+        image: kodiankodes/exchange_client:latest
+        container_name: exchange_client
+        ports:
+          - 80:3000
+        depends_on:
+          - backend
+
+    backend:
+        image: kodiankodes/exchange_backend:latest
+        container_name: backend
+        command: uvicorn --host 0.0.0.0 --port 5000 main:app
+        ports:
+            - "5000:5000"
