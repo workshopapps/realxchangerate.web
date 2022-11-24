@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Button, DisabledButton } from "./styles/Contact.styled";
-import { Typography, Stack, TextField, } from "@mui/material";
+import { Typography, Stack, TextField, Snackbar, Alert } from "@mui/material";
 
 const ContactForm = () => {
   const [name, setName] = useState("");
@@ -8,9 +8,11 @@ const ContactForm = () => {
   const [message, setMessage] = useState("");
   const [succesMessage, setSucessMessage] = useState("");
   const [btnDisabled, setBtnDisabled] = useState(true);
+  const [alert, setAlert] = useState(false);
 
   useEffect(() => {
-    if (name === "" || email === "" || message === "") {
+    const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (name === "" || !emailRegex.test(email) || message === "") {
       setBtnDisabled(true);
     } else {
       setBtnDisabled(false);
@@ -35,119 +37,134 @@ const ContactForm = () => {
       .then((response) => response.json())
       .then((data) => {
         if (data.success === "true") {
-          setSucessMessage(
-            "Thank you for leaving a message, we will get back to you soon"
-          );
+          console.log(data);
+          setAlert(true);
           setName("");
           setEmail("");
           setMessage("");
-          setTimeout(() => setSucessMessage(""), 3000);
+          setTimeout(() => setAlert(false), 3000);
         }
       })
       .catch((error) => setSucessMessage(error.message));
   };
 
   return (
-    <Stack
-      direction="column"
-      sx={{
-        gap: { xs: "24px", sm: "20px", md: "24px" },
-        minWidth: { xs: "100%", sm: "327px", md: "375px" },
-      }}
-    >
-      <Stack direction="column" letterSpacing="0.001em" gap="5px">
-        <Typography
-          color="#0F172A"
-          sx={{
-            fontSize: { xs: "14px" },
-            lineHeight: { xs: "20px" },
-            fontWeight: { xs: "500" },
-          }}
+    <>
+      <Snackbar
+        open={alert}
+        autoHideDuration={6000}
+        onClose={() => setAlert(false)}
+      >
+        <Alert
+          onClose={() => setAlert(false)}
+          severity="success"
+          sx={{ width: "100%", fontSize: "14px" }}
         >
-          Your name
-        </Typography>
-        <TextField
-          id="outlined-basic"
-          placeholder="Enter your name"
-          variant="outlined"
-          padding="10px 12px"
-          height="40px"
-          border="1px solid #D1D5DB"
-          sx={{
-            fontSize: "14px",
-            lineHeight: "20px",
-            fontWeight: "400",
-          }}
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-      </Stack>
+          Thank you for leaving a message, we will get back to you soon
+        </Alert>
+      </Snackbar>
 
-      <Stack direction="column" letterSpacing="0.001em" gap="5px">
-        <Typography
-          color="#0F172A"
-          sx={{
-            fontSize: { xs: "14px" },
-            lineHeight: { xs: "20px" },
-            fontWeight: { xs: "500" },
-          }}
-        >
-          Your email
-        </Typography>
-        <TextField
-          id="outlined-basic"
-          variant="outlined"
-          placeholder="Enter your email"
-          padding="10px 12px"
-          height="40px"
-          border="1px solid #D1D5DB"
-          sx={{
-            fontSize: "14px",
-            lineHeight: "20px",
-            fontWeight: "400",
-          }}
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-      </Stack>
+      <Stack
+        direction="column"
+        sx={{
+          gap: { xs: "24px", sm: "20px", md: "24px" },
+          minWidth: { xs: "100%", sm: "327px", md: "375px" },
+        }}
+      >
+        <Stack direction="column" letterSpacing="0.001em" gap="5px">
+          <Typography
+            color="#0F172A"
+            sx={{
+              fontSize: { xs: "14px" },
+              lineHeight: { xs: "20px" },
+              fontWeight: { xs: "500" },
+            }}
+          >
+            Your name
+          </Typography>
+          <TextField
+            id="outlined-basic"
+            placeholder="Enter your name"
+            variant="outlined"
+            padding="10px 12px"
+            height="40px"
+            border="1px solid #D1D5DB"
+            sx={{
+              fontSize: "14px",
+              lineHeight: "20px",
+              fontWeight: "400",
+            }}
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+        </Stack>
 
-      <Stack direction="column" letterSpacing="0.001em" gap="5px">
-        <Typography
-          color="#0F172A"
-          sx={{
-            fontSize: { xs: "14px" },
-            lineHeight: { xs: "20px" },
-            fontWeight: { xs: "500" },
-          }}
-        >
-          Message
-        </Typography>
-        <TextField
-          id="outlined-textarea"
-          multiline
-          placeholder="How can we help you?"
-          rows={10}
-          padding="10px 12px"
-          height="40px"
-          border="1px solid #D1D5DB"
-          sx={{
-            fontSize: "14px",
-            lineHeight: "20px",
-            fontWeight: "400",
-          }}
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-        />
-      </Stack>
+        <Stack direction="column" letterSpacing="0.001em" gap="5px">
+          <Typography
+            color="#0F172A"
+            sx={{
+              fontSize: { xs: "14px" },
+              lineHeight: { xs: "20px" },
+              fontWeight: { xs: "500" },
+            }}
+          >
+            Your email
+          </Typography>
+          <TextField
+            id="outlined-basic"
+            variant="outlined"
+            placeholder="Enter your email"
+            padding="10px 12px"
+            height="40px"
+            border="1px solid #D1D5DB"
+            sx={{
+              fontSize: "14px",
+              lineHeight: "20px",
+              fontWeight: "400",
+            }}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </Stack>
 
-      <>
-        {btnDisabled ? (
-          <DisabledButton>Submit</DisabledButton>
-        ) : (
-          <Button onClick={(e) => handleSubmit(e)}>Submit</Button>
-        )}
-      </>
-    </Stack>
+        <Stack direction="column" letterSpacing="0.001em" gap="5px">
+          <Typography
+            color="#0F172A"
+            sx={{
+              fontSize: { xs: "14px" },
+              lineHeight: { xs: "20px" },
+              fontWeight: { xs: "500" },
+            }}
+          >
+            Message
+          </Typography>
+          <TextField
+            id="outlined-textarea"
+            multiline
+            placeholder="How can we help you?"
+            rows={10}
+            padding="10px 12px"
+            height="40px"
+            border="1px solid #D1D5DB"
+            sx={{
+              fontSize: "14px",
+              lineHeight: "20px",
+              fontWeight: "400",
+            }}
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+          />
+        </Stack>
+
+        <>
+          {btnDisabled ? (
+            <DisabledButton>Submit</DisabledButton>
+          ) : (
+            <Button onClick={(e) => handleSubmit(e)}>Submit</Button>
+          )}
+        </>
+      </Stack>
+    </>
   );
 };
 

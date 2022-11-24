@@ -11,7 +11,7 @@ flex-direction:row;
 .flag{
   margin-right:10px;
 }
-   
+
 `
 
 
@@ -45,7 +45,7 @@ export const Table = styled.table`
   width: 100%;
   font-size:18px;
   font-weight:400;
-  .table_row { 
+  .table_row {
     font-size:18px;
     background-color:#F8FAFC;
     height:44px;
@@ -72,13 +72,13 @@ export const Table = styled.table`
     border-bottom:4px;
     border-color:gray;
   }
-  
+
 `
 
 export const MobileTable = styled.table`
   width: 100%;
-  
-  
+
+
 `
 
 export const ConverterWrapper = styled.div`
@@ -91,7 +91,7 @@ justify-content:right;
 @media (max-width: 765px){
   justify-content:center;
   flex-direction:column;
-  
+
 }
 .convert{
   height:44px;
@@ -100,28 +100,29 @@ justify-content:right;
 .arrow{
   margin-left:14px;
   margin-right:14px;
-  
+
   @media (max-width: 765px){
     margin-top:20px;
     margin-bottom:10px;
     transform: rotate(90deg);
   }
 }
-  
-  
+
+
 `
 
 export const MobileViewWrapper = styled.table`
   width: 100%;
+  padding:"12px 24px";
   .rates{
     height:44px;
     text-align:center;
-  } 
+  }
   .rates2{
     margin-left:15px;
   }
   display:none;
-  
+
   @media (max-width: 765px){
     justify-content:center;
     display:flex;
@@ -137,7 +138,7 @@ export const NewTab = styled(TabUnstyled)`
   font-family: Inter, sans-serif;
   color: #64748b;
   cursor: pointer;
-  font-size: 0.875rem;
+  font-size: 12px;
   font-weight: 600;
   background-color: transparent;
   width: 100%;
@@ -168,7 +169,6 @@ export const NewTab = styled(TabUnstyled)`
 `;
 
 export const TabsList = styled(TabsListUnstyled)`
-  min-width: 400px;
   background-color: ${blue[400]};
   border-radius: 12px;
   margin-bottom: 16px;
