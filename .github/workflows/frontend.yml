@@ -13,7 +13,7 @@ env:
 
 jobs:
 
-  test admin:
+  test_admin:
 
     runs-on: ubuntu-latest
     defaults:
@@ -37,7 +37,7 @@ jobs:
       run: npm test
   
 
-  build_and_push_to_registry admin:
+  build_and_push_to_registry_admin:
 
     name: Build and push to Docker Hub
 
@@ -66,7 +66,7 @@ jobs:
           docker push $DOCKERHUB_USERNAME/realxchangeadmin:${{ steps.date.outputs.date }}
         
 
-  test client:
+  test_client:
 
     runs-on: ubuntu-latest
     defaults:
@@ -90,7 +90,7 @@ jobs:
       run: npm test
 
 
-  build_and_push_to_registry client:
+  build_and_push_to_registry_client:
 
     name: Build and push to Docker Hub
 
