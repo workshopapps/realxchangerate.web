@@ -1,4 +1,5 @@
 import { ReactComponent as SearchIcon } from "../../../assets/icons/search.svg";
+import IconButton from "@mui/material/IconButton";
 import {
   SearchWrapper,
   StyledSearchIconWrapper,
@@ -12,7 +13,13 @@ export default function Search() {
         <StyledSearchInput placeholder="Search" />
 
         <StyledSearchIconWrapper>
-          <SearchIcon />
+          <IconButton
+            size="small"
+            aria-label="search"
+            sx={{ borderRadius: 0, paddingInline: "5px" }}
+          >
+            <SearchIcon fontSize="small" size="small" />
+          </IconButton>
         </StyledSearchIconWrapper>
       </SearchWrapper>
     </>

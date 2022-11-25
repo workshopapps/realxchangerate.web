@@ -4,6 +4,7 @@ import Button from "@mui/material/Button";
 const ButtonCustom = ({ children, disabled, icon }) => {
   return (
     <Button
+      fullWidth
       endIcon={icon}
       disabled={disabled}
       disableElevation
@@ -15,9 +16,9 @@ const ButtonCustom = ({ children, disabled, icon }) => {
           letterSpacing: "-0.02em",
           textTransform: "none",
           fontWeight: 600,
-          fontSize: "14px",
-          lineHeight: "20px",
-          padding: "6px 12px",
+          fontSize: "12px",
+          lineHeight: "10px",
+          padding: "8px 12px",
           whiteSpace: "nowrap",
           borderRadius: theme.$styled.borderRadius.sm,
         }),
