@@ -6,9 +6,11 @@ WORKDIR /home/app
 
 COPY package.json .
 
-COPY package-lock.json .
+# RUN rm package-lock.json
 
 RUN npm install
+
+RUN npm i -g serve
 
 COPY . .
 
@@ -16,4 +18,6 @@ EXPOSE 3008
 
 RUN npm run build
 
-CMD [ "npm", "start" ]
+# CMD [ "npm", "start" ]
+
+CMD [ "npx", "serve", "build", "-p", "3008" ]
