@@ -3,12 +3,13 @@ import { ThemeProvider } from 'styled-components';
 import './App.css';
 import Layout from './layout/Layout';
 import Account from './pages/Account/Account';
-import Dashboard from './pages/Dashboard/Dashboard';
+// import Dashboard from './pages/Dashboard/Dashboard';
 import Error from './pages/Error/Error';
 import Login from './pages/Login/Login';
 import ForgotPassword from './pages/forgotPassword/ForgotPassword';
 import { GlobalStyle } from './theme/globalStyle';
 import { theme } from './theme/theme';
+import CreateCurrency from './pages/CreateCurrency/CreateCurrency';
 
 function App() {
 	return (
@@ -17,8 +18,10 @@ function App() {
 				<GlobalStyle />
 				<Routes>
 					<Route path='/' element={<Layout />}>
-						<Route index element={<Dashboard />} />
+						{/* <Route index element={<Dashboard />} /> */}
+						<Route index element={<CreateCurrency />} />
 						<Route path='/account' element={<Account />} />
+
 						<Route path='/*' element={<Error />} />
 					</Route>
 					<Route path='/login' element={<Login />} />

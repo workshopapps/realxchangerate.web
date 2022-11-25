@@ -1,0 +1,25 @@
+import styled from 'styled-components';
+
+export const Container = styled.section`
+	border: 1px solid rgba(203, 213, 225, 1);
+	padding: 10px;
+	border-radius: 7px;
+	.topSect {
+		display: flex;
+		justify-content: space-between;
+		margin: 0 0 1rem 0;
+		h1 {
+			font-size: clamp(1.1rem, 2vw, 1.4rem);
+			margin-bottom: 0.4rem;
+		}
+		p {
+			font-size: clamp(0.8rem, 1.5vw, 1rem);
+		}
+	}
+`;
+
+export const Integration = styled.div`
+	display: flex;
+	justify-content: space-between;
+	margin: 50px 0;
+`;
