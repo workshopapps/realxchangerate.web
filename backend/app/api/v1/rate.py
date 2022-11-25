@@ -8,7 +8,7 @@ from app.api.deps import get_db
 from app.models.rate import Rate
 from app.models.currency import Currency
 from app.api.deps import get_location
-
+from datetime import datetime, timedelta
 router = APIRouter()
 
 #  get rates ofbject for a spcific isocode
@@ -132,7 +132,7 @@ def get_all_rates(
     return rate
 
 
-@router.get("/convert")
+@router.get("/convert/calc")
 def convert_currency(
     *,
     db: Session = Depends(get_db),
@@ -185,3 +185,20 @@ def convert_currency(
         }
     except:
         return {"success": False, "message": "Failed to convert currencies."}
+
+
+
+
+@router.get("/date/{hour}")
+def get_rates_before_hour(hour: int, db: Session = Depends(get_db)):
+    """Get rates before a particular hour"""
+    time = datetime.now() - timedelta(hours=hour)
+    rates = db.query(Rate).filter(Rate.last_updated <= time).all()
+
+    data = {
+        "success": True,
+        "status_code": 200,
+        "rates": rates
+    }
+
+    return data        
