@@ -8,6 +8,7 @@ const Input = ({ text }) => {
 			label={text}
 			variant='outlined'
 			sx={{ background: '#FAFAFA' }}
+			size='small'
 		/>
 	);
 };
