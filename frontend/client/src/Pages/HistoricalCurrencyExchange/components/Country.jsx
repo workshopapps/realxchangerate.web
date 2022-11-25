@@ -6,7 +6,6 @@ const Country = ({ name, image }) => {
       <img src={image} alt="" />
       <Typography
         letterSpacing="0.01em"
-        color="#0F172A"
         fontSize="14px"
         fontWeight="400"
         lineHeight="20px"

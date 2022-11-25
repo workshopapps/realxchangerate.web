@@ -1,9 +1,11 @@
-import { Box, Stack, Typography } from "@mui/material";
+import { Box, Stack, Typography, useTheme } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
 import im from "../assets/before.png";
 
 export default function MainNewsCard() {
+  const theme = useTheme()
+  const darkMode = theme.palette.mode === 'dark'
   return (
     <Box flex={2}>
       <Stack>
@@ -26,7 +28,7 @@ export default function MainNewsCard() {
               to="/news/1"
               style={{
                 textDecoration: "none",
-                color: "#0F172A",
+                color: darkMode ? "#fff": "#0F172A",
               }}
             >
               Global stocks rally, dollar drops as U.S. inflation data spurs
@@ -35,7 +37,7 @@ export default function MainNewsCard() {
           </Typography>
           <Typography
             variant="p"
-            color="#1E293B"
+            color={darkMode ? "#fff": "#1E293B"}
             sx={{
               fontWeight: "400",
               fontSize: "16px",

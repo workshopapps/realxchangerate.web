@@ -1,4 +1,5 @@
 import React from "react";
+import {useTheme} from "@mui/material"
 import styled from "styled-components";
 import Button from "./components/CareerButton";
 
@@ -73,6 +74,11 @@ const coreValues = [
 ];
 
 function Careers() {
+
+  const theme = useTheme()
+  const darkMode = theme.palette.mode === 'dark'
+  const textColor = darkMode ? "#fff": "#000"
+  const backgroundColor = darkMode ? theme.palette.grey[900] : "var(--gray-50)"
   const [index, setIndex] = useState(0);
 
   const slideLeft = () => {
@@ -121,7 +127,7 @@ function Careers() {
           </HeroImg>
         </HeroContent>
       </HeroSection>
-      <IntroSection>
+      <IntroSection style={{backgroundColor: backgroundColor}}>
         <WhoWeAre>
           <h3>
             Who we{" "}
@@ -129,7 +135,7 @@ function Careers() {
               are <img src={smiley} alt="" />
             </span>
           </h3>
-          <p className="desc">
+          <p className="desc" style={{color:textColor}}>
             We are problem solvers who are deeply focused on building the future
             of finance for users across the globe. We strongly believe that
             teamwork and a constant desire to improve helps us achieve that.
