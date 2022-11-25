@@ -125,7 +125,15 @@ function HeaderLayout(props) {
         </StyledHeaderTools>
       </StyledHeaderWrapper>
       <Divider />
-      {menuOpen ? <DropdownMenu setMenuOpen={setMenuOpen} /> : null}
+      {menuOpen ? (
+        <Box
+          sx={{
+            display: { xs: "block", sm: "none" },
+          }}
+        >
+          <DropdownMenu setMenuOpen={setMenuOpen} />
+        </Box>
+      ) : null}
       <Notifications show={notificationsOpen} close={setNotificationsOpen} />
     </>
   );
