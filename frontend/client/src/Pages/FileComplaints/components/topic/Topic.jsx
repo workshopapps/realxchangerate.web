@@ -2,18 +2,18 @@ import React from "react";
 import Card from "../card/Card";
 import TopicWrapper from "./topic.styles";
 
-const Topic = () => {
+const Topic = ({textColor}) => {
   return (
     <>
       <TopicWrapper>
-        <div className="container">
+        <div  className="container">
           <h1>Select a topic</h1>
-          <p>
+          <p style={{color:textColor}}>
             It is a long established fact that a reader will be distracted by
             the readable content of a page when looking at its layout.
           </p>
         </div>
-        <Card />
+        <Card textColor={textColor}/>
       </TopicWrapper>
         
     </>

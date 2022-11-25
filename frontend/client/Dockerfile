@@ -1,28 +1,11 @@
-FROM node:16-alpine
-
-RUN mkdir -p /home/app
-
-WORKDIR /home/app
-
-COPY package.json .
-
-# COPY package-lock.json .
-
-# RUN npm cache clean --force
-
-# RUN npm config set registry http://registry.npmjs.org
-
-RUN npm i
-
-RUN npm i -g serve
-
+FROM node:19-alpine3.15
+WORKDIR /frontend
+COPY package*.json ./
+RUN npm install
 COPY . .
-
-ENV NODE_ENV production
-
-EXPOSE 3000
-
 RUN npm run build
+EXPOSE 80
+CMD ["npx", "serve", "build"]
 
 # CMD [ "npm", "start" ]
 CMD [ "npx", "serve", "build" ]

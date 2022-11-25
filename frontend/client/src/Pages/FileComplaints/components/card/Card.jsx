@@ -2,7 +2,7 @@ import React from "react";
 import CardWrapper from "./card.styles";
 import { data } from "./data";
 
-const Card = () => {
+const Card = ({textColor}) => {
   return (
     <CardWrapper>
       <div className="card-wrapper">
@@ -11,7 +11,7 @@ const Card = () => {
             <div className="wrapper">
               <img src={img} alt="" />
               <h1>{title}</h1>
-              <p>
+              <p style={{color:textColor}}>
                 {desc}
               </p>
             </div>

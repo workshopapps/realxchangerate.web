@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Grid } from "@mui/material";
+import { Container, Grid, useTheme } from "@mui/material";
 import {
     Header,
     Title,
@@ -12,10 +12,15 @@ import {
 } from "./HelpCenter.style";
 
 const HelpCenter = () => {
+    const theme = useTheme()
+	const DarkMode = theme.palette.mode === 'dark'
+
+	const textColor = DarkMode ? "#fff" : ""
+
     return (
         <Container
             style={{
-                maxWidth: "1440px",
+                maxWidth: "1440px"
             }}
             sx={{
                 paddingLeft: { xs: 2, sm: 2, md: 2, lg: 9, xl: 9 },
@@ -23,11 +28,11 @@ const HelpCenter = () => {
             }}
         >
             <Wrapper>
-                <Title position={{ align: "left", marginTop: "10px" }}>
+                <Title style={{color:textColor}} position={{ align: "left", marginTop: "10px" }}>
                     Help Center
                 </Title>
-                <Header>Hi, How can we help?</Header>
-                <Paragraph>
+                <Header style={{color:textColor}}>Hi, How can we help?</Header>
+                <Paragraph style={{color:textColor}}>
                     Welcome to the StreetRate Help Center Portal. Here you will
                     find answers to all your exchange rate questions. From
                     choosing your base currency and your country location, our
@@ -54,6 +59,7 @@ const HelpCenter = () => {
                     }}
                     style={{
                         marginBottom: "30px",
+                        color:textColor
                     }}
                 >
                     Popular FAQs{" "}

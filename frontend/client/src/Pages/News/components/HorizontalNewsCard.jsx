@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Box, Typography } from "@mui/material";
-import { Stack } from "@mui/system";
+import { Box, Typography, Stack } from "@mui/material";
 
 export default function HorizontalNewsCard({ data }) {
   return (

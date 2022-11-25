@@ -1,5 +1,4 @@
 export { default as Home } from "./Home/Home";
-export { default as Convert } from "./Converter/Convert";
 export { default as Contact } from "./Contact/Contact";
 export { default as Compliance } from "./Compliance/Compliance";
 export { default as HelpCenter } from "./HelpCenter/HelpCenter";
