@@ -132,7 +132,7 @@ def get_all_rates(
     return rate
 
 
-@router.get("/convert")
+@router.get("/convert/calc")
 def convert_currency(
     *,
     db: Session = Depends(get_db),
