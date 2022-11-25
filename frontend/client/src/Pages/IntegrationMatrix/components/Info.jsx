@@ -8,7 +8,7 @@ import data from "../assets/data.svg";
 const Info = () => {
   return (
     <StyledInfo>
-      <InfoHeading>
+      <InfoHeading >
         Accurate and reliable real time historical market data API for hundreds of global currencies.
       </InfoHeading>
       <InfoText>

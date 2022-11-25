@@ -44,20 +44,20 @@ const article = [
   },
 ];
 
-const Article = () => {
+const Article = ({textColor}) => {
   return (
     <ArticleWrappper>
       <div className="article-container">
         <h1>Important Article</h1>
-        <p>
+        <p style={{color:textColor}}>
           It is a long established fact that a reader will be distracted by the
           readable content of a page when looking at its layout
         </p>
       </div>
       <div className="article-card">
         {article.map(({id, title}) => (
-          <div key={id} className="card-wrapper">
-            <div className="card-intro">
+          <div style={{color:"#000"}} key={id} className="card-wrapper">
+            <div  className="card-intro">
               <img src={right} alt="" />
               <h1>{title}</h1>
             </div>
