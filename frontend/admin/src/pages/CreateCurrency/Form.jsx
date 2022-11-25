@@ -4,7 +4,7 @@ import Input from '../../shared/Input';
 import BasicSelect from '../../shared/Select';
 import { Container } from './formstyles';
 
-const Form = () => {
+const Form = ({ handleClose }) => {
 	return (
 		<Container>
 			<h2>Add Currrency</h2>
@@ -20,7 +20,7 @@ const Form = () => {
 				</div>
 			</div>
 			<div class='addCurr'>
-				<Button variant='outlined' sx={{ fontSize: 13 }}>
+				<Button variant='outlined' sx={{ fontSize: 13 }} onClick={handleClose}>
 					Cancel
 				</Button>
 				<Button variant='contained' className='add' sx={{ fontSize: 13 }}>

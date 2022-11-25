@@ -13,9 +13,13 @@ const Card = ({ icon, title, desc, link }) => {
 				<div className='type'>
 					<h2>{title}</h2>
 					<p>{desc}</p>
+					<SharedButton
+						variantType='contained'
+						text={link}
+						invertColor={true}
+					/>
 				</div>
 			</div>
-			<SharedButton variantType='contained' text={link} invertColor={true} />
 		</Container>
 	);
 };

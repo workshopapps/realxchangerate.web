@@ -10,13 +10,13 @@ import Paper from '@mui/material/Paper';
 import editIcon from '../../assets/editIcon.svg';
 import { mockData } from './mockData';
 import { Container, Integration } from './currStyles';
-// import Button from '@mui/material/Button';
-import SharedButton from '../../shared/Button';
-// import add from '../../assets/add.svg';
+import arrow from '../../assets/arrow_forward.svg';
+
 import Card from './Card';
 import createIcon from '../../assets/create_new.svg';
 import updateIcon from '../../assets/update.svg';
 import ModalUi from './Modal';
+import { Button } from '@mui/material';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
 	[`&.${tableCellClasses.head}`]: {
@@ -51,25 +51,25 @@ export default function CreateCurrency() {
 	};
 
 	return (
-		<>
+		<section style={{ margin: '0 20px' }}>
 			<Integration>
 				<Card
 					icon={createIcon}
-					title={'Create New Integration'}
+					title={'Create Integration'}
 					desc={'Get new users on board and integrated into the system'}
-					link={'Create Integration'}
+					link={'Create'}
 				/>
 				<Card
 					icon={updateIcon}
 					title={'Update Integration'}
 					desc={'Update information on all user integrations easily'}
-					link={'Update Integration'}
+					link={'Update'}
 				/>
 				<Card
 					icon={createIcon}
 					title={'Manage Integration'}
 					desc={'Update and make changes to user integration'}
-					link={'Manage Integration'}
+					link={'Manage'}
 				/>
 			</Integration>
 			<Container>
@@ -125,8 +125,11 @@ export default function CreateCurrency() {
 						</TableBody>
 					</Table>
 				</TableContainer>
-				<SharedButton variantType={'text'} text={'view more currencies'} />
+				<Button variant='text' sx={{ my: 2, fontSize: '0.8rem' }}>
+					view more currencies{' '}
+					<img src={arrow} alt='arrow' style={{ marginLeft: '10px' }} />
+				</Button>
 			</Container>
-		</>
+		</section>
 	);
 }

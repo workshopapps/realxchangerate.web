@@ -14,8 +14,9 @@ const SharedButton = ({ variantType, text, invertColor }) => {
 	return (
 		<Contain>
 			<Stack spacing={2} direction='row' sx={{ my: 2 }}>
-				<Button variant={variantType} sx={{ fontSize: 13 }}>
-					{text}
+				<Button variant={variantType} sx={{ width: '100%' }}>
+					<span style={{ fontSize: '0.8rem' }}>{text}</span>
+
 					{invertColor ? (
 						<img src={arrow2} alt='arrow' className='image' />
 					) : (

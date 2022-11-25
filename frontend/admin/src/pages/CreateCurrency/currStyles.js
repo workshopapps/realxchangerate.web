@@ -22,4 +22,13 @@ export const Integration = styled.div`
 	display: flex;
 	justify-content: space-between;
 	margin: 50px 0;
+	@media screen and (max-width: 930px) {
+		align-items: center;
+		flex-direction: column;
+		// border: 1px solid red;
+		> * {
+			width: 300px;
+			margin-bottom: 1rem;
+		}
+	}
 `;

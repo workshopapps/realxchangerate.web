@@ -7,11 +7,10 @@ import Form from './Form';
 const ModalUi = ({ open, handleOpen, handleClose }) => {
 	return (
 		<>
-			<Button
-				onClick={handleOpen}
-				variant='contained'
-				sx={{ height: 1 / 2, fontSize: 13 }}>
-				Add currency
+			<Button onClick={handleOpen} variant='contained' sx={{ height: 1 / 2 }}>
+				<span style={{ fontSize: 'clamp(0.65rem, 1.5vw, 0.7rem)' }}>
+					Add currency
+				</span>
 				<img src={add} alt='add' style={{ marginLeft: '10px' }} />
 			</Button>
 			<Modal
@@ -29,7 +28,7 @@ const ModalUi = ({ open, handleOpen, handleClose }) => {
 						width: '90%',
 						maxWidth: '500px',
 					}}>
-					<Form />
+					<Form handleClose={handleClose} />
 				</Box>
 			</Modal>
 		</>

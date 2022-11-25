@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-	width: 30%;
-	max-width: 312px;
+	width: 32%;
+	max-width: 350px;
 	padding: 45px 17px 20px 17px;
 	border: 1px solid #cbd5e1;
 	border-radius: 4px;
@@ -32,5 +32,9 @@ export const Container = styled.div`
 				font-size: clamp(0.85rem, 1vw, 1rem);
 			}
 		}
+	}
+	@media screen and (max-width: 930px) {
+		width: 90%;
+		max-width: 400px;
 	}
 `;
