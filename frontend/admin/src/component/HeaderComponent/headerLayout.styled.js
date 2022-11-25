@@ -26,10 +26,6 @@ export const StyledHeaderTools = styled.div`
     padding: 0px;
     gap: 8px;
 
-    /* @media (max-width: ${props => props.theme.$styled.breakpoints.sm}) {
-        margin-left: auto;
-    } */
-
     .headerNotif {
         animation: bounce 1s;
         animation-iteration-count: 3.5;

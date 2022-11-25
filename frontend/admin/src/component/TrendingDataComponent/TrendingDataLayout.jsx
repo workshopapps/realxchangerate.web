@@ -17,12 +17,12 @@ const TrendingDataLayout = () => {
       <StyledGrid>
         <StyledTrendCards>
           <StyledCard>
-            <h3>Total Valu Locked (USD)</h3>
+            <h3>Total Value Locked (USD)</h3>
             <p>${data.tvl}</p>
           </StyledCard>
 
           <StyledCard>
-            <h3>Change(24h)</h3>
+            <h3>Change (24h)</h3>
             <span>{data.change}%</span>
           </StyledCard>
         </StyledTrendCards>
