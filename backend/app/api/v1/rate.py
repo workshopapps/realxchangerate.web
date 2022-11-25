@@ -80,8 +80,7 @@ def get_rates_by_limit(isocode, db: Session = Depends(get_db), limit: int = 15):
         )
 
     # get rate objects based on limit set
-    rate = crud.rate.get_rates_by_limit(
-        db, currency_id=currency.id, limit=limit)
+    rate = crud.rate.get_rates_by_limit(db, currency_id=currency.id, limit=limit)
 
     # return no content if no rate object was found
     if rate == None:
@@ -151,8 +150,7 @@ def convert_currency(
     from_currency_obj = crud.currency.get_currency_by_isocode(
         db, isocode=from_currency_in
     )
-    to_currency_obj = crud.currency.get_currency_by_isocode(
-        db, isocode=to_currency_in)
+    to_currency_obj = crud.currency.get_currency_by_isocode(db, isocode=to_currency_in)
     if from_currency_obj is None or to_currency_obj is None:
         return {"success": False, "message": "Please send a valid currency isocode."}
 
@@ -189,6 +187,8 @@ def convert_currency(
         return {"success": False, "message": "Failed to convert currencies."}
 
 
+
+
 @router.get("/date/{hour}")
 def get_rates_before_hour(hour: int, db: Session = Depends(get_db)):
     """Get rates before a particular hour"""
@@ -201,4 +201,4 @@ def get_rates_before_hour(hour: int, db: Session = Depends(get_db)):
         "rates": rates
     }
 
-    return data
+    return data        
