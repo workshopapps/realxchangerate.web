@@ -11,7 +11,6 @@ import Footer from "./components/Footer";
 import "./assets/css/style.css";
 
 import {
-  Convert,
   Contact,
   Compliance,
   HelpCenter,
@@ -54,7 +53,6 @@ function App() {
           <Routes>
             {/*---==== Contents Sections  ====---*/}
             <Route path="/" element={<Home />} />
-            <Route path="/convert" element={<Convert />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/compliance" element={<Compliance />} />
             <Route path="/help-center" element={<HelpCenter />} />
