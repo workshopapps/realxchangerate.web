@@ -6,6 +6,7 @@ import { TabPanelUnstyled } from "@mui/base";
 import { MobileRowComponent, MobileRowHeaderComponent } from "./Row";
 import { Box } from "@mui/material";
 import { TabsUnstyled } from "@mui/base";
+import PropTypes from "prop-types";
 
 const MobileView = ({ data }) => {
   return (
@@ -23,6 +24,7 @@ const MobileView = ({ data }) => {
                 <MobileRowComponent
                   country={val.country}
                   rate={val.bank_rates}
+                  key={key}
                 />
               );
             })}
@@ -36,6 +38,7 @@ const MobileView = ({ data }) => {
                 <MobileRowComponent
                   country={val.country}
                   rate={val.parallel_rates}
+                  key={key}
                 />
               );
             })}
@@ -45,5 +48,9 @@ const MobileView = ({ data }) => {
     </Box>
   );
 };
+
+MobileView.propTypes = {
+  data : PropTypes.,
+}
 
 export default MobileView;

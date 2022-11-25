@@ -1,5 +1,7 @@
 import React from "react";
-import { Hero, LiveRate, Table } from "../../components";
+import Hero from "./components/Hero";
+import LiveRate from "./components/LiveRate"
+import Table from "./components/Table"
 
 const Home = () => {
   return (

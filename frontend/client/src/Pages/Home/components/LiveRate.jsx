@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { CountrySort } from "./";
+import CountrySort from "./CountrySort";
 
 const LiveRate = () => {
   const Wrapper = styled.div`

@@ -6,7 +6,6 @@ const ContactForm = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-  const [succesMessage, setSucessMessage] = useState("");
   const [btnDisabled, setBtnDisabled] = useState(true);
   const [alert, setAlert] = useState(false);
 
@@ -45,7 +44,7 @@ const ContactForm = () => {
           setTimeout(() => setAlert(false), 3000);
         }
       })
-      .catch((error) => setSucessMessage(error.message));
+      .catch((error) => console.log(error.message));
   };
 
   return (

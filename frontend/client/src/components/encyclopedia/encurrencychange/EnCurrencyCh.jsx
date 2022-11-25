@@ -1,9 +1,19 @@
-import React from 'react';
-import { Button, ButtonWrapper, Container, CurrencyContainer,Header, HorizontalRule,  Select, Text, TextHighlight } from './EnCurrenChStyles';
-import flag from '../assets/canada.svg'
-import CountrySort from '../../CountrySort'
+import React from "react";
+import {
+  Button,
+  ButtonWrapper,
+  Container,
+  CurrencyContainer,
+  Header,
+  HorizontalRule,
+  Select,
+  Text,
+  TextHighlight,
+} from "./EnCurrenChStyles";
+import flag from "../assets/canada.svg";
+import CountrySort from "../../../Pages/Home/components/CountrySort";
 
-const EnCurrencyCh = ({display,color}) => {
+const EnCurrencyCh = ({ display, color }) => {
   return (
     <CurrencyContainer display={display} color={color}>
       <Container>
@@ -16,8 +26,7 @@ const EnCurrencyCh = ({display,color}) => {
       <TextHighlight>Change Currency</TextHighlight>
       <Container>
         <Select>
-          <CountrySort/>
-       
+          <CountrySort />
         </Select>
 
         <ButtonWrapper>
@@ -29,5 +38,3 @@ const EnCurrencyCh = ({display,color}) => {
 };
 
 export default EnCurrencyCh;
-
-

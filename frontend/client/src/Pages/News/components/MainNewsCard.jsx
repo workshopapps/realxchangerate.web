@@ -1,7 +1,7 @@
 import { Box, Stack, Typography } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
-import im from "./../assets/News_img/before.png";
+import im from "../assets/before.png";
 
 export default function MainNewsCard() {
   return (
