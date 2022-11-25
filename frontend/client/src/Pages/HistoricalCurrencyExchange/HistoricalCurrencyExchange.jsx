@@ -12,8 +12,7 @@ const HistoricalCurrencyExchange = () => {
   // useEffect(() => {}, []);
 
   return (
-    <Box width="100%" display="flex" flexDirection="column" alignItems="center" className='flex flex-col w-full items-center'>
-      {/* <Header/> */}
+    <Box margin="auto" sx={{width:{xs:"95%", sm:"90%", md:"84%"}}} display="flex" flexDirection="column" alignItems="center" className='flex flex-col w-full items-center'>
       <TopComponent />
       <Box sx={{display:{xs:"none", sm:"flex"}}} flexDirection="row" width="100%">
         <Box

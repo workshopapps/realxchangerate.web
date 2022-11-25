@@ -4,17 +4,20 @@ import {
   AccordionSummary,
   AccordionDetails,
   Typography,
-  Link
+  Link, useTheme
 } from "@mui/material";
 import React from "react";
 import {DownArrow} from "../assets/index"
 
 const DropDown = ({ title, Items, Links }) => {
+  const theme = useTheme()
+	const DarkMode = theme.palette.mode === 'dark'
   return (
     <>
       <Accordion
         style={{
-          backgroundColor: "inherit",
+          backgroundColor: DarkMode ? "#00296B" : "inherit",
+          backgroundImage:"none",
           boxShadow: "none",
           color: "#F8FAFC",
           width: "200px",
@@ -51,7 +54,7 @@ const DropDown = ({ title, Items, Links }) => {
             textAlign="center"
           >
             {Items.map((item) => (
-                <Link href={`/#/${Links[Items.indexOf(item)]}`} color="inherit" key={Items.indexOf(item)}>
+                <Link href={`/#/${Links[Items.indexOf(item)]}/#`} color="inherit" key={Items.indexOf(item)}>
                   {item}
                 </Link>
               ))}

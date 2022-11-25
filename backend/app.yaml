@@ -1,0 +1,4 @@
+service: my-second-app
+runtime: python37
+entrypoint: gunicorn -w 4 -k uvicorn.workers.UvicornWorker app.main:app
+instance_class: F2

@@ -1,14 +1,18 @@
-import { Container } from "@mui/material";
+import { Container, useTheme } from "@mui/material";
 import { PageTitle } from "./components/PageTitle.styled";
 import { TermsWrapper } from "./styles/TermsWrapper.styled";
 
 const TermsAndConditions = () => {
+  const theme = useTheme()
+	const DarkMode = theme.palette.mode === 'dark'
+
+	const textColor = DarkMode ? "#fff" : ""
   return (
     <Container>
-      <PageTitle>Terms of Use and Liability Disclaimers</PageTitle>
+      <PageTitle style={{color:textColor}}>Terms of Use and Liability Disclaimers</PageTitle>
 
       <TermsWrapper>
-        <h2>Terms of Use</h2>
+        <h2 style={{color:textColor}}>Terms of Use</h2>
         <p>
           This website is provided by the Street Rate company as a service to
           its users. Users are defined for the puroses of this statement as
@@ -26,7 +30,7 @@ const TermsAndConditions = () => {
           such changes
         </p>
 
-        <h4>1. Copyright / Permission to Reproduce</h4>
+        <h4 style={{color:textColor}}>1. Copyright / Permission to Reproduce</h4>
         <p>
           Content on this website is produced and/or compiled by Street Rates
           for the purpose of providing users with information related to the
@@ -35,7 +39,7 @@ const TermsAndConditions = () => {
           following terms:
         </p>
 
-        <h4>1.1. Attribution</h4>
+        <h4 style={{color:textColor}}>1.1. Attribution</h4>
         <p>
           Content on this website is produced and/or compiled by Street Rates
           for the purpose of providing users with information related to the
@@ -44,7 +48,7 @@ const TermsAndConditions = () => {
           following terms:
         </p>
 
-        <h4>1.2. Use of Content: Notice Requirement</h4>
+        <h4 style={{color:textColor}}>1.2. Use of Content: Notice Requirement</h4>
         <p>
           If You provide content from this website through paid services or
           incorporate any content in documents for sale (regardless of the
@@ -53,9 +57,9 @@ const TermsAndConditions = () => {
           and that such information is available on this website free of charge.
         </p>
 
-        <h4>2. Third Parties</h4>
+        <h4 style={{color:textColor}}>2. Third Parties</h4>
 
-        <h4>2.1. Third Party Advertisements</h4>
+        <h4 style={{color:textColor}}>2.1. Third Party Advertisements</h4>
         <p>
           Any dealings with third parties (including advertisers) included
           within the Website and/or participation in promotions, including the
@@ -66,7 +70,7 @@ const TermsAndConditions = () => {
           any part of any such dealings or promotions.
         </p>
 
-        <h4>2.2. Links</h4>
+        <h4 style={{color:textColor}}>2.2. Links</h4>
         <p>
           The Website may contain links to websites controlled or offered by
           third parties (non-affiliates of Street Rates). Street Rates disclaims
@@ -81,7 +85,7 @@ const TermsAndConditions = () => {
           Rate.
         </p>
 
-        <h4>3. Non-Investment Advice</h4>
+        <h4 style={{color:textColor}}>3. Non-Investment Advice</h4>
         <p>
           Street Rate does not endorse or recommend any particular securities,
           currencies, or other financial products. The content published on the
@@ -102,7 +106,7 @@ const TermsAndConditions = () => {
       </TermsWrapper>
 
       <TermsWrapper>
-        <h2>Liability Disclaimers</h2>
+        <h2 style={{color:textColor}}>Liability Disclaimers</h2>
         <p>
           The information on this website is provided for general reference
           purposes only. While every effort is made to ensure that the site is
