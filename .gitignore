@@ -1,9 +1,5 @@
 .vscode
 venv/
-<<<<<<< HEAD
 .db
 realexchange_db.db
-=======
-
 /node_modules/
->>>>>>> 5429062ea8e6edab042adbc5924fee63db7cb368
