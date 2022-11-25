@@ -2,7 +2,7 @@ import { ArrangeHorizontal } from "iconsax-react";
 import React from "react";
 import styled from "styled-components";
 import scanImage from "../assets/scan-image.png";
-import { noWCommas } from "../../../utils";
+import { noWCommas } from "../utils/utils";
 
 const Hero = () => {
   const [rates, setRates] = React.useState({});

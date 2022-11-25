@@ -1,11 +1,16 @@
 import React from "react";
 import styled from "styled-components";
+import {useTheme} from "@mui/material"
+
 const TeamMember = (props) => {
+  const theme = useTheme()
+
+  const textColor = theme.palette.mode === 'dark' ? "#fff": "#000"
   return (
     <>
       <StyledTeam>
         <img src={props.image} alt="" />
-        <h2>{props.name}</h2>
+        <h2 style={{ color: textColor }}>{props.name}</h2>
         <span style={{ color: "#64748B" }}>{props.designation}</span>
       </StyledTeam>
     </>

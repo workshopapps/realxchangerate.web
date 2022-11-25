@@ -3,7 +3,7 @@ import React, { useState, useContext } from "react";
 import { useTheme } from "@mui/material";
 import DrawerComponent from "./Drawer";
 import { Link } from "react-router-dom";
-import { DownArrow, NavFlag, MenuIcon } from "../assets/index";
+import { DownArrow, NavFlag, MenuIcon, MenuIconDark } from "../assets/index";
 import { ColorModeContext } from "../Main";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
@@ -16,7 +16,6 @@ const NavComponent = () => {
   const HandleDrawerState = () => {
     setIsOpen(!isOpen);
   };
-  console.log(theme.palette.mode);
 
   return (
     <Grid
@@ -95,7 +94,12 @@ const NavComponent = () => {
           Contact
         </Link>
       </Grid>
-      <Box sx={{ display: { xs: "flex", sm: "none" } }} justifyContent="center" alignItems="center" gap="30px">
+      <Box
+        sx={{ display: { xs: "flex", sm: "none" } }}
+        justifyContent="center"
+        alignItems="center"
+        gap="30px"
+      >
         <IconButton
           sx={{ ml: 1 }}
           onClick={colorMode.toggleColorMode}
@@ -108,7 +112,10 @@ const NavComponent = () => {
           )}
         </IconButton>
         <Box cursor="pointer" onClick={() => setIsOpen(true)}>
-          <img src={MenuIcon} alt="MenuIcon" />
+          <img
+            src={theme.palette.mode === "dark" ? MenuIconDark : MenuIcon}
+            alt="MenuIcon"
+          />
         </Box>
       </Box>
       <DrawerComponent

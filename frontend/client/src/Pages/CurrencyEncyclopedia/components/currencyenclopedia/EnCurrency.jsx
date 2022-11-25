@@ -10,7 +10,7 @@ import {
   Select,
 } from "./EnCurrencyStyles";
 
-import CountrySort from "../../../Pages/Home/components/CountrySort";
+import CountrySort from "../CountrySort";
 
 const EnCurrency = () => {
   return (

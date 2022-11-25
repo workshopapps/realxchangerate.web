@@ -11,7 +11,7 @@ import {
   TextHighlight,
 } from "./EnCurrenChStyles";
 import flag from "../assets/canada.svg";
-import CountrySort from "../../../Pages/Home/components/CountrySort";
+import CountrySort from "../CountrySort";
 
 const EnCurrencyCh = ({ display, color }) => {
   return (

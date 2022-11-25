@@ -267,13 +267,13 @@ const Footer = () => {
             <Link href="/#/" color="inherit">
               Privacy Policy
             </Link>
-            <Link href="/terms" color="inherit">
+            <Link href="/#/terms" color="inherit">
               Terms and Conditions
             </Link>
             <Link href="/#/CookiePolicy" color="inherit">
               Cookie Policy
             </Link>
-            <Link href="/compliance" color="inherit">
+            <Link href="/#/compliance" color="inherit">
               Compliance
             </Link>
           </Stack>

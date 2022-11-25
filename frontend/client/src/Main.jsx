@@ -17,7 +17,24 @@ const Main = () => {
     []
   );
 
-  const theme = useMemo(() => createTheme(getDesignTokens(mode)), [mode]);
+  const theme = useMemo(() => createTheme({
+    typography: {
+      fontFamily: "Inter, sans-serif",
+    },
+  
+    breakpoints: {
+      values: {
+        xs: 200,
+        sm: 481,
+        md: 769,
+        lg: 1025,
+        xl: 1201,
+      },
+    },
+    palette: {
+      mode}
+
+  }), [mode]);
 
   return (
     <ColorModeContext.Provider value={colorMode}>
