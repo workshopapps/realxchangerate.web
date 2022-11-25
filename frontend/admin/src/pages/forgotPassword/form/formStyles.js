@@ -3,7 +3,10 @@ import styled from 'styled-components';
 export const Container = styled.section`
 	max-width: 505px;
 	width: 90%;
+	
+
 	.form {
+		margin-inline: auto;
 		width: 90%;
 		padding: 32px;
 		background: #ffffff;

@@ -1,26 +1,26 @@
-# from typing import Any, List,  Optional, Union, Dict
-# from fastapi import APIRouter, Depends, HTTPException, status, BackgroundTasks
-# from sqlalchemy.orm import Session
-# import uuid
-# from app import schemas, crud
-# from app.api.deps import get_db
-# from fastapi.responses import RedirectResponse
-# from starlette.responses import JSONResponse
-# import os
-# from app.models.admin import Admin
-# from decouple import config
-# from fastapi import FastAPI, Depends, HTTPException
-# from app.schemas.admin import AdminUpdate, AdminCreate
-# from fastapi_mail import FastMail, MessageSchema, ConnectionConfig
-# from starlette.requests import Request
-# from pydantic import EmailStr, BaseModel
-# from app import schemas, crud
-# from app.api.deps import get_db
-# from sqlalchemy.orm import Session
+from typing import Any, List,  Optional, Union, Dict
+from fastapi import APIRouter, Depends, HTTPException, status, BackgroundTasks
+from sqlalchemy.orm import Session
+import uuid
+from app import schemas, crud
+from app.api.deps import get_db
+from fastapi.responses import RedirectResponse
+from starlette.responses import JSONResponse
+import os
+from app.models.admin import Admin
+from decouple import config
+from fastapi import FastAPI, Depends, HTTPException
+from app.schemas.admin import AdminUpdate, AdminCreate
+from fastapi_mail import FastMail, MessageSchema, ConnectionConfig
+from starlette.requests import Request
+from pydantic import EmailStr, BaseModel
+from app import schemas, crud
+from app.api.deps import get_db
+from sqlalchemy.orm import Session
 
-# from typing import List
-# from app.email_util.email_utils import random
-# from app.crud import admin
+from typing import List
+from app.email_util.email_utils import random
+from app.crud import admin
 
 
 # class EmailSchema(BaseModel):
@@ -42,7 +42,7 @@
 # )
 
 
-# router = APIRouter()
+router = APIRouter()
 
 # # code = random(6)
 
@@ -87,16 +87,16 @@
 #     return JSONResponse(status_code=200, content={"message": "email has been sent"})
 
 
-# @router.post("/reset_password")
-# def reset_password(*, email: str, password: str,
-#                    db: Session = Depends(get_db), obj_in: Union[AdminUpdate, Dict[str, Any]]) -> Any:
-#     details = crud.admin.get_by_email(db=db, email=email)
-#     if details:
-#         password = crud.admin.update(db=db, db_obj=details, obj_in=obj_in)
-#         return password
-#     else:
-#         return {"message": "user not found"}
-# # def login_with_password(*,
-# # db: Session = Depends(get_db), email: str, password: str) -> Any:
-# #     logging = crud.admin.authenticate(db=db, email=email, password=password)
-# #     return logging
+@router.post("/reset_password")
+def reset_password(*, email: str, password: str,
+                   db: Session = Depends(get_db), obj_in: Union[AdminUpdate, Dict[str, Any]]) -> Any:
+    details = crud.admin.get_by_email(db=db, email=email)
+    if details:
+        password = crud.admin.update(db=db, db_obj=details, obj_in=obj_in)
+        return password
+    else:
+        return {"message": "user not found"}
+# def login_with_password(*,
+# db: Session = Depends(get_db), email: str, password: str) -> Any:
+#     logging = crud.admin.authenticate(db=db, email=email, password=password)
+#     return logging
