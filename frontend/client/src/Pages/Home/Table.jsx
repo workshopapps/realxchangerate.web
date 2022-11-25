@@ -1,7 +1,7 @@
 import { AddCircle, ArrowDown, ArrowUp } from "iconsax-react";
 import React from "react";
 import styled from "styled-components";
-import { CountrySort } from ".";
+import { CountrySort } from "../../components";
 
 const Table = () => {
   const Table = styled.div`
@@ -9,7 +9,6 @@ const Table = () => {
     max-width: 1440px;
     margin: auto;
     margin-top: 40px;
-
     table {
       border-spacing: 0px;
       width: 100%;
@@ -20,19 +19,16 @@ const Table = () => {
       thead {
         background-color: #cbd5e1;
         border-radius: 5px;
-
         th {
           border: 0px;
           padding: 30px 5px;
           text-align: left;
         }
       }
-
       tbody {
         td {
           border-bottom: 1px solid #e0e0e0;
         }
-
         .country {
           display: flex;
           align-items: center;
@@ -48,7 +44,6 @@ const Table = () => {
           align-items: center;
           color: #ef4444;
         }
-
         td {
           p {
             margin-bottom: 5px;
@@ -69,7 +64,6 @@ const Table = () => {
     align-items: center;
     justify-content: space-between;
     padding: 30px 80px;
-
     div {
       div {
         display: flex;
@@ -77,7 +71,6 @@ const Table = () => {
         color: #0062ff;
         font-weight: 500;
         margin-bottom: 20px;
-
         span {
           margin-left: 10px;
         }
