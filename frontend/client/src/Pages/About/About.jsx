@@ -4,6 +4,7 @@ import mobileImage from "./assets/mobile-image.png";
 import missionImage from "./assets/mission-image.png";
 import visionImage from "./assets/vision-image.png";
 import Value from "./components/Value";
+import { useTheme } from "@mui/material";
 import {
   AppstoreIcon,
   CommunityIcon,
@@ -65,11 +66,15 @@ const About = () => {
       designation: "designation",
     },
   ];
+  const theme = useTheme();
+  const DarkMode = theme.palette.mode === "dark";
+
+  const textColor = DarkMode ? "#fff" : "";
 
   return (
     <>
       <StyledPage>
-        <Container about>
+        <Container about textColor={textColor}>
           <AboutSection>
             <AboutContent>
               <AboutHead>About Us</AboutHead>
@@ -86,7 +91,7 @@ const About = () => {
           </AboutSection>
         </Container>
 
-        <Container>
+        <Container textColor={textColor}>
           <MissionVisionSection>
             <MissionSection>
               <MissionImage src={missionImage} alt="mission" />
@@ -111,7 +116,7 @@ const About = () => {
           </MissionVisionSection>
         </Container>
 
-        <Container values>
+        <Container values textColor={textColor}>
           <ValueSection>
             <StyledContent>
               <StyledHead>Our Values</StyledHead>
@@ -144,7 +149,7 @@ const About = () => {
             </ValuesList>
           </ValueSection>
         </Container>
-        <Container>
+        <Container textColor={textColor}>
           <TeamSection>
             <StyledContent>
               <StyledHead>Meet the Brilliant Team</StyledHead>
@@ -166,13 +171,15 @@ const About = () => {
             </TeamMembers>
           </TeamSection>
         </Container>
-        <Container>
+        <Container textColor={textColor}>
           <DownloadSection>
             <MImg src={mobileImage} />
             <DownloadView>
               <DownloadContent>
-                <DownloadHeader>Download Streetrates App</DownloadHeader>
-                <DownloadText>
+                <DownloadHeader textColor={textColor}>
+                  Download Streetrates App
+                </DownloadHeader>
+                <DownloadText textColor={textColor}>
                   Check live rates, send money securely, set rate alerts,
                   receive notifications and more.
                 </DownloadText>
@@ -222,12 +229,12 @@ const Container = styled.div`
     `;
     } else if (props.noBg) {
       return `
-        background: #fff;
+        
         color: #202020;
     `;
     } else if (props.values) {
       return `
-        #f8fafc;
+        
         color: #202020;
     `;
     }
@@ -334,10 +341,9 @@ const Img = styled.img`
 `;
 
 const MissionVisionSection = styled.div`
-  background-color: #fff;
   display: flex;
   flex-direction: column;
-  color: #202020;
+  /* color: #202020; */
   font-family: var(--font-family);
   padding: 100px 177px;
   width: 1600px;
@@ -404,7 +410,7 @@ const MissionText = styled.p`
 const ValueSection = styled.div`
   display: flex;
   flex-direction: column;
-  color: #202020;
+  /* color: #202020; */
   font-family: var(--font-family);
   padding: 100px 177px;
   width: 1660px;
@@ -459,7 +465,7 @@ const ValuesList = styled.div`
 const TeamSection = styled.div`
   display: flex;
   flex-direction: column;
-  color: #202020;
+  /* color: #202020; */
   font-family: var(--font-family);
   padding: 100px 177px;
   width: 1600px;
@@ -497,13 +503,13 @@ const TeamMembers = styled.div`
 `;
 
 const DownloadSection = styled.div`
-  background-color: #fff;
+  background-color: none;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   /* justify-content: space-between; */
-  color: #202020;
+  /* color: #202020; */
   font-family: var(--font-family);
   padding-bottom: 40px;
   @media ${devices.laptop} {
