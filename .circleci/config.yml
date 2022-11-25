@@ -160,6 +160,57 @@ jobs:
             docker tag app hacklight/xchange-fe-client:v1
             docker push hacklight/xchange-fe-client:v1
 
+  build-frontend-admin-docker-image:
+    docker:
+      # Docker image that supports docker
+      - image: docker:17.05.0-ce-git
+    steps:
+      # Checkout code from git
+      - checkout
+      - setup_remote_docker
+      # - run:
+      #     name: Build docker image
+      #     command: |
+      #       cd frontend/client/
+
+      - restore_cache:
+          keys:
+            - v1-{{ .Branch }}
+          # paths:
+          #   - /caches/app.tar
+
+      - run:
+          name: Load Docker image layer cache
+          command: |
+            set +o pipefail
+            docker load -i /caches/app-ad.tar | true
+
+      - run:
+          name: Build application Docker image
+          command: |
+            cd frontend/admin/
+            docker build --cache-from=app-ad -t app-ad .
+
+      - run:
+          name: Save Docker image layer cache
+          command: |
+            mkdir -p /caches
+            docker save -o /caches/app-ad.tar app-ad
+
+      - save_cache:
+          key: v1-{{ .Branch }}-{{ epoch }}
+          paths:
+            - /caches/app-ad.tar
+
+      - run:
+          name: Push Image to docker hub
+          command: |
+            docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
+            docker tag app-ad hacklight/xchange-fe-admin:v1
+            docker push hacklight/xchange-fe-admin:v1
+
+
+
   build-backend-docker-image:
     docker:
       # Docker image that supports docker
@@ -273,6 +324,12 @@ workflows:
           filters:
             branches:
               only: [main]
+              
+      - build-frontend-admin-docker-image:
+          requires: [build-frontend-admin] #remember to channge to test
+          filters:
+            branches:
+              only: [main]
 
       - build-backend-docker-image:
           requires: [build-backend] #remember to channge to test
@@ -282,4 +339,4 @@ workflows:
 
       - deploy-images-using-ssh:
           requires:
-            [build-frontend-client-docker-image, build-backend-docker-image]
+            [build-frontend-client-docker-image, build-backend-docker-image, build-frontend-admin-docker-image]
