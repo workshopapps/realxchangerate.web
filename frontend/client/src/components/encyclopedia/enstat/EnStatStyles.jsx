@@ -6,10 +6,6 @@ export const CurrencyContainer = styled.div`
   background: #ffffff;
 
 
-  @media screen and (max-width: 768px) {
-    padding: 1em;
-  
-  }
 `;
 
 export const Header = styled.h1`
@@ -22,9 +18,7 @@ export const Header = styled.h1`
   width: 356px;
   margin: 81px 0px 0px 435px;
 
-  @media screen and (max-width: 768px) {
-    margin: 29px 0px 59px 10px;
-  }
+ 
 `;
 
 export const Table = styled.div`
@@ -42,10 +36,8 @@ export const Image = styled.img`
   width: 100%;
   height: 445px;
   //  height: 45px;
-  @media screen and (max-width: 768px) {
-    height: 250px;
-    width: 100%;
-  }
+
+  
 `;
 
 

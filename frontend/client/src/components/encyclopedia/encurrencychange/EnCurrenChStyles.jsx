@@ -8,15 +8,6 @@ export const CurrencyContainer = styled.div`
   border-radius: 4px;
   display: ${({ display }) => (display ? "" : "none")};
   background: ${({ color }) => (color ? "white" : " #f6faff")};
-
-  @media screen and (min-width: 350px) and (max-width: 800px) {
-    display: block;
-    display: ${({ display }) => (!display ? "block" : "none")};
-    height: 468px;
-    height: 325px;
-    width: 95%;
-    margin: 45px 15px 0px 15px;
-  }
 `;
 export const Container = styled.div`
   height: 144px;
@@ -24,10 +15,6 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  @media screen and (max-width: 768px) {
-    padding: 1em;
-  }
 `;
 
 export const Header = styled.h1`
@@ -37,12 +24,6 @@ export const Header = styled.h1`
   font-size: 14px;
   line-height: 21px;
   color: #131825;
-
-  @media screen and (max-width: 768px) {
-    margin-right: 1em;
-    font-size: 1.8em;
-    cursor: pointer;
-  }
 `;
 
 export const Text = styled.p`
@@ -52,16 +33,10 @@ export const Text = styled.p`
   font-weight: 400;
   font-size: 12px;
   line-height: 18px;
-
-  @media screen and (max-width: 768px) {
-  }
 `;
 
 export const HorizontalRule = styled.hr`
   border: 1px solid #cbd5e1;
-
-  @media screen and (max-width: 768px) {
-  }
 `;
 
 export const TextHighlight = styled.p`
@@ -72,15 +47,11 @@ export const TextHighlight = styled.p`
   line-height: 28px;
   color: #131825;
   padding-left: 18px;
-  @media screen and (max-width: 768px) {
-  }
 `;
 
 export const Select = styled.div`
- margin-top:5%;
+  margin-top: 5%;
 `;
-
-
 
 export const Button = styled.button`
   background: #0062ff;
@@ -94,13 +65,7 @@ export const Button = styled.button`
   font-weight: 600;
   font-size: 16px;
   line-height: 24px;
-
-  @media screen and (max-width: 768px) {
-  }
 `;
 export const ButtonWrapper = styled.div`
   margin-top: 38px;
-  @media screen and (max-width: 768px) {
-    margin-top: 26px;
-  }
 `;

@@ -8,25 +8,11 @@ export const CurrencyContainer = styled.div`
   align-items: center;
   display: flex;
   justify-content: space-between;
-
-  @media screen and (max-width: 750px) {
-    height: 418px;
-    padding: 1em;
-    display: flex;
-    flex-direction: column;
-    justify-content: left;
-  }
 `;
 
 export const Container = styled.div`
   box-sizing: border-content;
   padding-left: 200px;
-
-  @media screen and (min-width: 350px) and (max-width: 550px) {
-    padding-left: 10px;
-
-    height: 498px;
-  }
 `;
 
 export const Header = styled.h2`
@@ -38,10 +24,6 @@ export const Header = styled.h2`
   align-items: center;
 
   color: #ffffff;
-
-  @media screen and (min-width: 350px) and (max-width: 550px) {
-    width: 70%;
-  }
 `;
 
 export const Content = styled.p`
@@ -52,20 +34,11 @@ export const Content = styled.p`
   font-size: 20px;
   line-height: 28px;
   color: #ffffff;
-
-  @media screen and (min-width: 350px) and (max-width: 550px) {
-    width: 80%;
-    height: 58px;
-  }
 `;
 
 export const Select = styled.div`
   width: 40%;
   margin-top: 69px;
-
-  @media screen and (min-width: 350px) (max-width: 550px) {
-    width: 80%;
-  }
 `;
 
 export const Option = styled.option`
@@ -76,30 +49,15 @@ export const Option = styled.option`
   line-height: 20px;
   align-items: center;
   letter-spacing: 0.001em;
-  @media screen and (min-width: 350px) (max-width: 550px) {
-    padding: 1em;
-  }
 `;
 
 export const ImageWrapper = styled.div`
   width: 60%;
-  @media screen and (min-width: 350px) and (max-width: 550px) {
-    display: none;
 
-    margin-left: 0px;
-    align-item: left;
-    width: 90%;
-  }
-  @media screen and (min-width: 650px) and (max-width: 950px) {
-    display: none;
-  }
+  margin-left: 0px;
+  align-items: left;
+  width: 90%;
 `;
 export const Image = styled.img`
   width: 90%;
-  @media screen and (min-width: 350px) and (max-width: 550px) {
-    display: none;
-  }
-  @media screen and (min-width: 650px) and (max-width: 950px) {
-    display: none;
-  }
 `;
