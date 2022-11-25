@@ -10,27 +10,32 @@ import {
 
 import check from "../assets/check.svg";
 import checkLight from "../assets/checkLight.svg";
-
-const secondCard = {
-  backgroundColor: "#0059E8",
-  color: "#F8FAFC",
-};
-
-const secondCardBtn = {
-  color: "#0059E8",
-  backgroundColor: "#fff",
-};
+import { useTheme } from "@mui/material";
 
 const Pricing = () => {
+  const theme = useTheme()
+	const DarkMode = theme.palette.mode === 'dark'
+  const whiteText = DarkMode ? "#fff" : ""
+  const darkText = DarkMode ? "#0059E8" : "#0059E8"
+
+  const secondCard = {
+    backgroundColor: "#0059E8",
+    color: "#F8FAFC",
+  };
+
+  const secondCardBtn = {
+    color: "#0059E8",
+    backgroundColor: "#fff",
+  };
   return (
     <StyledPricing>
-      <PricingHeader>Select a pricing plan</PricingHeader>
-      <PricingInfo>
-        Street Rates currency exchange API provides real time trusted exchange rate for you. choose the plan that works
-        for you best.
+      <PricingHeader style={{color:whiteText}}>Select a pricing plan</PricingHeader>
+      <PricingInfo style={{color:whiteText}}>
+        Street Rates currency exchange API provides real time trusted exchange
+        rate for you. choose the plan that works for you best.
       </PricingInfo>
       <CardsContainer>
-        <PricingCard>
+        <PricingCard style={{color:darkText}}>
           <PlanName>Basic Plan</PlanName>
           <PlanPrice>$0/mth</PlanPrice>
           <ul>
@@ -92,7 +97,7 @@ const Pricing = () => {
           </ul>
           <button style={secondCardBtn}>Select Plan</button>
         </PricingCard>
-        <PricingCard>
+        <PricingCard style={{color:darkText}}>
           <PlanName>Enterprise Plan</PlanName>
           <PlanPrice>$150/mth</PlanPrice>
           <ul>

@@ -1,19 +1,25 @@
 import styled from "styled-components";
+import { useTheme } from "@mui/material";
 import hr from "./images/hr.svg";
 import { Link } from "react-router-dom";
 
 const OnlineAdvertising = () => {
+	const theme = useTheme()
+	const DarkMode = theme.palette.mode === 'dark'
+
+	const textColor = DarkMode ? "#fff" : ""
+
 
 	const period = "2020 monthly average";
 	return (
 		<Container>
-		<MainDiv>
-			<StyledH1>Advertising media kit</StyledH1>
+		<MainDiv style={{color:textColor}}>
+			<StyledH1 >Advertising media kit</StyledH1>
 
 			<div>
-				<StyledH3>Our audience</StyledH3>
-				<StyledP>Street Rates are the most sought after on the internet - They’re affulent , in-market, ready to transact, and have high credit scores. We offer a user-friendly environment for the consumers rates and interact with our advertising partners.</StyledP>
-				<StyledP>Our trusted, well known name and our objectivity are important to consumers who are on the verge of making important financial decisions.</StyledP>
+				<StyledH3 >Our audience</StyledH3>
+				<StyledP >Street Rates are the most sought after on the internet - They’re affulent , in-market, ready to transact, and have high credit scores. We offer a user-friendly environment for the consumers rates and interact with our advertising partners.</StyledP>
+				<StyledP >Our trusted, well known name and our objectivity are important to consumers who are on the verge of making important financial decisions.</StyledP>
 			</div>
 
       <div>

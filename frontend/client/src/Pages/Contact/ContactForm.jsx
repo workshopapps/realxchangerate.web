@@ -2,11 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Button, DisabledButton } from "./styles/Contact.styled";
 import { Typography, Stack, TextField, Snackbar, Alert } from "@mui/material";
 
-const ContactForm = () => {
+const ContactForm = ({textColor}) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-  const [succesMessage, setSucessMessage] = useState("");
   const [btnDisabled, setBtnDisabled] = useState(true);
   const [alert, setAlert] = useState(false);
 
@@ -45,7 +44,7 @@ const ContactForm = () => {
           setTimeout(() => setAlert(false), 3000);
         }
       })
-      .catch((error) => setSucessMessage(error.message));
+      .catch((error) => console.log(error.message));
   };
 
   return (
@@ -73,7 +72,7 @@ const ContactForm = () => {
       >
         <Stack direction="column" letterSpacing="0.001em" gap="5px">
           <Typography
-            color="#0F172A"
+            color={textColor}
             sx={{
               fontSize: { xs: "14px" },
               lineHeight: { xs: "20px" },
@@ -101,7 +100,7 @@ const ContactForm = () => {
 
         <Stack direction="column" letterSpacing="0.001em" gap="5px">
           <Typography
-            color="#0F172A"
+            color={textColor}
             sx={{
               fontSize: { xs: "14px" },
               lineHeight: { xs: "20px" },
@@ -129,7 +128,7 @@ const ContactForm = () => {
 
         <Stack direction="column" letterSpacing="0.001em" gap="5px">
           <Typography
-            color="#0F172A"
+            color={textColor}
             sx={{
               fontSize: { xs: "14px" },
               lineHeight: { xs: "20px" },
