@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import neww from "../../assets/News_img/e.png";
 import { articles } from "./staticData";
-import CardArticles from "../../components/CardArticles";
+import CardArticles from "./components/CardArticles";
 export default function SingleNews() {
   return (
     <div>
