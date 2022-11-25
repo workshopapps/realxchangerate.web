@@ -3,15 +3,21 @@ import { ThemeProvider } from 'styled-components';
 import './App.css';
 import Layout from './layout/Layout';
 import Account from './pages/Account/Account';
-// import Dashboard from './pages/Dashboard/Dashboard';
+import Dashboard from './pages/Dashboard/Dashboard';
+import TrendingData from './pages/TrendingData/TrendingData';
 import Error from './pages/Error/Error';
 import Login from './pages/Login/Login';
 import ForgotPassword from './pages/forgotPassword/ForgotPassword';
 import { GlobalStyle } from './theme/globalStyle';
 import { theme } from './theme/theme';
-import CreateCurrency from './pages/CreateCurrency/CreateCurrency';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 function App() {
+	AOS.init({
+		offset: 80,
+	});
+
 	return (
 		<ThemeProvider theme={theme}>
 			<BrowserRouter>
@@ -21,11 +27,11 @@ function App() {
 						{/* <Route index element={<Dashboard />} /> */}
 						<Route index element={<CreateCurrency />} />
 						<Route path='/account' element={<Account />} />
-
+						<Route path='/trending' element={<TrendingData />} />
 						<Route path='/*' element={<Error />} />
 					</Route>
 					<Route path='/login' element={<Login />} />
-					<Route path='/forgot_password' element={<ForgotPassword />} />
+					<Route path='/forgotpassword' element={<ForgotPassword />} />
 				</Routes>
 			</BrowserRouter>
 		</ThemeProvider>
