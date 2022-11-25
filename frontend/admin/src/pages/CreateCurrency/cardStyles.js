@@ -26,7 +26,7 @@ export const Container = styled.div`
 		.type {
 			h2 {
 				font-size: clamp(1rem, 1.5vw, 1.1rem);
-				margin-bottom: 0.5rem;
+				margin-bottom: 1.5rem;
 			}
 			p {
 				font-size: clamp(0.85rem, 1vw, 1rem);
