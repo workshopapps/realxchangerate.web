@@ -1,4 +1,4 @@
-import { Box, List, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import React from "react";
 import { currenciesList } from "../../Pages/Home/data";
 

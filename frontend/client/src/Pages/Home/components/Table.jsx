@@ -1,11 +1,7 @@
 import { AddCircle, ArrowDown, ArrowUp } from "iconsax-react";
 import React from "react";
 import styled from "styled-components";
-<<<<<<<< HEAD:frontend/client/src/Pages/Home/Table.jsx
-import { CountrySort } from "../../components";
-========
-import { CountrySort } from "../../../components";
->>>>>>>> 897ba5c67dbd204ef66ae6312949ef7ff6a62ec6:frontend/client/src/Pages/Home/components/Table.jsx
+import CountrySort from "./CountrySort";
 
 const Table = () => {
   const Table = styled.div`

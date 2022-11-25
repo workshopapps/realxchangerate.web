@@ -2,7 +2,7 @@ import { Box, Container } from "@mui/material";
 import React from "react";
 import Convert from "../../components/home/Convert";
 import Hero from "../../components/home/Hero";
-import Table from "./Table";
+import Table from "./components/Table";
 
 const Home = () => {
   return (

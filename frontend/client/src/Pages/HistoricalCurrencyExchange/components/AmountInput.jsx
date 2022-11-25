@@ -1,17 +1,21 @@
 import React from "react";
-import { Box, Typography, useMediaQuery } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { RightArrow } from "../assets/";
+import PropTypes from "prop-types";
 
-const AmountInput = ({ flag }) => {
-  const tabletScreen = useMediaQuery("(max-width:769px)")
-
+const AmountInput = ({ flag, amount, setAmount }) => {
   const TextInput = {
     border: "none",
-    width: "32%",
+    width: "50%",
     "::focus": {
       border: "none",
     },
-    height:"20px"
+    "::blur": {
+      border: "none",
+    },
+    height: "20px",
+    backgroundColor: "inherit",
+    color: "inherit",
   };
 
   return (
@@ -23,40 +27,51 @@ const AmountInput = ({ flag }) => {
       height="44px"
       borderRadius="6px"
       sx={{
-        width: {xs:"100%", sm: "33%" },
-        gap: {sm:"2px", md: "8px", xl: "10px" },
-        padding: {xs:"10px 12px", sm:"2px 3px",md:"5px 6px", xl:"10px 12px"},
+        width: { xs: "100%", sm: "33%" },
+        gap: { sm: "2px", md: "8px", xl: "10px" },
+        padding: {
+          xs: "10px 12px",
+          sm: "2px 3px",
+          md: "5px 6px",
+          xl: "10px 12px",
+        },
       }}
     >
-      <Typography
-        lineHeight="24px"
-        fontWeight="400"
-        color="#111827"
-        sx={{
-          fontSize: {xs:"16px", sm:"10px", md: "12px", xl: "14px" },
-        }}
-      >
-        Amount
-      </Typography>
-      <input type="text" style={TextInput} />
+      <Box display="flex" width="50%" gap="5px" alignItems="center">
+        <Typography
+          lineHeight="24px"
+          fontWeight="400"
+          sx={{
+            fontSize: { xs: "14px", sm: "10px", md: "12px", xl: "14px" },
+          }}
+        >
+          Amount
+        </Typography>
+        <input
+          type="text"
+          style={TextInput}
+          value={amount}
+          onChange={(e) => setAmount(e.target.value)}
+        />
+      </Box>
 
       <Box
         display="flex"
         sx={{
-          gap: {xs:"12px", sm: "3px", xl: "7px" },
+          gap: { xs: "4px", sm: "3px", xl: "7px" },
         }}
         justifyContent="center"
         alignItems="center"
       >
         <Typography
           sx={{
-            fontSize: {xs:"14px", sm:"10px", md: "12px", xl: "14px" },
+            fontSize: { xs: "12px", sm: "10px", md: "12px", xl: "14px" },
           }}
           lineHeight="20px"
           fontWeight="400"
           color="#6B7280"
         >
-         {tabletScreen ? "US Dollar": "US Dollar (USD)"}
+          US Dollar (USD)
         </Typography>
         <img src={flag} height={20} width={20} alt="Flag" />
         <img src={RightArrow} height={20} width={20} alt="arrow" />
@@ -65,4 +80,11 @@ const AmountInput = ({ flag }) => {
   );
 };
 
+AmountInput.propTypes = {
+  flag : PropTypes.string.isRequired,
+  amount: PropTypes.string.isRequired,
+  setAmount: PropTypes.func.isRequired
+}
+
 export default AmountInput;
+

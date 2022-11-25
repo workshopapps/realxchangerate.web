@@ -1,4 +1,4 @@
-import { Box, Typography, useMediaQuery, Stack, Link } from "@mui/material";
+import { Box, Typography, useMediaQuery, Stack, Link, useTheme } from "@mui/material";
 import React from "react";
 import { BackgroundImage, BackgroundImageMobile, RightArrow } from "./assets/";
 
@@ -7,6 +7,12 @@ const Complaince = () => {
   const backgroundImage = mobileScreen
     ? BackgroundImageMobile
     : BackgroundImage;
+
+    const theme = useTheme()
+    const DarkMode = theme.palette.mode === 'dark'
+  
+    const textColor = DarkMode ? "#fff" : "#1E293B"
+    const headingColor = DarkMode ? "#0062ff" : "#00296B" 
   return (
     <Box minHeight="calc(100vh - 580px)">
       <Box width="100%" margin="0px" padding="0px">
@@ -58,7 +64,7 @@ const Complaince = () => {
               lineHeight: { xs: "28px" },
               fontWeight: { xs: "600", sm: "700" },
             }}
-            color="#00296B"
+            color={headingColor}
             letterSpacing="-0.02em"
           >
             Meeting and exceeding standards worldwide
@@ -70,7 +76,7 @@ const Complaince = () => {
               lineHeight: { xs: "20px", sm: "20px" },
               fontWeight: { xs: "400" },
             }}
-            color="#1E293B"
+            color={textColor}
             letterSpacing="0.001em"
           >
             Street Rate’s top priority is the privacy and security of our
@@ -89,7 +95,7 @@ const Complaince = () => {
               lineHeight: { xs: "20px", sm: "20px" },
               fontWeight: { xs: "400" },
             }}
-            color="#1E293B"
+            color={textColor}
             letterSpacing="0.001em"
           >
             For information on Street Rate’s API service capabilities that help
@@ -105,7 +111,7 @@ const Complaince = () => {
               lineHeight: { xs: "20px", sm: "20px" },
               fontWeight: { xs: "400" },
             }}
-            color="#1E293B"
+            color={textColor}
             letterSpacing="0.001em"
           >
             Learn how data governance regulations and standards shape Street
@@ -121,7 +127,7 @@ const Complaince = () => {
               lineHeight: { xs: "28px" },
               fontWeight: { xs: "600", sm: "700" },
             }}
-            color="#00296B"
+            color={headingColor}
             letterSpacing="-0.02em"
             marginTop="20px"
           >
@@ -135,7 +141,7 @@ const Complaince = () => {
               fontWeight: { xs: "400" },
             }}
             marginBottom="0px"
-            color="#1E293B"
+            color={textColor}
             letterSpacing="0.001em"
           >
             DocuSign’s data governance standards, policies, and procedures are
@@ -149,7 +155,7 @@ const Complaince = () => {
                   lineHeight: { xs: "20px", sm: "20px" },
                   fontWeight: { xs: "400" },
                 }}
-                color="#1E293B"
+                color={textColor}
                 letterSpacing="0.001em"
               >
                 Continuous monitoring of the security and privacy landscape to
@@ -165,7 +171,7 @@ const Complaince = () => {
                   lineHeight: { xs: "20px", sm: "20px" },
                   fontWeight: { xs: "400" },
                 }}
-                color="#1E293B"
+                color={textColor}
                 letterSpacing="0.001em"
               >
                 Adherence to industry regulations, such as 21 CFR Part 11, Annex
@@ -180,7 +186,7 @@ const Complaince = () => {
                   lineHeight: { xs: "20px", sm: "20px" },
                   fontWeight: { xs: "400" },
                 }}
-                color="#1E293B"
+                color={textColor}
                 letterSpacing="0.001em"
               >
                 A significant investment in maintaining globally recognized
@@ -197,7 +203,7 @@ const Complaince = () => {
                   lineHeight: { xs: "20px", sm: "20px" },
                   fontWeight: { xs: "400" },
                 }}
-                color="#1E293B"
+                color={textColor}
                 letterSpacing="0.001em"
               >
                 Careful controls on account creation, transaction monitoring,
@@ -212,7 +218,7 @@ const Complaince = () => {
                   lineHeight: { xs: "20px", sm: "20px" },
                   fontWeight: { xs: "400" },
                 }}
-                color="#1E293B"
+                color={textColor}
                 letterSpacing="0.001em"
               >
                 Appropriate licenses to ensure the public has protections and
@@ -227,7 +233,7 @@ const Complaince = () => {
                   lineHeight: { xs: "20px", sm: "20px" },
                   fontWeight: { xs: "400" },
                 }}
-                color="#1E293B"
+                color={textColor}
                 letterSpacing="0.001em"
               >
                 Reliable financial control systems and methods to protect funds
@@ -242,7 +248,7 @@ const Complaince = () => {
                   lineHeight: { xs: "20px", sm: "20px" },
                   fontWeight: { xs: "400" },
                 }}
-                color="#1E293B"
+                color={textColor}
                 letterSpacing="0.001em"
               >
                 Procedures for audits and reviews
@@ -256,7 +262,7 @@ const Complaince = () => {
               lineHeight: { xs: "20px", sm: "20px" },
               fontWeight: { xs: "400" },
             }}
-            color="#1E293B"
+            color={textColor}
             letterSpacing="0.001em"
           >
             Proper identity verification is key; knowing who the customer is
@@ -284,7 +290,7 @@ const Complaince = () => {
                 lineHeight: { xs: "28px" },
                 fontWeight: { xs: "700" },
               }}
-              color="#00296B"
+              color={headingColor}
               letterSpacing="-0.02em"
             >
               Explore compliance resources
@@ -300,7 +306,7 @@ const Complaince = () => {
               border="1px solid #94A3B8"
               borderRadius="5px"
             >
-              <Typography>Certifications</Typography>
+              <Typography color={textColor}>Certifications</Typography>
               <img src={RightArrow} alt="right_arrow" />
             </Box>
 
@@ -313,7 +319,7 @@ const Complaince = () => {
               border="1px solid #94A3B8"
               borderRadius="5px"
             >
-              <Typography>Standards</Typography>
+              <Typography color={textColor}>Standards</Typography>
               <img src={RightArrow} alt="right_arrow" />
             </Box>
 
@@ -326,7 +332,7 @@ const Complaince = () => {
               border="1px solid #94A3B8"
               borderRadius="5px"
             >
-              <Typography>Public certificates</Typography>
+              <Typography color={textColor}>Public certificates</Typography>
               <img src={RightArrow} alt="right_arrow" />
             </Box>
           </Stack>

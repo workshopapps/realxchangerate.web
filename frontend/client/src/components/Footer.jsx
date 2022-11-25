@@ -99,9 +99,6 @@ const Footer = () => {
             >
               Links
             </Typography>
-            <Link href="/#/convert" color="inherit">
-              Convert
-            </Link>
             <Link href="/#/news" color="inherit">
               News
             </Link>
@@ -267,13 +264,13 @@ const Footer = () => {
             <Link href="/#/" color="inherit">
               Privacy Policy
             </Link>
-            <Link href="/terms" color="inherit">
+            <Link href="/#/terms" color="inherit">
               Terms and Conditions
             </Link>
             <Link href="/#/CookiePolicy" color="inherit">
               Cookie Policy
             </Link>
-            <Link href="/compliance" color="inherit">
+            <Link href="/#/compliance" color="inherit">
               Compliance
             </Link>
           </Stack>
@@ -312,8 +309,8 @@ const Footer = () => {
 
           <DropDown
             title={"Links"}
-            Items={["Convert", "News", "Contact Us"]}
-            Links={["convert", "news", "contact"]}
+            Items={["News", "Contact Us"]}
+            Links={["news", "contact"]}
           />
           <DropDown
             title={"Resources"}

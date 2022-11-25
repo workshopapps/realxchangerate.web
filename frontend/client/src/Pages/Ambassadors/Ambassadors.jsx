@@ -2,14 +2,19 @@ import React from "react";
 import ManImg from "../Ambassadors/images/Rectangle 160 2.png";
 import Wrapper from "../Ambassadors/styles/Hero/HeroStyles";
 import { people } from "../Ambassadors/data";
+import { useTheme } from "@mui/material";
 
 const Ambassador = () => {
+  const theme = useTheme()
+	const DarkMode = theme.palette.mode === 'dark'
+
+	const textColor = DarkMode ? "#fff" : ""
   return (
-    <Wrapper>
+    <Wrapper >
       {/* HEADER OF PAGE */}
-      <header>
-        <h3>Meet our brand ambassadors</h3>
-        <article>
+      <header >
+        <h3 style={{color:textColor}}>Meet our brand ambassadors</h3>
+        <article style={{color:textColor}}>
           At Street Rate App we believe in the spirit of community, without the
           customers who use our app, we would not exist and keep rising. the
           customers are part of the ambassadors of the app as they will use an
