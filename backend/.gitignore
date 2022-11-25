@@ -1,7 +1,7 @@
 venv/
 .vscode/
 __pycache__/
-test.db
+.db
 env
 .env
 # OS generated files #
@@ -17,4 +17,3 @@ Thumbs.db
 # IntelliJ
 .idea/
 ./env
-realexchange_db.db
