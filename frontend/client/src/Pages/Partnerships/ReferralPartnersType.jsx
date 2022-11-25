@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 // styles
 import { StyledPartnersType, Button } from "./styles/ReferralPartners.styles";
 
@@ -21,8 +21,8 @@ const ReferralPartnersType = () => {
                   return <li key={list.id}>{list.text}</li>;
                 })}
               </ul>
-
-              <Button padding="60px">Contact us</Button>
+                <Link to ='/contact'><Button padding="70px">Contact us</Button></Link>
+              
             </div>
 
             <img src={type.icon} alt="icon" height={80} />

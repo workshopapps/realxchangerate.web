@@ -20,15 +20,16 @@ export const PartnersHeader = styled.div`
   max-width: 1440px;
   margin: 0 auto;
   text-align: center;
-  margin-top: 60px;
+  margin-top: 140px;
 
   & img {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
   }
 
   & h1 {
     font-size: 25px;
     font-weight: 700px;
+    margin-bottom: 80px;
   }
 
   @media screen and (max-width: 480px) {
@@ -42,7 +43,8 @@ export const PartnersDescription = styled.p`
   width: 65%;
   max-width: 1440px;
   margin: 15px auto 80px;
-  font-size: 23px;
+  font-size: 16px;
+  font-weight: 400;
   line-height: 1.5;
   text-align: center;
 
@@ -74,8 +76,17 @@ export const StyledPartnersType = styled.div`
     flex-direction: column;
     gap: 30px;
 
+    
+    @media screen and (max-width: 480px){
+      & button{
+        align-self: center;
+      }
+    }
+
     & h1 {
-      font-size: 25px;
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 50px;
 
       @media screen and (max-width: 480px) {
         font-size: 20px;
@@ -83,7 +94,8 @@ export const StyledPartnersType = styled.div`
     }
 
     & p {
-      font-size: 23px;
+      font-size: 16px;
+      font-weight: 400;
       line-height: 1.5;
 
       @media screen and (max-width: 480px) {
@@ -92,7 +104,8 @@ export const StyledPartnersType = styled.div`
     }
 
     & ul {
-      font-size: 23px;
+      font-size: 16px;
+      font-weight: 400;
       list-style-position: inside;
 
       @media screen and (max-width: 480px) {
@@ -103,6 +116,10 @@ export const StyledPartnersType = styled.div`
         margin: 30px 0;
       }
     }
+  }
+
+  & button {
+    cursor: pointer;
   }
 
   @media screen and (max-width: 1240px) {
@@ -123,6 +140,7 @@ export const StyledPartnersType = styled.div`
 
       & button {
         align-self: center;
+        cursor: pointer;
       }
     }
   }
