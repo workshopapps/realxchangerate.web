@@ -14,3 +14,4 @@ export { default as Rectangle1 } from "./png/Rectangle 3.png";
 export { default as Vector } from "./png/Vector.png";
 
 export { default as RightArrow } from "./svg/RightArrow.svg";
+export { default as InverseArrow } from "./svg/InverseArrow.svg";

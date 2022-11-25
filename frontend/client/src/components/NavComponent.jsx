@@ -42,7 +42,7 @@ const NavComponent = () => {
           letterSpacing="-0.04em"
           role="heading"
         >
-          <Link to="/" style={{ color: "#0062FF" }}>
+          <Link to="/" style={{ color: "#00296B" }}>
             Street Rate
           </Link>
         </Typography>

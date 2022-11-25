@@ -1,29 +1,102 @@
-from typing import Any, List
-from fastapi import APIRouter, Depends, HTTPException, status, BackgroundTasks
-from sqlalchemy.orm import Session
-import uuid
-from app import schemas, crud
-from app.api.deps import get_db
-from app.send_email import sending_mail, authenticate_token
-from fastapi.responses import RedirectResponse
-from starlette.responses import JSONResponse
+# from typing import Any, List,  Optional, Union, Dict
+# from fastapi import APIRouter, Depends, HTTPException, status, BackgroundTasks
+# from sqlalchemy.orm import Session
+# import uuid
+# from app import schemas, crud
+# from app.api.deps import get_db
+# from fastapi.responses import RedirectResponse
+# from starlette.responses import JSONResponse
+# import os
+# from app.models.admin import Admin
+# from decouple import config
+# from fastapi import FastAPI, Depends, HTTPException
+# from app.schemas.admin import AdminUpdate, AdminCreate
+# from fastapi_mail import FastMail, MessageSchema, ConnectionConfig
+# from starlette.requests import Request
+# from pydantic import EmailStr, BaseModel
+# from app import schemas, crud
+# from app.api.deps import get_db
+# from sqlalchemy.orm import Session
+
+# from typing import List
+# from app.email_util.email_utils import random
+# from app.crud import admin
 
 
-router = APIRouter()
+# class EmailSchema(BaseModel):
+#     email: list[EmailStr]
 
-@router.post("/forgot_password")
-def get_email():
-    sending_mail()
-    return JSONResponse(status_code=200, content={"message": "email has been sent"}) 
 
-@router.post("/auth/token", response_class=RedirectResponse, status_code=302)
-def get_token():
-    return authenticate_token()
+# class TokenSChema(BaseModel):
+#     token: str
 
-@router.get("/dashboard")
-def dashboard():
-    return "message: Welcome to your dashboard!"
 
-    
+# conf = ConnectionConfig(
+#     MAIL_USERNAME=config('MAIL_USERNAME'),
+#     MAIL_PASSWORD=config('MAIL_PASSWORD'),
+#     MAIL_FROM=config('MAIL_FROM'),
+#     MAIL_PORT=config('MAIL_PORT', cast=int),
+#     MAIL_SERVER=config('MAIL_SERVER'),
+#     MAIL_TLS=config('MAIL_TLS', cast=bool),
+#     MAIL_SSL=config('MAIL_SSL', cast=bool),
+# )
 
-  
+
+# router = APIRouter()
+
+# # code = random(6)
+
+
+# @router.post("/forgot_password")
+# async def sending_mail(email: EmailSchema, admin_in: schemas.AdminCreate, db: Session = Depends(get_db)):
+#     admin_email = crud.admin.get_by_email(db, email=admin_in.email)
+#     if not admin_email:
+#         raise HTTPException(
+#             status_code=404,
+#             detail="Email address does not exist, please enter a valid email"
+#         )
+#     template = """
+#             <html>
+#             <body>
+
+
+#                 <p>Hello !!! Did you request for a password reset?
+#                 <br></p>
+#                 <p>
+#                 <a href="{{ url_for('reset_password', path='api/forget_password/reset_password') }}" target="_blank">
+#                 click here to reset your password
+#             </a>
+#                 <p> If this is not you, secure your account by turning on 2-factor authentication<p>
+#             </body>
+#             </html>
+#             """
+
+#     message = MessageSchema(
+#         subject="Reset-password Token",
+#         recipients=email.dict().get("email"),
+#         body=template,
+#         subtype="html"
+#     )
+
+#     fm = FastMail(conf)
+#     try:
+#         await fm.send_message(message)
+#     except:
+#         return 'message: Your connection is not secure!'
+
+#     return JSONResponse(status_code=200, content={"message": "email has been sent"})
+
+
+# @router.post("/reset_password")
+# def reset_password(*, email: str, password: str,
+#                    db: Session = Depends(get_db), obj_in: Union[AdminUpdate, Dict[str, Any]]) -> Any:
+#     details = crud.admin.get_by_email(db=db, email=email)
+#     if details:
+#         password = crud.admin.update(db=db, db_obj=details, obj_in=obj_in)
+#         return password
+#     else:
+#         return {"message": "user not found"}
+# # def login_with_password(*,
+# # db: Session = Depends(get_db), email: str, password: str) -> Any:
+# #     logging = crud.admin.authenticate(db=db, email=email, password=password)
+# #     return logging
