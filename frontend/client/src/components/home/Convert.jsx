@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { noWCommas } from "../../utils";
-import styles from "./home.module.scss";
+import styles from "./home.module.css";
 import { HiOutlineSwitchVertical } from "react-icons/hi";
 import {
   Box,
