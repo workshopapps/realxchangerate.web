@@ -27,9 +27,11 @@ export const Container = styled.div`
 			h2 {
 				font-size: clamp(1rem, 1.5vw, 1.1rem);
 				margin-bottom: 1.5rem;
+				color: rgba(71, 85, 105, 1);
 			}
 			p {
 				font-size: clamp(0.85rem, 1vw, 1rem);
+				color: rgba(71, 85, 105, 1);
 			}
 		}
 	}

@@ -105,7 +105,10 @@ export default function CreateCurrency() {
 						<TableBody>
 							{mockData.map((row) => (
 								<StyledTableRow key={row.name}>
-									<StyledTableCell component='th' scope='row'>
+									<StyledTableCell
+										component='th'
+										scope='row'
+										style={{ color: 'rgba(71, 85, 105, 1)' }}>
 										<div style={{ display: 'flex', alignItems: 'center' }}>
 											<img
 												src={row.flag}
@@ -115,9 +118,19 @@ export default function CreateCurrency() {
 											<span>{row.name}</span>
 										</div>
 									</StyledTableCell>
-									<StyledTableCell align='left'>{row.code}</StyledTableCell>
-									<StyledTableCell align='left'>{row.rate}</StyledTableCell>
-									<StyledTableCell align='right'>
+									<StyledTableCell
+										align='left'
+										style={{ color: 'rgba(71, 85, 105, 1)' }}>
+										{row.code}
+									</StyledTableCell>
+									<StyledTableCell
+										align='left'
+										style={{ color: 'rgba(71, 85, 105, 1)' }}>
+										{row.rate}
+									</StyledTableCell>
+									<StyledTableCell
+										align='right'
+										style={{ color: 'rgba(71, 85, 105, 1)' }}>
 										<img src={editIcon} alt='edit' />
 									</StyledTableCell>
 								</StyledTableRow>

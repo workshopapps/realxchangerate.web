@@ -9,11 +9,13 @@ export const Container = styled.section`
 		justify-content: space-between;
 		margin: 0 0 1rem 0;
 		h1 {
+			color: rgba(30, 41, 59, 1);
 			font-size: clamp(1.1rem, 2vw, 1.4rem);
 			margin-bottom: 0.4rem;
 		}
 		p {
 			font-size: clamp(0.8rem, 1.5vw, 1rem);
+			color: rgba(71, 85, 105, 1);
 		}
 	}
 `;
