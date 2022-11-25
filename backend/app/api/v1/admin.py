@@ -119,4 +119,8 @@ def delete_rate(*, db: Session = Depends(get_db), rate_id: int):
     if rate_query is None:
         return {"success": False, "status_code": 404, "data": {"id": rate_id}, "message": "Not found!"}
 
+<<<<<<< HEAD
     return {"success": True, "status_code": 200, "data": {"id": rate_query}, "message": "rate deleted!"}
+=======
+    return {"success": True, "status_code": 200, "data": {"rate": rate_query}, "message": "rate deleted!"}
+>>>>>>> af2b8d44d80f5323ba5f28d978d43beb71d70c9c
