@@ -15,22 +15,12 @@ def get_all_currencies_and_rates(db: Session = Depends(get_db), skip: int = 0, l
     get all the rates of all the currencies.
     """
     currencies = crud.currency.get_multi(db, skip=skip, limit=limit)
-
-    currency_rate = []
-
-    for currency in currencies:
-        data = {}
-        data['country'] = currency.country
-        data['rate'] = crud.rate.get_rate_by_currency_id(db, currency.id)
-        data['symbol'] = currency.symbol
-        data['isocode'] = currency.isocode
-        currency_rate.append(data)
-    return currency_rate
+    return currencies
 
 
 @router.get("/currencies")
 def get_all_currencies(db: Session = Depends(get_db)):
-    """Get all currencies and latest rate"""
+    """Get all currencies"""
     currencies = crud.currency.get_all_currencies(db)
 
     # Parse data
