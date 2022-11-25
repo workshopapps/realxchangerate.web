@@ -19,7 +19,6 @@ const Convert = () => {
   const base_url = process.env.REACT_APP_BASE_URL;
   const localBase = "http://localhost:8000/api";
   const [rates, setRates] = React.useState({});
-  const [currencies, setCurrencies] = React.useState([]);
   const [convert, setconvert] = React.useState(1);
   const [currency, setCurrecy] = React.useState("NGN");
   const [buy, setbuy] = React.useState(true);
@@ -40,20 +39,6 @@ const Convert = () => {
     });
   }, [base_url, endpoint, currency]);
 
-  // fetch all currencies
-  React.useEffect(() => {
-    const fetchCurrencies = async () => {
-      const response = await fetch(
-        "https://exchange.hng.tech/backend/api/currency/?skip=0&limit=100"
-      );
-      const data = await response.json();
-      return data;
-    };
-    fetchCurrencies().then((currenciesData) => {
-      setCurrencies(currenciesData.currencies);
-    });
-  }, []);
-  // console.table(currencies[0]);
 
   const handleSwitch = () => {
     setbuy((value) => {
@@ -64,7 +49,11 @@ const Convert = () => {
   return (
     <Card
       className={styles.convert}
-      sx={{ borderRadius: "1rem", width: { xs: "100%", md: "50%" } }}
+      sx={{
+        borderRadius: "1rem",
+        width: { xs: "100%", md: "50%" },
+        border: "1px solid #BBBBBB",
+      }}
     >
       <Box sx={{ width: { xs: "100%" } }}>
         {convert && Object.keys(rates).length > 0 && (
@@ -99,7 +88,7 @@ const Convert = () => {
               // pattern: "[0-9]*",
             }}
             placeholder="enter amount"
-            variant="standard"
+            variant="outlined"
             type="number"
             name="amount"
             label="Amount"
@@ -108,6 +97,7 @@ const Convert = () => {
           />
           {buy ? (
             <TextField
+              variant="filled"
               id="outlined-read-only-input"
               label="Base Currency"
               defaultValue="USD"
@@ -116,7 +106,7 @@ const Convert = () => {
               }}
             />
           ) : (
-            <FormControl variant="standard" fullWidth>
+            <FormControl variant="outlined" fullWidth sx={{ m: "25px 0" }}>
               <InputLabel className={styles.label}>Select Currency</InputLabel>
               <Select
                 name="currency"
@@ -141,10 +131,11 @@ const Convert = () => {
             <HiOutlineSwitchVertical size="1.7rem" />
           </Button>
           {buy ? (
-            <FormControl variant="standard" fullWidth>
+            <FormControl variant="outlined" fullWidth>
               <InputLabel className={styles.label}>Select Currency</InputLabel>
               <Select
                 name="currency"
+                variant="outlined"
                 id="currency1"
                 value={currency}
                 onChange={(e) => setCurrecy(e.target.value)}
@@ -159,6 +150,7 @@ const Convert = () => {
             </FormControl>
           ) : (
             <TextField
+              variant="filled"
               id="outlined-read-only-input"
               label="Base Currency"
               defaultValue="USD"
