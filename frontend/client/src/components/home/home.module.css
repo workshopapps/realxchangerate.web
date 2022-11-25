@@ -71,5 +71,7 @@
 @media screen and (min-width: 768px) {
   .hero {
     width: 50%;
+    text-align: left;
+    align-items: flex-start;
   }
 }

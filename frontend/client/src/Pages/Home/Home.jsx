@@ -1,4 +1,4 @@
-import { Box, Container, List, ListItem } from "@mui/material";
+import { Box, Container, List, ListItem, Typography } from "@mui/material";
 import React from "react";
 import Convert from "../../components/home/Convert";
 import Hero from "../../components/home/Hero";
@@ -30,7 +30,17 @@ const Home = () => {
         <Convert />
         <Hero />
       </Box>
-      {/* <Table /> */}
+      <Box>
+        <Typography
+          sx={{ color: "#0062FF", fontSize: "1.3rem", fontWeight: 500 }}
+        >
+          LIVE RATES
+        </Typography>
+        <Typography component="h2" sx={{ fontSize: "2rem", fontWeight: 800 }}>
+          Live rates of popular currencies in Africa
+        </Typography>
+      </Box>
+      {/* Table  */}
       <List>
         <ListItem
           sx={{
@@ -38,7 +48,8 @@ const Home = () => {
             alignItems: "center",
             justifyContent: "space-between",
             bgcolor: "#F1F5F9",
-            fontSize: "1.5rem",
+            fontSize: "1.7rem",
+            p: "1.5rem",
             fontWeight: 600,
           }}
         >

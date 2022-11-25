@@ -19,7 +19,15 @@ function Hero() {
         the best deal possible.
       </Typography>
       <img src={scan} alt="scan our item to download" width="75%" />
-      <Box className="store">
+      <Box
+        className="store"
+        sx={{
+          display: "flex",
+          aligItems: "cebter",
+          justifyContent: "center",
+          gap: "1.4rem",
+        }}
+      >
         <a href="#!">
           <img src="/apple-store.svg" alt="" />
         </a>
