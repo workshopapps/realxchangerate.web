@@ -13,7 +13,7 @@ import {
   Select,
   TextField,
 } from "@mui/material";
-import { currenciesList } from "../../Pages/Home/data";
+import { countries, currenciesList } from "../../Pages/Home/data";
 console.table(currenciesList);
 const Convert = () => {
   const base_url = process.env.REACT_APP_BASE_URL;
@@ -39,11 +39,36 @@ const Convert = () => {
     });
   }, [base_url, endpoint, currency]);
 
-
   const handleSwitch = () => {
     setbuy((value) => {
       return !value;
     });
+  };
+
+  const CurrencyMenu = (props) => {
+    const { currency } = props;
+    const countryDetails = countries.filter(
+      (countr) => countr.label === currency.country
+    );
+    return (
+      <MenuItem
+        key={currency.isocode}
+        value={currency.isocode}
+        sx={{ display: "flex", gap: "1rem" }}
+      >
+        <Box>
+          <img
+            loading="lazy"
+            width="20"
+            src={`https://flagcdn.com/w20/${countryDetails[0].code.toLowerCase()}.png`}
+            srcSet={`https://flagcdn.com/w40/${countryDetails[0].code.toLowerCase()}.png 2x`}
+            alt=""
+          />
+        </Box>{" "}
+        <Box>{currency.country}</Box>
+        <Box>({currency.isocode})</Box>
+      </MenuItem>
+    );
   };
 
   return (
@@ -116,9 +141,7 @@ const Convert = () => {
               >
                 <MenuItem value="NGN">Naira</MenuItem>
                 {currenciesList.map((currency) => (
-                  <MenuItem key={currency.isocode} value={currency.isocode}>
-                    {currency.country} ({currency.isocode})
-                  </MenuItem>
+                  <CurrencyMenu currency={currency} />
                 ))}
               </Select>
             </FormControl>
@@ -143,7 +166,7 @@ const Convert = () => {
                 <MenuItem value="NGN">Naira</MenuItem>
                 {currenciesList.map((currency) => (
                   <MenuItem key={currency.isocode} value={currency.isocode}>
-                    {currency.country} ({currency.isocode})
+                    <CurrencyMenu currency={currency} />
                   </MenuItem>
                 ))}
               </Select>
