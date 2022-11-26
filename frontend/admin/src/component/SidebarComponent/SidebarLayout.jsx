@@ -19,9 +19,6 @@ function SidebarLayout() {
             <Box sx={{ display: { xs: "none", md: "block", width: "70%" } }}>
               <LogoAndTitle width="98px" />
             </Box>
-            {/* <Box sx={{ display: { xs: "block", md: "none" } }}>
-              <Logo width="30px" />
-            </Box> */}
           </StyledSidebarTopBlockLogo>
         </StyledSidebarTopBlock>
 
