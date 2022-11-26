@@ -12,10 +12,20 @@ export const loginUser = createAsyncThunk(
   "user/login",
   async (payload, { rejectWithValue }) => {
     try {
-      const res = await axios.post("", {
-        email: payload.email,
-        password: payload.password,
-      });
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+      const res = await axios.post(
+        "https://exchange.hng.tech/backend/api/auth",
+        {
+          email: payload.email,
+          password: payload.password,
+        },
+        config
+      );
+
       if (res.status && res.status === 200) {
         localStorage.setItem("token", res.data["access_token"]);
         return res.data;
@@ -24,6 +34,7 @@ export const loginUser = createAsyncThunk(
       }
     } catch (err) {
       console.log(err, "error");
+      localStorage.removeItem("token");
       return rejectWithValue(err.response.data);
     }
   }
