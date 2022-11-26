@@ -12,7 +12,7 @@ from app.api.deps import get_db
 router = APIRouter()
 
 
-@router.post("/create/", response_model=schemas.Admin)
+@router.post("/create/")
 def create_admin(*, db: Session = Depends(get_db), admin_in: schemas.AdminCreate) -> Any:
     """
     Create Admin
