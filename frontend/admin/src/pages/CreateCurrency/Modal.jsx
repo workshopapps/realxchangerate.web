@@ -7,7 +7,7 @@ import Form from './Form';
 const ModalUi = ({ open, handleOpen, handleClose }) => {
 	return (
 		<>
-			<Button onClick={handleOpen} variant='contained' sx={{ height: 1 / 2 }}>
+			<Button onClick={handleOpen} variant='contained' disableElevation sx={{ height: 1 / 2 }}>
 				<span style={{ fontSize: 'clamp(0.65rem, 1.5vw, 0.7rem)' }}>
 					Add currency
 				</span>
