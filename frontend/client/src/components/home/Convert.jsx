@@ -142,7 +142,9 @@ const Convert = () => {
               >
                 <MenuItem value="NGN">Naira</MenuItem>
                 {currenciesList.map((currency) => (
-                  <CurrencyMenu currency={currency} />
+                  <MenuItem key={currency.isocode} value={currency.isocode}>
+                    <CurrencyMenu currency={currency} />
+                  </MenuItem>
                 ))}
               </Select>
             </FormControl>
@@ -174,6 +176,7 @@ const Convert = () => {
             </FormControl>
           ) : (
             <TextField
+              sx={{ bgcolor: "#B0CEFF", borderRadius: "1rem", border: "none" }}
               variant="filled"
               id="outlined-read-only-input"
               label="Base Currency"

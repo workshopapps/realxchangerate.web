@@ -45,8 +45,20 @@ function Table2({ isocode, country }) {
           <Box sx={{ fontSize: "1rem" }}>{country}</Box>
         </Box>
       </Box>
-      <Box>{rates.parallel_buy}</Box>
-      <Box>{rates.official_buy}</Box>
+      {rates && (
+        <Box
+          sx={{ display: "flex", alignItems: "baseline", textAlign: "left" }}
+        >
+          {Number(rates.parallel_buy).toFixed(2)}
+        </Box>
+      )}
+      {rates && (
+        <Box
+          sx={{ display: "flex", alignItems: "baseline", textAlign: "left" }}
+        >
+          {Number(rates.official_buy).toFixed(2)}
+        </Box>
+      )}
     </ListItem>
   );
 }
