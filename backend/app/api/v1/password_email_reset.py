@@ -15,7 +15,6 @@ from app.schemas.admin import AdminUpdate, AdminCreate
 from fastapi_mail import FastMail, MessageSchema, ConnectionConfig
 from starlette.requests import Request
 from pydantic import EmailStr, BaseModel
-from app import schemas, crud
 from app.api.deps import get_db
 from sqlalchemy.orm import Session
 
@@ -49,8 +48,8 @@ router = APIRouter()
 
 
 @router.post("/forgot_password")
-async def sending_mail(email: EmailSchema, admin_in: schemas.AdminCreate, db: Session = Depends(get_db)):
-    admin_email = crud.admin.get_by_email(db, email=admin_in.email)
+async def sending_mail(email: EmailSchema, db: Session = Depends(get_db)):
+    admin_email = crud.admin.get_by_email(db, email=schemas.AdminCreate.email)
     if not admin_email:
         raise HTTPException(
             status_code=404,
@@ -88,7 +87,7 @@ async def sending_mail(email: EmailSchema, admin_in: schemas.AdminCreate, db: Se
     return JSONResponse(status_code=200, content={"message": "email has been sent"})
 
 
-@router.post("/reset_password")
+@router.patch("/reset_password")
 def reset_password(*, email: str, password: str,
                    db: Session = Depends(get_db), obj_in: Union[AdminUpdate, Dict[str, Any]]) -> Any:
     details = crud.admin.get_by_email(db=db, email=email)
