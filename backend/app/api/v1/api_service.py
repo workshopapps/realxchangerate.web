@@ -35,7 +35,7 @@ async def get_currency_rates_from_external_apis(db: Session = Depends(get_db)) -
                 currency_code], official_rate["rates"][currency_code],
 
             rate_obj = Rate(currency_id=currency.id, official_buy=official_buy, official_sell=official_sell,
-                            parallel_buy=parallel_buy, parallel_sell=parallel_sell)
+                            parallel_buy=parallel_buy, parallel_sell=parallel_sell, last_updated=datetime.now())
             db.add(rate_obj)
             db.commit()
 

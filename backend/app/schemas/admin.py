@@ -11,13 +11,12 @@ class AdminCreate(AdminBase):
     password: str
 
 
-class AdminUpdate(AdminBase):
-    password: Optional[str] = None
-
-
 class Admin(AdminBase):
     id: int
     is_active: bool
 
     class Config:
         orm_mode = True
+
+class AdminUpdate(AdminBase):
+    password: Optional[str] = None
