@@ -20,7 +20,7 @@ export const loginUser = createAsyncThunk(
       const res = await axios.post(
         "https://exchange.hng.tech/backend/api/auth",
         {
-          email: payload.email,
+          username: payload.email,
           password: payload.password,
         },
         config
