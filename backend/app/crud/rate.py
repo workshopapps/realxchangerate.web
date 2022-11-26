@@ -6,6 +6,7 @@ from fastapi.encoders import jsonable_encoder
 from sqlalchemy import desc
 from app.crud.base import CRUDBase
 from app. models import Rate
+from app.schemas import currency
 from app.schemas.rate import RateCreate, RateBase
 
 class CRUDRate(CRUDBase[Rate, RateCreate, RateBase]):
@@ -14,6 +15,10 @@ class CRUDRate(CRUDBase[Rate, RateCreate, RateBase]):
         db_oj = Rate(
           **obj_in_data
         )
+        if db_oj.currency_id == 0:
+            return {'message': 'id must be greater than 0'}
+        elif db_oj.currency_id not in currency.Currency.id:
+            return {'message': 'id not found'}
         db.add(db_oj)
         db.commit()
         db.refresh(db_oj)
