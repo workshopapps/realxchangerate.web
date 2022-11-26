@@ -31,12 +31,15 @@
   color: #94a3b8;
   border-radius: 1rem;
 }
-.convert label,
-.convert .label {
+.convert label {
   font-size: 2rem;
-  margin-bottom: 5rem !important;
+  font-weight: bold;
+  /* margin-bottom: 5rem !important; */
   position: absolute;
   top: -10px;
+}
+.convert .label {
+  color: black !important;
 }
 .hero {
   width: 100%;
