@@ -122,6 +122,7 @@ const Convert = () => {
           />
           {buy ? (
             <TextField
+              sx={{ bgcolor: "#B0CEFF", borderRadius: "1rem", border: "none" }}
               variant="filled"
               id="outlined-read-only-input"
               label="Base Currency"

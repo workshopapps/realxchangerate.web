@@ -52,6 +52,7 @@ const Home = () => {
             fontSize: "1.7rem",
             p: "1.5rem",
             fontWeight: 600,
+            color: "black",
           }}
         >
           <Box>Currency</Box>
