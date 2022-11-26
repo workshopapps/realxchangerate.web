@@ -19,9 +19,10 @@ class CRUDRate(CRUDBase[Rate, RateCreate, RateBase]):
             return {'message': 'id must be greater than 0'}
         elif db_oj.currency_id not in currency.Currency.id:
             return {'message': 'id not found'}
-        db.add(db_oj)
-        db.commit()
-        db.refresh(db_oj)
+        else:
+            db.add(db_oj)
+            db.commit()
+            db.refresh(db_oj)
         return db_oj
     # Declare model specific CRUD operation methods.
     def get_rates_by_limit(self, db: Session, currency_id, skip: int = 0, limit: int = 15):
