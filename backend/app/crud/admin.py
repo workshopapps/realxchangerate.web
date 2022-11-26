@@ -7,16 +7,14 @@ from app.schemas.admin import AdminCreate, AdminUpdate
 
 from app.core.security import get_password_hash, verify_password
 
-
 class CRUDAdmin(CRUDBase[Admin, AdminCreate, AdminUpdate]):
     """
     Admin Crud
     """
-
-    def get_by_email(self, db: Session, *, email: str) -> Optional[Admin]:
+    def get_by_email(self, db:Session, *, email: str) -> Optional[Admin]:
         return db.query(Admin).filter(Admin.email == email).first()
 
-    def create(self, db: Session, obj_in: AdminCreate) -> Admin:
+    def create(self, db:Session, obj_in: AdminCreate) -> Admin:
         db_obj = Admin(
             email=obj_in.email,
             password=get_password_hash(obj_in.password),
@@ -44,9 +42,8 @@ class CRUDAdmin(CRUDBase[Admin, AdminCreate, AdminUpdate]):
         if not verify_password(password, admin.password):
             return None
         return admin
-
+    
     def is_active(self, admin: Admin) -> bool:
         return admin.is_active
-
 
 admin = CRUDAdmin(Admin)
