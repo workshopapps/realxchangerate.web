@@ -17,7 +17,7 @@ export const loginUser = createAsyncThunk(
         password: payload.password,
       });
       if (res.status && res.status === 200) {
-        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("token", res.data["access_token"]);
         return res.data;
       } else {
         return rejectWithValue(res);
