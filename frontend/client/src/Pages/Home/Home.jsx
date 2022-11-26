@@ -8,13 +8,14 @@ import { currenciesList } from "./data";
 
 const Home = () => {
   return (
-    <Container
+    <Box
       sx={{
         display: "flex",
         // flexDirection: { sx: "column", md: "row" },
         flexDirection: "column",
         gap: "4rem",
         width: "100%",
+        p: { xs: "1.5rem", md: "4rem", lg: "9rem" },
       }}
     >
       <Box
@@ -51,6 +52,7 @@ const Home = () => {
             fontSize: "1.7rem",
             p: "1.5rem",
             fontWeight: 600,
+            color: "black",
           }}
         >
           <Box>Currency</Box>
@@ -58,10 +60,14 @@ const Home = () => {
           <Box>Bank Rate</Box>
         </ListItem>
         {currenciesList.map((currency) => (
-          <Table2 isocode={currency.isocode} key={currency.id} />
+          <Table2
+            isocode={currency.isocode}
+            country={currency.country}
+            key={currency.id}
+          />
         ))}
       </List>
-    </Container>
+    </Box>
   );
 };
 
