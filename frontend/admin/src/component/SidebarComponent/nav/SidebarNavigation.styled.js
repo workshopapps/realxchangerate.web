@@ -7,7 +7,7 @@ export const StyledSidebarNavigation = styled.div`
 
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 23px;
 
     nav {
         margin-top: 60px;
