@@ -2,6 +2,7 @@
   "name": "admin",
   "version": "0.1.0",
   "private": true,
+  "homepage":"http://localhost/admin",
   "dependencies": {
     "@craco/craco": "^7.0.0",
     "@mui/material": "^5.10.14",
