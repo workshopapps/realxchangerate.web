@@ -26,42 +26,46 @@ export default function DataTable() {
 
   const currentRows = [
     {
-    day: -1.34,
-    week: -0.34,
-    month: -4.34,
-    tvl: 47.34,
-    mktcap: "1,234,340"
+      day: -1.34,
+      week: -0.34,
+      month: -4.34,
+      tvl: 47.34,
+      mktcap: "1,234,340",
     },
     {
       day: 2.23,
       week: 0.23,
       month: 3.23,
       tvl: 256,
-      mktcap: "1,267,456"
+      mktcap: "1,267,456",
     },
     {
       day: 0.21,
       week: 0.21,
       month: 6.21,
       tvl: 56,
-      mktcap: "46.4t"
+      mktcap: "46.4t",
     },
     {
       day: -3.92,
       week: -0.92,
       month: -6.92,
       tvl: 34.45,
-      mktcap: "3,678,123"
+      mktcap: "3,678,123",
     },
     {
-    day: -1.34,
-    week: -0.34,
-    month: -4.34,
-    tvl: 47.34,
-    mktcap: "1,234,340"
+      day: -1.34,
+      week: -0.34,
+      month: -4.34,
+      tvl: 47.34,
+      mktcap: "1,234,340",
     },
   ];
-  
+
+  const cellSkeleton = (
+    <Skeleton variant="rectangular" sx={{ mb: 1 }} width="100%" height="40px" />
+  );
+
   return (
     <TableContainer component={Paper}>
       <Table
@@ -96,11 +100,19 @@ export default function DataTable() {
         </TableHead>
 
         <TableBody>
-          {requestStatus === "pending" ? (
+          {requestStatus !== "pending" ? (
             <>
-            <Skeleton variant="rounded" sx={{mb: 1}} width='100%' height='4rem' />
-            <Skeleton variant="rounded" sx={{mb: 1}} width='100%' height='4rem' />
-            <Skeleton variant="rounded" sx={{mb: 1}} width='100%' height='4rem' />
+              {Array.from(Array(3)).map((_, index) => (
+                <TableRow
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
+                  {Array.from(Array(7)).map((_, index) => (
+                    <TableCell key={index} component="th" scope="row">
+                      {cellSkeleton}
+                    </TableCell>
+                  ))}
+                </TableRow>
+              ))}
             </>
           ) : (
             currencies.map((row, index) => (
@@ -115,59 +127,51 @@ export default function DataTable() {
                   </StyledFlagAndCountry>
                 </TableCell>
                 <TableCell align="right">{row.isocode}</TableCell>
-                <TableCell align="right">                
-                  {
-                    row.day ? (
-                      row.day > 0 ? (
-                        <StyledGrowth>+{row.day}</StyledGrowth>
-                      ) : (
-                        <StyledLoss>-{row.day}</StyledLoss>
-                      )
+                <TableCell align="right">
+                  {row.day ? (
+                    row.day > 0 ? (
+                      <StyledGrowth>+{row.day}</StyledGrowth>
                     ) : (
-                      currentRows[index].day > 0 ? (
-                        <StyledGrowth>+{currentRows[index].day}</StyledGrowth>
-                      ) : (
-                        <StyledLoss>-{currentRows[index].day}</StyledLoss>
-                      )
+                      <StyledLoss>{row.day}</StyledLoss>
                     )
-                  }
+                  ) : currentRows[index].day > 0 ? (
+                    <StyledGrowth>+{currentRows[index].day}</StyledGrowth>
+                  ) : (
+                    <StyledLoss>{currentRows[index].day}</StyledLoss>
+                  )}
                 </TableCell>
                 <TableCell align="right">
-                  {
-                    row.week ? (
-                      row.week > 0 ? (
-                        <StyledGrowth>+{row.week}</StyledGrowth>
-                      ) : (
-                        <StyledLoss>-{row.week}</StyledLoss>
-                      )
+                  {row.week ? (
+                    row.week > 0 ? (
+                      <StyledGrowth>+{row.week}</StyledGrowth>
                     ) : (
-                      currentRows[index].week > 0 ? (
-                        <StyledGrowth>+{currentRows[index].week}</StyledGrowth>
-                      ) : (
-                        <StyledLoss>-{currentRows[index].week}</StyledLoss>
-                      )
+                      <StyledLoss>{row.week}</StyledLoss>
                     )
-                  }
+                  ) : currentRows[index].week > 0 ? (
+                    <StyledGrowth>+{currentRows[index].week}</StyledGrowth>
+                  ) : (
+                    <StyledLoss>{currentRows[index].week}</StyledLoss>
+                  )}
                 </TableCell>
                 <TableCell align="right">
-                  {
-                    row.month ? (
-                      row.month > 0 ? (
-                        <StyledGrowth>+{row.month}</StyledGrowth>
-                      ) : (
-                        <StyledLoss>-{row.month}</StyledLoss>
-                      )
+                  {row.month ? (
+                    row.month > 0 ? (
+                      <StyledGrowth>+{row.month}</StyledGrowth>
                     ) : (
-                      currentRows[index].month > 0 ? (
-                        <StyledGrowth>+{currentRows[index].month}</StyledGrowth>
-                      ) : (
-                        <StyledLoss>-{currentRows[index].month}</StyledLoss>
-                      )
+                      <StyledLoss>{row.month}</StyledLoss>
                     )
-                  }
+                  ) : currentRows[index].month > 0 ? (
+                    <StyledGrowth>+{currentRows[index].month}</StyledGrowth>
+                  ) : (
+                    <StyledLoss>{currentRows[index].month}</StyledLoss>
+                  )}
                 </TableCell>
-                <TableCell align="right">${row.tvl ? row.tvl : currentRows[index].tvl}</TableCell>
-                <TableCell align="right">{row.mktcap ? row.mktcap : currentRows[index].mktcap}</TableCell>
+                <TableCell align="right">
+                  ${row.tvl ? row.tvl : currentRows[index].tvl}
+                </TableCell>
+                <TableCell align="right">
+                  {row.mktcap ? row.mktcap : currentRows[index].mktcap}
+                </TableCell>
               </TableRow>
             ))
           )}
