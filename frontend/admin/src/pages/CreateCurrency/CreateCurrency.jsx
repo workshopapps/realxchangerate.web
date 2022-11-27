@@ -59,6 +59,10 @@ export default function CreateCurrency() {
     setOpen(!open);
   };
 
+  const cellSkeleton = (
+    <Skeleton variant="rounded" sx={{ mb: 1 }} width="100%" height="40px" />
+  );
+
   return (
     <section style={{ margin: "0 20px" }}>
       <Integration>
@@ -94,7 +98,11 @@ export default function CreateCurrency() {
           />
         </div>
         <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 500 }} aria-label="customized table">
+          <Table
+            sx={{ minWidth: 500 }}
+            size="small"
+            aria-label="customized table"
+          >
             <TableHead>
               <TableRow>
                 <StyledTableCell sx={{ fontWeight: "700" }}>
@@ -114,24 +122,18 @@ export default function CreateCurrency() {
             <TableBody>
               {requestStatus === "pending" ? (
                 <>
-                  <Skeleton
-                    variant="rounded"
-                    sx={{ mb: 1 }}
-                    width="100%"
-                    height="4rem"
-                  />
-                  <Skeleton
-                    variant="rounded"
-                    sx={{ mb: 1 }}
-                    width="100%"
-                    height="4rem"
-                  />
-                  <Skeleton
-                    variant="rounded"
-                    sx={{ mb: 1 }}
-                    width="100%"
-                    height="4rem"
-                  />
+                  {Array.from(Array(3)).map((_, index) => (
+                    <TableRow
+                      key={index}
+                      sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                    >
+                      {Array.from(Array(3)).map((_, index) => (
+                        <TableCell key={index} component="th" scope="row">
+                          {cellSkeleton}
+                        </TableCell>
+                      ))}
+                    </TableRow>
+                  ))}
                 </>
               ) : (
                 currencies.map((row, index) => (
