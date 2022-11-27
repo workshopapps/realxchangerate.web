@@ -16,7 +16,7 @@ import {
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
-
+import autoAnimate from "@formkit/auto-animate";
 import { countries, currenciesList } from "../../Pages/Home/data";
 console.table(currenciesList);
 const Convert = () => {
@@ -48,7 +48,11 @@ const Convert = () => {
       return !value;
     });
   };
+  const parent = React.useRef(null);
 
+  React.useEffect(() => {
+    parent.current && autoAnimate(parent.current);
+  }, [parent]);
   const CurrencyMenu = (props) => {
     const { currency } = props;
     const countryDetails = countries.filter(
@@ -128,6 +132,7 @@ const Convert = () => {
             onChange={(e) => setconvert(e.target.value)}
           />
           <Box
+            ref={parent}
             sx={{
               display: "flex",
               flexDirection: { xs: "column", lg: "row" },

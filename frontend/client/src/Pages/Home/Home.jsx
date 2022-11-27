@@ -1,8 +1,8 @@
-import { Box, Container, List, ListItem, Typography } from "@mui/material";
+import { Box, List, ListItem, Typography } from "@mui/material";
 import React from "react";
 import Convert from "../../components/home/Convert";
 import Hero from "../../components/home/Hero";
-import Table from "./components/Table";
+// import Table from "./components/Table";
 import Table2 from "./components/Table2";
 import { currenciesList } from "./data";
 
