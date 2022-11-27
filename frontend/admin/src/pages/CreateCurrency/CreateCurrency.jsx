@@ -60,7 +60,7 @@ export default function CreateCurrency() {
   };
 
   const cellSkeleton = (
-    <Skeleton variant="rounded" sx={{ mb: 1 }} width="100%" height="40px" />
+    <Skeleton variant="rectangular" sx={{ mb: 1 }} width="100%" height="40px" />
   );
 
   return (
