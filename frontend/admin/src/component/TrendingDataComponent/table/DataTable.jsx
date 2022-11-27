@@ -100,7 +100,7 @@ export default function DataTable() {
         </TableHead>
 
         <TableBody>
-          {requestStatus !== "pending" ? (
+          {requestStatus === "pending" ? (
             <>
               {Array.from(Array(3)).map((_, index) => (
                 <TableRow
