@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { noWCommas } from "../../utils";
 import styles from "./home.module.css";
 import { HiOutlineSwitchVertical } from "react-icons/hi";
+import { HiOutlineSwitchHorizontal } from "react-icons/hi";
 import {
   Box,
   Button,
@@ -13,6 +14,9 @@ import {
   Select,
   TextField,
 } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import autoAnimate from "@formkit/auto-animate";
 import { countries, currenciesList } from "../../Pages/Home/data";
 console.table(currenciesList);
 const Convert = () => {
@@ -44,12 +48,17 @@ const Convert = () => {
       return !value;
     });
   };
+  const parent = React.useRef(null);
 
+  React.useEffect(() => {
+    parent.current && autoAnimate(parent.current);
+  }, [parent]);
   const CurrencyMenu = (props) => {
     const { currency } = props;
     const countryDetails = countries.filter(
       (countr) => countr.label === currency.country
     );
+
     return (
       <MenuItem
         key={currency.isocode}
@@ -71,6 +80,8 @@ const Convert = () => {
     );
   };
 
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up("lg"));
   return (
     <Card
       className={styles.convert}
@@ -120,80 +131,115 @@ const Convert = () => {
             value={convert}
             onChange={(e) => setconvert(e.target.value)}
           />
-          {buy ? (
-            <TextField
-              sx={{ bgcolor: "#B0CEFF", borderRadius: "1rem", border: "none" }}
-              variant="filled"
-              id="outlined-read-only-input"
-              label="Base Currency"
-              defaultValue="USD"
-              InputProps={{
-                readOnly: true,
-              }}
-            />
-          ) : (
-            <FormControl variant="outlined" fullWidth sx={{ m: "25px 0" }}>
-              <InputLabel className={styles.label}>Select Currency</InputLabel>
-              <Select
-                name="currency"
-                id="currency1"
-                value={currency}
-                onChange={(e) => setCurrecy(e.target.value)}
-              >
-                <MenuItem value="NGN">Naira</MenuItem>
-                {currenciesList.map((currency) => (
-                  <MenuItem key={currency.isocode} value={currency.isocode}>
-                    <CurrencyMenu currency={currency} />
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          )}
-          <Button
-            onClick={handleSwitch}
-            variant="outlined"
-            sx={{ maxWidth: "30px", height: "50px", margin: "0 auto" }}
+          <Box
+            ref={parent}
+            sx={{
+              display: "flex",
+              flexDirection: { xs: "column", lg: "row" },
+              gap: "1.5rem",
+              alignItems: "center",
+              justifyContent: "center",
+              mt: { xs: "1rem", lg: "1.5rem" },
+            }}
           >
-            <HiOutlineSwitchVertical size="1.7rem" />
-          </Button>
-          {buy ? (
-            <FormControl variant="outlined" fullWidth>
-              <InputLabel className={styles.label}>Select Currency</InputLabel>
-              <Select
-                name="currency"
+            {buy ? (
+              <TextField
+                sx={{
+                  flex: 2,
+                  bgcolor: "#B0CEFF",
+                  borderRadius: "1rem",
+                  border: "none",
+                }}
+                variant="filled"
+                id="outlined-read-only-input"
+                label="Base Currency"
+                defaultValue="USD"
+                InputProps={{
+                  readOnly: true,
+                }}
+              />
+            ) : (
+              <FormControl
                 variant="outlined"
-                id="currency1"
-                value={currency}
-                onChange={(e) => setCurrecy(e.target.value)}
+                fullWidth
+                sx={{ flex: 2, mt: { xs: "15px", lg: "5px" } }}
               >
-                <MenuItem value="NGN">Naira</MenuItem>
-                {currenciesList.map((currency) => (
-                  <MenuItem key={currency.isocode} value={currency.isocode}>
-                    <CurrencyMenu currency={currency} />
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          ) : (
-            <TextField
-              sx={{ bgcolor: "#B0CEFF", borderRadius: "1rem", border: "none" }}
-              variant="filled"
-              id="outlined-read-only-input"
-              label="Base Currency"
-              defaultValue="USD"
-              InputProps={{
-                readOnly: true,
+                <InputLabel className={styles.label}>
+                  Select Currency
+                </InputLabel>
+                <Select
+                  name="currency"
+                  id="currency1"
+                  value={currency}
+                  onChange={(e) => setCurrecy(e.target.value)}
+                >
+                  <MenuItem value="NGN">Naira</MenuItem>
+                  {currenciesList.map((currency) => (
+                    <MenuItem key={currency.isocode} value={currency.isocode}>
+                      <CurrencyMenu currency={currency} />
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            )}
+            <Button
+              onClick={handleSwitch}
+              variant="outlined"
+              sx={{
+                maxWidth: "30px",
+                height: "50px",
+                margin: "0 auto",
+                flex: 2,
               }}
-            />
-          )}
-          {/* <Button
-            className={styles.button}
-            variant="contained"
-            sx={{ p: 1 }}
-            onClick={(e) => e.preventDefault()}
-          >
-            Convert
-          </Button> */}
+            >
+              {matches ? (
+                <HiOutlineSwitchHorizontal size="1.7rem" />
+              ) : (
+                <HiOutlineSwitchVertical size="1.7rem" />
+              )}
+            </Button>
+            {buy ? (
+              <FormControl
+                variant="outlined"
+                fullWidth
+                sx={{ flex: 2, mt: { xs: "15px", lg: "5px" } }}
+              >
+                <InputLabel className={styles.label}>
+                  Select Currency
+                </InputLabel>
+                <Select
+                  name="currency"
+                  variant="outlined"
+                  id="currency1"
+                  value={currency}
+                  onChange={(e) => setCurrecy(e.target.value)}
+                >
+                  <MenuItem value="NGN">Naira</MenuItem>
+                  {currenciesList.map((currency) => (
+                    <MenuItem key={currency.isocode} value={currency.isocode}>
+                      <CurrencyMenu currency={currency} />
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            ) : (
+              <TextField
+                sx={{
+                  bgcolor: "#B0CEFF",
+                  borderRadius: "1rem",
+                  border: "none",
+                  flex: 2,
+                }}
+                variant="filled"
+                id="outlined-read-only-input"
+                label="Base Currency"
+                defaultValue="USD"
+                InputProps={{
+                  readOnly: true,
+                }}
+              />
+            )}
+          </Box>
         </Box>
       </Box>
     </Card>
