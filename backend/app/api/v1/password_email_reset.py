@@ -5,7 +5,6 @@ from sqlalchemy.orm import Session
 import uuid
 from app import schemas, crud
 from app.api.deps import get_db
-from fastapi.responses import RedirectResponse
 from starlette.responses import JSONResponse
 import os
 from app.models.admin import Admin
@@ -24,11 +23,9 @@ from app.crud import admin
 
 
 class EmailSchema(BaseModel):
-    email: list[EmailStr]
+    email: EmailStr
 
 
-class TokenSChema(BaseModel):
-    token: str
 
 
 conf = ConnectionConfig(
@@ -48,13 +45,14 @@ router = APIRouter()
 
 
 @router.post("/forgot_password")
-async def sending_mail(email: EmailSchema, db: Session = Depends(get_db)):
-    admin_email = crud.admin.get_by_email(db, email=schemas.AdminCreate.email)
+async def sending_mail(email: EmailStr, db: Session = Depends(get_db)):
+    admin_email = crud.admin.get_by_email(db, email=email)
     if not admin_email:
         raise HTTPException(
             status_code=404,
             detail="Email address does not exist, please enter a valid email"
         )
+    email = [email]
     template = """
             <html>
             <body>
@@ -73,7 +71,7 @@ async def sending_mail(email: EmailSchema, db: Session = Depends(get_db)):
 
     message = MessageSchema(
         subject="Reset-password Token",
-        recipients=email.dict().get("email"),
+        recipients=email,
         body=template,
         subtype="html"
     )

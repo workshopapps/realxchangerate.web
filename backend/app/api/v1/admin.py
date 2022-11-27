@@ -1,11 +1,9 @@
 from typing import Any, List
 from app import schemas, models
-
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from app.models.rate import Rate
 from app.models.currency import Currency
-
 from app import schemas, crud
 from app.api.deps import get_db
 
@@ -21,7 +19,7 @@ def create_admin(*, db: Session = Depends(get_db), admin_in: schemas.AdminCreate
     if admin:
         raise HTTPException(
             status_code=400,
-            detail="Admin with email already exists."
+            detail="Admin with email already exists." 
         )
     admin = crud.admin.create(db, obj_in=admin_in)
     return {"success": True, "data": admin}
@@ -39,12 +37,17 @@ def add_currency(
     return currency
 
 
-@router.post("/add_rate", response_model=schemas.Rate, status_code=201)
+@router.post("/add_rate", status_code=201)
 async def create_rate(*, db: Session = Depends(get_db),
-                      rate_in: schemas.RateCreate) -> Any:
+             rate_in: schemas.RateCreate) -> Any:
     #    create new rates
-    rate = crud.rate.create(db=db, obj_in=rate_in)
-    return (rate)
+    details = crud.currency.get_currency_by_id(db, id=rate_in.currency_id)
+    if details:
+    
+        rate = crud.rate.create(db=db, obj_in=rate_in)
+        return (rate)
+    else:
+        return {"message:": "id not found"}
 
 
 @router.post("/delete_currency")

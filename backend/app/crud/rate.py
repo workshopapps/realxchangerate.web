@@ -6,6 +6,7 @@ from fastapi.encoders import jsonable_encoder
 from sqlalchemy import desc
 from app.crud.base import CRUDBase
 from app. models import Rate
+from app import crud
 from app.schemas import currency
 from app.schemas.rate import RateCreate, RateBase
 
@@ -15,14 +16,10 @@ class CRUDRate(CRUDBase[Rate, RateCreate, RateBase]):
         db_oj = Rate(
           **obj_in_data
         )
-        if db_oj.currency_id == 0:
-            return {'message': 'id must be greater than 0'}
-        elif db_oj.currency_id not in currency.Currency.id:
-            return {'message': 'id not found'}
-        else:
-            db.add(db_oj)
-            db.commit()
-            db.refresh(db_oj)
+        
+        db.add(db_oj)
+        db.commit()
+        db.refresh(db_oj)
         return db_oj
     # Declare model specific CRUD operation methods.
     def get_rates_by_limit(self, db: Session, currency_id, skip: int = 0, limit: int = 15):
