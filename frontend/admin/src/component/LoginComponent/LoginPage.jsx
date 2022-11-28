@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { LoginSection } from "./Components/loginPageStyle";
 import viewIcon from "../../assets/icons/password_view.svg";
+import { useDispatch, useSelector } from "react-redux";
+import { loginUser } from "../../store/actions/userActions";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
   const [formState, setFormState] = useState({
@@ -11,9 +14,33 @@ const LoginPage = () => {
 
   const { email, password } = formState;
 
+  const navigate = useNavigate()
+
+  const dispatch = useDispatch();
+  const { loginStatus, error } = useSelector((state) => state.user);
+
+
+  useEffect(()=> {
+    if (loginStatus === "success") {
+      navigate('/')
+    } else {
+      console.log(error)
+    }
+  },[loginStatus, error, navigate]);
+
+
   const handleOnChange = (e) => {
     setFormState({ ...formState, [e.target.name]: e.target.value });
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (email === '' || password === '') {
+      alert('please enter your email and password');
+    }
+    dispatch(loginUser({ email, password }));
+  }
 
   const handleViewPassword = () => {
     if (passwordState === "text") {
@@ -29,7 +56,7 @@ const LoginPage = () => {
         <h2>
           Street<span>Rates</span>{" "}
         </h2>
-        <form action="">
+        <form onSubmit={handleSubmit}>
           <h1>Login</h1>
           <div className="login-form-field">
             <label htmlFor="email">Email</label>
@@ -61,7 +88,7 @@ const LoginPage = () => {
             <input type="checkbox" name="verify" id="verify" />
             <label htmlFor="verify">Always keep me logged in</label>
           </div>
-          <button>Login</button>
+          <button type="submit" onSubmit={handleSubmit}>Login</button>
         </form>
         <div className="signup">
           <p>Don’t have an account?</p>

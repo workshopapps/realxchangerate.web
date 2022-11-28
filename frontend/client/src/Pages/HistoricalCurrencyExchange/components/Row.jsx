@@ -18,7 +18,6 @@ export const RowComponent = ({ country, bank, parallel }) => {
       >
         {country}
         <Typography
-          color="#111827"
           fontSize="14px"
           fontWeight="400"
           lineHeight="20px"
@@ -27,7 +26,6 @@ export const RowComponent = ({ country, bank, parallel }) => {
           N{bank}
         </Typography>
         <Typography
-          color="#111827"
           fontSize="14px"
           fontWeight="400"
           lineHeight="20px"

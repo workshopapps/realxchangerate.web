@@ -10,7 +10,7 @@ import {
   Location,
 } from "./assets/index";
 
-const ContactInfo = () => {
+const ContactInfo = ({textColor}) => {
   const mobileScreen = useMediaQuery("(max-width:481px)");
   return (
     <Stack
@@ -38,7 +38,7 @@ const ContactInfo = () => {
             lineHeight: { xs: "22px", sm: "42px", md: "48px" },
             fontWeight: { xs: "500" },
           }}
-          color="#202020"
+          color={textColor}
           letterSpacing="-0.02em"
         >
           Contact Information
@@ -47,7 +47,7 @@ const ContactInfo = () => {
         <Stack direction="row" gap="8px">
           <img src={Location} alt="location" />
           <Typography
-            color="#4B4B4B"
+            color={textColor}
             sx={{
               fontSize: { xs: "16px", sm: "14px", md: "16px" },
               lineHeight: { xs: "20px", sm: "17px", md: "24px" },
@@ -62,7 +62,7 @@ const ContactInfo = () => {
         <Stack direction="row" gap="8px">
           <img src={CallIcon} alt="call" />
           <Typography
-            color="#4B4B4B"
+            color={textColor}
             sx={{
               fontSize: { xs: "16px", sm: "14px", md: "16px" },
               lineHeight: { xs: "20px", sm: "17px", md: "24px" },
@@ -76,7 +76,7 @@ const ContactInfo = () => {
         <Stack direction="row" gap="8px">
           <img src={Message} alt="call" />
           <Typography
-            color="#4B4B4B"
+            color={textColor}
             sx={{
               fontSize: { xs: "16px", sm: "14px", md: "16px" },
               lineHeight: { xs: "20px", sm: "17px", md: "24px" },
@@ -111,7 +111,7 @@ const ContactInfo = () => {
               lineHeight: { xs: "22px", sm: "42px", md: "48px" },
               fontWeight: { xs: "500" },
             }}
-            color="#202020"
+            color={textColor}
             letterSpacing="-0.02em"
           >
             Social Media
@@ -124,7 +124,7 @@ const ContactInfo = () => {
               lineHeight: { xs: "20px", sm: "17px", md: "20px" },
               fontWeight: { xs: "400" },
             }}
-            color="#4B4B4B"
+            color={textColor}
             letterSpacing="-0.02em"
           >
             You can connect with us via social media
