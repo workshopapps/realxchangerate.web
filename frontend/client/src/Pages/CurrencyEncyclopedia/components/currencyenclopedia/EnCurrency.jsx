@@ -1,6 +1,6 @@
 import React from "react";
+import globe from "../assets/globe.png";
 import styled from "styled-components";
-import globe from "../assets/encyglobe.svg";
 import CountrySort from "../CountrySort";
 
 function EnCurrency() {
