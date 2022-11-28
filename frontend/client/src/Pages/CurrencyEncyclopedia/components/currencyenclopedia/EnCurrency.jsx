@@ -1,5 +1,5 @@
 import React from "react";
-import globe from "../assets/encyglobe.svg";
+import globe from "../assets/globe.png";
 import {
   Container,
   Content,

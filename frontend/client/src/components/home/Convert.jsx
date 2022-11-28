@@ -14,7 +14,7 @@ import {
   TextField,
 } from "@mui/material";
 import { currenciesList } from "../../Pages/Home/data";
-console.table(currenciesList);
+
 const Convert = () => {
   const base_url = process.env.REACT_APP_BASE_URL;
   const localBase = "http://localhost:8000/api";

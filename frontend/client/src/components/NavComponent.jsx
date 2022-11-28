@@ -1,4 +1,12 @@
-import { Box, Grid, Typography, IconButton } from "@mui/material";
+import {
+  Box,
+  Grid,
+  Typography,
+  IconButton,
+  Menu,
+  MenuItem,
+  Button
+} from "@mui/material";
 import React, { useState, useContext } from "react";
 import { useTheme } from "@mui/material";
 import DrawerComponent from "./Drawer";
@@ -15,6 +23,15 @@ const NavComponent = () => {
 
   const HandleDrawerState = () => {
     setIsOpen(!isOpen);
+  };
+
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
   };
 
   return (
@@ -79,7 +96,31 @@ const NavComponent = () => {
 
         <Box gap="6px" display="flex">
           <img src={NavFlag} alt="flagImage" />
-          <img src={DownArrow} alt="arrow" />
+
+          <Button
+            id="basic-button"
+            aria-controls={open ? "basic-menu" : undefined}
+            aria-haspopup="true"
+            aria-expanded={open ? "true" : undefined}
+            onClick={handleClick}
+          >
+            <img src={DownArrow} alt="arrow" />
+          </Button>
+          <Menu
+            id="basic-menu"
+            anchorEl={anchorEl}
+            open={open}
+            onClose={handleClose}
+            MenuListProps={{
+              "aria-labelledby": "basic-button",
+            }}
+            width="120px"
+          >
+            <MenuItem display="flex" onClick={handleClose}>
+               <img src={NavFlag} alt="flagImage" />
+               <Typography>NGN</Typography>
+            </MenuItem>
+          </Menu>
         </Box>
 
         <Link to="/" style={{ color: "#0062ff" }}>
