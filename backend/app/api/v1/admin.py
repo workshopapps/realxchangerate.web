@@ -12,7 +12,7 @@ from app.api.deps import get_db
 router = APIRouter()
 
 
-@router.post("/create/", response_model=schemas.Admin)
+@router.post("/create/")
 def create_admin(*, db: Session = Depends(get_db), admin_in: schemas.AdminCreate) -> Any:
     """
     Create Admin
@@ -47,7 +47,7 @@ async def create_rate(*, db: Session = Depends(get_db),
     return (rate)
 
 
-@router.post("/delete_currency")
+@router.delete("/delete_currency")
 def delete_currency(*, db: Session = Depends(get_db), isocode: str):
     """delete currency and all associated rates
 
@@ -61,7 +61,7 @@ def delete_currency(*, db: Session = Depends(get_db), isocode: str):
     return {"success": True, "status_code": 200, "data": {"currency": currency}, "message": "currency deleted!"}
 
 
-@router.post("/delete_rate")
+@router.delete("/delete_rate")
 def delete_rate(*, db: Session = Depends(get_db), rate_id: int):
     """delete selected rate
 
@@ -76,10 +76,10 @@ def delete_rate(*, db: Session = Depends(get_db), rate_id: int):
     if rate_query is None:
         return {"success": False, "status_code": 404, "data": {"id": rate_id}, "message": "Not found!"}
 
-    return {"success": True, "status_code": 200, "data": {"id": rate_id}, "message": "rate deleted!"}
+    return {"success": True, "status_code": 200, "data": {"rate": rate_query}, "message": "rate deleted!"}
 
 
-@router.post('/update_currency')
+@router.put('/update_currency')
 def update_currencies(iso_code: str, update_param: schemas.CurrencyUpdate, db: Session = Depends(get_db)):
     """
     this endpoint recives details to update a currency, it finds the currency in the database with the required iso code provided
@@ -98,7 +98,7 @@ def update_currencies(iso_code: str, update_param: schemas.CurrencyUpdate, db: S
     }
 
 
-@router.post("/update_rate")
+@router.put("/update_rate")
 def update_rate(iso_code: str, update_param: schemas.RateUpdate, db: Session = Depends(get_db)):
     """
     This endpoint recives details to update a currency rate. It finds the rate in the database by locating

@@ -25,7 +25,6 @@ function App() {
 				<GlobalStyle />
 				<Routes>
 					<Route path='/' element={<Layout />}>
-						{/* <Route index element={<Dashboard />} /> */}
 						<Route index element={<CreateCurrency />} />
 						<Route path='/account' element={<Account />} />
 						<Route path='/trending' element={<TrendingData />} />

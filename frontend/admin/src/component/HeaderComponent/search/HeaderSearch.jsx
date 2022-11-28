@@ -8,20 +8,18 @@ import {
 
 export default function Search() {
   return (
-    <>
-      <SearchWrapper>
-        <StyledSearchInput placeholder="Search" />
+    <SearchWrapper>
+      <StyledSearchInput placeholder="Search" />
 
-        <StyledSearchIconWrapper>
-          <IconButton
-            size="small"
-            aria-label="search"
-            sx={{ borderRadius: 0, paddingInline: "5px" }}
-          >
-            <SearchIcon fontSize="small" size="small" />
-          </IconButton>
-        </StyledSearchIconWrapper>
-      </SearchWrapper>
-    </>
+      <StyledSearchIconWrapper>
+        <IconButton
+          size="small"
+          aria-label="search"
+          sx={{ borderRadius: 0, paddingInline: "5px" }}
+        >
+          <SearchIcon fontSize="small" size="small" />
+        </IconButton>
+      </StyledSearchIconWrapper>
+    </SearchWrapper>
   );
 }
