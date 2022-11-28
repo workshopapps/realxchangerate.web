@@ -16,7 +16,7 @@ export const GetUserIp = () => async () => {
   try {
     const res = await axios.get("https://api.ipify.org");
 
-    localStorage.setItem("ip", res.data);
+    sessionStorage.setItem("ip", res.data);
     dispatch(GetDefaultCurrency(res.data));
     dispatch(setUserIp(res.data));
     dispatch(setLoading(false));
@@ -31,7 +31,7 @@ export const GetDefaultCurrency = (ip) => async () => {
     const country = res.data.data.currency.country;
     const defaultCurrency = countries.find((x) => x.label === country);
 
-    localStorage.setItem("localCurrency", JSON.stringify(defaultCurrency));
+    sessionStorage.setItem("localCurrency", JSON.stringify(defaultCurrency));
     dispatch(setDefaultCurrency(defaultCurrency));
     dispatch(setLoading(false));
   } catch (err) {
