@@ -42,8 +42,8 @@ const Main = () => {
   }), [mode]);
 
   useEffect(() => {
-    const ip = localStorage.getItem("ip")
-    const defaultCurrency = JSON.parse(localStorage.getItem("localCurrency"))
+    const ip = sessionStorage.getItem("ip")
+    const defaultCurrency = JSON.parse(sessionStorage.getItem("localCurrency"))
     dispatch(setLoading(true))
     if(!ip || !defaultCurrency){
       dispatch(GetUserIp())
