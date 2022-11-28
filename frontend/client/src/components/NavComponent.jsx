@@ -5,9 +5,10 @@ import {
   IconButton,
   Menu,
   MenuItem,
-  Button
+  Button,
 } from "@mui/material";
-import React, { useState, useContext } from "react";
+import { useSelector } from "react-redux";
+import React, { useState, useContext, useEffect } from "react";
 import { useTheme } from "@mui/material";
 import DrawerComponent from "./Drawer";
 import { Link } from "react-router-dom";
@@ -15,11 +16,18 @@ import { DownArrow, NavFlag, MenuIcon, MenuIconDark } from "../assets/index";
 import { ColorModeContext } from "../Main";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
+import { setDefaultCurrency } from "../redux/features/Reducers/servicesReducer";
+import { dispatch } from "../redux/store";
+import { GetCurrencyData } from "../redux/features/Reducers/serviceActions";
 
 const NavComponent = () => {
+  const { currencyList, countryDetails, defaultCurrency } = useSelector(
+    (state) => state.service
+  );
   const theme = useTheme();
   const colorMode = useContext(ColorModeContext);
   const [isOpen, setIsOpen] = useState(false);
+  const [localCurrency, setLocalCurrency] = useState(defaultCurrency);
 
   const HandleDrawerState = () => {
     setIsOpen(!isOpen);
@@ -33,6 +41,21 @@ const NavComponent = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const handleCloseItem = (ele) => {
+    setLocalCurrency(ele);
+    dispatch(setDefaultCurrency(ele));
+    setAnchorEl(null);
+  };
+
+  useEffect(() => {
+    if (defaultCurrency) {
+      let country = currencyList.find(
+        (x) => x.country === defaultCurrency.label
+      );
+      dispatch(GetCurrencyData(country.isocode));
+    }
+  }, [defaultCurrency, currencyList]);
 
   return (
     <Grid
@@ -95,8 +118,6 @@ const NavComponent = () => {
         </IconButton>
 
         <Box gap="6px" display="flex">
-          <img src={NavFlag} alt="flagImage" />
-
           <Button
             id="basic-button"
             aria-controls={open ? "basic-menu" : undefined}
@@ -104,7 +125,25 @@ const NavComponent = () => {
             aria-expanded={open ? "true" : undefined}
             onClick={handleClick}
           >
-            <img src={DownArrow} alt="arrow" />
+            <Box display="flex" flexDirection="row" gap="6px">
+              <img
+                loading="lazy"
+                height="20"
+                src={
+                  localCurrency
+                    ? `https://flagcdn.com/h20/${localCurrency.code.toLowerCase()}.png `
+                    : NavFlag
+                }
+                srcSet={
+                  localCurrency
+                    ? `https://flagcdn.com/h40/${localCurrency.code.toLowerCase()}.png 2x,
+                     https://flagcdn.com/h60/${localCurrency.code.toLowerCase()}.png 3x`
+                    : NavFlag
+                }
+                alt=""
+              />
+              <img src={DownArrow} alt="arrow" />
+            </Box>
           </Button>
           <Menu
             id="basic-menu"
@@ -116,10 +155,34 @@ const NavComponent = () => {
             }}
             width="120px"
           >
-            <MenuItem display="flex" onClick={handleClose}>
-               <img src={NavFlag} alt="flagImage" />
-               <Typography>NGN</Typography>
-            </MenuItem>
+            {currencyList.map((ele) => {
+              return (
+                <MenuItem
+                  sx={{
+                    display: "flex",
+                    gap: "6px",
+                    flexDirection: "row",
+                  }}
+                  onClick={() =>
+                    handleCloseItem(countryDetails[currencyList.indexOf(ele)])
+                  }
+                  key={ele.isocode}
+                >
+                  <img
+                    loading="lazy"
+                    width="20"
+                    src={`https://flagcdn.com/w20/${countryDetails[
+                      currencyList.indexOf(ele)
+                    ].code.toLowerCase()}.png`}
+                    srcSet={`https://flagcdn.com/w40/${countryDetails[
+                      currencyList.indexOf(ele)
+                    ].code.toLowerCase()}.png 2x`}
+                    alt=""
+                  />
+                  <Typography marginRight="5px">{ele.isocode}</Typography>
+                </MenuItem>
+              );
+            })}
           </Menu>
         </Box>
 

@@ -73,7 +73,7 @@ const Convert = () => {
             srcSet={`https://flagcdn.com/w40/${countryDetails[0].code.toLowerCase()}.png 2x`}
             alt=""
           />
-        </Box>{" "}
+        </Box>
         <Box>{currency.country}</Box>
         <Box>({currency.isocode})</Box>
       </MenuItem>

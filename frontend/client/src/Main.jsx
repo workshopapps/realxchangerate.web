@@ -5,7 +5,7 @@ import { dispatch } from "./redux/store";
 import { GetUserIp, GetCurrencies } from "./redux/features/Reducers/serviceActions";
 import Loader from "./components/Loader";
 import {useSelector} from "react-redux"
-import { setLoading } from "./redux/features/Reducers/servicesReducer";
+import { setDefaultCurrency, setLoading, setUserIp } from "./redux/features/Reducers/servicesReducer";
 
 export const ColorModeContext = createContext({ toggleColorMode: () => {} });
 
@@ -42,8 +42,15 @@ const Main = () => {
   }), [mode]);
 
   useEffect(() => {
+    const ip = localStorage.getItem("ip")
+    const defaultCurrency = JSON.parse(localStorage.getItem("localCurrency"))
     dispatch(setLoading(true))
-    dispatch(GetUserIp())
+    if(!ip || !defaultCurrency){
+      dispatch(GetUserIp())
+    }   
+    dispatch(setUserIp(ip))
+    dispatch(setDefaultCurrency(defaultCurrency))
+   
     dispatch(GetCurrencies())
   }, [])
 
