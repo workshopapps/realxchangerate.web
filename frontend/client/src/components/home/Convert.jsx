@@ -18,7 +18,6 @@ import {
 } from "@mui/material";
 import { currenciesList, countries } from "../../Pages/Home/data";
 import autoAnimate from "@formkit/auto-animate";
-import { countries, currenciesList } from "../../Pages/Home/data";
 
 const Convert = () => {
   const base_url = process.env.REACT_APP_BASE_URL;
