@@ -1,5 +1,5 @@
 import React from "react";
-import rate from "../assets/encyrate.svg";
+import rate from "../assets/encyrate.png";
 import table from "../assets/Updated Table.svg";
 import styled from "styled-components";
 

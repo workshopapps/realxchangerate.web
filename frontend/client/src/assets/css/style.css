@@ -1,21 +1,48 @@
 @font-face {
-    font-family: 'inter';
-    src: url('../fonts/Inter/static/Inter-Regular.ttf');
+  font-family: "inter";
+  src: url("../fonts/Inter/static/Inter-Regular.ttf");
 }
 @font-face {
-    font-family: 'inter-bold';
-    src: url('../fonts/Inter/static/Inter-Bold.ttf');
+  font-family: "inter-bold";
+  src: url("../fonts/Inter/static/Inter-Bold.ttf");
 }
 @font-face {
-    font-family: 'inter-smbold';
-    src: url('../fonts/Inter/static/Inter-SemiBold.ttf');
+  font-family: "inter-smbold";
+  src: url("../fonts/Inter/static/Inter-SemiBold.ttf");
 }
 @font-face {
-    font-family: 'inter-light';
-    src: url('../fonts/Inter/static/Inter-Light.ttf');
+  font-family: "inter-light";
+  src: url("../fonts/Inter/static/Inter-Light.ttf");
 }
 
 body {
-    background-color: white;
-    font-family: 'inter', sans-serif;
+  background-color: white;
+  font-family: "inter", sans-serif;
+}
+
+#loader {
+  -webkit-animation: rotation 1s infinite linear;
+  -moz-animation: rotation 1s infinite linear;
+  -o-animation: rotation 1s infinite linear;
+  animation: rotation 2s infinite linear;
+  transform-origin: 50% 50%;
+  -webkit-transform-origin: 50% 50%;
+  -moz-transform-origin: 50% 50%;
+}
+
+@-webkit-keyframes rotation {
+    from {-webkit-transform: rotate(0deg);}
+    to   {-webkit-transform: rotate(359deg);}
+}
+@-moz-keyframes rotation {
+    from {-moz-transform: rotate(0deg);}
+    to   {-moz-transform: rotate(359deg);}
+}
+@-o-keyframes rotation {
+    from {-o-transform: rotate(0deg);}
+    to   {-o-transform: rotate(359deg);}
+}
+@keyframes rotation {
+    from {transform: rotate(0deg);}
+    to   {transform: rotate(359deg);}
 }

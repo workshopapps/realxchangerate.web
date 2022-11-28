@@ -21,8 +21,8 @@ const MobileView = ({ data }) => {
             {data.map((val, key) => {
               return (
                 <MobileRowComponent
-                  country={val.country}
-                  rate={val.bank_rates}
+                  country={val.currency}
+                  rate={Math.ceil(val.rate.official_buy)}
                   key={key}
                 />
               );

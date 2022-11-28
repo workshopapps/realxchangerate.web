@@ -51,6 +51,7 @@ function App() {
       <Router>
         <div className="App">
           <NavComponent />
+          
           <Routes>
             {/*---==== Contents Sections  ====---*/}
             <Route path="/" element={<Home />} />

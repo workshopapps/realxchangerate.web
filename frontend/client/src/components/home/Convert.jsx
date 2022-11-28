@@ -13,11 +13,11 @@ import {
   MenuItem,
   Select,
   TextField,
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
-import useMediaQuery from "@mui/material/useMediaQuery";
+import { currenciesList, countries } from "../../Pages/Home/data";
 import autoAnimate from "@formkit/auto-animate";
-import { countries, currenciesList } from "../../Pages/Home/data";
 
 const Convert = () => {
   const base_url = process.env.REACT_APP_BASE_URL;
@@ -75,7 +75,7 @@ const Convert = () => {
             srcSet={`https://flagcdn.com/w40/${countryDetails[0].code.toLowerCase()}.png 2x`}
             alt=""
           />
-        </Box>{" "}
+        </Box>
         <Box>{currency.country}</Box>
         <Box>({currency.isocode})</Box>
       </MenuItem>
