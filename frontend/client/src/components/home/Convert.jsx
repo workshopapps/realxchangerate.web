@@ -13,8 +13,11 @@ import {
   MenuItem,
   Select,
   TextField,
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
-import { currenciesList } from "../../Pages/Home/data";
+import { currenciesList, countries } from "../../Pages/Home/data";
+import autoAnimate from "@formkit/auto-animate";
 
 const Convert = () => {
   const base_url = process.env.REACT_APP_BASE_URL;
