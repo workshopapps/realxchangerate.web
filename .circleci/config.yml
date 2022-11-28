@@ -160,6 +160,57 @@ jobs:
             docker tag app hacklight/xchange-fe-client:v1
             docker push hacklight/xchange-fe-client:v1
 
+  build-frontend-admin-docker-image:
+    docker:
+      # Docker image that supports docker
+      - image: docker:17.05.0-ce-git
+    steps:
+      # Checkout code from git
+      - checkout
+      - setup_remote_docker
+      # - run:
+      #     name: Build docker image
+      #     command: |
+      #       cd frontend/client/
+
+      - restore_cache:
+          keys:
+            - v1-{{ .Branch }}
+          # paths:
+          #   - /caches/app.tar
+
+      - run:
+          name: Load Docker image layer cache
+          command: |
+            set +o pipefail
+            docker load -i /caches/app-ad.tar | true
+
+      - run:
+          name: Build application Docker image
+          command: |
+            cd frontend/admin/
+            docker build --cache-from=app-ad -t app-ad .
+
+      - run:
+          name: Save Docker image layer cache
+          command: |
+            mkdir -p /caches
+            docker save -o /caches/app-ad.tar app-ad
+
+      - save_cache:
+          key: v1-{{ .Branch }}-{{ epoch }}
+          paths:
+            - /caches/app-ad.tar
+
+      - run:
+          name: Push Image to docker hub
+          command: |
+            docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
+            docker tag app-ad hacklight/xchange-fe-admin:v1
+            docker push hacklight/xchange-fe-admin:v1
+
+
+
   build-backend-docker-image:
     docker:
       # Docker image that supports docker
@@ -173,8 +224,8 @@ jobs:
       # - restore_cache:
       #     keys:
       #       - v1-{{ .Branch }}
-          # paths:
-          #   - /caches/app.tar
+      # paths:
+      #   - /caches/app.tar
 
       # - run:
       #     name: Load Docker image layer cache
@@ -213,16 +264,20 @@ jobs:
     steps:
       - checkout
       - add_ssh_keys:
-          fingerprints: ["09:86:cf:93:4e:a9:6f:70:4a:20:c2:63:f5:e2:48:6c"]
+          #fingerprints: ["09:86:cf:93:4e:a9:6f:70:4a:20:c2:63:f5:e2:48:6c"]
+          fingerprints: ["dd:e2:b1:3b:dd:d0:28:54:f1:37:94:e7:00:1f:db:d0"]
       - run:
           name: Deploy
           command: |
 
             # SSH to the server to deploy
-            EC2_USERNAME=ubuntu
+            #EC2_USERNAME=ubuntu
+            AZURE_USERNAME=azureuser
 
-            EC2_PUBLIC_DNS=44.203.211.6
-            ssh -o StrictHostKeyChecking=no $EC2_USERNAME@$EC2_PUBLIC_DNS "/home/ubuntu/run.sh"
+            #EC2_PUBLIC_DNS=44.203.211.6
+            AZURE_PUBLIC_DNS=4.236.168.122
+
+            ssh -o StrictHostKeyChecking=no $AZURE_USERNAME@$AZURE_PUBLIC_DNS "/home/ubuntu/run.sh"
 
   # deploy-docker-compose:
   #   docker:
@@ -263,7 +318,7 @@ workflows:
     # testing
     jobs:
       - build-frontend-client
-        # - build-frontend-admin
+      - build-frontend-admin
       - build-backend
       # - test-frontend-client
       # - test-frontend-admin
@@ -272,17 +327,20 @@ workflows:
           requires: [build-frontend-client] #remember to channge to test
           filters:
             branches:
-              only: [merge-dev]
+              only: [main]
+              
+      - build-frontend-admin-docker-image:
+          requires: [build-frontend-admin] #remember to channge to test
+          filters:
+            branches:
+              only: [main]
 
       - build-backend-docker-image:
           requires: [build-backend] #remember to channge to test
           filters:
             branches:
-              only: [merge-dev]
+              only: [main]
 
       - deploy-images-using-ssh:
           requires:
-            [
-              build-frontend-client-docker-image,
-              build-frontend-client-docker-image,
-            ]
+            [build-frontend-client-docker-image, build-backend-docker-image, build-frontend-admin-docker-image]
