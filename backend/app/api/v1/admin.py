@@ -29,8 +29,7 @@ def create_admin(*, db: Session = Depends(get_db), admin_in: schemas.AdminCreate
 
 @router.post("/add_currency")
 def add_currency(
-    *, db: Session = Depends(get_db), currency_in: schemas.CurrencyCreate
-) -> Any:
+        *, db: Session = Depends(get_db), currency_in: schemas.CurrencyCreate) -> Any:
     """
     Create a new currency.
     """
@@ -45,38 +44,6 @@ async def create_rate(*, db: Session = Depends(get_db),
     #    create new rates
     rate = crud.rate.create(db=db, obj_in=rate_in)
     return (rate)
-
-
-@router.delete("/delete_currency")
-def delete_currency(*, db: Session = Depends(get_db), isocode: str):
-    """delete currency and all associated rates
-
-    Args:
-        isocode (str): country isocode
-    """
-    currency = crud.currency.delete_currency_by_isocode(db, isocode=isocode)
-    if currency is None:
-        return {"success": False, "status_code": 404, "data": {"currency": currency}, "message": "currency not found!"}
-
-    return {"success": True, "status_code": 200, "data": {"currency": currency}, "message": "currency deleted!"}
-
-
-@router.delete("/delete_rate")
-def delete_rate(*, db: Session = Depends(get_db), rate_id: int):
-    """delete selected rate
-
-    Args:
-        rate_id (int): rate id
-    """
-    if rate_id == 0:
-        return {"success": False, "status_code": 404, "data": {"id": rate_id}, "message": "id starts from 1!"}
-
-    rate_query = crud.rate.remove(db, model_id=rate_id)
-
-    if rate_query is None:
-        return {"success": False, "status_code": 404, "data": {"id": rate_id}, "message": "Not found!"}
-
-    return {"success": True, "status_code": 200, "data": {"rate": rate_query}, "message": "rate deleted!"}
 
 
 @router.put('/update_currency')
@@ -120,3 +87,35 @@ def update_rate(iso_code: str, update_param: schemas.RateUpdate, db: Session = D
         "success": True,
         "data": update
     }
+
+
+@router.delete("/delete_currency")
+def delete_currency(*, db: Session = Depends(get_db), isocode: str):
+    """delete currency and all associated rates
+
+    Args:
+        isocode (str): country isocode
+    """
+    currency = crud.currency.delete_currency_by_isocode(db, isocode=isocode)
+    if currency is None:
+        return {"success": False, "status_code": 404, "data": {"currency": currency}, "message": "currency not found!"}
+
+    return {"success": True, "status_code": 200, "data": {"currency": currency}, "message": "currency deleted!"}
+
+
+@router.delete("/delete_rate")
+def delete_rate(*, db: Session = Depends(get_db), rate_id: int):
+    """delete selected rate
+
+    Args:
+        rate_id (int): rate id
+    """
+    if rate_id == 0:
+        return {"success": False, "status_code": 404, "data": {"id": rate_id}, "message": "id starts from 1!"}
+
+    rate_query = crud.rate.remove(db, model_id=rate_id)
+
+    if rate_query is None:
+        return {"success": False, "status_code": 404, "data": {"id": rate_id}, "message": "Not found!"}
+
+    return {"success": True, "status_code": 200, "data": {"rate": rate_query}, "message": "rate deleted!"}
