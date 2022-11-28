@@ -15,14 +15,14 @@ const Home = () => {
         flexDirection: "column",
         gap: "4rem",
         width: "100%",
-        p: { xs: "1.5rem", md: "4rem", lg: "9rem" },
+        p: { xs: "1.5rem", md: "4rem", lg: "5rem 10rem" },
       }}
     >
       <Box
         sx={{
           display: "flex",
           justifyContent: "space-between",
-          alignItems: "center",
+          alignItems: "baseline",
           flexDirection: { xs: "column", sm: "row-reverse" },
           width: "100%",
           gap: "2.4rem",

@@ -60,7 +60,7 @@
   letter-spacing: 4px;
 }
 .hero h1 {
-  font-size: 3rem;
+  font-size: 3.5rem;
   font-weight: 700;
   /* line-height: 3rem; */
 }
@@ -76,5 +76,8 @@
     width: 50%;
     text-align: left;
     align-items: flex-start;
+  }
+  .hero h1 {
+    font-size: 4.5rem;
   }
 }
