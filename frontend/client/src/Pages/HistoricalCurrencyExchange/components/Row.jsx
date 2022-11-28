@@ -4,17 +4,36 @@ export const RowComponent = ({ country, bank, parallel }) => {
   return (
     <Box
       display="flex"
-      justifyContent="space-between"
       height="45px"
-      alignItems="center"
-      fontSize="18px"
-      borderBottomColor="gray"
       width="100%"
-      sx={{ borderBottom: 1, borderColor: "grey.500" }}
+      sx={{ sm: { borderBottom: "1px solid #E2E8F0" } }}
     >
-      {country}
-      <Typography>{bank}</Typography>
-      <Typography>{parallel}</Typography>
+      <Box
+        display="flex"
+        justifyContent="space-between"
+        alignItems="center"
+        fontSize="18px"
+        padding="12px 24px"
+        width="100%"
+      >
+        {country}
+        <Typography
+          fontSize="14px"
+          fontWeight="400"
+          lineHeight="20px"
+          letterSpacing="0.01em"
+        >
+          N{bank}
+        </Typography>
+        <Typography
+          fontSize="14px"
+          fontWeight="400"
+          lineHeight="20px"
+          letterSpacing="0.01em"
+        >
+          N{parallel}
+        </Typography>
+      </Box>
     </Box>
   );
 };
@@ -23,16 +42,21 @@ export const MobileRowComponent = ({ country, rate }) => {
   return (
     <Box
       display="flex"
-      justifyContent="space-between"
       height="45px"
       alignItems="center"
-      fontSize="18px"
-      borderBottomColor="gray"
       width="100%"
-      sx={{ borderBottom: 1, borderColor: "grey.500" }}
+      sx={{ sm: { borderBottom: "1px solid #E2E8F0" } }}
     >
-      {country}
-      <Typography>{rate}</Typography>
+      <Box
+        display="flex"
+        justifyContent="space-between"
+        alignItems="center"
+        padding="12px 24px"
+        width="100%"
+      >
+        {country}
+        <Typography fontSize='14px'>N{rate}</Typography>
+      </Box>
     </Box>
   );
 };
@@ -48,9 +72,34 @@ export const RowHeaderComponent = () => {
       justifyContent="space-between"
       alignItems="center"
     >
-      <Typography fontSize="14px" fontWeight="400" lineHeight="20px">Country</Typography>
-      <Typography fontWeight="400" lineHeight="20px"  sx={{ paddingLeft: "64px", fontSize:"14px"}}>Bank Rates</Typography>
-      <Typography fontWeight="400" lineHeight="20px" fontSize="14px">Parallel Rates</Typography>
+      <Typography
+        fontSize="14px"
+        fontWeight="400"
+        lineHeight="20px"
+        letterSpacing="0.001em"
+        color="#000000"
+      >
+        Country
+      </Typography>
+      <Typography
+        marginLeft="50px"
+        fontWeight="400"
+        fontSize="14px"
+        lineHeight="20px"
+        letterSpacing="0.001em"
+        color="#000000"
+      >
+        Bank Rates
+      </Typography>
+      <Typography
+        fontWeight="400"
+        lineHeight="20px"
+        fontSize="14px"
+        letterSpacing="0.001em"
+        color="#000000"
+      >
+        Parallel Rates
+      </Typography>
     </Box>
   );
 };
@@ -61,14 +110,28 @@ export const MobileRowHeaderComponent = ({ rate }) => {
       width="100%"
       backgroundColor="#F8FAFC"
       display="flex"
-      fontSize="18px"
+      padding="12px 24px"
       height="44px"
       justifyContent="space-between"
       alignItems="center"
     >
-      <Typography>Country</Typography>
+      <Typography
+        fontSize="14px"
+        lineHeight="20px"
+        color="#1E293B"
+        fontWeight="400"
+      >
+        Country
+      </Typography>
 
-      <Typography>{rate}</Typography>
+      <Typography
+        fontSize="14px"
+        lineHeight="20px"
+        color="#1E293B"
+        fontWeight="400"
+      >
+        {rate}
+      </Typography>
     </Box>
   );
 };

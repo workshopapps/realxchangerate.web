@@ -1,11 +1,16 @@
-import { Box, Grid, Typography } from "@mui/material";
-import React, { useState } from "react";
+import { Box, Grid, Typography, IconButton } from "@mui/material";
+import React, { useState, useContext } from "react";
+import { useTheme } from "@mui/material";
 import DrawerComponent from "./Drawer";
 import { Link } from "react-router-dom";
-import { DownArrow, NavFlag, MenuIcon } from "../assets/index";
-// import { NavWrapper } from "./styles/NavBar.styled";
+import { DownArrow, NavFlag, MenuIcon, MenuIconDark } from "../assets/index";
+import { ColorModeContext } from "../Main";
+import Brightness4Icon from "@mui/icons-material/Brightness4";
+import Brightness7Icon from "@mui/icons-material/Brightness7";
 
 const NavComponent = () => {
+  const theme = useTheme();
+  const colorMode = useContext(ColorModeContext);
   const [isOpen, setIsOpen] = useState(false);
 
   const HandleDrawerState = () => {
@@ -38,11 +43,13 @@ const NavComponent = () => {
             lineHeight: { xs: "28px", sm: "40px" },
             fontWeight: { xs: "600", sm: "700" },
           }}
-          color="#00296B"
+          color="#0062ff"
           letterSpacing="-0.04em"
           role="heading"
         >
-          Street Rate
+          <Link to="/" style={{ color: "#0062ff" }}>
+            Street Rate
+          </Link>
         </Typography>
       </Grid>
 
@@ -58,37 +65,58 @@ const NavComponent = () => {
         lineHeight="24px"
         color="#94A3B8"
       >
+        <IconButton
+          sx={{ ml: 1 }}
+          onClick={colorMode.toggleColorMode}
+          color="inherit"
+        >
+          {theme.palette.mode === "dark" ? (
+            <Brightness7Icon height="1.75em" width="1.75em" />
+          ) : (
+            <Brightness4Icon height="1.75em" width="1.75em" />
+          )}
+        </IconButton>
+
         <Box gap="6px" display="flex">
           <img src={NavFlag} alt="flagImage" />
           <img src={DownArrow} alt="arrow" />
         </Box>
 
-        <Link to="/" color="#94A3B8">
+        <Link to="/" style={{ color: "#0062ff" }}>
           Home
         </Link>
 
-        <Link to="/convert" color="inherit">
-          Convert
-        </Link>
-
-        <Link to="/#" color="inherit">
-          Currency Profile
-        </Link>
-
-        <Link to="/news" color="inherit">
+        <Link to="/news" style={{ color: "#0062ff" }}>
           News
         </Link>
 
-        <Link to="/contact" color="inherit">
+        <Link to="/contact" style={{ color: "#0062ff" }}>
           Contact
         </Link>
       </Grid>
       <Box
         sx={{ display: { xs: "flex", sm: "none" } }}
-        cursor="pointer"
-        onClick={() => setIsOpen(true)}
+        justifyContent="center"
+        alignItems="center"
+        gap="30px"
       >
-        <img src={MenuIcon} alt="MenuIcon" />
+        <IconButton
+          sx={{ ml: 1 }}
+          onClick={colorMode.toggleColorMode}
+          color="inherit"
+        >
+          {theme.palette.mode === "dark" ? (
+            <Brightness7Icon height="2em" width="2em" />
+          ) : (
+            <Brightness4Icon height="2em" width="2em" />
+          )}
+        </IconButton>
+        <Box cursor="pointer" onClick={() => setIsOpen(true)}>
+          <img
+            src={theme.palette.mode === "dark" ? MenuIconDark : MenuIcon}
+            alt="MenuIcon"
+          />
+        </Box>
       </Box>
       <DrawerComponent
         isOpen={isOpen}

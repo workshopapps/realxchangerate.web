@@ -170,7 +170,8 @@ const List = () => {
 
             >
                 <Typography variant="h6" sx={{
-                    mb: 1
+                    mb: 1,
+                    fontSize: "24px"
                 }}>{item.title}</Typography>
                 <Body2Text variant="body2" sx={{
                     fontSize: "14px"
@@ -224,7 +225,8 @@ const MobileList = styled(Box)(({ theme }) => ({
 const ComplaintLink = ({ link }) => {
     return <a href={link}> <Body2Text variant="body2" sx={{
         color: "#005BEA",
-        mb: 1
+        mb: 1,
+        fontSize: "16px"
     }} component="p">{link.includes("mailto:") ? link.split("mailto:")[1] : link}</Body2Text></a>
 }
 
@@ -265,6 +267,7 @@ const Body = () => {
                             mb: 3
                         }}>Avoid and Report Fraud</BodyContentTitle>
                         <Body2Text variant="body2" component="p" sx={{
+                            fontSize:'16px'
                         }}>
                             By focusing on providing the best user experience, Street rates has earned a trusted brand name. Unfortunately, unscruptulous people sometimes try to use the StreetRates website for fraud. Below are a few ways to avoid and report fraud.
                         </Body2Text>
@@ -275,10 +278,12 @@ const Body = () => {
                 <Right>
                     <Box>
                         <BodyContentTitle variant="h5" component="h6" sx={{
-                            mb: 3
+                            mb: 3,
+                            fontSize: "28px"
                         }}>Get response as quickly as possible</BodyContentTitle>
                         <Body2Text variant="body2" sx={{
                             margin: "25px 0",
+                            fontSize: "16px"
                         }}>If you would like to report fraud, please use the <a sx={{
                             color: "red"
                         }} href="/complaint"><Typography variant="span" sx={{

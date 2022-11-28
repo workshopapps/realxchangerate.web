@@ -58,7 +58,7 @@ const Footer = () => {
               Careers
             </Link>
             <Link href="/#/partnerships" color="inherit">
-              Partnerships
+              Patnerships
             </Link>
             <Link href="/#/teams" color="inherit">
               Meet the team
@@ -99,9 +99,6 @@ const Footer = () => {
             >
               Links
             </Typography>
-            <Link href="/#/convert" color="inherit">
-              Convert
-            </Link>
             <Link href="/#/news" color="inherit">
               News
             </Link>
@@ -153,7 +150,7 @@ const Footer = () => {
               Online Advertising
             </Link>
 
-            <Link href="/ambassadors" color="inherit">
+            <Link href="/#/ambassadors" color="inherit">
               Ambassadors
             </Link>
           </Stack>
@@ -264,7 +261,7 @@ const Footer = () => {
             >
               Legal
             </Typography>
-            <Link href="#" color="inherit">
+            <Link href="/#/" color="inherit">
               Privacy Policy
             </Link>
             <Link href="/#/terms" color="inherit">
@@ -295,7 +292,7 @@ const Footer = () => {
             Items={[
               "About Us",
               "Careers",
-              "Partnerships",
+              "Patnerships",
               "Meet the team",
               "Press",
               "Board of directors",
@@ -312,8 +309,8 @@ const Footer = () => {
 
           <DropDown
             title={"Links"}
-            Items={["Convert", "News", "Contact Us"]}
-            Links={["convert", "news", "contact"]}
+            Items={["News", "Contact Us"]}
+            Links={["news", "contact"]}
           />
           <DropDown
             title={"Resources"}

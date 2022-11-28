@@ -11,7 +11,6 @@ import Footer from "./components/Footer";
 import "./assets/css/style.css";
 
 import {
-  Convert,
   Contact,
   Compliance,
   HelpCenter,
@@ -43,6 +42,7 @@ import ErrorPage from "./Pages/404/ErrorPage";
 import SingleNews from "./Pages/SingleNews/SingleNews";
 import Article from "./Pages/Press/Article/Article";
 import PressNews from "./Pages/Press/PressRelease/News";
+// import ScrollToTop from "./utils/ScrollToTop";
 
 function App() {
   return (
@@ -54,7 +54,6 @@ function App() {
           <Routes>
             {/*---==== Contents Sections  ====---*/}
             <Route path="/" element={<Home />} />
-            <Route path="/convert" element={<Convert />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/compliance" element={<Compliance />} />
             <Route path="/help-center" element={<HelpCenter />} />

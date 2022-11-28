@@ -1,42 +1,86 @@
 import styled from 'styled-components'
 
 export const StyledSidebarNavigation = styled.div`
-flex-grow: 1;
-padding-block: 24px;
-display: flex;
-flex-direction: column;
+    width: fit-content;
+    margin-top: 30px;
+    margin-inline: auto;
 
-nav {
     display: flex;
     flex-direction: column;
-}
-`
+    gap: 23px;
+
+    nav {
+        margin-top: 60px;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        padding: 24px 12px;
+
+        @media screen and (min-width: ${props => props.theme.$styled.breakpoints.lg}) {
+            margin-top: 0px;
+            min-width: 195px;
+        }
+    }
+`;
+
 export const StyledSidebarNavigationOption = styled.div`
-padding: 16px 24px;
+    position: relative;
+    margin: 0 auto;
+    padding: 12px;
+    overflow: hidden;
 
-display: flex;
-gap: 24px;
-align-items: center;
+    display: flex;
+    gap: 12px;
+    align-items: center;
 
-background-color: ${props => props.$isActive ? props.theme.$styled.colors.blue800 : 'none'};
+    border-radius: ${props => props.theme.$styled.borderRadius.sm}; 
+    transition: all 250ms;
 
-&:hover {
-    background-color: ${props => !props.$isActive && props.theme.$styled.colors.body};
-}
+    &:before{
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: ${props => props.$isActive ? '100%' : 0};
+        border-radius: ${props => props.theme.$styled.borderRadius.sm};
+        background-color: ${props => props.theme.palette.primary.main};
+        z-index: 2;
+        -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+        box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+        transition: all 350ms;
+    }
 
-.icom{
-    margin-inline: auto !important;
-    width: 20px;
-    height: 20px;
+    &:hover {
+        background-color: ${props => !props.$isActive && props.theme.$styled.colors.body};
+    }
     
-}
-.option{
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 20px;
-    letter-spacing: 0.001em;
+    .icon{
+        position: relative;
+        z-index: 4;
+        width: 24px;
+        height: 24px;
+    }
+    .option{
+        white-space: nowrap;
+        position: relative;
+        z-index: 4;
+        font-weight: ${props => props.$isActive ?
+        600 : 400};;
+        font-size: 16px;
+        line-height: 24px;
+        color: ${props => props.$isActive ?
+        '#fff' : props.theme.$styled.colors.text600};
+    }
 
-    color: ${props => props.$isActive ? props.theme.$styled.colors.text50 : props.theme.$styled.colors.text500};
-
-}
+    @media screen and (min-width: ${props => props.theme.$styled.breakpoints.md}) {
+        .icon {
+            &:hover {
+                transition-duration: 100ms;
+                transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+                transform: scale(1.07);
+            }
+        }
+        
+    }
 `

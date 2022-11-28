@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import bgImage from "./assets/images/bg-image.png";
 
 // styles
@@ -21,7 +22,10 @@ const PartnershipsHero = () => {
           Help your clients save time and money when making their international
           payments
         </h3>
-        <Button padding="70px">Contact us</Button>
+        <div className='contact-btn'>
+            <Link to="/contact"><Button padding="70px">Contact us</Button></Link>
+        </div>
+        
       </HeroContent>
     </StyledHeroSection>
   );

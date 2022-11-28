@@ -1,11 +1,12 @@
 import React from "react";
-import { Hero, LiveRate } from "./";
+// import { LiveRate } from "./";
+// import { Hero } from "./home/Hero";
 
 const Home = () => {
   return (
     <>
-      <Hero />
-      <LiveRate />
+      {/* <Hero />
+      <LiveRate /> */}
     </>
   );
 };

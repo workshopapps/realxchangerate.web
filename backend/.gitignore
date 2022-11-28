@@ -1,7 +1,8 @@
 venv/
 .vscode/
 __pycache__/
-test.db
+realexchange_db.db
+.db
 env
 .env
 # OS generated files #
