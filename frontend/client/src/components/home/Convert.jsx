@@ -18,7 +18,7 @@ import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import autoAnimate from "@formkit/auto-animate";
 import { countries, currenciesList } from "../../Pages/Home/data";
-console.table(currenciesList);
+
 const Convert = () => {
   const base_url = process.env.REACT_APP_BASE_URL;
   const localBase = "http://localhost:8000/api";
@@ -26,12 +26,14 @@ const Convert = () => {
   const [convert, setconvert] = React.useState(1);
   const [currency, setCurrecy] = React.useState("NGN");
   const [buy, setbuy] = React.useState(true);
+
   const endpoint =
     process.env.NODE_ENV === "development"
       ? `${localBase}/rate/${currency}`
       : process.env.NODE_ENV === "production"
       ? `${base_url}/rate/${currency}`
       : "";
+
   React.useEffect(() => {
     const fetchRates = async () => {
       const response = await fetch(`${base_url}/rate/${currency}`);
@@ -48,17 +50,17 @@ const Convert = () => {
       return !value;
     });
   };
-  const parent = React.useRef(null);
 
+  const parent = React.useRef(null);
   React.useEffect(() => {
     parent.current && autoAnimate(parent.current);
   }, [parent]);
+
   const CurrencyMenu = (props) => {
     const { currency } = props;
     const countryDetails = countries.filter(
       (countr) => countr.label === currency.country
     );
-
     return (
       <MenuItem
         key={currency.isocode}
@@ -82,6 +84,7 @@ const Convert = () => {
 
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("lg"));
+
   return (
     <Card
       className={styles.convert}
@@ -173,7 +176,6 @@ const Convert = () => {
                   value={currency}
                   onChange={(e) => setCurrecy(e.target.value)}
                 >
-                  <MenuItem value="NGN">Naira</MenuItem>
                   {currenciesList.map((currency) => (
                     <MenuItem key={currency.isocode} value={currency.isocode}>
                       <CurrencyMenu currency={currency} />
@@ -214,7 +216,6 @@ const Convert = () => {
                   value={currency}
                   onChange={(e) => setCurrecy(e.target.value)}
                 >
-                  <MenuItem value="NGN">Naira</MenuItem>
                   {currenciesList.map((currency) => (
                     <MenuItem key={currency.isocode} value={currency.isocode}>
                       <CurrencyMenu currency={currency} />
