@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyledWhyChoose = styled.section`
   padding: 30px 0 100px;
-  max-width: 1440px;
+  max-width: 1240px;
   margin: 0 auto;
 
   .header {
@@ -32,7 +32,7 @@ export const StyledWhyChoose = styled.section`
   .listDiv {
     width: 30%;
     display: flex;
-    align-items: center;
+    align-items: left;
     flex-direction: column;
     gap: 40px;
     margin-top: 15px;
@@ -48,8 +48,8 @@ export const StyledWhyChoose = styled.section`
     }
 
     @media screen and (max-width: 480px) {
-        gap: 80px;
-      }
+      gap: 80px;
+    }
 
     & p {
       margin-top: 5px;

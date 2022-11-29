@@ -25,7 +25,7 @@ function Hero() {
           justifyContent: { xs: "center", lg: "left" },
         }}
       >
-        <img src={scan} alt="scan our item to download" width="50%" />
+        {/* <img src={scan} alt=" scan our item to download" width="50%" /> */}
       </Box>
       <Box
         className="store"
