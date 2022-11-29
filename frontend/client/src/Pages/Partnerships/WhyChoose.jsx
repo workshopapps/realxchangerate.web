@@ -18,7 +18,7 @@ const WhyChoose = () => {
             <div key={list.id} className="listDiv">
               <img src={list.icon} alt="icon" height={100} width={100} />
               <h2>{list.header}</h2>
-              <p>{list.description}</p>
+              <p style={{ maxWidth: "266px" }}>{list.description}</p>
             </div>
           );
         })}
