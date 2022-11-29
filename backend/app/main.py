@@ -1,5 +1,4 @@
 import uvicorn
-
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -8,7 +7,7 @@ from app.api.v1 import api_router
 from app.core import settings
 from app.api.v1 import password_email_reset
 
-app = FastAPI(title=settings.PROJECT_NAME, root_path="")
+app = FastAPI(title=settings.PROJECT_NAME, root_path="/backend/")
 origins = [
     "http://localhost",
     "http://localhost:3000",
