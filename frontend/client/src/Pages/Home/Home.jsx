@@ -14,7 +14,8 @@ const Home = () => {
         // flexDirection: { sx: "column", md: "row" },
         flexDirection: "column",
         gap: "4rem",
-        width: "100%",
+        maxWidth: "1440px",
+        margin: "auto",
         p: { xs: "1.5rem", md: "4rem", lg: "5rem 10rem" },
       }}
     >
@@ -24,7 +25,7 @@ const Home = () => {
           justifyContent: "space-between",
           alignItems: "baseline",
           flexDirection: { xs: "column", sm: "row-reverse" },
-          width: "100%",
+
           gap: "2.4rem",
         }}
       >
@@ -42,7 +43,13 @@ const Home = () => {
         </Typography>
       </Box>
       {/* Table  */}
-      <List>
+      <List
+        style={{
+          border: "1px solid #CBD5E1",
+          padding: "0",
+          borderRadius: "5px",
+        }}
+      >
         <ListItem
           sx={{
             display: "flex",
