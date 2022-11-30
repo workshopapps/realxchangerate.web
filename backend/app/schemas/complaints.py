@@ -3,7 +3,7 @@ from typing import Optional, Any
 from pydantic import BaseModel
 
 
-class Coomplaint(BaseModel):
+class Complaint(BaseModel):
     id: int
     full_name: str
     email: str
