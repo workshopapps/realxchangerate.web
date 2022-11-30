@@ -9,6 +9,6 @@ class Faq(Base):
     __tablename__ = "faq"
 
     id = Column(Integer, primary_key=True, index=True)
-    title = Column(String, unique=True, index=True, nullable=False)
-    content = Column(String, nullable=False)
+    question = Column(String, unique=True, index=True, nullable=False)
+    answer = Column(String, nullable=False)
     last_updated = Column(DateTime, default=datetime.utcnow())

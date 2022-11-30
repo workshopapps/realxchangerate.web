@@ -4,16 +4,15 @@ from pydantic import BaseModel
 
 
 class FaqBase(BaseModel):
-    title: str
-    content: str
-
-
-class FaqUpdate(BaseModel):
-    title: str
-    content: str
+    question: str
+    answer: str
 
 
 class FaqCreate(FaqBase):
+    pass
+
+
+class FaqUpdate(FaqBase):
     pass
 
 
