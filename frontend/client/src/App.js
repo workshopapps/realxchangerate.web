@@ -42,6 +42,7 @@ import ErrorPage from "./Pages/404/ErrorPage";
 import SingleNews from "./Pages/SingleNews/SingleNews";
 import Article from "./Pages/Press/Article/Article";
 import PressNews from "./Pages/Press/PressRelease/News";
+import GetInTouch from "./Pages/GetInTouch/GetInTouch";
 // import ScrollToTop from "./utils/ScrollToTop";
 
 function App() {
@@ -51,7 +52,7 @@ function App() {
       <Router>
         <div className="App">
           <NavComponent />
-          
+
           <Routes>
             {/*---==== Contents Sections  ====---*/}
             <Route path="/" element={<Home />} />
@@ -64,6 +65,8 @@ function App() {
             <Route path="/faq" element={<Faq />} />
             <Route path="/integration-matrix" element={<IntegrationMatrix />} />
             <Route path="/partnerships" element={<Partnerships />} />
+            {/* ROute for get in touch page */}
+            <Route path="/get-in-touch" element={<GetInTouch />} />
             <Route
               path="/currency-encyclopedia"
               element={<CurrencyEncyclopedia />}
