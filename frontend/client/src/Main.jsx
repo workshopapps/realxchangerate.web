@@ -74,8 +74,7 @@ const Main = () => {
           height="100vh"
           sx={{ backgroundColor: "background.default", color: "text.primary" }}
         >
-          {/* {isLoading ? <Loader /> : <App />} */}
-          <App />
+          {isLoading ? <Loader /> : <App />}
         </Box>
       </ThemeProvider>
     </ColorModeContext.Provider>
