@@ -6,8 +6,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.api.v1 import api_router
 from app.core import settings
 from app.api.v1 import password_email_reset
-
-app = FastAPI(title=settings.PROJECT_NAME, root_path="/backend/")
+# , root_path="/backend/" ---return this back
+app = FastAPI(title=settings.PROJECT_NAME)
 origins = [
     "http://localhost",
     "http://localhost:3000",
