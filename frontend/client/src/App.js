@@ -35,6 +35,7 @@ import {
   OnlineAdvertising,
   Ambassadors,
   Home,
+  PrivacyPolicy,
 } from "./Pages";
 import GlobalStyle from "./styles/Globalstyle";
 import ErrorPage from "./Pages/404/ErrorPage";
@@ -51,7 +52,7 @@ function App() {
       <Router>
         <div className="App">
           <NavComponent />
-          
+
           <Routes>
             {/*---==== Contents Sections  ====---*/}
             <Route path="/" element={<Home />} />
@@ -88,6 +89,7 @@ function App() {
             />
             <Route path="/fraud-report" element={<FraudReport />} />
             <Route path="/Cookie-policy" element={<CookiePolicy />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/glossary" element={<Glossary />} />
             <Route path="/advertising" element={<OnlineAdvertising />} />
             <Route path="/ambassadors" element={<Ambassadors />} />
