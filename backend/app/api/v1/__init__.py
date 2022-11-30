@@ -9,6 +9,7 @@ from app.api.v1 import auth
 from app.api.v1 import password_email_reset
 
 from app.api.v1 import api_service
+from app.api.v1 import news
 
 api_router = APIRouter()
 
@@ -22,3 +23,4 @@ api_router.include_router(password_email_reset.router,
                           prefix="/forget_password", tags=["reset_password"])
 api_router.include_router(
     api_service.router, prefix="/service", tags=["services"])
+api_router.include_router(news.router, prefix="/news", tags=["news"])
