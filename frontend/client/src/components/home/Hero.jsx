@@ -18,8 +18,25 @@ function Hero() {
         easily check the bank exchange rates and parallel market rates to get
         the best deal possible.
       </Typography>
-      <img src={scan} alt="scan our item to download" width="75%" />
-      <Box className="store">
+      <Box
+        sx={{
+          width: "100%",
+          display: "flex",
+          justifyContent: { xs: "center", lg: "left" },
+        }}
+      >
+        <img src={scan} alt="scan our item to download" width="50%" />
+      </Box>
+      <Box
+        className="store"
+        sx={{
+          width: "100%",
+          display: "flex",
+          justifyContent: { xs: "center", lg: "left" },
+          alignItems: "center",
+          gap: "1.4rem",
+        }}
+      >
         <a href="#!">
           <img src="/apple-store.svg" alt="" />
         </a>
