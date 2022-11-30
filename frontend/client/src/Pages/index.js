@@ -23,4 +23,4 @@ export { default as Glossary } from "./Glossary/Glossary";
 export { default as OnlineAdvertising } from "./OnlineAdvertising/OnlineAdvertising";
 export { default as Ambassadors } from "./Ambassadors/Ambassadors";
 export { default as Welcome } from "./Welcome/Welcome";
-
+export { default as PrivacyPolicy } from "./PrivacyPolicy/PrivacyPolicy";
