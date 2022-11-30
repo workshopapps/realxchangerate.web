@@ -27,6 +27,7 @@ const Convert = () => {
   const [currency, setCurrecy] = React.useState("NGN");
   const [base, setBase] = React.useState("USA");
   const [buy, setbuy] = React.useState(true);
+  const [date, setDate] = React.useState("");
 
   const endpoint =
     process.env.NODE_ENV === "development"
@@ -41,10 +42,26 @@ const Convert = () => {
       const data = await response.json();
       return data;
     };
+    var currentdate = new Date();
+    var datetime =
+      "Last Sync: " +
+      currentdate.getDate() +
+      "/" +
+      (currentdate.getMonth() + 1) +
+      "/" +
+      currentdate.getFullYear() +
+      " @ " +
+      currentdate.getHours() +
+      ":" +
+      currentdate.getMinutes() +
+      ":" +
+      currentdate.getSeconds();
+
+    setDate(datetime);
     fetchRates().then((ratesData) => {
       setRates(ratesData.data.rate);
     });
-  }, [base_url, endpoint, currency]);
+  }, [base_url, endpoint, currency, date]);
 
   const handleSwitch = () => {
     setbuy(!buy);
@@ -285,13 +302,10 @@ const Convert = () => {
               <span>{buy ? currency : "USD"}</span>
             </h3>
             <div className="xchng">
-              1 {buy ? currency : "USD"} ={" "}
-              {buy
-                ? noWCommas((rates.parallel_buy * Number(1)).toFixed(2))
-                : noWCommas(
-                    ((1 / rates.parallel_sell) * Number(1)).toFixed(2)
-                  )}{" "}
-              {buy ? "USD" : currency}
+              <h4>
+                1 USD = {noWCommas((rates.parallel_buy * Number(1)).toFixed(2))}
+                {currency}
+              </h4>
             </div>
           </div>
 
@@ -331,12 +345,14 @@ const Rate = styled.div`
   span {
     margin-left: 6px;
   }
-  .xchng {
+  .xchng h4 {
     font-weight: 400;
     font-size: 14px;
     line-height: 24px;
     color: #555962;
     margin-bottom: 4px;
+    text-align: left;
+    /* display: none; */
   }
   & :last-child {
     text-align: right;
@@ -354,7 +370,7 @@ const Rate = styled.div`
       color: #94a3b8;
     }
   }
-  @media screen and (max-width: 700px) {
+  @media screen and (max-width: 720px) {
     margin-top: 24px;
     flex-direction: column;
     gap: 16px;
