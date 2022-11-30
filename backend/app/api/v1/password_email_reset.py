@@ -44,8 +44,6 @@ conf = ConnectionConfig(
 
 router = APIRouter()
 
-# code = random(6)
-
 
 @router.post("/forgot_password")
 async def sending_mail(email: EmailSchema, db: Session = Depends(get_db)):
