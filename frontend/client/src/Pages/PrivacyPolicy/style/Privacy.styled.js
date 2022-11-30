@@ -59,7 +59,7 @@ export const Container = styled.div`
     padding: 90px 0 211px 100px;
   }
 
-  @media (min-width: 1399.98px) {
+  @media (min-width: 1500px) {
     padding-left: 209px;
   }
 `;
