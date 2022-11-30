@@ -18,7 +18,6 @@ function Hero() {
         easily check the bank exchange rates and parallel market rates to get
         the best deal possible.
       </Typography>
-
       <Box
         className="store"
         sx={{

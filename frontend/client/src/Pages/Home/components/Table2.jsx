@@ -25,7 +25,7 @@ function Table2({ isocode, country }) {
         display: "flex",
         // alignItems: "center",
         justifyContent: "space-between",
-        borderBottom: "1px solid #CBD5E1",
+        borderTop: "1px solid #CBD5E1",
         p: "2.3rem 1.3rem",
         fontSize: "1.4rem",
       }}
