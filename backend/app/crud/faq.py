@@ -10,7 +10,8 @@ from app.schemas.faq import FaqCreate, FaqUpdate
 
 
 class CRUDFaq(CRUDBase[Faq, FaqCreate, FaqUpdate]):
-    pass
-
+    def get_faq(self, db: Session, question: str) -> Any:
+        return db.query(Faq).filter_by(question=question).all()
+    
 
 faq = CRUDFaq(Faq)

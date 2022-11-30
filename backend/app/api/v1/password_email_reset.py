@@ -18,7 +18,7 @@ from app.api.deps import get_db
 from sqlalchemy.orm import Session
 
 from typing import List
-from app.email_util.email_utils import random
+
 from app.crud import admin
 
 
@@ -59,7 +59,7 @@ async def sending_mail(email: EmailStr, db: Session = Depends(get_db)):
                 <p>Hello !!! Did you request for a password reset?
                 <br></p>
                 <p>
-                <a href="{{ url_for('reset_password', path='api/forget_password/reset_password') }}" target="_blank">
+                <a href="{{ url_for('reset_password', path='api/reset_password') }}" target="_blank">
                 click here to reset your password
             </a>
                 <p> If this is not you, secure your account by turning on 2-factor authentication<p>
