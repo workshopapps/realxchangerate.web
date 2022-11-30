@@ -62,7 +62,7 @@ const NavComponent = () => {
       sx={{
         minHeight: { xs: "56px", sm: "100px" },
         justifyContent: { xs: "space-between" },
-        maxWidth: { xs: "90%", lg: "84%" },
+        maxWidth: { xs: "90%", lg: "84%" }
       }}
       minHeight="100px"
       display="flex"

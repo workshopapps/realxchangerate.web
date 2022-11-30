@@ -17,7 +17,7 @@ export const Button = styled.button`
 
 export const PartnersHeader = styled.div`
   width: 100%;
-  max-width: 1440px;
+  max-width: 1240px;
   margin: 0 auto;
   text-align: center;
   margin-top: 140px;
@@ -41,12 +41,12 @@ export const PartnersHeader = styled.div`
 
 export const PartnersDescription = styled.p`
   width: 65%;
-  max-width: 1440px;
+  max-width: 908px;
   margin: 15px auto 80px;
   font-size: 16px;
   font-weight: 400;
   line-height: 1.5;
-  text-align: center;
+  text-align: left;
 
   @media screen and (max-width: 1024px) {
     width: 80%;
@@ -60,7 +60,7 @@ export const PartnersDescription = styled.p`
 
 export const StyledPartnersType = styled.div`
   width: 85%;
-  max-width: 1440px;
+  max-width: 1204px;
   margin: 0 auto 80px;
   height: 450px;
   display: flex;
@@ -76,9 +76,8 @@ export const StyledPartnersType = styled.div`
     flex-direction: column;
     gap: 30px;
 
-    
-    @media screen and (max-width: 480px){
-      & button{
+    @media screen and (max-width: 480px) {
+      & button {
         align-self: center;
       }
     }
