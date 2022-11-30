@@ -305,7 +305,7 @@ const PersonalData = () => {
               and accounting services.
             </li>
           </List>
-          DPO@StreetRates.io
+
           <p>
             If we choose to sell, transfer or merge parts of our business or our
             assets, we&lsquo;ll share your personal data with the new owners of

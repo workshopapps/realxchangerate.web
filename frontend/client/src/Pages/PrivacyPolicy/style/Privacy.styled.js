@@ -12,6 +12,9 @@ export const Container = styled.div`
     line-height: 28px;
     font-weight: 600;
   }
+  span {
+    font-size: 16px;
+  }
   a {
     color: inherit;
     text-decoration: none;
@@ -59,6 +62,7 @@ export const Container = styled.div`
 
 export const List = styled.ul`
   padding-left: 20px;
+  font-size: 16px;
 
   li {
     margin-bottom: 20px;
