@@ -49,6 +49,19 @@ async def create_rate(*, db: Session = Depends(get_db),
         return {"message:": "id not found"}
 
 
+@router.post("/add_faq")
+def add_faq(*, db: Session = Depends(get_db), faq_in: schemas.FaqCreate) -> Any:
+    """
+    This endpoint stores a new FAQ into the database.
+    """
+    faq = crud.faq.create(db=db, obj_in = faq_in)
+    return {
+        "Success": True,
+        "Status code": 200,
+        "FAQ": faq
+    }
+
+
 @router.put('/update_currency')
 def update_currencies(iso_code: str, update_param: schemas.CurrencyUpdate, db: Session = Depends(get_db)):
     """
@@ -122,17 +135,3 @@ def delete_rate(*, db: Session = Depends(get_db), rate_id: int):
         return {"success": False, "status_code": 404, "data": {"id": rate_id}, "message": "Not found!"}
 
     return {"success": True, "status_code": 200, "data": {"rate": rate_query}, "message": "rate deleted!"}
-
-
-
-@router.post("/add_faq")
-def add_faq(*, db: Session = Depends(get_db), faq_in: schemas.FaqCreate) -> Any:
-    """
-    This endpoint stores a new FAQ into the database.
-    """
-    faq = crud.faq.create(db=db, obj_in = faq_in)
-    return {
-        "Success": True,
-        "Status code": 200,
-        "FAQ": faq
-    }
