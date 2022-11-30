@@ -1,5 +1,6 @@
 .vscode
 venv/
+node_modules
 .db
 realexchange_db.db
 /node_modules/

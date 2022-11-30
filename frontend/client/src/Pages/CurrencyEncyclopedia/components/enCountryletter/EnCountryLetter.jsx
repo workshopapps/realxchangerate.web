@@ -1,5 +1,5 @@
 import React from "react";
-import letter from '../assets/letter.png'
+import letter from "../assets/letter.png";
 import {
   CounrtryOptionWrapper,
   CountryCurrencyWrapper,
@@ -11,7 +11,6 @@ import {
   Indicator,
   Redirect,
   Text,
- 
 } from "./EnCountryStyles";
 
 const EnCountryLetter = () => {
@@ -248,84 +247,66 @@ const EnCountryLetter = () => {
       </CounrtryOptionWrapper>
 
       <CurrencyWrapper>
-        <Indicator>G</Indicator>
+        <Indicator>
+          <p>G</p>
+        </Indicator>
       </CurrencyWrapper>
       <CountryCurrencyWrapper>
         <CountryNames>
-          <Img src={letter} alt="" style={{ marginRight: "5px" }} />
-          GBP-Bristish Pound
+          <Img src={letter} alt="" />
+          <span>GBP-Bristish Pound</span>
         </CountryNames>
         <CountryNames>
-          <Img src={letter} alt="" style={{ marginRight: "5px" }} />
-          GBP-Bristish Pound
+          <Img src={letter} alt="" />
+          <span>GBP-Bristish Pound</span>
         </CountryNames>
         <CountryNames>
-          <Img src={letter} alt="" style={{ marginRight: "5px" }} />
-          GBP-Bristish Pound
+          <Img src={letter} alt="" />
+          <span>GBP-Bristish Pound</span>
         </CountryNames>
         <CountryNames>
-          <Img src={letter} alt="" style={{ marginRight: "5px" }} />
-          GBP-Bristish Pound
+          <Img src={letter} alt="" />
+          <span>GBP-Bristish Pound</span>
         </CountryNames>
         <CountryNames>
-          <Img src={letter} alt="" style={{ marginRight: "5px" }} />
-          GBP-Bristish Pound
+          <Img src={letter} alt="" />
+          <span>GBP-Bristish Pound</span>
         </CountryNames>
         <CountryNames>
-          <Img src={letter} alt="" style={{ marginRight: "5px" }} />
-          GBP-Bristish Pound
+          <Img src={letter} alt="" />
+          <span>GBP-Bristish Pound</span>
         </CountryNames>
         <CountryNames>
-          <Img src={letter} alt="" style={{ marginRight: "5px" }} />
-          GBP-Bristish Pound
+          <Img src={letter} alt="" />
+          <span>GBP-Bristish Pound</span>
         </CountryNames>
         <CountryNames>
-          <Img src={letter} alt="" style={{ marginRight: "5px" }} />
-          GBP-Bristish Pound
+          <Img src={letter} alt="" />
+          <span>GBP-Bristish Pound</span>
         </CountryNames>
         <CountryNames>
-          <Img src={letter} alt="" style={{ marginRight: "5px" }} />
-          GBP-Bristish Pound
+          <Img src={letter} alt="" />
+          <span>GBP-Bristish Pound</span>
         </CountryNames>
         <CountryNames>
-          <Img
-            src={letter}
-            alt=""
-            style={{  marginRight: "5px" }}
-          />
-          GBP-Bristish Pound
+          <Img src={letter} alt="" />
+          <span>GBP-Bristish Pound</span>
         </CountryNames>
         <CountryNames>
-          <Img
-            src={letter}
-            alt=""
-            style={{  marginRight: "5px" }}
-          />
-          GBP-Bristish Pound
+          <Img src={letter} alt="" />
+          <span>GBP-Bristish Pound</span>
         </CountryNames>
         <CountryNames>
-          <Img
-            src={letter}
-            alt=""
-            style={{ marginRight: "5px" }}
-          />
-          GBP-Bristish Pound
+          <Img src={letter} alt="" />
+          <span>GBP-Bristish Pound</span>
         </CountryNames>
         <CountryNames>
-          <Img
-            src={letter}
-            alt=""
-            style={{  marginRight: "5px" }}
-          />
-          GBP-Bristish Pound
+          <Img src={letter} alt="" />
+          <span>GBP-Bristish Pound</span>
         </CountryNames>
         <CountryNames>
-          <Img
-            src={letter}
-            alt=""
-            style={{  marginRight: "5px" }}
-          />
-          GBP-Bristish Pound
+          <Img src={letter} alt="" />
+          <span>GBP-Bristish Pound</span>
         </CountryNames>
       </CountryCurrencyWrapper>
     </CurrencyContainer>

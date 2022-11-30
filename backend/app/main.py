@@ -15,6 +15,8 @@ origins = [
     "https://exchange.hng.tech",
     "https://exchange.hng.tech/*",
     "https://team-bevel-client.netlify.app/*",
+    "http://exchange.hng.tech:3008",
+    "http://exchange.hng.tech:3008/*",
 ]
 app.add_middleware(
     CORSMiddleware,

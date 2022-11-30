@@ -57,7 +57,13 @@ function HeaderLayout(props) {
           <TitleLogo width="130px" />
         </Box>
 
-        <Box sx={{ ml: "auto", display: { xs: "none", sm: "block" } }}>
+        <Box
+          sx={{
+            flexGrow: 1,
+            ml: "auto",
+            display: { xs: "none", sm: "block" },
+          }}
+        >
           <HeaderSearch />
         </Box>
 
@@ -125,7 +131,15 @@ function HeaderLayout(props) {
         </StyledHeaderTools>
       </StyledHeaderWrapper>
       <Divider />
-      {menuOpen ? <DropdownMenu setMenuOpen={setMenuOpen} /> : null}
+      {menuOpen ? (
+        <Box
+          sx={{
+            display: { xs: "block", sm: "none" },
+          }}
+        >
+          <DropdownMenu setMenuOpen={setMenuOpen} />
+        </Box>
+      ) : null}
       <Notifications show={notificationsOpen} close={setNotificationsOpen} />
     </>
   );
