@@ -254,7 +254,7 @@ const PersonalData = () => {
       </section>
 
       <section>
-        <h2>Why do we process this personal data?</h2>
+        <h2>Who do we share personal data with?</h2>
         <div>
           <p>Internal Recipients</p>
           <p>
