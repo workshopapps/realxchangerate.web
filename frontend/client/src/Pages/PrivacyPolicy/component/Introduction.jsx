@@ -1,4 +1,5 @@
 import React from "react";
+import { List } from "../style/Privacy.styled";
 
 const Introduction = () => {
   return (
@@ -18,7 +19,7 @@ const Introduction = () => {
         </p>
         <div>
           <p>Before we dive in, we want to clarify a few points:</p>
-          <ul>
+          <List>
             <li>
               Sorry kids! Our services aren&lsquo;t intended for children and we
               don&lsquo;t knowingly collect data relating to children.
@@ -34,7 +35,7 @@ const Introduction = () => {
               together a glossary to explain some of the legal terms used in it.
               You can find it at the end of this policy.
             </li>
-          </ul>
+          </List>
         </div>
       </div>
     </section>
