@@ -140,3 +140,20 @@ def delete_faq(*, db: Session = Depends(get_db), faq_id: int):
         return {"success": False, "status_code": 404, "data": {"id": faq_id}, "message": "Not found!"}
 
     return {"success": True, "status_code": 200, "data": {"rate": faq_query}, "message": "rate deleted!"}
+
+
+@router.get("/get_all_complaints")
+def get_all_complaints(db: Session = Depends(get_db)):
+    """
+    Gets all complaints from the database
+
+    Returns:
+        List of complaints
+    """
+    complaints = crud.complaint.get_all_complaints(db)
+    if complaints is None:
+        return {"success": False, "status_code": 404, "message": "Could not retrieve info!"}
+    if len(complaints) == 0:
+        return {"success": True, "status_code": 200, "message": "No complaints recorded!"}
+
+    return {"success": True, "status_code": 200, "complaints": complaints}
