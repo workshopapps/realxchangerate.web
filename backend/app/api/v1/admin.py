@@ -133,7 +133,9 @@ def get_all_complaints(db: Session = Depends(get_db)):
         List of complaints
     """
     complaints = crud.complaint.get_all_complaints(db)
+    if complaints is None:
+        return {"success": False, "status_code": 404, "message": "Could not retrieve info!"}
     if len(complaints) == 0:
-        return {"success": False, "status_code": 404, "message": "No complaints!"}
+        return {"success": True, "status_code": 200, "message": "No complaints recorded!"}
 
     return {"success": True, "status_code": 200, "complaints": complaints}
