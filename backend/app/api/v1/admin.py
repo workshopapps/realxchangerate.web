@@ -152,7 +152,7 @@ def delete_faq(*, db: Session = Depends(get_db), faq_id: int):
     if faq_query is None:
         return {"success": False, "status_code": 404, "data": {"id": faq_id}, "message": "Not found!"}
 
-    return {"success": True, "status_code": 200, "data": {"rate": faq_query}, "message": "rate deleted!"}
+    return {"success": True, "status_code": 200, "data": {"faq": faq_query}, "message": "rate deleted!"}
 
 
 @router.get("/get_all_complaints")
