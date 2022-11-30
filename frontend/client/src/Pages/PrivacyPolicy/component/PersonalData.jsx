@@ -271,7 +271,8 @@ const PersonalData = () => {
             each other to provide our Services.
           </p>
           <p>
-            Check out our <Link to="/">Partnership page</Link> for more info.
+            Check out our <Link to="/#/partnerships">Partnership page</Link> for
+            more info.
           </p>
           <p>External Recipients</p>
           <p>

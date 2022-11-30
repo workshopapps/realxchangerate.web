@@ -46,14 +46,14 @@ const PrivacyPolicy = () => {
       <section>
         <h3>Cookie Policy</h3>
         <span>
-          Check out our cookie <Link to="/">policy page</Link>
+          Check out our cookie <Link to="/#/Cookie-policy">policy page</Link>
         </span>
       </section>
 
       <section>
         <h3>Terms and Condition</h3>
         <span>
-          Check out our <Link to="/">Terms and condition page</Link>
+          Check out our <Link to="/#/terms">Terms and condition page</Link>
         </span>
       </section>
     </Container>
