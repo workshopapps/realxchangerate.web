@@ -55,8 +55,12 @@ export const Container = styled.div`
     }
   }
 
-  @media (min-width: 1440px) {
-    padding: 90px 0 211px 122px;
+  @media (min-width: 1280px) {
+    padding: 90px 0 211px 100px;
+  }
+
+  @media (min-width: 1399.98px) {
+    padding-left: 209px;
   }
 `;
 
