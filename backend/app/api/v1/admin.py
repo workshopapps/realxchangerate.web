@@ -137,6 +137,24 @@ def delete_rate(*, db: Session = Depends(get_db), rate_id: int):
     return {"success": True, "status_code": 200, "data": {"rate": rate_query}, "message": "rate deleted!"}
 
 
+@router.delete("/delete_faq")
+def delete_faq(*, db: Session = Depends(get_db), faq_id: int):
+    """delete selected faq
+
+    Args:
+        faq_id (int): faq id
+    """
+    if faq_id == 0:
+        return {"success": False, "status_code": 404, "data": {"id": faq_id}, "message": "id starts from 1!"}
+
+    faq_query = crud.faq.remove(db, model_id=faq_id)
+
+    if faq_query is None:
+        return {"success": False, "status_code": 404, "data": {"id": faq_id}, "message": "Not found!"}
+
+    return {"success": True, "status_code": 200, "data": {"rate": faq_query}, "message": "rate deleted!"}
+
+
 @router.get("/get_all_complaints")
 def get_all_complaints(db: Session = Depends(get_db)):
     """
