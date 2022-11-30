@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   padding: 52px 20px 235px;
   line-height: 24px;
-  color: #1e293b;
+  color: ${(props) => props.textColor}
   max-width: 1200px;
 
   h1,

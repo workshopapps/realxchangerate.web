@@ -2,12 +2,17 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Introduction from "./component/Introduction";
 import PersonalData from "./component/PersonalData";
+import { useTheme } from "@mui/material";
 
 import { Container, List } from "./style/Privacy.styled";
 
 const PrivacyPolicy = () => {
+  const theme = useTheme();
+  const DarkMode = theme.palette.mode === "dark";
+  const textColor = DarkMode ? "#fff" : "#1e293b";
+
   return (
-    <Container>
+    <Container textColor={textColor}>
       <section style={{ marginBottom: "48px" }}>
         <h1>Privacy Policy</h1>
         <p>Version 2.0 (effective up to and including 4 August 2022)</p>
