@@ -1,6 +1,4 @@
 import tweepy
-import asyncio
-import aiohttp
 import requests
 from datetime import datetime, time, timedelta
 from app.utils import get_binancep2p_rate, format_binance_response_data, make_official_rate_request,binancep2p_endpoint,official_rate_endpoint,request_headers
