@@ -22,7 +22,7 @@ const Mission = () => {
         justifyContent: { xs: "center", md: "space-between" },
         width: { xs: "87%", sm: "65%", lg: "84%" },
         margin: { xs: "40px auto 0px", md: "40px auto", lg: "40px auto" },
-        gap:{xs:"40px", md:"80px"}
+        gap: { xs: "40px", md: "80px" },
       }}
     >
       <Box
@@ -59,7 +59,8 @@ const Mission = () => {
           </Typography>
           <Typography
             textAlign="justify"
-            fontWeight="600"
+            fontWeight="400"
+            color="#202020"
             sx={{
               fontSize: { xs: "20px", sm: "15px", md: "15px", lg: "20px" },
               lineHeight: { lg: "28px" },
@@ -80,7 +81,11 @@ const Mission = () => {
           gap: { xs: "25px", md: "56px" },
         }}
       >
-        <Box width="100%" sx={{display:{xs:"flex", md:"none"}}} margin="auto">
+        <Box
+          width="100%"
+          sx={{ display: { xs: "flex", md: "none" } }}
+          margin="auto"
+        >
           <img src={vision} width="100%" alt="scanImage" />
         </Box>
         <Box
@@ -104,17 +109,23 @@ const Mission = () => {
           </Typography>
           <Typography
             textAlign="justify"
-            fontWeight="600"
+            fontWeight="400"
+            color="#202020"
             sx={{
               fontSize: { xs: "20px", sm: "15px", md: "15px", lg: "20px" },
               lineHeight: { lg: "28px" },
             }}
           >
-            To prepare the users mindset for any expenditure in any country of thier chioce
+            To prepare the users mindset for any expenditure in any country of
+            thier chioce
           </Typography>
         </Box>
 
-        <Box width="100%" sx={{display:{xs:"none", md:"flex"}}} margin="auto">
+        <Box
+          width="100%"
+          sx={{ display: { xs: "none", md: "flex" } }}
+          margin="auto"
+        >
           <img src={vision} width="100%" alt="scanImage" />
         </Box>
       </Box>

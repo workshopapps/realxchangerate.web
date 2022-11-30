@@ -1,17 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 import mobileImage from "./assets/mobile-image.png";
-import missionImage from "./assets/mission-image.png";
-import visionImage from "./assets/vision-image.png";
 import Value from "./components/Value";
 import { useTheme } from "@mui/material";
 import {
   AppstoreIcon,
-  CommunityIcon,
-  DiversityIcon,
-  EntrepreneurshipIcon,
   GoogleplayIcon,
-  InnovationIcon,
 } from "./assets/icons/icons";
 import TeamMember from "./components/TeamMember";
 import teamate1 from "./assets/person1.png";
@@ -77,37 +71,16 @@ const About = () => {
     <>
       <StyledPage>
         <Container about textColor={textColor}>
-          <Header />     
+          <Header />
         </Container>
 
         <Container textColor={textColor}>
-        <Mission />     
-          {/* <MissionVisionSection>
-            <MissionSection>
-              <MissionImage src={missionImage} alt="mission" />
-              <MissionContent>
-                <MissionHead>Our Mission</MissionHead>
-                <MissionText>
-                  To create a onestop platform that allow user to view their
-                  current and standard economic money rate in other currencies
-                </MissionText>
-              </MissionContent>
-            </MissionSection>
-            <MissionSection vision>
-              <MissionImage vision src={visionImage} alt="mission" />
-              <MissionContent>
-                <MissionHead>Our Vision</MissionHead>
-                <MissionText>
-                  To prepare the users mindset for any expenditure in any
-                  country of thier chioce
-                </MissionText>
-              </MissionContent>
-            </MissionSection>
-          </MissionVisionSection> */}
+          <Mission />
         </Container>
 
         <Container values textColor={textColor}>
-          <ValueSection>
+          <Value />
+          {/* <ValueSection>
             <StyledContent>
               <StyledHead>Our Values</StyledHead>
               <StyledText>
@@ -137,7 +110,7 @@ const About = () => {
                 heading="Community"
               />
             </ValuesList>
-          </ValueSection>
+          </ValueSection> */}
         </Container>
         <Container textColor={textColor}>
           <TeamSection>
