@@ -23,6 +23,8 @@ import teamate6 from "./assets/person6.png";
 import teamate7 from "./assets/person7.png";
 import teamate8 from "./assets/person8.png";
 import scan from "./assets/scan-image.png";
+import Header from "./components/Header";
+import Mission from "./components/Mission";
 const About = () => {
   const teamMember = [
     {
@@ -75,24 +77,12 @@ const About = () => {
     <>
       <StyledPage>
         <Container about textColor={textColor}>
-          <AboutSection>
-            <AboutContent>
-              <AboutHead>About Us</AboutHead>
-              <AboutText>
-                Bankstreet is a platform that allows User to recieve/veiw
-                instant conversion rates using customized areas real-time charts
-                that fit the Ecomony value and a historical conversion record
-                from one to one year and to enhance the customer experience{" "}
-              </AboutText>
-            </AboutContent>
-            <AboutImage>
-              <Img src={mobileImage} alt="mobileimage" />
-            </AboutImage>
-          </AboutSection>
+          <Header />     
         </Container>
 
         <Container textColor={textColor}>
-          <MissionVisionSection>
+        <Mission />     
+          {/* <MissionVisionSection>
             <MissionSection>
               <MissionImage src={missionImage} alt="mission" />
               <MissionContent>
@@ -113,7 +103,7 @@ const About = () => {
                 </MissionText>
               </MissionContent>
             </MissionSection>
-          </MissionVisionSection>
+          </MissionVisionSection> */}
         </Container>
 
         <Container values textColor={textColor}>
