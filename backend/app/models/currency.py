@@ -11,7 +11,6 @@ class Currency(Base):
     country = Column(String, unique=True, index=True, nullable=False)
     isocode = Column(String, unique=True, nullable=False)
     symbol = Column(String, nullable=False)
-    name = Column(String,unique=True,nullable = False)
 
     rates = relationship(
         "Rate", back_populates="currency", cascade="all, delete")
