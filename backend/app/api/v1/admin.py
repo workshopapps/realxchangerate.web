@@ -19,7 +19,7 @@ def create_admin(*, db: Session = Depends(get_db), admin_in: schemas.AdminCreate
     if admin:
         raise HTTPException(
             status_code=400,
-            detail="Admin with email already exists." 
+            detail="Admin with email already exists."
         )
     admin = crud.admin.create(db, obj_in=admin_in)
     return {"success": True, "data": admin}
@@ -38,11 +38,11 @@ def add_currency(
 
 @router.post("/add_rate", status_code=201)
 async def create_rate(*, db: Session = Depends(get_db),
-             rate_in: schemas.RateCreate) -> Any:
+                      rate_in: schemas.RateCreate) -> Any:
     #    create new rates
     details = crud.currency.get_currency_by_id(db, id=rate_in.currency_id)
     if details:
-    
+
         rate = crud.rate.create(db=db, obj_in=rate_in)
         return (rate)
     else:
@@ -122,3 +122,18 @@ def delete_rate(*, db: Session = Depends(get_db), rate_id: int):
         return {"success": False, "status_code": 404, "data": {"id": rate_id}, "message": "Not found!"}
 
     return {"success": True, "status_code": 200, "data": {"rate": rate_query}, "message": "rate deleted!"}
+
+
+@router.get("/get_all_complaints")
+def get_all_complaints(db: Session = Depends(get_db)):
+    """
+    Gets all complaints from the database
+
+    Returns:
+        List of complaints
+    """
+    complaints = crud.complaint.get_all_complaints(db)
+    if len(complaints) == 0:
+        return {"success": False, "status_code": 404, "message": "No complaints!"}
+
+    return {"success": True, "status_code": 200, "complaints": complaints}
