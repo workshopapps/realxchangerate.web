@@ -23,8 +23,9 @@ const Convert = () => {
   const base_url = process.env.REACT_APP_BASE_URL;
   const localBase = "http://localhost:8000/api";
   const [rates, setRates] = React.useState({});
-  const [convert, setconvert] = React.useState(1);
+  const [convert, setconvert] = React.useState(1000);
   const [currency, setCurrecy] = React.useState("NGN");
+  const [base, setBase] = React.useState("USA");
   const [buy, setbuy] = React.useState(true);
 
   const endpoint =
@@ -46,9 +47,7 @@ const Convert = () => {
   }, [base_url, endpoint, currency]);
 
   const handleSwitch = () => {
-    setbuy((value) => {
-      return !value;
-    });
+    setbuy(!buy);
   };
 
   const parent = React.useRef(null);
@@ -65,7 +64,14 @@ const Convert = () => {
       <MenuItem
         key={currency.isocode}
         value={currency.isocode}
-        sx={{ display: "flex", gap: "1rem" }}
+        sx={{
+          display: "flex",
+          gap: "1rem",
+          paddingInline: "4px",
+          fontSize: "14px",
+          height: "24px",
+          alignItems: "center",
+        }}
       >
         <Box>
           <img
@@ -83,96 +89,90 @@ const Convert = () => {
   };
 
   const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.up("lg"));
+  const matches = useMediaQuery(theme.breakpoints.up("md"));
 
   return (
     <Card
       className={styles.convert}
       sx={{
         borderRadius: "1rem",
-        width: { xs: "100%", md: "50%" },
+        width: { xs: "100%" },
         border: "1px solid #BBBBBB",
+        padding: { lg: "32px", xs: "8px" },
+        mb: "64px",
       }}
     >
+      <h2
+        style={{
+          color: "#0F172A",
+          fontSize: "clamp(20px, 5vw, 24px)",
+          lineHeight: "40px",
+          textAlign: "center",
+          marginBottom: "40px",
+        }}
+      >
+        Start Conversion
+      </h2>
       <Box sx={{ width: { xs: "100%" } }}>
-        {convert && Object.keys(rates).length > 0 && (
-          <Rate className="rate">
-            <div>
-              At the the parallel market,{" "}
-              <span className="convert"> {convert} </span>{" "}
-              {buy ? "USD" : currency} is
-            </div>
-            <div>
-              {" "}
-              <span className="rate">
-                {" "}
-                {buy
-                  ? noWCommas((rates.parallel_buy * Number(convert)).toFixed(2))
-                  : noWCommas(
-                      ((1 / rates.parallel_sell) * Number(convert)).toFixed(2)
-                    )}
-              </span>{" "}
-              <span> {buy ? currency : "USD"}</span>
-            </div>
-          </Rate>
-        )}
         <Box
           component="form"
-          sx={{ display: "flex", flexDirection: "column", rowGap: 2 }}
+          sx={{
+            display: "flex",
+            flexDirection: { md: "row", xs: "column" },
+            flexWrap: "no-wrap",
+            width: "100%",
+            // justifyContent: "space-between",
+            alignItems: "center",
+            gap: "26px",
+          }}
         >
-          <TextField
-            InputLabelProps={{
-              shrink: true,
-              inputMode: "numeric",
-              // pattern: "[0-9]*",
-            }}
-            placeholder="enter amount"
-            variant="outlined"
-            type="number"
-            name="amount"
-            label="Amount"
-            value={convert}
-            onChange={(e) => setconvert(e.target.value)}
-          />
-          <Box
+          {/* <Box
             ref={parent}
             sx={{
               display: "flex",
-              flexDirection: { xs: "column", lg: "row" },
-              gap: "1.5rem",
+              flexDirection: { xs: "column", sm: "row" },
+
+              gap: "26px",
               alignItems: "center",
               justifyContent: "center",
               mt: { xs: "1rem", lg: "1.5rem" },
             }}
-          >
-            {buy ? (
-              <TextField
-                sx={{
-                  flex: 2,
-                  bgcolor: "#B0CEFF",
-                  borderRadius: "1rem",
-                  border: "none",
-                }}
-                variant="filled"
-                id="outlined-read-only-input"
-                label="Base Currency"
-                defaultValue="USD"
-                InputProps={{
-                  readOnly: true,
-                }}
-              />
-            ) : (
+          > */}
+          {buy ? (
+            <SelectCurrency>
               <FormControl
                 variant="outlined"
                 fullWidth
-                sx={{ flex: 2, mt: { xs: "15px", lg: "5px" } }}
+                sx={{ flexBasis: "30%", mt: { xs: "15px", lg: "5px" } }}
               >
-                <InputLabel className={styles.label}>
-                  Select Currency
-                </InputLabel>
+                <InputLabel className={styles.label}>Base Currency</InputLabel>
                 <Select
                   name="currency"
                   id="currency1"
+                  sx={{ mt: "6px" }}
+                  value={base}
+                  onChange={(e) => setBase(e.target.value)}
+                >
+                  {currenciesList.map((currency) => (
+                    <MenuItem key={currency.isocode} value={currency.isocode}>
+                      <CurrencyMenu currency={currency} />
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            </SelectCurrency>
+          ) : (
+            <SelectCurrency>
+              <FormControl
+                variant="outlined"
+                fullWidth
+                sx={{ flexBasis: "30%", mt: { xs: "15px", lg: "5px" } }}
+              >
+                <InputLabel className={styles.label}>Currency</InputLabel>
+                <Select
+                  name="currency"
+                  id="currency1"
+                  sx={{ mt: "6px" }}
                   value={currency}
                   onChange={(e) => setCurrecy(e.target.value)}
                 >
@@ -183,36 +183,57 @@ const Convert = () => {
                   ))}
                 </Select>
               </FormControl>
-            )}
-            <Button
-              onClick={handleSwitch}
-              variant="outlined"
-              sx={{
-                maxWidth: "30px",
-                height: "50px",
-                margin: "0 auto",
-                flex: 2,
+            </SelectCurrency>
+          )}
+          <AmountInput>
+            <TextField
+              InputLabelProps={{
+                shrink: true,
+                inputMode: "numeric",
+
+                // pattern: "[0-9]*",
               }}
-            >
-              {matches ? (
-                <HiOutlineSwitchHorizontal size="1.7rem" />
-              ) : (
-                <HiOutlineSwitchVertical size="1.7rem" />
-              )}
-            </Button>
-            {buy ? (
+              placeholder="enter amount"
+              variant="outlined"
+              type="number"
+              name="amount"
+              sx={{
+                width: "100%",
+              }}
+              label="Amount"
+              value={convert}
+              onChange={(e) => setconvert(e.target.value)}
+            />
+          </AmountInput>
+          <Button
+            onClick={handleSwitch}
+            // variant="outlined"
+            sx={{
+              maxWidth: "30px",
+              height: "50px",
+              margin: "0 auto",
+              flex: 2,
+            }}
+          >
+            {matches ? (
+              <HiOutlineSwitchHorizontal size="2rem" />
+            ) : (
+              <HiOutlineSwitchVertical size="2rem" />
+            )}
+          </Button>
+          {buy ? (
+            <SelectCurrency>
               <FormControl
                 variant="outlined"
                 fullWidth
-                sx={{ flex: 2, mt: { xs: "15px", lg: "5px" } }}
+                sx={{ flexBasis: "30%", mt: { xs: "15px", lg: "5px" } }}
               >
-                <InputLabel className={styles.label}>
-                  Select Currency
-                </InputLabel>
+                <InputLabel className={styles.label}>Currency</InputLabel>
                 <Select
                   name="currency"
                   variant="outlined"
                   id="currency1"
+                  sx={{ mt: "6px" }}
                   value={currency}
                   onChange={(e) => setCurrecy(e.target.value)}
                 >
@@ -223,53 +244,176 @@ const Convert = () => {
                   ))}
                 </Select>
               </FormControl>
-            ) : (
-              <TextField
-                sx={{
-                  bgcolor: "#B0CEFF",
-                  borderRadius: "1rem",
-                  border: "none",
-                  flex: 2,
-                }}
-                variant="filled"
-                id="outlined-read-only-input"
-                label="Base Currency"
-                defaultValue="USD"
-                InputProps={{
-                  readOnly: true,
-                }}
-              />
-            )}
-          </Box>
+            </SelectCurrency>
+          ) : (
+            <SelectCurrency>
+              <FormControl
+                variant="outlined"
+                fullWidth
+                sx={{ flexBasis: "30%", mt: { xs: "15px", lg: "5px" } }}
+              >
+                <InputLabel className={styles.label}>Base Currency</InputLabel>
+                <Select
+                  name="currency"
+                  id="currency1"
+                  value={base}
+                  sx={{ mt: "6px" }}
+                  onChange={(e) => setBase(e.target.value)}
+                >
+                  {currenciesList.map((currency) => (
+                    <MenuItem key={currency.isocode} value={currency.isocode}>
+                      <CurrencyMenu currency={currency} />
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            </SelectCurrency>
+          )}
+          {/* </Box> */}
         </Box>
       </Box>
+      {convert && Object.keys(rates).length > 0 && (
+        <Rate>
+          <div className="convert">
+            <h4>Result</h4>
+            <h3>
+              {buy
+                ? noWCommas((rates.parallel_buy * Number(convert)).toFixed(2))
+                : noWCommas(
+                    ((1 / rates.parallel_sell) * Number(convert)).toFixed(2)
+                  )}
+              <span>{buy ? currency : "USD"}</span>
+            </h3>
+            <div className="xchng">
+              1 {buy ? currency : "USD"} ={" "}
+              {buy
+                ? noWCommas((rates.parallel_buy * Number(1)).toFixed(2))
+                : noWCommas(
+                    ((1 / rates.parallel_sell) * Number(1)).toFixed(2)
+                  )}{" "}
+              {buy ? "USD" : currency}
+            </div>
+          </div>
+
+          <div>
+            <h6>
+              With Streetrates, you always obtain the best exchange rate.{" "}
+            </h6>
+            <p>Last updated Nov 16, 2022, 04:49 UTC</p>
+          </div>
+        </Rate>
+      )}
     </Card>
   );
 };
 
 const Rate = styled.div`
-  width: 100%;
-  word-wrap: break-word;
-  font-size: 1.7rem;
-  font-weight: 500;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  margin-top: 40px;
   align-items: center;
-  .rate,
-  .convert {
-    word-wrap: break-word;
-    color: #0062ff;
-    font-weight: 700;
+  display: flex;
+  justify-content: space-between;
+
+  padding-left: 16px;
+  padding-right: 80px;
+
+  h4 {
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 500;
+    margin-bottom: 4px;
   }
-  .rate {
-    font-size: 4rem;
-    order: 1 !important;
+  h3 {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 32px;
+    margin-bottom: 4px;
   }
-  .convert {
-    font-size: 2.5rem;
-    order: 2 !important;
+  span {
+    margin-left: 6px;
+  }
+  .xchng {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    color: #555962;
+    margin-bottom: 4px;
+  }
+  & :last-child {
+    text-align: right;
+    h6 {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      color: #555962;
+      margin-bottom: 4px;
+    }
+    p {
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 18px;
+      color: #94a3b8;
+    }
+  }
+  @media screen and (max-width: 700px) {
+    margin-top: 24px;
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+    padding-inline: 16px;
+
+    & :last-child {
+      text-align: center;
+      margin-bottom: 8px;
+    }
   }
 `;
 
+const AmountInput = styled.div`
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  /* height: 70px; */
+
+  & input {
+    padding: 12px 16px;
+  }
+  @media screen and (min-width: 768px) {
+    height: 65px;
+    width: 30%;
+  }
+  @media screen and (min-width: 1025px) {
+    height: 55px;
+    width: 30%;
+  }
+`;
+
+const SelectCurrency = styled.div`
+  /* display: none; */
+  /* height: 50px; */
+  width: 100%;
+  #currency1 {
+    padding: 4px;
+  }
+  & select {
+    background-color: red;
+    /* margin-bottom: 20px; */
+    width: 100%;
+    padding: 12px 16px;
+    & option {
+      background-color: green;
+    }
+  }
+
+  @media screen and (min-width: 400px) {
+    #currency1 {
+      padding: 12px 16px;
+    }
+  }
+  @media screen and (min-width: 768px) {
+    width: 30%;
+    #currency1 {
+      padding: 12px 16px;
+    }
+  }
+`;
 export default Convert;

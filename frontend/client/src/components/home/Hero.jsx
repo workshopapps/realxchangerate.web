@@ -23,7 +23,7 @@ function Hero() {
         sx={{
           width: "100%",
           display: "flex",
-          justifyContent: { xs: "center", lg: "left" },
+          justifyContent: "center",
           alignItems: "center",
           gap: "1.4rem",
         }}
