@@ -43,12 +43,11 @@ export const GetDefaultCurrency = (ip) => async () => {
 export const GetCurrencies = () => async () => {
   try {
     const res = await RateService.GetCurrencies();
-    let currencies = res.data.currencies.filter(ele => ele.country !== "EU");
+    let currencies = res.data.currencies
     const countryDetails = currencies.map((ele) => {
      let country =  countries.find((x) => x.label === ele.country)
      return country
     });
-    console.log(countryDetails)
     dispatch(setCurrencyList(currencies));
     dispatch(setCountryDetails(countryDetails));
     dispatch(setLoading(false));
