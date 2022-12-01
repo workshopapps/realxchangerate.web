@@ -58,7 +58,7 @@ const NavComponent = () => {
     }
   }, [defaultCurrency, currencyList]);
 
-  // console.log(countryDetails)
+
 
   return (
     <Grid
@@ -162,7 +162,6 @@ const NavComponent = () => {
             }}
           >
             {currencyList.map((ele) => {
-              console.log(ele);
               return (
                 <MenuItem
                   sx={{

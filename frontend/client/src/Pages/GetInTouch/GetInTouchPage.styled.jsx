@@ -47,7 +47,9 @@ export const StyledButton = styled.button`
 
   /* Primary/Blue 100 */
   border: none;
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
   background: #0062ff;
   border-radius: 8px;

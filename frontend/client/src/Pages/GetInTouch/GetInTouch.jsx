@@ -1,4 +1,4 @@
-import { Box, Stack, Typography, useTheme } from "@mui/material";
+import { Box, CircularProgress, Stack, Typography, Modal } from "@mui/material";
 import React, { useState } from "react";
 import im from "./img.png";
 import location from "./location.svg";
@@ -8,6 +8,7 @@ import fb from "./facebook.png";
 import ins from "./Instagram_icon.png";
 import linkedin from "./linkedin.png";
 import twitter from "./twitter.png";
+import axios from "axios";
 import {
   InputStyled,
   StyledButton,
@@ -24,7 +25,10 @@ export default function GetInTouch() {
     message: "",
   });
   const [btn, setBtn] = useState(true);
-
+  const [modal, setModal] = useState(false);
+  const [open, setClose] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [resText, setRes] = useState("");
   const handleChange = (e) => {
     const newData = { ...data, [e.target.name]: e.target.value };
     if (data.name !== "" && data.email !== "" && data.email !== "") {
@@ -33,6 +37,44 @@ export default function GetInTouch() {
       setBtn(true);
     }
     setData(newData);
+  };
+  const BASE_URL = "https://9bd5-197-210-79-181.ngrok.io/api/contacts";
+
+  const handleSend = (e) => {
+    e.preventDefault();
+    setLoading(true);
+    if (data.email !== "" && data.name !== "" && data.message !== "") {
+      axios
+        .post(BASE_URL, data)
+        .then((res) => {
+          setLoading(false);
+          setModal(true);
+          setClose(true);
+          setRes(res.data.message);
+          const ndata = {
+            name: "",
+            email: "",
+            message: "",
+          };
+          setData(ndata);
+        })
+        .catch((e) => {
+          console.log(e);
+          setLoading(false);
+        });
+    }
+  };
+  const style = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: { md: 400, sm: "90%", xs: "90%" },
+    margin: { sm: "auto", xs: "auto" },
+    bgcolor: "background.paper",
+    borderRadius: 2,
+    boxShadow: "24px #333333",
+    p: 4,
   };
 
   return (
@@ -256,7 +298,7 @@ export default function GetInTouch() {
               marginBottom: 10,
             }}
           >
-            <form>
+            <form onSubmit={handleSend}>
               <Stack direction="column" mb={2.3}>
                 <label
                   style={{
@@ -317,13 +359,38 @@ export default function GetInTouch() {
                 />
               </Stack>
 
-              <StyledButton disabled={btn}>
-                <span>Submit</span>
+              <StyledButton disabled={btn} type="submit">
+                {!loading && <span>Submit</span>}
+                {loading && <CircularProgress size={15} />}
               </StyledButton>
             </form>
           </Box>
         </Box>
       </Stack>
+      {modal && (
+        <Modal
+          open={open}
+          onClose={() => setClose(false)}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+          sx={{
+            width: { sm: "90%", xs: "90%" },
+            margin: { sm: "auto", xs: "auto" },
+          }}
+        >
+          <Box sx={style}>
+            <Typography id="modal-modal-title" variant="h3" component="h2">
+              Message sent
+            </Typography>
+            <Typography
+              id="modal-modal-description"
+              sx={{ mt: 2, fontSize: 16, color: "#4b4b4b" }}
+            >
+              {resText}
+            </Typography>
+          </Box>
+        </Modal>
+      )}
     </Box>
   );
 }
