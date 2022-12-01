@@ -3,15 +3,22 @@ import React from "react";
 import { Link } from "react-router-dom";
 import im from "../assets/before.png";
 
-export default function MainNewsCard() {
+export default function MainNewsCard({currentNews}) {
   const theme = useTheme()
   const darkMode = theme.palette.mode === 'dark'
+
+  let date
+  if(currentNews){
+    let pubDate = new Date(currentNews.pubDate)
+    console.log(pubDate.toString())
+  }
+
   return (
     <Box flex={2}>
       <Stack>
         <img src={im} alt="im" width="100%" />
         <Typography variant="p" color="#64748B" mt={1}>
-          15 November, 2022 | 9:45pm
+          
         </Typography>
         <Box mt={2}>
           <Typography
