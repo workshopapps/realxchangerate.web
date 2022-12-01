@@ -27,7 +27,7 @@ const Hero = () => {
           <button
             className="btn2"
             onClick={() => {
-              navigate("/ambassadors");
+              navigate("/ambassadors/student-ambassador");
             }}
           >
             Apply as a student
