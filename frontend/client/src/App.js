@@ -1,8 +1,8 @@
 import {
-  HashRouter as Router,
-  Routes,
-  Route,
-  Navigate,
+    HashRouter as Router,
+    Routes,
+    Route,
+    Navigate,
 } from "react-router-dom";
 
 import NavComponent from "./components/NavComponent";
@@ -43,6 +43,7 @@ import ErrorPage from "./Pages/404/ErrorPage";
 import SingleNews from "./Pages/SingleNews/SingleNews";
 import Article from "./Pages/Press/Article/Article";
 import PressNews from "./Pages/Press/PressRelease/News";
+import CurrencyProfile from "./Pages/CurrencyProfile/CurrencyProfile";
 // import ScrollToTop from "./utils/ScrollToTop";
 
 function App() {
@@ -91,7 +92,7 @@ function App() {
             <Route path="/Cookie-policy" element={<CookiePolicy />} />
             <Route path="/glossary" element={<Glossary />} />
             <Route path="/advertising" element={<OnlineAdvertising />} />
-            <Route path='/apply-to-advertise' element={<ApplyToAdvertise />} />
+            <Route path="/apply-to-advertise" element={<ApplyToAdvertise />} />
             <Route path="/ambassadors" element={<Ambassadors />} />
             <Route path="/ddff" element={<ErrorPage />} />
             <Route path="/*" element={<ErrorPage />} />

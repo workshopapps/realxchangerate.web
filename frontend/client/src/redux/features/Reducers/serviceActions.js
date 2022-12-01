@@ -11,6 +11,7 @@ import {
 import axios from "axios";
 import RateService from "../Utils/Axios/apis";
 import { countries } from "../../../utils/data";
+import { CurrencyLira } from "@mui/icons-material";
 
 export const GetUserIp = () => async () => {
   try {
@@ -42,10 +43,10 @@ export const GetDefaultCurrency = (ip) => async () => {
 export const GetCurrencies = () => async () => {
   try {
     const res = await RateService.GetCurrencies();
-    let currencies = res.data.currencies;
-    const countryDetails = [];
-    currencies.forEach((ele) => {
-      countryDetails.push(countries.find((x) => x.label === ele.country));
+    let currencies = res.data.currencies
+    const countryDetails = currencies.map((ele) => {
+     let country =  countries.find((x) => x.label === ele.country)
+     return country
     });
     dispatch(setCurrencyList(currencies));
     dispatch(setCountryDetails(countryDetails));

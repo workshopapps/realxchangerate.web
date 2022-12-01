@@ -24,4 +24,4 @@ export { default as OnlineAdvertising } from "./OnlineAdvertising/OnlineAdvertis
 export { default as ApplyToAdvertise } from "./ApplyToAdvertise/ApplyToAdvertise";
 export { default as Ambassadors } from "./Ambassadors/Ambassadors";
 export { default as Welcome } from "./Welcome/Welcome";
-
+export { default as PrivacyPolicy } from "./PrivacyPolicy/PrivacyPolicy";
