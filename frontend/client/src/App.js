@@ -35,6 +35,7 @@ import {
   OnlineAdvertising,
   ApplyToAdvertise,
   Ambassadors,
+  StudentAmbassador,
   Home,
 } from "./Pages";
 import GlobalStyle from "./styles/Globalstyle";
@@ -99,6 +100,10 @@ function App() {
             <Route path="/glossary" element={<Glossary />} />
             <Route path="/advertising" element={<OnlineAdvertising />} />
             <Route path="/ambassadors" element={<Ambassadors />} />
+            <Route
+              path="/ambassadors/student-ambassador"
+              element={<StudentAmbassador />}
+            />
             <Route path="/ddff" element={<ErrorPage />} />
             <Route path="/*" element={<ErrorPage />} />
             <Route path="*" element={<Navigate to={"/ddff"} />} />
