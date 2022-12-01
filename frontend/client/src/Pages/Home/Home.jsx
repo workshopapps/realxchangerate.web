@@ -23,14 +23,15 @@ const Home = () => {
         sx={{
           display: "flex",
           justifyContent: "space-between",
-          alignItems: "baseline",
-          flexDirection: { xs: "column", sm: "row-reverse" },
+          alignItems: "center",
+
+          flexDirection: { sm: "column", xs: "column-reverse" },
 
           gap: "2.4rem",
         }}
       >
-        <Convert />
         <Hero />
+        <Convert />
       </Box>
       <Box>
         <Typography
