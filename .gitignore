@@ -1,5 +1,5 @@
 .vscode
 venv/
-
+.db
+realexchange_db.db
 /node_modules/
-node_modules
