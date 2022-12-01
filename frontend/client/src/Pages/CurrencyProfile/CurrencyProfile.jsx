@@ -211,7 +211,7 @@ const CurrencyProfile = () => {
                     }}
                 >
                     <Box>Currency</Box>
-                    <Box>BDC</Box>
+                    <Box>Parallel</Box>
                     <Box>Bank</Box>
                 </ListItem>
                 {currenciesList.map((currency) => (
