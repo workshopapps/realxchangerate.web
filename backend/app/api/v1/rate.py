@@ -202,3 +202,29 @@ def get_rates_before_hour(hour: int, db: Session = Depends(get_db)):
     }
 
     return data
+
+@router.get("/high_low/{isocode}")
+def get_highest_and_lowest_rates(isocode, db: Session = Depends(get_db)):
+    """
+    Get the highest and lowest rates for a selected currency by isocode
+
+    Args:
+        isocode (str): Country isocode
+    """
+    currency = crud.currency.get_currency_by_isocode(db, isocode=isocode)
+    if currency == None:
+        return {"success": False, "message": "Currency not found", "status_code": 404}
+    result = {}
+    rate = (
+        db.query(Rate)
+        .filter(Rate.currency_id == currency.id)
+        .order_by(Rate.parallel_buy.desc())
+        .all()
+    )
+    result["highest"] = rate[0]
+    result["lowest"] = rate[-1]
+    return {
+        "success": True,
+        "status_code": 200,
+        "data": {"currency": currency, "rates": result},
+    }
