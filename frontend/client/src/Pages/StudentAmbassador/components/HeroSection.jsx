@@ -4,12 +4,15 @@ import {
   HeroContainer,
   HeroContents,
   HeroImage,
+  HeroImageContainer,
 } from "../style/StudentAmbassador.styled";
 
 const HeroSection = () => {
   return (
     <HeroContainer>
-      <HeroImage>Become a Student Ambassador</HeroImage>
+      <HeroImageContainer>
+        <HeroImage>Become a Student Ambassador</HeroImage>
+      </HeroImageContainer>
       <HeroContents>
         <p>
           We are looking forward to working with passionate students who can

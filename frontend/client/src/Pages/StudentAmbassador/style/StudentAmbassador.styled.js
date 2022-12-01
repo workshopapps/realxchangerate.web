@@ -10,6 +10,21 @@ export const HeroContainer = styled.div`
   }
 `;
 
+export const HeroImageContainer = styled.div`
+  padding: 0 16px;
+
+  @media (min-width: 500px) {
+    padding: 0 40px;
+  }
+
+  @media (min-width: 768px) {
+    padding: 0 80px;
+  }
+  @media (min-width: 1280px) {
+    padding: 0 120px;
+  }
+`;
+
 export const HeroImage = styled.div`
   background: url(${heroBg}) center/cover;
   font-weight: 700;
@@ -44,7 +59,6 @@ export const HeroImage = styled.div`
 
 export const HeroContents = styled.div`
   background: #e6efff;
-  width: 0 -16px;
   padding: 40px 0 42px;
   font-size: 12px;
   line-height: 18px;
@@ -69,6 +83,7 @@ export const HeroContents = styled.div`
 
     p {
       margin-bottom: 24px;
+      max-width: 1200px;
     }
   }
 
@@ -100,6 +115,7 @@ export const StudentAmbassadorsSection = styled.div`
   margin: auto;
   margin-bottom: 100px;
   max-width: 1120px;
+  padding: 0 16px;
 
   h2 {
     font-size: 18px;
@@ -108,12 +124,14 @@ export const StudentAmbassadorsSection = styled.div`
 
   @media (min-width: 500px) {
     h2 {
+      padding: 0 40px;
       font-size: 24px;
     }
   }
 
   @media (min-width: 768px) {
     h2 {
+      padding: 0 80px;
       font-size: 36px;
       margin-bottom: 60px;
     }
@@ -121,6 +139,7 @@ export const StudentAmbassadorsSection = styled.div`
 
   @media (min-width: 1024px) {
     h2 {
+      padding: 0 120px;
       font-size: 48px;
     }
   }
