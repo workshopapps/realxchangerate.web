@@ -14,3 +14,13 @@ class Currency(Base):
 
     rates = relationship(
         "Rate", back_populates="currency", cascade="all, delete")
+
+    def dict(self):
+        """Returns dictionary representation of currency"""
+        dict = {}
+        dict["id"] = self.id
+        dict["country"] = self.country
+        dict["isocode"] = self.isocode
+        dict["symbol"] = self.symbol
+
+        return dict
