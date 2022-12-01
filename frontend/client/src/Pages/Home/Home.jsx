@@ -1,29 +1,31 @@
-import { Box, Container, List, ListItem, Typography } from "@mui/material";
+import { Box, List, ListItem, Typography } from "@mui/material";
 import React from "react";
 import Convert from "../../components/home/Convert";
 import Hero from "../../components/home/Hero";
-import Table from "./components/Table";
+// import Table from "./components/Table";
 import Table2 from "./components/Table2";
 import { currenciesList } from "./data";
 
 const Home = () => {
   return (
-    <Container
+    <Box
       sx={{
         display: "flex",
         // flexDirection: { sx: "column", md: "row" },
         flexDirection: "column",
         gap: "4rem",
-        width: "100%",
+        maxWidth: "1440px",
+        margin: "auto",
+        p: { xs: "1.5rem", md: "4rem", lg: "5rem 10rem" },
       }}
     >
       <Box
         sx={{
           display: "flex",
           justifyContent: "space-between",
-          alignItems: "center",
+          alignItems: "baseline",
           flexDirection: { xs: "column", sm: "row-reverse" },
-          width: "100%",
+
           gap: "2.4rem",
         }}
       >
@@ -41,7 +43,13 @@ const Home = () => {
         </Typography>
       </Box>
       {/* Table  */}
-      <List>
+      <List
+        style={{
+          border: "1px solid #CBD5E1",
+          padding: "0",
+          borderRadius: "5px",
+        }}
+      >
         <ListItem
           sx={{
             display: "flex",
@@ -51,6 +59,7 @@ const Home = () => {
             fontSize: "1.7rem",
             p: "1.5rem",
             fontWeight: 600,
+            color: "black",
           }}
         >
           <Box>Currency</Box>
@@ -58,10 +67,14 @@ const Home = () => {
           <Box>Bank Rate</Box>
         </ListItem>
         {currenciesList.map((currency) => (
-          <Table2 isocode={currency.isocode} key={currency.id} />
+          <Table2
+            isocode={currency.isocode}
+            country={currency.country}
+            key={currency.id}
+          />
         ))}
       </List>
-    </Container>
+    </Box>
   );
 };
 

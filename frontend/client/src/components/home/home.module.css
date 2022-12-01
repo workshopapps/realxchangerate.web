@@ -31,15 +31,17 @@
   color: #94a3b8;
   border-radius: 1rem;
 }
-.convert label,
-.convert .label {
+.convert label {
   font-size: 2rem;
-  margin-bottom: 5rem !important;
+  font-weight: bold;
+  /* margin-bottom: 5rem !important; */
   position: absolute;
   top: -10px;
 }
+.convert .label {
+  color: black !important;
+}
 .hero {
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -57,7 +59,7 @@
   letter-spacing: 4px;
 }
 .hero h1 {
-  font-size: 3rem;
+  font-size: 3.5rem;
   font-weight: 700;
   /* line-height: 3rem; */
 }
@@ -73,5 +75,8 @@
     width: 50%;
     text-align: left;
     align-items: flex-start;
+  }
+  .hero h1 {
+    font-size: 4.5rem;
   }
 }

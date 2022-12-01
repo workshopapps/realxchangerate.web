@@ -1,9 +1,9 @@
 import React from "react";
-import { Container, Grid, useTheme } from "@mui/material";
+import {  Grid, useTheme,Box } from "@mui/material";
 import {
     Header,
     Title,
-    Wrapper,
+    //Wrapper,
     Paragraph,
     Section,
     Text,
@@ -18,17 +18,15 @@ const HelpCenter = () => {
 	const textColor = DarkMode ? "#fff" : ""
 
     return (
-        <Container
-            style={{
-                maxWidth: "1440px"
-            }}
-            sx={{
-                paddingLeft: { xs: 2, sm: 2, md: 2, lg: 9, xl: 9 },
-                paddingRight: { xs: 2, sm: 2, md: 2, lg: 9, xl: 9 },
-            }}
+        <Box
+        fontFamily= "'Inter', sans-serif" maxWidth="1440px"
         >
-            <Wrapper>
-                <Title style={{color:textColor}} position={{ align: "left", marginTop: "10px" }}>
+            <Box 
+            margin="0px auto"
+            sx={{
+                maxWidth: { xs: "84%", sm: "90%", md: "84%" }
+              }}>
+                <Title style={{color:textColor}} position={{ align: "left", marginTop: "64px" , marginBottom:"64px"}}>
                     Help Center
                 </Title>
                 <Header style={{color:textColor}}>Hi, How can we help?</Header>
@@ -38,8 +36,8 @@ const HelpCenter = () => {
                     choosing your base currency and your country location, our
                     integrated matrix, services and more.
                 </Paragraph>
-                <Section>
-                    <Title position={{ align: "center" }}>
+                <Section style={{marginTop:"64px"}}>
+                    <Title position={{ align: "center" }} >
                         Still in need of support? Our support team are available
                         to help.{" "}
                     </Title>
@@ -52,13 +50,14 @@ const HelpCenter = () => {
                         <Text>International Contact: +62 528 124 5600</Text>
                     </SubSection>
                 </Section>
+                
                 <Title
                     position={{
                         align: "left",
-                        marginTop: "60px",
+                        marginTop: "64px",
                     }}
                     style={{
-                        marginBottom: "30px",
+                        marginBottom: "10px",
                         color:textColor
                     }}
                 >
@@ -69,6 +68,7 @@ const HelpCenter = () => {
                     style={{
                         marginBottom: "80px",
                     }}
+                    direction = {{xs: 'column', md:'row'}}
                     spacing={5}
                     alignItems="stretch"
                 >
@@ -110,8 +110,8 @@ const HelpCenter = () => {
                         </Section>
                     </Grid>
                 </Grid>
-            </Wrapper>
-        </Container>
+            </Box>
+        </Box>
     );
 };
 

@@ -42,7 +42,7 @@ import ErrorPage from "./Pages/404/ErrorPage";
 import SingleNews from "./Pages/SingleNews/SingleNews";
 import Article from "./Pages/Press/Article/Article";
 import PressNews from "./Pages/Press/PressRelease/News";
-import ScrollToTop from "./utils/ScrollToTop";
+// import ScrollToTop from "./utils/ScrollToTop";
 
 function App() {
   return (
@@ -51,6 +51,7 @@ function App() {
       <Router>
         <div className="App">
           <NavComponent />
+          
           <Routes>
             {/*---==== Contents Sections  ====---*/}
             <Route path="/" element={<Home />} />

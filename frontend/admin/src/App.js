@@ -12,8 +12,10 @@ import { GlobalStyle } from './theme/globalStyle';
 import { theme } from './theme/theme';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import CreateCurrency from './pages/CreateCurrency/CreateCurrency';
-import ContactResponse from './pages/contactResponse/ContactResponse';
+// import CreateCurrency from './pages/CreateCurrency/CreateCurrency';
+import DashboardLayout from './component/DashboardComponent/DashboardLayout';
+import UserComplaints from './pages/UserComplaints/UserComplaints';
+import ComplaintPage from './pages/ComplaintPage/ComplaintPage';
 
 function App() {
 	AOS.init({
@@ -25,16 +27,17 @@ function App() {
 			<BrowserRouter>
 				<GlobalStyle />
 				<Routes>
-					<Route path='/' element={<Layout />}>
-						{/* <Route index element={<Dashboard />} /> */}
-						<Route index element={<CreateCurrency />} />
-						<Route path='/dashboard/contact' element={<ContactResponse />} />
-						<Route path='/account' element={<Account />} />
-						<Route path='/trending' element={<TrendingData />} />
-						<Route path='/*' element={<Error />} />
+					<Route path='/admin' element={<Layout />}>
+						<Route index element={<DashboardLayout />} />
+						<Route path='/admin/account' element={<Account />} />
+						<Route path='/admin/trending' element={<TrendingData />} />
+
+						<Route path='/admin/complaints' element={<UserComplaints />} />
+						<Route path='/admin/complaints/:id' element={<ComplaintPage />} />
+						<Route path='/admin/*' element={<Error />} />
 					</Route>
-					<Route path='/login' element={<Login />} />
-					<Route path='/forgotpassword' element={<ForgotPassword />} />
+					<Route path='/admin/login' element={<Login />} />
+					<Route path='/admin/forgotpassword' element={<ForgotPassword />} />
 				</Routes>
 			</BrowserRouter>
 		</ThemeProvider>
