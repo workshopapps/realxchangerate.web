@@ -8,7 +8,9 @@ import {
   StyledGrid,
   StyledWrapper,
   StyledTextArea,
-  StyledSelect,
+  StyledButtonWrapper,
+  StyledFormButtonSubmit,
+  StyledFormButtonCancel,
 } from "./ComplaintPage.styled";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
@@ -30,9 +32,6 @@ function ComplaintPageLayout() {
   // TODO: useEffect to fetch data by id, then set state to data
 
   const onMutate = (e) => {
-    console.log(e.target.value);
-    console.log(e.target.name);
-
     setData((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
@@ -155,6 +154,11 @@ function ComplaintPageLayout() {
             </Select>
           </div>
         </StyledGrid>
+
+        <StyledButtonWrapper>
+          <StyledFormButtonCancel>Cancel</StyledFormButtonCancel>
+          <StyledFormButtonSubmit>Save Changes</StyledFormButtonSubmit>
+        </StyledButtonWrapper>
       </StyledComplaintForm>
     </StyledWrapper>
   );

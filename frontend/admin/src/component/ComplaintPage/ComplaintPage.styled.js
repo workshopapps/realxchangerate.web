@@ -111,57 +111,64 @@ export const StyledTextArea = styled.textarea`
     letter-spacing: 0.001em;
 
     color: ${props => props.theme.$styled.colors.text600};
+
+    &:hover {
+        border: 1px solid #333333;
+    }
     
 `;
 
-export const StyledSelect = styled.select`
-    padding: 20px 12px;
+export const StyledButtonWrapper = styled.div`
+    margin-top: 70px;
 
-    border: 1px solid #CBD5E1;
-    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    @media (max-width: 355px) {
+       flex-wrap: wrap-reverse;
+    }
+`
+export const StyledFormButtonSubmit = styled.button.attrs({ type: 'submit' })`
+    max-width: 262px;
     width: 100%;
-    outline: 0;
-    overflow: auto;
+    padding: 15px 27px;
+    cursor: pointer;
 
-    font-family: 'Inter';
-    font-style: normal;
+    border-radius: 8px;
+    background: ${props => props.theme.palette.primary.main};
+    border-color: transparent;
+
     font-weight: 400;
-    font-size: 14px;
-    line-height: 20px;
-    letter-spacing: 0.001em;
+    font-size: 16px;
+    line-height: 18px;
+    color: #FFFFFF;
 
-    color: ${props => props.theme.$styled.colors.text600};
-    background-color: #fff;
+    &:hover{
+        background: ${props => props.theme.palette.primary.dark}; 
+    }
+`;
+export const StyledFormButtonCancel = styled.button`
+    max-width: 163px;
+    width: 100%;
+    padding: 15px 27px;
+    cursor: pointer;
 
-    .option {
-        padding: 20px 12px;
+    background: #FFFFFF;
+    border: 1px solid #17171750;
+    border-radius: 8px;
 
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 20px;
-    text-align: center;
-    letter-spacing: -0.02em;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18px;
 
-    color: #0F172A;
+    color: #121212;
+
+    &:hover{
+        border: 1px solid #171717;
     }
 `;
 
-// export const StyledOption = styled.option`
-
-//     padding: 20px 12px;
-
-//     font-family: 'Inter';
-//     font-style: normal;
-//     font-weight: 500;
-//     font-size: 14px;
-//     line-height: 20px;
-//     text-align: center;
-//     letter-spacing: -0.02em;
-
-//     color: #0F172A;
-// `
 
 export const StyledGrid = styled.div`
     margin-bottom: 24px;
