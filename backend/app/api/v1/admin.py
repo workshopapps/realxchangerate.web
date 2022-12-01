@@ -173,20 +173,20 @@ def get_all_complaints(db: Session = Depends(get_db)):
 
 
 
-@router.get("/get_all_faqs")
-async def get_all_faqs(*, db:Session = Depends(get_db)):
+# @router.get("/get_all_faqs")
+# async def get_all_faqs(*, db:Session = Depends(get_db)):
 
-    """Returns all faqs from the database"""
+#     """Returns all faqs from the database"""
 
-    faqs = crud.faq.get_all_faqs(db)
+#     faqs = crud.faq.get_all_faqs(db)
 
-    if faqs is None:
-        return {"success": False, "status_code": 404, "message": "No faqs available!"}
+#     if faqs is None:
+#         return {"success": False, "status_code": 404, "message": "No faqs available!"}
 
-    if len(faqs) == 0:
-        return {"success": True, "status_code": 200, "message": "No faqs recorded!"}
+#     if len(faqs) == 0:
+#         return {"success": True, "status_code": 200, "message": "No faqs recorded!"}
 
-    return {"success": True, "status_code": 200, "faqs": faqs}
+#     return {"success": True, "status_code": 200, "faqs": faqs}
 
 
 
