@@ -61,7 +61,7 @@ function App() {
                         <Route path="/compliance" element={<Compliance />} />
                         <Route path="/help-center" element={<HelpCenter />} />
                         <Route
-                            path="/:id/currency"
+                            path="/currency-profile"
                             element={<CurrencyProfile />}
                         />
                         <Route path="/news" element={<News />} />
