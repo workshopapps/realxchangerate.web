@@ -9,7 +9,7 @@ from app.api.deps import get_db
 router = APIRouter()
 
 
-@router.get("/", response_model=List[schemas.Currency])
+@router.get("/")
 def get_all_currencies_and_rates(db: Session = Depends(get_db), skip: int = 0, limit: int = 100) -> Any:
     """
     get all the rates of all the currencies.
