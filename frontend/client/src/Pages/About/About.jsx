@@ -64,7 +64,11 @@ const About = () => {
 
   return (
     <>
-      <StyledPage>
+      <Box
+        display="flex"
+        flexDirection="column"
+        sx={{ gap: { xs: "27px", sm: "80px" } }}
+      >
         <Container about textColor={textColor}>
           <Header />
         </Container>
@@ -101,7 +105,7 @@ const About = () => {
         <Container>
           <Download />
         </Container>
-      </StyledPage>
+      </Box>
     </>
   );
 };
@@ -121,7 +125,6 @@ const devices = {
   laptopS: `(max-width: ${sizes.laptop})`,
   laptop: `(max-width: ${sizes.laptop})`,
 };
-const StyledPage = styled.div``;
 
 const Container = styled.div`
   background-color: ${(props) => {
@@ -151,18 +154,22 @@ const StyledContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 20px;
   margin-bottom: 48px;
+
+  @media ${devices.mobile} {
+    gap:16px;
+    margin-bottom:40px;
+  }
 `;
 const StyledHead = styled.h2`
   font-weight: 600;
   font-size: 36px;
   line-height: 44px;
-  margin-bottom: 24px;
 
   @media ${devices.mobile} {
     font-size: 24px;
     line-height: 32px;
-    margin-bottom: 15px;
   }
 `;
 const StyledText = styled.p`
@@ -182,7 +189,7 @@ const TeamSection = styled.div`
   flex-direction: column;
   /* color: #202020; */
   font-family: var(--font-family);
-  padding: 80px 177px;
+  padding: 0px 177px;
   width: 100%;
   @media ${devices.laptop} {
     flex-direction: column;
@@ -204,7 +211,7 @@ const TeamSection = styled.div`
   }
   @media ${devices.mobile} {
     /* flex-direction: column; */
-    padding: 42px 44px;
+    padding: 13px 44px;
     /* align-items: center; */
     width: auto;
   }
@@ -213,7 +220,7 @@ const TeamSection = styled.div`
 const TeamMembers = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 44px;
+  gap: 30px;
   justify-content: center;
   @media ${devices.mobile} {
     gap: 30px;
@@ -226,4 +233,3 @@ export const StyledTeam = styled.div`
   align-items: center;
   gap: 16px;
 `;
-

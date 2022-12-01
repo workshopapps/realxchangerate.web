@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { styled } from "@mui/material/styles";
+
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell, { tableCellClasses } from "@mui/material/TableCell";
@@ -7,7 +7,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import editIcon from "../../assets/editIcon.svg";
+
 import { mockData } from "./mockData";
 import { Container, Integration } from "./currStyles";
 import arrow from "../../assets/arrow_forward.svg";
@@ -16,10 +16,15 @@ import Card from "./Card";
 import createIcon from "../../assets/create_new.svg";
 import updateIcon from "../../assets/update.svg";
 import ModalUi from "./Modal";
-import { Button, IconButton, Skeleton } from "@mui/material";
+import { Button, Skeleton } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { getTrending } from "../../store/actions/dashboardActions";
 import Flag from "react-world-flags";
+import rafiki from "../../assets/rafiki.png";
+import cuate from "../../assets/cuate.png";
+import contact from "../../assets/contact.png";
+import styled from "styled-components";
+import MenuDrop from "../../component/MenuDrop/MenuDrop";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -67,22 +72,30 @@ export default function CreateCurrency() {
     <section style={{ margin: "0 20px" }}>
       <Integration>
         <Card
-          icon={createIcon}
-          title={"Create Integration"}
-          desc={"Get new users on board and integrated into the system"}
-          link={"Create"}
+          title={"Update FAQs"}
+          desc={
+            "Edit, add and delete Frequently Asked Questions (FAQs) on the web app"
+          }
+          link={"Update FAQs"}
+          loc={"/admin/faqs"}
+          bg={"#F7F9FD"}
+          img={rafiki}
         />
         <Card
-          icon={updateIcon}
-          title={"Update Integration"}
-          desc={"Update information on all user integrations easily"}
-          link={"Update"}
+          title={"Resolve Complaints"}
+          desc={"Get to resolve all user complaints on the web app "}
+          link={"Resolve Complaints"}
+          loc={"/admin/complaints"}
+          bg={"#FCF7FD"}
+          img={cuate}
         />
         <Card
-          icon={createIcon}
-          title={"Manage Integration"}
-          desc={"Update and make changes to user integration"}
-          link={"Manage"}
+          title={"Contact us Responses"}
+          desc={"Get to give feedback to users who submit the Contact Us form"}
+          link={"Give feedback"}
+          loc={"/admin/contact"}
+          bg={"#F7FDF8"}
+          img={contact}
         />
       </Integration>
       <Container>
@@ -167,9 +180,7 @@ export default function CreateCurrency() {
                       align="right"
                       style={{ color: "rgba(71, 85, 105, 1)" }}
                     >
-                      <IconButton>
-                        <img src={editIcon} alt="edit" />
-                      </IconButton>
+                      <MenuDrop handleOpen={handleOpen} />
                     </StyledTableCell>
                   </StyledTableRow>
                 ))
