@@ -11,31 +11,31 @@ import Footer from "./components/Footer";
 import "./assets/css/style.css";
 
 import {
-  Contact,
-  Compliance,
-  HelpCenter,
-  News,
-  Faq,
-  IntegrationMatrix,
-  Partnerships,
-  CurrencyEncyclopedia,
-  CurrencyEncyclopediaDetail,
-  TermsAndConditions,
-  Press,
-  Careers,
-  About,
-  Teams,
-  FileAComplaint,
-  Api,
-  BoardOfDirectors,
-  HistoricalCurrencyExchange,
-  FraudReport,
-  CookiePolicy,
-  Glossary,
-  OnlineAdvertising,
-  ApplyToAdvertise,
-  Ambassadors,
-  Home,
+    Contact,
+    Compliance,
+    HelpCenter,
+    News,
+    Faq,
+    IntegrationMatrix,
+    Partnerships,
+    CurrencyEncyclopedia,
+    CurrencyEncyclopediaDetail,
+    TermsAndConditions,
+    Press,
+    Careers,
+    About,
+    Teams,
+    FileAComplaint,
+    Api,
+    BoardOfDirectors,
+    HistoricalCurrencyExchange,
+    FraudReport,
+    CookiePolicy,
+    Glossary,
+    OnlineAdvertising,
+    ApplyToAdvertise,
+    Ambassadors,
+    Home,
 } from "./Pages";
 import GlobalStyle from "./styles/Globalstyle";
 import ErrorPage from "./Pages/404/ErrorPage";
@@ -45,6 +45,7 @@ import Article from "./Pages/Press/Article/Article";
 import PressNews from "./Pages/Press/PressRelease/News";
 import CurrencyProfile from "./Pages/CurrencyProfile/CurrencyProfile";
 // import ScrollToTop from "./utils/ScrollToTop";
+import PrivacyPolicy from "./Pages/PrivacyPolicy/PrivacyPolicy";
 
 function App() {
     return (
