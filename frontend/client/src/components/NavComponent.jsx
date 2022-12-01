@@ -24,6 +24,7 @@ const NavComponent = () => {
   const { currencyList, countryDetails, defaultCurrency } = useSelector(
     (state) => state.service
   );
+
   const theme = useTheme();
   const colorMode = useContext(ColorModeContext);
   const [isOpen, setIsOpen] = useState(false);
@@ -64,7 +65,7 @@ const NavComponent = () => {
       sx={{
         minHeight: { xs: "56px", sm: "100px" },
         justifyContent: { xs: "space-between" },
-        maxWidth: { xs: "90%", lg: "84%" }
+        maxWidth: { xs: "90%", lg: "84%" },
       }}
       minHeight="100px"
       display="flex"
@@ -156,8 +157,12 @@ const NavComponent = () => {
               "aria-labelledby": "basic-button",
             }}
             width="120px"
+            sx={{
+              height: "auto",
+            }}
           >
             {currencyList.map((ele) => {
+              console.log(ele);
               return (
                 <MenuItem
                   sx={{
