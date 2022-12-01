@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseURL = "https://exchange.hng.tech/backend/api";
+const baseURL = "https://api.streetrates.hng.tech/api";
 
 const headers = {
   "Access-Control-Allow-Origin": "*",

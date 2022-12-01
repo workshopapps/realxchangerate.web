@@ -57,6 +57,8 @@ const NavComponent = () => {
     }
   }, [defaultCurrency, currencyList]);
 
+  // console.log(countryDetails)
+
   return (
     <Grid
       sx={{

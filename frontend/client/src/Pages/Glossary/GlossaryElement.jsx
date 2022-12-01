@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Alphabet = styled.div`
   box-sizing: border-box;
@@ -92,7 +92,7 @@ export const Head = styled.div`
     }
   }
 
-  @media screen and (max-width: 375px) {
+  @media screen and (max-width: 768px) {
     h1 {
       font-size: 28px;
       line-height: 32px;
@@ -149,7 +149,7 @@ export const Search = styled.div`
     }
   }
 
-  @media screen and (max-width: 375px) {
+  @media screen and (max-width: 768px) {
     max-width: 253px;
     height: 27px;
 
@@ -165,20 +165,19 @@ export const Search = styled.div`
 export const Parent = styled.div`
   box-sizing: border-box;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 50px 17px;
   width: 100%;
   max-width: 1440px;
   margin: 0 auto;
-  padding: 17px 120px;
 
-  @media screen and (max-width: 834px) {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+  @media only screen and (min-width: 768px) {
     padding: 50px 80px;
   }
-  @media screen and (max-width: 375px) {
-    padding: 50px 17px;
+
+  @media only screen and (min-width: 992px) {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    padding: 17px 120px;
   }
 `;
 
@@ -192,7 +191,7 @@ export const Box = styled.div`
     font-size: 28px;
     line-height: 32px;
     font-weight: 700;
-    font-family: "Inter";
+    font-family: 'Inter';
     border-bottom: 1px solid #94a3b8;
     padding-bottom: 18px;
     padding-top: 18px;
@@ -210,7 +209,7 @@ export const Box = styled.div`
       line-height: 24px;
     }
   }
-  @media screen and (max-width: 375px) {
+  @media screen and (max-width: 768px) {
     min-width: 90px;
     max-width: 90px;
 
@@ -230,29 +229,24 @@ export const Items = styled.div`
   flex-direction: column;
   margin-top: 20px;
 
-  span {
-    font-family: "Inter";
-    font-weight: 600;
+  span a {
+    font-family: 'Inter';
+    font-weight: 500;
     font-size: 20px;
-    line-height: 28px;
+    line-height: 4.5rem;
     color: #475569;
     margin-bottom: 20px;
   }
 
-  span {
-    font-size: 16px;
-    line-height: 24px;
-  }
-
   @media screen and (max-width: 834px) {
-    span {
+    span a {
       font-size: 16px;
       line-height: 24px;
     }
   }
 
-  @media screen and (max-width: 375px) {
-    span {
+  @media screen and (max-width: 768px) {
+    span a {
       font-size: 12px;
       line-height: 18px;
     }
@@ -289,7 +283,7 @@ export const ImageLeft = styled.div`
   @media screen and (max-width: 834px) {
     left: 30px;
   }
-  @media screen and (max-width: 375px) {
+  @media screen and (max-width: 768px) {
     left: 10px;
   }
 `;
@@ -315,7 +309,7 @@ export const ImageRight = styled.div`
       object-fit: contain;
     }
   }
-  @media screen and (max-width: 375px) {
+  @media screen and (max-width: 768px) {
     right: 10px;
     img {
       width: 30px;
