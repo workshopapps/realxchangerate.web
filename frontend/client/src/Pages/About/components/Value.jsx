@@ -1,11 +1,9 @@
 import React from "react";
 import { Box, Grid, Typography } from "@mui/material";
-import {
-  CommunityIcon,
-  DiversityIcon,
-  EntrepreneurshipIcon,
-  InnovationIcon,
-} from "../assets/icons/index";
+import CommunityIcon from "../assets/icons/Community.svg";
+import DiversityIcon from "../assets/icons/Diversity.svg";
+import EntrepreneurshipIcon from "../assets/icons/Entrprenuership.svg";
+import InnovationIcon from "../assets/icons/Innovation.svg";
 
 const ListItem = ({ image, title, content }) => {
   return (

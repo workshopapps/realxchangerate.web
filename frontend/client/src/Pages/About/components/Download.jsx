@@ -2,6 +2,8 @@ import React from "react";
 import { Box, Typography, useMediaQuery } from "@mui/material";
 import tabletImage from "../assets/Tablet.png";
 import mobileImage from "../assets/mobile-image.png";
+import AppleIcon from "../assets/icons/Appleicon.svg";
+import PlayStore from "../assets/icons/PlayStore.svg";
 import { AppleIcon, PlayStore } from "../assets/icons/";
 
 const Download = () => {
@@ -58,14 +60,36 @@ const Download = () => {
               textAlign: { xs: "center", sm: "left" },
             }}
           >
+            <Typography
+              fontWeight="600"
+              letterSpacing="-0.02em"
+              sx={{
+                fontSize: {
+                  xs: "18px",
+                  sm: "20px",
+                  md: "25px",
+                  lg: "30px",
+                  xl: "36px",
+                },
+                lineHeight: { xs: "24px", sm: "44px" },
+                textAlign: { xs: "center", sm: "left" },
+              }}
+            >
+              Download the StreetRate App Via
+            </Typography>
             Download the StreetRate App Via
           </Typography>
 
           <img src={PlayStore} alt="" />
 
+            <img src={AppleIcon} alt="" />
+          </Box>
           <img src={AppleIcon} alt="" />
         </Box>
 
+          <Box sx={{ display: { xs: "none", sm: "flex" } }} width="100%">
+            <img src={image} width="100%" alt="" />
+          </Box>
         <Box width="100%" marginLeft="-25px" sx={{ marginTop:{sm:"40px",md:"100px"}, display:{xs:"none", sm:"flex"}}}>
           <img src={image} width="100%" alt="" />
         </Box>

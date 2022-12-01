@@ -9,7 +9,9 @@ import { WhyChooseArray } from "./assets/data";
 const WhyChoose = () => {
   return (
     <StyledWhyChoose>
-      <h1 className="header">Why Choose Street Rates?</h1>
+      <h1 className="header">
+        Help more companies discover the power of Street Rates
+      </h1>
 
       {/* why choose */}
       <div className="WhyContainer">
@@ -18,7 +20,7 @@ const WhyChoose = () => {
             <div key={list.id} className="listDiv">
               <img src={list.icon} alt="icon" height={100} width={100} />
               <h2>{list.header}</h2>
-              <p style={{ maxWidth: "266px" }}>{list.description}</p>
+              <p style={{}}>{list.description}</p>
             </div>
           );
         })}
