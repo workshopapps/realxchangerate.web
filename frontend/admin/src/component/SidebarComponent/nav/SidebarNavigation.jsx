@@ -46,7 +46,7 @@ function SidebarNavigation() {
           <NavLink
             onClick={() => handleOnClick(option)}
             key={index}
-            to={option.route}
+            to={`/admin${option.route}`}
           >
             {({ isActive }) => (
               <StyledSidebarNavigationOption $isActive={isActive}>
