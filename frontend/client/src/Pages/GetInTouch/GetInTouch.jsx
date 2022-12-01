@@ -1,6 +1,6 @@
 import { Box, Stack, Typography } from "@mui/material";
 import React, { useState } from "react";
-import im from "./img.png";
+import im from "./rafiki.svg";
 import location from "./location.png";
 import mail from "./mail.png";
 import mobile from "./mobile.png";
@@ -54,7 +54,7 @@ export default function GetInTouch() {
         pt={5}
         alignItems="center"
       >
-        <Box mt={4}>
+        <Box mt={4} flex={1}>
           <Typography
             variant="h3"
             sx={{
@@ -83,8 +83,8 @@ export default function GetInTouch() {
             If you have an idea, we would love to hear it
           </Typography>
         </Box>
-        <Box>
-          <ImageStyled src={im} alt="illustation" />
+        <Box flex={1}>
+          <ImageStyled src={im} alt="illustation" width="100%" />
         </Box>
       </Stack>
       <Stack

@@ -44,6 +44,7 @@ import SingleNews from "./Pages/SingleNews/SingleNews";
 import Article from "./Pages/Press/Article/Article";
 import PressNews from "./Pages/Press/PressRelease/News";
 import GetInTouch from "./Pages/GetInTouch/GetInTouch";
+import CurrencyProfile from "./Pages/CurrencyProfile/CurrencyProfile";
 // import ScrollToTop from "./utils/ScrollToTop";
 
 function App() {
@@ -60,14 +61,13 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/compliance" element={<Compliance />} />
             <Route path="/help-center" element={<HelpCenter />} />
+            <Route path="/:id/currency" element={<CurrencyProfile />} />
             <Route path="/news" element={<News />} />
             {/* Adding path for one news  */}
             <Route path="/news/:id" element={<SingleNews />} />
             <Route path="/faq" element={<Faq />} />
             <Route path="/integration-matrix" element={<IntegrationMatrix />} />
             <Route path="/partnerships" element={<Partnerships />} />
-            {/* ROute for get in touch page */}
-            <Route path="/get-in-touch" element={<GetInTouch />} />
             <Route
               path="/currency-encyclopedia"
               element={<CurrencyEncyclopedia />}
@@ -91,6 +91,7 @@ function App() {
               element={<HistoricalCurrencyExchange />}
             />
             <Route path="/fraud-report" element={<FraudReport />} />
+            <Route path="/get-in-touch" element={<GetInTouch />} />
             <Route path="/Cookie-policy" element={<CookiePolicy />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/glossary" element={<Glossary />} />
