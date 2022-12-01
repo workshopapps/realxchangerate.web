@@ -7,10 +7,11 @@ export const InputContainer = styled.div`
 `;
 
 export const StyledText = styled.textarea`
-  width: 384px;
+  width: 100%;
   height: 224px;
   background: #ffffff;
   resize: none;
+
   /* Neutral/300 */
 
   border: 1px solid #d1d5db;
@@ -30,13 +31,18 @@ export const StyledText = styled.textarea`
 
     color: #9ca3af;
   }
+
+  &:focus {
+    border-color: #0062ff;
+    transition: all 0.3s ease-in;
+  }
   @media (max-width: 767px) {
     width: 100%;
   }
 `;
 
 export const StyledButton = styled.button`
-  width: 383px;
+  width: 100%;
   height: 42px;
 
   /* Primary/Blue 100 */
@@ -66,18 +72,25 @@ export const ImageStyled = styled.img`
   }
 `;
 export const SideText = styled.p`
+  width: 90%;
+  text-align: center;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
-  padding-left: 10px;
-  /* identical to box height, or 150% */
+
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 28px;
+  /* or 140% */
+
+  text-align: center;
 
   /* Body */
-
+  padding-top: 10px;
   color: #4b4b4b;
 `;
 export const InputStyled = styled.input`
-  width: 384px;
+  width: 100%;
   height: 40px;
   background: #ffffff;
   /* Neutral/300 */
@@ -96,7 +109,35 @@ export const InputStyled = styled.input`
     color: #9ca3af;
   }
 
+  &:focus {
+    border-color: #0062ff;
+    transition: all 0.3s ease-in;
+  }
   @media (max-width: 767px) {
     width: 100%;
+  }
+`;
+
+export const CardStyled = styled.div`
+  flex: 1;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  height: 172px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-top: 10px;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+
+  span {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    padding-top: 20px;
+    text-align: center;
+    color: #555962;
   }
 `;

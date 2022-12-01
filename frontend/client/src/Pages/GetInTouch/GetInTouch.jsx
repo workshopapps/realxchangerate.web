@@ -1,9 +1,9 @@
 import { Box, Stack, Typography } from "@mui/material";
 import React, { useState } from "react";
 import im from "./rafiki.svg";
-import location from "./location.png";
-import mail from "./mail.png";
-import mobile from "./mobile.png";
+import location from "./location.svg";
+import mail from "./mail.svg";
+import mobile from "./mobile.svg";
 import fb from "./facebook.png";
 import ins from "./Instagram_icon.png";
 import linkedin from "./linkedin.png";
@@ -14,6 +14,7 @@ import {
   StyledText,
   SideText,
   ImageStyled,
+  CardStyled,
 } from "./GetInTouchPage.styled";
 
 export default function GetInTouch() {
@@ -77,49 +78,184 @@ export default function GetInTouch() {
               alignItems: { sm: "center", xs: "center" },
               textAlign: { md: "inherit", xs: "center", sm: "center" },
               paddingTop: { sm: 1, xs: 1 },
-              color: "#000000",
+
+              color: "#555962",
             }}
           >
-            If you have an idea, we would love to hear it
+            If you have any questions about the streetrates or are not sure
+            which plan is right for you, contact our team and let’s schedule a
+            call.
           </Typography>
+
+          <Box
+            mt={3}
+            sx={{
+              display: { md: "block", sm: "flex", xs: "flex" },
+              alignItems: "center",
+              flexDirection: { md: "column", sm: "column", xs: "column" },
+            }}
+          >
+            <Typography
+              variant="p"
+              sx={{
+                fontWeight: "400",
+                fontSize: "18px",
+                lineHeight: "27px",
+                display: { md: "flex", sm: "flex", xs: "flex" },
+                color: "#555962",
+                alignItems: { md: "center", sm: "center", xs: "center" },
+                textAlign: { md: "inherit", xs: "center", sm: "center" },
+              }}
+            >
+              Monday - Friday
+            </Typography>
+            <Typography
+              variant="span"
+              mt={1.5}
+              sx={{
+                fontWeight: "600",
+                fontSize: "24px",
+                lineHeight: "27px",
+                display: "flex",
+                alignItems: "center",
+
+                color: "#0F172A",
+              }}
+            >
+              8am - 4pm
+            </Typography>
+            {/* Adding social icon link */}
+            <Stack
+              sx={{
+                width: "98%",
+                margin: "auto",
+                marginTop: 3,
+                paddingBottom: 5,
+                display: { md: "block", sm: "flex", xs: "flex" },
+                alignItems: "center",
+                justifyContent: { md: "center", sm: "center", xs: "center" },
+              }}
+              direction="row"
+            >
+              <a
+                href="https://facebook.com"
+                style={{
+                  paddingRight: 12,
+                }}
+              >
+                <img src={fb} alt="facebook logo" width={24} height={24} />
+              </a>
+              <a
+                href="https://linkedin.com"
+                style={{
+                  paddingRight: 12,
+                }}
+              >
+                <img
+                  src={linkedin}
+                  alt="linkedin logo"
+                  width={24}
+                  height={24}
+                />
+              </a>
+              <a
+                href="https://instagram.com"
+                style={{
+                  paddingRight: 12,
+                }}
+              >
+                <img src={ins} alt="instagram logo" width={24} height={24} />
+              </a>
+              <a
+                href="https://twitter.com"
+                style={{
+                  paddingRight: 12,
+                }}
+              >
+                <img src={twitter} alt="twitter logo" width={24} height={24} />
+              </a>
+            </Stack>
+          </Box>
         </Box>
         <Box flex={1}>
           <ImageStyled src={im} alt="illustation" width="100%" />
         </Box>
       </Stack>
+
+      {/* Contact and form section */}
       <Stack
         sx={{
-          flexDirection: { md: "row", xs: "column", sm: "column" },
+          flexDirection: { md: "column", xs: "column", sm: "column" },
         }}
         mt={10}
       >
-        <Box flex={1}>
+        {/* Right side */}
+        <Box>
           <Typography
             variant="h4"
             sx={{
               fontWeight: "500",
               fontSize: "28px",
               lineHeight: "48px",
+              /* identical to box height, or 171% */
+
               letterSpacing: "-0.02em",
-              paddingBottom: 2,
+
+              color: "#202020",
+              textAlign: "center",
             }}
           >
-            We would love to hear from you, Get in touch with us
+            Contact Information
           </Typography>
-          <Typography
-            variant="p"
+          <Box
             sx={{
-              fontWeight: "400",
-              fontSize: "16px",
-              lineHeight: "24px",
-              width: "80%",
-              color: "#555962",
+              width: "98%",
+              margin: "auto",
+              marginTop: 3,
+              display: { lg: "flex", md: "block", sm: "block", xs: "block" },
+              flexWrap: "wrap",
+              gap: 3,
             }}
           >
-            To make inquiries about our services, you can leave us a message. We
-            promise to send you a response as soon as possible.
-          </Typography>
-          <Box pt={3} pb={8}>
+            <CardStyled>
+              <img src={location} alt="location" width={21} height={30} />
+              <span>Location</span>
+              <SideText>
+                2, Hamilton Avenue, Silicon Valley, California
+              </SideText>
+            </CardStyled>
+            <CardStyled>
+              <img src={mobile} alt="location" width={27} height={27} />
+              <span>Call Us</span>
+              <SideText>+62 528 124 5600</SideText>
+            </CardStyled>
+            <CardStyled>
+              <img src={mail} alt="location" width={30} height={24} />
+              <span>Email Us</span>
+              <SideText>Contact@streetrates.com</SideText>
+            </CardStyled>
+          </Box>
+        </Box>
+        {/* Form for contact */}
+        <Box
+          flex={1}
+          mt={8}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <Box
+            sx={{
+              border: "1px solid #CBD5E1",
+              borderRadius: "8px",
+              padding: { lg: 4, sm: 2, xs: 2 },
+              width: { lg: "75%", md: "70%", xs: "100%", sm: "100%" },
+              margin: "auto",
+              marginBottom: 10,
+            }}
+          >
             <form>
               <Stack direction="column" mb={2.3}>
                 <label
@@ -185,118 +321,6 @@ export default function GetInTouch() {
                 <span>Submit</span>
               </StyledButton>
             </form>
-          </Box>
-        </Box>
-
-        {/* Right side */}
-        <Box flex={1}>
-          <Box
-            sx={{
-              width: { md: "90%", sm: "100%", xs: "100%" },
-              margin: "auto",
-            }}
-          >
-            <Typography
-              variant="h4"
-              sx={{
-                fontWeight: "500",
-                fontSize: "28px",
-                lineHeight: "48px",
-                /* identical to box height, or 171% */
-
-                letterSpacing: "-0.02em",
-
-                color: "#202020",
-              }}
-            >
-              Contact Information
-            </Typography>
-            <Box
-              sx={{
-                width: "98%",
-                margin: "auto",
-                marginTop: 3,
-              }}
-            >
-              <Stack direction="row" alignItems="center" mt={1}>
-                <img src={location} alt="location" width={14} height={20} />
-                <SideText>
-                  2, Hamilton Avenue, Silicon Valley, California
-                </SideText>
-              </Stack>
-              <Stack direction="row" alignItems="center" mt={2}>
-                <img src={mobile} alt="location" width={14} height={20} />
-                <SideText>+62 528 124 5600</SideText>
-              </Stack>
-              <Stack direction="row" alignItems="center" mt={2}>
-                <img src={mail} alt="location" width={20} height={16} />
-                <SideText>Contact@streetrates.com</SideText>
-              </Stack>
-            </Box>
-          </Box>
-          <Box
-            sx={{
-              width: { md: "90%", sm: "100%", xs: "100%" },
-              margin: "auto",
-              marginTop: 5,
-            }}
-          >
-            <Typography
-              variant="h4"
-              sx={{
-                fontWeight: "500",
-                fontSize: "28px",
-                lineHeight: "48px",
-                /* identical to box height, or 171% */
-
-                letterSpacing: "-0.02em",
-
-                color: "#202020",
-              }}
-              mb={2}
-            >
-              Social Media
-            </Typography>
-            <Typography
-              variant="p"
-              style={{
-                fontWeight: "400",
-                fontSize: "16px",
-                lineHeight: "20px",
-                letterSpacing: "-0.02em",
-                color: "#4B4B4B",
-              }}
-            >
-              You can connect with us via social media
-            </Typography>
-            <Stack
-              sx={{
-                width: "98%",
-                margin: "auto",
-                marginTop: 3,
-                paddingBottom: 5,
-              }}
-              direction="row"
-              gap={4}
-            >
-              <a href="https://facebook.com">
-                <img src={fb} alt="facebook logo" width={24} height={24} />
-              </a>
-              <a href="https://linkedin.com">
-                <img
-                  src={linkedin}
-                  alt="linkedin logo"
-                  width={24}
-                  height={24}
-                />
-              </a>
-              <a href="https://instagram.com">
-                <img src={ins} alt="instagram logo" width={24} height={24} />
-              </a>
-              <a href="https://twitter.com">
-                <img src={twitter} alt="twitter logo" width={24} height={24} />
-              </a>
-            </Stack>
           </Box>
         </Box>
       </Stack>
