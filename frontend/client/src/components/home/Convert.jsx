@@ -23,9 +23,9 @@ const Convert = () => {
   const base_url = process.env.REACT_APP_BASE_URL;
   const localBase = "http://localhost:8000/api";
   const [rates, setRates] = React.useState({});
-  const [convert, setconvert] = React.useState(1);
+  const [convert, setconvert] = React.useState(1000);
   const [currency, setCurrecy] = React.useState("NGN");
-  const [base, setBase] = React.useState("USD");
+  const [base, setBase] = React.useState("USA");
   const [buy, setbuy] = React.useState(true);
   const [date, setDate] = React.useState("");
 
@@ -216,7 +216,6 @@ const Convert = () => {
               name="amount"
               sx={{
                 width: "100%",
-                paddingTop: "6px",
               }}
               label="Amount"
               value={convert}
@@ -389,14 +388,12 @@ const AmountInput = styled.div`
   display: flex;
   align-items: flex-end;
   width: 100%;
-  margin-top: 20px;
   /* height: 70px; */
 
   & input {
     padding: 12px 16px;
   }
   @media screen and (min-width: 768px) {
-    margin-top: 0px;
     height: 65px;
     width: 30%;
   }
@@ -411,9 +408,7 @@ const SelectCurrency = styled.div`
   /* height: 50px; */
   width: 100%;
   #currency1 {
-    padding-top: 0px;
-    padding-bottom: 0px;
-    padding-inline: 6px;
+    padding: 4px;
   }
   & select {
     background-color: red;
@@ -425,7 +420,7 @@ const SelectCurrency = styled.div`
     }
   }
 
-  @media screen and (min-width: 480px) {
+  @media screen and (min-width: 400px) {
     #currency1 {
       padding: 12px 16px;
     }

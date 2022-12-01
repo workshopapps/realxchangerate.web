@@ -24,7 +24,6 @@ const Download = () => {
     sx={{
       height: { xs: "393px", sm: "406px", md: "520px" },
     }}
-    maxWidth="1440px"
   >
     <Box
       display="flex"
