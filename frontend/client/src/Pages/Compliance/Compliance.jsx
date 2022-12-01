@@ -1,6 +1,6 @@
 import { Box, Typography, useMediaQuery, Stack, Link, useTheme } from "@mui/material";
 import React from "react";
-import { BackgroundImage, BackgroundImageMobile, RightArrow } from "./assets/";
+import { BackgroundImage, BackgroundImageMobile, RightArrow } from "./assets";
 
 const Complaince = () => {
   const mobileScreen = useMediaQuery("(max-width:481px)");

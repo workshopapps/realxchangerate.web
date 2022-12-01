@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
-import { DownArrow } from "../assets/";
+import { DownArrow } from "../assets";
 import PropTypes from "prop-types";
 
 const AmountInput = ({ flag, amount, setAmount }) => {
