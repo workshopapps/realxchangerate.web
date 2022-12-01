@@ -7,11 +7,7 @@ from app.api.v1 import api_router
 from app.core import settings
 from app.api.v1 import password_email_reset
 
-<<<<<<< HEAD
-app = FastAPI(title=settings.PROJECT_NAME)
-=======
 app = FastAPI(title=settings.PROJECT_NAME, root_path="")
->>>>>>> c5edf4e8353136f8d1b1b1fa7b97c55e7fcb9519
 origins = [
     "http://localhost",
     "http://localhost:3000",
