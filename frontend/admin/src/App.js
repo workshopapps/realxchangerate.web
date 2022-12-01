@@ -13,6 +13,7 @@ import { theme } from './theme/theme';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import CreateCurrency from './pages/CreateCurrency/CreateCurrency';
+import ContactResponse from './pages/contactResponse/ContactResponse';
 
 function App() {
 	AOS.init({
@@ -27,6 +28,7 @@ function App() {
 					<Route path='/' element={<Layout />}>
 						{/* <Route index element={<Dashboard />} /> */}
 						<Route index element={<CreateCurrency />} />
+						<Route path='/dashboard/contact' element={<ContactResponse />} />
 						<Route path='/account' element={<Account />} />
 						<Route path='/trending' element={<TrendingData />} />
 						<Route path='/*' element={<Error />} />
