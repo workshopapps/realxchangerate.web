@@ -68,3 +68,21 @@ def get_currencies_and_rates(isocode: str, db: Session = Depends(get_db)):
         currencies.append(currency)
 
     return currencies
+
+
+@router.get("/currency_search/{search_term}")
+def currency_search(search_term: str, db: Session = Depends(get_db)):
+    """
+    This end point returns the currency associated with the string passed in(which can be the currency name or country name)
+    INPUT: currency name or country name: str
+    OUTPUT: {'success': True, 'status_code': 200, "currency": currency}
+    """
+    key_word = crud.currency.get_currency_by_country_name(db=db, country_name=search_term)
+    if not key_word:
+        key_word = key_word = crud.currency.get_currency_by_currency_name(db=db, currency_name=search_term)
+    if not key_word:
+        raise HTTPException(status_code=404, detail=f"Currency not found")
+    return {
+        "Success": True,
+        "currency": key_word
+    }
