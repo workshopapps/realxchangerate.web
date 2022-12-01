@@ -18,7 +18,7 @@ export const loginUser = createAsyncThunk(
         },
       };
       const res = await axios.post(
-        "https://exchange.hng.tech/backend/api/auth",
+        "https://api.streetrates.hng.tech/api/auth",
         {
           username: payload.email,
           password: payload.password,

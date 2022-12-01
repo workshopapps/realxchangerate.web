@@ -21,8 +21,8 @@ const Mission = () => {
         flexDirection: { xs: "column" },
         justifyContent: { xs: "center", md: "space-between" },
         width: { xs: "85%", sm: "65%", lg: "84%" },
-        margin: { xs: "40px auto 0px", md: "40px auto", lg: "40px auto" },
-        gap: { xs: "40px", md: "80px" },
+        margin: { xs: "0px auto", md: "0px auto", lg: "0px auto" },
+        gap: { xs: "40px", sm: "80px" },
       }}
     >
       <Box
@@ -58,7 +58,6 @@ const Mission = () => {
             Our Mission
           </Typography>
           <Typography
-            textAlign="justify"
             fontWeight="400"
             color="#202020"
             sx={{
