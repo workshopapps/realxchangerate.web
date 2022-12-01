@@ -80,7 +80,7 @@ const Container = styled.div`
     font-size: 18px;
     line-height: 24px;
     padding-top: 20px;
-    padding-bottom: 90px;
+    padding-bottom: 45px;
     color: #555962;
 
     @media (max-width: 834px) {
@@ -95,7 +95,7 @@ const Container = styled.div`
   .app-wrapper {
     h3 {
       padding-top: 20px;
-      padding-bottom: 50px;
+      padding-bottom: 15px;
 
       @media (max-width: 834px) {
         font-family: "Inter";
