@@ -16,6 +16,12 @@ class FaqUpdate(FaqBase):
     pass
 
 
+class FaqRetrieve(FaqBase):
+    pass 
+
+class FaqDelete(FaqBase):
+    pass 
+
 class Faq(FaqBase):
     id: int
     last_updated: Any
