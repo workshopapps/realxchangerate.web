@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 import { Box, Grid, Typography } from "@mui/material";
 import {
   CommunityIcon,
@@ -23,8 +22,8 @@ const ListItem = ({ image, title, content }) => {
         fontWeight="600"
         letterSpacing="-0.02em"
         sx={{
-          fontSize: { xs: "24px", sm: "28px", md: "28px" },
-          lineHeight: { xs: "40px", sm: "32px" },
+          fontSize: { xs: "22px", sm: "24px", md: "28px" },
+          lineHeight: { xs: "28px", sm: "32px" },
         }}
         color="#4B4B4B"
       >
@@ -32,12 +31,10 @@ const ListItem = ({ image, title, content }) => {
       </Typography>
 
       <Typography
-
         fontWeight="400"
-        letterSpacing="-0.02em"
         sx={{
-          fontSize: { xs: "24px", sm: "28px", md: "20px" },
-          lineHeight: { xs: "40px", sm: "28px" },
+          fontSize: { xs: "16px", sm: "15px", md: "15px", lg: "20px" },
+          lineHeight: { xs: "24px", sm: "28px" },
         }}
         color="#202020"
         textAlign="left"
@@ -56,7 +53,6 @@ const Value = () => {
       justfiyContent="center"
       flexDirection="column"
       alignItems="center"
-      height="460px"
       width="100%"
       sx={{
         margin: { xs: "40px auto 0px", md: "40px auto", lg: "56px auto" },
@@ -64,13 +60,13 @@ const Value = () => {
     >
       <Box
         diplay="flex"
+        flexDirection="column"
         sx={{
-          flexDirection: { xs: "column" },
           justifyContent: { xs: "center", md: "center" },
-          width: { xs: "87%", sm: "65%", lg: "84%" },
-          margin: { xs: "40px auto 0px", md: "40px auto", lg: "56px auto" },
-          gap: { xs: "40px", md: "24px" },
+          width: { xs: "85%", sm: "80%", md: "90%", lg: "83.5%" },
+          margin: { xs: "32px auto 0px", md: "40px auto", lg: "46px auto" },
         }}
+        gap="24px"
         textAlign="center"
       >
         <Typography
@@ -86,11 +82,13 @@ const Value = () => {
 
         <Typography
           fontWeight="400"
-          marginTop="24px"
           color="#202020"
           sx={{
-            fontSize: { xs: "20px", sm: "15px", md: "15px", lg: "20px" },
+            fontSize: { xs: "14px", sm: "15px", md: "15px", lg: "20px" },
             lineHeight: { lg: "28px" },
+            marginTop: { xs: "16px", sm: "24px" },
+            textAlign: { xs: "left", sm: "center" },
+            letterSpacing: { xs: "0.001em", sm: "auto" },
           }}
         >
           Offering a unique experience and providing an accurate of any country
@@ -100,14 +98,16 @@ const Value = () => {
         <Grid
           container
           spacing="30px"
-          marginTop="24px"
-          // display="flex"
-          // justfiyContent="center"
-          // flexDirection="column"
-          // alignItems="center"
-          // gap="30px"
+          sx={{
+            width: {
+              xs: "100%",
+              sm: "85%",
+              md: "100%",
+            },
+            margin: { xs: "24px 0px", sm: "24px auto" },
+          }}
         >
-          <Grid item xs={3}>
+          <Grid item sm={6} md={3}>
             <ListItem
               image={EntrepreneurshipIcon}
               title="Entrepreneurship"
@@ -115,7 +115,7 @@ const Value = () => {
             />
           </Grid>
 
-          <Grid item xs={3}>
+          <Grid item sm={6} md={3} sx={{ padding: { xs: "0px", sm: "30px" } }}>
             <ListItem
               image={DiversityIcon}
               title="Diversity"
@@ -123,7 +123,7 @@ const Value = () => {
             />
           </Grid>
 
-          <Grid item xs={3}>
+          <Grid item sm={6} md={3}>
             <ListItem
               image={InnovationIcon}
               title="Innovation"
@@ -131,7 +131,7 @@ const Value = () => {
             />
           </Grid>
 
-          <Grid item xs={3}>
+          <Grid item sm={6} md={3}>
             <ListItem
               image={CommunityIcon}
               title="Community"

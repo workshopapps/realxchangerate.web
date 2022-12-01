@@ -4,7 +4,11 @@ import tabletImage from "../assets/Tablet.png";
 import mobileImage from "../assets/mobile-image.png";
 
 const Header = () => {
-  const tablet = useMediaQuery("(max-width:789px)");
+  const tabletUpper = useMediaQuery("(max-width:789px)");
+  const tabletLower = useMediaQuery("(min-width:481px)");
+
+  const tablet = tabletLower && tabletUpper;
+
   const image = tablet ? tabletImage : mobileImage;
 
   return (
@@ -13,50 +17,56 @@ const Header = () => {
       display="flex"
       alignItems="center"
       sx={{
-        height: { xs: "599px", sm: "569px", md: "604px" },
-        flexDirection: { xs: "column", md: "row" },
-        justifyContent: { xs: "center", md: "space-between" },
         width: { xs: "90%", sm: "84%", lg: "84%" },
-        margin: { xs: "100px auto 0px", md: "0px auto", lg: "0px auto" },
+        margin: { xs: "41px auto 0px", md: "41px auto 0px" },
       }}
     >
       <Box
         display="flex"
-        flexDirection="column"
-        gap="10px"
+        gap="0px"
         sx={{
-          width: { xs: "100%", md: "47%" },
-          alignItems: { xs: "center", md: "start" },
+          height: { xs: "599px", sm:"700px", md: "400px", lg: "604px" },
+          flexDirection: { xs: "column", md: "row" },
         }}
-        justifyContent="center"
       >
-        <Typography
-          fontWeight="600"
-          letterSpacing="-0.02em"
+        <Box
+          display="flex"
+          flexDirection="column"
+          gap="10px"
           sx={{
-            fontSize: { xs: "32px", sm: "36px" },
-            lineHeight: { xs: "40px", sm: "44px" },
+            width: { xs: "100%", md: "100%" },
+            alignItems: { xs: "center", md: "start" },
           }}
+          justifyContent="center"
         >
-          About us
-        </Typography>
+          <Typography
+            fontWeight="600"
+            letterSpacing="-0.02em"
+            sx={{
+              fontSize: { xs: "32px", sm: "36px" },
+              lineHeight: { xs: "40px", sm: "44px" },
+            }}
+          >
+            About us
+          </Typography>
 
-        <Typography
-          fontWeight="600"
-          sx={{
-            fontSize: { xs: "20px", sm: "20px", md: "15px", lg: "20px" },
-            lineHeight: { lg: "28px" },
-          }}
-        >
-          Bankstreet is a platform that allows User to recieve/veiw instant
-          conversion rates using customized areas real-time charts that fit the
-          Ecomony value and a historical conversion record from one to one year
-          and to enhance the customer experience
-        </Typography>
-      </Box>
+          <Typography
+            fontWeight="600"
+            sx={{
+              fontSize: { xs: "20px", sm: "20px", md: "15px", lg: "20px" },
+              lineHeight: { lg: "28px" },
+            }}
+          >
+            Bankstreet is a platform that allows User to recieve/veiw instant
+            conversion rates using customized areas real-time charts that fit
+            the Ecomony value and a historical conversion record from one to one
+            year and to enhance the customer experience
+          </Typography>
+        </Box>
 
-      <Box marginLeft="-50px">
-        <img src={image} alt="" />
+        <Box width="100%" marginLeft="-25px" marginTop="-25px">
+          <img src={image} width="100%" alt="" />
+        </Box>
       </Box>
     </Box>
   );

@@ -20,7 +20,7 @@ const Mission = () => {
       sx={{
         flexDirection: { xs: "column" },
         justifyContent: { xs: "center", md: "space-between" },
-        width: { xs: "87%", sm: "65%", lg: "84%" },
+        width: { xs: "85%", sm: "65%", lg: "84%" },
         margin: { xs: "40px auto 0px", md: "40px auto", lg: "40px auto" },
         gap: { xs: "40px", md: "80px" },
       }}
@@ -34,7 +34,7 @@ const Mission = () => {
           gap: { xs: "25px", md: "56px" },
         }}
       >
-        <Box width="100%" margin="auto">
+        <Box width="80%" margin="auto">
           <img src={mission} width="100%" alt="scanImage" />
         </Box>
 
@@ -63,7 +63,7 @@ const Mission = () => {
             color="#202020"
             sx={{
               fontSize: { xs: "20px", sm: "15px", md: "15px", lg: "20px" },
-              lineHeight: { lg: "28px" },
+              lineHeight: { xs: "28px" },
             }}
           >
             To create a onestop platform that allow user to view their current
@@ -82,7 +82,7 @@ const Mission = () => {
         }}
       >
         <Box
-          width="100%"
+          width="80%"
           sx={{ display: { xs: "flex", md: "none" } }}
           margin="auto"
         >
@@ -113,11 +113,11 @@ const Mission = () => {
             color="#202020"
             sx={{
               fontSize: { xs: "20px", sm: "15px", md: "15px", lg: "20px" },
-              lineHeight: { lg: "28px" },
+              lineHeight: { xs: "28px" },
             }}
           >
             To prepare the users mindset for any expenditure in any country of
-            thier chioce
+            their choice
           </Typography>
         </Box>
 
