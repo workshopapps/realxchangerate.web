@@ -42,7 +42,7 @@ function Faqs() {
         className="header"
         sx={{ display: "flex", gap: "1rem", m: "2rem 0" }}
       >
-        <Button onClick={() => navigate("/")}>
+        <Button onClick={() => navigate("/admin")}>
           <img src={back} alt="Go back" />
         </Button>
         <Typography variant="h4" component="h1" sx={{ fontWeight: 700 }}>

@@ -13,7 +13,7 @@ export const getTrending = createAsyncThunk(
   async (payload, { rejectWithValue }) => {
     try {
       const res = await axios.get(
-        "https://exchange.hng.tech/backend/api/currency/"
+        "https://api.streetrates.hng.tech/api/currency/"
       );
       if (res.status && res.status === 200) {
         return res.data;
