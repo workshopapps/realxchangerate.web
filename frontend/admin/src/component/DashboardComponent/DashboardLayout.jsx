@@ -1,11 +1,9 @@
-import { StyledDashboardLayout } from "./dashboardLayoutStyle";
+import CreateCurrency from "../../pages/CreateCurrency/CreateCurrency";
 
 const DashboardLayout = () => {
   return (
     <main>
-      <StyledDashboardLayout>
-        <p>DASHBOARD</p>
-      </StyledDashboardLayout>
+      <CreateCurrency />
     </main>
   );
 };
