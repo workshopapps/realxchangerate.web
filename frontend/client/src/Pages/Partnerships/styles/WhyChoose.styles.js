@@ -79,6 +79,7 @@ export const StyledWhyChoose = styled.section`
         font-size: 16px;
         font-weight: 400;
         width: 100%;
+        text-align: center;
       }
     }
   }
