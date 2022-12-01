@@ -93,3 +93,75 @@ export const HeroContents = styled.div`
     line-height: 36px;
   }
 `;
+
+export const StudentAmbassadorsSection = styled.div`
+  text-align: center;
+  color: #0f172a;
+  margin: auto;
+  margin-bottom: 100px;
+  max-width: 1120px;
+
+  h2 {
+    font-size: 18px;
+    margin-bottom: 40px;
+  }
+
+  @media (min-width: 500px) {
+    h2 {
+      font-size: 24px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    h2 {
+      font-size: 36px;
+      margin-bottom: 60px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    h2 {
+      font-size: 48px;
+    }
+  }
+`;
+
+export const StudentAmbassadorsContainer = styled.div`
+  display: grid;
+  gap: 60px;
+  justify-content: center;
+
+  .image-container {
+    margin-bottom: 40px;
+
+    img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+    }
+  }
+
+  h3 {
+    margin-bottom: 8px;
+    font-size: 20px;
+  }
+
+  span {
+    font-size: 18px;
+  }
+
+  @media (min-width: 500px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  @media (min-width: 1024px) {
+    img {
+      width: 240px;
+      height: 240px;
+    }
+  }
+`;
