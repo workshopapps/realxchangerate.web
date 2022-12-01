@@ -11,8 +11,20 @@ from app.api.deps import get_location
 from datetime import datetime, timedelta
 router = APIRouter()
 
-#  get rates ofbject for a spcific isocode
 
+@router.get("/last_rate_update")
+def last_update_rate(db: Session = Depends(get_db)):
+    """
+    returns the last date and time the currency rates where updated
+    """
+    time = db.query(Rate).order_by(Rate.last_updated.desc()).first().last_updated
+    return{
+        "Success": True,
+        "Time": time
+    }
+
+
+#  get rates ofbject for a spcific isocode
 
 @router.get("/{isocode}")
 def get_rate_by_isocode(isocode, db: Session = Depends(get_db)):

@@ -1,16 +1,24 @@
 import styled from "styled-components";
 
 export const StyledWhyChoose = styled.section`
-  padding: 30px 0 100px;
-  max-width: 1440px;
-  margin: 0 auto;
+  padding: 30px;
+  max-width: 1240px;
+  margin: auto;
+  margin-top: 146px;
+
+  @media screen and (max-width: 480px) {
+    margin-top: 70px;
+    padding: 20px;
+    padding-bottom: 0;
+  }
 
   .header {
     text-align: center;
-    font-size: 28px;
-    font-weight: 600;
-    margin-bottom: 140px;
+    margin-bottom: 84px;
     width: 100%;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 40px;
 
     @media screen and (max-width: 480px) {
       font-size: 24px;
@@ -21,21 +29,26 @@ export const StyledWhyChoose = styled.section`
 
   .WhyContainer {
     display: flex;
-    width: 90%;
     max-width: 1440px;
-    margin: 0 auto;
+
     justify-content: space-around;
     flex-wrap: wrap;
-    margin-bottom: 140px;
   }
 
   .listDiv {
     width: 30%;
     display: flex;
-    align-items: center;
+    align-items: left;
     flex-direction: column;
     gap: 40px;
-    margin-top: 15px;
+    margin-top: 82px;
+    @media screen and (max-width: 1480px) {
+      align-items: center;
+    }
+    @media screen and (max-width: 480px) {
+      gap: 10px;
+      margin-bottom: 80px;
+    }
 
     & h2 {
       font-size: 24px;
@@ -48,18 +61,24 @@ export const StyledWhyChoose = styled.section`
     }
 
     @media screen and (max-width: 480px) {
-        gap: 80px;
+      margin-bottom: 80px;
+      .listDiv {
+        align-items: center;
       }
+    }
 
     & p {
       margin-top: 5px;
+      margin-bottom: 85px;
       font-size: 16px;
       font-weight: 400;
       line-height: 1.5;
+      max-width: "266px";
 
       @media screen and (max-width: 480px) {
         font-size: 16px;
         font-weight: 400;
+        width: 100%;
       }
     }
   }
@@ -70,8 +89,6 @@ export const StyledWhyChoose = styled.section`
     .WhyContainer {
       flex-direction: column;
       gap: 15px;
-      width: 80%;
-      margin: 0 auto;
     }
 
     .listDiv {

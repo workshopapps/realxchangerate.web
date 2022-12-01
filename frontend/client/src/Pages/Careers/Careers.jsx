@@ -1,5 +1,5 @@
-import React from "react";
-import {useTheme} from "@mui/material"
+import React, { useEffect } from "react";
+import { useTheme } from "@mui/material";
 import styled from "styled-components";
 import Button from "./components/CareerButton";
 
@@ -40,6 +40,11 @@ import { ArrowBack } from "@mui/icons-material";
 import Carousel from "./components/Carousel";
 import IntroCard from "./components/IntroCard";
 import GlobalStyle from "./styles/Boilerplate.style";
+import {
+  GetCurrencies,
+  GetCurrencyRates,
+} from "../../redux/features/Reducers/serviceActions";
+import { useSelector } from "react-redux";
 const coreValues = [
   {
     number: "01/05",
@@ -74,11 +79,25 @@ const coreValues = [
 ];
 
 function Careers() {
+  // const rates = useSelector((state) => state.service.currencyRates);
+  // const currencies = useSelector((state) => state.service.currencyList);
+  // const handleRates = async () => {
+  //   const curren = await GetCurrencies();
+  //   return curren;
+  // };
+  // useEffect(() => {
+  //   handleRates().then((val) => {
+  //     console.log(val);
+  //   });
+  //   // console.log(currencies);
+  //   // GetCurrencyRates();
+  //   // console.log(rates);
+  // });
 
-  const theme = useTheme()
-  const darkMode = theme.palette.mode === 'dark'
-  const textColor = darkMode ? "#fff": "#000"
-  const backgroundColor = darkMode ? theme.palette.grey[900] : "var(--gray-50)"
+  const theme = useTheme();
+  const darkMode = theme.palette.mode === "dark";
+  const textColor = darkMode ? "#fff" : "#000";
+  const backgroundColor = darkMode ? theme.palette.grey[900] : "var(--gray-50)";
   const [index, setIndex] = useState(0);
 
   const slideLeft = () => {
@@ -127,7 +146,7 @@ function Careers() {
           </HeroImg>
         </HeroContent>
       </HeroSection>
-      <IntroSection style={{backgroundColor: backgroundColor}}>
+      <IntroSection style={{ backgroundColor: backgroundColor }}>
         <WhoWeAre>
           <h3>
             Who we{" "}
@@ -135,7 +154,7 @@ function Careers() {
               are <img src={smiley} alt="" />
             </span>
           </h3>
-          <p className="desc" style={{color:textColor}}>
+          <p className="desc" style={{ color: textColor }}>
             We are problem solvers who are deeply focused on building the future
             of finance for users across the globe. We strongly believe that
             teamwork and a constant desire to improve helps us achieve that.
