@@ -170,3 +170,4 @@ def get_all_complaints(db: Session = Depends(get_db)):
         return {"success": True, "status_code": 200, "message": "No complaints recorded!"}
 
     return {"success": True, "status_code": 200, "complaints": complaints}
+
