@@ -12,6 +12,7 @@ router = APIRouter()
 def search(question: str, db: Session = Depends(get_db)):
     """
     Get the faq by the question passed
+    
     """
 
     question = crud.faq.get_faq(db, question=question)
