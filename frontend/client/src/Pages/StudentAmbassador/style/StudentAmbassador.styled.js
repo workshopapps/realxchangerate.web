@@ -159,9 +159,11 @@ export const StudentAmbassadorsContainer = styled.div`
   }
 
   @media (min-width: 1024px) {
-    img {
-      width: 240px;
-      height: 240px;
+    .image-container {
+      img {
+        width: 240px;
+        height: 240px;
+      }
     }
   }
 `;
