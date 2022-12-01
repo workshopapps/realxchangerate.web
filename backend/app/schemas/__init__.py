@@ -4,3 +4,4 @@ from .rate import RateBase, RateCreate, Rate, RateUpdate
 from .service import BinanceRequestSchema, BinanaceResponseSchema, BinanceAdv, BinanceResponseData
 from .complaints import Complaint, ComplaintCreate
 from .faq import FaqBase,FaqCreate, FaqUpdate, Faq
+from .contact import ContactBase, ContactCreate, ContactUpdate, Contact
