@@ -62,7 +62,7 @@ def add_faq(*, db: Session = Depends(get_db), faq_in: schemas.FaqCreate) -> Any:
     }
 
 
-@router.put('/update_currency')
+@router.put('/update_currency/{isocode}')
 def update_currencies(iso_code: str, update_param: schemas.CurrencyUpdate, db: Session = Depends(get_db)):
     """
     this endpoint recives details to update a currency, it finds the currency in the database with the required iso code provided
@@ -81,10 +81,10 @@ def update_currencies(iso_code: str, update_param: schemas.CurrencyUpdate, db: S
     }
 
 
-@router.put("/update_rate")
+@router.put("/update_rate/{isocode}")
 def update_rate(iso_code: str, update_param: schemas.RateUpdate, db: Session = Depends(get_db)):
     """
-    This endpoint recives details to update a currency rate. It finds the rate in the database by locating
+    This endpoint recives details to update the most recent currency rate. It finds the rate in the database by locating
     the currency associated with it through the required iso code provided
     """
     currency = crud.currency.get_currency_by_isocode(db=db, isocode=iso_code)
