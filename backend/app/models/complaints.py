@@ -5,6 +5,15 @@ from datetime import datetime
 
 from app.database.base_class import Base
 
+import enum
+from sqlalchemy import Integer, Enum
+
+
+class Status(enum.Enum):
+    Resolved = "Resolved"
+    Unresolved = "Unresolved"
+    Still_in_review  = "Still_in_review"
+
 
 class Complaint(Base):
     __tablename__ = "complaints"
@@ -14,3 +23,5 @@ class Complaint(Base):
     email = Column(EmailType, nullable=False)
     complaint = Column(String(256), nullable=False)
     timestamp = Column(DateTime(timezone=True), nullable=False, default=datetime.now())
+
+    status = Column(Enum(Status), default=Status.Still_in_review)
