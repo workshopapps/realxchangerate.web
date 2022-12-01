@@ -16,19 +16,27 @@ const ListItem = ({ image, title, content }) => {
       alignItems="center"
       gap="20px"
     >
-      <img src={image} alt="" />
-
-      <Typography
-        fontWeight="600"
-        letterSpacing="-0.02em"
-        sx={{
-          fontSize: { xs: "22px", sm: "24px", md: "28px" },
-          lineHeight: { xs: "28px", sm: "32px" },
-        }}
-        color="#4B4B4B"
+      <Box
+        display="flex"
+        justfiyContent="center"
+        flexDirection="column"
+        alignItems="center"
+        gap="10px"
       >
-        {title}
-      </Typography>
+        <img src={image} alt="" />
+
+        <Typography
+          fontWeight="600"
+          letterSpacing="-0.02em"
+          sx={{
+            fontSize: { xs: "22px", sm: "24px", md: "28px" },
+            lineHeight: { xs: "28px", sm: "32px" },
+          }}
+          color="#4B4B4B"
+        >
+          {title}
+        </Typography>
+      </Box>
 
       <Typography
         fontWeight="400"
@@ -55,7 +63,7 @@ const Value = () => {
       alignItems="center"
       width="100%"
       sx={{
-        margin: { xs: "40px auto 0px", md: "40px auto", lg: "56px auto" },
+        margin: { xs: "0px auto", md: "0px auto", lg: "0px auto" },
       }}
     >
       <Box
@@ -64,9 +72,9 @@ const Value = () => {
         sx={{
           justifyContent: { xs: "center", md: "center" },
           width: { xs: "85%", sm: "80%", md: "90%", lg: "83.5%" },
-          margin: { xs: "32px auto 0px", md: "40px auto", lg: "46px auto" },
+          margin: { xs: "32px auto", sm: "48px auto", lg: "56px auto" },
+          gap: {xs:"30px", sm: "18px", md: "24px" },
         }}
-        gap="24px"
         textAlign="center"
       >
         <Typography
@@ -86,7 +94,6 @@ const Value = () => {
           sx={{
             fontSize: { xs: "14px", sm: "15px", md: "15px", lg: "20px" },
             lineHeight: { lg: "28px" },
-            marginTop: { xs: "16px", sm: "24px" },
             textAlign: { xs: "left", sm: "center" },
             letterSpacing: { xs: "0.001em", sm: "auto" },
           }}
@@ -104,7 +111,11 @@ const Value = () => {
               sm: "85%",
               md: "100%",
             },
-            margin: { xs: "24px 0px", sm: "24px auto" },
+            margin: {
+              xs: "0px",
+              sm: "22px auto 0px",
+              md: "16px auto 0px",
+            },
           }}
         >
           <Grid item sm={6} md={3}>
@@ -115,7 +126,7 @@ const Value = () => {
             />
           </Grid>
 
-          <Grid item sm={6} md={3} sx={{ padding: { xs: "0px", sm: "30px" } }}>
+          <Grid item sm={6} md={3}>
             <ListItem
               image={DiversityIcon}
               title="Diversity"

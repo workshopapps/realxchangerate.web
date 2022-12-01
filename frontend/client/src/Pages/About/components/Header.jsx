@@ -18,14 +18,15 @@ const Header = () => {
       alignItems="center"
       sx={{
         width: { xs: "90%", sm: "84%", lg: "84%" },
-        margin: { xs: "41px auto 0px", md: "41px auto 0px" },
+        margin: {xs:"40px auto", sm: "60px auto", md: "0px auto" },
       }}
+      maxWidth="1440px"
     >
       <Box
         display="flex"
-        gap="0px"
+        gap="24px"
         sx={{
-          height: { xs: "599px", sm:"700px", md: "400px", lg: "604px" },
+          height: { xs: "599px", sm: "650px", md: "400px", lg: "604px" },
           flexDirection: { xs: "column", md: "row" },
         }}
       >
@@ -64,7 +65,7 @@ const Header = () => {
           </Typography>
         </Box>
 
-        <Box width="100%" marginLeft="-25px" marginTop="-25px">
+        <Box width="100%" marginLeft="-25px" sx={{marginTop:{xs:"0px", sm:"-24px", md:"0px", xl:"0px"}}}>
           <img src={image} width="100%" alt="" />
         </Box>
       </Box>
