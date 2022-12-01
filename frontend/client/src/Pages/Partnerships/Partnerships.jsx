@@ -46,7 +46,7 @@ const Partnerships = () => {
         <ReferralPartners
           title="Referral Partners"
           text="Submit Leads and get rewarded when they become Street Rates Customers"
-          btn="Become an Affiliate Partner"
+          btn="Become a Referral Partner"
           list1="Submit leads directly into StreetRates"
           list2="Be involved in the implementation and onboarding proccess"
           list3="Earn Up to 15% commissions on your referrals"
