@@ -8,7 +8,7 @@ from app.api.deps import get_db
 from app.models.rate import Rate
 from app.models.currency import Currency
 from app.api.deps import get_location
-
+from datetime import datetime, timedelta
 router = APIRouter()
 
 #  get rates ofbject for a spcific isocode
@@ -80,7 +80,8 @@ def get_rates_by_limit(isocode, db: Session = Depends(get_db), limit: int = 15):
         )
 
     # get rate objects based on limit set
-    rate = crud.rate.get_rates_by_limit(db, currency_id=currency.id, limit=limit)
+    rate = crud.rate.get_rates_by_limit(
+        db, currency_id=currency.id, limit=limit)
 
     # return no content if no rate object was found
     if rate == None:
@@ -150,7 +151,8 @@ def convert_currency(
     from_currency_obj = crud.currency.get_currency_by_isocode(
         db, isocode=from_currency_in
     )
-    to_currency_obj = crud.currency.get_currency_by_isocode(db, isocode=to_currency_in)
+    to_currency_obj = crud.currency.get_currency_by_isocode(
+        db, isocode=to_currency_in)
     if from_currency_obj is None or to_currency_obj is None:
         return {"success": False, "message": "Please send a valid currency isocode."}
 
@@ -185,3 +187,44 @@ def convert_currency(
         }
     except:
         return {"success": False, "message": "Failed to convert currencies."}
+
+
+@router.get("/date/{hour}")
+def get_rates_before_hour(hour: int, db: Session = Depends(get_db)):
+    """Get rates before a particular hour"""
+    time = datetime.now() - timedelta(hours=hour)
+    rates = db.query(Rate).filter(Rate.last_updated <= time).all()
+
+    data = {
+        "success": True,
+        "status_code": 200,
+        "rates": rates
+    }
+
+    return data
+
+@router.get("/high_low/{isocode}")
+def get_highest_and_lowest_rates(isocode, db: Session = Depends(get_db)):
+    """
+    Get the highest and lowest rates for a selected currency by isocode
+
+    Args:
+        isocode (str): Country isocode
+    """
+    currency = crud.currency.get_currency_by_isocode(db, isocode=isocode)
+    if currency == None:
+        return {"success": False, "message": "Currency not found", "status_code": 404}
+    result = {}
+    rate = (
+        db.query(Rate)
+        .filter(Rate.currency_id == currency.id)
+        .order_by(Rate.parallel_buy.desc())
+        .all()
+    )
+    result["highest"] = rate[0]
+    result["lowest"] = rate[-1]
+    return {
+        "success": True,
+        "status_code": 200,
+        "data": {"currency": currency, "rates": result},
+    }

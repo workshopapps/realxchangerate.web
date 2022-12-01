@@ -35,6 +35,9 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ```bash
 npm run build
 ```
+<<<<<<< HEAD
+> Tested
+=======
 
 ## Editor setup
 
@@ -56,3 +59,4 @@ yarn prettify # to prettify files # in project directory
 ```
 
 you can also lint for all files in the repo by running that command in the root folder.
+>>>>>>> 6eacc33ad7b50fbd60f615b5c3f0a3c0b365fa1a

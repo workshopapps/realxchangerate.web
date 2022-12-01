@@ -1,6 +1,7 @@
 venv
 .vscode/
 __pycache__/
+realexchange_db.db
 .db
 env
 .env

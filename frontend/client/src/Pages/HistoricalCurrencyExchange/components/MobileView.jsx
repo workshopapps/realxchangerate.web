@@ -23,6 +23,7 @@ const MobileView = ({ data }) => {
                 <MobileRowComponent
                   country={val.country}
                   rate={val.bank_rates}
+                  key={key}
                 />
               );
             })}
@@ -36,6 +37,7 @@ const MobileView = ({ data }) => {
                 <MobileRowComponent
                   country={val.country}
                   rate={val.parallel_rates}
+                  key={key}
                 />
               );
             })}
@@ -45,5 +47,6 @@ const MobileView = ({ data }) => {
     </Box>
   );
 };
+
 
 export default MobileView;

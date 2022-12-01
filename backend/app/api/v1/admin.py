@@ -1,18 +1,16 @@
 from typing import Any, List
 from app import schemas, models
-
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from app.models.rate import Rate
 from app.models.currency import Currency
-
 from app import schemas, crud
 from app.api.deps import get_db
 
 router = APIRouter()
 
 
-@router.post("/create/", response_model=schemas.Admin)
+@router.post("/create/")
 def create_admin(*, db: Session = Depends(get_db), admin_in: schemas.AdminCreate) -> Any:
     """
     Create Admin
@@ -29,8 +27,7 @@ def create_admin(*, db: Session = Depends(get_db), admin_in: schemas.AdminCreate
 
 @router.post("/add_currency")
 def add_currency(
-    *, db: Session = Depends(get_db), currency_in: schemas.CurrencyCreate
-) -> Any:
+        *, db: Session = Depends(get_db), currency_in: schemas.CurrencyCreate) -> Any:
     """
     Create a new currency.
     """
@@ -39,47 +36,33 @@ def add_currency(
     return currency
 
 
-@router.post("/add_rate", response_model=schemas.Rate, status_code=201)
+@router.post("/add_rate", status_code=201)
 async def create_rate(*, db: Session = Depends(get_db),
                       rate_in: schemas.RateCreate) -> Any:
     #    create new rates
-    rate = crud.rate.create(db=db, obj_in=rate_in)
-    return (rate)
+    details = crud.currency.get_currency_by_id(db, id=rate_in.currency_id)
+    if details:
+
+        rate = crud.rate.create(db=db, obj_in=rate_in)
+        return (rate)
+    else:
+        return {"message:": "id not found"}
 
 
-@router.post("/delete_currency")
-def delete_currency(*, db: Session = Depends(get_db), isocode: str):
-    """delete currency and all associated rates
-
-    Args:
-        isocode (str): country isocode
+@router.post("/add_faq")
+def add_faq(*, db: Session = Depends(get_db), faq_in: schemas.FaqCreate) -> Any:
     """
-    currency = crud.currency.delete_currency_by_isocode(db, isocode=isocode)
-    if currency is None:
-        return {"success": False, "status_code": 404, "data": {"currency": currency}, "message": "currency not found!"}
-
-    return {"success": True, "status_code": 200, "data": {"currency": currency}, "message": "currency deleted!"}
-
-
-@router.post("/delete_rate")
-def delete_rate(*, db: Session = Depends(get_db), rate_id: int):
-    """delete selected rate
-
-    Args:
-        rate_id (int): rate id
+    This endpoint stores a new FAQ into the database.
     """
-    if rate_id == 0:
-        return {"success": False, "status_code": 404, "data": {"id": rate_id}, "message": "id starts from 1!"}
-
-    rate_query = crud.rate.remove(db, model_id=rate_id)
-
-    if rate_query is None:
-        return {"success": False, "status_code": 404, "data": {"id": rate_id}, "message": "Not found!"}
-
-    return {"success": True, "status_code": 200, "data": {"id": rate_id}, "message": "rate deleted!"}
+    faq = crud.faq.create(db=db, obj_in = faq_in)
+    return {
+        "Success": True,
+        "Status code": 200,
+        "FAQ": faq
+    }
 
 
-@router.post('/update_currency')
+@router.put('/update_currency/{isocode}')
 def update_currencies(iso_code: str, update_param: schemas.CurrencyUpdate, db: Session = Depends(get_db)):
     """
     this endpoint recives details to update a currency, it finds the currency in the database with the required iso code provided
@@ -98,10 +81,10 @@ def update_currencies(iso_code: str, update_param: schemas.CurrencyUpdate, db: S
     }
 
 
-@router.post("/update_rate")
+@router.put("/update_rate/{isocode}")
 def update_rate(iso_code: str, update_param: schemas.RateUpdate, db: Session = Depends(get_db)):
     """
-    This endpoint recives details to update a currency rate. It finds the rate in the database by locating
+    This endpoint recives details to update the most recent currency rate. It finds the rate in the database by locating
     the currency associated with it through the required iso code provided
     """
     currency = crud.currency.get_currency_by_isocode(db=db, isocode=iso_code)
@@ -120,3 +103,71 @@ def update_rate(iso_code: str, update_param: schemas.RateUpdate, db: Session = D
         "success": True,
         "data": update
     }
+
+
+@router.delete("/delete_currency")
+def delete_currency(*, db: Session = Depends(get_db), isocode: str):
+    """delete currency and all associated rates
+
+    Args:
+        isocode (str): country isocode
+    """
+    currency = crud.currency.delete_currency_by_isocode(db, isocode=isocode)
+    if currency is None:
+        return {"success": False, "status_code": 404, "data": {"currency": currency}, "message": "currency not found!"}
+
+    return {"success": True, "status_code": 200, "data": {"currency": currency}, "message": "currency deleted!"}
+
+
+@router.delete("/delete_rate")
+def delete_rate(*, db: Session = Depends(get_db), rate_id: int):
+    """delete selected rate
+
+    Args:
+        rate_id (int): rate id
+    """
+    if rate_id == 0:
+        return {"success": False, "status_code": 404, "data": {"id": rate_id}, "message": "id starts from 1!"}
+
+    rate_query = crud.rate.remove(db, model_id=rate_id)
+
+    if rate_query is None:
+        return {"success": False, "status_code": 404, "data": {"id": rate_id}, "message": "Not found!"}
+
+    return {"success": True, "status_code": 200, "data": {"rate": rate_query}, "message": "rate deleted!"}
+
+
+@router.delete("/delete_faq")
+def delete_faq(*, db: Session = Depends(get_db), faq_id: int):
+    """delete selected faq
+
+    Args:
+        faq_id (int): faq id
+    """
+    if faq_id == 0:
+        return {"success": False, "status_code": 404, "data": {"id": faq_id}, "message": "id starts from 1!"}
+
+    faq_query = crud.faq.remove(db, model_id=faq_id)
+
+    if faq_query is None:
+        return {"success": False, "status_code": 404, "data": {"id": faq_id}, "message": "Not found!"}
+
+    return {"success": True, "status_code": 200, "data": {"faq": faq_query}, "message": "rate deleted!"}
+
+
+@router.get("/get_all_complaints")
+def get_all_complaints(db: Session = Depends(get_db)):
+    """
+    Gets all complaints from the database
+
+    Returns:
+        List of complaints
+    """
+    complaints = crud.complaint.get_all_complaints(db)
+    if complaints is None:
+        return {"success": False, "status_code": 404, "message": "Could not retrieve info!"}
+    if len(complaints) == 0:
+        return {"success": True, "status_code": 200, "message": "No complaints recorded!"}
+
+    return {"success": True, "status_code": 200, "complaints": complaints}
+

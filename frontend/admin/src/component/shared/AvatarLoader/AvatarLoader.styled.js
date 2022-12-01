@@ -4,8 +4,8 @@ import Avatar from '@mui/material/Avatar';
 const StyledAvatar = styled(Avatar)(({ theme }) => ({
     color: theme.$styled.colors.text50,
     backgroundColor: theme.palette.primary.main,
-    width: '48px',
-    height: '48px',
+    width: '40px',
+    height: '40px',
 }))
 
 export default StyledAvatar;

@@ -1,19 +1,8 @@
-FROM node:16-alpine
-
-RUN mkdir -p /home/app
-
-WORKDIR /home/app
-
-COPY package.json .
-
-COPY package-lock.json .
-
+FROM node:19-alpine3.15
+WORKDIR /frontend/admin
+COPY package*.json ./
 RUN npm install
-
 COPY . .
-
-EXPOSE 3000
-
 RUN npm run build
-
-CMD [ "npm", "start" ]
+EXPOSE 8080
+CMD ["npx", "serve", "build"]
