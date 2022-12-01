@@ -11,7 +11,7 @@ from app.api.v1 import password_email_reset
 from app.api.v1 import api_service
 from app.api.v1 import news
 
-from app.api.v1 import faq
+# from app.api.v1 import faq
 
 api_router = APIRouter()
 
@@ -26,4 +26,4 @@ api_router.include_router(password_email_reset.router,
 api_router.include_router(
     api_service.router, prefix="/service", tags=["services"])
 api_router.include_router(news.router, prefix="/news", tags=["news"])
-api_router.include_router(faq.router, prefix="/faq", tags=["faqs"])
+# api_router.include_router(faq.router, prefix="/faq", tags=["faqs"])
