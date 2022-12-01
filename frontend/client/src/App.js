@@ -34,8 +34,8 @@ import {
     Glossary,
     OnlineAdvertising,
     Ambassadors,
+    StudentAmbassador,
     Home,
-    PrivacyPolicy,
 } from "./Pages";
 import GlobalStyle from "./styles/Globalstyle";
 import ErrorPage from "./Pages/404/ErrorPage";
@@ -43,8 +43,10 @@ import ErrorPage from "./Pages/404/ErrorPage";
 import SingleNews from "./Pages/SingleNews/SingleNews";
 import Article from "./Pages/Press/Article/Article";
 import PressNews from "./Pages/Press/PressRelease/News";
+import GetInTouch from "./Pages/GetInTouch/GetInTouch";
 import CurrencyProfile from "./Pages/CurrencyProfile/CurrencyProfile";
 // import ScrollToTop from "./utils/ScrollToTop";
+import PrivacyPolicy from "./Pages/PrivacyPolicy/PrivacyPolicy";
 
 function App() {
     return (
@@ -61,7 +63,7 @@ function App() {
                         <Route path="/compliance" element={<Compliance />} />
                         <Route path="/help-center" element={<HelpCenter />} />
                         <Route
-                            path="/:id/currency"
+                            path="/currency-profile"
                             element={<CurrencyProfile />}
                         />
                         <Route path="/news" element={<News />} />
@@ -99,6 +101,8 @@ function App() {
                             element={<HistoricalCurrencyExchange />}
                         />
                         <Route path="/fraud-report" element={<FraudReport />} />
+                        {/* Adding get in touch route */}
+                        <Route path="/get-in-touch" element={<GetInTouch />} />
                         <Route
                             path="/Cookie-policy"
                             element={<CookiePolicy />}
@@ -113,6 +117,10 @@ function App() {
                             element={<OnlineAdvertising />}
                         />
                         <Route path="/ambassadors" element={<Ambassadors />} />
+                        <Route
+                            path="/ambassadors/student-ambassador"
+                            element={<StudentAmbassador />}
+                        />
                         <Route path="/ddff" element={<ErrorPage />} />
                         <Route path="/*" element={<ErrorPage />} />
                         <Route path="*" element={<Navigate to={"/ddff"} />} />
