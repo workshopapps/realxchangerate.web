@@ -17,7 +17,7 @@ const style = {
   textAlign: "center",
 };
 
-export default function DeleteContent() {
+export default function DeleteContent({ cancel }) {
   return (
     <Box sx={style}>
       <Typography
@@ -35,7 +35,7 @@ export default function DeleteContent() {
       <Box
         sx={{ display: "flex", justifyContent: "center", gap: 3, m: 2, mt: 3 }}
       >
-        <Button variant="outlined" color="inherit">
+        <Button variant="outlined" color="inherit" onClick={cancel}>
           Cancel
         </Button>
         <Button variant="contained" sx={{ bgcolor: "#EF4444" }}>

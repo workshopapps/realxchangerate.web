@@ -15,6 +15,7 @@ import expandIconClose from "../../assets/icons/close_minus.svg";
 import deleteIcon from "../../assets/icons/delete.svg";
 import editIcon from "../../assets/icons/pen_edit.svg";
 import DeleteContent from "./DeleteContent";
+import EditContent from "./EditContent";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -27,11 +28,15 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export default function FaqsCard() {
+export default function FaqsCard({ faq }) {
   const [expanded, setExpanded] = React.useState(false);
   const [openDelete, setOpenDelete] = React.useState(false);
   const handleOpenDelete = () => setOpenDelete(true);
   const handleCloseDelete = () => setOpenDelete(false);
+
+  const [openEdit, setOpenEdit] = React.useState(false);
+  const handleOpenEdit = () => setOpenEdit(true);
+  const handleCloseEdit = () => setOpenEdit(false);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -44,7 +49,7 @@ export default function FaqsCard() {
           bgcolor: `${expanded ? "#0062FF" : "white"}`,
           color: `${expanded ? "white" : "black"}`,
         }}
-        title="Shrimp and Chorizo Paella"
+        title={faq.question}
         action={
           <ExpandMore
             expand={expanded}
@@ -62,16 +67,7 @@ export default function FaqsCard() {
 
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          <Typography paragraph>
-            Heat oil in a (14- to 16-inch) paella pan or a large, deep skillet
-            over medium-high heat. Add chicken, shrimp and chorizo, and cook,
-            stirring occasionally until lightly browned, 6 to 8 minutes.
-            Transfer shrimp to a large plate and set aside, leaving chicken and
-            chorizo in the pan. Add pimentón, bay leaves, garlic, tomatoes,
-            onion, salt and pepper, and cook, stirring often until thickened and
-            fragrant, about 10 minutes. Add saffron broth and remaining 4 1/2
-            cups chicken broth; bring to a boil.
-          </Typography>
+          <Typography paragraph>{faq.answer}</Typography>
         </CardContent>
         <CardActions sx={{ justifyContent: "flex-end" }}>
           <IconButton
@@ -81,6 +77,7 @@ export default function FaqsCard() {
               m: "1rem",
               borderRadius: "1px",
             }}
+            onClick={handleOpenEdit}
           >
             {" "}
             <img src={editIcon} alt="edit icon" />{" "}
@@ -110,7 +107,20 @@ export default function FaqsCard() {
           timeout: 500,
         }}
       >
-        <DeleteContent />
+        <DeleteContent cancel={handleCloseDelete} />
+      </Modal>
+      <Modal
+        aria-labelledby="transition-modal-title"
+        aria-describedby="transition-modal-description"
+        open={openEdit}
+        onClose={handleCloseEdit}
+        closeAfterTransition
+        BackdropComponent={Backdrop}
+        BackdropProps={{
+          timeout: 500,
+        }}
+      >
+        <EditContent cancel={handleCloseEdit} />
       </Modal>
     </Card>
   );
