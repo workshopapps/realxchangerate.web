@@ -37,13 +37,6 @@ export const HeroImage = styled.div`
   align-items: flex-end;
   padding-bottom: 20px;
   color: white;
-  position: relative;
-
-  img {
-    position: absolute;
-    left: 5%;
-    top: 10%;
-  }
 
   @media (min-width: 500px) {
     font-size: 24px;

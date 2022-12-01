@@ -6,16 +6,16 @@ const Introduction = () => {
     <section>
       <h2 style={{ marginBottom: "28px" }}>Introduction</h2>
       <div>
-        <p>Hello!👋 We&lsquo;re StreetRates. </p>
         <p>
-          We really value our users and by extension, we value your trust and
-          privacy. That&lsquo;s why we&lsquo;ve developed this privacy policy;
-          to be transparent about the personal data we collect, how it&lsquo;s
-          used, who it&lsquo;s shared with and what choices our users have over
-          their data. This privacy policy applies to the personal data that
-          Shares processes in connection with the platform and applications,
-          webServices, products and services that are referenced in this policy
-          (collectively, the "Services").
+          Hello!👋 We&lsquo;re StreetRates. We really value our users and by
+          extension, we value your trust and privacy. That&lsquo;s why
+          we&lsquo;ve developed this privacy policy; to be transparent about the
+          personal data we collect, how it&lsquo;s used, who it&lsquo;s shared
+          with and what choices our users have over their data. This privacy
+          policy applies to the personal data that Shares processes in
+          connection with the platform and applications, webServices, products
+          and services that are referenced in this policy (collectively, the
+          "Services").
         </p>
         <div>
           <p>Before we dive in, we want to clarify a few points:</p>

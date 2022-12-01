@@ -58,7 +58,7 @@ const Footer = () => {
               Careers
             </Link>
             <Link href="/#/partnerships" color="inherit">
-              Partnership
+              Patnerships
             </Link>
             <Link href="/#/teams" color="inherit">
               Meet the team

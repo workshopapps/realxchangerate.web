@@ -2,7 +2,6 @@ import React from "react";
 
 // styles
 import { StyledWhyChoose } from "./styles/WhyChoose.styles";
-import styled from "styled-components";
 
 // why choose data
 import { WhyChooseArray } from "./assets/data";
@@ -19,7 +18,7 @@ const WhyChoose = () => {
         {WhyChooseArray.map((list) => {
           return (
             <div key={list.id} className="listDiv">
-              <WhyImg src={list.icon} alt="icon" />
+              <img src={list.icon} alt="icon" height={100} width={100} />
               <h2>{list.header}</h2>
               <p style={{}}>{list.description}</p>
             </div>
@@ -31,12 +30,3 @@ const WhyChoose = () => {
 };
 
 export default WhyChoose;
-
-const WhyImg = styled.img`
-  width: 100px;
-  height: 100px;
-  @media screen and (max-width: 480px) {
-    width: 50px;
-    height: 50px;
-  }
-`;
