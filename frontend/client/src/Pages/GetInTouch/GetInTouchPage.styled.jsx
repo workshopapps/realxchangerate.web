@@ -81,7 +81,6 @@ export const SideText = styled.p`
   font-weight: 600;
   font-size: 20px;
   line-height: 28px;
-  /* or 140% */
 
   text-align: center;
 

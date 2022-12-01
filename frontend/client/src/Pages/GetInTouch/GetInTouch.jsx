@@ -1,4 +1,4 @@
-import { Box, Stack, Typography } from "@mui/material";
+import { Box, Stack, Typography, useTheme } from "@mui/material";
 import React, { useState } from "react";
 import im from "./img.png";
 import location from "./location.svg";

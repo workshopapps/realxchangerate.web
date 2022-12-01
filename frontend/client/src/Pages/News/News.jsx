@@ -5,7 +5,7 @@ import {
   Grid,
   Stack,
   Typography,
-  useTheme
+  useTheme,
 } from "@mui/material";
 import React from "react";
 import HorizontalNewsCard from "./components/HorizontalNewsCard";
@@ -14,8 +14,8 @@ import MainNewsCard from "./components/MainNewsCard";
 import StoriesNews from "./components/StoriesNews";
 import { news, stories } from "./staticData";
 export default function News() {
-  const theme = useTheme()
-  const darkMode = theme.palette.mode === 'dark'
+  const theme = useTheme();
+  const darkMode = theme.palette.mode === "dark";
   return (
     <div
       style={{
@@ -125,7 +125,7 @@ export default function News() {
               fontWeight: "500",
               fontSize: "24px",
               lineHeight: "144.02%",
-              color: darkMode ? "#fff": "#0F172A",
+              color: darkMode ? "#fff" : "#0F172A",
             }}
           >
             Top Stories
