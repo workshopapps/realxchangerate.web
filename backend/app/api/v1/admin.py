@@ -190,20 +190,20 @@ async def get_all_faqs(*, db:Session = Depends(get_db)):
 
 
 
-@router.put("/update_faq")
-def update_faq(question: str, update: schemas.FaqUpdate, db: Session = Depends(get_db)):
+# @router.put("/update_faq")
+# def update_faq(question: str, update: schemas.FaqUpdate, db: Session = Depends(get_db)):
 
-    """Update Faqs in the database"""
+#     """Update Faqs in the database"""
 
-    faqs = crud.faq.get_faqs_by_question(db=db, question = question)
+#     faqs = crud.faq.get_faqs_by_question(db=db, question = question)
 
 
-    if not faqs:
-        raise HTTPException(status_code=404, detail=f"faq not found")
+#     if not faqs:
+#         raise HTTPException(status_code=404, detail=f"faq not found")
 
-    # update  stores faq in the database
-    update = crud.faq.update(db=db, db_obj=faqs, obj_in=update)
-    return {
-        "success": True,
-        "data": update
-    }
+#     # update  stores faq in the database
+#     update = crud.faq.update(db=db, db_obj=faqs, obj_in=update)
+#     return {
+#         "success": True,
+#         "data": update
+#     }
