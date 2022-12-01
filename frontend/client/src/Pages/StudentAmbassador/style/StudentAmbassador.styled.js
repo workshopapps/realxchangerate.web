@@ -1,3 +1,4 @@
+import heroBg from "../assets/bgImage.png";
 import styled from "styled-components";
 
 export const HeroContainer = styled.div`
@@ -12,6 +13,7 @@ export const HeroContainer = styled.div`
 export const HeroImage = styled.div`
   background: url(${heroBg}) center/cover;
   font-weight: 700;
+  margin: 0 auto;
   width: 100%;
   max-width: 1400px;
   min-height: 140px;
