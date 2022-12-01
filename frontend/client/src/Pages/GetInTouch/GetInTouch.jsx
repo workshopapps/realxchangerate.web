@@ -1,8 +1,8 @@
 import { Box, Stack, Typography } from "@mui/material";
 import React, { useState } from "react";
-import im from "./rafiki.svg";
+import im from "./img.png";
 import location from "./location.svg";
-import mail from "./mail.svg";
+import mail from "./mail.png";
 import mobile from "./mobile.svg";
 import fb from "./facebook.png";
 import ins from "./Instagram_icon.png";
