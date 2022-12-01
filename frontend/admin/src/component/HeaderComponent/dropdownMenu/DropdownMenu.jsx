@@ -17,7 +17,7 @@ const menuItems = [
     option: "Dashboard",
     icon: <DashboardIcon />,
     iconActive: <DashboardIconWhite />,
-    route: "/",
+    route: "/admin",
   },
   {
     option: "Notifications",
@@ -29,13 +29,13 @@ const menuItems = [
     option: "Trending Data",
     icon: <AnalyticsIcon />,
     iconActive: <AnalyticsIconWhite />,
-    route: "/trending",
+    route: "/admin/trending",
   },
   {
     option: "Account",
     icon: <AccountIcon />,
     iconActive: <AccountIconActive />,
-    route: "/account",
+    route: "/admin/account",
   },
   {
     option: "Logout",
