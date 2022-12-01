@@ -37,6 +37,11 @@ class CRUDCurrency(CRUDBase[Currency, CurrencyCreate, CurrencyUpdate]):
         db.commit()
 
         return currency
+    
+    def get_currencies_and_rate(self, db: Session, isocode: str):
+        """Returns all currencies minus the base currency"""
+        currencies = db.query(Currency).filter(Currency.isocode != isocode).all()
+        return currencies
 
 
 currency = CRUDCurrency(Currency)
