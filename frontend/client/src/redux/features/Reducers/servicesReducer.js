@@ -8,7 +8,8 @@ const initialState = {
  currencyRates:[],
  countryDetails : [],
  isLoading:false,
- currencyData: null
+ currencyData: null,
+ news:[]
 };
 
 
@@ -39,11 +40,14 @@ const ServiceSlice = createSlice({
     setCurrencyRates: (state, action) => {
       state.currencyRates = action.payload
     },
+    setNews : (state, action) => {
+      state.news = action.payload
+    },
   }
 });
 
 export const {
- setUserIp, setCurrencyList, setLoading, setCountryDetails, setDefaultCurrency, setCurrencyData, setCurrencyRates
+ setUserIp, setCurrencyList, setLoading, setCountryDetails, setDefaultCurrency, setCurrencyData, setCurrencyRates, setNews
 } = ServiceSlice.actions;
 
 export default ServiceSlice.reducer;
