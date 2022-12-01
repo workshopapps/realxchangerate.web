@@ -6,6 +6,7 @@ from sqlalchemy.orm import Session
 from app import schemas, crud
 from app.api.deps import get_db
 from app.models.rate import Rate
+from app.models.currency import Currency
 import requests
 
 router = APIRouter()
@@ -86,3 +87,34 @@ def currency_search(search_term: str, db: Session = Depends(get_db)):
         "Success": True,
         "currency": key_word
     }
+
+  
+ 
+@router.get("/currencies/flags")
+def get_currencies_and_flags(db: Session = Depends(get_db)):
+    """
+    gets the rates of all currencies in respect to a base currency
+    also gets the country flags.
+    """
+    # Get other currencies
+    all_currencies = crud.currency.get_all_currencies(db)
+
+    # Get country codes
+    codes = requests.get("https://flagcdn.com/en/codes.json").json()
+    
+    # Create object
+    currencies = []
+    
+    for cur in all_currencies:
+        currency = cur.dict()
+
+        # Get currency flag
+        name = cur.country
+        for key, value in codes.items():
+            if value == name:
+                currency["flag"] = f"https://flagcdn.com/{key}.svg"
+                break
+
+        currencies.append(currency)
+
+    return currencies
