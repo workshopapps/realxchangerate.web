@@ -18,7 +18,7 @@ const Header = () => {
       alignItems="center"
       sx={{
         width: { xs: "90%", sm: "84%", lg: "84%" },
-        margin: {xs:"40px auto", sm: "60px auto", md: "0px auto" },
+        margin: {xs:"40px auto", sm: "40px auto", md: "0px auto" },
       }}
       maxWidth="1440px"
     >
@@ -65,7 +65,7 @@ const Header = () => {
           </Typography>
         </Box>
 
-        <Box width="100%" marginLeft="-25px" sx={{marginTop:{xs:"0px", sm:"-24px", md:"0px", xl:"0px"}}}>
+        <Box width="100%" marginLeft="-25px" sx={{marginTop:{xs:"-25px", sm:"-75px", md:"0px", xl:"0px"}}}>
           <img src={image} width="100%" alt="" />
         </Box>
       </Box>
