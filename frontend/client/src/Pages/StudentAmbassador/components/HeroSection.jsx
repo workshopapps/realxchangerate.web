@@ -6,14 +6,19 @@ import {
   HeroImage,
   HeroImageContainer,
 } from "../style/StudentAmbassador.styled";
+import { useTheme } from "@mui/material";
 
 const HeroSection = () => {
+  const theme = useTheme();
+  const DarkMode = theme.palette.mode === "dark";
+  const textColor = DarkMode ? "black" : "#0F172A";
+
   return (
     <HeroContainer>
       <HeroImageContainer>
         <HeroImage>Become a Student Ambassador</HeroImage>
       </HeroImageContainer>
-      <HeroContents>
+      <HeroContents textColor={textColor}>
         <p>
           We are looking forward to working with passionate students who can
           successfully promote our company&lsquo;s values and products in their

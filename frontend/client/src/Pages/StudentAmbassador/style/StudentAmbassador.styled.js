@@ -59,6 +59,7 @@ export const HeroImage = styled.div`
 
 export const HeroContents = styled.div`
   background: #e6efff;
+  color: ${(props) => props.textColor};
   padding: 40px 0 42px;
   font-size: 12px;
   line-height: 18px;
@@ -119,6 +120,7 @@ export const StudentAmbassadorsSection = styled.div`
 
   h2 {
     font-size: 18px;
+    color: ${(props) => props.color};
     margin-bottom: 40px;
   }
 
@@ -146,6 +148,7 @@ export const StudentAmbassadorsSection = styled.div`
 `;
 
 export const StudentAmbassadorsContainer = styled.div`
+  color: ${(props) => props.color};
   display: grid;
   gap: 60px;
   justify-content: center;

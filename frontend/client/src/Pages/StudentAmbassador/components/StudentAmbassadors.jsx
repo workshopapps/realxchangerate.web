@@ -4,12 +4,17 @@ import {
   StudentAmbassadorsSection,
 } from "../style/StudentAmbassador.styled";
 import AMBASSADORS from "./ambassadorData";
+import { useTheme } from "@mui/material";
 
 const StudentAmbassadors = () => {
+  const theme = useTheme();
+  const DarkMode = theme.palette.mode === "dark";
+  const color = DarkMode ? "#fff" : "#0F172A";
+
   return (
-    <StudentAmbassadorsSection>
+    <StudentAmbassadorsSection color={color}>
       <h2>Meet our student ambassadors</h2>
-      <StudentAmbassadorsContainer>
+      <StudentAmbassadorsContainer color={color}>
         {AMBASSADORS.map(({ image, name, role }, index) => {
           return (
             <div key={index}>
