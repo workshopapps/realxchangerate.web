@@ -16,5 +16,10 @@ class CRUDFaq(CRUDBase[Faq, FaqCreate, FaqUpdate ]):
         return db.query(Faq).all()
 
 
+    def get_faqs_by_question(self, db:Session, question)-> Any:   
+        """gets faqs by question"""
+        return db.query(Faq).filter(Faq.question == question).first()      
+
+
 
 faq = CRUDFaq(Faq)
