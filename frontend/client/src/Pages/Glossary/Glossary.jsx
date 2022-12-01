@@ -6,11 +6,10 @@ import {
   Box,
   Alphabet,
   Header,
-  ImageLeft,
   LeftTop,
   LeftMiddle,
   LeftBottom,
-  ImageRight,
+  ImageArround,
   RightTop,
   RightMiddle,
   RightBottom,
@@ -31,40 +30,24 @@ function Glossary() {
   return (
     <>
       <Header>
+        <ImageArround>
+          <LeftTop src='/assets/png/8 1.png' alt='' />
+          <LeftMiddle src='/assets/png/2 1.png' alt='' />
+          <LeftBottom src='/assets/png/7 1.png' alt='' />
+          <RightTop src='/assets/png/3 1.png' alt='' />
+          <RightMiddle src='/assets/png/4 1.png' alt='' />
+          <RightBottom src='/assets/png/5 1.png' alt='' />
+        </ImageArround>
         <Head>
           <h1>Glossary</h1>
-          <h4>what are you interested in?</h4>
+          <h4>What are you interested in?</h4>
         </Head>
         <Search>
           <div>
             <img src='/assets/png/search.png' alt='' />
-          </div>{' '}
+          </div>
           <input type='text' onChange={handleChange} />
         </Search>
-
-        <ImageLeft>
-          <LeftTop>
-            <img src='/assets/png/2 1.png' alt='' />
-          </LeftTop>
-          <LeftMiddle>
-            <img src='/assets/png/3 1.png' alt='' />
-          </LeftMiddle>
-          <LeftBottom>
-            <img src='/assets/png/4 1.png' alt='' />
-          </LeftBottom>
-        </ImageLeft>
-
-        <ImageRight>
-          <RightTop>
-            <img src='/assets/png/5 1.png' alt='' />
-          </RightTop>
-          <RightMiddle>
-            <img src='/assets/png/7 1.png' alt='' />
-          </RightMiddle>
-          <RightBottom>
-            <img src='/assets/png/8 1.png' alt='' />
-          </RightBottom>
-        </ImageRight>
       </Header>
       <Alphabet>
         {filteredData.map((b) =>
@@ -80,7 +63,7 @@ function Glossary() {
                 {b.items.map((item) => {
                   return (
                     <span>
-                      <a href={item.link} noreferrer target='blank'>
+                      <a href={item.link} target='_blank' rel='noreferrer'>
                         {item.text}
                       </a>
                     </span>
