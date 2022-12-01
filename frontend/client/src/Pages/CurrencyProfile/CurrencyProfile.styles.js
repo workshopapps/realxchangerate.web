@@ -26,10 +26,14 @@ export const Bottom = styled.div`
             align-items: center;
             color: #0062ff;
             font-weight: 500;
-            margin-bottom: 20px;
             span {
                 margin-left: 10px;
             }
+        }
+    }
+    p {
+        @media (max-width: 768px) {
+            width: 96px;
         }
     }
 `;
