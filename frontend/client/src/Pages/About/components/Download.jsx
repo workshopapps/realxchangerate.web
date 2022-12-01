@@ -2,7 +2,8 @@ import React from "react";
 import { Box, Typography, useMediaQuery } from "@mui/material";
 import tabletImage from "../assets/Tablet.png";
 import mobileImage from "../assets/mobile-image.png";
-import {AppleIcon, PlayStore } from "../assets/icons/";
+import AppleIcon from "../assets/icons/Appleicon.svg";
+import PlayStore from "../assets/icons/PlayStore.svg";
 
 const Download = () => {
   const tabletUpper = useMediaQuery("(max-width:789px)");
@@ -15,7 +16,6 @@ const Download = () => {
   return (
     <Box width="100%" backgroundColor="#F8FAFC" display="flex">
       <Box
-        
         display="flex"
         alignItems="center"
         sx={{
@@ -48,9 +48,15 @@ const Download = () => {
               fontWeight="600"
               letterSpacing="-0.02em"
               sx={{
-                fontSize: { xs: "18px",sm:"20px", md:"25px",lg:"30px", xl: "36px" },
+                fontSize: {
+                  xs: "18px",
+                  sm: "20px",
+                  md: "25px",
+                  lg: "30px",
+                  xl: "36px",
+                },
                 lineHeight: { xs: "24px", sm: "44px" },
-                textAlign:{xs:"center", sm:"left"}
+                textAlign: { xs: "center", sm: "left" },
               }}
             >
               Download the StreetRate App Via
@@ -59,11 +65,9 @@ const Download = () => {
             <img src={PlayStore} alt="" />
 
             <img src={AppleIcon} alt="" />
-
-            
           </Box>
 
-          <Box sx={{display:{xs:"none", sm:"flex"}}} width="100%">
+          <Box sx={{ display: { xs: "none", sm: "flex" } }} width="100%">
             <img src={image} width="100%" alt="" />
           </Box>
         </Box>
