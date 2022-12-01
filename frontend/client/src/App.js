@@ -33,6 +33,7 @@ import {
   CookiePolicy,
   Glossary,
   OnlineAdvertising,
+  ApplyToAdvertise,
   Ambassadors,
   Home,
 } from "./Pages";
@@ -90,6 +91,7 @@ function App() {
             <Route path="/Cookie-policy" element={<CookiePolicy />} />
             <Route path="/glossary" element={<Glossary />} />
             <Route path="/advertising" element={<OnlineAdvertising />} />
+            <Route path='/apply-to-advertise' element={<ApplyToAdvertise />} />
             <Route path="/ambassadors" element={<Ambassadors />} />
             <Route path="/ddff" element={<ErrorPage />} />
             <Route path="/*" element={<ErrorPage />} />
