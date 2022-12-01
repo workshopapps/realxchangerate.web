@@ -23,5 +23,6 @@ class Currency(Base):
         dict["country"] = self.country
         dict["isocode"] = self.isocode
         dict["symbol"] = self.symbol
+        dict["name"] = self.name
 
         return dict
