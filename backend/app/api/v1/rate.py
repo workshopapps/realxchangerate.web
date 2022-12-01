@@ -226,5 +226,5 @@ def get_highest_and_lowest_rates(isocode, db: Session = Depends(get_db)):
     return {
         "success": True,
         "status_code": 200,
-        "data": {"currency": currency, "data": result},
+        "data": {"currency": currency, "rates": result},
     }
