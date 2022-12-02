@@ -45,6 +45,9 @@ pipeline {
 			}
 			
 		}
+		
+		stage("check") {
+			
 			steps {
     				sh "pwd"
     				dir('/home/light/realxchangerate/backend/app') {
