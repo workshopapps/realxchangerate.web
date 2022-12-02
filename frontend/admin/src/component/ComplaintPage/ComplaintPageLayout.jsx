@@ -19,8 +19,7 @@ import OutlinedInput from "@mui/material/OutlinedInput";
 import { useDispatch, useSelector } from "react-redux";
 import { getComplaints } from "../../store/actions/complaintsActions";
 // import Loader from "../shared/Loader/Loader";
-import Skeleton from "@mui/material/Skeleton";
-import Stack from "@mui/material/Stack";
+import { toast } from "react-toastify";
 
 const testData = {
   full_name: "Rapha Paula",
@@ -36,7 +35,7 @@ function ComplaintPageLayout() {
   const params = useParams();
 
   const dispatch = useDispatch();
-  const { complaints } = useSelector((state) => state.complaints);
+  const { complaints, loading } = useSelector((state) => state.complaints);
 
   useEffect(() => {
     // get all complaints
@@ -52,6 +51,10 @@ function ComplaintPageLayout() {
       setData(issue);
     }
   }, [complaints, params.id]);
+
+  if (loading === "failed") {
+    toast.error("error fetching complaints");
+  }
 
   // const onMutate = (e) => {
   //   setData((prev) => ({
