@@ -40,20 +40,10 @@ pipeline {
         			sh "sudo cp -rf ${workspace}/backend/* /home/light/realxchangerate/backend"
 				sh "sudo su - light && whoami"
 				sh "sudo pm2 stop realxchangerate_api"
-				//sh "sudo pm2 start /home/light/realxchangerate/backend/app/main.py --interpreter python3 --name realxchangerate_api"
-				sh "nohup uvicorn /home/light/realxchangerate/backend/app/main.py --host 0.0.0.0 --port 7015 --proxy-headers &"
+				sh "sudo pm2 start /home/light/realxchangerate/backend/app/main.py --interpreter python3 --name realxchangerate_api"
 			}
 			
 		}
-			
-			steps {
-    				sh "pwd"
-    				dir('/home/light/realxchangerate/backend/app') {
-      				sh "pwd"
-    			}
-    				sh "pwd"
-			} 
-
 
         	}	
 
