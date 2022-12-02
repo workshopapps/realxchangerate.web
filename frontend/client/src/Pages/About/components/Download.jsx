@@ -33,6 +33,7 @@ const Download = () => {
         width: { xs: "60%", sm: "84%", lg: "84%" },
         margin: { xs: "0px auto 0px", md: "0px auto" },
       }}
+      maxWidth="1440px"
     >
       <Box
         display="flex"

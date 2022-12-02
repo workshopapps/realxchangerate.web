@@ -6,6 +6,9 @@ import im from "../assets/before.png";
 export default function MainNewsCard() {
   const theme = useTheme()
   const darkMode = theme.palette.mode === 'dark'
+
+  
+
   return (
     <Box flex={2}>
       <Stack>
