@@ -1,5 +1,5 @@
 import {
-    HashRouter as Router,
+    BrowserRouter as Router,
     Routes,
     Route,
     Navigate,
@@ -36,7 +36,6 @@ import {
     Ambassadors,
     StudentAmbassador,
     Home,
-    ApplyToAdvertise,
 } from "./Pages";
 import GlobalStyle from "./styles/Globalstyle";
 import ErrorPage from "./Pages/404/ErrorPage";
@@ -89,7 +88,6 @@ function App() {
                         />
                         <Route path="/terms" element={<TermsAndConditions />} />
                         <Route path="/press" element={<Press />} />
-                        
                         <Route path="/press/news" element={<PressNews />} />
                         <Route path="/press/article" element={<Article />} />
                         <Route path="/careers" element={<Careers />} />
@@ -118,7 +116,6 @@ function App() {
                             path="/advertising"
                             element={<OnlineAdvertising />}
                         />
-                        <Route path="/apply-to-advertise" element={<ApplyToAdvertise />} />
                         <Route path="/ambassadors" element={<Ambassadors />} />
                         <Route
                             path="/ambassadors/student-ambassador"

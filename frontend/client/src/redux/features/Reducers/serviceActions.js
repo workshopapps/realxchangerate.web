@@ -7,7 +7,6 @@ import {
   setDefaultCurrency,
   setCurrencyData,
   setCurrencyRates,
-  setNews,
 } from "./servicesReducer";
 import axios from "axios";
 import RateService from "../Utils/Axios/apis";
@@ -43,10 +42,10 @@ export const GetDefaultCurrency = (ip) => async () => {
 export const GetCurrencies = () => async () => {
   try {
     const res = await RateService.GetCurrencies();
-    let currencies = res.data.currencies;
+    let currencies = res.data.currencies
     const countryDetails = currencies.map((ele) => {
-      let country = countries.find((x) => x.label === ele.country);
-      return country;
+     let country =  countries.find((x) => x.label === ele.country)
+     return country
     });
     dispatch(setCurrencyList(currencies));
     dispatch(setCountryDetails(countryDetails));
@@ -69,26 +68,11 @@ export const GetCurrencyData = (isocode) => async () => {
 export const GetCurrencyRates = (currencies) => async () => {
   try {
     let currencyRates = currencies.map(async (ele) => {
-      const res = await RateService.GetCurrencyData(ele.isocode);
-      return res.data.data;
-    });
-    Promise.all(currencyRates).then((values) =>
-      dispatch(setCurrencyRates(values))
-    );
-
-    dispatch(setLoading(false));
-  } catch (err) {
-    console.log(err);
-  }
-};
-
-export const GetNews = (ip) => async () => {
-  try {
-    const res = await axios.get(
-      `https://my-second-app-dot-wise-philosophy-348109.oa.r.appspot.com/api/news/${ip}`
-    );
-    dispatch(setNews(res.data.results));
-
+        const res = await RateService.GetCurrencyData(ele.isocode);
+        return res.data.data
+    })
+    Promise.all(currencyRates).then((values) => dispatch(setCurrencyRates(values)))
+   
     dispatch(setLoading(false));
   } catch (err) {
     console.log(err);
