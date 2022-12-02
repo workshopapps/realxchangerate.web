@@ -42,4 +42,8 @@ def get_all_contacts(db: Session = Depends(get_db)):
     """Gets all contact status from the database"""
     status = crud.contact.get_contact_status(db)
 
-    return status
+    return {
+        "Success": True,
+        "Status code": 200,
+        "status": status
+    }
