@@ -2,29 +2,31 @@ import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import BackButton from '../shared/BackButton/BackButton';
 import {
-	StyledComplaintForm,
+	Form,
 	StyledInputWrapper,
 	StyledPageHeader,
 	StyledGrid,
 	StyledWrapper,
 	StyledTextArea,
-	StyledSelect,
-} from './ComplaintPage.styled';
+	ResponseTitle,
+} from './feedbackPage.styled';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import OutlinedInput from '@mui/material/OutlinedInput';
+import { Button } from '@mui/material';
 
-const initialDataState = {
+const mock = {
 	id: '08213',
 	name: 'Rapha Paula',
 	complaint: `Hi, I noticed that it’s a bit hard for me to toggle between currencies when using the convert feature, please can this be checked and possibly worked on? I would like to perform a lot of transactions which rely on my use of the convert feature on the web app.`,
 	email: 'RaphaPaula@gmail.com',
 	message: `Hi, I noticed that it’s a bit hard for me to toggle between currencies when using the convert feature, please can this be checked and possibly worked on? I would like to perform a lot of transactions which rely on my use of the convert feature on the web app.`,
-	status: 'Unresolved',
+	status: 'unread',
+	date: '01/07/2019',
 };
 
-function ComplaintPageLayout() {
-	const [data, setData] = useState(initialDataState);
+function FeedbackPageLayout() {
+	const [data, setData] = useState(mock);
 	const params = useParams();
 
 	// TODO: useEffect to fetch data by id, then set state to data
@@ -54,10 +56,10 @@ function ComplaintPageLayout() {
 		<StyledWrapper>
 			<StyledPageHeader>
 				<BackButton />
-				<h3>Complaint #{params.id}</h3>
+				<h3>User Contact Us Feedback #{params.id}</h3>
 			</StyledPageHeader>
 
-			<StyledComplaintForm>
+			<Form>
 				<StyledGrid>
 					<div>
 						<label htmlFor='name'>Name</label>
@@ -67,7 +69,8 @@ function ComplaintPageLayout() {
 								id='name'
 								name='name'
 								value={data.name}
-								onChange={onMutate}
+								// onChange={onMutate}
+								disabled
 							/>
 						</StyledInputWrapper>
 					</div>
@@ -80,7 +83,8 @@ function ComplaintPageLayout() {
 								id='name'
 								name='name'
 								value={data.email}
-								onChange={onMutate}
+								// onChange={onMutate}
+								disabled
 							/>
 						</StyledInputWrapper>
 					</div>
@@ -88,30 +92,33 @@ function ComplaintPageLayout() {
 
 				<StyledGrid>
 					<div>
-						<label htmlFor='complaint'>Complaint</label>
+						<label htmlFor='complaint'>Client's message</label>
 						<StyledTextArea
 							rows='4'
 							id='complaint'
 							name='complaint'
-							onChange={onMutate}
-							defaultValue={data.complaint}></StyledTextArea>
+							// onChange={onMutate}
+							defaultValue={data.complaint}
+							disabled></StyledTextArea>
 					</div>
 
 					<div>
-						<label htmlFor='id'>Complaint Number</label>
+						<label htmlFor='id'>Date</label>
 						<StyledInputWrapper>
 							<input
 								type='text'
 								id='id'
 								name='id'
-								value={`#${data.id}`}
-								onChange={onMutate}
+								value={data.date}
+								// onChange={onMutate}
+								disabled
 							/>
 						</StyledInputWrapper>
 					</div>
 				</StyledGrid>
 
-				<h3>Resolve complaint</h3>
+				<ResponseTitle>Feedback</ResponseTitle>
+
 				<StyledGrid>
 					<div>
 						<label htmlFor='message'>Message</label>
@@ -119,13 +126,12 @@ function ComplaintPageLayout() {
 							rows='4'
 							id='message'
 							name='message'
-							onChange={onMutate}
-							defaultValue={data.message}></StyledTextArea>
+							// onChange={onMutate}
+							defaultValue={''}></StyledTextArea>
 					</div>
 
 					<div>
-						<label htmlFor='status'>Set Complaint Status</label>
-
+						<label htmlFor='status'>Set Message Status</label>
 						<Select
 							fullWidth
 							displayEmpty
@@ -137,24 +143,24 @@ function ComplaintPageLayout() {
 							name='status'
 							value={data.status}
 							onChange={onMutate}>
-							<MenuItem id='status' value='Closed'>
-								Closed
+							<MenuItem id='status' value='read'>
+								read
 							</MenuItem>
-							<MenuItem id='status' value='Resolved'>
-								Resolved
-							</MenuItem>
-							<MenuItem id='status' value='Still in Review'>
-								Still in Review
-							</MenuItem>
-							<MenuItem id='status' value='Unresolved'>
-								Unresolved
+							<MenuItem id='status' value='unread'>
+								unread
 							</MenuItem>
 						</Select>
 					</div>
 				</StyledGrid>
-			</StyledComplaintForm>
+				<div className='cta'>
+					<Button variant='outlined' onClick={() => window.history.go(-1)}>
+						cancel
+					</Button>
+					<Button variant='contained'>send</Button>
+				</div>
+			</Form>
 		</StyledWrapper>
 	);
 }
 
-export default ComplaintPageLayout;
+export default FeedbackPageLayout;
