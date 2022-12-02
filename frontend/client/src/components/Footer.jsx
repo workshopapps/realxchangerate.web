@@ -261,13 +261,13 @@ const Footer = () => {
             >
               Legal
             </Typography>
-            <Link href="/#/" color="inherit">
+            <Link href="/#/privacy-policy" color="inherit">
               Privacy Policy
             </Link>
             <Link href="/#/terms" color="inherit">
               Terms and Conditions
             </Link>
-            <Link href="/#/CookiePolicy" color="inherit">
+            <Link href="/#/Cookie-policy" color="inherit">
               Cookie Policy
             </Link>
             <Link href="/#/compliance" color="inherit">

@@ -62,7 +62,7 @@ def add_faq(*, db: Session = Depends(get_db), faq_in: schemas.FaqCreate) -> Any:
     }
 
 
-@router.put('/update_currency')
+@router.put('/update_currency/{isocode}')
 def update_currencies(iso_code: str, update_param: schemas.CurrencyUpdate, db: Session = Depends(get_db)):
     """
     this endpoint recives details to update a currency, it finds the currency in the database with the required iso code provided
@@ -81,10 +81,10 @@ def update_currencies(iso_code: str, update_param: schemas.CurrencyUpdate, db: S
     }
 
 
-@router.put("/update_rate")
+@router.put("/update_rate/{isocode}")
 def update_rate(iso_code: str, update_param: schemas.RateUpdate, db: Session = Depends(get_db)):
     """
-    This endpoint recives details to update a currency rate. It finds the rate in the database by locating
+    This endpoint recives details to update the most recent currency rate. It finds the rate in the database by locating
     the currency associated with it through the required iso code provided
     """
     currency = crud.currency.get_currency_by_isocode(db=db, isocode=iso_code)
@@ -103,6 +103,31 @@ def update_rate(iso_code: str, update_param: schemas.RateUpdate, db: Session = D
         "success": True,
         "data": update
     }
+
+
+
+
+# @router.put("/update_faq")
+# def update_faq(question: str, update: schemas.FaqUpdate, db: Session = Depends(get_db)):
+
+#     """Update Faqs in the database"""
+
+#     faqs = crud.faq.get_faqs_by_question(db=db, question = question)
+
+
+#     if not faqs:
+#         raise HTTPException(status_code=404, detail=f"faq not found")
+
+#     # update  stores faq in the database
+#     update = crud.faq.update(db=db, db_obj=faqs, obj_in=update)
+#     return {
+#         "success": True,
+#         "data": update
+#     }
+
+
+
+
 
 
 @router.delete("/delete_currency")
@@ -137,7 +162,7 @@ def delete_rate(*, db: Session = Depends(get_db), rate_id: int):
     return {"success": True, "status_code": 200, "data": {"rate": rate_query}, "message": "rate deleted!"}
 
 
-@router.delete("/delete_faq")
+@router.delete("/delete_faq/{faq_id}")
 def delete_faq(*, db: Session = Depends(get_db), faq_id: int):
     """delete selected faq
 
@@ -170,3 +195,55 @@ def get_all_complaints(db: Session = Depends(get_db)):
         return {"success": True, "status_code": 200, "message": "No complaints recorded!"}
 
     return {"success": True, "status_code": 200, "complaints": complaints}
+
+
+
+# @router.get("/get_all_faqs")
+# async def get_all_faqs(*, db:Session = Depends(get_db)):
+
+#     """Returns all faqs from the database"""
+
+#     faqs = crud.faq.get_all_faqs(db)
+
+#     if faqs is None:
+#         return {"success": False, "status_code": 404, "message": "No faqs available!"}
+
+#     if len(faqs) == 0:
+#         return {"success": True, "status_code": 200, "message": "No faqs recorded!"}
+
+#     return {"success": True, "status_code": 200, "faqs": faqs}
+
+
+
+@router.put(
+    "/update_complaint_status/{id}",
+)
+async def update_complaint_status(id: int, data:schemas.ComplaintUpdate, db: Session = Depends(get_db)):
+    """updates the status of a complaint.
+    Returns the complaint id if the status is successfully updated
+    Args:
+        id (int): A unique identifier of a complaint
+        data: A pydantic schema that defines the request parameters
+    Returns:
+        HTTP_200_OK (status updated succesfully): {data:complaint}
+    Raises
+        HTTP_424_FAILED_DEPENDENCY: status update unssucessfull
+    """
+    
+
+    complaint = crud.complaint.get(db,id)
+    if complaint is None:
+        raise HTTPException(
+             status_code=status.HTTP_404_NOT_FOUND,
+            detail="complaint id does not exist",
+        )
+      
+    complaint = crud.currency.update(db=db, db_obj=complaint, obj_in=data)    
+
+
+    return{
+        "success":True,
+        "status_code": 200,
+        "message":"status updated succesfully",
+        "data":complaint,
+    }    

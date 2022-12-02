@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useEffect } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -6,71 +6,66 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import ZAR_flag from "../../../assets/images/flags/ZAR.png";
-import GBP_flag from "../../../assets/images/flags/GBP.png";
-import CAD_flag from "../../../assets/images/flags/CAD.png";
-import AUD_flag from "../../../assets/images/flags/AUD.png";
-import JPY_flag from "../../../assets/images/flags/JPY.png";
-import USD_flag from "../../../assets/images/flags/USD.png";
-import EUR_flag from "../../../assets/images/flags/EUR.png";
-import CNY_flag from "../../../assets/images/flags/CNY.png";
 import {
   StyledFlagAndCountry,
   StyledGrowth,
   StyledLoss,
 } from "./DataTable.styled";
-
-function createData(flag, country, currency, day, week, month, tvl, mktcap) {
-  return {
-    country: { flag, country },
-    currency,
-    day,
-    week,
-    month,
-    tvl,
-    mktcap,
-  };
-}
-
-const rows = [
-  createData(
-    ZAR_flag,
-    "South Africa",
-    "ZAR",
-    -1.34,
-    -0.34,
-    -4.34,
-    47.34,
-    "1,234,340"
-  ),
-  createData(GBP_flag, "Britain", "GBP", 2.23, 0.23, 3.23, 256, "1,267,456"),
-  createData(CAD_flag, "Canada", "CAD", 0.21, 0.21, 6.21, 56, "46.4t"),
-  createData(
-    AUD_flag,
-    "Australia",
-    "AUD",
-    -3.92,
-    -0.92,
-    -6.92,
-    34.45,
-    "3,678,123"
-  ),
-  createData(JPY_flag, "Japan", "JPY", -2.12, -0.12, -7.12, 23.54, "4,563,678"),
-  createData(
-    USD_flag,
-    "United States",
-    "USD",
-    -1.38,
-    -0.38,
-    -4.38,
-    98.34,
-    "9,368,905"
-  ),
-  createData(EUR_flag, "Europe", "EUR", 4.45, 0.45, 8.45, 527, "10,456,789"),
-  createData(CNY_flag, "China", "CNY", 6.59, 0.59, 4.59, 357, "20.45m"),
-];
+import { useDispatch, useSelector } from "react-redux";
+import { getTrending } from "../../../store/actions/dashboardActions";
+import Flag from "react-world-flags";
+import { Skeleton } from "@mui/material";
 
 export default function DataTable() {
+  const dispatch = useDispatch();
+  const { currencies, requestStatus } = useSelector((state) => state.dashboard);
+
+  useEffect(() => {
+    dispatch(getTrending());
+  }, [dispatch]);
+
+  const currentRows = [
+    {
+      day: -1.34,
+      week: -0.34,
+      month: -4.34,
+      tvl: 47.34,
+      mktcap: "1,234,340",
+    },
+    {
+      day: 2.23,
+      week: 0.23,
+      month: 3.23,
+      tvl: 256,
+      mktcap: "1,267,456",
+    },
+    {
+      day: 0.21,
+      week: 0.21,
+      month: 6.21,
+      tvl: 56,
+      mktcap: "46.4t",
+    },
+    {
+      day: -3.92,
+      week: -0.92,
+      month: -6.92,
+      tvl: 34.45,
+      mktcap: "3,678,123",
+    },
+    {
+      day: -1.34,
+      week: -0.34,
+      month: -4.34,
+      tvl: 47.34,
+      mktcap: "1,234,340",
+    },
+  ];
+
+  const cellSkeleton = (
+    <Skeleton variant="rectangular" sx={{ mb: 1 }} width="100%" height="40px" />
+  );
+
   return (
     <TableContainer component={Paper}>
       <Table
@@ -105,43 +100,81 @@ export default function DataTable() {
         </TableHead>
 
         <TableBody>
-          {rows.map((row) => (
-            <TableRow
-              key={row.currency}
-              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">
-                <StyledFlagAndCountry>
-                  <img alt={row.country.country} src={row.country.flag} />
-                  <p>{row.country.country}</p>
-                </StyledFlagAndCountry>
-              </TableCell>
-              <TableCell align="right">{row.currency}</TableCell>
-              <TableCell align="right">
-                {row.day > 0 ? (
-                  <StyledGrowth>+{row.day}</StyledGrowth>
-                ) : (
-                  <StyledLoss>-{row.day}</StyledLoss>
-                )}
-              </TableCell>
-              <TableCell align="right">
-                {row.week > 0 ? (
-                  <StyledGrowth>+{row.week}</StyledGrowth>
-                ) : (
-                  <StyledLoss>-{row.week}</StyledLoss>
-                )}
-              </TableCell>
-              <TableCell align="right">
-                {row.month > 0 ? (
-                  <StyledGrowth>+{row.month}</StyledGrowth>
-                ) : (
-                  <StyledLoss>-{row.month}</StyledLoss>
-                )}
-              </TableCell>
-              <TableCell align="right">${row.tvl}</TableCell>
-              <TableCell align="right">{row.mktcap}</TableCell>
-            </TableRow>
-          ))}
+          {requestStatus === "pending" ? (
+            <>
+              {Array.from(Array(3)).map((_, index) => (
+                <TableRow
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
+                  {Array.from(Array(7)).map((_, index) => (
+                    <TableCell key={index} component="th" scope="row">
+                      {cellSkeleton}
+                    </TableCell>
+                  ))}
+                </TableRow>
+              ))}
+            </>
+          ) : (
+            currencies.map((row, index) => (
+              <TableRow
+                key={row.currency}
+                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+              >
+                <TableCell component="th" scope="row">
+                  <StyledFlagAndCountry>
+                    <Flag code={row.isocode.slice(0, 2)} />
+                    <p>{row.country}</p>
+                  </StyledFlagAndCountry>
+                </TableCell>
+                <TableCell align="right">{row.isocode}</TableCell>
+                <TableCell align="right">
+                  {row.day ? (
+                    row.day > 0 ? (
+                      <StyledGrowth>+{row.day}</StyledGrowth>
+                    ) : (
+                      <StyledLoss>{row.day}</StyledLoss>
+                    )
+                  ) : currentRows[index].day > 0 ? (
+                    <StyledGrowth>+{currentRows[index].day}</StyledGrowth>
+                  ) : (
+                    <StyledLoss>{currentRows[index].day}</StyledLoss>
+                  )}
+                </TableCell>
+                <TableCell align="right">
+                  {row.week ? (
+                    row.week > 0 ? (
+                      <StyledGrowth>+{row.week}</StyledGrowth>
+                    ) : (
+                      <StyledLoss>{row.week}</StyledLoss>
+                    )
+                  ) : currentRows[index].week > 0 ? (
+                    <StyledGrowth>+{currentRows[index].week}</StyledGrowth>
+                  ) : (
+                    <StyledLoss>{currentRows[index].week}</StyledLoss>
+                  )}
+                </TableCell>
+                <TableCell align="right">
+                  {row.month ? (
+                    row.month > 0 ? (
+                      <StyledGrowth>+{row.month}</StyledGrowth>
+                    ) : (
+                      <StyledLoss>{row.month}</StyledLoss>
+                    )
+                  ) : currentRows[index].month > 0 ? (
+                    <StyledGrowth>+{currentRows[index].month}</StyledGrowth>
+                  ) : (
+                    <StyledLoss>{currentRows[index].month}</StyledLoss>
+                  )}
+                </TableCell>
+                <TableCell align="right">
+                  ${row.tvl ? row.tvl : currentRows[index].tvl}
+                </TableCell>
+                <TableCell align="right">
+                  {row.mktcap ? row.mktcap : currentRows[index].mktcap}
+                </TableCell>
+              </TableRow>
+            ))
+          )}
         </TableBody>
       </Table>
     </TableContainer>

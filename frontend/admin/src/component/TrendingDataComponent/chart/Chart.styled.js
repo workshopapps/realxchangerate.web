@@ -13,11 +13,13 @@ export const StyledChartTop = styled.div`
     margin-bottom: 18px;
 `
 export const StyledTotalTvl = styled.div`
-    display: flex;
+    /* display: flex;
     flex-direction: column;
-    gap: 8px;
+    justify-content: space-between;
+    gap: 8px; */
 
     h4 {
+        margin-bottom: 4px;
         font-weight: 600;
         font-size: 18px;
         line-height: 24px;
@@ -26,6 +28,9 @@ export const StyledTotalTvl = styled.div`
     }
 
     div {
+        padding: 0;
+        margin: 0;
+        height: fit-content;
         display: flex;
         align-items: end;
         gap: 6px;
@@ -39,18 +44,20 @@ export const StyledTotalTvl = styled.div`
             color: ${props => props.theme.$styled.colors.text900};
         }
         .growth {
-            padding-bottom: 5px;
+            
             font-weight: 700;
             font-size: 9.82823px;
-            line-height: 11px;
+            /* line-height: 11px; */
+            line-height: 19px;
 
             color: ${props => props.theme.$styled.colors.green500};
         }
         .compare {
-            padding-bottom: 5px;
+            
             font-weight: 400;
             font-size: 9.82823px;
-            line-height: 11px;
+            /* line-height: 11px; */
+            line-height: 19px;
             letter-spacing: 0.06em;
             text-transform: uppercase;
 
