@@ -1,8 +1,8 @@
-import { useEffect } from "react";
-import { Card, CardSkeleton } from "./card/Card";
-import { StyledCardsWrapper, StyledWrapper } from "./UserComplaints.styled";
-import { useDispatch, useSelector } from "react-redux";
-import { getComplaints } from "../../store/actions/complaintsActions";
+import { useEffect } from 'react';
+import { Card, CardSkeleton } from './card/Card';
+import { StyledCardsWrapper, StyledWrapper } from './UserComplaints.styled';
+import { useDispatch, useSelector } from 'react-redux';
+import { getComplaints } from '../../store/actions/complaintsActions';
 
 // const complaintsData = [
 //   {
@@ -72,31 +72,31 @@ import { getComplaints } from "../../store/actions/complaintsActions";
 // ];
 
 export default function UserComplaintsLayout() {
-  const dispatch = useDispatch();
-  const { complaints } = useSelector((state) => state.complaints);
+	const dispatch = useDispatch();
+	const { complaints } = useSelector((state) => state.complaints);
 
-  useEffect(() => {
-    dispatch(getComplaints());
-  }, [dispatch]);
+	useEffect(() => {
+		dispatch(getComplaints());
+	}, [dispatch]);
 
-  // if (!complaints) return <ComplaintSkeleton />;
+	// if (!complaints) return <ComplaintSkeleton />;
 
-  return (
-    <StyledWrapper>
-      <h2>Users’ Complaints</h2>
+	return (
+		<StyledWrapper>
+			<h2>Users’ Complaints</h2>
 
-      <StyledCardsWrapper>
-        {!complaints ? (
-          <>
-            <CardSkeleton />
-            <CardSkeleton />
-            <CardSkeleton />
-          </>
-        ) : null}
-        {complaints?.complaints.map((item, index) => (
-          <Card key={index} data={item} />
-        ))}
-      </StyledCardsWrapper>
-    </StyledWrapper>
-  );
+			<StyledCardsWrapper>
+				{!complaints ? (
+					<>
+						<CardSkeleton />
+						<CardSkeleton />
+						<CardSkeleton />
+					</>
+				) : null}
+				{complaints?.complaints.map((item, index) => (
+					<Card key={index} data={item} />
+				))}
+			</StyledCardsWrapper>
+		</StyledWrapper>
+	);
 }
