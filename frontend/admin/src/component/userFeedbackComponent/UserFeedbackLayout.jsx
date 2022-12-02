@@ -11,8 +11,8 @@ export default function UserFeedbackLayout() {
 
 	const [data, setData] = React.useState([]);
 	useEffect(() => {
-		setData(contacts);
 		dispatch(getContacts());
+		setData(contacts);
 
 		//eslint-disable-next-line
 	}, []);
@@ -31,7 +31,7 @@ export default function UserFeedbackLayout() {
 					</>
 				) : (
 					data
-						.slice(1, contacts.length - 1)
+						.slice(1)
 						.map((item, index) => (
 							<Card key={index} data={item} stats={item.status} />
 						))
