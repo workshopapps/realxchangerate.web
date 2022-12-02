@@ -44,7 +44,7 @@ export function CardSkeleton() {
     <StyledCardWrapper>
       <Stack spacing={1.5}>
         <Skeleton width="30%" variant="text" sx={{ fontSize: "1.5rem" }} />
-        <Skeleton variant="rounded" height={120} />
+        <Skeleton variant="rounded" height={100} />
 
         <Stack>
           <Skeleton
