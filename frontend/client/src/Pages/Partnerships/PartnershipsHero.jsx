@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import bgImage from "./assets/images/bg-image.png";
+import styled from "styled-components";
 
 // styles
 import {
