@@ -5,17 +5,30 @@ import {
   Grid,
   Stack,
   Typography,
-  useTheme
+  useTheme,
 } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
+import { GetNews } from "../../redux/features/Reducers/serviceActions";
 import HorizontalNewsCard from "./components/HorizontalNewsCard";
 import MainNewsCard from "./components/MainNewsCard";
 
 import StoriesNews from "./components/StoriesNews";
 import { news, stories } from "./staticData";
+import { dispatch } from "../../redux/store";
+import { useSelector } from "react-redux";
+
 export default function News() {
-  const theme = useTheme()
-  const darkMode = theme.palette.mode === 'dark'
+  const { news } = useSelector((state) => state.service);
+  const theme = useTheme();
+  const darkMode = theme.palette.mode === "dark";
+
+  useEffect(() => {
+    const ip = sessionStorage.getItem("ip");
+
+    if (ip) {
+      dispatch(GetNews("155.94.247.229"));
+    }
+  }, []);
   return (
     <div
       style={{
@@ -90,7 +103,7 @@ export default function News() {
           gap={3}
           mt={3}
         >
-          <MainNewsCard />
+          <MainNewsCard currentNews={news[0]} />
           <Grid
             flex={2}
             p={2}
@@ -112,9 +125,9 @@ export default function News() {
               Trending News
             </Typography>
             <Box mt={2}>
-              {news.map((c) => (
+              {/* {news.map((c) => (
                 <HorizontalNewsCard key={c.id} data={c} />
-              ))}
+              ))} */}
             </Box>
           </Grid>
         </Grid>
@@ -125,7 +138,7 @@ export default function News() {
               fontWeight: "500",
               fontSize: "24px",
               lineHeight: "144.02%",
-              color: darkMode ? "#fff": "#0F172A",
+              color: darkMode ? "#fff" : "#0F172A",
             }}
           >
             Top Stories
