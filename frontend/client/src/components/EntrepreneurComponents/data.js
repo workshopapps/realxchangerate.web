@@ -1,8 +1,5 @@
-// import JaneDoe from "../../Pages/Ambassadors/images/MainAmbassadors";
 import JaneDoe from "../../Pages/Ambassadors/images/MainAmbassadors/JaneDoe.png";
 import MichaelPhillips from "../../Pages/Ambassadors/images/MainAmbassadors/MichaelPhillips.png";
-import EmmaStevens from "../../Pages/Ambassadors/images/MainAmbassadors/EmmaStevens.png";
-import MarcusFisher from "../../Pages/Ambassadors/images/MainAmbassadors/MarcusFisher.png";
 import JeremyDavis from "../../Pages/Ambassadors/images/MainAmbassadors/JeremyDavis.png";
 import TonyStones from "../../Pages/Ambassadors/images/MainAmbassadors/TonyStone.png";
 import MarthaMartins from "../../Pages/Ambassadors/images/MainAmbassadors/MarthaMartins.png";
