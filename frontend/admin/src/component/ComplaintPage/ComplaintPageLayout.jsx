@@ -18,7 +18,9 @@ import MenuItem from "@mui/material/MenuItem";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import { useDispatch, useSelector } from "react-redux";
 import { getComplaints } from "../../store/actions/complaintsActions";
-import Loader from "../shared/Loader/Loader";
+// import Loader from "../shared/Loader/Loader";
+import Skeleton from "@mui/material/Skeleton";
+import Stack from "@mui/material/Stack";
 
 const testData = {
   full_name: "Rapha Paula",
@@ -30,26 +32,26 @@ const testData = {
 };
 
 function ComplaintPageLayout() {
-  const [data, setData] = useState(testData);
+  const [data, setData] = useState(null);
   const params = useParams();
 
   const dispatch = useDispatch();
   const { complaints } = useSelector((state) => state.complaints);
 
-  // useEffect(() => {
-  //   // get all complaints
-  //   dispatch(getComplaints());
-  // }, [dispatch]);
+  useEffect(() => {
+    // get all complaints
+    dispatch(getComplaints());
+  }, [dispatch]);
 
-  // useEffect(() => {
-  //   // find particular complaint
-  //   if (complaints?.success) {
-  //     const id = parseInt(params.id);
-  //     let issue = complaints.complaints.find((item) => item.id === id);
+  useEffect(() => {
+    // find particular complaint
+    if (complaints?.success) {
+      const id = parseInt(params.id);
+      let issue = complaints.complaints.find((item) => item.id === id);
 
-  //     setData(issue);
-  //   }
-  // }, [complaints, params.id]);
+      setData(issue);
+    }
+  }, [complaints, params.id]);
 
   // const onMutate = (e) => {
   //   setData((prev) => ({
@@ -89,7 +91,7 @@ function ComplaintPageLayout() {
                   type="text"
                   id="full_name"
                   name="full_name"
-                  value={data.full_name}
+                  value={data?.full_name}
                 />
               </StyledInputWrapper>
             </div>
@@ -102,7 +104,7 @@ function ComplaintPageLayout() {
                   type="email"
                   id="name"
                   name="name"
-                  value={data.email}
+                  value={data?.email}
                 />
               </StyledInputWrapper>
             </div>
@@ -116,7 +118,7 @@ function ComplaintPageLayout() {
                 rows="4"
                 id="complaint"
                 name="complaint"
-                defaultValue={data.complaint}
+                defaultValue={data?.complaint}
               ></StyledTextArea>
             </div>
 
@@ -128,7 +130,7 @@ function ComplaintPageLayout() {
                   type="text"
                   id="id"
                   name="id"
-                  value={`#${data.id}`}
+                  value={`#${data?.id}`}
                 />
               </StyledInputWrapper>
             </div>
@@ -179,7 +181,9 @@ function ComplaintPageLayout() {
 
         <StyledButtonWrapper>
           <StyledFormButtonCancel>Cancel</StyledFormButtonCancel>
-          <StyledFormButtonSubmit>Save Changes</StyledFormButtonSubmit>
+          <StyledFormButtonSubmit disabled={!data ? true : false}>
+            Save Changes
+          </StyledFormButtonSubmit>
         </StyledButtonWrapper>
       </StyledComplaintForm>
     </StyledWrapper>
