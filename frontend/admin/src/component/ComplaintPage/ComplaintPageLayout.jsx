@@ -20,36 +20,36 @@ import { useDispatch, useSelector } from "react-redux";
 import { getComplaints } from "../../store/actions/complaintsActions";
 import Loader from "../shared/Loader/Loader";
 
-// const testData = {
-//   full_name: "Rapha Paula",
-//   complaint: `Hi, I noticed that it’s a bit hard for me to toggle between currencies when using the convert feature, please can this be checked and possibly worked on? I would like to perform a lot of transactions which rely on my use of the convert feature on the web app.`,
-//   id: 123,
-//   email: "raphaPaula@gmail.com",
-//   status: "Resolved",
-//   timestamp: "2022-12-01T02:21:29.653125",
-// };
+const testData = {
+  full_name: "Rapha Paula",
+  complaint: `Hi, I noticed that it’s a bit hard for me to toggle between currencies when using the convert feature, please can this be checked and possibly worked on? I would like to perform a lot of transactions which rely on my use of the convert feature on the web app.`,
+  id: 123,
+  email: "raphaPaula@gmail.com",
+  status: "Resolved",
+  timestamp: "2022-12-01T02:21:29.653125",
+};
 
 function ComplaintPageLayout() {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState(testData);
   const params = useParams();
 
   const dispatch = useDispatch();
   const { complaints } = useSelector((state) => state.complaints);
 
-  useEffect(() => {
-    // get all complaints
-    dispatch(getComplaints());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   // get all complaints
+  //   dispatch(getComplaints());
+  // }, [dispatch]);
 
-  useEffect(() => {
-    // find particular complaint
-    if (complaints?.success) {
-      const id = parseInt(params.id);
-      let issue = complaints.complaints.find((item) => item.id === id);
+  // useEffect(() => {
+  //   // find particular complaint
+  //   if (complaints?.success) {
+  //     const id = parseInt(params.id);
+  //     let issue = complaints.complaints.find((item) => item.id === id);
 
-      setData(issue);
-    }
-  }, [complaints, params.id]);
+  //     setData(issue);
+  //   }
+  // }, [complaints, params.id]);
 
   // const onMutate = (e) => {
   //   setData((prev) => ({
@@ -69,7 +69,7 @@ function ComplaintPageLayout() {
     },
   };
 
-  if (!complaints || !data) return <Loader />;
+  // if (!complaints || !data) return <Loader />;
 
   return (
     <StyledWrapper>
