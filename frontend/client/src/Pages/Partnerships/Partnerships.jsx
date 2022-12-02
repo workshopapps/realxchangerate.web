@@ -1,7 +1,5 @@
 import React from "react";
-import PartnershipHero from "./PartnershipsHero";
 import ReferralPartners from "./ReferralPartners";
-import Experts from "./Experts";
 import WhyChoose from "./WhyChoose";
 import styled from "styled-components";
 import { HashLink } from "react-router-hash-link";
@@ -88,6 +86,14 @@ const StyledHero = styled.div`
     letter-spacing: -0.04em;
     color: #0f172a;
     margin-bottom: 45px;
+    @media screen and (max-width: 1190px) {
+      font-weight: 700;
+      font-size: 32px;
+      line-height: 40px;
+      /* or 125% */
+
+      letter-spacing: -0.02em;
+    }
     @media screen and (max-width: 480px) {
       font-weight: 700;
       font-size: 28px;

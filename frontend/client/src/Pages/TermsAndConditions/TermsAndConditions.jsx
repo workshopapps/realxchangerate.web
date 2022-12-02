@@ -1,4 +1,4 @@
-import { Container, Box, useTheme } from "@mui/material";
+import { Box, useTheme } from "@mui/material";
 import { PageTitle } from "./components/PageTitle.styled";
 import { TermsWrapper } from "./styles/TermsWrapper.styled";
 
