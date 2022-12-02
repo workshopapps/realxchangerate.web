@@ -383,7 +383,7 @@ export default function GetInTouch() {
         >
           <Box sx={style}>
             <Typography id="modal-modal-title" variant="h3" component="h2">
-              Message sent
+              Message status
             </Typography>
             <Typography
               id="modal-modal-description"
