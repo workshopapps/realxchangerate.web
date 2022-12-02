@@ -40,15 +40,30 @@ function Faqs() {
     <Container>
       <Box
         className="header"
-        sx={{ display: "flex", gap: "1rem", m: "2rem 0" }}
+        sx={{
+          display: "flex",
+          flexDirection: { xs: "column", md: "row" },
+          gap: "1rem",
+          m: "2rem 0",
+        }}
       >
-        <Button onClick={() => navigate("/admin")}>
-          <img src={back} alt="Go back" />
-        </Button>
-        <Typography variant="h4" component="h1" sx={{ fontWeight: 700 }}>
-          Frequently Asked Questions
-        </Typography>
-        <Button variant="contained" sx={{ ml: "auto" }} onClick={handleOpenAsk}>
+        <Box sx={{ display: "flex" }}>
+          <Button onClick={() => navigate("/admin")}>
+            <img src={back} alt="Go back" />
+          </Button>
+          <Typography
+            variant="h4"
+            component="h1"
+            sx={{ fontWeight: 700, fontSize: { xs: "1.6rem", md: "2.5rem" } }}
+          >
+            Frequently Asked Questions
+          </Typography>
+        </Box>
+        <Button
+          variant="contained"
+          sx={{ ml: { md: "auto" }, p: "1rem" }}
+          onClick={handleOpenAsk}
+        >
           Add Question
         </Button>
       </Box>
