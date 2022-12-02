@@ -126,7 +126,6 @@ const Convert = () => {
         boxShadow: "0 0 0 0",
       }}
     >
-      <p>Last updated {date}</p>
       <h2
         style={{
           color: "#0F172A",
