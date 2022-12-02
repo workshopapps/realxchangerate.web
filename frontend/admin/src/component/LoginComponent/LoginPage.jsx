@@ -14,20 +14,18 @@ const LoginPage = () => {
 
   const { email, password } = formState;
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
   const { loginStatus, error } = useSelector((state) => state.user);
 
-
-  useEffect(()=> {
+  useEffect(() => {
     if (loginStatus === "success") {
-      navigate('/')
+      navigate("/admin");
     } else {
-      console.log(error)
+      console.log(error);
     }
-  },[loginStatus, error, navigate]);
-
+  }, [loginStatus, error, navigate]);
 
   const handleOnChange = (e) => {
     setFormState({ ...formState, [e.target.name]: e.target.value });
@@ -36,11 +34,11 @@ const LoginPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (email === '' || password === '') {
-      alert('please enter your email and password');
+    if (email === "" || password === "") {
+      alert("please enter your email and password");
     }
     dispatch(loginUser({ email, password }));
-  }
+  };
 
   const handleViewPassword = () => {
     if (passwordState === "text") {
@@ -88,7 +86,9 @@ const LoginPage = () => {
             <input type="checkbox" name="verify" id="verify" />
             <label htmlFor="verify">Always keep me logged in</label>
           </div>
-          <button type="submit" onSubmit={handleSubmit}>Login</button>
+          <button type="submit" onSubmit={handleSubmit}>
+            Login
+          </button>
         </form>
         <div className="signup">
           <p>Don’t have an account?</p>

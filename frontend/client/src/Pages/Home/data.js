@@ -7,9 +7,9 @@ export const currenciesList = [
   },
 
   {
-    symbol: "USA",
+    symbol: "USD",
     country: "United States",
-    isocode: "USA",
+    isocode: "USD",
     id: 2,
   },
   {

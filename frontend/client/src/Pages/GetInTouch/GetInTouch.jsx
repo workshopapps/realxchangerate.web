@@ -38,7 +38,7 @@ export default function GetInTouch() {
     }
     setData(newData);
   };
-  const BASE_URL = "https://9bd5-197-210-79-181.ngrok.io/api/contacts";
+  const BASE_URL = "https://api.streetrates.hng.tech/api/contacts";
 
   const handleSend = (e) => {
     e.preventDefault();
