@@ -13,7 +13,8 @@ const HistoricalCurrencyExchange = () => {
     if (currencyList.length > 0) {
       dispatch(GetCurrencyRates(currencyList));
     }
-  }, []);
+    //eslint-disable-next-line 
+  }, [dispatch]);
 
   return (
     <Box

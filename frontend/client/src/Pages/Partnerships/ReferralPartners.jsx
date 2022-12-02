@@ -1,14 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import groupIcon from "./assets/svg/GroupIcon.svg";
-import ReferralPartnersType from "./ReferralPartnersType";
 import checkMark from "./assets/svg/check.svg";
 
-// styles
-import {
-  PartnersHeader,
-  PartnersDescription,
-} from "./styles/ReferralPartners.styles";
 
 const ReferralPartners = (props) => {
   return (
