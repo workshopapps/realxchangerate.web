@@ -83,3 +83,11 @@ async def sma_rate(previous_buy_rate, previous_sell_rate):
     new_sell_rate = format_binance_response_data().get("sell_rate")
     sma_sell_rate = (previous_sell_rate + new_sell_rate)/2
     return {"buy_rate": sma_buy_rate, "sell_rate": sma_sell_rate}
+
+
+def calculate_percentage_change(previous_rate, current_rate):
+    """Function to calculate percentage change in two rates."""
+    # ((current_rate - previous_rate) / previous_rate) * 100
+    percentage_change = round(((current_rate - previous_rate) / previous_rate) * 100, 1)
+
+    return percentage_change
