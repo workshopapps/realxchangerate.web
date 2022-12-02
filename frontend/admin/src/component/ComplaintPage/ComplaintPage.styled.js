@@ -131,7 +131,7 @@ export const StyledFormButtonSubmit = styled.button.attrs({ type: 'submit' })`
     cursor: pointer;
 
     border-radius: 8px;
-    background: ${props => props.theme.palette.primary.main};
+    background: ${props => props.disabled ? '#aaa' : props.theme.palette.primary.main};
     border-color: transparent;
 
     font-weight: 400;
@@ -140,7 +140,7 @@ export const StyledFormButtonSubmit = styled.button.attrs({ type: 'submit' })`
     color: #FFFFFF;
 
     &:hover{
-        background: ${props => props.theme.palette.primary.dark}; 
+        background: ${props => props.disabled ? '#aaa' : props.theme.palette.primary.dark}; 
     }
 
     @media(max-width: ${props => props.theme.$styled.breakpoints.md}){
