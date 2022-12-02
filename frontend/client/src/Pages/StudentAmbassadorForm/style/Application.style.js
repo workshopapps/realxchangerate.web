@@ -6,7 +6,9 @@ export const FormSection = styled.section`
     color: white;
     padding: 44px 16px;
     display: flex;
+    justify-content: center;
     align-items: center;
+    gap: 8px;
 
     h2 {
       margin-left: 8px;
@@ -101,7 +103,10 @@ export const FormSection = styled.section`
   }
 
   @media (min-width: 1200px) {
-    padding: 10rem 13rem 5rem;
+    .header {
+
+    padding: 152px 0 72px;
+
 
     h2 {
       font-size: 48px;
