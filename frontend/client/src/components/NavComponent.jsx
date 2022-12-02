@@ -19,21 +19,17 @@ import Brightness7Icon from "@mui/icons-material/Brightness7";
 import { setDefaultCurrency } from "../redux/features/Reducers/servicesReducer";
 import { dispatch } from "../redux/store";
 import { GetCurrencyData } from "../redux/features/Reducers/serviceActions";
-
 const NavComponent = () => {
   const { currencyList, countryDetails, defaultCurrency } = useSelector(
     (state) => state.service
   );
-
   const theme = useTheme();
   const colorMode = useContext(ColorModeContext);
   const [isOpen, setIsOpen] = useState(false);
   const [localCurrency, setLocalCurrency] = useState(defaultCurrency);
-
   const HandleDrawerState = () => {
     setIsOpen(!isOpen);
   };
-
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -42,13 +38,11 @@ const NavComponent = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
   const handleCloseItem = (ele) => {
     setLocalCurrency(ele);
     dispatch(setDefaultCurrency(ele));
     setAnchorEl(null);
   };
-
   useEffect(() => {
     if (defaultCurrency) {
       let country = currencyList.find(
@@ -57,8 +51,6 @@ const NavComponent = () => {
       dispatch(GetCurrencyData(country.isocode));
     }
   }, [defaultCurrency, currencyList]);
-
-  // console.log(countryDetails)
 
   return (
     <Grid
@@ -95,7 +87,6 @@ const NavComponent = () => {
           </Link>
         </Typography>
       </Grid>
-
       <Grid
         alignItems="center"
         sx={{
@@ -119,7 +110,6 @@ const NavComponent = () => {
             <Brightness4Icon height="1.75em" width="1.75em" />
           )}
         </IconButton>
-
         <Box gap="6px" display="flex">
           <Button
             id="basic-button"
@@ -162,7 +152,6 @@ const NavComponent = () => {
             }}
           >
             {currencyList.map((ele) => {
-              console.log(ele);
               return (
                 <MenuItem
                   sx={{
@@ -192,15 +181,12 @@ const NavComponent = () => {
             })}
           </Menu>
         </Box>
-
         <Link to="/" style={{ color: "#0062ff" }}>
           Home
         </Link>
-
         <Link to="/news" style={{ color: "#0062ff" }}>
           News
         </Link>
-
         <Link to="/contact" style={{ color: "#0062ff" }}>
           Contact
         </Link>
@@ -237,5 +223,4 @@ const NavComponent = () => {
     </Grid>
   );
 };
-
 export default NavComponent;
