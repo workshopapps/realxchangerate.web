@@ -68,7 +68,7 @@ const Home = () => {
         <Hero />
         <Convert />
       </Box>
-      <Box>
+      <StyledBox>
         <Typography
           sx={{ color: "#0062FF", fontSize: "16px", fontWeight: 500 }}
         >
@@ -83,7 +83,7 @@ const Home = () => {
         <StyledEdit className="action" id="edit" onClick={() => handleEdit()}>
           Edit
         </StyledEdit>
-      </Box>
+      </StyledBox>
       {/* Table  */}
       <List
         style={{
@@ -165,6 +165,11 @@ const Home = () => {
 };
 
 export default Home;
+const StyledBox = styled(Box)`
+  @media screen and (max-width: 480px) {
+    display: none;
+  }
+`;
 
 const StyledEdit = styled.button`
   border: 1px solid #0062ff;
@@ -196,11 +201,17 @@ const StyledSelection = styled.div`
     font-size: 16px;
     line-height: 22px;
     color: #0062ff;
+    @media screen and (max-width: 480px) {
+      font-size: 10px;
+    }
   }
   .lastUpdate {
     display: flex;
     align-items: center;
     gap: 15px;
+    @media screen and (max-width: 480px) {
+      max-width: 50%;
+    }
     i {
       position: absolute;
       font-style: normal;
@@ -214,6 +225,9 @@ const StyledSelection = styled.div`
       font-weight: 400;
       font-size: 14px;
       line-height: 22px;
+      @media screen and (max-width: 480px) {
+        font-size: 10px;
+      }
     }
   }
 `;
