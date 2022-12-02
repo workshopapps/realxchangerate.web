@@ -1,6 +1,5 @@
-import { Box, Typography, useMediaQuery, Stack, Link, useTheme } from "@mui/material";
-import { red } from "@mui/material/colors";
 import React from "react";
+import { Box, Typography, useMediaQuery, Stack, Link, useTheme } from "@mui/material";
 import { BackgroundImage, BackgroundImageMobile } from "./assets";
 import SearchIcon from './assets/svg/SearchIcon.svg'
 

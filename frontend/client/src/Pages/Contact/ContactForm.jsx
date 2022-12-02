@@ -10,7 +10,7 @@ const ContactForm = ({textColor}) => {
   const [alert, setAlert] = useState(false);
 
   useEffect(() => {
-    const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
     if (name === "" || !emailRegex.test(email) || message === "") {
       setBtnDisabled(true);
     } else {
