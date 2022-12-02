@@ -1,8 +1,10 @@
 import { Box, Stack, Typography } from "@mui/material";
 import React from "react";
 import PropTypes from "prop-types";
+import moment from "moment"
 
 export default function StoriesNews({ data }) {
+  console.log(data)
   return (
     <Box
       sx={{
@@ -12,7 +14,7 @@ export default function StoriesNews({ data }) {
         padding: 2,
       }}
     >
-      <img src={data.img} alt="story imag" width="100%" />
+      <img src={data.image_url} alt="story imag" width="100%" />
       <Typography
         variant="h4"
         sx={{
@@ -36,7 +38,7 @@ export default function StoriesNews({ data }) {
             lineHeight: "143.52%",
           }}
         >
-          {data.label}
+          {data.category[0].toUpperCase()}
         </Typography>
         <Typography
           variant="p"
@@ -48,7 +50,7 @@ export default function StoriesNews({ data }) {
             paddingTop: 1.5,
           }}
         >
-          {data.view} || {data.date}
+          {moment(data.pubDate).format("Do MMMM, YYYY | h:mmA")}
         </Typography>
       </Stack>
     </Box>
