@@ -90,9 +90,9 @@ export default function CreateCurrency() {
           img={cuate}
         />
         <Card
-          title={"Contact us Responses"}
+          title={"Contact Us Responses"}
           desc={"Get to give feedback to users who submit the Contact Us form"}
-          link={"Give feedback"}
+          link={"Give Feedback"}
           loc={"/admin/contact"}
           bg={"#F7FDF8"}
           img={contact}
@@ -104,6 +104,7 @@ export default function CreateCurrency() {
             <h1>Currency Overview</h1>
             <p>Create and edit currency exchange rates</p>
           </div>
+
           <ModalUi
             handleOpen={handleOpen}
             handleClose={handleClose}
