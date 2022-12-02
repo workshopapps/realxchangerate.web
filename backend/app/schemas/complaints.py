@@ -23,7 +23,7 @@ class ComplaintCreate(ComplaintBase):
 
 
 class ComplaintUpdate(ComplaintBase):
-    status: str
+    status: Status
 
 
 class Complaint(ComplaintBase):
