@@ -6,6 +6,8 @@ from fastapi.encoders import jsonable_encoder
 from sqlalchemy import desc
 from app.crud.base import CRUDBase
 from app. models import Rate
+from app import crud
+from app.schemas import currency
 from app.schemas.rate import RateCreate, RateBase
 
 class CRUDRate(CRUDBase[Rate, RateCreate, RateBase]):
@@ -14,6 +16,7 @@ class CRUDRate(CRUDBase[Rate, RateCreate, RateBase]):
         db_oj = Rate(
           **obj_in_data
         )
+        
         db.add(db_oj)
         db.commit()
         db.refresh(db_oj)
