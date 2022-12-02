@@ -123,6 +123,7 @@ const Convert = () => {
         border: "1px solid #BBBBBB",
         padding: { lg: "32px", xs: "8px" },
         mb: "64px",
+        boxShadow: "0 0 0 0",
       }}
     >
       <p>Last updated {date}</p>
