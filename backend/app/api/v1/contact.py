@@ -25,7 +25,7 @@ def create_contact(
 
 
 @router.get("/contact_details")
-def get_all_currencies(db: Session = Depends(get_db)):
+def get_all_contacts(db: Session = Depends(get_db)):
     """Gets all contact details from the database"""
     details = crud.contact.get_all_contact_details(db)
 
