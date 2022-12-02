@@ -3,19 +3,7 @@ import Box from "@mui/material/Box";
 
 import Typography from "@mui/material/Typography";
 import { Button, FormControl, FormLabel, TextField } from "@mui/material";
-
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: { xs: 300, md: 600 },
-  bgcolor: "background.paper",
-  borderRadius: "12px",
-  boxShadow: 24,
-  p: 4,
-  //   textAlign: "center",
-};
+import { style } from "./styles";
 
 export default function EditContent({ cancel }) {
   return (
