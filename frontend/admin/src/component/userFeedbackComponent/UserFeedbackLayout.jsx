@@ -3,23 +3,27 @@ import { Card, CardSkeleton } from './card/Card';
 import { StyledCardsWrapper, StyledWrapper } from './UserFeedback.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { getContacts } from '../../store/actions/contactActions';
+import { toast } from 'react-toastify';
 
 export default function UserFeedbackLayout() {
 	const dispatch = useDispatch();
 	const { contacts, requestStatus } = useSelector((state) => state.contacts);
-	const [data, setData] = React.useState([]);
+	// const [data, setData] = React.useState([]);
 
 	useEffect(() => {
 		dispatch(getContacts());
-		setData(contacts);
-		//eslint-disable-next-line
-	}, []);
+		// setData(contacts);
+	}, [dispatch, contacts]);
+
+	if (requestStatus === 'failed') {
+		toast.error('error fetching complaints');
+	}
 
 	return (
 		<StyledWrapper>
 			<h2>Users’ Contact Us Information</h2>
 			<StyledCardsWrapper>
-				{requestStatus === 'pending' ? (
+				{!contacts ? (
 					<>
 						<CardSkeleton />
 						<CardSkeleton />
@@ -28,9 +32,9 @@ export default function UserFeedbackLayout() {
 					</>
 				) : null}
 
-				{requestStatus === 'success'
-					? data
-							// .slice(1)
+				{contacts
+					? contacts
+							.slice(1)
 							.map((item, index) => (
 								<Card key={index} data={item} stats={item.status} />
 							))

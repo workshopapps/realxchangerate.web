@@ -2,8 +2,8 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const initialState = {
-	contacts: [],
-	contact: {},
+	contacts: null,
+	contact: null,
 	error: null,
 	requestStatus: 'idle',
 };
@@ -11,9 +11,16 @@ const initialState = {
 export const getContacts = createAsyncThunk(
 	'get/contact',
 	async (payload, { rejectWithValue }) => {
+		const token = localStorage.getItem('token');
 		try {
 			const res = await axios.get(
-				'https://api.streetrates.hng.tech/api/contacts/contact_details'
+				'https://api.streetrates.hng.tech/api/contacts/contact_details',
+				{
+					headers: {
+						accept: 'application/json',
+						Authorization: `Bearer ${token}`,
+					},
+				}
 			);
 			if (res.status && res.status === 200) {
 				return res.data;
