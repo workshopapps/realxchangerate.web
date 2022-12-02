@@ -1,6 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
+const BASE_URL = `https://api.streetrates.hng.tech/api`;
+
 const initialState = {
   user: null,
   error: null,
@@ -14,11 +16,11 @@ export const loginUser = createAsyncThunk(
     try {
       const config = {
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "application/x-www-form-urlencoded",
         },
       };
       const res = await axios.post(
-        "https://api.streetrates.hng.tech/api/auth",
+        `${BASE_URL}/auth`,
         {
           username: payload.email,
           password: payload.password,
@@ -28,6 +30,7 @@ export const loginUser = createAsyncThunk(
 
       if (res.status && res.status === 200) {
         localStorage.setItem("token", res.data["access_token"]);
+
         return res.data;
       } else {
         return rejectWithValue(res);
@@ -40,10 +43,15 @@ export const loginUser = createAsyncThunk(
   }
 );
 
+
 export const userSlice = createSlice({
   name: "user",
   initialState,
-  reducers: {},
+  reducers: {
+    logout: (state) => {
+      state.loginStatus = 'idle';
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(loginUser.pending, (state) => {
@@ -59,5 +67,7 @@ export const userSlice = createSlice({
       });
   },
 });
+
+export const { logout } = userSlice.actions
 
 export default userSlice.reducer;

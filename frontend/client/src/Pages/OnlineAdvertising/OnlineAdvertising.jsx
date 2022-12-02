@@ -12,8 +12,9 @@ const OnlineAdvertising = () => {
 
   const period = "2020 monthly average";
   return (
-    <Box  marginTop="50px" fontFamily= "'Inter', sans-serif" maxWidth="1440px">
-      <Box style={{ color: textColor,position:'relative' }}  margin="0px auto" sx={{
+    <Container>
+    <Box  marginTop="50px" fontFamily= "'Inter', sans-serif" maxWidth='1440px' >
+      <Box style={{ color: textColor,position: 'relative' }}  margin="0px auto" sx={{
           maxWidth: { xs: "84%", sm: "90%", md: "84%" }
         }} >
         <StyledH1>Advertising media kit</StyledH1>
@@ -176,6 +177,7 @@ const OnlineAdvertising = () => {
        
       </Box>
     </Box>
+    </Container>
   );
 };
 const CustomButton = styled(ButtonUnstyled)`
@@ -202,7 +204,7 @@ margin-bottom:30px;
 `
     
   
-/*const Container = styled.div`
+const Container = styled.div`
   *,
   *::before,
   *::after {
@@ -214,9 +216,9 @@ margin-bottom:30px;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center; .
+    object-position: center; 
   }
-`;
+`;/*
 const MainDiv = styled.div`
   max-width: 90vw;
   margin: 2vh auto 8vh;

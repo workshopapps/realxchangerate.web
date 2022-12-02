@@ -69,7 +69,7 @@ const About = () => {
         flexDirection="column"
         sx={{ gap: { xs: "27px", sm: "80px" } }}
       >
-        <Container about textColor={textColor}>
+        <Container about={true} textColor={textColor}>
           <Header />
         </Container>
 
@@ -77,7 +77,7 @@ const About = () => {
           <Mission />
         </Container>
 
-        <Container values textColor={textColor}>
+        <Container values={true} textColor={textColor}>
           <Value />
         </Container>
         <Container textColor={textColor}>
@@ -96,6 +96,7 @@ const About = () => {
                     image={member.image}
                     name={member.name}
                     designation={member.designation}
+                    key={teamMember.indexOf(member)}
                   />
                 );
               })}

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useTheme } from "@mui/material";
 import styled from "styled-components";
 import Button from "./components/CareerButton";
@@ -40,11 +40,6 @@ import { ArrowBack } from "@mui/icons-material";
 import Carousel from "./components/Carousel";
 import IntroCard from "./components/IntroCard";
 import GlobalStyle from "./styles/Boilerplate.style";
-import {
-  GetCurrencies,
-  GetCurrencyRates,
-} from "../../redux/features/Reducers/serviceActions";
-import { useSelector } from "react-redux";
 const coreValues = [
   {
     number: "01/05",

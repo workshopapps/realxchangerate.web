@@ -66,3 +66,20 @@ def make_official_rate_request(base_currency: str, currency_list: List[str]) -> 
     response = requests.get(url)
     data = response.json()
     return data
+
+
+"""
+function to calculate the SMA of the rates
+
+Get the previous rates
+Fetch rates from a new rate from the binance API
+Add the rates 
+Divide by 2 and return the new rates
+
+"""
+async def sma_rate(previous_buy_rate, previous_sell_rate):
+    new_buy_rate = format_binance_response_data().get("buy_rate")
+    sma_buy_rate = (previous_buy_rate + new_buy_rate)/2
+    new_sell_rate = format_binance_response_data().get("sell_rate")
+    sma_sell_rate = (previous_sell_rate + new_sell_rate)/2
+    return {"buy_rate": sma_buy_rate, "sell_rate": sma_sell_rate}
