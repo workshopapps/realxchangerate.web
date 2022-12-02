@@ -10,7 +10,16 @@ from app.schemas.faq import FaqCreate, FaqUpdate
 
 
 class CRUDFaq(CRUDBase[Faq, FaqCreate, FaqUpdate]):
-    pass
+    def get_all_faqs(self, db: Session):
+        """Returns all faqs from the database"""
+        return db.query(Faq).all()
+
+    def get_faqs_by_question(self, db: Session, question) -> Any:
+        """gets faqs by question"""
+        return db.query(Faq).filter(Faq.question == question).first()
+
+    def get_faq(self, db: Session, question: str) -> Any:
+        return db.query(Faq).filter_by(question=question).all()
 
 
 faq = CRUDFaq(Faq)

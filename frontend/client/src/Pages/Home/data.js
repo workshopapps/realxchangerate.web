@@ -5,6 +5,13 @@ export const currenciesList = [
     isocode: "NGN",
     id: 1,
   },
+
+  {
+    symbol: "USA",
+    country: "United States",
+    isocode: "USA",
+    id: 2,
+  },
   {
     symbol: "GHS",
     country: "Ghana",

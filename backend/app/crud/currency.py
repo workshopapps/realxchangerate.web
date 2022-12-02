@@ -16,6 +16,18 @@ class CRUDCurrency(CRUDBase[Currency, CurrencyCreate, CurrencyUpdate]):
     
     def get_currency_by_id(self, db: Session, id: int) -> Any:
         return db.query(Currency).filter(Currency.id == id).first()
+
+
+    def get_currency_by_country_name(self, db: Session, country_name: str) -> Any:
+        """This function returns the currency associated with the country name passed in"""
+
+        return db.query(Currency).filter(Currency.country == country_name).first()
+
+    def get_currency_by_currency_name(self, db: Session, currency_name: str) -> Any:
+        """This function returns the currency associated with the name of currency passed in"""
+
+        return db.query(Currency).filter(Currency.name == currency_name).first()
+
     
     def get_all_currencies(self, db:Session):
         """Returns all currencies from the database"""
@@ -37,6 +49,11 @@ class CRUDCurrency(CRUDBase[Currency, CurrencyCreate, CurrencyUpdate]):
         db.commit()
 
         return currency
+    
+    def get_currencies_and_rate(self, db: Session, isocode: str):
+        """Returns all currencies minus the base currency"""
+        currencies = db.query(Currency).filter(Currency.isocode != isocode).all()
+        return currencies
 
 
 currency = CRUDCurrency(Currency)
