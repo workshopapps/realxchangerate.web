@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   padding: 52px 20px 235px;
   line-height: 24px;
-  color: ${(props) => props.textColor}
+  color: ${(props) => props.textColor};
   max-width: 1200px;
 
   h1,
@@ -57,6 +57,10 @@ export const Container = styled.div`
 
   @media (min-width: 1280px) {
     padding: 90px 0 211px 100px;
+  }
+
+  h1 {
+    margin-bottom: 40px;
   }
 
   @media (min-width: 1500px) {
