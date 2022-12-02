@@ -13,7 +13,7 @@ const OnlineAdvertising = () => {
   const period = "2020 monthly average";
   return (
     <Container>
-    <Box  marginTop="50px" fontFamily= "'Inter', sans-serif"  >
+    <Box  marginTop="50px" fontFamily= "'Inter', sans-serif" maxWidth='1440px' >
       <Box style={{ color: textColor,position: 'relative' }}  margin="0px auto" sx={{
           maxWidth: { xs: "84%", sm: "90%", md: "84%" }
         }} >
