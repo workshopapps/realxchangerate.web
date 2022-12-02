@@ -30,15 +30,13 @@ export default function UserFeedbackLayout() {
 						<CardSkeleton />
 						<CardSkeleton />
 					</>
-				) : null}
-
-				{contacts
-					? contacts
-							.slice(1)
-							.map((item, index) => (
-								<Card key={index} data={item} stats={item.status} />
-							))
-					: null}
+				) : (
+					contacts
+						.slice(1)
+						.map((item, index) => (
+							<Card key={index} data={item} stats={item.status} />
+						))
+				)}
 			</StyledCardsWrapper>
 		</StyledWrapper>
 	);
