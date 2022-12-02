@@ -54,7 +54,7 @@ def add_faq(*, db: Session = Depends(get_db), faq_in: schemas.FaqCreate) -> Any:
     """
     This endpoint stores a new FAQ into the database.
     """
-    faq = crud.faq.create(db=db, obj_in = faq_in)
+    faq = crud.faq.create(db=db, obj_in=faq_in)
     return {
         "Success": True,
         "Status code": 200,
@@ -105,29 +105,21 @@ def update_rate(iso_code: str, update_param: schemas.RateUpdate, db: Session = D
     }
 
 
+@router.put("/update_faq")
+def update_faq(question: str, update: schemas.FaqUpdate, db: Session = Depends(get_db)):
+    """Update Faqs in the database"""
 
+    faqs = crud.faq.get_faqs_by_question(db=db, question=question)
 
-# @router.put("/update_faq")
-# def update_faq(question: str, update: schemas.FaqUpdate, db: Session = Depends(get_db)):
+    if not faqs:
+        raise HTTPException(status_code=404, detail=f"faq not found")
 
-#     """Update Faqs in the database"""
-
-#     faqs = crud.faq.get_faqs_by_question(db=db, question = question)
-
-
-#     if not faqs:
-#         raise HTTPException(status_code=404, detail=f"faq not found")
-
-#     # update  stores faq in the database
-#     update = crud.faq.update(db=db, db_obj=faqs, obj_in=update)
-#     return {
-#         "success": True,
-#         "data": update
-#     }
-
-
-
-
+    # update  stores faq in the database
+    update = crud.faq.update(db=db, db_obj=faqs, obj_in=update)
+    return {
+        "success": True,
+        "data": update
+    }
 
 
 @router.delete("/delete_currency")
@@ -197,28 +189,10 @@ def get_all_complaints(db: Session = Depends(get_db)):
     return {"success": True, "status_code": 200, "complaints": complaints}
 
 
-
-# @router.get("/get_all_faqs")
-# async def get_all_faqs(*, db:Session = Depends(get_db)):
-
-#     """Returns all faqs from the database"""
-
-#     faqs = crud.faq.get_all_faqs(db)
-
-#     if faqs is None:
-#         return {"success": False, "status_code": 404, "message": "No faqs available!"}
-
-#     if len(faqs) == 0:
-#         return {"success": True, "status_code": 200, "message": "No faqs recorded!"}
-
-#     return {"success": True, "status_code": 200, "faqs": faqs}
-
-
-
 @router.put(
     "/update_complaint_status/{id}",
 )
-async def update_complaint_status(id: int, data:schemas.ComplaintUpdate, db: Session = Depends(get_db)):
+async def update_complaint_status(id: int, data: schemas.ComplaintUpdate, db: Session = Depends(get_db)):
     """updates the status of a complaint.
     Returns the complaint id if the status is successfully updated
     Args:
@@ -229,21 +203,19 @@ async def update_complaint_status(id: int, data:schemas.ComplaintUpdate, db: Ses
     Raises
         HTTP_424_FAILED_DEPENDENCY: status update unssucessfull
     """
-    
 
-    complaint = crud.complaint.get(db,id)
+    complaint = crud.complaint.get(db, id)
     if complaint is None:
         raise HTTPException(
-             status_code=status.HTTP_404_NOT_FOUND,
+            status_code=status.HTTP_404_NOT_FOUND,
             detail="complaint id does not exist",
         )
-      
-    complaint = crud.currency.update(db=db, db_obj=complaint, obj_in=data)    
 
+    complaint = crud.currency.update(db=db, db_obj=complaint, obj_in=data)
 
     return{
-        "success":True,
+        "success": True,
         "status_code": 200,
-        "message":"status updated succesfully",
-        "data":complaint,
-    }    
+        "message": "status updated succesfully",
+        "data": complaint,
+    }
