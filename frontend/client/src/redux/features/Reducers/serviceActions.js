@@ -74,16 +74,10 @@ export const GetCurrencyRates = (currencies) => async () => {
       dispatch(setCurrencyRates(values))
     );
 
-      const res = await RateService.GetCurrencyData(ele.isocode);
-      return res.data.data;
-    });
-    Promise.all(currencyRates).then((values) =>
-      dispatch(setCurrencyRates(values))
-    );
-
     dispatch(setLoading(false));
   } catch (err) {
     console.log(err);
+    dispatch(setLoading(false));
   }
 };
 
@@ -97,19 +91,8 @@ export const GetNews = (ip) => async () => {
     dispatch(setLoading(false));
   } catch (err) {
     console.log(err);
+    dispatch(setLoading(false));
   }
 };
 
-export const GetNews = (ip) => async () => {
-  try {
-    const res = await axios.get(
-      `https://my-second-app-dot-wise-philosophy-348109.oa.r.appspot.com/api/news/${ip}`
-    );
-    dispatch(setNews(res.data.results));
 
-    dispatch(setLoading(false));
-  } catch (err) {
-    dispatch(setLoading(false));
-    console.log(err);
-  }
-};
