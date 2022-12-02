@@ -47,6 +47,8 @@ import GetInTouch from "./Pages/GetInTouch/GetInTouch";
 import CurrencyProfile from "./Pages/CurrencyProfile/CurrencyProfile";
 // import ScrollToTop from "./utils/ScrollToTop";
 import PrivacyPolicy from "./Pages/PrivacyPolicy/PrivacyPolicy";
+import EntrepreneurAmbassador from "./Pages/EntrepreneurAmbassador/EntrepreneurAmbassador";
+import EntrepreneurFrom from "./Pages/EntrepreneurForm/EntrepreneurFrom";
 
 function App() {
     return (
@@ -120,6 +122,14 @@ function App() {
                         <Route
                             path="/ambassadors/student-ambassador"
                             element={<StudentAmbassador />}
+                        />
+                        <Route
+                            path="/ambassadors/entrepreneur-ambassador"
+                            element={<EntrepreneurAmbassador/> }
+                        />
+                        <Route
+                            path="/ambassadors/entrepreneur-form"
+                            element={<EntrepreneurFrom/> }
                         />
                         <Route path="/ddff" element={<ErrorPage />} />
                         <Route path="/*" element={<ErrorPage />} />
