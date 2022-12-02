@@ -9,7 +9,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
 import { mockData } from "./mockData";
-import { Container, Integration } from "./currStyles";
+import { MainWrapper, Container, Integration } from "./currStyles";
 import arrow from "../../assets/arrow_forward.svg";
 
 import Card from "./Card";
@@ -69,7 +69,8 @@ export default function CreateCurrency() {
   );
 
   return (
-    <section style={{ margin: "0 20px" }}>
+    <MainWrapper>
+      <h1>Dashboard</h1>
       <Integration>
         <Card
           title={"Update FAQs"}
@@ -110,13 +111,16 @@ export default function CreateCurrency() {
             open={open}
           />
         </div>
-        <TableContainer component={Paper}>
+        <TableContainer
+          style={{ margin: "auto -10px", width: "auto" }}
+          component={Paper}
+        >
           <Table
             sx={{ minWidth: 500 }}
             size="small"
             aria-label="customized table"
           >
-            <TableHead>
+            <TableHead style={{ backgroundColor: "#f8fafc" }}>
               <TableRow>
                 <StyledTableCell sx={{ fontWeight: "700" }}>
                   Country
@@ -188,11 +192,14 @@ export default function CreateCurrency() {
             </TableBody>
           </Table>
         </TableContainer>
-        <Button variant="text" sx={{ my: 2, fontSize: "0.8rem" }}>
+        <Button
+          variant="text"
+          sx={{ my: 2, textTransform: "capitalize", fontSize: "0.8rem" }}
+        >
           view more currencies{" "}
           <img src={arrow} alt="arrow" style={{ marginLeft: "10px" }} />
         </Button>
       </Container>
-    </section>
+    </MainWrapper>
   );
 }

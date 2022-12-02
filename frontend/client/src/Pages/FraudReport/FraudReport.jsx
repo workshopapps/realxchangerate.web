@@ -1,16 +1,16 @@
 import { Box, Typography, Stack, styled } from "@mui/material";
 import React from "react";
 
-import ads from "./ads.png";
-import confident from "./confident.png";
-import registered from "./registered.png";
-import payments from "./payments.png";
+import ads from "./pexels-marcus-herzberg-1058276.jpg";
+import confident from "./pexels-andrea-piacquadio-3771839.jpg";
+import registered from "./pexels-erik-mclean-5868633.jpg";
+import payments from "./pexels-michael-nunzio-4189458.jpg";
 
-import Card from "@mui/material/Card";
+/*import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 
-import { CardActionArea } from "@mui/material";
+import { CardActionArea } from "@mui/material";*/
 
 const content = [
   {
@@ -225,29 +225,34 @@ const List = () => {
 
 const MobileListContent = ({ img, title, text }) => {
   return (
-    <Card
-      sx={{ maxWidth: 345, margin: "auto", marginBottom: "20px !important" }}
+    <Box
+      sx={{ maxWidth: 345, margin: "auto",  }}
     >
-      <CardActionArea>
-        <CardMedia component="img" height="140" image={img} alt={title} />
-        <CardContent>
-          <BodyContentTitle
-            gutterBottom
+      <Box sx={{marginBottom:'24px'}}>
+        <Box  ><img src={img} height="150" width= '100%' alt={title}/></Box>
+        <Box>
+          <Box
             sx={{
-              fontWeight: 400,
-              fontSize: "18px",
+              fontWeight: 700,
+              fontSize: "14px",
+              lineHeight:'20px',
+              marginTop:'16px',
+              marginBottom:'16px'
             }}
-            variant="h6"
-            component="h6"
+            
           >
             {title}
-          </BodyContentTitle>
-          <Body2Text variant="body2" color="text.secondary">
+          </Box>
+          <Box color="text.secondary" sx={{
+            fontWeight: 400,
+            fontSize: "14px",
+            lineHeight:'20px',
+          }}>
             {text}
-          </Body2Text>
-        </CardContent>
-      </CardActionArea>
-    </Card>
+          </Box>
+        </Box>
+      </Box>
+    </Box>
   );
 };
 
@@ -361,6 +366,7 @@ const Body = () => {
                   fontSize: {xs:'24px', sm:'28px'},
                   lineHeight:{xs:'32px', sm:'32px'},
                   fontWeight:'700'
+                
                 }}
               >
                 Get response as quickly as possible
