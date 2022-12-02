@@ -8,13 +8,11 @@ import {
 	StyledCardWrapper,
 	Status,
 } from './Card.styled';
-import { Button, Skeleton, Stack } from '@mui/material';
+import { Button } from '@mui/material';
 import calIcon from '../../../assets/calendarIcon.svg';
-import { Data } from '../../../pages/userFeedbacks/mockData';
 
-export function Card({ data }) {
+export default function Card({ data }) {
 	const navigate = useNavigate();
-	const date = new Date(data['last_updated']);
 
 	return (
 		<StyledCardWrapper>
@@ -23,13 +21,13 @@ export function Card({ data }) {
 					<Name>Name: {data.title}</Name>
 					<Email>Email: {data.email}</Email>
 				</div>
-				<Status $stats={Data[data.id].status}>{Data[data.id].status}</Status>
+				<Status $stats={data.status}>{data.status}</Status>
 			</div>
 			<StyledCardMessage>{data.message}</StyledCardMessage>
 			<div className='align alignBottom'>
 				<div className='date'>
 					<img src={calIcon} alt='icon' />
-					<span>Date: {date.toLocaleDateString('en-US')}</span>
+					<span>Date: {data.date}</span>
 				</div>
 				<Button
 					variant='outlined'
@@ -50,23 +48,3 @@ export function Card({ data }) {
 Card.propTypes = {
 	data: PropTypes.object.isRequired,
 };
-
-export function CardSkeleton() {
-	return (
-		<StyledCardWrapper>
-			<Stack spacing={1.5}>
-				<Skeleton width='30%' variant='text' sx={{ fontSize: '1.5rem' }} />
-				<Skeleton variant='rounded' height={120} />
-
-				<Stack>
-					<Skeleton
-						sx={{ marginLeft: 'auto', marginTop: '10px' }}
-						variant='rounded'
-						width='25%'
-						height={30}
-					/>
-				</Stack>
-			</Stack>
-		</StyledCardWrapper>
-	);
-}
