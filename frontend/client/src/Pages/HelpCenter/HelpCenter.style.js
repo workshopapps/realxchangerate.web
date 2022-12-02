@@ -59,15 +59,16 @@ export const Section = styled.section`
 export const Text = styled.section`
     color: #0f172a;
     text-align: left;
-    line-height: 20px;
+    line-height: 22px;
     font-weight: 400;
     font-size: 18px;
     margin-top: 3px;
     ${breakpoints("font-size", "px", [{ 480: 14 }])};
+    ${breakpoints("line-height", "px", [{ 480: 20 }])};
 `;
 
 export const SubSection = styled.section`
-    padding-bottom: 20px;
+    //padding-bottom: 20px;
 `;
 
 export const SubTitle = styled.section`
