@@ -4,12 +4,9 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-
 import NavComponent from "./components/NavComponent";
 import Footer from "./components/Footer";
-
 import "./assets/css/style.css";
-
 import {
   Contact,
   Compliance,
@@ -33,13 +30,13 @@ import {
   CookiePolicy,
   Glossary,
   OnlineAdvertising,
-  ApplyToAdvertise,
   Ambassadors,
+  StudentAmbassador,
   Home,
+  ApplyToAdvertise,
 } from "./Pages";
 import GlobalStyle from "./styles/Globalstyle";
 import ErrorPage from "./Pages/404/ErrorPage";
-
 import SingleNews from "./Pages/SingleNews/SingleNews";
 import Article from "./Pages/Press/Article/Article";
 import PressNews from "./Pages/Press/PressRelease/News";
@@ -47,7 +44,6 @@ import GetInTouch from "./Pages/GetInTouch/GetInTouch";
 import CurrencyProfile from "./Pages/CurrencyProfile/CurrencyProfile";
 // import ScrollToTop from "./utils/ScrollToTop";
 import PrivacyPolicy from "./Pages/PrivacyPolicy/PrivacyPolicy";
-
 function App() {
   return (
     <>
@@ -55,7 +51,6 @@ function App() {
       <Router>
         <div className="App">
           <NavComponent />
-
           <Routes>
             {/*---==== Contents Sections  ====---*/}
             <Route path="/" element={<Home />} />
@@ -98,7 +93,12 @@ function App() {
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/glossary" element={<Glossary />} />
             <Route path="/advertising" element={<OnlineAdvertising />} />
+            <Route path="/apply-to-advertise" element={<ApplyToAdvertise />} />
             <Route path="/ambassadors" element={<Ambassadors />} />
+            <Route
+              path="/ambassadors/student-ambassador"
+              element={<StudentAmbassador />}
+            />
             <Route path="/ddff" element={<ErrorPage />} />
             <Route path="/*" element={<ErrorPage />} />
             <Route path="*" element={<Navigate to={"/ddff"} />} />
@@ -110,5 +110,4 @@ function App() {
     </>
   );
 }
-
 export default App;

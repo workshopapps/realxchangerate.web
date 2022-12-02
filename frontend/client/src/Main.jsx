@@ -3,22 +3,13 @@ import { ThemeProvider, createTheme, Box, CssBaseline } from "@mui/material";
 import App from "./App";
 import { dispatch } from "./redux/store";
 import {
-  GetUserIp,
   GetCurrencies,
 } from "./redux/features/Reducers/serviceActions";
-import Loader from "./components/Loader";
-import { useSelector } from "react-redux";
-import {
-  setDefaultCurrency,
-  setLoading,
-  setUserIp,
-} from "./redux/features/Reducers/servicesReducer";
 
 export const ColorModeContext = createContext({ toggleColorMode: () => {} });
 
 const Main = () => {
   const [mode, setMode] = useState("light");
-  const { isLoading } = useSelector((state) => state.service);
 
   const colorMode = useMemo(
     () => ({
@@ -53,15 +44,6 @@ const Main = () => {
   );
 
   useEffect(() => {
-    const ip = sessionStorage.getItem("ip");
-    const defaultCurrency = JSON.parse(sessionStorage.getItem("localCurrency"));
-    dispatch(setLoading(true));
-    if (!ip || !defaultCurrency) {
-      dispatch(GetUserIp());
-    }
-    dispatch(setUserIp(ip));
-    dispatch(setDefaultCurrency(defaultCurrency));
-
     dispatch(GetCurrencies());
   }, []);
 
@@ -74,7 +56,7 @@ const Main = () => {
           height="100vh"
           sx={{ backgroundColor: "background.default", color: "text.primary" }}
         >
-          {isLoading ? <Loader /> : <App />}
+          <App />
         </Box>
       </ThemeProvider>
     </ColorModeContext.Provider>
