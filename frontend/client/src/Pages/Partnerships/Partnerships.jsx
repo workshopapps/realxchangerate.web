@@ -88,6 +88,14 @@ const StyledHero = styled.div`
     letter-spacing: -0.04em;
     color: #0f172a;
     margin-bottom: 45px;
+    @media screen and (max-width: 1190px) {
+      font-weight: 700;
+      font-size: 32px;
+      line-height: 40px;
+      /* or 125% */
+
+      letter-spacing: -0.02em;
+    }
     @media screen and (max-width: 480px) {
       font-weight: 700;
       font-size: 28px;
