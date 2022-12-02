@@ -120,6 +120,7 @@ const NavComponent = () => {
           )}
         </IconButton>
 
+        <div id="google_translate_element"></div>
         <Box gap="6px" display="flex">
           <Button
             id="basic-button"

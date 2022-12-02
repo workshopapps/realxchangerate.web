@@ -29,6 +29,37 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>Street Rate</title>
+    <style>
+      #google_translate_element select {
+        background: #f6edfd;
+        color: #383ffa;
+        border: none;
+        border-radius: 3px;
+        padding: 5px 6px;
+        position: absolute;
+        outline: none;
+        top: 5px;
+        right: 10px;
+      }
+      .goog-logo-link {
+        display: none !important;
+      }
+      .goog-te-gadget {
+        color: transparent !important;
+      }
+      .goog-te-banner-frame {
+        display: none !important;
+      }
+
+      #goog-gt-tt,
+      .goog-te-balloon-frame {
+        display: none !important;
+      }
+      .goog-text-highlight {
+        background: none !important;
+        box-shadow: none !important;
+      }
+    </style>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -43,5 +74,19 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <div id="google_translate_element"></div>
+    <script type="text/javascript">
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+          { pageLanguage: "en" },
+          "google_translate_element"
+        );
+      }
+    </script>
+
+    <script
+      type="text/javascript"
+      src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+    ></script>
   </body>
 </html>
