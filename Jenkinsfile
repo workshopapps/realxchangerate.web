@@ -45,8 +45,6 @@ pipeline {
 			}
 			
 		}
-		
-		stage("check") {
 			
 			steps {
     				sh "pwd"
@@ -60,5 +58,3 @@ pipeline {
         	}	
 
 	}
-
-}
