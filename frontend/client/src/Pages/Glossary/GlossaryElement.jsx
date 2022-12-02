@@ -6,6 +6,7 @@ export const Alphabet = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   padding: 16px;
+  margin-top: 5px;
   h4 {
     margin: 8px;
     color: #1e293b;
@@ -21,6 +22,7 @@ export const Alphabet = styled.div`
   }
 
   @media only screen and (min-width: 768px) {
+    margin-top: 15px;
     padding: 16px 15rem;
     h4 {
       margin: 10px;
@@ -217,7 +219,7 @@ export const Parent = styled.div`
   grid-template-columns: 1fr 1fr 1fr;
   width: 100%;
   max-width: 1440px;
-  margin: 0 auto;
+  margin: 0 auto 5px auto;
   padding: 2rem;
 
   @media only screen and (min-width: 768px) {
@@ -226,14 +228,14 @@ export const Parent = styled.div`
 
   @media only screen and (min-width: 992px) {
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    padding: 5rem;
+    padding: 2rem 5rem 5rem 5rem;
   }
 `;
 
 export const Box = styled.div`
   min-width: 243px;
   max-width: 243px;
-  margin-right: 20px;
+  margin-bottom: 20px;
   h4 {
     letter-spacing: -0.02em;
     color: #00368c;
@@ -305,7 +307,6 @@ export const Items = styled.div`
 export const Header = styled.div`
   background-color: #f6faff;
   width: 100%;
-  max-width: 1440px;
   margin: 0 auto;
   display: flex;
   justify-content: center;
@@ -328,6 +329,9 @@ export const ImageArround = styled.div`
   height: 100%;
   img {
     position: absolute;
+  }
+  @media only screen and (min-width: 2000px) {
+    max-width: 1440px;
   }
 `;
 export const LeftTop = styled.img`
