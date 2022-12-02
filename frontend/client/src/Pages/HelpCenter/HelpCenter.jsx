@@ -40,13 +40,14 @@ const HelpCenter = () => {
                         to help.{" "}
                     </Title>
                     <SubSection>
-                        <Text style={{}}><Typography sx={{
+                        <Text ><Typography sx={{
                             fontWeight: 600,
                             lineHeight: {xs:'20px', sm:'24px'},
                             fontSize:{xs:'14px',sm:'18px'},
-                            display:'inline'
-                        }}>Email:</Typography> Contact@streetrate.com</Text>
-                        <Text>
+                            display:'inline',
+                            textDecoration:'none'
+                        }}>Email:</Typography> <span style={{textDecoration:"underline"}}>Contact@streetrate.com</span></Text>
+                        <Text style={{marginTop:'20px',marginBottom:'20px', }}>
                             <Typography sx={{
                             fontWeight: 600,
                             lineHeight: {xs:'20px', sm:'24px'},
@@ -86,7 +87,7 @@ const HelpCenter = () => {
                     alignItems="stretch"
                 >
                     <Grid item xs={12} sm={4}>
-                        <Section>
+                        <Section style={{border:'1px solid #E2E8F0'}}>
                             <SubTitle>
                                 What is the best time to exchange my money?
                             </SubTitle>
@@ -99,7 +100,7 @@ const HelpCenter = () => {
                         </Section>
                     </Grid>
                     <Grid item xs={12} sm={4}>
-                        <Section>
+                        <Section style={{border:'1px solid #E2E8F0'}}>
                             <SubTitle>How can I convert my money?</SubTitle>
                             <Text>
                                 We have paterned with Aboki FX to offer you a
@@ -110,7 +111,7 @@ const HelpCenter = () => {
                         </Section>
                     </Grid>
                     <Grid item xs={12} sm={4}>
-                        <Section>
+                        <Section style={{border:'1px solid #E2E8F0'}}>
                             <SubTitle>
                                 Which currencies can i convert with the currency
                                 converter?

@@ -15,7 +15,7 @@ export const Title = styled.h4`
     color: #00296b;
     line-height: 32px;
     letter-spacing: -2%;
-    ${breakpoints("font-size", "px", [{ 480: 16 }])};
+    ${breakpoints("font-size", "px", [{ 480: 18 }])};
     ${breakpoints("line-height", "px", [{ 480: 24 }])};
 
     @media (max-width: 768px) {
@@ -52,8 +52,9 @@ export const Paragraph = styled.p`
 export const Section = styled.section`
     background: #f8fafc;
     border-radius: 12px;
-    padding: 20px;
+    padding: 32px;
     height: 100%;
+    ${breakpoints("padding", "px", [{ 480: 16 }])};
 `;
 
 export const Text = styled.section`
@@ -74,11 +75,12 @@ export const SubSection = styled.section`
 export const SubTitle = styled.section`
     color: #0f172a;
     text-align: left;
-    line-height: 20px;
+    line-height: 28px;
     font-weight: 600;
     font-size: 20px;
     margin-bottom: 10px;
     ${breakpoints("font-size", "px", [{ 480: 14 }])};
+    ${breakpoints("line-height", "px", [{ 480: 20 }])};
 `;
 
 export const StyledGrid = styled.div`
