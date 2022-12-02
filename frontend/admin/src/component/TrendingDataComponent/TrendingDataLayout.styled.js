@@ -13,23 +13,25 @@ export const StyledGrid = styled.div`
     display: grid;
     grid-template-columns: 1fr;
     grid-template-areas: 
-    "tvl"
-    "graph";
+    
+    "graph"
+    "tvl";
 
     gap: 35px;
 
-    #tvl {
-        grid-area: tvl;
-    }
+   
     #graph {
         grid-area: graph;
+    }
+    #tvl {
+        grid-area: tvl;
     }
 
     @media(min-width: ${props => props.theme.$styled.breakpoints.lg}){
         
-        grid-template-columns: auto 1fr;
+        grid-template-columns:1fr auto;
         grid-template-areas: 
-            "tvl graph"
+            "graph tvl"
         ;
     }
 
@@ -44,7 +46,7 @@ export const StyledTrendCards = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 32px;
+    gap: 64px;
 
     @media (min-width: ${props => props.theme.$styled.breakpoints.md}) {
         flex-direction: row;
