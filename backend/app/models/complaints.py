@@ -10,12 +10,6 @@ import enum
 from sqlalchemy import Integer, Enum
 
 
-# class Status(enum.Enum):
-#     Resolved = "Resolved"
-#     Unresolved = "Unresolved"
-#     In_review  = "In review"
-
-
 class Complaint(Base):
     __tablename__ = "complaints"
 
@@ -23,5 +17,6 @@ class Complaint(Base):
     full_name = Column(String, unique=True, index=True, nullable=False)
     email = Column(EmailType, nullable=False)
     complaint = Column(String(256), nullable=False)
-    timestamp = Column(DateTime(timezone=True), nullable=False, default=datetime.now())
+    timestamp = Column(DateTime(timezone=True),
+                       nullable=False, default=datetime.now())
     status = Column(Enum(Status), default=Status.in_review)
