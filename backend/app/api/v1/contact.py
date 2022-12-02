@@ -36,3 +36,10 @@ def get_all_contacts(db: Session = Depends(get_db)):
     }
 
     return data
+
+@router.get("/contact_status")
+def get_all_contacts(db: Session = Depends(get_db)):
+    """Gets all contact status from the database"""
+    status = crud.contact.get_contact_status(db)
+
+    return status
