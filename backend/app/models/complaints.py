@@ -13,7 +13,7 @@ from sqlalchemy import Integer, Enum
 # class Status(enum.Enum):
 #     Resolved = "Resolved"
 #     Unresolved = "Unresolved"
-#     In_review  = "in review"
+#     In_review  = "In review"
 
 
 class Complaint(Base):

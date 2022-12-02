@@ -105,6 +105,31 @@ def update_rate(iso_code: str, update_param: schemas.RateUpdate, db: Session = D
     }
 
 
+
+
+# @router.put("/update_faq")
+# def update_faq(question: str, update: schemas.FaqUpdate, db: Session = Depends(get_db)):
+
+#     """Update Faqs in the database"""
+
+#     faqs = crud.faq.get_faqs_by_question(db=db, question = question)
+
+
+#     if not faqs:
+#         raise HTTPException(status_code=404, detail=f"faq not found")
+
+#     # update  stores faq in the database
+#     update = crud.faq.update(db=db, db_obj=faqs, obj_in=update)
+#     return {
+#         "success": True,
+#         "data": update
+#     }
+
+
+
+
+
+
 @router.delete("/delete_currency")
 def delete_currency(*, db: Session = Depends(get_db), isocode: str):
     """delete currency and all associated rates
@@ -190,20 +215,3 @@ def get_all_complaints(db: Session = Depends(get_db)):
 
 
 
-# @router.put("/update_faq")
-# def update_faq(question: str, update: schemas.FaqUpdate, db: Session = Depends(get_db)):
-
-#     """Update Faqs in the database"""
-
-#     faqs = crud.faq.get_faqs_by_question(db=db, question = question)
-
-
-#     if not faqs:
-#         raise HTTPException(status_code=404, detail=f"faq not found")
-
-#     # update  stores faq in the database
-#     update = crud.faq.update(db=db, db_obj=faqs, obj_in=update)
-#     return {
-#         "success": True,
-#         "data": update
-#     }
