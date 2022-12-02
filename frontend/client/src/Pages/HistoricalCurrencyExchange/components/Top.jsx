@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Box, useMediaQuery } from "@mui/material";
-import { Flag, Flag2, Arrow, InverseArrow } from "../assets/";
+import {  Arrow, InverseArrow } from "../assets/";
 import AmountInput from "./AmountInput";
 
 const TopComponent = () => {
@@ -61,13 +61,13 @@ const TopComponent = () => {
     >
       <Calender />
 
-      <AmountInput flag={Flag} amount={baseAmount} setAmount={BaseConversion} />
+      <AmountInput flag={""} amount={baseAmount} setAmount={BaseConversion} />
       <Box display="flex" alignSelf="center" justifyContent="center">
         <img src={CurrencyArrow} alt="icon" />
       </Box>
 
       <AmountInput
-        flag={Flag2}
+        flag={""}
         amount={calculatedAmount}
         setAmount={ReverseConversion}
       />

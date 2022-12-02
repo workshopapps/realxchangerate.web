@@ -1,8 +1,7 @@
 import { Drawer, Typography, Divider, Box, Link } from "@mui/material";
 import React from "react";
-// import { Link } from "react-router-dom";
 
-const DrawerComponent = ({ isOpen, setIsOpen, navItems }) => {
+const DrawerComponent = ({ isOpen, setIsOpen }) => {
   const drawer = (
     <Box onClick={setIsOpen} sx={{ textAlign: "center" }}>
       <Typography
@@ -33,13 +32,13 @@ const DrawerComponent = ({ isOpen, setIsOpen, navItems }) => {
       >
         <Link href="/">Home</Link>
 
-        <Link href="/convert">Convert</Link>
+        <Link href="/#/convert">Convert</Link>
 
-        <Link href="/">Currency Profile</Link>
+        <Link href="/#/">Currency Profile</Link>
 
-        <Link href="/news">News</Link>
+        <Link href="/#/news">News</Link>
 
-        <Link href="/contact">Contact</Link>
+        <Link href="/#/contact">Contact</Link>
       </Box>
     </Box>
   );

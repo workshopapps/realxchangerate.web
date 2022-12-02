@@ -37,8 +37,7 @@ const StyledButton = styled("button")(
   font-size:16px
   box-sizing: border-box;
   min-height: calc(1.5em + 22px);
-  // min-width: 320px;
-  margin:20px;
+   width: 100%;
   display: flex;
   padding: 12px;
   justify-content: space-between;
