@@ -3,7 +3,6 @@ from typing import Optional, Any
 from pydantic import BaseModel
 
 import enum
-from sqlalchemy import Integer, Enum
 
 
 class Status(enum.Enum):
