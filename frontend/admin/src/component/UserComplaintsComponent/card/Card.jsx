@@ -26,10 +26,10 @@ export function Card({ data }) {
       <StyledCardMessage>{data.complaint}</StyledCardMessage>
 
       <StyledCardButton
-        $complaintButton={`Resolve`}
+        $complaintButton={data.status}
         onClick={() => navigate(`/admin/complaints/${data.id}`)}
       >
-        Resolve
+        {data.status}
       </StyledCardButton>
     </StyledCardWrapper>
   );
@@ -44,7 +44,7 @@ export function CardSkeleton() {
     <StyledCardWrapper>
       <Stack spacing={1.5}>
         <Skeleton width="30%" variant="text" sx={{ fontSize: "1.5rem" }} />
-        <Skeleton variant="rounded" height={120} />
+        <Skeleton variant="rounded" height={100} />
 
         <Stack>
           <Skeleton

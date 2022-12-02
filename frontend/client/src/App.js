@@ -34,6 +34,7 @@ import {
   Home,
   StudentAmbassador,
   ApplyToAdvertise,
+  StudentAmbassadorForm,
 } from "./Pages";
 import GlobalStyle from "./styles/Globalstyle";
 import ErrorPage from "./Pages/404/ErrorPage";
@@ -99,6 +100,10 @@ function App() {
             <Route
               path="/ambassadors/student-ambassador"
               element={<StudentAmbassador />}
+            />
+            <Route
+              path="/student-ambassador/apply-to-become-student-ambassador"
+              element={<StudentAmbassadorForm />}
             />
             <Route path="/ddff" element={<ErrorPage />} />
             <Route path="/*" element={<ErrorPage />} />
