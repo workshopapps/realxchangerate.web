@@ -10,7 +10,9 @@ import arrowBack from "../assets/arrowBack.svg";
 import { useTheme } from "@mui/material";
 
 const HeroSection = () => {
-	@@ -17,12 +16,7 @@ const HeroSection = () => {
+  const theme = useTheme();
+  const DarkMode = theme.palette.mode === "dark";
+  const textColor = DarkMode ? "black" : "#0F172A";
   return (
     <HeroContainer>
       <HeroImageContainer>
