@@ -29,7 +29,7 @@ export const StyledPageHeader = styled.div`
 export const StyledComplaintForm = styled.form`
 
     h3 {
-        padding-block: 24px;
+        margin-bottom: 24px;
         font-weight: 600;
         font-size: 20px;
         line-height: 28px;
@@ -86,10 +86,6 @@ export const StyledInputWrapper = styled.div`
             outline: 0;
         }
     }
-
-    &:hover {
-        border: 1px solid #333333;
-    }
 `;
 
 export const StyledTextArea = styled.textarea`
@@ -113,9 +109,8 @@ export const StyledTextArea = styled.textarea`
     color: ${props => props.theme.$styled.colors.text600};
 
     &:hover {
-        border: 1px solid #333333;
+        border: ${props => props.disabled ? '1px solid #CBD5E1' : '1px solid #333333'};
     }
-    
 `;
 
 export const StyledButtonWrapper = styled.div`
@@ -125,7 +120,7 @@ export const StyledButtonWrapper = styled.div`
     align-items: center;
     gap: 14px;
 
-    @media (max-width: 355px) {
+    @media (max-width: ${props => props.theme.$styled.breakpoints.md}) {
        flex-wrap: wrap-reverse;
     }
 `
@@ -147,6 +142,10 @@ export const StyledFormButtonSubmit = styled.button.attrs({ type: 'submit' })`
     &:hover{
         background: ${props => props.theme.palette.primary.dark}; 
     }
+
+    @media(max-width: ${props => props.theme.$styled.breakpoints.md}){
+        max-width: 100%;
+    }
 `;
 export const StyledFormButtonCancel = styled.button`
     max-width: 163px;
@@ -167,6 +166,10 @@ export const StyledFormButtonCancel = styled.button`
     &:hover{
         border: 1px solid #171717;
     }
+
+    @media(max-width: ${props => props.theme.$styled.breakpoints.md}){
+        max-width: 100%;
+    }
 `;
 
 
@@ -181,4 +184,11 @@ export const StyledGrid = styled.div`
         grid-template-columns: 1fr 1fr;
         grid-gap: 54px;
     }
+`;
+
+export const StyledGrayWrapper = styled.div`
+    background-color: #F8FAFC;
+    padding: 24px 12px 47px;
+
+    margin-bottom: 54px;
 `;
