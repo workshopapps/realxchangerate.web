@@ -14,15 +14,23 @@ const ReferralPartnersType = () => {
           <StyledPartnersType key={type.id}>
             <div>
               <h1>{type.header}</h1>
-              <p>{type.description}</p>
+              <p style={{ maxWidth: "621px" }}>{type.description}</p>
 
               <ul>
                 {type.list.map((list) => {
-                  return <li key={list.id}>{list.text}</li>;
+                  return (
+                    <li
+                      key={list.id}
+                      style={{ listStyle: "disc", marginLeft: "15px" }}
+                    >
+                      {list.text}
+                    </li>
+                  );
                 })}
               </ul>
-                <Link to ='/contact'><Button padding="70px">Contact us</Button></Link>
-              
+              <Link to="/contact">
+                <Button padding="70px">Contact us</Button>
+              </Link>
             </div>
 
             <img src={type.icon} alt="icon" height={80} />

@@ -6,41 +6,43 @@ export const Wrapper = styled.div`
     font-family: "Inter", sans-serif;
 `;
 
-export const Title = styled.h3`
-    font-size: 25px;
+export const Title = styled.h4`
+    font-size: 28px;
     text-align: ${(props) => props.position.align};
     margin-top: ${(props) => props.position.marginTop};
     font-weight: 600;
+    margin-bottom:64px;
     color: #00296b;
     line-height: 32px;
-    letter-spacing: -0.02em;
+    letter-spacing: -2%;
     ${breakpoints("font-size", "px", [{ 480: 16 }])};
     ${breakpoints("line-height", "px", [{ 480: 24 }])};
 
     @media (max-width: 768px) {
         color: ${(props) => props.position.sm};
+        margin-bottom:16px;
     }
 `;
 
 export const Header = styled.h1`
-    font-size: 40px;
+    font-size: 48px;
     text-align: center;
     font-weight: 600;
     color: #00296b;
-    line-height: 32px;
-    letter-spacing: -0.02em;
+    line-height: 56px;
+    letter-spacing: -4%;
     margin-bottom: 40px;
     margin-top: 70px;
     ${breakpoints("font-size", "px", [{ 768: 32 }, { 480: 22 }])};
-    ${breakpoints("margin", "", [{ 768: "30px 0" }])};
+    
 `;
 
 export const Paragraph = styled.p`
-    font-size: 18px;
+    font-size: 20px;
     text-align: center;
-    font-weight: 600;
+    font-weight: 400;
     color: #0f172a;
-    line-height: 32px;
+    line-height: 28px;
     letter-spacing: -0.02em;
     margin-bottom: 50px;
     ${breakpoints("font-size", "px", [{ 480: 13 }])};
@@ -59,7 +61,7 @@ export const Text = styled.section`
     text-align: left;
     line-height: 20px;
     font-weight: 400;
-    font-size: 16px;
+    font-size: 18px;
     margin-top: 3px;
     ${breakpoints("font-size", "px", [{ 480: 14 }])};
 `;
@@ -71,9 +73,9 @@ export const SubSection = styled.section`
 export const SubTitle = styled.section`
     color: #0f172a;
     text-align: left;
-    line-height: 22px;
+    line-height: 20px;
     font-weight: 600;
-    font-size: 18px;
+    font-size: 20px;
     margin-bottom: 10px;
     ${breakpoints("font-size", "px", [{ 480: 14 }])};
 `;

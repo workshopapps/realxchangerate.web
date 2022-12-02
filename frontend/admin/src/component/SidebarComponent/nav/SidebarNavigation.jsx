@@ -28,18 +28,26 @@ const navigationOptions = [
   },
   {
     item: "Logout",
-    route: "/logout",
+    route: "/login",
     icon: <LogoutIcon />,
     iconActive: <LogoutIconWhite />,
   },
 ];
+
+const handleOnClick = (item) => {
+  if (item.item === "Logout") localStorage.removeItem("token");
+};
 
 function SidebarNavigation() {
   return (
     <StyledSidebarNavigation>
       <nav>
         {navigationOptions.map((option, index) => (
-          <NavLink key={index} to={option.route}>
+          <NavLink
+            onClick={() => handleOnClick(option)}
+            key={index}
+            to={`/admin${option.route}`}
+          >
             {({ isActive }) => (
               <StyledSidebarNavigationOption $isActive={isActive}>
                 <div className="icon">
