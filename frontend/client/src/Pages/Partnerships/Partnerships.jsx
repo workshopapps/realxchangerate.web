@@ -42,6 +42,7 @@ const Partnerships = () => {
           list1="Register and manage the StreetRates deal cycle through to close with a dedicated channel partner manager"
           list2="Be involved in the implementation and onboarding proccess"
           list3="Register and manage the StreetRates deal cycle through to close with a dedicated channel partner manager"
+          link="/partnerships/affiliate"
         />
         <ReferralPartners
           title="Referral Partners"
@@ -50,6 +51,7 @@ const Partnerships = () => {
           list1="Submit leads directly into StreetRates"
           list2="Be involved in the implementation and onboarding proccess"
           list3="Earn Up to 15% commissions on your referrals"
+          link="/partnerships/referral"
         />
       </AffiliateSection>
     </>

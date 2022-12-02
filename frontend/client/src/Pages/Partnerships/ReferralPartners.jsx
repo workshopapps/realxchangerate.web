@@ -3,6 +3,7 @@ import styled from "styled-components";
 import groupIcon from "./assets/svg/GroupIcon.svg";
 import ReferralPartnersType from "./ReferralPartnersType";
 import checkMark from "./assets/svg/check.svg";
+import { Link } from "react-router-dom";
 
 // styles
 import {
@@ -21,7 +22,9 @@ const ReferralPartners = (props) => {
               {props.text}
             </p>
           </div>
-          <button className="high-button">{props.btn}</button>
+          <button className="high-button">
+            <Link to={props.link}>{props.btn}</Link>
+          </button>
         </div>
         <div>
           <ul>
@@ -44,7 +47,9 @@ const ReferralPartners = (props) => {
               </div>
             </li>
           </ul>
-          <button className="low-button">{props.btn}</button>
+          <Link to={props.link} className="low-button link">
+            {props.btn}
+          </Link>
         </div>
         {/* header
       <PartnersHeader>
@@ -135,6 +140,9 @@ const StyledSection = styled.div`
   ul div {
     margin-left: 16px;
   }
+  .link {
+    width: fit-content;
+  }
   @media screen and (max-width: 1350px) {
     justify-content: center;
     gap: 32px;
@@ -158,6 +166,7 @@ const StyledSection = styled.div`
       line-height: 24px;
       color: #f8fafc;
     }
+
   }
   @media screen and (max-width: 780px) {
     button {

@@ -36,6 +36,8 @@ import {
     Ambassadors,
     StudentAmbassador,
     Home,
+    Affiliate,
+    Referral
 } from "./Pages";
 import GlobalStyle from "./styles/Globalstyle";
 import ErrorPage from "./Pages/404/ErrorPage";
@@ -86,6 +88,8 @@ function App() {
                             path="/currency-encyclopedia/:country"
                             element={<CurrencyEncyclopediaDetail />}
                         />
+                        <Route path="/partnerships/affiliate" element={<Affiliate />} />
+                        <Route path="/partnerships/referral" element={<Referral />} />
                         <Route path="/terms" element={<TermsAndConditions />} />
                         <Route path="/press" element={<Press />} />
                         <Route path="/press/news" element={<PressNews />} />
