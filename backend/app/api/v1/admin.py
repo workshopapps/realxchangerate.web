@@ -137,7 +137,7 @@ def delete_rate(*, db: Session = Depends(get_db), rate_id: int):
     return {"success": True, "status_code": 200, "data": {"rate": rate_query}, "message": "rate deleted!"}
 
 
-@router.delete("/delete_faq")
+@router.delete("/delete_faq/{faq_id}")
 def delete_faq(*, db: Session = Depends(get_db), faq_id: int):
     """delete selected faq
 
