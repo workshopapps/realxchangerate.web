@@ -1,98 +1,52 @@
-// pipeline {
-//     environment {
-//         registry = 'kaisbettaieb/fastapi-example'
-//         registryCredential = 'dockerhub-credentials'
-//         dockerImage = ''
-//         scannerHome = tool 'SonarQube scanner'
-//         sonarToken = credentials('credentials-sonar')
-//         build_version = "1+${BUILD_NUMBER}"
-//     }
-//     agent any
+pipeline {
 
-//     stages {
-//         stage('Clone github repo') {
-//             steps {
-//                 git credentialsId: 'github-credentials', url: 'https://github.com/workshopapps/realxchangerate.web', branch: 'merge-dev'
-//             }
-//         }
+	agent any
+	stages {
+		
+		
 
-//         stage('Build Backend') {
-//             steps {
-//                 sh 'pip install -r requirements.txt --user'
-//             }
-//         }
+		stage("build frontend-client"){
 
-//         stage('Unit testing') {
-//             steps {
-//                 sh 'python -m unittest discover'
-//             }
-//         }
+			steps {
+				sh "cd frontend"
+				sh "cd frontend/client && npm i --force && CI=false npm run build"
+			} 
+          }
+    
+    stage("build frontend-admin"){
 
-//         stage('SonarQube analysis') {
-//             steps {
-//                 withSonarQubeEnv('SonarQube') {
-//                     bat "${scannerHome}\\sonar-scanner.bat -Dsonar.login=$sonarToken"
-//                 }
-//             }
-//         }
+			steps {
+				sh "cd frontend"
+				sh "cd frontend/admin && npm i --force && CI=false npm run build"
+			} 
+          }
+    
+    stage("build backend"){
 
-//         stage('Quality Gate') {
-//             steps {
-//                 timeout(time: 1, unit: 'HOURS') {
-//                     waitForQualityGate abortPipeline: true
-//                 }
-//             }
-//         }
+			steps {
+				sh "cd backend"
+        sh "cd backend && source venv/bin/activate"
+				sh "cd backend && python3 -m pip install --upgrade pip"
+				sh "cd backend && pip3 install -r requirements.txt --force"
+			} 
+        	}
+    
+		stage("deploy") {
+		
+			steps {
+				sh "sudo cp -rf ${WORKSPACE}/frontend/client/build/* /var/www/streetrate.hng.tech/html/client/"
+				sh "sudo cp -fr ${WORKSPACE}/frontend/admin/build/* /var/www/streetrate.hng.tech/html/admin/"
+        sh "sudo cp -rf ${workspace}/backend/* /home/light/realxchangerate/backend"
+				sh "sudo su - light && whoami"
+				//sh "sudo pm2 stop realxchangerate_api"
+				sh "sudo pm2 start /home/light/realxchangerate/backend/app/main.py --interpreter python3 --name realxchangerate_api"
+			}
+			
+		}
 
-//         stage('Artifactory configuration') {
-//             steps {
-//                 rtServer(
-//                     id: 'ARTIFACTORY_SERVER',
-//                     url: 'https://kaisbettaieb.jfrog.io/artifactory',
-//                     credentialsId: 'artifactory-credentials'
-//                 )
-//             }
-//         }
 
-//         stage('Build python package') {
-//             steps {
-//                 sh '''
-//                     python setup.py sdist bdist_wheel
-//                 '''
-//             }
-//         }
+        }	
 
-//         stage('Upload packages') {
-//             steps {
-//                 rtUpload(
-//                     serverId: 'ARTIFACTORY_SERVER',
-//                     spec: '''{
-//                         "files": [
-//                             {
-//                                 "pattern": "dist/",
-//                                 "target": "artifactory-python-dev-local/"
-//                             }
-//                         ]
-//                     }'''
-//                 )
-//             }
-//         }
 
-//         stage('Publish build info') {
-//             steps {
-//                 rtPublishBuildInfo(
-//                     serverId: 'ARTIFACTORY_SERVER'
-//                 )
-//             }
-//         }
 
-//         stage('Commit in prod branch') {
-//             steps {
-//                 sh '''
-//                     echo "commit prod branch"
-//                 '''
-//             }
-//         }
-
-//     }
-// }
+}
