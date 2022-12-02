@@ -22,3 +22,17 @@ def create_contact(
         "Success": True,
         "message": "Thank you. We'll get in touch as soon as possible.",
     }
+
+
+
+@router.get("/contact_details")
+def get_all_contacts(db: Session = Depends(get_db)):
+    """Gets all contact details from the database"""
+    details = crud.contact.get_all_contact_details(db)
+
+    data = {
+        "success": True,
+        "Contacts": details
+    }
+
+    return data
