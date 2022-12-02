@@ -6,17 +6,20 @@ import {
   HeroImage,
   HeroImageContainer,
 } from "../style/StudentAmbassador.styled";
+import arrowBack from "../assets/arrowBack.svg";
 import { useTheme } from "@mui/material";
 
 const HeroSection = () => {
-  const theme = useTheme();
-  const DarkMode = theme.palette.mode === "dark";
-  const textColor = DarkMode ? "black" : "#0F172A";
-
+	@@ -17,12 +16,7 @@ const HeroSection = () => {
   return (
     <HeroContainer>
       <HeroImageContainer>
-        <HeroImage>Become a Student Ambassador</HeroImage>
+        <HeroImage>
+          <Link to="/ambassadors">
+            <img src={arrowBack} alt="go back icon" />
+          </Link>
+          Become a Student Ambassador
+        </HeroImage>
       </HeroImageContainer>
       <HeroContents textColor={textColor}>
         <p>
@@ -35,5 +38,4 @@ const HeroSection = () => {
     </HeroContainer>
   );
 };
-
 export default HeroSection;
