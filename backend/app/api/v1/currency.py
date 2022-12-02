@@ -118,3 +118,45 @@ def get_currencies_and_flags(db: Session = Depends(get_db)):
         currencies.append(currency)
 
     return currencies
+
+@router.get("/currency/{isocode}")
+def get_currency(isocode: str, db: Session = Depends(get_db)):
+    """get details of currency.
+    Returns the details of a currency
+    Args:
+        isocode (str): A unique identifier of a currency
+    Returns:
+        HTTP_200_OK  {data:curency_details}
+    Raises
+        HTTP_424_FAILED_DEPENDENCY: could not get currency
+    """
+    # Get currency
+    currency = crud.currency.get_currency_by_isocode(db, isocode.upper())
+
+    if currency == None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="currency does not exist"
+        )
+
+    #get rate
+    rate = crud.rate.get(db,model_id = currency.id)
+    #create dictionary for currency object
+    currency_dict = currency.dict()
+    #append rate to currency object
+    currency_dict["rate"] = rate
+
+    #get currency name and flag
+    name = currency.country
+    codes = requests.get("https://flagcdn.com/en/codes.json").json()
+    for key, value in codes.items():
+            if value == name:
+                currency_dict["flag"] = f"https://flagcdn.com/{key}.svg"
+                break
+
+
+    return {
+        "success":True,
+        "status_code": 200,
+        "data":currency_dict
+    }    
