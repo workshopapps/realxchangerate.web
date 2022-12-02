@@ -9,14 +9,14 @@ const ListItem = ({ image, title, content }) => {
   return (
     <Box
       display="flex"
-      justfiyContent="center"
+      justifyContent="center"
       flexDirection="column"
       alignItems="center"
       gap="20px"
     >
       <Box
         display="flex"
-        justfiyContent="center"
+        justifyContent="center"
         flexDirection="column"
         alignItems="center"
         gap="10px"

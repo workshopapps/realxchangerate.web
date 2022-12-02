@@ -13,7 +13,6 @@ const HeroSection = () => {
   const theme = useTheme();
   const DarkMode = theme.palette.mode === "dark";
   const textColor = DarkMode ? "black" : "#0F172A";
-
   return (
     <HeroContainer>
       <HeroImageContainer>
@@ -41,5 +40,4 @@ const HeroSection = () => {
     </HeroContainer>
   );
 };
-
 export default HeroSection;

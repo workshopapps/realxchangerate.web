@@ -4,22 +4,19 @@ import { Link } from "react-router-dom";
 import im from "../assets/before.png";
 
 export default function MainNewsCard({currentNews}) {
-  const theme = useTheme()
-  const darkMode = theme.palette.mode === 'dark'
+  const theme = useTheme();
+  const darkMode = theme.palette.mode === "dark";
 
-  let date
-  if(currentNews){
-    let pubDate = new Date(currentNews.pubDate)
-    console.log(pubDate.toString())
+  let date;
+  if (currentNews) {
+    let pubDate = new Date(currentNews.pubDate);
+    console.log(pubDate.toString());
   }
-
   return (
     <Box flex={2}>
       <Stack>
         <img src={im} alt="im" width="100%" />
-        <Typography variant="p" color="#64748B" mt={1}>
-          
-        </Typography>
+        <Typography variant="p" color="#64748B" mt={1}></Typography>
         <Box mt={2}>
           <Typography
             variant="h3"
@@ -35,7 +32,7 @@ export default function MainNewsCard({currentNews}) {
               to="/news/1"
               style={{
                 textDecoration: "none",
-                color: darkMode ? "#fff": "#0F172A",
+                color: darkMode ? "#fff" : "#0F172A",
               }}
             >
               Global stocks rally, dollar drops as U.S. inflation data spurs
@@ -44,7 +41,7 @@ export default function MainNewsCard({currentNews}) {
           </Typography>
           <Typography
             variant="p"
-            color={darkMode ? "#fff": "#1E293B"}
+            color={darkMode ? "#fff" : "#1E293B"}
             sx={{
               fontWeight: "400",
               fontSize: "16px",

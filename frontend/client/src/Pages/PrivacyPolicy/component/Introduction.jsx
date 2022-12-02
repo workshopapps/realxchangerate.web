@@ -1,6 +1,5 @@
 import React from "react";
 import { List } from "../style/Privacy.styled";
-
 const Introduction = () => {
   return (
     <section>
@@ -41,5 +40,4 @@ const Introduction = () => {
     </section>
   );
 };
-
 export default Introduction;

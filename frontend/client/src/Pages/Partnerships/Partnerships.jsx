@@ -35,6 +35,7 @@ const Partnerships = () => {
       </StyledHero>
       <WhyChoose />
       <AffiliateSection id="learn">
+        <h2>What type of partner are you?</h2>
         <ReferralPartners
           title="Affiliate partners"
           text="Help businesses discover StreetRates by promoting us through your content or content distribution strategy"
@@ -88,6 +89,14 @@ const StyledHero = styled.div`
     letter-spacing: -0.04em;
     color: #0f172a;
     margin-bottom: 45px;
+    @media screen and (max-width: 1190px) {
+      font-weight: 700;
+      font-size: 32px;
+      line-height: 40px;
+      /* or 125% */
+
+      letter-spacing: -0.02em;
+    }
     @media screen and (max-width: 480px) {
       font-weight: 700;
       font-size: 28px;
@@ -130,7 +139,7 @@ const StyledHero = styled.div`
     }
   }
   img {
-    @media screen and (max-width: 480px) {
+    @media screen and (max-width: 1194px) {
       max-width: 281.54px;
       margin-bottom: 32px;
     }
@@ -139,4 +148,17 @@ const StyledHero = styled.div`
 
 const AffiliateSection = styled.div`
   margin-bottom: 150px;
+  h2 {
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 40px;
+    text-align: center;
+    margin-bottom: 72px;
+    @media screen and (max-width: 480px) {
+      font-weight: 600;
+      font-size: 22px;
+      line-height: 28px;
+      margin-bottom: 32px;
+    }
+  }
 `;

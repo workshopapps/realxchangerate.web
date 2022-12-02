@@ -18,7 +18,6 @@ import {
 } from "@mui/material";
 import { currenciesList, countries } from "../../Pages/Home/data";
 import autoAnimate from "@formkit/auto-animate";
-
 const Convert = () => {
   const base_url = process.env.REACT_APP_BASE_URL;
   const localBase = "http://localhost:8000/api";
@@ -35,7 +34,6 @@ const Convert = () => {
       : process.env.NODE_ENV === "production"
       ? `${base_url}/rate/${currency}`
       : "";
-
   React.useEffect(() => {
     const fetchRates = async () => {
       const response = await fetch(`${base_url}/rate/${currency}`);
@@ -56,22 +54,18 @@ const Convert = () => {
       currentdate.getMinutes() +
       ":" +
       currentdate.getSeconds();
-
     setDate(datetime);
     fetchRates().then((ratesData) => {
       setRates(ratesData.data.rate);
     });
   }, [base_url, endpoint, currency, date]);
-
   const handleSwitch = () => {
     setbuy(!buy);
   };
-
   const parent = React.useRef(null);
   React.useEffect(() => {
     parent.current && autoAnimate(parent.current);
   }, [parent]);
-
   const CurrencyMenu = (props) => {
     const { currency } = props;
     const countryDetails = countries.filter(
@@ -104,10 +98,8 @@ const Convert = () => {
       </MenuItem>
     );
   };
-
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("md"));
-
   return (
     <Card
       className={styles.convert}
@@ -148,7 +140,6 @@ const Convert = () => {
             sx={{
               display: "flex",
               flexDirection: { xs: "column", sm: "row" },
-
               gap: "26px",
               alignItems: "center",
               justifyContent: "center",
@@ -207,7 +198,6 @@ const Convert = () => {
               InputLabelProps={{
                 shrink: true,
                 inputMode: "numeric",
-
                 // pattern: "[0-9]*",
               }}
               placeholder="enter amount"
@@ -309,7 +299,6 @@ const Convert = () => {
               </h4>
             </div>
           </div>
-
           <div>
             <h6>
               With Streetrates, you always obtain the best exchange rate.{" "}
@@ -321,16 +310,13 @@ const Convert = () => {
     </Card>
   );
 };
-
 const Rate = styled.div`
   margin-top: 40px;
   align-items: center;
   display: flex;
   justify-content: space-between;
-
   padding-left: 16px;
   padding-right: 80px;
-
   h4 {
     font-size: 18px;
     line-height: 28px;
@@ -377,21 +363,18 @@ const Rate = styled.div`
     gap: 16px;
     text-align: center;
     padding-inline: 16px;
-
     & :last-child {
       text-align: center;
       margin-bottom: 8px;
     }
   }
 `;
-
 const AmountInput = styled.div`
   display: flex;
   align-items: flex-end;
   width: 100%;
   margin-top: 20px;
   /* height: 70px; */
-
   & input {
     padding: 12px 16px;
   }
@@ -405,7 +388,6 @@ const AmountInput = styled.div`
     width: 30%;
   }
 `;
-
 const SelectCurrency = styled.div`
   /* display: none; */
   /* height: 50px; */
@@ -424,7 +406,6 @@ const SelectCurrency = styled.div`
       background-color: green;
     }
   }
-
   @media screen and (min-width: 480px) {
     #currency1 {
       padding: 12px 16px;

@@ -17,5 +17,4 @@ const LoaderComponent = () => {
     </Box>
   );
 };
-
 export default LoaderComponent;

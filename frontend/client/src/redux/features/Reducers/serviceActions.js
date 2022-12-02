@@ -8,6 +8,7 @@ import {
   setCurrencyData,
   setCurrencyRates,
   setNews,
+  setNavLoading,
 } from "./servicesReducer";
 import axios from "axios";
 import RateService from "../Utils/Axios/apis";
@@ -16,30 +17,27 @@ import { countries } from "../../../utils/data";
 export const GetUserIp = () => async () => {
   try {
     const res = await axios.get("https://api.ipify.org");
-
     sessionStorage.setItem("ip", res.data);
     dispatch(GetDefaultCurrency(res.data));
     dispatch(setUserIp(res.data));
-    dispatch(setLoading(false));
   } catch (err) {
+    dispatch(setNavLoading(false));
     console.log(err);
   }
 };
-
 export const GetDefaultCurrency = (ip) => async () => {
   try {
     const res = await RateService.GetCurrencyByIP(ip);
     const country = res.data.data.currency.country;
     const defaultCurrency = countries.find((x) => x.label === country);
-
     sessionStorage.setItem("localCurrency", JSON.stringify(defaultCurrency));
     dispatch(setDefaultCurrency(defaultCurrency));
-    dispatch(setLoading(false));
+    dispatch(setNavLoading(false));
   } catch (err) {
+    dispatch(setNavLoading(false));
     console.log(err);
   }
 };
-
 export const GetCurrencies = () => async () => {
   try {
     const res = await RateService.GetCurrencies();
@@ -52,20 +50,20 @@ export const GetCurrencies = () => async () => {
     dispatch(setCountryDetails(countryDetails));
     dispatch(setLoading(false));
   } catch (err) {
+    dispatch(setLoading(false));
     console.log(err);
   }
 };
-
 export const GetCurrencyData = (isocode) => async () => {
   try {
     const res = await RateService.GetCurrencyData(isocode);
     dispatch(setCurrencyData(res.data.data));
     dispatch(setLoading(false));
   } catch (err) {
+    dispatch(setLoading(false));
     console.log(err);
   }
 };
-
 export const GetCurrencyRates = (currencies) => async () => {
   try {
     let currencyRates = currencies.map(async (ele) => {
@@ -79,6 +77,7 @@ export const GetCurrencyRates = (currencies) => async () => {
     dispatch(setLoading(false));
   } catch (err) {
     console.log(err);
+    dispatch(setLoading(false));
   }
 };
 
@@ -92,5 +91,6 @@ export const GetNews = (ip) => async () => {
     dispatch(setLoading(false));
   } catch (err) {
     console.log(err);
+    dispatch(setLoading(false));
   }
 };
