@@ -8,6 +8,7 @@ import {
   setCurrencyData,
   setCurrencyRates,
   setNews,
+  setNavLoading,
 } from "./servicesReducer";
 import axios from "axios";
 import RateService from "../Utils/Axios/apis";
@@ -19,9 +20,8 @@ export const GetUserIp = () => async () => {
     sessionStorage.setItem("ip", res.data);
     dispatch(GetDefaultCurrency(res.data));
     dispatch(setUserIp(res.data));
-    dispatch(setLoading(false));
   } catch (err) {
-    dispatch(setLoading(false));
+    dispatch(setNavLoading(false));
     console.log(err);
   }
 };
@@ -32,9 +32,9 @@ export const GetDefaultCurrency = (ip) => async () => {
     const defaultCurrency = countries.find((x) => x.label === country);
     sessionStorage.setItem("localCurrency", JSON.stringify(defaultCurrency));
     dispatch(setDefaultCurrency(defaultCurrency));
-    dispatch(setLoading(false));
+    dispatch(setNavLoading(false));
   } catch (err) {
-    dispatch(setLoading(false));
+    dispatch(setNavLoading(false));
     console.log(err);
   }
 };
@@ -94,5 +94,3 @@ export const GetNews = (ip) => async () => {
     dispatch(setLoading(false));
   }
 };
-
-
