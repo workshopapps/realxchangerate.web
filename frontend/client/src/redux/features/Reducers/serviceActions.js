@@ -11,7 +11,6 @@ import {
 import axios from "axios";
 import RateService from "../Utils/Axios/apis";
 import { countries } from "../../../utils/data";
-import { CurrencyLira } from "@mui/icons-material";
 
 export const GetUserIp = () => async () => {
   try {

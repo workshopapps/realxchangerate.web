@@ -6,7 +6,7 @@ import "../assets/css/style.css";
 const LoaderComponent = () => {
   return (
     <Box width="100%" height="100vh" opacity="1" display="flex" alignItems="center" justifyContent="center">
-      <img id="loader" width={150} height={150} src={Loader} />;
+      <img id="loader" alt="" width={150} height={150} src={Loader} />;
     </Box>
   );
 };
