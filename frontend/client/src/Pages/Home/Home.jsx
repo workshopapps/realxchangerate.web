@@ -4,9 +4,44 @@ import Convert from "../../components/home/Convert";
 import Hero from "../../components/home/Hero";
 // import Table from "./components/Table";
 import Table2 from "./components/Table2";
-import { currenciesList } from "./data";
+import { currenciesList, addCurrency } from "./data";
+import styled from "styled-components";
+import add from "./assets/add.svg";
+import CircularProgressWithLabel from "@mui/material/CircularProgress";
+import DeleteIcon from "./assets/delete.svg";
+import { useState } from "react";
+import Button from "@mui/material/Button";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
 
 const Home = () => {
+  const [currencies, setCurrencies] = useState(currenciesList);
+  const handleEdit = () => {
+    toggle();
+  };
+
+  const handleDelete = (e) => {
+    setCurrencies(currencies.filter((item) => item.id !== e));
+  };
+
+  function toggle() {
+    const button = document.getElementById("edit");
+    const deleteIcons = document.querySelectorAll(".delete-cur");
+
+    if (button.innerHTML === "Done") {
+      button.innerHTML = "Edit";
+      deleteIcons.forEach((e) => (e.style.display = "none"));
+    } else {
+      button.innerHTML = "Done";
+      deleteIcons.forEach((e) => (e.style.display = "block"));
+    }
+  }
+
+  const handleAdd = (closeModal, item) => {
+    setCurrencies([...currencies, item]);
+    closeModal();
+  };
   return (
     <Box
       sx={{
@@ -35,13 +70,19 @@ const Home = () => {
       </Box>
       <Box>
         <Typography
-          sx={{ color: "#0062FF", fontSize: "1.3rem", fontWeight: 500 }}
+          sx={{ color: "#0062FF", fontSize: "16px", fontWeight: 500 }}
         >
           LIVE RATES
         </Typography>
-        <Typography component="h2" sx={{ fontSize: "2rem", fontWeight: 800 }}>
+        <Typography
+          component="h2"
+          sx={{ fontSize: "32px", maxWidth: "595px", fontWeight: 800 }}
+        >
           Live rates of popular currencies in Africa
         </Typography>
+        <StyledEdit className="action" id="edit" onClick={() => handleEdit()}>
+          Edit
+        </StyledEdit>
       </Box>
       {/* Table  */}
       <List
@@ -66,17 +107,113 @@ const Home = () => {
           <Box>Currency</Box>
           <Box>parallel Rate</Box>
           <Box>Bank Rate</Box>
+          <Box></Box>
         </ListItem>
-        {currenciesList.map((currency) => (
+
+        {currencies.map((currency) => (
           <Table2
             isocode={currency.isocode}
             country={currency.country}
             key={currency.id}
+            deleteIcon={
+              <img
+                src={DeleteIcon}
+                className="delete-cur"
+                alt=""
+                style={{ display: "none" }}
+                onClick={(e) => handleDelete(currency.id)}
+              />
+            }
           />
         ))}
       </List>
+      <StyledSelection>
+        <PopupState variant="popover" popupId="demo-popup-menu">
+          {(popupState) => (
+            <React.Fragment>
+              <Button {...bindTrigger(popupState)}>
+                <div className="add">
+                  <img src={add} alt="" />
+                  <span className="addspan">Add currency</span>
+                </div>
+              </Button>
+              <Menu {...bindMenu(popupState)}>
+                {addCurrency.map((item) => {
+                  return (
+                    <MenuItem
+                      onClick={() => handleAdd(popupState.close, item)}
+                      key={item.id}
+                    >
+                      {item.isocode} - {item.incurrency}
+                    </MenuItem>
+                  );
+                })}
+              </Menu>
+            </React.Fragment>
+          )}
+        </PopupState>
+        <div className="lastUpdate">
+          <div style={{ position: "relative" }}>
+            <CircularProgressWithLabel variant="determinate" value={35} />
+            <i>35</i>
+          </div>
+          <span>Last updated Nov 17, 2022, 15:55 UTC</span>
+        </div>
+      </StyledSelection>
     </Box>
   );
 };
 
 export default Home;
+
+const StyledEdit = styled.button`
+  border: 1px solid #0062ff;
+  border-radius: 8px;
+  background: none;
+  padding: 10px 22px;
+  gap: 12px;
+
+  width: 180px;
+  height: 42px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 22px;
+  color: #0062ff;
+  margin-top: 26px;
+  float: right;
+`;
+
+const StyledSelection = styled.div`
+  display: flex;
+  justify-content: space-between;
+  .add {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .addspan {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+    color: #0062ff;
+  }
+  .lastUpdate {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    i {
+      position: absolute;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 22px;
+      right: 10px;
+      top: 10px;
+    }
+    span {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 22px;
+    }
+  }
+`;
