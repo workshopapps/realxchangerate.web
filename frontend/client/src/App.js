@@ -32,7 +32,6 @@ import {
   OnlineAdvertising,
   Ambassadors,
   Home,
-  PrivacyPolicy,
   StudentAmbassador,
   ApplyToAdvertise,
 } from "./Pages";
