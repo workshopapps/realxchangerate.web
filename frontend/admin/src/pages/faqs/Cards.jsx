@@ -49,7 +49,8 @@ export default function FaqsCard({ faq }) {
           bgcolor: `${expanded ? "#0062FF" : "white"}`,
           color: `${expanded ? "white" : "black"}`,
         }}
-        title={faq.question}
+        // title
+        subheader={faq.question}
         action={
           <ExpandMore
             expand={expanded}

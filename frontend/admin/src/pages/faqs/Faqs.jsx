@@ -42,26 +42,31 @@ function Faqs() {
         className="header"
         sx={{
           display: "flex",
-          flexDirection: { xs: "column", md: "row" },
+          flexDirection: { xs: "column", sm: "row" },
           gap: "1rem",
           m: "2rem 0",
+          alignItems: { sm: "center" },
         }}
       >
-        <Box sx={{ display: "flex" }}>
+        <Box sx={{ display: "flex", alignItems: "center" }}>
           <Button onClick={() => navigate("/admin")}>
             <img src={back} alt="Go back" />
           </Button>
           <Typography
             variant="h4"
             component="h1"
-            sx={{ fontWeight: 700, fontSize: { xs: "1.6rem", md: "2.5rem" } }}
+            sx={{ fontWeight: 700, fontSize: { xs: "1.2rem", md: "2.1rem" } }}
           >
             Frequently Asked Questions
           </Typography>
         </Box>
         <Button
           variant="contained"
-          sx={{ ml: { md: "auto" }, p: "1rem" }}
+          sx={{
+            ml: { sm: "auto" },
+            p: "1rem",
+            width: { xs: "100%", sm: "auto" },
+          }}
           onClick={handleOpenAsk}
         >
           Add Question
