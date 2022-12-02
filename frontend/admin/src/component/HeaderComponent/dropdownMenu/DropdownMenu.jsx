@@ -1,8 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import Search from "../search/HeaderSearch";
+import { useDispatch } from "react-redux";
+import { logout } from "../../../store/actions/userActions";
 import { StyledWrapper, StyledMenuOption } from "./DropdownMenu.styled";
 import { ReactComponent as LogoutIcon } from "../../../assets/icons/logout_icon_black.svg";
-import { ReactComponent as LogoutIconWhite } from "../../../assets/icons/logout_icon_white.svg";
+// import { ReactComponent as LogoutIconWhite } from "../../../assets/icons/logout_icon_white.svg";
 import { ReactComponent as NotificationIcon } from "../../../assets/icons/notification_icon.svg";
 import { ReactComponent as NotificationIconWhite } from "../../../assets/icons/notification_icon_white.svg";
 import { ReactComponent as DashboardIconWhite } from "../../../assets/icons/dashboard_icon.svg";
@@ -37,16 +39,18 @@ const menuItems = [
     iconActive: <AccountIconActive />,
     route: "/admin/account",
   },
-  {
-    option: "Logout",
-    icon: <LogoutIcon />,
-    iconActive: <LogoutIconWhite />,
-    route: false,
-  },
 ];
 
 function DropdownMenu({ setMenuOpen }) {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const onLogout = () => {
+    localStorage.removeItem("token");
+    dispatch(logout());
+
+    navigate("/admin/login");
+  };
 
   return (
     <StyledWrapper
@@ -71,6 +75,17 @@ function DropdownMenu({ setMenuOpen }) {
             <p className="option">{option.option}</p>
           </StyledMenuOption>
         ))}
+        <StyledMenuOption
+          onClick={() => {
+            onLogout();
+            setMenuOpen(false);
+          }}
+        >
+          <div className="icon">
+            <LogoutIcon />
+          </div>
+          <p className="option">Logout</p>
+        </StyledMenuOption>
       </ul>
     </StyledWrapper>
   );

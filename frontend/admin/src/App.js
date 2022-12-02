@@ -3,7 +3,7 @@ import { ThemeProvider } from 'styled-components';
 import './App.css';
 import Layout from './layout/Layout';
 import Account from './pages/Account/Account';
-// import Dashboard from './pages/Dashboard/Dashboard';
+import Dashboard from './pages/Dashboard/Dashboard';
 import TrendingData from './pages/TrendingData/TrendingData';
 import Error from './pages/Error/Error';
 import Login from './pages/Login/Login';
@@ -13,11 +13,10 @@ import { theme } from './theme/theme';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 // import CreateCurrency from './pages/CreateCurrency/CreateCurrency';
-import DashboardLayout from './component/DashboardComponent/DashboardLayout';
+// import DashboardLayout from './component/DashboardComponent/DashboardLayout';
 import UserComplaints from './pages/UserComplaints/UserComplaints';
 import ComplaintPage from './pages/ComplaintPage/ComplaintPage';
-import UserFeedback from './pages/userFeedbacks/UserFeedback';
-import FeedbackPage from './pages/feedbackPage/FeedbackPage';
+import Faqs from './pages/faqs/Faqs';
 
 function App() {
 	AOS.init({
@@ -30,13 +29,13 @@ function App() {
 				<GlobalStyle />
 				<Routes>
 					<Route path='/admin' element={<Layout />}>
-						<Route index element={<DashboardLayout />} />
+						<Route index element={<Dashboard />} />
 						<Route path='/admin/account' element={<Account />} />
 						<Route path='/admin/trending' element={<TrendingData />} />
+						<Route path='/admin/faqs' element={<Faqs />} />
+
 						<Route path='/admin/complaints' element={<UserComplaints />} />
 						<Route path='/admin/complaints/:id' element={<ComplaintPage />} />
-						<Route path='/admin/contact' element={<UserFeedback />} />
-						<Route path='/admin/contact/:id' element={<FeedbackPage />} />
 						<Route path='/admin/*' element={<Error />} />
 					</Route>
 					<Route path='/admin/login' element={<Login />} />

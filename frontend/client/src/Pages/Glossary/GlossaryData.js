@@ -116,8 +116,8 @@ export const boxes = [
         link: 'https://en.wikipedia.org/wiki/Fair_trade',
       },
       {
-        text: 'Foreign Exchange',
-        link: 'https://en.wikipedia.org/wiki/Foreign_exchange_market',
+        text: 'Fiscal',
+        link: 'https://en.wikipedia.org/wiki/Fiscal_policy',
       },
     ],
   },

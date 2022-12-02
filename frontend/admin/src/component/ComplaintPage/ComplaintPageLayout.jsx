@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import BackButton from '../shared/BackButton/BackButton';
 import {
@@ -8,31 +8,46 @@ import {
 	StyledGrid,
 	StyledWrapper,
 	StyledTextArea,
-	StyledSelect,
+	StyledButtonWrapper,
+	StyledFormButtonSubmit,
+	StyledFormButtonCancel,
 } from './ComplaintPage.styled';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import OutlinedInput from '@mui/material/OutlinedInput';
+import { useDispatch, useSelector } from 'react-redux';
+import { getComplaints } from '../../store/actions/complaintsActions';
+import Loader from '../shared/Loader/Loader';
 
-const initialDataState = {
-	id: '08213',
-	name: 'Rapha Paula',
-	complaint: `Hi, I noticed that it’s a bit hard for me to toggle between currencies when using the convert feature, please can this be checked and possibly worked on? I would like to perform a lot of transactions which rely on my use of the convert feature on the web app.`,
-	email: 'RaphaPaula@gmail.com',
-	message: `Hi, I noticed that it’s a bit hard for me to toggle between currencies when using the convert feature, please can this be checked and possibly worked on? I would like to perform a lot of transactions which rely on my use of the convert feature on the web app.`,
-	status: 'Unresolved',
-};
+// full_name(pin): "Zaks"
+// complaint(pin): "naira rates are not correct. Please what is going on?"
+// id(pin): 1
+// email(pin): "zaks@gmail.com"
+// timestamp(pin): "2022-12-01T02:21:29.653125"
 
 function ComplaintPageLayout() {
-	const [data, setData] = useState(initialDataState);
+	const [data, setData] = useState(null);
 	const params = useParams();
 
-	// TODO: useEffect to fetch data by id, then set state to data
+	const dispatch = useDispatch();
+	const { complaints } = useSelector((state) => state.complaints);
+
+	// get acomplaints
+	useEffect(() => {
+		dispatch(getComplaints());
+	}, [dispatch]);
+
+	// find current complaint TODO: api to get 1 complaint by id
+	useEffect(() => {
+		if (complaints?.success) {
+			const id = parseInt(params.id);
+			let issue = complaints.complaints.find((item) => item.id === id);
+
+			setData(issue);
+		}
+	}, [complaints, params.id]);
 
 	const onMutate = (e) => {
-		console.log(e.target.value);
-		console.log(e.target.name);
-
 		setData((prev) => ({
 			...prev,
 			[e.target.name]: e.target.value,
@@ -50,6 +65,8 @@ function ComplaintPageLayout() {
 		},
 	};
 
+	if (!complaints || !data) return <Loader />;
+
 	return (
 		<StyledWrapper>
 			<StyledPageHeader>
@@ -64,9 +81,9 @@ function ComplaintPageLayout() {
 						<StyledInputWrapper>
 							<input
 								type='text'
-								id='name'
-								name='name'
-								value={data.name}
+								id='full_name'
+								name='full_name'
+								value={data.full_name}
 								onChange={onMutate}
 							/>
 						</StyledInputWrapper>
@@ -119,13 +136,13 @@ function ComplaintPageLayout() {
 							rows='4'
 							id='message'
 							name='message'
-							onChange={onMutate}
-							defaultValue={data.message}></StyledTextArea>
+							// onChange={onMutate}
+							// defaultValue={data.message}
+						></StyledTextArea>
 					</div>
 
 					<div>
 						<label htmlFor='status'>Set Complaint Status</label>
-
 						<Select
 							fullWidth
 							displayEmpty
@@ -135,8 +152,9 @@ function ComplaintPageLayout() {
 							inputProps={{ 'aria-label': 'Without label' }}
 							id='status'
 							name='status'
-							value={data.status}
-							onChange={onMutate}>
+							value='Unresolved'
+							// onChange={onMutate}
+						>
 							<MenuItem id='status' value='Closed'>
 								Closed
 							</MenuItem>
@@ -152,6 +170,11 @@ function ComplaintPageLayout() {
 						</Select>
 					</div>
 				</StyledGrid>
+
+				<StyledButtonWrapper>
+					<StyledFormButtonCancel>Cancel</StyledFormButtonCancel>
+					<StyledFormButtonSubmit>Save Changes</StyledFormButtonSubmit>
+				</StyledButtonWrapper>
 			</StyledComplaintForm>
 		</StyledWrapper>
 	);

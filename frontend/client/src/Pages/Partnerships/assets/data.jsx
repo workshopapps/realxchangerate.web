@@ -1,8 +1,8 @@
-import introducersIcon from "../assets/svg/IntroducersIcon.svg";
-import affliatesIcon from "../assets/svg/AffliateIcon.svg";
-import FXToolsIcon from "../assets/svg/FXToolsIcon.svg";
-import SecureIcon from "../assets/svg/SecureIcon.svg";
-import DollarIcon from "../assets/svg/DollarIcon.svg";
+import introducersIcon from "./svg/IntroducersIcon.svg";
+import affliatesIcon from "./svg/AffliateIcon.svg";
+import FXToolsIcon from "./svg/FXToolsIcon.svg";
+import SecureIcon from "./svg/SecureIcon.svg";
+import DollarIcon from "./svg/DollarIcon.svg";
 
 // referral partners data
 

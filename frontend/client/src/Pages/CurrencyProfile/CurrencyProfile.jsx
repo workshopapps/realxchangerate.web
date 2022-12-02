@@ -9,7 +9,6 @@ import mobile from "./assets/mobile.png";
 import { currenciesList, countries } from "../../utils/data";
 import Table2 from "../Home/components/Table2";
 import { AddCircle } from "iconsax-react";
-import CountrySort from "../Home/components/CountrySort";
 
 //
 //
@@ -211,7 +210,7 @@ const CurrencyProfile = () => {
                     }}
                 >
                     <Box>Currency</Box>
-                    <Box>BDC</Box>
+                    <Box>Parallel</Box>
                     <Box>Bank</Box>
                 </ListItem>
                 {currenciesList.map((currency) => (
