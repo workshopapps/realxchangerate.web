@@ -17,6 +17,8 @@ import 'aos/dist/aos.css';
 import UserComplaints from './pages/UserComplaints/UserComplaints';
 import ComplaintPage from './pages/ComplaintPage/ComplaintPage';
 import Faqs from './pages/faqs/Faqs';
+import FeedbackPage from './pages/feedbackPage/FeedbackPage';
+import UserFeedback from './pages/userFeedbacks/UserFeedback';
 
 function App() {
 	AOS.init({
@@ -36,6 +38,8 @@ function App() {
 
 						<Route path='/admin/complaints' element={<UserComplaints />} />
 						<Route path='/admin/complaints/:id' element={<ComplaintPage />} />
+						<Route path='/admin/contact' element={<UserFeedback />} />
+						<Route path='/admin/contact/:id' element={<FeedbackPage />} />
 						<Route path='/admin/*' element={<Error />} />
 					</Route>
 					<Route path='/admin/login' element={<Login />} />
