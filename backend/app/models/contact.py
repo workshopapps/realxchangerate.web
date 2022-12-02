@@ -1,11 +1,13 @@
 from datetime import datetime
 from sqlalchemy import Column, Integer, String, DateTime, Text, Enum
 
+import enum
 from app.database.base_class import Base
 
 class Status(enum.Enum):
-    Read = "Read"
     Unread = "Unread"
+    Read = "Read"
+    
 
 
 class Contact(Base):

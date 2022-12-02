@@ -8,6 +8,30 @@ from app.api.deps import get_db
 router = APIRouter()
 
 
+@router.get("/contact_details")
+def get_all_contacts(db: Session = Depends(get_db)):
+    """Gets all contact details from the database"""
+    details = crud.contact.get_all_contact_details(db)
+
+    data = {
+        "success": True,
+        "Contacts": details
+    }
+
+    return data
+
+
+@router.get("/contact_status")
+def get_all_contacts(db: Session = Depends(get_db)):
+    """Gets all contact status from the database"""
+    status = crud.contact.get_contact_status(db)
+
+    return {
+        "Success": True,
+        "Status code": 200,
+        "status": status
+    }
+
 @router.post("")
 def create_contact(
     *,
@@ -25,25 +49,3 @@ def create_contact(
 
 
 
-@router.get("/contact_details")
-def get_all_contacts(db: Session = Depends(get_db)):
-    """Gets all contact details from the database"""
-    details = crud.contact.get_all_contact_details(db)
-
-    data = {
-        "success": True,
-        "Contacts": details
-    }
-
-    return data
-
-@router.get("/contact_status")
-def get_all_contacts(db: Session = Depends(get_db)):
-    """Gets all contact status from the database"""
-    status = crud.contact.get_contact_status(db)
-
-    return {
-        "Success": True,
-        "Status code": 200,
-        "status": status
-    }

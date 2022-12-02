@@ -5,7 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 # from .api.v1 import getcurrency
 from app.api.v1 import api_router
 from app.core import settings
-from app.api.v1 import password_email_reset
+#from app.api.v1 import password_email_reset
 
 app = FastAPI(title=settings.PROJECT_NAME)
 origins = [
