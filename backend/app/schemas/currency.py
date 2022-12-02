@@ -9,6 +9,7 @@ class CurrencyBase(BaseModel):
     country: str
     isocode: str
     symbol: str
+    name: str
 
 
 class CurrencyCreate(CurrencyBase):

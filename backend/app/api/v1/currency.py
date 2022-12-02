@@ -5,6 +5,9 @@ from sqlalchemy.orm import Session
 
 from app import schemas, crud
 from app.api.deps import get_db
+from app.models.rate import Rate
+from app.models.currency import Currency
+import requests
 
 router = APIRouter()
 
@@ -31,3 +34,129 @@ def get_all_currencies(db: Session = Depends(get_db)):
     }
 
     return data
+
+@router.get("/currencies/{isocode}")
+def get_currencies_and_rates(isocode: str, db: Session = Depends(get_db)):
+    """
+    gets the rates of all currencies in respect to a base currency
+    also gets the country flags.
+    """
+    # Get currency
+    currency = crud.currency.get_currency_by_isocode(db, isocode.upper())
+
+    # Get other currencies
+    all_currencies = crud.currency.get_currencies_and_rate(db, isocode.upper())
+
+    # Get country codes
+    codes = requests.get("https://flagcdn.com/en/codes.json").json()
+    
+    # Create object
+    currencies = []
+    
+    for cur in all_currencies:
+        currency = cur.dict()
+        rate = db.query(Rate).filter(
+            Rate.currency_id == cur.id
+            ).order_by(Rate.id.desc()).first()
+        currency["rate"] = rate
+        # Get currency flag
+        name = cur.country
+        for key, value in codes.items():
+            if value == name:
+                currency["flag"] = f"https://flagcdn.com/{key}.svg"
+                break
+
+        currencies.append(currency)
+
+    return currencies
+
+
+@router.get("/currency_search/{search_term}")
+def currency_search(search_term: str, db: Session = Depends(get_db)):
+    """
+    This end point returns the currency associated with the string passed in(which can be the currency name or country name)
+    INPUT: currency name or country name: str
+    OUTPUT: {'success': True, 'status_code': 200, "currency": currency}
+    """
+    key_word = crud.currency.get_currency_by_country_name(db=db, country_name=search_term)
+    if not key_word:
+        key_word = key_word = crud.currency.get_currency_by_currency_name(db=db, currency_name=search_term)
+    if not key_word:
+        raise HTTPException(status_code=404, detail=f"Currency not found")
+    return {
+        "Success": True,
+        "currency": key_word
+    }
+
+  
+ 
+@router.get("/currencies/flags")
+def get_currencies_and_flags(db: Session = Depends(get_db)):
+    """
+    gets the rates of all currencies in respect to a base currency
+    also gets the country flags.
+    """
+    # Get other currencies
+    all_currencies = crud.currency.get_all_currencies(db)
+
+    # Get country codes
+    codes = requests.get("https://flagcdn.com/en/codes.json").json()
+    
+    # Create object
+    currencies = []
+    
+    for cur in all_currencies:
+        currency = cur.dict()
+
+        # Get currency flag
+        name = cur.country
+        for key, value in codes.items():
+            if value == name:
+                currency["flag"] = f"https://flagcdn.com/{key}.svg"
+                break
+
+        currencies.append(currency)
+
+    return currencies
+
+@router.get("/currency/{isocode}")
+def get_currency(isocode: str, db: Session = Depends(get_db)):
+    """get details of currency.
+    Returns the details of a currency
+    Args:
+        isocode (str): A unique identifier of a currency
+    Returns:
+        HTTP_200_OK  {data:curency_details}
+    Raises
+        HTTP_424_FAILED_DEPENDENCY: could not get currency
+    """
+    # Get currency
+    currency = crud.currency.get_currency_by_isocode(db, isocode.upper())
+
+    if currency == None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="currency does not exist"
+        )
+
+    #get rate
+    rate = crud.rate.get(db,model_id = currency.id)
+    #create dictionary for currency object
+    currency_dict = currency.dict()
+    #append rate to currency object
+    currency_dict["rate"] = rate
+
+    #get currency name and flag
+    name = currency.country
+    codes = requests.get("https://flagcdn.com/en/codes.json").json()
+    for key, value in codes.items():
+            if value == name:
+                currency_dict["flag"] = f"https://flagcdn.com/{key}.svg"
+                break
+
+
+    return {
+        "success":True,
+        "status_code": 200,
+        "data":currency_dict
+    }    

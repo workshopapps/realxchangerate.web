@@ -31,8 +31,8 @@ import {
   Glossary,
   OnlineAdvertising,
   Ambassadors,
-  StudentAmbassador,
   Home,
+  StudentAmbassador,
   ApplyToAdvertise,
 } from "./Pages";
 import GlobalStyle from "./styles/Globalstyle";
@@ -42,6 +42,7 @@ import Article from "./Pages/Press/Article/Article";
 import PressNews from "./Pages/Press/PressRelease/News";
 import GetInTouch from "./Pages/GetInTouch/GetInTouch";
 import CurrencyProfile from "./Pages/CurrencyProfile/CurrencyProfile";
+import FileAComplaintForm from "./Pages/FileComplaints/components/ComplaintForm/ComplaintForm";
 // import ScrollToTop from "./utils/ScrollToTop";
 import PrivacyPolicy from "./Pages/PrivacyPolicy/PrivacyPolicy";
 function App() {
@@ -79,6 +80,8 @@ function App() {
             <Route path="/careers" element={<Careers />} />
             <Route path="/about" element={<About />} />
             <Route path="/complaint" element={<FileAComplaint />} />
+            {/* adding complaint form route */}
+            <Route path="/complaint/form" element={<FileAComplaintForm />} />
             <Route path="/teams" element={<Teams />} />
             <Route path="/api" element={<Api />} />
             <Route path="/bod" element={<BoardOfDirectors />} />
@@ -87,8 +90,6 @@ function App() {
               element={<HistoricalCurrencyExchange />}
             />
             <Route path="/fraud-report" element={<FraudReport />} />
-            {/* Adding get in touch route */}
-            <Route path="/get-in-touch" element={<GetInTouch />} />
             <Route path="/Cookie-policy" element={<CookiePolicy />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/glossary" element={<Glossary />} />
