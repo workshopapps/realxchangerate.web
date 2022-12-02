@@ -4,7 +4,7 @@ import Convert from "../../components/home/Convert";
 import Hero from "../../components/home/Hero";
 // import Table from "./components/Table";
 import Table2 from "./components/Table2";
-import { currenciesList, addCurrency } from "./data";
+import { tableCurrenciesList, addCurrency } from "./data";
 import styled from "styled-components";
 import add from "./assets/add.svg";
 import CircularProgressWithLabel from "@mui/material/CircularProgress";
@@ -16,7 +16,7 @@ import MenuItem from "@mui/material/MenuItem";
 import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
 
 const Home = () => {
-  const [currencies, setCurrencies] = useState(currenciesList);
+  const [currencies, setCurrencies] = useState(tableCurrenciesList);
   const handleEdit = () => {
     toggle();
   };
