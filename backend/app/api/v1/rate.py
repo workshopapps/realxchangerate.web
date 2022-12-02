@@ -228,3 +228,16 @@ def get_highest_and_lowest_rates(isocode, db: Session = Depends(get_db)):
         "status_code": 200,
         "data": {"currency": currency, "rates": result},
     }
+
+
+
+@router.put("/last_rate_update")
+def last_rate_update(db: Session = Depends(get_db)):
+    """
+    returns the last date and time the currency rates where updated
+    """
+    time = db.query(Rate).order_by(Rate.last_updated.desc()).first().last_updated
+    return{
+        "Success": True,
+        "Time": time
+    }
