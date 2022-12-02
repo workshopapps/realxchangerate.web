@@ -1,177 +1,119 @@
-import {
-  Box,
-  Container,
-  Divider,
-  Grid,
-  Stack,
-  Typography,
-  useTheme,
-} from "@mui/material";
+import { Box, Grid, Stack, Typography, useTheme } from "@mui/material";
 import React, { useEffect } from "react";
 import { GetNews } from "../../redux/features/Reducers/serviceActions";
 import HorizontalNewsCard from "./components/HorizontalNewsCard";
 import MainNewsCard from "./components/MainNewsCard";
 import Loading from "../../components/Loader";
+import Selector from "./components/Selector";
 import { setLoading } from "../../redux/features/Reducers/servicesReducer";
 
+import { news, stories, articles } from "./staticData";
+
 import StoriesNews from "./components/StoriesNews";
-import { news, stories } from "./staticData";
 import { dispatch } from "../../redux/store";
 import { useSelector } from "react-redux";
 
-
 export default function News() {
-  const { news, loading } = useSelector((state) => state.service);
+  const {  loading } = useSelector((state) => state.service);
   const theme = useTheme();
   const darkMode = theme.palette.mode === "dark";
 
-  useEffect(() => {
-    const ip = sessionStorage.getItem("ip");
-    dispatch(setLoading(true))
-    if (ip) {
-      dispatch(GetNews("155.94.247.229"));
-    }
-  }, []);
+  // useEffect(() => {
+  //   const ip = sessionStorage.getItem("ip");
+  //   dispatch(setLoading(true));
+  //   if (ip) {
+  //     dispatch(GetNews("155.94.247.229"));
+  //   }
+  // }, []);
 
   return (
-    <div
-      style={{
-        width: "100%",
-      }}
-    >
+    <>
       {loading ? (
         <Loading />
       ) : (
-        <>
+        <Box
+          display="flex"
+          flexDirection="column"
+          alignItems="center"
+          maxWidth="1440px"
+          margin="0px auto 40px"
+        >
           <Box
-            margin="0px auto"
+            display="flex"
+            flexDirection="column"
             sx={{
-              width: { xs: "90%", sm: "95%", md: "84%" },
+              width: { xs: "90%", lg: "84%" },
+              margin: { xs: "40px auto", sm: "0px auto"},
+              gap:{sm :"24px",md:"32px"}
             }}
           >
-            <Box
-              sx={{
-                marginLeft: "auto",
-                display: { xs: "none", sm: "block", md: "block", lg: "block" },
-                marginTop: 4,
-              }}
-            >
-              <Stack
-                direction="row"
-                sx={{
-                  gap: { sm: "9px", md: "20px", lg: "24px" },
-                  paddingLeft: 0.2,
-                }}
-              >
-                <Typography variant="p">All</Typography>
-                <Typography variant="p">Stocks</Typography>
-                <Typography variant="p">Crypto</Typography>
-                <Typography
-                  variant="p"
+            <Box display="flex" flexDirection="column" gap="24px">
+              <Selector />
+
+              <Box display="flex" flexDirection="row" sx={{gap:{sm :"20px",md:"327x"}}}>
+                <MainNewsCard currentNews={news[0]} />
+
+                <Box
+                  display="flex"
+                  flexDirection="column"
+                  backgroundColor="#FAFAFA"
+                  borderLeft="1px solid #D4D4D4"
+                  borderRadius="4px"
+                  padding="20px"
                   sx={{
-                    position: "relative",
-                    cursor: "pointer",
+                    display: { xs: "none", sm:"block" },
+                    width:{sm:"60%",md:"50%"}
                   }}
+                 
                 >
-                  Currencies
-                  <div
-                    style={{
-                      position: "absolute",
-                      bottom: -9,
-                      border: "none",
-                      height: 4,
-                      width: "100%",
-                      background: "#0051C3",
-                      borderRadius: 2,
-                    }}
-                  />
-                </Typography>
-                <Typography variant="p">Indicies</Typography>
-                <Typography variant="p">Future</Typography>
-                <Typography variant="p">Bonds</Typography>
-                <Typography variant="p">World economy</Typography>
-              </Stack>
-              <Divider
-                sx={{
-                  height: 4,
-                  background: "#F7F7F7",
-                  borderRadius: 2,
-                  marginTop: 0.7,
-                  border: "none",
-                }}
-              />
-            </Box>
-          </Box>
-          <Container>
-            <Grid
-            container
-              spacing={2}
-              sx={{
-                display: { xs: "block", sm: "block", lg: "flex", md: "flex" },
-              }}
-              gap={3}
-              mt={3}
-            >
-              <MainNewsCard currentNews={news[0]}/>
-              <Grid
-                flex={2}
-                p={2}
-                sx={{
-                  background: "#FAFAFA",
-                  borderLeft: "1px solid #D4D4D4",
-                  borderRadius: "4px",
-                  display: { xs: "none", sm: "none", md: "block" },
-                }}
-              >
-                <Typography
-                  variant="h4"
-                  sx={{
-                    fontWeight: "500",
-                    fontSize: "24px",
-                    lineHeight: "144.02%",
-                  }}
-                >
-                  Trending News
-                </Typography>
-                <Box mt={2}>
-                  {news.map((c) => (
-                <HorizontalNewsCard key={c.id} data={c} />
-              ))}
+                  <Box display="flex" flexDirection="column" gap="24px">
+                    <Typography
+                      sx={{
+                        fontWeight: "500",
+                        fontSize: "24px",
+                        lineHeight: "144.02%",
+                      }}
+                    >
+                      Trending News
+                    </Typography>
+
+                    {news.slice(0, 4).map((c) => (
+                      <HorizontalNewsCard
+                        key={c.id}
+                        data={c}
+                        id={news.indexOf(c)}
+                      />
+                    ))}
+                  </Box>
                 </Box>
-              </Grid>
-            </Grid>
-            <Box mt={1.4}>
+              </Box>
+            </Box>
+
+            <Box display="flex" flexDirection="column" gap="16px">
               <Typography
-                variant="h5"
+                fontSize="24px"
                 sx={{
                   fontWeight: "500",
-                  fontSize: "24px",
                   lineHeight: "144.02%",
                   color: darkMode ? "#fff" : "#0F172A",
                 }}
               >
                 Top Stories
               </Typography>
-              <Stack
-                sx={{
-                  flexDirection: { xs: "column", sm: "column", md: "row" },
-                  marginTop: 2,
-                  paddingBottom: 5,
-                }}
-                gap={3}
-              >
-                {news.slice(1,4).map((s) => (
-                  <StoriesNews key={s.id} data={s} />
-                ))}
-              </Stack>
+              <Box>
+                <Grid container width="100%" spacing="20px">
+                  {news.slice(1, 4).map((s) => (
+                    <StoriesNews key={s.id} data={s} id={news.indexOf(s) + 1} />
+                  ))}
+                </Grid>
+              </Box>
             </Box>
-            <Stack
-              flex={2}
+            <Box display="flex" flexDirection="column"
               sx={{
                 width: "100%",
                 background: "#FAFAFA",
                 borderRadius: "4px",
-                display: { xs: "block", sm: "block", md: "none" },
+                display: { xs: "block", sm: "none" },
               }}
             >
               <Typography
@@ -192,13 +134,17 @@ export default function News() {
                 }}
               >
                 {news.map((c) => (
-                  <HorizontalNewsCard key={c.id} data={c} />
+                  <HorizontalNewsCard
+                    key={news.indexOf(c)}
+                    data={c}
+                    id={news.indexOf(c) + 1}
+                  />
                 ))}
               </Box>
-            </Stack>
-          </Container>
-        </>
+            </Box>
+          </Box>
+        </Box>
       )}
-    </div>
+    </>
   );
 }

@@ -13,6 +13,8 @@ export default function SingleNews() {
   const { news } = useSelector((state) => state.service);
   const { id } = useParams();
 
+  console.log(id)
+
   useEffect(() => {
     if (news.length > 0 && id < news.length) {
       setData(news[parseInt(id) - 1]);

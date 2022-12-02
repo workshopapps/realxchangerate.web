@@ -84,15 +84,17 @@ export const GetCurrencyRates = (currencies) => async () => {
 
 export const GetNews = (ip) => async () => {
   try {
-    dispatch(setLoading(true))
+    dispatch(setLoading(true));
     const res = await axios.get(
       `https://my-second-app-dot-wise-philosophy-348109.oa.r.appspot.com/api/news/${ip}`
     );
-    dispatch(setNews(res.data.results));
+    if (res.data.results.length > 0) {
+      dispatch(setNews(res.data.results));
+    }
 
-    // dispatch(setLoading(false));
+    dispatch(setLoading(false));
   } catch (err) {
     console.log(err);
-    // dispatch(setLoading(false));
+    dispatch(setLoading(false));
   }
 };
