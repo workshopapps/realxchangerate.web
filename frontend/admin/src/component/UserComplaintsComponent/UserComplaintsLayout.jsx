@@ -12,6 +12,7 @@ import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import Pagination from "@mui/material/Pagination";
+import { toast } from "react-toastify";
 
 // const complaints = [
 //   {
@@ -51,7 +52,7 @@ export default function UserComplaintsLayout() {
   // when api, set filteredComplaintsas null then update on fullfil
 
   const dispatch = useDispatch();
-  const { complaints } = useSelector((state) => state.complaints);
+  const { complaints, loading } = useSelector((state) => state.complaints);
 
   useEffect(() => {
     dispatch(getComplaints());
@@ -62,6 +63,10 @@ export default function UserComplaintsLayout() {
       setFilteredComplaints(complaints.complaints);
     }
   }, [complaints]);
+
+  if (loading === "failed") {
+    toast.error("error fetching complaints");
+  }
 
   const ITEM_HEIGHT = 48;
   const ITEM_PADDING_TOP = 8;
