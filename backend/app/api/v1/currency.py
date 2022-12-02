@@ -117,4 +117,3 @@ def get_currencies_and_flags(db: Session = Depends(get_db)):
 
         currencies.append(currency)
 
-    return currencies

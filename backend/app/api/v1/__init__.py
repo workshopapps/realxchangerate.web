@@ -3,11 +3,9 @@ from .auth import get_current_active_user
 from fastapi import Depends
 from app.api.v1 import currency
 from app.api.v1 import admin
-from app.api.v1 import superadmin
 from app.api.v1 import rate
 from app.api.v1 import auth
 from app.api.v1 import password_email_reset
-
 from app.api.v1 import api_service
 from app.api.v1 import news
 from app.api.v1 import faq
