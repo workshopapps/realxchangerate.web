@@ -1,11 +1,12 @@
-import ComplaintQuery from "./components/complaint-query/ComplaintQuery";
-import ComplaintForm from "./components/complaint-form/ComplaintForm";
+import { Link } from "react-router-dom";
 
 const FileAComplaint = () => {
   return (
     <>
-      <ComplaintQuery />
-      <ComplaintForm />
+      <p style={{ fontSize: "20px" }}>File a complaint</p>
+      <Link to="/complaint/form" style={{ fontSize: "20px" }}>
+        Complaint form
+      </Link>
     </>
   );
 };
