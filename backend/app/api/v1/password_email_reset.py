@@ -92,6 +92,7 @@ def reset_password(*, email: str, password: str,
         return password
     else:
         return {"message": "user not found"}
+
 # def login_with_password(*,
 # db: Session = Depends(get_db), email: str, password: str) -> Any:
 #     logging = crud.admin.authenticate(db=db, email=email, password=password)

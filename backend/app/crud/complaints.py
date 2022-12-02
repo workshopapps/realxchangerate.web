@@ -5,7 +5,7 @@ from sqlalchemy.orm import Session
 from app.crud.base import CRUDBase
 from app.models.complaints import Complaint
 
-# from app.schemas.currency import Currency as currency_schema
+from app.schemas.currency import Currency as currency_schema
 from app.schemas.complaints import ComplaintCreate, ComplaintUpdate
 
 

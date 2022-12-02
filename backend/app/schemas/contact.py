@@ -3,6 +3,12 @@ from typing import Optional
 
 from pydantic import BaseModel, EmailStr
 
+import enum
+from sqlalchemy import Integer, Enum
+
+class Status(enum.Enum):
+    Read = "Read"
+    Unread = "Unread"
 
 class ContactBase(BaseModel):
     name: str
@@ -15,7 +21,7 @@ class ContactCreate(ContactBase):
 
 
 class ContactUpdate(ContactBase):
-    pass
+    status: Status
 
 
 class Contact(ContactBase):
