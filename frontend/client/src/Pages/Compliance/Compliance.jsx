@@ -1,6 +1,8 @@
 import { Box, Typography, useMediaQuery, Stack, Link, useTheme } from "@mui/material";
+import { red } from "@mui/material/colors";
 import React from "react";
-import { BackgroundImage, BackgroundImageMobile, RightArrow } from "./assets";
+import { BackgroundImage, BackgroundImageMobile } from "./assets";
+import SearchIcon from './assets/svg/SearchIcon.svg'
 
 const Complaince = () => {
   const mobileScreen = useMediaQuery("(max-width:481px)");
@@ -53,7 +55,7 @@ const Complaince = () => {
       >
         <Stack
           sx={{
-            maxWidth: { xs: "100%", sm: "90%", md: "588px" },
+            maxWidth: { xs: "100%", sm: "100%", md: "588px" },
             gap: { xs: "32px" },
           }}
           direction="column"
@@ -170,6 +172,7 @@ const Complaince = () => {
                   fontSize: { xs: "14px" },
                   lineHeight: { xs: "20px", sm: "20px" },
                   fontWeight: { xs: "400" },
+                  marginY: {xs: '2rem'}
                 }}
                 color={textColor}
                 letterSpacing="0.001em"
@@ -195,85 +198,11 @@ const Complaince = () => {
                 Type 2 reports
               </Typography>
             </li>
-
-            <li>
-              <Typography
-                sx={{
-                  fontSize: { xs: "14px" },
-                  lineHeight: { xs: "20px", sm: "20px" },
-                  fontWeight: { xs: "400" },
-                }}
-                color={textColor}
-                letterSpacing="0.001em"
-              >
-                Careful controls on account creation, transaction monitoring,
-                reporting and overall system management and security
-              </Typography>
-            </li>
-
-            <li>
-              <Typography
-                sx={{
-                  fontSize: { xs: "14px" },
-                  lineHeight: { xs: "20px", sm: "20px" },
-                  fontWeight: { xs: "400" },
-                }}
-                color={textColor}
-                letterSpacing="0.001em"
-              >
-                Appropriate licenses to ensure the public has protections and
-                the market is fair and regulated
-              </Typography>
-            </li>
-
-            <li>
-              <Typography
-                sx={{
-                  fontSize: { xs: "14px" },
-                  lineHeight: { xs: "20px", sm: "20px" },
-                  fontWeight: { xs: "400" },
-                }}
-                color={textColor}
-                letterSpacing="0.001em"
-              >
-                Reliable financial control systems and methods to protect funds
-                (such as insurance)
-              </Typography>
-            </li>
-
-            <li>
-              <Typography
-                sx={{
-                  fontSize: { xs: "14px" },
-                  lineHeight: { xs: "20px", sm: "20px" },
-                  fontWeight: { xs: "400" },
-                }}
-                color={textColor}
-                letterSpacing="0.001em"
-              >
-                Procedures for audits and reviews
-              </Typography>
-            </li>
           </ul>
-
-          <Typography
-            sx={{
-              fontSize: { xs: "14px" },
-              lineHeight: { xs: "20px", sm: "20px" },
-              fontWeight: { xs: "400" },
-            }}
-            color={textColor}
-            letterSpacing="0.001em"
-          >
-            Proper identity verification is key; knowing who the customer is
-            becomes the first step in determining if the individual is
-            legitimate or has any connections to potential money laundering or
-            other criminal activities.
-          </Typography>
 
           <Stack
             sx={{
-              maxWidth: { xs: "100%", sm: "90%", md: "587px" },
+              maxWidth: { xs: "100%", sm: "100%", md: "587px" },
 
               gap: { xs: "20px" },
               fontSize: { xs: "14px" },
@@ -307,7 +236,7 @@ const Complaince = () => {
               borderRadius="5px"
             >
               <Typography color={textColor}>Certifications</Typography>
-              <img src={RightArrow} alt="right_arrow" />
+              <img src={SearchIcon} alt="right_arrow" />
             </Box>
 
             <Box
@@ -320,7 +249,7 @@ const Complaince = () => {
               borderRadius="5px"
             >
               <Typography color={textColor}>Standards</Typography>
-              <img src={RightArrow} alt="right_arrow" />
+              <img src={SearchIcon} alt="right_arrow" />
             </Box>
 
             <Box
@@ -333,9 +262,10 @@ const Complaince = () => {
               borderRadius="5px"
             >
               <Typography color={textColor}>Public certificates</Typography>
-              <img src={RightArrow} alt="right_arrow" />
+              <img src={SearchIcon} alt="right_arrow" />
             </Box>
           </Stack>
+
         </Stack>
       </Box>
     </Box>
