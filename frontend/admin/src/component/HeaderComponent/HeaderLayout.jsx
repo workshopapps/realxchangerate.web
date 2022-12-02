@@ -24,12 +24,12 @@ const userData = {
 const settings = [
   {
     option: "Account",
-    route: "/account",
+    route: "/admin/account",
   },
-  {
-    option: "Logout",
-    route: "/logout",
-  },
+  // {
+  //   option: "Logout",
+  //   route: "/admin/login",
+  // },
 ];
 
 function HeaderLayout(props) {

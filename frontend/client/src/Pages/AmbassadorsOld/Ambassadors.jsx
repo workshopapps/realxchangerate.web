@@ -1,7 +1,7 @@
 import React from "react";
-import ManImg from "../Ambassadors/images/Rectangle 160 2.png";
-import Wrapper from "../Ambassadors/styles/Hero/HeroStyles";
-import { people } from "../Ambassadors/data";
+import ManImg from "./images/Rectangle 160 2.png";
+import Wrapper from "./styles/Hero/HeroStyles";
+import { people } from "./data";
 import { useTheme } from "@mui/material";
 
 const Ambassador = () => {
