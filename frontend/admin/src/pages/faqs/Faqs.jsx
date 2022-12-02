@@ -54,7 +54,7 @@ function Faqs() {
           <Typography
             variant="h4"
             component="h1"
-            sx={{ fontWeight: 700, fontSize: { xs: "1.4rem", md: "2.5rem" } }}
+            sx={{ fontWeight: 700, fontSize: { xs: "1.6rem", md: "2.5rem" } }}
           >
             Frequently Asked Questions
           </Typography>
