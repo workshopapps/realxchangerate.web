@@ -11,16 +11,14 @@ const ModalUi = ({ open, handleOpen, handleClose }) => {
         onClick={handleOpen}
         variant="contained"
         disableElevation
-        sx={{
-          height: 1 / 2,
-          paddingInline: "16px",
-          paddingTop: "12px",
-          paddingBottom: "12px",
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
         }}
+        sx={{ height: 1 / 2 }}
       >
-        <span style={{ fontSize: "clamp(0.65rem, 1.5vw, 0.7rem)" }}>
-          Add currency
-        </span>
+        <span style={{ textTransform: "capitalize" }}>Add currency</span>
         <img src={add} alt="add" style={{ marginLeft: "10px" }} />
       </Button>
       <Modal

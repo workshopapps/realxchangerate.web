@@ -20,6 +20,11 @@ import Faqs from './pages/faqs/Faqs';
 import FeedbackPage from './pages/feedbackPage/FeedbackPage';
 import UserFeedback from './pages/userFeedbacks/UserFeedback';
 
+// react-toastify
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 function App() {
 	AOS.init({
 		offset: 80,
@@ -46,6 +51,18 @@ function App() {
 					<Route path='/admin/forgotpassword' element={<ForgotPassword />} />
 				</Routes>
 			</BrowserRouter>
+			<ToastContainer
+				position="top-right"
+				autoClose={5000}
+				hideProgressBar={false}
+				newestOnTop={false}
+				closeOnClick
+				rtl={false}
+				pauseOnFocusLoss
+				draggable
+				pauseOnHover
+				theme="light"
+			/>
 		</ThemeProvider>
 	);
 }
