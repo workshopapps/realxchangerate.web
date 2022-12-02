@@ -8,9 +8,11 @@ from app.core import settings
 from app.api.v1 import password_email_reset
 
 app = FastAPI(title=settings.PROJECT_NAME)
-origins = [
+origins = [    
     "http://localhost",
     "http://localhost:3000",
+    "https://streetrates.hng.tech",
+    "https://streetrates.hng.tech/*",
     "https://team-bevel-client.netlify.app",
     "https://exchange.hng.tech",
     "https://exchange.hng.tech/*",
