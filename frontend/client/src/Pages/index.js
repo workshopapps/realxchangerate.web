@@ -26,6 +26,6 @@ export { default as Ambassadors } from "./Ambassadors/Ambassadors";
 export { default as Welcome } from "./Welcome/Welcome";
 export { default as PrivacyPolicy } from "./PrivacyPolicy/PrivacyPolicy";
 export { default as StudentAmbassador } from "./StudentAmbassador/StudentAmbassador";
-export {default as Affiliate} from './PartnersForm/AffiliatePartners/Affiliate'
-export {default as Referral} from './PartnersForm/ReferralPartners/Referral'
+export {default as Affiliate} from './PartnersForm/AffiliatePartners/Affiliate';
+export {default as Referral} from './PartnersForm/ReferralPartners/Referral';
 export { default as StudentAmbassadorForm } from "./StudentAmbassadorForm/StudentAmbassadorForm";
