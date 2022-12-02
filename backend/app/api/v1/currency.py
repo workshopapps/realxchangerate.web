@@ -93,10 +93,9 @@ def currency_search(search_term: str, db: Session = Depends(get_db)):
 @router.get("/currencies/flags")
 def get_currencies_and_flags(db: Session = Depends(get_db)):
     """
-    gets the rates of all currencies in respect to a base currency
-    also gets the country flags.
+    gets the rates of all currencies and also gets the country flags.
     """
-    # Get other currencies
+    # Get all currencies
     all_currencies = crud.currency.get_all_currencies(db)
 
     # Get country codes
@@ -118,3 +117,24 @@ def get_currencies_and_flags(db: Session = Depends(get_db)):
         currencies.append(currency)
 
     return currencies
+
+@router.get("/flags/{isocode}")
+def get_currency_and_flag(isocode, db: Session = Depends(get_db)):
+    """
+    gets a currency and it's flag based on the isocode.
+    """
+    currency = crud.currency.get_currency_by_isocode(db, isocode.upper())
+
+    # Get country codes
+    codes = requests.get("https://flagcdn.com/en/codes.json").json()
+    
+    # Create object
+    currency = currency.dict()
+    # Get currency flag
+    name = currency.get('country')
+    for key, value in codes.items():
+        if value == name:
+            currency["flag"] = f"https://flagcdn.com/{key}.svg"
+            break
+
+    return currency
