@@ -215,3 +215,35 @@ def get_all_complaints(db: Session = Depends(get_db)):
 
 
 
+@router.put(
+    "/update_complaint_status/{id}",
+)
+async def update_complaint_status(id: int, data:schemas.ComplaintUpdate, db: Session = Depends(get_db)):
+    """updates the status of a complaint.
+    Returns the complaint id if the status is successfully updated
+    Args:
+        id (int): A unique identifier of a complaint
+        data: A pydantic schema that defines the request parameters
+    Returns:
+        HTTP_200_OK (status updated succesfully): {data:complaint}
+    Raises
+        HTTP_424_FAILED_DEPENDENCY: status update unssucessfull
+    """
+    
+
+    complaint = crud.complaint.get(db,id)
+    if complaint is None:
+        raise HTTPException(
+             status_code=status.HTTP_404_NOT_FOUND,
+            detail="complaint id does not exist",
+        )
+      
+    complaint = crud.currency.update(db=db, db_obj=complaint, obj_in=data)    
+
+
+    return{
+        "success":True,
+        "status_code": 200,
+        "message":"status updated succesfully",
+        "data":complaint,
+    }    
