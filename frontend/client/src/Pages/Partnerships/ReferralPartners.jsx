@@ -17,9 +17,7 @@ const ReferralPartners = (props) => {
         <div className="left-content">
           <div>
             <h2> {props.title}</h2>
-            <p>
-              {props.text}
-            </p>
+            <p>{props.text}</p>
           </div>
           <button className="high-button">{props.btn}</button>
         </div>
@@ -27,21 +25,15 @@ const ReferralPartners = (props) => {
           <ul>
             <li>
               <img src={checkMark} alt="check list" />
-              <div>
-                {props.list1}
-              </div>
+              <div>{props.list1}</div>
             </li>
             <li>
               <img src={checkMark} alt="check list" />
-              <div>
-              {props.list2}
-              </div>
+              <div>{props.list2}</div>
             </li>
             <li>
               <img src={checkMark} alt="check list" />
-              <div>
-              {props.list3}
-              </div>
+              <div>{props.list3}</div>
             </li>
           </ul>
           <button className="low-button">{props.btn}</button>
@@ -80,7 +72,7 @@ const StyledSection = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  margin: 40px;
+  margin: 20px;
 
   .left-content {
     max-width: 435px;
@@ -88,6 +80,16 @@ const StyledSection = styled.div`
     display: flex;
     flex-direction: column;
     gap: 120px;
+    margin-top: 32px;
+    @media screen and (max-width: 1194px) {
+      max-width: none;
+      width: 100%;
+      padding: 0 12px;
+      align-items: flex-start;
+      h2 {
+        text-align: left;
+      }
+    }
   }
   h2 {
     color: #0f172a;
@@ -125,20 +127,31 @@ const StyledSection = styled.div`
     line-height: 24px;
     margin-left: 18px;
     display: flex;
+    @media screen and (max-width: 480px) {
+      align-items: flex-start;
+    }
   }
   ul {
     display: flex;
     flex-direction: column;
     gap: 25px;
     max-width: 558px;
+    @media screen and (max-width: 1194px) {
+      max-width: none;
+      width: 100%;
+      padding: 0 15px;
+      justify-content: none;
+      h2 {
+        text-align: left;
+      }
+    }
   }
   ul div {
     margin-left: 16px;
   }
-  @media screen and (max-width: 1350px) {
-    justify-content: center;
+  @media screen and (max-width: 1194px) {
     gap: 32px;
-    margin: 40px;
+    margin: 20px;
     padding: 16px 20px;
     .high-button {
       display: none;

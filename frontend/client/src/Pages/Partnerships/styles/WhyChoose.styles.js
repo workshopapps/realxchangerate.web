@@ -33,6 +33,9 @@ export const StyledWhyChoose = styled.section`
 
     justify-content: space-around;
     flex-wrap: wrap;
+    @media screen and (max-width: 1238px) {
+      align-items: center;
+    }
   }
 
   .listDiv {
@@ -42,7 +45,7 @@ export const StyledWhyChoose = styled.section`
     flex-direction: column;
     gap: 40px;
     margin-top: 82px;
-    @media screen and (max-width: 1480px) {
+    @media screen and (max-width: 1180px) {
       align-items: center;
     }
     @media screen and (max-width: 480px) {
@@ -73,12 +76,19 @@ export const StyledWhyChoose = styled.section`
       font-size: 16px;
       font-weight: 400;
       line-height: 1.5;
-      max-width: "266px";
-
+      max-width: 266px;
+      @media screen and (max-width: 1194px) {
+        font-size: 16px;
+        font-weight: 400;
+        max-width: none;
+        width: 100%;
+        text-align: center;
+      }
       @media screen and (max-width: 480px) {
         font-size: 16px;
         font-weight: 400;
         width: 100%;
+        text-align: center;
       }
     }
   }

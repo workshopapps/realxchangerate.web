@@ -1,7 +1,8 @@
 import { Box, Stack, Typography, Link } from "@mui/material";
 import React from "react";
 import DropDown from "./DropDown";
-
+import streetRates from "../assets/Logo.svg";
+import { Filter } from "iconsax-react";
 const Footer = () => {
   return (
     <Box backgroundColor="#00296B">
@@ -58,7 +59,7 @@ const Footer = () => {
               Careers
             </Link>
             <Link href="/#/partnerships" color="inherit">
-              Patnerships
+              Partnership
             </Link>
             <Link href="/#/teams" color="inherit">
               Meet the team
@@ -70,7 +71,6 @@ const Footer = () => {
               Board of directors
             </Link>
           </Stack>
-
           <Stack
             flex="auto"
             direction="column"
@@ -106,7 +106,6 @@ const Footer = () => {
               Contact Us
             </Link>
           </Stack>
-
           <Stack
             flex="auto"
             direction="column"
@@ -141,20 +140,16 @@ const Footer = () => {
             <Link href="/#/historical-currency-exchange" color="inherit">
               Historical currency exchange
             </Link>
-
             <Link href="/#/glossary" color="inherit">
               Glossary
             </Link>
-
             <Link href="/#/advertising" color="inherit">
               Online Advertising
             </Link>
-
             <Link href="/#/ambassadors" color="inherit">
               Ambassadors
             </Link>
           </Stack>
-
           <Stack
             flex="auto"
             direction="column"
@@ -190,7 +185,6 @@ const Footer = () => {
               Integration matrix
             </Link>
           </Stack>
-
           <Stack
             flex="auto"
             direction="column"
@@ -232,7 +226,6 @@ const Footer = () => {
               Fraud report
             </Link>
           </Stack>
-
           <Stack
             flex="auto"
             direction="column"
@@ -275,7 +268,6 @@ const Footer = () => {
             </Link>
           </Stack>
         </Box>
-
         {/* mobile view */}
         <Box
           sx={{
@@ -306,7 +298,6 @@ const Footer = () => {
               "bod",
             ]}
           />
-
           <DropDown
             title={"Links"}
             Items={["News", "Contact Us"]}
@@ -350,11 +341,9 @@ const Footer = () => {
             Links={["#", "terms", "CookiePolicy", "compliance"]}
           />
         </Box>
-
         <Box margin="20px 0px">
           <hr style={{ height: "1px", backgroundColor: "#CBD5E1" }} />
         </Box>
-
         <Box
           display="flex"
           padding="20px 0px"
@@ -362,22 +351,16 @@ const Footer = () => {
           alignItems="center"
           color="#F8FAFC"
         >
-          <Typography
-            sx={{
-              fontSize: {
-                xs: "19px",
-                sm: "20px",
-                md: "24px",
-                lg: "19px",
-              },
-              lineHeight: { xs: "23px" },
-              fontWeight: { xs: "800" },
+          <img
+            style={{
+              width: "clamp(90px, 10vw, 140px)",
+              marginTop: "20px",
+              filter:
+                "invert(100%) sepia(94%) saturate(0%) hue-rotate(54deg) brightness(106%) contrast(103%)",
             }}
-            letterSpacing="-0.02em"
-          >
-            Street Rate
-          </Typography>
-
+            src={streetRates}
+            alt=""
+          />
           <Typography
             sx={{
               fontSize: { xs: "12px" },
@@ -393,5 +376,4 @@ const Footer = () => {
     </Box>
   );
 };
-
 export default Footer;

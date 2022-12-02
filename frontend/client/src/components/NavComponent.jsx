@@ -6,6 +6,7 @@ import {
   Menu,
   MenuItem,
   Button,
+  Skeleton,
 } from "@mui/material";
 import { useSelector } from "react-redux";
 import React, { useState, useContext, useEffect } from "react";
@@ -13,27 +14,30 @@ import { useTheme } from "@mui/material";
 import DrawerComponent from "./Drawer";
 import { Link } from "react-router-dom";
 import { DownArrow, NavFlag, MenuIcon, MenuIconDark } from "../assets/index";
+import streetRates from "../assets/Logo.svg";
 import { ColorModeContext } from "../Main";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
-import { setDefaultCurrency } from "../redux/features/Reducers/servicesReducer";
+import {
+  setDefaultCurrency,
+  setNavLoading,
+  setUserIp,
+} from "../redux/features/Reducers/servicesReducer";
 import { dispatch } from "../redux/store";
-import { GetCurrencyData } from "../redux/features/Reducers/serviceActions";
-
+import {
+  GetCurrencyData,
+  GetUserIp,
+} from "../redux/features/Reducers/serviceActions";
 const NavComponent = () => {
-  const { currencyList, countryDetails, defaultCurrency } = useSelector(
-    (state) => state.service
-  );
-
+  const { currencyList, countryDetails, defaultCurrency, isNavLoading } =
+    useSelector((state) => state.service);
   const theme = useTheme();
   const colorMode = useContext(ColorModeContext);
   const [isOpen, setIsOpen] = useState(false);
   const [localCurrency, setLocalCurrency] = useState(defaultCurrency);
-
   const HandleDrawerState = () => {
     setIsOpen(!isOpen);
   };
-
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -42,7 +46,6 @@ const NavComponent = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
   const handleCloseItem = (ele) => {
     setLocalCurrency(ele);
     dispatch(setDefaultCurrency(ele));
@@ -50,15 +53,24 @@ const NavComponent = () => {
   };
 
   useEffect(() => {
-    if (defaultCurrency) {
-      let country = currencyList.find(
-        (x) => x.country === defaultCurrency.label
-      );
-      dispatch(GetCurrencyData(country.isocode));
+    const ip = sessionStorage.getItem("ip");
+    const defaultCurrency = JSON.parse(sessionStorage.getItem("localCurrency"));
+    if (!ip || !defaultCurrency) {
+      dispatch(setNavLoading(true));
+      dispatch(GetUserIp());
     }
-  }, [defaultCurrency, currencyList]);
+    dispatch(setUserIp(ip));
+    dispatch(setDefaultCurrency(defaultCurrency));
+  }, []);
 
-  // console.log(countryDetails)
+  // useEffect(() => {
+  //   if (defaultCurrency) {
+  //     let country = currencyList.find(
+  //       (x) => x.country === defaultCurrency.label
+  //     );
+  //     dispatch(GetCurrencyData(country.isocode));
+  //   }
+  // }, [defaultCurrency, currencyList]);
 
   return (
     <Grid
@@ -91,11 +103,14 @@ const NavComponent = () => {
           role="heading"
         >
           <Link to="/" style={{ color: "#0062ff" }}>
-            Street Rate
+            <img
+              style={{ width: "clamp(90px, 10vw, 140px)", marginTop: "20px" }}
+              src={streetRates}
+              alt=""
+            />
           </Link>
         </Typography>
       </Grid>
-
       <Grid
         alignItems="center"
         sx={{
@@ -119,35 +134,42 @@ const NavComponent = () => {
             <Brightness4Icon height="1.75em" width="1.75em" />
           )}
         </IconButton>
-
         <Box gap="6px" display="flex">
-          <Button
-            id="basic-button"
-            aria-controls={open ? "basic-menu" : undefined}
-            aria-haspopup="true"
-            aria-expanded={open ? "true" : undefined}
-            onClick={handleClick}
-          >
-            <Box display="flex" flexDirection="row" gap="6px">
-              <img
-                loading="lazy"
-                height="20"
-                src={
-                  localCurrency
-                    ? `https://flagcdn.com/h20/${localCurrency.code.toLowerCase()}.png `
-                    : NavFlag
-                }
-                srcSet={
-                  localCurrency
-                    ? `https://flagcdn.com/h40/${localCurrency.code.toLowerCase()}.png 2x,
-                     https://flagcdn.com/h60/${localCurrency.code.toLowerCase()}.png 3x`
-                    : NavFlag
-                }
-                alt=""
-              />
-              <img src={DownArrow} alt="arrow" />
+          {isNavLoading ? (
+            <Box display="flex" gap="1px" flexDirection="column">
+              <Skeleton variant="rounded" width={70} height={5} />
+              <Skeleton variant="rounded" width={70} height={5} />
+              <Skeleton variant="rounded" width={70} height={5} />
             </Box>
-          </Button>
+          ) : (
+            <Button
+              id="basic-button"
+              aria-controls={open ? "basic-menu" : undefined}
+              aria-haspopup="true"
+              aria-expanded={open ? "true" : undefined}
+              onClick={handleClick}
+            >
+              <Box display="flex" flexDirection="row" gap="6px">
+                <img
+                  loading="lazy"
+                  height="20"
+                  src={
+                    localCurrency
+                      ? `https://flagcdn.com/h20/${localCurrency.code.toLowerCase()}.png `
+                      : NavFlag
+                  }
+                  srcSet={
+                    localCurrency
+                      ? `https://flagcdn.com/h40/${localCurrency.code.toLowerCase()}.png 2x,
+                     https://flagcdn.com/h60/${localCurrency.code.toLowerCase()}.png 3x`
+                      : NavFlag
+                  }
+                  alt=""
+                />
+                <img src={DownArrow} alt="arrow" />
+              </Box>
+            </Button>
+          )}
           <Menu
             id="basic-menu"
             anchorEl={anchorEl}
@@ -162,7 +184,6 @@ const NavComponent = () => {
             }}
           >
             {currencyList.map((ele) => {
-              console.log(ele);
               return (
                 <MenuItem
                   sx={{
@@ -192,15 +213,12 @@ const NavComponent = () => {
             })}
           </Menu>
         </Box>
-
         <Link to="/" style={{ color: "#0062ff" }}>
           Home
         </Link>
-
         <Link to="/news" style={{ color: "#0062ff" }}>
           News
         </Link>
-
         <Link to="/contact" style={{ color: "#0062ff" }}>
           Contact
         </Link>
@@ -237,5 +255,4 @@ const NavComponent = () => {
     </Grid>
   );
 };
-
 export default NavComponent;

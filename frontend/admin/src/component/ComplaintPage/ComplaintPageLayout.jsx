@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import BackButton from "../shared/BackButton/BackButton";
 import {
@@ -11,32 +11,57 @@ import {
   StyledButtonWrapper,
   StyledFormButtonSubmit,
   StyledFormButtonCancel,
+  StyledGrayWrapper,
 } from "./ComplaintPage.styled";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import OutlinedInput from "@mui/material/OutlinedInput";
+import { useDispatch, useSelector } from "react-redux";
+import { getComplaints } from "../../store/actions/complaintsActions";
+// import Loader from "../shared/Loader/Loader";
+import { toast } from "react-toastify";
 
-const initialDataState = {
-  id: "08213",
-  name: "Rapha Paula",
+const testData = {
+  full_name: "Rapha Paula",
   complaint: `Hi, I noticed that it’s a bit hard for me to toggle between currencies when using the convert feature, please can this be checked and possibly worked on? I would like to perform a lot of transactions which rely on my use of the convert feature on the web app.`,
-  email: "RaphaPaula@gmail.com",
-  message: `Hi, I noticed that it’s a bit hard for me to toggle between currencies when using the convert feature, please can this be checked and possibly worked on? I would like to perform a lot of transactions which rely on my use of the convert feature on the web app.`,
-  status: "Unresolved",
+  id: 123,
+  email: "raphaPaula@gmail.com",
+  status: "Resolved",
+  timestamp: "2022-12-01T02:21:29.653125",
 };
 
 function ComplaintPageLayout() {
-  const [data, setData] = useState(initialDataState);
+  const [data, setData] = useState(null);
   const params = useParams();
 
-  // TODO: useEffect to fetch data by id, then set state to data
+  const dispatch = useDispatch();
+  const { complaints, loading } = useSelector((state) => state.complaints);
 
-  const onMutate = (e) => {
-    setData((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }));
-  };
+  useEffect(() => {
+    // get all complaints
+    dispatch(getComplaints());
+  }, [dispatch]);
+
+  useEffect(() => {
+    // find particular complaint
+    if (complaints?.success) {
+      const id = parseInt(params.id);
+      let issue = complaints.complaints.find((item) => item.id === id);
+
+      setData(issue);
+    }
+  }, [complaints, params.id]);
+
+  if (loading === "failed") {
+    toast.error("error fetching complaints");
+  }
+
+  // const onMutate = (e) => {
+  //   setData((prev) => ({
+  //     ...prev,
+  //     [e.target.name]: e.target.value,
+  //   }));
+  // };
 
   const ITEM_HEIGHT = 48;
   const ITEM_PADDING_TOP = 8;
@@ -49,6 +74,8 @@ function ComplaintPageLayout() {
     },
   };
 
+  // if (!complaints || !data) return <Loader />;
+
   return (
     <StyledWrapper>
       <StyledPageHeader>
@@ -57,59 +84,61 @@ function ComplaintPageLayout() {
       </StyledPageHeader>
 
       <StyledComplaintForm>
-        <StyledGrid>
-          <div>
-            <label htmlFor="name">Name</label>
-            <StyledInputWrapper>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={data.name}
-                onChange={onMutate}
-              />
-            </StyledInputWrapper>
-          </div>
+        <StyledGrayWrapper>
+          <StyledGrid>
+            <div>
+              <label htmlFor="name">Name</label>
+              <StyledInputWrapper>
+                <input
+                  disabled
+                  type="text"
+                  id="full_name"
+                  name="full_name"
+                  value={data?.full_name}
+                />
+              </StyledInputWrapper>
+            </div>
 
-          <div>
-            <label htmlFor="name">Email</label>
-            <StyledInputWrapper>
-              <input
-                type="email"
-                id="name"
-                name="name"
-                value={data.email}
-                onChange={onMutate}
-              />
-            </StyledInputWrapper>
-          </div>
-        </StyledGrid>
+            <div>
+              <label htmlFor="name">Email</label>
+              <StyledInputWrapper>
+                <input
+                  disabled
+                  type="email"
+                  id="name"
+                  name="name"
+                  value={data?.email}
+                />
+              </StyledInputWrapper>
+            </div>
+          </StyledGrid>
 
-        <StyledGrid>
-          <div>
-            <label htmlFor="complaint">Complaint</label>
-            <StyledTextArea
-              rows="4"
-              id="complaint"
-              name="complaint"
-              onChange={onMutate}
-              defaultValue={data.complaint}
-            ></StyledTextArea>
-          </div>
+          <StyledGrid>
+            <div>
+              <label htmlFor="complaint">Complaint</label>
+              <StyledTextArea
+                disabled
+                rows="4"
+                id="complaint"
+                name="complaint"
+                defaultValue={data?.complaint}
+              ></StyledTextArea>
+            </div>
 
-          <div>
-            <label htmlFor="id">Complaint Number</label>
-            <StyledInputWrapper>
-              <input
-                type="text"
-                id="id"
-                name="id"
-                value={`#${data.id}`}
-                onChange={onMutate}
-              />
-            </StyledInputWrapper>
-          </div>
-        </StyledGrid>
+            <div>
+              <label htmlFor="id">Complaint Number</label>
+              <StyledInputWrapper>
+                <input
+                  disabled
+                  type="text"
+                  id="id"
+                  name="id"
+                  value={`#${data?.id}`}
+                />
+              </StyledInputWrapper>
+            </div>
+          </StyledGrid>
+        </StyledGrayWrapper>
 
         <h3>Resolve complaint</h3>
         <StyledGrid>
@@ -119,14 +148,12 @@ function ComplaintPageLayout() {
               rows="4"
               id="message"
               name="message"
-              onChange={onMutate}
-              defaultValue={data.message}
+              // onChange={onMutate}
             ></StyledTextArea>
           </div>
 
           <div>
             <label htmlFor="status">Set Complaint Status</label>
-
             <Select
               fullWidth
               displayEmpty
@@ -136,8 +163,8 @@ function ComplaintPageLayout() {
               inputProps={{ "aria-label": "Without label" }}
               id="status"
               name="status"
-              value={data.status}
-              onChange={onMutate}
+              value="Unresolved"
+              // onChange={onMutate}
             >
               <MenuItem id="status" value="Closed">
                 Closed
@@ -157,7 +184,9 @@ function ComplaintPageLayout() {
 
         <StyledButtonWrapper>
           <StyledFormButtonCancel>Cancel</StyledFormButtonCancel>
-          <StyledFormButtonSubmit>Save Changes</StyledFormButtonSubmit>
+          <StyledFormButtonSubmit disabled={!data ? true : false}>
+            Save Changes
+          </StyledFormButtonSubmit>
         </StyledButtonWrapper>
       </StyledComplaintForm>
     </StyledWrapper>
