@@ -12,7 +12,7 @@ origins = [
     "http://localhost",
     "http://localhost:3000",
     "https://streetrates.hng.tech",
-    "https://streetrates.hng.tech/*",
+    "https://streetrates.hng.tech"/*",
     "https://team-bevel-client.netlify.app",
     "https://exchange.hng.tech",
     "https://exchange.hng.tech/*",
