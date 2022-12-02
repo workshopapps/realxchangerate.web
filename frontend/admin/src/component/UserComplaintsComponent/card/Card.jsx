@@ -26,10 +26,10 @@ export function Card({ data }) {
       <StyledCardMessage>{data.complaint}</StyledCardMessage>
 
       <StyledCardButton
-        $complaintButton={`Resolve`}
+        $complaintButton={data.status}
         onClick={() => navigate(`/admin/complaints/${data.id}`)}
       >
-        Resolve
+        {data.status}
       </StyledCardButton>
     </StyledCardWrapper>
   );

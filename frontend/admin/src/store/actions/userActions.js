@@ -1,6 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
+const BASE_URL = `https://api.streetrates.hng.tech/api`;
+
 const initialState = {
   user: null,
   error: null,
@@ -18,7 +20,7 @@ export const loginUser = createAsyncThunk(
         },
       };
       const res = await axios.post(
-        "https://my-second-app-dot-wise-philosophy-348109.oa.r.appspot.com/api/auth",
+        `${BASE_URL}/auth`,
         {
           username: payload.email,
           password: payload.password,
