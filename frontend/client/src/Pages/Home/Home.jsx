@@ -132,12 +132,12 @@ const Home = () => {
           }}
         >
           <Box>Currency</Box>
-          <Box>parallel </Box>
+          <Box>Parallel </Box>
           <StyledBankBox>Bank </StyledBankBox>
           <Box></Box>
         </ListItem>
 
-        {getCurrency.map((currency) => {
+        {currencies.map((currency) => {
           return (
             <>
               {currencyRates.length > 0 && (
@@ -150,6 +150,7 @@ const Home = () => {
                       (x) => x.currency.isocode === currency.isocode
                     ).rate
                   }
+                  flag={currency.flag}
                   deleteIcon={
                     <img
                       src={DeleteIcon}
