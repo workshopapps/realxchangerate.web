@@ -39,7 +39,7 @@ pipeline {
 				sh "sudo cp -fr ${WORKSPACE}/frontend/admin/build/* /var/www/streetrate.hng.tech/html/admin/"
         			sh "sudo cp -rf ${workspace}/backend/* /home/light/realxchangerate/backend"
 				sh "sudo su - light && whoami"
-				sh "sudo systemctl restart realxchangerate.service"
+				//sh "sudo systemctl restart realxchangerate.service"
 			}
 			
 		}
