@@ -25,7 +25,7 @@ export const RowComponent = ({ country, bank, parallel }) => {
           lineHeight="20px"
           letterSpacing="0.01em"
         >
-          N{bank}
+          {bank}
         </Typography>
         <Typography
           fontSize="14px"
@@ -33,7 +33,7 @@ export const RowComponent = ({ country, bank, parallel }) => {
           lineHeight="20px"
           letterSpacing="0.01em"
         >
-          N{parallel}
+          {parallel}
         </Typography>
       </Box>
     </Box>
@@ -57,7 +57,7 @@ export const MobileRowComponent = ({ country, rate }) => {
         width="100%"
       >
         <Country name={country.isocode} image={countries.find(x => x.label === country.country).code}/>
-        <Typography fontSize='14px'>N{rate}</Typography>
+        <Typography fontSize='14px'>{rate}</Typography>
       </Box>
     </Box>
   );
