@@ -26,7 +26,6 @@ export default function SingleNews() {
     }
   }, [data]);
 
-  console.log(data, id)
 
   return (
     <div style={{ borderTop: "1px solid #E2E8F0" }}>
