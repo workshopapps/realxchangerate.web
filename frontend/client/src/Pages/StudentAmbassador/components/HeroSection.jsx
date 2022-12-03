@@ -35,7 +35,9 @@ const HeroSection = () => {
           actively engaged in school activities to apply as a student ambassador
           for our brand.
         </p>
-        <Link to="/">Apply now</Link>
+        <Link to="/student-ambassador/apply-to-become-student-ambassador">
+          Apply now
+        </Link>
       </HeroContents>
     </HeroContainer>
   );

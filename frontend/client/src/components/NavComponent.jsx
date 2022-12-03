@@ -14,6 +14,7 @@ import { useTheme } from "@mui/material";
 import DrawerComponent from "./Drawer";
 import { Link } from "react-router-dom";
 import { DownArrow, NavFlag, MenuIcon, MenuIconDark } from "../assets/index";
+import streetRates from "../assets/Logo.svg";
 import { ColorModeContext } from "../Main";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
@@ -102,7 +103,11 @@ const NavComponent = () => {
           role="heading"
         >
           <Link to="/" style={{ color: "#0062ff" }}>
-            Street Rate
+            <img
+              style={{ width: "clamp(90px, 10vw, 140px)", marginTop: "20px" }}
+              src={streetRates}
+              alt=""
+            />
           </Link>
         </Typography>
       </Grid>

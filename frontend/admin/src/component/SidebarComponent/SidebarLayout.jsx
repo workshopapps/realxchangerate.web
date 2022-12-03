@@ -5,7 +5,7 @@ import {
   StyledSidebarTopBlockLogo,
   StyledSidebarWrapper,
 } from "./SidebarLayout.styled";
-import { ReactComponent as LogoAndTitle } from "../../assets/icons/logo_and_title.svg";
+import { ReactComponent as LogoAndTitle } from "../../assets/Logo.svg";
 import Box from "@mui/material/Box";
 
 function SidebarLayout() {
@@ -17,7 +17,7 @@ function SidebarLayout() {
         <StyledSidebarTopBlock>
           <StyledSidebarTopBlockLogo onClick={() => navigate("/")}>
             <Box sx={{ display: { xs: "none", md: "block", width: "70%" } }}>
-              <LogoAndTitle width="98px" />
+              <LogoAndTitle width="120px" />
             </Box>
           </StyledSidebarTopBlockLogo>
         </StyledSidebarTopBlock>
