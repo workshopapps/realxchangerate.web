@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -16,21 +16,93 @@ import { getTrending } from "../../../store/actions/dashboardActions";
 import Flag from "react-world-flags";
 import { Skeleton } from "@mui/material";
 import { toast } from "react-toastify";
-
+import axios from "axios";
 
 export default function DataTable() {
   const dispatch = useDispatch();
   const { currencies, requestStatus } = useSelector((state) => state.dashboard);
 
-  useEffect(() => {
+  /* useEffect(() => {
     dispatch(getTrending());
-  }, [dispatch]);
+  }, [dispatch]);*/
 
-  if(requestStatus === 'failed'){
- toast.error('request failed')
+  const [table, setTable] = useState(null);
+  const [sortedItems, setSortedItems] = useState([])
+  useEffect(() => {
+    let arr = [];
+
+    const fetchCode = (isocodes) => {
+      for (let i = 0; i < isocodes.length; i++) {
+        const isocode = isocodes[i];
+        axios
+          .get(`https://api.streetrates.hng.tech/api/currency/trend/${isocode}`)
+          .then((res) => {
+            arr.push(res.data);
+          })
+          .catch((e) => console.log(e));
+      }
+
+      setTable(arr);
+
+      setSortedItems(prevData=> (
+        [...prevData, arr]
+      ))
+    };
+
+    axios
+      .get(`https://api.streetrates.hng.tech/api/currency/currencies`)
+      .then((res) => {
+        const data = res.data.currencies;
+        const items = data.map((e) => {
+          return e.isocode;
+        });
+        fetchCode(items);
+      })
+      .catch((e) => console.log(e));
+  }, []);
+
+  console.log(`THIS IS SORTED `, sortedItems);
+
+  if (requestStatus === "failed") {
+    toast.error("request failed");
   }
 
   const currentRows = [
+    {
+      day: -1.34,
+      week: -0.34,
+      month: -4.34,
+      tvl: 47.34,
+      mktcap: "1,234,340",
+    },
+    {
+      day: 2.23,
+      week: 0.23,
+      month: 3.23,
+      tvl: 256,
+      mktcap: "1,267,456",
+    },
+    {
+      day: 0.21,
+      week: 0.21,
+      month: 6.21,
+      tvl: 56,
+      mktcap: "46.4t",
+    },
+    {
+      day: -3.92,
+      week: -0.92,
+      month: -6.92,
+      tvl: 34.45,
+      mktcap: "3,678,123",
+    },
+    {
+      day: -1.34,
+      week: -0.34,
+      month: -4.34,
+      tvl: 47.34,
+      mktcap: "1,234,340",
+    },
     {
       day: -1.34,
       week: -0.34,
@@ -106,10 +178,11 @@ export default function DataTable() {
         </TableHead>
 
         <TableBody>
-          {/*{requestStatus === "pending" ? (
+          {!table ? (
             <>
               {Array.from(Array(3)).map((_, index) => (
                 <TableRow
+                  key={index}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
                   {Array.from(Array(7)).map((_, index) => (
@@ -121,24 +194,25 @@ export default function DataTable() {
               ))}
             </>
           ) : (
-            currencies.map((row, index) => (
+            table.map((row, index) => (
               <TableRow
-                key={row.currency}
+                key={index}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
+                <TableCell>NGN</TableCell>
                 <TableCell component="th" scope="row">
                   <StyledFlagAndCountry>
-                    <Flag code={row.isocode.slice(0, 2)} />
-                    <p>{row.country}</p>
+                    <Flag code={row?.data.isocode.slice(0, 2)} />
+                    <p>{row?.country}</p>
                   </StyledFlagAndCountry>
                 </TableCell>
-                <TableCell align="right">{row.isocode}</TableCell>
+                <TableCell align="right">ngn</TableCell>
                 <TableCell align="right">
-                  {row.day ? (
-                    row.day > 0 ? (
-                      <StyledGrowth>+{row.day}</StyledGrowth>
+                  {row?.data.one_day ? (
+                    row?.data.one_day > 0 ? (
+                      <StyledGrowth>+{row?.data.one_day}</StyledGrowth>
                     ) : (
-                      <StyledLoss>{row.day}</StyledLoss>
+                      <StyledLoss>{row?.data.one_day}</StyledLoss>
                     )
                   ) : currentRows[index].day > 0 ? (
                     <StyledGrowth>+{currentRows[index].day}</StyledGrowth>
@@ -147,11 +221,11 @@ export default function DataTable() {
                   )}
                 </TableCell>
                 <TableCell align="right">
-                  {row.week ? (
-                    row.week > 0 ? (
-                      <StyledGrowth>+{row.week}</StyledGrowth>
+                  {row?.data.seven_days ? (
+                    row?.data.seven_days > 0 ? (
+                      <StyledGrowth>+{row?.data.seven_days}</StyledGrowth>
                     ) : (
-                      <StyledLoss>{row.week}</StyledLoss>
+                      <StyledLoss>{row?.data.seven_days}</StyledLoss>
                     )
                   ) : currentRows[index].week > 0 ? (
                     <StyledGrowth>+{currentRows[index].week}</StyledGrowth>
@@ -160,11 +234,11 @@ export default function DataTable() {
                   )}
                 </TableCell>
                 <TableCell align="right">
-                  {row.month ? (
-                    row.month > 0 ? (
-                      <StyledGrowth>+{row.month}</StyledGrowth>
+                  {row?.data.one_month ? (
+                    row?.data.one_month > 0 ? (
+                      <StyledGrowth>+{row?.data.one_month}</StyledGrowth>
                     ) : (
-                      <StyledLoss>{row.month}</StyledLoss>
+                      <StyledLoss>{row?.data.one_month}</StyledLoss>
                     )
                   ) : currentRows[index].month > 0 ? (
                     <StyledGrowth>+{currentRows[index].month}</StyledGrowth>
@@ -173,28 +247,16 @@ export default function DataTable() {
                   )}
                 </TableCell>
                 <TableCell align="right">
-                  ${row.tvl ? row.tvl : currentRows[index].tvl}
+                  ${row?.data.tvl ? row?.data.tvl : currentRows[index].tvl}
                 </TableCell>
                 <TableCell align="right">
-                  {row.mktcap ? row.mktcap : currentRows[index].mktcap}
+                  {row?.data.mktcap
+                    ? row?.data.mktcap
+                    : currentRows[index].mktcap}
                 </TableCell>
               </TableRow>
             ))
-                  )}*/}
-
-                  <>
-              {Array.from(Array(3)).map((_, index) => (
-                <TableRow
-                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                >
-                  {Array.from(Array(7)).map((_, index) => (
-                    <TableCell key={index} component="th" scope="row">
-                      {cellSkeleton}
-                    </TableCell>
-                  ))}
-                </TableRow>
-              ))}
-            </>
+          )}
         </TableBody>
       </Table>
     </TableContainer>
