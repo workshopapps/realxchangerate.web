@@ -97,12 +97,22 @@ const StyledSection = styled.div`
     font-size: 28px;
     line-height: 32px;
     margin-bottom: 32px;
+    @media screen and (max-width: 480px) {
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 24px;
+    }
   }
   p {
     font-weight: 400;
     font-size: 20px;
     line-height: 28px;
     color: #0f172a;
+    @media screen and (max-width: 480px) {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 24px;
+    }
   }
   .high-button {
     border: none;
@@ -129,6 +139,9 @@ const StyledSection = styled.div`
     display: flex;
     @media screen and (max-width: 480px) {
       align-items: flex-start;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 24px;
     }
   }
   ul {
