@@ -33,33 +33,40 @@ export const getComplaints = createAsyncThunk(
 		}
 	}
 );
-// export const getComplaint = createAsyncThunk(
-//     "complaint/id",
-//     async (_, { rejectWithValue }) => {
 
-//         const token = localStorage.getItem("token");
-//         try {
-//             const res = await axios.get(
-//                 `${BASE_URL}/admin/get_all_complaints`,
-//                 {
-//                     headers: {
-//                         accept: 'application/json',
-//                         Authorization: `Bearer ${token}`,
-//                     },
-//                 }
-//             );
+export const updateComplaint = createAsyncThunk(
+	"complaint/id",
+	async (payload, { rejectWithValue }) => {
 
-//             if (res.status && res.status === 200) {
-//                 return res.data;
-//             } else {
-//                 return rejectWithValue(res);
-//             }
-//         } catch (err) {
-//             console.log(err.message, "erorr");
-//             return rejectWithValue(err.response.data);
-//         }
-//     }
-// );
+		const token = localStorage.getItem("token");
+		console.log(payload)
+
+		try {
+			const res = await axios.put(
+				`${BASE_URL}/admin/update_complaint_status/${payload.id}`,
+				{
+					status: payload.status,
+				},
+				{
+					headers: {
+						accept: 'application/json',
+						Authorization: `Bearer ${token}`,
+						'Content-Type': 'application/json'
+					},
+				}
+			);
+
+			if (res.status && res.status === 200) {
+				return res.data;
+			} else {
+				return rejectWithValue(res);
+			}
+		} catch (err) {
+			console.log(err.message, "erorr");
+			return rejectWithValue(err.response.data);
+		}
+	}
+);
 
 export const complaintsSlice = createSlice({
 	name: 'complaints',
@@ -77,7 +84,14 @@ export const complaintsSlice = createSlice({
 			.addCase(getComplaints.rejected, (state, action) => {
 				state.error = action.payload;
 				state.loading = 'failed';
-			});
+			})
+			.addCase(updateComplaint.pending, (state, action) => {
+				state.loading = 'pending';
+			})
+			.addCase(updateComplaint.rejected, (state, action) => {
+				state.error = action.payload;
+				state.loading = 'rejected';
+			})
 	},
 });
 
