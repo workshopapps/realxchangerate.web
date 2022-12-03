@@ -1,12 +1,9 @@
-import { Link } from "react-router-dom";
+import MainPage from "./components/MainPage/ComplaintMainPage";
 
 const FileAComplaint = () => {
   return (
     <>
-      <p style={{ fontSize: "20px" }}>File a complaint</p>
-      <Link to="/complaint/form" style={{ fontSize: "20px" }}>
-        Complaint form
-      </Link>
+      <MainPage />
     </>
   );
 };

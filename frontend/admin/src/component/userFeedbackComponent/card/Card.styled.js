@@ -59,15 +59,3 @@ export const StyledCardMessage = styled.p`
 	line-height: 20px;
 	color: ${(props) => props.theme.$styled.colors.text600};
 `;
-
-// export const Button = styled.button`
-// 	padding: 7px 0;
-// 	border-radius: 5px;
-// 	background: inherit;
-// 	width: 90px;
-// 	background: #ffffff;
-// 	border: 1px solid #cbd5e1;
-// 	:hover {
-// 		border: 1px solid #388e3c;
-// 	}
-// `;

@@ -86,6 +86,8 @@ function App() {
             <Route path="/teams" element={<Teams />} />
             <Route path="/api" element={<Api />} />
             <Route path="/bod" element={<BoardOfDirectors />} />
+            {/* Adding  get in touch route*/}
+            <Route path="/get-in-touch" element={<GetInTouch />} />
             <Route
               path="/historical-currency-exchange"
               element={<HistoricalCurrencyExchange />}
