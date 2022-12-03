@@ -25,11 +25,12 @@ import {
   setUserIp,
 } from "../redux/features/Reducers/servicesReducer";
 import { dispatch } from "../redux/store";
-import {
-  GetUserIp,
-} from "../redux/features/Reducers/serviceActions";
-import {Languages} from "./index"
+import { GetUserIp } from "../redux/features/Reducers/serviceActions";
+import { Languages } from "./index";
+import { useTranslation } from "react-i18next";
+// Adding tranlsation page
 const NavComponent = () => {
+  const { t, i18n } = useTranslation();
   const { currencyList, countryDetails, localLanguage, isNavLoading } =
     useSelector((state) => state.service);
   const theme = useTheme();
@@ -48,13 +49,14 @@ const NavComponent = () => {
     setAnchorEl(null);
   };
   const handleCloseItem = (ele) => {
-   sessionStorage.setItem("localLanguage", JSON.stringify(currentLanguage))
+    sessionStorage.setItem("localLanguage", JSON.stringify(currentLanguage));
     setCurrentLanguage(ele);
+    i18n.changeLanguage(ele.lanaguage);
     dispatch(setLocalLanguage(ele));
     setAnchorEl(null);
   };
 
-  console.log(currentLanguage)
+  console.log(currentLanguage);
 
   useEffect(() => {
     const ip = sessionStorage.getItem("ip");
@@ -66,8 +68,6 @@ const NavComponent = () => {
     dispatch(setUserIp(ip));
     dispatch(setDefaultCurrency(defaultCurrency));
   }, []);
-
-
 
   return (
     <Grid
@@ -188,9 +188,7 @@ const NavComponent = () => {
                     gap: "6px",
                     flexDirection: "row",
                   }}
-                  onClick={() =>
-                    handleCloseItem(ele)
-                  }
+                  onClick={() => handleCloseItem(ele)}
                   key={ele.isocode}
                 >
                   <img
@@ -207,13 +205,13 @@ const NavComponent = () => {
           </Menu>
         </Box>
         <Link to="/" style={{ color: "#0062ff" }}>
-          Home
+          {t("nav_home")}
         </Link>
         <Link to="/news" style={{ color: "#0062ff" }}>
-          News
+          {t("nav_news")}
         </Link>
         <Link to="/contact" style={{ color: "#0062ff" }}>
-          Contact
+          {t("nav_contact")}
         </Link>
       </Grid>
       <Box

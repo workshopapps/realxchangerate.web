@@ -17,9 +17,13 @@ import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
 import { useSelector } from "react-redux";
 import { dispatch } from "../../redux/store";
 import { GetCurrencyRates } from "../../redux/features/Reducers/serviceActions";
+import { useTranslation } from "react-i18next";
 
 const Home = () => {
   const { currencyRates, currencyList } = useSelector((state) => state.service);
+  const { t } = useTranslation();
+  const lang = sessionStorage.getItem("localLanguage");
+  console.log(lang);
 
   useEffect(() => {
     if (currencyList.length > 0) {
@@ -84,16 +88,16 @@ const Home = () => {
         <Typography
           sx={{ color: "#0062FF", fontSize: "16px", fontWeight: 500 }}
         >
-          LIVE RATES
+          {t("home_live")}
         </Typography>
         <Typography
           component="h2"
           sx={{ fontSize: "32px", maxWidth: "595px", fontWeight: 800 }}
         >
-          Live rates of popular currencies in Africa
+          {t("home_title")}
         </Typography>
         <StyledEdit className="action" id="edit" onClick={() => handleEdit()}>
-          Edit
+          {t("home_btn")}
         </StyledEdit>
       </StyledBox>
       {/* Table  */}
@@ -116,33 +120,36 @@ const Home = () => {
             color: "black",
           }}
         >
-          <Box>Currency</Box>
-          <Box>parallel Rate</Box>
-          <Box>Bank Rate</Box>
+          <Box>{t("home_currency")}</Box>
+          <Box>{t("home_parallel")}</Box>
+          <Box>{t("home_Bank")}</Box>
         </ListItem>
 
         {currencies.map((currency) => {
           return (
             <>
-            {currencyRates.length > 0 && <Table2
-              isocode={currency.isocode}
-              country={currency.country}
-              key={currency.id}
-              rates={currencyRates.find(
-                (x) => x.currency.isocode === currency.isocode
-              ).rate}
-              deleteIcon={
-                <img
-                  src={DeleteIcon}
-                  className="delete-cur"
-                  alt=""
-                  style={{ display: "none" }}
-                  onClick={(e) => handleDelete(currency.id)}
+              {currencyRates.length > 0 && (
+                <Table2
+                  isocode={currency.isocode}
+                  country={currency.country}
+                  key={currency.id}
+                  rates={
+                    currencyRates.find(
+                      (x) => x.currency.isocode === currency.isocode
+                    ).rate
+                  }
+                  deleteIcon={
+                    <img
+                      src={DeleteIcon}
+                      className="delete-cur"
+                      alt=""
+                      style={{ display: "none" }}
+                      onClick={(e) => handleDelete(currency.id)}
+                    />
+                  }
                 />
-              }
-            />}</>
-            
-            
+              )}
+            </>
           );
         })}
       </List>
@@ -153,7 +160,7 @@ const Home = () => {
               <Button {...bindTrigger(popupState)}>
                 <div className="add">
                   <img src={add} alt="" />
-                  <span className="addspan">Add currency</span>
+                  <span className="addspan">{t("home_add")}</span>
                 </div>
               </Button>
               <Menu {...bindMenu(popupState)}>
@@ -176,7 +183,7 @@ const Home = () => {
             <CircularProgressWithLabel variant="determinate" value={35} />
             <i>35</i>
           </div>
-          <span>Last updated Nov 17, 2022, 15:55 UTC</span>
+          <span>{t("home_update")}</span>
         </div>
       </StyledSelection>
     </Box>

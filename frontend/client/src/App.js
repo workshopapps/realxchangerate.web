@@ -36,7 +36,7 @@ import {
   ApplyToAdvertise,
   StudentAmbassadorForm,
   Affiliate,
-  Referral
+  Referral,
 } from "./Pages";
 import GlobalStyle from "./styles/Globalstyle";
 import ErrorPage from "./Pages/404/ErrorPage";
@@ -51,6 +51,7 @@ import PrivacyPolicy from "./Pages/PrivacyPolicy/PrivacyPolicy";
 import EntrepreneurAmbassador from "./Pages/EntrepreneurAmbassador/EntrepreneurAmbassador";
 import EntrepreneurFrom from "./Pages/EntrepreneurForm/EntrepreneurFrom";
 import CompliancePage from "./Pages/CompliancePage/CompliancePage";
+
 function App() {
   return (
     <>
@@ -112,11 +113,11 @@ function App() {
             />
             <Route
               path="/ambassadors/entrepreneur-ambassador"
-              element={<EntrepreneurAmbassador/>}
+              element={<EntrepreneurAmbassador />}
             />
             <Route
               path="/ambassadors/apply-to-become-entrepreneur-ambassador"
-              element={<EntrepreneurFrom/>}
+              element={<EntrepreneurFrom />}
             />
             <Route
               path="/student-ambassador/apply-to-become-student-ambassador"

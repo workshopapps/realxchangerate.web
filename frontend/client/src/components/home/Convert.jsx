@@ -4,6 +4,7 @@ import { noWCommas } from "../../utils";
 import styles from "./home.module.css";
 import { HiOutlineSwitchVertical } from "react-icons/hi";
 import { HiOutlineSwitchHorizontal } from "react-icons/hi";
+import { useTranslation } from "react-i18next";
 import {
   Box,
   Button,
@@ -21,6 +22,8 @@ import autoAnimate from "@formkit/auto-animate";
 import { useSelector } from "react-redux";
 
 const Convert = () => {
+  // Adding translation
+  const { t } = useTranslation();
   const base_url = process.env.REACT_APP_BASE_URL;
   const localBase = "http://localhost:8000/api";
   const [rates, setRates] = React.useState({});
@@ -145,7 +148,7 @@ const Convert = () => {
           marginBottom: "40px",
         }}
       >
-        Start Conversion
+        {t("convert_title")}
       </h2>
       <Box sx={{ width: { xs: "100%" } }}>
         <Box
@@ -175,7 +178,7 @@ const Convert = () => {
                 width: "100%",
                 paddingTop: "6px",
               }}
-              label="Amount"
+              label={t("convert_amount")}
               value={convert}
               onChange={(e) => setconvert(e.target.value)}
             />
@@ -198,7 +201,9 @@ const Convert = () => {
                 fullWidth
                 sx={{ flexBasis: "30%", mt: { xs: "15px", lg: "5px" } }}
               >
-                <InputLabel className={styles.label}>From:</InputLabel>
+                <InputLabel className={styles.label}>
+                  {t("convert_from")}
+                </InputLabel>
                 <Select
                   name="currency"
                   id="currency1"
@@ -262,7 +267,9 @@ const Convert = () => {
                 fullWidth
                 sx={{ flexBasis: "30%", mt: { xs: "15px", lg: "5px" } }}
               >
-                <InputLabel className={styles.label}>To:</InputLabel>
+                <InputLabel className={styles.label}>
+                  {t("convert_to")}
+                </InputLabel>
                 <Select
                   name="currency"
                   variant="outlined"
@@ -286,7 +293,9 @@ const Convert = () => {
                 fullWidth
                 sx={{ flexBasis: "30%", mt: { xs: "15px", lg: "5px" } }}
               >
-                <InputLabel className={styles.label}>To:</InputLabel>
+                <InputLabel className={styles.label}>
+                  {t("convert_to")}
+                </InputLabel>
                 <Select
                   name="currency"
                   id="currency1"
@@ -310,7 +319,7 @@ const Convert = () => {
       {convert && Object.keys(rates).length > 0 && (
         <Rate>
           <div className="convert">
-            <h4>Result</h4>
+            <h4>{t("convert_result")}</h4>
             <h3>
               {rates}
               <span>{buy ? base : currency}</span>
@@ -323,10 +332,10 @@ const Convert = () => {
             </div>
           </div>
           <div>
-            <h6>
-              With Streetrates, you always obtain the best exchange rate.{" "}
-            </h6>
-            <p>Last updated: {date}</p>
+            <h6>{t("convert_street")}</h6>
+            <p>
+              {t("convert_last")} {date}
+            </p>
           </div>
         </Rate>
       )}
