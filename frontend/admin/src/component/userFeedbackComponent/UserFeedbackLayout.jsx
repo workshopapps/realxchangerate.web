@@ -40,7 +40,7 @@ export default function UserFeedbackLayout() {
 			<h2>Users’ Contact Us Information</h2>
 			<Status />
 			<StyledCardsWrapper>
-				{!data ? (
+				{!contacts ? (
 					<>
 						<CardSkeleton />
 						<CardSkeleton />
