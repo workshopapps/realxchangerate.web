@@ -62,20 +62,17 @@ const Selector = () => {
       <Box
         flexDirection="row"
         sx={{
-          gap: { xs: "24px"},
+          gap: { xs: "20px"},
           display: { xs: "flex", sm: "none" },
         }}
-        fontSize="16px"
-        lineHeigh="20px"
-        color="#0F172A"
       >
-        <Typography fontSize="16px" lineHeigh="20px" color="#0F172A">
+        <Typography fontSize="16px" lineHeight="20px" color="#0F172A">
           All
         </Typography>
-        <Typography fontSize="16px" lineHeigh="20px" color="#0F172A">
+        <Typography fontSize="16px" lineHeight="20px" color="#0F172A">
           Stocks
         </Typography>
-        <Typography fontSize="16px" lineHeigh="20px" color="#0F172A">
+        <Typography fontSize="16px" lineHeight="20px" color="#0F172A">
           Crypto
         </Typography>
         <Typography
@@ -84,7 +81,7 @@ const Selector = () => {
             cursor: "pointer",
           }}
           fontSize="16px"
-          lineHeigh="20px"
+          lineHeight="20px"
           color="#0F172A"
         >
           Currencies
@@ -100,7 +97,7 @@ const Selector = () => {
             }}
           />
         </Typography>
-        <Typography fontSize="16px" lineHeigh="20px" color="#0F172A">
+        <Typography fontSize="16px" lineHeight="20px" color="#0F172A">
           Indicies
         </Typography>
       </Box>
