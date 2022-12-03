@@ -14,28 +14,28 @@ const news = [
     date: "15 November, 2022",
     time: "10 mins read",
     title: "Global stocks rally, dollar drops as U.S. inflation data spur",
-    img: im1,
+    image_url: im1,
   },
   {
     id: 2,
     date: "15 November, 2022",
     time: "10 mins read",
     title: "Global stocks rally, dollar drops as U.S. inflation data spur",
-    img: im2,
+    image_url: im2,
   },
   {
     id: 3,
     date: "15 November, 2022",
     time: "10 mins read",
     title: "Global stocks rally, dollar drops as U.S. inflation data spur",
-    img: im3,
+    image_url: im3,
   },
   {
     id: 4,
     date: "15 November, 2022",
     time: "10 mins read",
     title: "Global stocks rally, dollar drops as U.S. inflation data spur",
-    img: im4,
+    image_url: im4,
   },
 ];
 
@@ -46,7 +46,7 @@ const stories = [
     label: "HNG Internship News Update",
     view: "2k Views",
     date: "2 days ago",
-    img: im5,
+    image_url: im5,
   },
   {
     id: 2,
@@ -54,7 +54,7 @@ const stories = [
     label: "HNG Internship News Update",
     view: "2k Views",
     date: "2 days ago",
-    img: im6,
+    image_url: im6,
   },
   {
     id: 3,
@@ -62,13 +62,13 @@ const stories = [
     label: "HNG Internship News Update",
     view: "2k Views",
     date: "2 days ago",
-    img: im7,
+    image_url: im7,
   },
 ];
 const articles = [
   {
     id: 1,
-    img: im8,
+    image_url: im8,
     title: "Currency Exchange",
     author: "Chudi Victor",
     date: "November 15, 2022",
@@ -77,7 +77,7 @@ const articles = [
   },
   {
     id: 2,
-    img: im9,
+    image_url: im9,
     title: "Currency Exchange",
     author: "Chudi Victor",
     date: "November 15, 2022",

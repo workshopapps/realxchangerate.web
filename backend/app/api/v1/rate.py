@@ -19,6 +19,9 @@ def last_update_rate(db: Session = Depends(get_db)):
     returns the last date and time the currency rates where updated
     """
     time = db.query(Rate).order_by(Rate.last_updated.desc()).first().last_updated
+    if not time:
+        raise HTTPException(
+            status_code=404, detail=f"No record found")
     return{
         "Success": True,
         "Time": time

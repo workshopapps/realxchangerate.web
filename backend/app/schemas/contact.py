@@ -2,6 +2,7 @@ from datetime import datetime
 from typing import Optional
 
 from pydantic import BaseModel, EmailStr
+import enum
 
 
 class ContactBase(BaseModel):
@@ -21,3 +22,8 @@ class ContactUpdate(ContactBase):
 class Contact(ContactBase):
     id: int
     last_updated: Optional[datetime]
+
+class Status(enum.Enum):
+    resolved = "resolved"
+    unresolved = "unresolved"
+    in_review  = "in review"
