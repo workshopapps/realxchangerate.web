@@ -52,23 +52,40 @@ const ApplicationForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     try {
       const { data } = await axios.post(
         "https://formsubmit.co/ajax/e79cf7c6eade7d5068495853b4cec9dc",
         ambassadorDetails
       );
-      setLoading(true);
 
       if (data.success === "true") {
         setMessage(true);
         setStatusMessage("Your application has been received!");
       }
     } catch (error) {
-      setMessage(true);
-      error.message &&
-        setStatusMessage("You application was not received, try again!");
+      setMessage(false);
+      error && setStatusMessage("You application was not received, try again!");
     }
+
+    setLoading(false);
+    setAmbassadorDetails({
+      firstName: "",
+      lastName: "",
+      DOB: "",
+      phoneNumber: "",
+      email: "",
+      address: "",
+      city: "",
+      country: "",
+      schoolName: "",
+      courseName: "",
+      entryYear: "",
+      completionYear: "",
+      howDidYouLearnAboutUs: "",
+      reasonForApplication: "",
+    });
   };
 
   return (
@@ -243,8 +260,9 @@ const ApplicationForm = () => {
             onChange={handleChange}
           />
         </div>
+
         <button type="submit" onClick={handleSubmit} disabled={loading}>
-          Apply
+          {loading ? "submitting" : "Apply"}
         </button>
       </form>
     </FormSection>
