@@ -16,13 +16,14 @@ const Form = ({ handleEditClose, editVal }) => {
     symbol: symbol,
     name: name,
   });
+  const [fro, setFro] = useState({});
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setFro(form);
     try {
       const token = localStorage.getItem("token");
-      if (form.country === country) {
-        alert("Confirm your changes");
+      if (fro === {}) {
+        alert("Please Confirm your changes");
         throw Error("confirm");
       }
       const response = await axios.put(
