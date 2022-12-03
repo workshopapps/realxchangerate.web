@@ -29,6 +29,7 @@ export const MainSectionImageCard = ({ category }) => {
   );
 };
 
+
 export const ImageCard = ({ category, height, width }) => {
   return (
     <Box

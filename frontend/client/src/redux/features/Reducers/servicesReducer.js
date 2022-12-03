@@ -9,6 +9,12 @@ const initialState = {
   isLoading: false,
   isNavLoading : false,
   currencyData: null,
+  localLanguage : {
+    lanaguage : "en",
+    country:"England",
+    label:"gb",
+    isocode : "ENG"
+},
   news: [],
 };
 
@@ -27,6 +33,9 @@ const ServiceSlice = createSlice({
     },
     setDefaultCurrency: (state, action) => {
       state.defaultCurrency = action.payload;
+    },
+    setLocalLanguage : (state, action) => {
+      state.localLanguage = action.payload;
     },
     setCurrencyData: (state, action) => {
       state.currencyData = action.payload;
@@ -56,7 +65,8 @@ export const {
   setCurrencyData,
   setCurrencyRates,
   setNews,
-  setNavLoading
+  setNavLoading,
+  setLocalLanguage
 } = ServiceSlice.actions;
 
 export default ServiceSlice.reducer;

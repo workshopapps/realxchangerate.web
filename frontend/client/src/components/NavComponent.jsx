@@ -20,21 +20,22 @@ import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
 import {
   setDefaultCurrency,
+  setLocalLanguage,
   setNavLoading,
   setUserIp,
 } from "../redux/features/Reducers/servicesReducer";
 import { dispatch } from "../redux/store";
 import {
-  GetCurrencyData,
   GetUserIp,
 } from "../redux/features/Reducers/serviceActions";
+import {Languages} from "./index"
 const NavComponent = () => {
-  const { currencyList, countryDetails, defaultCurrency, isNavLoading } =
+  const { currencyList, countryDetails, localLanguage, isNavLoading } =
     useSelector((state) => state.service);
   const theme = useTheme();
   const colorMode = useContext(ColorModeContext);
   const [isOpen, setIsOpen] = useState(false);
-  const [localCurrency, setLocalCurrency] = useState(defaultCurrency);
+  const [currentLanguage, setCurrentLanguage] = useState(localLanguage);
   const HandleDrawerState = () => {
     setIsOpen(!isOpen);
   };
@@ -47,10 +48,13 @@ const NavComponent = () => {
     setAnchorEl(null);
   };
   const handleCloseItem = (ele) => {
-    setLocalCurrency(ele);
-    dispatch(setDefaultCurrency(ele));
+   sessionStorage.setItem("localLanguage", JSON.stringify(currentLanguage))
+    setCurrentLanguage(ele);
+    dispatch(setLocalLanguage(ele));
     setAnchorEl(null);
   };
+
+  console.log(currentLanguage)
 
   useEffect(() => {
     const ip = sessionStorage.getItem("ip");
@@ -63,14 +67,7 @@ const NavComponent = () => {
     dispatch(setDefaultCurrency(defaultCurrency));
   }, []);
 
-  // useEffect(() => {
-  //   if (defaultCurrency) {
-  //     let country = currencyList.find(
-  //       (x) => x.country === defaultCurrency.label
-  //     );
-  //     dispatch(GetCurrencyData(country.isocode));
-  //   }
-  // }, [defaultCurrency, currencyList]);
+
 
   return (
     <Grid
@@ -154,14 +151,14 @@ const NavComponent = () => {
                   loading="lazy"
                   height="20"
                   src={
-                    localCurrency
-                      ? `https://flagcdn.com/h20/${localCurrency.code.toLowerCase()}.png `
+                    currentLanguage
+                      ? `https://flagcdn.com/h20/${currentLanguage.label}.png `
                       : NavFlag
                   }
                   srcSet={
-                    localCurrency
-                      ? `https://flagcdn.com/h40/${localCurrency.code.toLowerCase()}.png 2x,
-                     https://flagcdn.com/h60/${localCurrency.code.toLowerCase()}.png 3x`
+                    currentLanguage
+                      ? `https://flagcdn.com/h40/${currentLanguage.label}.png 2x,
+                     https://flagcdn.com/h60/${currentLanguage.label}.png 3x`
                       : NavFlag
                   }
                   alt=""
@@ -183,7 +180,7 @@ const NavComponent = () => {
               height: "auto",
             }}
           >
-            {currencyList.map((ele) => {
+            {Languages.map((ele) => {
               return (
                 <MenuItem
                   sx={{
@@ -192,19 +189,15 @@ const NavComponent = () => {
                     flexDirection: "row",
                   }}
                   onClick={() =>
-                    handleCloseItem(countryDetails[currencyList.indexOf(ele)])
+                    handleCloseItem(ele)
                   }
                   key={ele.isocode}
                 >
                   <img
                     loading="lazy"
                     width="20"
-                    src={`https://flagcdn.com/w20/${countryDetails[
-                      currencyList.indexOf(ele)
-                    ].code.toLowerCase()}.png`}
-                    srcSet={`https://flagcdn.com/w40/${countryDetails[
-                      currencyList.indexOf(ele)
-                    ].code.toLowerCase()}.png 2x`}
+                    src={`https://flagcdn.com/w20/${ele.label}.png`}
+                    srcSet={`https://flagcdn.com/w40/${ele.label}.png 2x`}
                     alt=""
                   />
                   <Typography marginRight="5px">{ele.isocode}</Typography>

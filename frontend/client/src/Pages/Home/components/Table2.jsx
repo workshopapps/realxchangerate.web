@@ -33,7 +33,7 @@ function Table2({ isocode, country, deleteIcon, rates }) {
         </Link>
       </Box>
 
-      <Typography fontSize="1rem" textAlign='left'>{Number(rates.parallel_buy).toFixed(2)}</Typography>
+      <Box>{Number(rates.parallel_buy).toFixed(2)}</Box>
 
       <>
         <Box>{Number(rates.official_buy).toFixed(2)}</Box>
