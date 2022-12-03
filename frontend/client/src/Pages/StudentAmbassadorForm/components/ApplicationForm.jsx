@@ -50,11 +50,12 @@ const ApplicationForm = () => {
             />
           </div>
         </div>
+
         <div className="grid-full">
           <div>
             <InputField
               type="text"
-              placeHolder="Enter your address"
+              placeHolder=""
               name="address"
               label="Address"
             />
@@ -71,27 +72,44 @@ const ApplicationForm = () => {
             </select>
           </div>
         </div>
-        <div className="grid-two grid-sec">
+
+        <div className="grid-full school-section">
           <div>
-            <InputField type="text" name="occupation" label="Occupation" />
+            <InputField
+              type="text"
+              placeHolder=""
+              name="school name"
+              label="School name"
+            />
+          </div>
+        </div>
+        <div className="grid-half course-name">
+          <div>
+            <InputField type="text" name="course name" label="Name of course" />
+          </div>
+        </div>
+        <div className="grid-two course-year">
+          <div>
+            <InputField type="text" name="entry year" label="Year of entry" />
           </div>
           <div>
             <InputField
               type="text"
-              name="company"
-              label="Name of business/company"
+              name="completion year"
+              label="Year of completion"
             />
           </div>
         </div>
+
         <div className="text-area">
           <label htmlFor="inquiry">
-            How did you find out about the Entrepreneur Ambassador Program?
+            How did you find out about the Student Ambassador Program?
           </label>
           <textarea name="inquiry" id="inquiry" cols="30" rows="10"></textarea>
         </div>
         <div className="text-area">
           <label htmlFor="ambassador">
-            Why do you want to be an entrepreneur ambassador of our company?
+            Why do you want to be an student ambassador of our company?
           </label>
           <textarea
             name="ambassador"

@@ -4,14 +4,35 @@ export const FormSection = styled.section`
   .header {
     background-color: #00296b;
     color: white;
-    padding: 44px 16px;
+    padding: 10rem 13rem 5rem;
     display: flex;
-    justify-content: center;
     align-items: center;
-    gap: 8px;
+    justify-content: center;
+    gap: 40px;
 
+    @media (max-width: 1255px) {
+      padding: 10rem 7rem 5rem;
+    }
+    @media (max-width: 868px) {
+      padding: 10rem 4rem 5rem;
+    }
+    @media (max-width: 570px) {
+      padding: 10rem 1rem 5rem;
+      text-align: center;
+      align-items: flex-start;
+      gap: 8px;
+      img {
+        width: 30px;
+      }
+    }
     h2 {
-      margin-left: 8px;
+      font-size: 2.9rem;
+      @media (max-width: 868px) {
+        font-size: 2rem;
+      }
+      @media (max-width: 570px) {
+        font-size: 1.7rem;
+      }
     }
   }
   button {
@@ -38,6 +59,7 @@ export const FormSection = styled.section`
       display: flex;
       align-items: end;
       justify-content: space-between;
+
       @media (max-width: 570px) {
         display: block;
       }
@@ -48,6 +70,7 @@ export const FormSection = styled.section`
         }
         @media (max-width: 570px) {
           width: 100%;
+          margin-bottom: 24px;
         }
       }
       .select-field {
@@ -77,10 +100,24 @@ export const FormSection = styled.section`
     .grid-half {
       width: 45%;
       margin-bottom: 7.5rem;
+      @media (max-width: 768px) {
+        width: 100%;
+      }
     }
     .grid-sec {
       margin: 7rem 0;
     }
+
+    .school-section {
+      margin-top: 7rem;
+    }
+    .course-name {
+      margin-bottom: 0;
+    }
+    .course-year {
+      margin-bottom: 7.5rem;
+    }
+
     .text-area {
       display: flex;
       flex-direction: column;
@@ -95,21 +132,4 @@ export const FormSection = styled.section`
       }
     }
   }
-
-  @media (min-width: 550px) {
-    h2 {
-      font-size: 32px;
-    }
-  }
-
-  @media (min-width: 1200px) {
-    .header {
-
-    padding: 152px 0 72px;
-
-
-    h2 {
-      font-size: 48px;
-    }
-  } ;
 `;
