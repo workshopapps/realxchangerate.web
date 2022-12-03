@@ -32,7 +32,7 @@ const HelpCenter = () => {
                     Welcome to the StreetRates Help Center Portal. Here you will
                     find answers to all your exchange rate questions. From
                     choosing your base currency and your country location, our
-                    integrated matrix, services and more.
+                    integrated matrix, services and more. 
                 </Paragraph>
                 <Section style={{marginTop:"64px"}}>
                     <Title position={{ align: "center" }} >
