@@ -5,12 +5,18 @@ export const StyledWrapper = styled.div`
 	margin-bottom: 52px;
 
 	h2 {
-		margin-bottom: 32px;
+		margin-bottom: 1rem;
 		font-weight: 600;
 		font-size: clamp(1rem, 2vw, 1.25rem);
 		line-height: 28px;
 
 		color: ${(props) => props.theme.$styled.colors.text900};
+	}
+
+	.paginationBox {
+		display: flex;
+		justify-content: flex-end;
+		margin: 1.5rem 0;
 	}
 `;
 

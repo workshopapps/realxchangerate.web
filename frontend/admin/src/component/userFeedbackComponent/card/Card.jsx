@@ -10,7 +10,7 @@ import {
 } from './Card.styled';
 import { Button, Skeleton, Stack } from '@mui/material';
 import calIcon from '../../../assets/calendarIcon.svg';
-import { Data } from '../../../pages/userFeedbacks/mockData';
+// import { Data } from '../../../pages/userFeedbacks/mockData';
 
 export function Card({ data }) {
 	const navigate = useNavigate();
@@ -18,14 +18,16 @@ export function Card({ data }) {
 
 	return (
 		<StyledCardWrapper>
-			<div className='align'>
-				<div>
-					<Name>Name: {data.title}</Name>
-					<Email>Email: {data.email}</Email>
+			<div className='align-top'>
+				<div className='align'>
+					<div>
+						<Name>Name: {data.name}</Name>
+						<Email>Email: {data.email}</Email>
+					</div>
+					<Status $stats={data.status}>{data.status}</Status>
 				</div>
-				<Status $stats={Data[data.id].status}>{Data[data.id].status}</Status>
+				<StyledCardMessage>{data.message}</StyledCardMessage>
 			</div>
-			<StyledCardMessage>{data.message}</StyledCardMessage>
 			<div className='align alignBottom'>
 				<div className='date'>
 					<img src={calIcon} alt='icon' />
