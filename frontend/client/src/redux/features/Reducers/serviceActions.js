@@ -1,4 +1,5 @@
 import { dispatch } from "../../store";
+import uuid from "react-uuid";
 import {
   setCurrencyList,
   setUserIp,
@@ -92,7 +93,18 @@ export const GetNews = (ip) => async () => {
       `https://my-second-app-dot-wise-philosophy-348109.oa.r.appspot.com/api/news/${ip}`
     );
     if (res.data.results.length > 0) {
-      dispatch(setNews(res.data.results));
+
+      //add IDs to the news
+      let news = res.data.results
+      let updatedNews = news.map((ele) => {
+        ele.id = uuid()
+        return ele;
+      })
+
+      let lastUpdated = new Date().getTime() + 6 * 60 * 60 * 1000;
+      sessionStorage.setItem("news", JSON.stringify(updatedNews));
+      sessionStorage.setItem("lastUpdated", lastUpdated);
+      dispatch(setNews(updatedNews));
     }
 
     dispatch(setLoading(false));
