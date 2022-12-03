@@ -6,7 +6,7 @@ import plus from "../../assets/plus.svg";
 import del from "../../assets/delete.svg";
 import create from "../../assets/create.svg";
 
-function MenuDrop({ handleOpen }) {
+function MenuDrop({ handleOpen, handleEditOpen }) {
   const [drop, setDrop] = useState(false);
   return (
     <>
@@ -24,6 +24,7 @@ function MenuDrop({ handleOpen }) {
               <Option
                 onClick={() => {
                   setDrop(false);
+                  handleEditOpen(true);
                 }}
               >
                 <img src={create} alt="" />
