@@ -27,9 +27,9 @@ const ComplaintForm = () => {
     setDisableBtn(true);
 
     const formData = {
-      name: nameRef.current.value,
+      full_name: nameRef.current.value,
       email: emailRef.current.value,
-      message: messageRef.current.value,
+      complaint: messageRef.current.value,
     };
 
     axios
