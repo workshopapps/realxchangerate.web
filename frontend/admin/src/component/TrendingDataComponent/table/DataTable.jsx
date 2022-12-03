@@ -15,6 +15,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { getTrending } from "../../../store/actions/dashboardActions";
 import Flag from "react-world-flags";
 import { Skeleton } from "@mui/material";
+import { toast } from "react-toastify";
+
 
 export default function DataTable() {
   const dispatch = useDispatch();
@@ -23,6 +25,10 @@ export default function DataTable() {
   useEffect(() => {
     dispatch(getTrending());
   }, [dispatch]);
+
+  if(requestStatus === 'failed'){
+ toast.error('request failed')
+  }
 
   const currentRows = [
     {
@@ -100,7 +106,7 @@ export default function DataTable() {
         </TableHead>
 
         <TableBody>
-          {requestStatus === "pending" ? (
+          {/*{requestStatus === "pending" ? (
             <>
               {Array.from(Array(3)).map((_, index) => (
                 <TableRow
@@ -174,7 +180,21 @@ export default function DataTable() {
                 </TableCell>
               </TableRow>
             ))
-          )}
+                  )}*/}
+
+                  <>
+              {Array.from(Array(3)).map((_, index) => (
+                <TableRow
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
+                  {Array.from(Array(7)).map((_, index) => (
+                    <TableCell key={index} component="th" scope="row">
+                      {cellSkeleton}
+                    </TableCell>
+                  ))}
+                </TableRow>
+              ))}
+            </>
         </TableBody>
       </Table>
     </TableContainer>
