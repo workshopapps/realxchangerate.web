@@ -16,17 +16,23 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import { currenciesList, countries } from "../../Pages/Home/data";
+
 import autoAnimate from "@formkit/auto-animate";
+import { useSelector } from "react-redux";
+
 const Convert = () => {
   const base_url = process.env.REACT_APP_BASE_URL;
   const localBase = "http://localhost:8000/api";
   const [rates, setRates] = React.useState({});
   const [convert, setconvert] = React.useState(1);
   const [currency, setCurrecy] = React.useState("NGN");
-  const [base, setBase] = React.useState("USD");
-  const [buy, setbuy] = React.useState(true);
+  const [base, setBase] = React.useState("EGP");
+  const [buy, setBuy] = React.useState(true);
   const [date, setDate] = React.useState("Loading ..");
+  const [rate, setRate] = React.useState("loading ..");
+  const { currencyList, countryDetails } = useSelector(
+    (state) => state.service
+  );
 
   const endpoint =
     process.env.NODE_ENV === "development"
@@ -34,47 +40,51 @@ const Convert = () => {
       : process.env.NODE_ENV === "production"
       ? `${base_url}/rate/${currency}`
       : "";
+
   React.useEffect(() => {
     const fetchRates = async () => {
-      const response = await fetch(`${base_url}/rate/${currency}`);
+      const response = await fetch(
+        `${base_url}/rate/convert/calc?from_currency=${base}&to_currency=${currency}&amount=${convert}`
+      );
+      const data = await response.json();
+      return data;
+    };
+    const fetchRate = async () => {
+      const response = await fetch(
+        `${base_url}/rate/convert/calc?from_currency=${base}&to_currency=${currency}&amount=${1}`
+      );
       const data = await response.json();
       return data;
     };
     const fetchDate = async () => {
       const response = await fetch(`${base_url}/rate/last_rate_update`);
       const data = await response.json();
+
       return data;
     };
 
-    // var currentdate = new Date();
-    // var datetime =
-    //   "Last Sync: " +
-    //   currentdate.getDate() +
-    //   "/" +
-    //   (currentdate.getMonth() + 1) +
-    //   "/" +
-    //   currentdate.getFullYear() +
-    //   " @ " +
-    //   currentdate.getHours() +
-    //   ":" +
-    //   currentdate.getMinutes() +
-    //   ":" +
-    //   currentdate.getSeconds();
-    // setDate(Date(datetime));
-
     fetchRates().then((ratesData) => {
-      setRates(ratesData.data.rate);
+      // console.log(ratesData);
+      setRates(ratesData.data.parallel_total);
+    });
+    fetchRate().then((ratesData) => {
+      // console.log(ratesData);
+      setRate(ratesData.data.parallel_total);
     });
     fetchDate()
       .then((UpdateDate) => {
+        console.log(UpdateDate);
         setDate(Date(UpdateDate.Time));
       })
       .catch((err) => {
-        console.log("nooo");
+        console.err(err);
       });
-  }, [base_url, endpoint, currency, date]);
+  }, [base_url, endpoint, currency, date, base, convert]);
+
   const handleSwitch = () => {
-    setbuy(!buy);
+    setBase(currency);
+    setCurrecy(base);
+    setBuy(!buy);
   };
   const parent = React.useRef(null);
   React.useEffect(() => {
@@ -82,7 +92,7 @@ const Convert = () => {
   }, [parent]);
   const CurrencyMenu = (props) => {
     const { currency } = props;
-    const countryDetails = countries.filter(
+    const details = countryDetails.filter(
       (countr) => countr.label === currency.country
     );
     return (
@@ -102,8 +112,8 @@ const Convert = () => {
           <img
             loading="lazy"
             width="20"
-            src={`https://flagcdn.com/w20/${countryDetails[0].code.toLowerCase()}.png`}
-            srcSet={`https://flagcdn.com/w40/${countryDetails[0].code.toLowerCase()}.png 2x`}
+            src={`https://flagcdn.com/w20/${details[0].code.toLowerCase()}.png`}
+            srcSet={`https://flagcdn.com/w40/${details[0].code.toLowerCase()}.png 2x`}
             alt=""
           />
         </Box>
@@ -150,64 +160,6 @@ const Convert = () => {
             gap: "26px",
           }}
         >
-          {/* <Box
-            ref={parent}
-            sx={{
-              display: "flex",
-              flexDirection: { xs: "column", sm: "row" },
-              gap: "26px",
-              alignItems: "center",
-              justifyContent: "center",
-              mt: { xs: "1rem", lg: "1.5rem" },
-            }}
-          > */}
-          {buy ? (
-            <SelectCurrency>
-              <FormControl
-                variant="outlined"
-                fullWidth
-                sx={{ flexBasis: "30%", mt: { xs: "15px", lg: "5px" } }}
-              >
-                <InputLabel className={styles.label}>Base Currency</InputLabel>
-                <Select
-                  name="currency"
-                  id="currency1"
-                  sx={{ mt: "6px" }}
-                  value={base}
-                  onChange={(e) => setBase(e.target.value)}
-                >
-                  {currenciesList.map((currency) => (
-                    <MenuItem key={currency.isocode} value={currency.isocode}>
-                      <CurrencyMenu currency={currency} />
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
-            </SelectCurrency>
-          ) : (
-            <SelectCurrency>
-              <FormControl
-                variant="outlined"
-                fullWidth
-                sx={{ flexBasis: "30%", mt: { xs: "15px", lg: "5px" } }}
-              >
-                <InputLabel className={styles.label}>Currency</InputLabel>
-                <Select
-                  name="currency"
-                  id="currency1"
-                  sx={{ mt: "6px" }}
-                  value={currency}
-                  onChange={(e) => setCurrecy(e.target.value)}
-                >
-                  {currenciesList.map((currency) => (
-                    <MenuItem key={currency.isocode} value={currency.isocode}>
-                      <CurrencyMenu currency={currency} />
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
-            </SelectCurrency>
-          )}
           <AmountInput>
             <TextField
               InputLabelProps={{
@@ -228,6 +180,65 @@ const Convert = () => {
               onChange={(e) => setconvert(e.target.value)}
             />
           </AmountInput>
+          {/* <Box
+            ref={parent}
+            sx={{
+              display: "flex",
+              flexDirection: { xs: "column", sm: "row" },
+              gap: "26px",
+              alignItems: "center",
+              justifyContent: "center",
+              mt: { xs: "1rem", lg: "1.5rem" },
+            }}
+          > */}
+          {buy ? (
+            <SelectCurrency>
+              <FormControl
+                variant="outlined"
+                fullWidth
+                sx={{ flexBasis: "30%", mt: { xs: "15px", lg: "5px" } }}
+              >
+                <InputLabel className={styles.label}>From:</InputLabel>
+                <Select
+                  name="currency"
+                  id="currency1"
+                  sx={{ mt: "6px" }}
+                  value={base}
+                  onChange={(e) => setBase(e.target.value)}
+                >
+                  {currencyList.map((currency) => (
+                    <MenuItem key={currency.isocode} value={currency.isocode}>
+                      <CurrencyMenu currency={currency} />
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            </SelectCurrency>
+          ) : (
+            <SelectCurrency>
+              <FormControl
+                variant="outlined"
+                fullWidth
+                sx={{ flexBasis: "30%", mt: { xs: "15px", lg: "5px" } }}
+              >
+                <InputLabel className={styles.label}>From:</InputLabel>
+                <Select
+                  name="currency"
+                  id="currency1"
+                  sx={{ mt: "6px" }}
+                  value={base}
+                  onChange={(e) => setBase(e.target.value)}
+                >
+                  {currencyList.map((currency) => (
+                    <MenuItem key={currency.isocode} value={currency.isocode}>
+                      <CurrencyMenu currency={currency} />
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            </SelectCurrency>
+          )}
+
           <Button
             onClick={handleSwitch}
             // variant="outlined"
@@ -251,7 +262,7 @@ const Convert = () => {
                 fullWidth
                 sx={{ flexBasis: "30%", mt: { xs: "15px", lg: "5px" } }}
               >
-                <InputLabel className={styles.label}>Currency</InputLabel>
+                <InputLabel className={styles.label}>To:</InputLabel>
                 <Select
                   name="currency"
                   variant="outlined"
@@ -260,7 +271,7 @@ const Convert = () => {
                   value={currency}
                   onChange={(e) => setCurrecy(e.target.value)}
                 >
-                  {currenciesList.map((currency) => (
+                  {currencyList.map((currency) => (
                     <MenuItem key={currency.isocode} value={currency.isocode}>
                       <CurrencyMenu currency={currency} />
                     </MenuItem>
@@ -275,15 +286,15 @@ const Convert = () => {
                 fullWidth
                 sx={{ flexBasis: "30%", mt: { xs: "15px", lg: "5px" } }}
               >
-                <InputLabel className={styles.label}>Base Currency</InputLabel>
+                <InputLabel className={styles.label}>To:</InputLabel>
                 <Select
                   name="currency"
                   id="currency1"
-                  value={base}
+                  value={currency}
                   sx={{ mt: "6px" }}
-                  onChange={(e) => setBase(e.target.value)}
+                  onChange={(e) => setCurrecy(e.target.value)}
                 >
-                  {currenciesList.map((currency) => (
+                  {currencyList.map((currency) => (
                     <MenuItem key={currency.isocode} value={currency.isocode}>
                       <CurrencyMenu currency={currency} />
                     </MenuItem>
@@ -292,6 +303,7 @@ const Convert = () => {
               </FormControl>
             </SelectCurrency>
           )}
+
           {/* </Box> */}
         </Box>
       </Box>
@@ -300,16 +312,12 @@ const Convert = () => {
           <div className="convert">
             <h4>Result</h4>
             <h3>
-              {buy
-                ? noWCommas((rates.parallel_buy * Number(convert)).toFixed(2))
-                : noWCommas(
-                    ((1 / rates.parallel_sell) * Number(convert)).toFixed(2)
-                  )}
-              <span>{buy ? currency : "USD"}</span>
+              {rates}
+              <span>{buy ? base : currency}</span>
             </h3>
             <div className="xchng">
               <h4>
-                1 USD = {noWCommas((rates.parallel_buy * Number(1)).toFixed(2))}
+                1 {base} = {rate}
                 {currency}
               </h4>
             </div>
@@ -318,7 +326,7 @@ const Convert = () => {
             <h6>
               With Streetrates, you always obtain the best exchange rate.{" "}
             </h6>
-            <p>Last updated: ${date}</p>
+            <p>Last updated: {date}</p>
           </div>
         </Rate>
       )}
