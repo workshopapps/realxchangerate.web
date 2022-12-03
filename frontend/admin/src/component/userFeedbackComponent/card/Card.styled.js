@@ -24,7 +24,7 @@ export const StyledCardWrapper = styled.div`
 	// }
 	.alignBottom {
 		// border: 1px solid red;
-		margin-top: 1rem;
+		// margin-top: 1rem;
 		// align-items: flex-end;
 		.date {
 			display: flex;
