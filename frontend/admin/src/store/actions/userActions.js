@@ -7,6 +7,12 @@ const initialState = {
   registerStatus: "idle",
   loginStatus: "idle",
 };
+const endpoint =
+  process.env.NODE_ENV === "production"
+    ? "https://api.streetrates.hng.tech/api/auth"
+    : process.env.NODE_ENV === "development"
+    ? "http://localhost:8000/api/auth"
+    : "";
 
 export const loginUser = createAsyncThunk(
   "user/login",
@@ -18,7 +24,7 @@ export const loginUser = createAsyncThunk(
         },
       };
       const res = await axios.post(
-        "https://my-second-app-dot-wise-philosophy-348109.oa.r.appspot.com/api/auth",
+        endpoint,
         {
           username: payload.email,
           password: payload.password,
@@ -41,14 +47,13 @@ export const loginUser = createAsyncThunk(
   }
 );
 
-
 export const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
     logout: (state) => {
-      state.loginStatus = 'idle';
-    }
+      state.loginStatus = "idle";
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -66,6 +71,6 @@ export const userSlice = createSlice({
   },
 });
 
-export const { logout } = userSlice.actions
+export const { logout } = userSlice.actions;
 
 export default userSlice.reducer;
