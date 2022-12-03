@@ -35,6 +35,8 @@ import {
   StudentAmbassador,
   ApplyToAdvertise,
   StudentAmbassadorForm,
+  Affiliate,
+  Referral
 } from "./Pages";
 import GlobalStyle from "./styles/Globalstyle";
 import ErrorPage from "./Pages/404/ErrorPage";
@@ -80,6 +82,8 @@ function App() {
             <Route path="/press/article" element={<Article />} />
             <Route path="/careers" element={<Careers />} />
             <Route path="/about" element={<About />} />
+            <Route path="/partnerships/affiliate" element={<Affiliate />} />
+            <Route path="/partnerships/referral" element={<Referral />} />
             <Route path="/complaint" element={<FileAComplaint />} />
             {/* adding complaint form route */}
             <Route path="/complaint/form" element={<FileAComplaintForm />} />
