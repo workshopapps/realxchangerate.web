@@ -23,6 +23,7 @@
         "material-ui-popup-state": "^4.1.0",
         "moment": "^2.29.4",
         "react": "^18.2.0",
+        "react-countdown-simple": "^1.0.12",
         "react-dom": "^18.2.0",
         "react-hook-form": "^7.40.0",
         "react-i18next": "^12.0.0",

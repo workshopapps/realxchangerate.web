@@ -7,7 +7,7 @@ from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
 from app.api.deps import get_db
-from app.utils import get_binancep2p_rate, format_binance_response_data, make_official_rate_request
+from app.utils import get_binancep2p_rate, format_binance_response_data, make_official_rate_request, sma_rate
 
 router = APIRouter()
 

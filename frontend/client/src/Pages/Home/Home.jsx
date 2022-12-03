@@ -18,29 +18,37 @@ import { useSelector } from "react-redux";
 import { dispatch } from "../../redux/store";
 import { GetCurrencyRates } from "../../redux/features/Reducers/serviceActions";
 import { useTranslation } from "react-i18next";
-
+import Countdown from "react-countdown-simple";
 const Home = () => {
+  const oneHour = new Date(
+    new Date().setHours(new Date().getHours() + 2)
+  ).toISOString();
   const { currencyRates, currencyList } = useSelector((state) => state.service);
   const { t } = useTranslation();
-  const lang = sessionStorage.getItem("localLanguage");
-  console.log(lang);
+  const [currencies, setCurrencies] = useState(tableCurrenciesList);
+  const [getCurrency, setGetCurrency] = useState([]);
+  const [dateUpdate, setDateUpdate] = useState("");
 
   useEffect(() => {
     if (currencyList.length > 0) {
       dispatch(GetCurrencyRates(currencyList));
     }
+
+    fetch("https://api.streetrates.hng.tech/api/currency/currencies/flags")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setGetCurrency(data);
+        setDateUpdate(data[0].rate.last_updated);
+        console.log(data[0].rate.last_updated);
+      })
+      .catch((e) => console.log(e));
+
     //eslint-disable-next-line
   }, [currencyList]);
-
-  const [currencies, setCurrencies] = useState(tableCurrenciesList);
-  const handleEdit = () => {
-    toggle();
-  };
-
   const handleDelete = (e) => {
     setCurrencies(currencies.filter((item) => item.id !== e));
   };
-
   function toggle() {
     const button = document.getElementById("edit");
     const deleteIcons = document.querySelectorAll(".delete-cur");
@@ -58,6 +66,10 @@ const Home = () => {
     setCurrencies([...currencies, item]);
     closeModal();
   };
+  const handleEdit = () => {
+    toggle();
+  };
+
   return (
     <Box
       sx={{
@@ -164,13 +176,20 @@ const Home = () => {
                 </div>
               </Button>
               <Menu {...bindMenu(popupState)}>
-                {addCurrency.map((item) => {
+                {getCurrency.map((item) => {
                   return (
                     <MenuItem
                       onClick={() => handleAdd(popupState.close, item)}
                       key={item.id}
                     >
-                      {item.isocode} - {item.incurrency}
+                      <img
+                        loading="lazy"
+                        width="20"
+                        src={`${item.flag}`}
+                        alt=""
+                        style={{ marginRight: "10px" }}
+                      />
+                      {item.isocode} - {item.country}
                     </MenuItem>
                   );
                 })}
@@ -180,8 +199,19 @@ const Home = () => {
         </PopupState>
         <div className="lastUpdate">
           <div style={{ position: "relative" }}>
-            <CircularProgressWithLabel variant="determinate" value={35} />
-            <i>35</i>
+            <CircularProgressWithLabel
+              variant="determinate"
+              value={59}
+              thickness={6}
+            />
+            <i>
+              <Countdown
+                targetDate={oneHour}
+                renderer={({ days, hours, minutes, seconds }) => (
+                  <span id="time">{minutes}</span>
+                )}
+              />
+            </i>
           </div>
           <span>{t("home_update")}</span>
         </div>
@@ -191,7 +221,20 @@ const Home = () => {
 };
 
 export default Home;
-const StyledBox = styled(Box)`
+const TypographyLive = styled(Typography)`
+  @media screen and (max-width: 480px) {
+    text-align: center;
+  }
+`;
+
+const TypographyHead = styled(Typography)`
+  @media screen and (max-width: 480px) {
+    text-align: center;
+  }
+`;
+const StyledBox = styled(Box)``;
+
+const StyledBankBox = styled(Box)`
   @media screen and (max-width: 480px) {
     display: none;
   }
@@ -238,14 +281,14 @@ const StyledSelection = styled.div`
     @media screen and (max-width: 480px) {
       max-width: 50%;
     }
-    i {
+    i span {
       position: absolute;
       font-style: normal;
       font-weight: 600;
       font-size: 16px;
       line-height: 22px;
-      right: 10px;
-      top: 10px;
+      right: 18px;
+      top: 9px;
     }
     span {
       font-weight: 400;

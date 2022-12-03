@@ -31,6 +31,7 @@ const InputField = ({
       <label htmlFor={name}>{label}</label>
       <input
         type={type}
+        name={name}
         placeholder={placeHolder}
         onChange={handleChange}
         value={value}
