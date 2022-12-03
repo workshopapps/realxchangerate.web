@@ -8,10 +8,10 @@ class Currency(Base):
     __tablename__ = "currencies"
 
     id = Column(Integer, primary_key=True, index=True)
-    country = Column(String, unique=True, index=True, nullable=False)
-    isocode = Column(String, unique=True, nullable=False)
-    symbol = Column(String, nullable=False)
-    name = Column(String)
+    country = Column(String(50), unique=True, index=True, nullable=False)
+    isocode = Column(String(10), unique=True, nullable=False)
+    symbol = Column(String(255), nullable=False)
+    name = Column(String(100))
 
     rates = relationship(
         "Rate", back_populates="currency", cascade="all, delete")

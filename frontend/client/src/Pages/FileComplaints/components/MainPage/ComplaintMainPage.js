@@ -18,6 +18,7 @@ const enquiriesData = [
     icon: EnquiriesSvg,
     heading: "Enquiries",
     description: "For general enquiries and feedback, send us an email at",
+
     linkTitle: "contact@streetrate.com",
   },
   {
@@ -26,6 +27,7 @@ const enquiriesData = [
     heading: "FAQ",
     description:
       "Get some answers to some of the most commonly asked questions and feedback.",
+
   },
 ];
 
