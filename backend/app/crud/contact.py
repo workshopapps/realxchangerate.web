@@ -11,6 +11,6 @@ class CRUDContact(CRUDBase[Contact, ContactCreate, ContactUpdate]):
 
     def get_contact_status(self, db: Session):
         """Returns all contact details from the database"""
-        return db.query(Contact).get(Status)
+        return db.query(Contact).get(id)
 
 contact = CRUDContact(Contact)
