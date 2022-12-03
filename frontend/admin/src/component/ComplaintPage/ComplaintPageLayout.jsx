@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import BackButton from "../shared/BackButton/BackButton";
 import {
   StyledComplaintForm,
@@ -17,7 +17,10 @@ import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import { useDispatch, useSelector } from "react-redux";
-import { getComplaints, updateComplaint } from "../../store/actions/complaintsActions";
+import {
+  getComplaints,
+  updateComplaint,
+} from "../../store/actions/complaintsActions";
 // import Loader from "../shared/Loader/Loader";
 import { toast } from "react-toastify";
 
@@ -25,6 +28,8 @@ function ComplaintPageLayout() {
   const [data, setData] = useState(null);
   const [adminMssg, setAdminMssg] = useState("");
   const params = useParams();
+
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
   const { complaints, loading } = useSelector((state) => state.complaints);
@@ -72,10 +77,13 @@ function ComplaintPageLayout() {
 
     const info = {
       id: data?.id,
-      status: data?.status
-    }
+      status: data?.status,
+    };
 
-    dispatch(updateComplaint(info))
+    dispatch(updateComplaint(info));
+    // if (loading !== "rejected") {
+    //   navigate("/admin/complaints");
+    // }
   };
 
   const ITEM_HEIGHT = 48;
