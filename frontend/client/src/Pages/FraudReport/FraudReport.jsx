@@ -1,10 +1,11 @@
 import { Box, Typography, Stack, styled } from "@mui/material";
 import React from "react";
-
+import { Link } from "react-router-dom";
 import ads from "./pexels-marcus-herzberg-1058276.jpg";
 import confident from "./pexels-andrea-piacquadio-3771839.jpg";
 import registered from "./pexels-erik-mclean-5868633.jpg";
 import payments from "./pexels-michael-nunzio-4189458.jpg";
+
 
 /*import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -379,11 +380,11 @@ const Body = () => {
                 }}
               >
                 If you would like to report fraud, please use the{" "}
-                <a
+                <Link
                   sx={{
                     color: "red",
                   }}
-                  href="/complaint"
+                  to ="/complaint"
                 >
                   <Typography
                     variant="span"
@@ -394,7 +395,7 @@ const Body = () => {
                   >
                     File a complaint
                   </Typography>
-                </a>{" "}
+                </Link>{" "}
                 option. If you’re not getting the desired response, you can
                 contact the appropriate investigative agencies below:
               </Body2Text>
