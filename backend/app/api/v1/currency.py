@@ -8,6 +8,7 @@ from app.api.deps import get_db
 from app.models.rate import Rate
 from app.models.currency import Currency
 import requests
+from datetime import timedelta, datetime
 
 router = APIRouter()
 
@@ -159,4 +160,74 @@ def get_currency(isocode: str, db: Session = Depends(get_db)):
         "success":True,
         "status_code": 200,
         "data":currency_dict
-    }    
+    }
+
+
+@router.get("/trend/{isocode}")
+def get_currency_trend(isocode: str, db: Session = Depends(get_db)):
+    """Get currency trend information for a given currency"""
+    currency = crud.currency.get_currency_by_isocode(db, isocode.upper())
+
+    # Get latest rate
+    latest = db.query(Rate).filter(
+        Rate.currency_id == currency.id).order_by(
+            Rate.last_updated.desc()).first()
+
+    # Get 1 hour change
+    hour = db.query(Rate).filter(
+        Rate.currency_id == currency.id).filter(
+            Rate.last_updated <= datetime.now() - timedelta(hours=1)
+        ).order_by(
+            Rate.last_updated.desc()
+        ).first()
+    
+    # Get a day change
+    day = db.query(Rate).filter(
+        Rate.currency_id == currency.id).filter(
+            Rate.last_updated <= datetime.now() - timedelta(days=1)
+        ).order_by(
+            Rate.last_updated.desc()
+        ).first()
+    
+    # Get 7 days change
+    days7 = db.query(Rate).filter(
+        Rate.currency_id == currency.id).filter(
+            Rate.last_updated <= datetime.now() - timedelta(days=7)
+        ).order_by(
+            Rate.last_updated.desc()
+        ).first()
+    
+    # Get a month
+    month = db.query(Rate).filter(
+        Rate.currency_id == currency.id).filter(
+            Rate.last_updated <= datetime.now() - timedelta(days=31)
+        ).order_by(
+            Rate.last_updated.desc()
+        ).first()
+
+    # Parse data
+    data = currency.dict()
+    if hour is not None:
+        data["one_hour"] = ((latest.parallel_buy - hour.parallel_buy) / latest.parallel_buy) * 100
+    else:
+        data["one_hour"] = None
+    if day is not None:
+        data["one_day"] = ((latest.parallel_buy - day.parallel_buy) / latest.parallel_buy) * 100
+    else:
+        data["one_day"] = None
+    if days7 is not None:
+        data["seven_days"] = ((latest.parallel_buy - days7.parallel_buy) / latest.parallel_buy) * 100
+    else:
+        data["seven_days"] = None
+    if month is not None:
+        data["one_month"] = ((latest.parallel_buy - month.parallel_buy) / latest.parallel_buy) * 100
+    else:
+        data["one_month"] = None
+
+    data = {
+        "success": True,
+        "status_code": 200,
+        "data": data
+    }
+
+    return data
