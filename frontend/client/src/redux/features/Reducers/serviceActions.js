@@ -1,4 +1,5 @@
 import { dispatch } from "../../store";
+import uuid from "react-uuid";
 import {
   setCurrencyList,
   setUserIp,
@@ -66,10 +67,13 @@ export const GetCurrencyData = (isocode) => async () => {
   }
 };
 export const GetCurrencyRates = (currencies) => async () => {
+  dispatch(setLoading(true));
   try {
     let currencyRates = currencies.map(async (ele) => {
-      const res = await RateService.GetCurrencyData(ele.isocode);
-      return res.data.data;
+      if (ele.isocode !== "USD") {
+        const res = await RateService.GetCurrencyData(ele.isocode);
+        return res.data.data;
+      }
     });
     Promise.all(currencyRates).then((values) =>
       dispatch(setCurrencyRates(values))
@@ -89,7 +93,18 @@ export const GetNews = (ip) => async () => {
       `https://my-second-app-dot-wise-philosophy-348109.oa.r.appspot.com/api/news/${ip}`
     );
     if (res.data.results.length > 0) {
-      dispatch(setNews(res.data.results));
+
+      //add IDs to the news
+      let news = res.data.results
+      let updatedNews = news.map((ele) => {
+        ele.id = uuid()
+        return ele;
+      })
+
+      let lastUpdated = new Date().getTime() + 6 * 60 * 60 * 1000;
+      sessionStorage.setItem("news", JSON.stringify(updatedNews));
+      sessionStorage.setItem("lastUpdated", lastUpdated);
+      dispatch(setNews(updatedNews));
     }
 
     dispatch(setLoading(false));

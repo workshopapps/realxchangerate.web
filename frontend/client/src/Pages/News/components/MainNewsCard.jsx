@@ -1,20 +1,44 @@
 import { Box, Typography, useTheme, Skeleton } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
-import im from "../assets/before.png";
 import moment from "moment";
+import { MainSectionImageCard } from "./ImageCard";
 
 export default function MainNewsCard({ currentNews }) {
   const theme = useTheme();
   const darkMode = theme.palette.mode === "dark";
 
   return (
-    <Box width="50%" sx={{width:{sm:"40%", md:"50%"}}}>
+    <Box
+      width="50%"
+      sx={{
+        width: { sm: "40%", md: "50%" },
+        marginBottom: { xs: "24px", sm: "0px" },
+      }}
+    >
       {currentNews ? (
         <Box display="flex" flexDirection="column" gap="16px" mt="7px" w="100%">
-          <img src={currentNews ? currentNews.image_url : im} alt="im" />
+          <>
+            {currentNews.image_url === null ? (
+              <MainSectionImageCard
+                category={currentNews.category[0]}
+                height="380px"
+              />
+            ) : (
+              <img
+                src={currentNews.image_url}
+                alt="i"
+                height="100%"
+                width="100%"
+              />
+            )}
+          </>
           <Box display="flex" flexDirection="column" gap="24px">
-            <Typography color="#334155" sx={{fontSize:{xs:"16px",sm:"13px", md:"16px"}}} lineHeight="19px">
+            <Typography
+              color="#334155"
+              sx={{ fontSize: { xs: "16px", sm: "13px", md: "16px" } }}
+              lineHeight="19px"
+            >
               {moment(currentNews.pubDate).format("Do MMMM, YYYY  |  h:mmA")}
             </Typography>
 
@@ -23,12 +47,12 @@ export default function MainNewsCard({ currentNews }) {
                 color="#0F172A"
                 sx={{
                   fontWeight: "500",
-                  fontSize: {xs:"16px",sm: "22px",md:"27px", lg: "32px" },
+                  fontSize: { xs: "16px", sm: "22px", md: "27px", lg: "32px" },
                   lineHeight: { xs: "24px", md: "39px" },
                 }}
               >
                 <Link
-                  to="/news/1"
+                  to={`/news/${currentNews.id}`}
                   style={{
                     textDecoration: "none",
                     color: darkMode ? "#fff" : "#0F172A",
@@ -44,10 +68,7 @@ export default function MainNewsCard({ currentNews }) {
                   fontWeight: "400",
 
                   lineHeight: {
-                    xs:"14px",
-                    sm: "16px",
-                    md: "20px",
-                    lg: "24px",
+                    xs: "24px",
                   },
                 }}
               >

@@ -1,39 +1,19 @@
-import { ListItem } from "@mui/material";
-import { Box } from "@mui/system";
+import { ListItem, Typography, Box } from "@mui/material";
 import React from "react";
 import { countries } from "../data";
 import { Link } from "react-router-dom";
-import DeleteIcon from "../assets/delete.svg";
 
-function Table2({ isocode, country, deleteIcon }) {
-  const base_url = process.env.REACT_APP_BASE_URL;
-  const [rates, setRates] = React.useState({});
-
-  React.useEffect(() => {
-    const fetchRates = async () => {
-      const response = await fetch(
-        `https://api.streetrates.hng.tech/rate/currency/currencies/${isocode}`
-      );
-      const data = await response.json();
-      return data;
-    };
-    fetchRates().then((ratesData) => {
-      setRates(ratesData.data.rate);
-      console.log(setRates);
-    });
-  }, [base_url, isocode]);
-
+function Table2({ isocode, country, deleteIcon, rates }) {
   const countryDetails = countries.filter((countr) => countr.label === country);
   return (
-    <ListItem
-      sx={{
-        display: "flex",
-        // alignItems: "center",
-        justifyContent: "space-between",
-        borderTop: "1px solid #CBD5E1",
-        p: "2.3rem 1.3rem",
-        fontSize: "1.4rem",
-      }}
+    <Box
+      justifyContent="space-between"
+      display="flex"
+      flexDirection="row"
+      padding="10px"
+      alignItems="center"
+      borderTop="1px solid #CBD5E1"
+      fontSize="1.4rem"
     >
       <Box sx={{ display: "flex", alignItems: "center", gap: "1rem" }}>
         <Box>
@@ -52,25 +32,15 @@ function Table2({ isocode, country, deleteIcon }) {
           </Box>
         </Link>
       </Box>
-      {rates && (
-        <Box
-          sx={{ display: "flex", alignItems: "baseline", textAlign: "left" }}
-        >
-          {Number(rates.parallel_buy).toFixed(2)}
-        </Box>
-      )}
-      {rates && (
-        <>
-          <Box
-            sx={{ display: "flex", alignItems: "baseline", textAlign: "left" }}
-          >
-            {Number(rates.official_buy).toFixed(2)}
-          </Box>
 
-          {deleteIcon}
-        </>
-      )}
-    </ListItem>
+      <Box>{Number(rates.parallel_buy).toFixed(2)}</Box>
+
+      <>
+        <Box>{Number(rates.official_buy).toFixed(2)}</Box>
+
+        {deleteIcon}
+      </>
+    </Box>
   );
 }
 

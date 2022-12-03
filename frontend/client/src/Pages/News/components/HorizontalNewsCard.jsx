@@ -1,25 +1,25 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Box, Typography, Stack, Skeleton } from "@mui/material";
+import { Box, Typography, Skeleton } from "@mui/material";
 import moment from "moment";
 import { Link } from "react-router-dom";
-import ImageCard from "./ImageCard";
+import {ImageCard} from "./ImageCard";
 
-export default function HorizontalNewsCard({ data, id }) {
+export default function HorizontalNewsCard({ data }) {
   return (
     <Box>
       {data ? (
         <Box
           display="flex"
           flexDirection="row"
-          sx={{ gap: {sm:"15px", md: "20px", lg: "24px" } }}
+          sx={{ gap: {xs:"15px", md: "20px", lg: "24px" }, backgroundColor:{xs:"#F8FAFC", sm:"#fff"}, padding:{xs:"17px", sm:"auto"} }}
         >
           <>
             {data.image_url === null ? (
-              <ImageCard category={data.category[0]} height="112px" />
+              <ImageCard category={data.category[0]} height="112px" width="147px" />
             ) : (
               
-              <img src={data.image_url} alt="i" height="100%" width="100%" />
+              <img src={data.image_url} alt="i" height="112px" width="127px" />
             )}
           </>
 
@@ -32,7 +32,7 @@ export default function HorizontalNewsCard({ data, id }) {
             <Typography
               sx={{
                 fontWeight: "400",
-                fontSize: { xs: "10px", lg: "16px" },
+                fontSize: { xs: "11px", lg: "16px" },
                 lineHeight: "19px",
                 color: "#7C7C7C",
               }}
@@ -57,7 +57,7 @@ export default function HorizontalNewsCard({ data, id }) {
                 </Typography>
               </a>
             ) : (
-              <Link to={`/news/${id}`}>
+              <Link to={`/news/${data.id}`}>
                 <Typography
                   sx={{
                     fontWeight: "500",

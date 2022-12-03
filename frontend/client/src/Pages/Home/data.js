@@ -32,15 +32,15 @@ export const currenciesList = [
 
 export const tableCurrenciesList = [
   {
-    symbol: "USD",
-    country: "United States",
-    isocode: "USD",
+    symbol: "CAD",
+    country: "Canada",
+    isocode: "CAD",
     id: 1,
   },
   {
-    symbol: "GBR",
+    symbol: "GBP",
     country: "United Kingdom",
-    isocode: "GBR",
+    isocode: "GBP",
     id: 2,
   },
   {

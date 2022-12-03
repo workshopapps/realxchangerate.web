@@ -1,10 +1,15 @@
 # Helper functions to make things easier
 # Created by @alisani081
 
+
 import asyncio
 from typing import Any, Dict, List, Optional
 import aiohttp
 import requests
+from app import crud
+from fastapi import APIRouter, Depends, HTTPException, Query, status
+from app.api.deps import get_db
+from sqlalchemy.orm import Session
 from app.schemas import BinanceRequestSchema, BinanaceResponseSchema
 
 binancep2p_endpoint = "https://p2p.binance.com/bapi/c2c/v2/friendly/c2c/adv/search"
@@ -77,9 +82,12 @@ Add the rates
 Divide by 2 and return the new rates
 
 """
-async def sma_rate(previous_buy_rate, previous_sell_rate):
+async def sma_rate(db: Session = Depends(get_db)):
+    previous_buy_rate = crud.rate.get_last_parallel_buy_rate(db)
+    previous_sell_rate = crud.rate.get_last_parallel_sell_rate(db)
     new_buy_rate = format_binance_response_data().get("buy_rate")
     sma_buy_rate = (previous_buy_rate + new_buy_rate)/2
     new_sell_rate = format_binance_response_data().get("sell_rate")
     sma_sell_rate = (previous_sell_rate + new_sell_rate)/2
     return {"buy_rate": sma_buy_rate, "sell_rate": sma_sell_rate}
+
