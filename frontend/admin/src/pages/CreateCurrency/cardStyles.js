@@ -1,11 +1,8 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 32%;
-  max-width: 350px;
-  padding: 30px 16px 64px 16px;
-
   border-radius: 8px;
+  padding: 24px;
   display: flex;
   flex-direction: column;
   background-color: ${(props) => props.bg};
@@ -23,7 +20,7 @@ export const Container = styled.div`
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 8px;
+      margin-bottom: 16px;
       & img {
         width: 64px;
       }
@@ -42,7 +39,7 @@ export const Container = styled.div`
     .type {
       h2 {
         font-size: clamp(1rem, 1.5vw, 1.1rem);
-        /* margin-bottom: 1.5rem; */
+
         color: #000000;
         font-weight: 700;
       }
@@ -52,8 +49,8 @@ export const Container = styled.div`
       }
     }
   }
-  @media screen and (max-width: 930px) {
-    width: 90%;
-    max-width: 400px;
+
+  @media (min-width: 1024px) {
+    padding: 30px 16px 54px;
   }
 `;

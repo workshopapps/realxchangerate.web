@@ -3,6 +3,7 @@ import styled from "styled-components";
 import groupIcon from "./assets/svg/GroupIcon.svg";
 import ReferralPartnersType from "./ReferralPartnersType";
 import checkMark from "./assets/svg/check.svg";
+import { Link } from "react-router-dom";
 
 // styles
 import {
@@ -19,7 +20,7 @@ const ReferralPartners = (props) => {
             <h2> {props.title}</h2>
             <p>{props.text}</p>
           </div>
-          <button className="high-button">{props.btn}</button>
+          <Link to={props.link} className="high-button">{props.btn}</Link>
         </div>
         <div>
           <ul>
@@ -36,7 +37,7 @@ const ReferralPartners = (props) => {
               <div>{props.list3}</div>
             </li>
           </ul>
-          <button className="low-button">{props.btn}</button>
+          <Link to={props.link} className="low-button">{props.btn}</Link>
         </div>
         {/* header
       <PartnersHeader>
@@ -97,12 +98,22 @@ const StyledSection = styled.div`
     font-size: 28px;
     line-height: 32px;
     margin-bottom: 32px;
+    @media screen and (max-width: 480px) {
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 24px;
+    }
   }
   p {
     font-weight: 400;
     font-size: 20px;
     line-height: 28px;
     color: #0f172a;
+    @media screen and (max-width: 480px) {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 24px;
+    }
   }
   .high-button {
     border: none;
@@ -129,6 +140,9 @@ const StyledSection = styled.div`
     display: flex;
     @media screen and (max-width: 480px) {
       align-items: flex-start;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 24px;
     }
   }
   ul {

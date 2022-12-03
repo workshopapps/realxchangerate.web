@@ -1,10 +1,15 @@
 # Helper functions to make things easier
 # Created by @alisani081
 
+
 import asyncio
 from typing import Any, Dict, List, Optional
 import aiohttp
 import requests
+from app import crud
+from fastapi import Depends
+from app.api.deps import get_db
+from sqlalchemy.orm import Session
 from app.schemas import BinanceRequestSchema, BinanaceResponseSchema
 
 binancep2p_endpoint = "https://p2p.binance.com/bapi/c2c/v2/friendly/c2c/adv/search"
@@ -60,9 +65,8 @@ async def format_binance_response_data(response_data: List[Dict[str, Any]]) -> A
     return {"buy_rate": buy_rate, "sell_rate": sell_rate}
 
 
-def make_official_rate_request(base_currency: str, currency_list: List[str]) -> Any:
-    currencies = ','.join(currency_list)
-    url = f"{official_rate_endpoint}?base={base_currency}&symbols={currencies}"
+async def make_official_rate_request(base_currency: str) -> Any:
+    url = f"{official_rate_endpoint}?base={base_currency}"
     response = requests.get(url)
     data = response.json()
     return data
@@ -76,10 +80,19 @@ Fetch rates from a new rate from the binance API
 Add the rates 
 Divide by 2 and return the new rates
 
-"""
-async def sma_rate(previous_buy_rate, previous_sell_rate):
+# """
+def sma_rate(db: Session = Depends(get_db)):
+    previous_buy_rate = crud.rate.get_last_parallel_buy_rate(db)
     new_buy_rate = format_binance_response_data().get("buy_rate")
     sma_buy_rate = (previous_buy_rate + new_buy_rate)/2
+    previous_sell_rate = crud.rate.get_last_parallel_sell_rate(db)
     new_sell_rate = format_binance_response_data().get("sell_rate")
     sma_sell_rate = (previous_sell_rate + new_sell_rate)/2
     return {"buy_rate": sma_buy_rate, "sell_rate": sma_sell_rate}
+
+
+def calculate_percentage_change(previous_rate, current_rate):
+    """Function to calculate percentage change in two rates."""
+    percentage_change = str(round(((current_rate - previous_rate) / previous_rate) * 100, 2))
+
+    return percentage_change

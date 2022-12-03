@@ -6,7 +6,7 @@ export const StyledCardWrapper = styled.div`
     border-radius: 16px;
     user-select: none;
 
-    max-width: 589px;
+    /* max-width: 989px; */
     width: 100%;
     margin-inline: auto;
     /* height: 260px; */
@@ -18,7 +18,7 @@ export const StyledCardWrapper = styled.div`
     justify-content: start;
     gap: 10px;
 
-    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    /* box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1); */
 
     &:hover {
         box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
@@ -60,17 +60,18 @@ export const StyledCardButton = styled.button`
     border-radius: ${props => props.theme.$styled.borderRadius.sm};
 
 
-    background: ${props => props.$complaintButton === 'Resolve' ? '#0062FF' : 'inherit'};
+    background: ${props => props.$complaintButton === 'resolve' ? '#0062FF' : 'inherit'};
     
     color: ${props =>
-        props.$complaintButton === 'Resolved' ? '#10B981'
-            : props.$complaintButton === 'Unresolved' ? '#EF4444'
-                : props.$complaintButton === 'Still in Review' ? '#F59E0B'
-                    : '#F8FAFC'};
+        props.$complaintButton === 'resolved' ? '#10B981'
+            : props.$complaintButton === 'unresolved' ? '#EF4444'
+                : props.$complaintButton === 'in review' ? '#F59E0B'
+                    : props.$complaintButton === 'resolve' ? '#fff'
+                        : '#F8FAFC'};
     border: 1px solid ${props =>
-        props.$complaintButton === 'Resolved' ? '#10B981'
-            : props.$complaintButton === 'Unresolved' ? '#EF4444'
-                : props.$complaintButton === 'Still in Review' ? '#F59E0B'
+        props.$complaintButton === 'resolved' ? '#10B981'
+            : props.$complaintButton === 'unresolved' ? '#EF4444'
+                : props.$complaintButton === 'in review' ? '#F59E0B'
                     : '#0062FF'};
 
     &:hover {

@@ -3,33 +3,48 @@ import Box from "@mui/material/Box";
 
 import Typography from "@mui/material/Typography";
 import { Button, FormControl, FormLabel, TextField } from "@mui/material";
+import LoadingButton from "@mui/lab/LoadingButton";
+import { style } from "./styles";
 
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: { xs: 300, md: 600 },
-  bgcolor: "background.paper",
-  borderRadius: "12px",
-  boxShadow: 24,
-  p: 4,
-  //   textAlign: "center",
-};
-
-export default function AddContent({ cancel }) {
+export default function AddContent({ cancel, setNewdata }) {
+  const endpoint =
+    process.env.NODE_ENV === "production"
+      ? "https://api.streetrates.hng.tech/api/admin/add_faq"
+      : process.env.NODE_ENV === "development"
+      ? "http://localhost:8000/api/admin/add_faq"
+      : "";
   const [formData, setFormData] = React.useState({ question: "", answer: "" });
+  const [loading, setLoading] = React.useState(false);
+  const [errortext, setErrortext] = React.useState("");
+
+  const token = localStorage.getItem("token");
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
-  console.log(formData);
+
+  React.useEffect(() => {
+    setNewdata(false);
+  }, [setNewdata]);
+
   const handlePublish = () => {
+    setLoading(true);
     const requestOptions = {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "Application/json",
+        Authorization: `Bearer ${token}`,
+      },
       body: JSON.stringify(formData),
     };
+    fetch(endpoint, requestOptions)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setLoading(false);
+        setNewdata(true);
+        cancel();
+      });
   };
   return (
     <Box sx={style}>
@@ -106,13 +121,14 @@ export default function AddContent({ cancel }) {
           >
             Cancel
           </Button>
-          <Button
+          <LoadingButton
+            loading={loading}
             variant="contained"
             sx={{ borderRadius: "8px", p: "10px 20px" }}
-            onClic={handlePublish}
+            onClick={handlePublish}
           >
             Publish
-          </Button>
+          </LoadingButton>
         </Box>
       </Box>
     </Box>
