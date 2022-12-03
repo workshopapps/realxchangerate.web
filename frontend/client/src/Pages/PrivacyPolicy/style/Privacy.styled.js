@@ -5,7 +5,7 @@ export const Container = styled.div`
   line-height: 24px;
   color: ${(props) => props.textColor};
   max-width: 1200px;
-
+  text-align: justify;
   h1,
   h2,
   h3 {

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { maxWidth } from "@mui/system";
 
-function Table2({ isocode, country, deleteIcon, rates, link }) {
+function Table2({ isocode, country, deleteIcon, rates, link, flag }) {
   const countryDetails = countries.filter((countr) => countr.label === country);
   return (
     <Box
@@ -30,7 +30,6 @@ function Table2({ isocode, country, deleteIcon, rates, link }) {
             loading="lazy"
             width="20"
             src={`https://flagcdn.com/w20/${countryDetails[0].code.toLowerCase()}.png`}
-            srcSet={`https://flagcdn.com/w40/${countryDetails[0].code.toLowerCase()}.png 2x`}
             alt=""
           />
         </Box>
