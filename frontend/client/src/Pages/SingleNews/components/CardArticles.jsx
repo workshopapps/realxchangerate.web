@@ -1,27 +1,25 @@
-import { Box, Card, Stack, Typography } from "@mui/material";
+import { Box, Card, Typography } from "@mui/material";
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import moment from "moment";
 
 export default function CardArticles({ data }) {
   return (
     <Box
+      display="flex"
+      flexDirection="column"
       sx={{
-        background: "#F7F7F7",
-        width: "90%",
-        margin: "auto",
         borderRadius: "4px",
         padding: 2,
-        marginBottom: 4,
+        gap: { xs: "10px", sm: "16px" },
       }}
     >
       <img src={data.img} alt="article img" width="100%" />
       <Typography
-        variant="h4"
-        mt={1}
         sx={{
           fontWeight: "500",
-          fontSize: "24px",
+          fontSize: { xs: "20px", md: "24px" },
           lineHeight: "144.02%",
 
           color: "#0F172A",
@@ -29,12 +27,11 @@ export default function CardArticles({ data }) {
       >
         {data.title}
       </Typography>
-      <Stack direction="row" mt={1} mb={1} gap={2}>
+      <Box display="flex" flexDirection="row" gap="10px">
         <Typography
-          variant="p"
           sx={{
             fontWeight: "400",
-            fontSize: "16px",
+            fontSize: "12px",
             lineHeight: "143.52%",
 
             color: "#0F172A",
@@ -43,20 +40,18 @@ export default function CardArticles({ data }) {
           {data.author}
         </Typography>
         <Typography
-          variant="p"
           sx={{
             fontWeight: "400",
-            fontSize: "16px",
+            fontSize: "12px",
             lineHeight: "143.52%",
 
             color: "#0F172A",
           }}
         >
-          {data.date}
+          {moment(data.date).format("Do MMMM, YYYY")}
         </Typography>
-      </Stack>
+      </Box>
       <Typography
-        variant="p"
         sx={{
           fontWeight: "400",
           fontSize: "16px",
@@ -68,7 +63,7 @@ export default function CardArticles({ data }) {
       </Typography>
       <Box mt={2} pb={2}>
         <Link
-          to="/news"
+          to="/#/news"
           style={{
             color: "#0064F1",
           }}

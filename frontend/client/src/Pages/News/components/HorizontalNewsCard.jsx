@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Box, Typography, Stack, Skeleton } from "@mui/material";
+import { Box, Typography, Skeleton } from "@mui/material";
 import moment from "moment";
 import { Link } from "react-router-dom";
 import ImageCard from "./ImageCard";
@@ -12,7 +12,7 @@ export default function HorizontalNewsCard({ data, id }) {
         <Box
           display="flex"
           flexDirection="row"
-          sx={{ gap: {sm:"15px", md: "20px", lg: "24px" } }}
+          sx={{ gap: {xs:"15px", md: "20px", lg: "24px" }, backgroundColor:{xs:"#F8FAFC", sm:"#fff"}, padding:{xs:"17px", sm:"auto"} }}
         >
           <>
             {data.image_url === null ? (
@@ -32,7 +32,7 @@ export default function HorizontalNewsCard({ data, id }) {
             <Typography
               sx={{
                 fontWeight: "400",
-                fontSize: { xs: "10px", lg: "16px" },
+                fontSize: { xs: "11px", lg: "16px" },
                 lineHeight: "19px",
                 color: "#7C7C7C",
               }}

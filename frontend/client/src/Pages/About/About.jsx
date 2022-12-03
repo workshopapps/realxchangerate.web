@@ -69,7 +69,7 @@ const About = () => {
         flexDirection="column"
         sx={{ gap: { xs: "27px", sm: "80px" } }}
       >
-        <Container about={true} textColor={textColor}>
+        <Container about textColor={textColor}>
           <Header />
         </Container>
 

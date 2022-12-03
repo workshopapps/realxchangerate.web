@@ -15,7 +15,7 @@ export default function StoriesNews({ data, id }) {
         padding="16px"
         borderRadius="4px"
         flexDirection="column"
-        sx={{gap:{xs:"10px", lg:"16px"}}}
+        sx={{ gap: { sm: "10px", lg: "16px" } }}
       >
         {/* <>
           {data.image_url === null ? (
@@ -33,7 +33,7 @@ export default function StoriesNews({ data, id }) {
               lineHeight="28px"
               color="#0F172A"
               sx={{
-                fontSize: { xs: "20px", sm:"18px", lg: "24px" },
+                fontSize: { xs: "20px", sm: "18px", lg: "24px" },
               }}
             >
               {data.title}
