@@ -5,7 +5,7 @@ export const StyledWrapper = styled.div`
 	margin-bottom: 52px;
 
 	h2 {
-		margin-bottom: 32px;
+		margin-bottom: 1rem;
 		font-weight: 600;
 		font-size: clamp(1rem, 2vw, 1.25rem);
 		line-height: 28px;
