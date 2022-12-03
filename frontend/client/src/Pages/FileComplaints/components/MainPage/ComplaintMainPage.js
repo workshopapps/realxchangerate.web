@@ -17,7 +17,7 @@ const enquiriesData = [
     id: 1,
     icon: EnquiriesSvg,
     heading: "Enquiries",
-    description: `For general enquiries and feedback, send us an email at `,
+    description: "For general enquiries and feedback, send us an email at",
     linkTitle: "contact@streetrate.com",
   },
   {
@@ -25,7 +25,7 @@ const enquiriesData = [
     icon: FAQSvg,
     heading: "FAQ",
     description:
-      "Get some answers to dome of the most commonly asked questions and feedback.",
+      "Get some answers to some of the most commonly asked questions and feedback.",
   },
 ];
 
@@ -94,7 +94,14 @@ const ComplaintMainPage = () => {
         <div className="enquiry">
           {enquiriesData.map((data) => {
             return (
-              <div key={data.id}>
+              <div
+                key={data.id}
+                onClick={() => {
+                  if (data.heading === "FAQ") {
+                    navigate("/faq");
+                  }
+                }}
+              >
                 <img src={data.icon} alt="enquiries" height={60} />
                 <h3>{data.heading}</h3>
                 <p>
