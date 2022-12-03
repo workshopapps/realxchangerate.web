@@ -1,6 +1,5 @@
 import { Box, Typography } from "@mui/material";
 import React from "react";
-import scan from "../../assets/scan-image.png";
 import styles from "./home.module.css";
 
 function Hero() {

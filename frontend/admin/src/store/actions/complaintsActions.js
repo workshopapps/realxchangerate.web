@@ -1,58 +1,84 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import axios from 'axios';
 
 const initialState = {
-    complaints: [],
-    complaint: null,
-    error: null,
-    requestStatus: "idle",
+	complaints: null,
+	complaint: null,
+	error: null,
+	loading: 'idle',
 };
 
-const BASE_URL = `https://my-second-app-dot-wise-philosophy-348109.oa.r.appspot.com`
+const BASE_URL = `https://api.streetrates.hng.tech/api`;
 
 export const getComplaints = createAsyncThunk(
-    "complaint/all",
-    async (payload, { rejectWithValue }) => {
-        try {
-            const res = await axios.get(
-                `${BASE_URL}/api/admin/get_all_complaints`,
-                // {
-                //     headers: {
-                //         Authorization: `Bearer ${token}`,
-                //     },
-                // }
-            );
-            if (res.status && res.status === 200) {
-                return res.data;
-            } else {
-                return rejectWithValue(res);
-            }
-        } catch (err) {
-            console.log(err, "erorr");
-            return rejectWithValue(err.response.data);
-        }
-    }
+	'complaint/all',
+	async (_, { rejectWithValue }) => {
+		const token = localStorage.getItem('token');
+		try {
+			const res = await axios.get(`${BASE_URL}/admin/get_all_complaints`, {
+				headers: {
+					accept: 'application/json',
+					Authorization: `Bearer ${token}`,
+				},
+			});
+
+			if (res.status && res.status === 200) {
+				return res.data;
+			} else {
+				return rejectWithValue(res);
+			}
+		} catch (err) {
+			console.log(err.message, 'erorr');
+			return rejectWithValue(err.response.data);
+		}
+	}
 );
+// export const getComplaint = createAsyncThunk(
+//     "complaint/id",
+//     async (_, { rejectWithValue }) => {
 
+//         const token = localStorage.getItem("token");
+//         try {
+//             const res = await axios.get(
+//                 `${BASE_URL}/admin/get_all_complaints`,
+//                 {
+//                     headers: {
+//                         accept: 'application/json',
+//                         Authorization: `Bearer ${token}`,
+//                     },
+//                 }
+//             );
 
-export const dashboardSlice = createSlice({
-    name: "dashboard",
-    initialState,
-    reducers: {},
-    extraReducers: (builder) => {
-        builder
-            .addCase(getComplaints.pending, (state, action) => {
-                state.requestStatus = "pending";
-            })
-            .addCase(getComplaints.fulfilled, (state, action) => {
-                state.currencies = action.payload;
-                state.requestStatus = "success";
-            })
-            .addCase(getComplaints.rejected, (state, action) => {
-                state.requestStatus = "failed";
-                state.error = action.payload;
-            })
-    },
+//             if (res.status && res.status === 200) {
+//                 return res.data;
+//             } else {
+//                 return rejectWithValue(res);
+//             }
+//         } catch (err) {
+//             console.log(err.message, "erorr");
+//             return rejectWithValue(err.response.data);
+//         }
+//     }
+// );
+
+export const complaintsSlice = createSlice({
+	name: 'complaints',
+	initialState,
+	reducers: {},
+	extraReducers: (builder) => {
+		builder
+			.addCase(getComplaints.pending, (state, action) => {
+				state.loading = 'pending';
+			})
+			.addCase(getComplaints.fulfilled, (state, action) => {
+				state.complaints = action.payload;
+				state.loading = 'success';
+			})
+			.addCase(getComplaints.rejected, (state, action) => {
+				state.error = action.payload;
+				state.loading = 'failed';
+			});
+	},
 });
 
-export default dashboardSlice.reducer;
+export default complaintsSlice.reducer;

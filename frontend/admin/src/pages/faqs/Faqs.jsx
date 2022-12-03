@@ -8,53 +8,93 @@ import back from "../../assets/icons/back.svg";
 import FaqsCard from "./Cards";
 import AddContent from "./AddContent";
 
-const faqs = [
-  {
-    question: " Street rate Frequently asked questions",
-    answer:
-      "Hi, I noticed that it’s a bit hard for me to toggle between currencies when using the convert feature, please can this be checked and possibly worked on? I would like to perform a lot of transactions which rely on my use of the convert feature on the web app.",
-  },
-  {
-    question: " Shrimp and Chorizo Paella",
-    answer:
-      "Heat oil in a (14- to 16-inch) paella pan or a large, deep skillet over medium-high heat. Add chicken, shrimp and chorizo, and cook, stirring occasionally until lightly browned, 6 to 8 minutes. Transfer shrimp to a large plate and set aside, leaving chicken and chorizo in the pan. Add pimentón, bay leaves, garlic, tomatoes, onion, salt and pepper, and cook, stirring often until thickened and fragrant, about 10 minutes. Add saffron broth and remaining 4 1/2 cups chicken broth; bring to a boil.",
-  },
-  {
-    question: " Street rate Frequently asked questions",
-    answer:
-      "Hi, I noticed that it’s a bit hard for me to toggle between currencies when using the convert feature, please can this be checked and possibly worked on? I would like to perform a lot of transactions which rely on my use of the convert feature on the web app.",
-  },
-  {
-    question: " Street rate Frequently asked questions",
-    answer:
-      "Hi, I noticed that it’s a bit hard for me to toggle between currencies when using the convert feature, please can this be checked and possibly worked on? I would like to perform a lot of transactions which rely on my use of the convert feature on the web app.",
-  },
-];
+// const faqs = [
+//   {
+//     question: " Street rate Frequently asked questions",
+//     answer:
+//       "Hi, I noticed that it’s a bit hard for me to toggle between currencies when using the convert feature, please can this be checked and possibly worked on? I would like to perform a lot of transactions which rely on my use of the convert feature on the web app.",
+//   },
+//   {
+//     question: " Shrimp and Chorizo Paella",
+//     answer:
+//       "Heat oil in a (14- to 16-inch) paella pan or a large, deep skillet over medium-high heat. Add chicken, shrimp and chorizo, and cook, stirring occasionally until lightly browned, 6 to 8 minutes. Transfer shrimp to a large plate and set aside, leaving chicken and chorizo in the pan. Add pimentón, bay leaves, garlic, tomatoes, onion, salt and pepper, and cook, stirring often until thickened and fragrant, about 10 minutes. Add saffron broth and remaining 4 1/2 cups chicken broth; bring to a boil.",
+//   },
+//   {
+//     question: " Street rate Frequently asked questions",
+//     answer:
+//       "Hi, I noticed that it’s a bit hard for me to toggle between currencies when using the convert feature, please can this be checked and possibly worked on? I would like to perform a lot of transactions which rely on my use of the convert feature on the web app.",
+//   },
+//   {
+//     question: " Street rate Frequently asked questions",
+//     answer:
+//       "Hi, I noticed that it’s a bit hard for me to toggle between currencies when using the convert feature, please can this be checked and possibly worked on? I would like to perform a lot of transactions which rely on my use of the convert feature on the web app.",
+//   },
+// ];
 
 function Faqs() {
   const navigate = useNavigate();
   const [openAsk, setOpenAsk] = React.useState(false);
   const handleOpenAsk = () => setOpenAsk(true);
   const handleCloseAsk = () => setOpenAsk(false);
+  const [faqs, setFaqs] = React.useState([]);
+  const [newdata, setNewdata] = React.useState(false);
+
+  React.useEffect(() => {
+    const endpoint =
+      process.env.NODE_ENV === "production"
+        ? "https://api.streetrates.hng.tech/api/faq/get_all_faqs"
+        : process.env.NODE_ENV === "development"
+        ? "http://localhost:8000/api/faq/get_all_faqs"
+        : "";
+    const fetchFaqs = async () => {
+      const response = await fetch(endpoint);
+      return await response.json();
+    };
+    fetchFaqs().then((data) => {
+      console.log(data);
+      setFaqs(data.faqs);
+    });
+  }, [newdata]);
+
   return (
     <Container>
       <Box
         className="header"
-        sx={{ display: "flex", gap: "1rem", m: "2rem 0" }}
+        sx={{
+          display: "flex",
+          flexDirection: { xs: "column", sm: "row" },
+          gap: "1rem",
+          m: "2rem 0",
+          alignItems: { sm: "center" },
+        }}
       >
-        <Button onClick={() => navigate("/admin")}>
-          <img src={back} alt="Go back" />
-        </Button>
-        <Typography variant="h4" component="h1" sx={{ fontWeight: 700 }}>
-          Frequently Asked Questions
-        </Typography>
-        <Button variant="contained" sx={{ ml: "auto" }} onClick={handleOpenAsk}>
+        <Box sx={{ display: "flex", alignItems: "center" }}>
+          <Button onClick={() => navigate("/admin")}>
+            <img src={back} alt="Go back" />
+          </Button>
+          <Typography
+            variant="h4"
+            component="h1"
+            sx={{ fontWeight: 700, fontSize: { xs: "1.2rem", md: "2.1rem" } }}
+          >
+            Frequently Asked Questions
+          </Typography>
+        </Box>
+        <Button
+          variant="contained"
+          sx={{
+            ml: { sm: "auto" },
+            p: "1rem",
+            width: { xs: "100%", sm: "auto" },
+          }}
+          onClick={handleOpenAsk}
+        >
           Add Question
         </Button>
       </Box>
 
       {faqs.map((faq) => (
-        <FaqsCard faq={faq} />
+        <FaqsCard faq={faq} setNewdata={setNewdata} />
       ))}
 
       <Modal
@@ -68,7 +108,7 @@ function Faqs() {
           timeout: 500,
         }}
       >
-        <AddContent cancel={handleCloseAsk} />
+        <AddContent cancel={handleCloseAsk} setNewdata={setNewdata} />
       </Modal>
     </Container>
   );

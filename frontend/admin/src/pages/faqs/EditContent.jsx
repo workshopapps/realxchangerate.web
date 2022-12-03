@@ -3,21 +3,52 @@ import Box from "@mui/material/Box";
 
 import Typography from "@mui/material/Typography";
 import { Button, FormControl, FormLabel, TextField } from "@mui/material";
+import LoadingButton from "@mui/lab/LoadingButton";
 
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: { xs: 300, md: 600 },
-  bgcolor: "background.paper",
-  borderRadius: "12px",
-  boxShadow: 24,
-  p: 4,
-  //   textAlign: "center",
-};
+import { style } from "./styles";
 
-export default function EditContent({ cancel }) {
+export default function EditContent({ cancel, id, setNewdata }) {
+  const [loading, setLoading] = React.useState(false);
+  const [errortext, setErrortext] = React.useState("");
+  const endpoint =
+    process.env.NODE_ENV === "production"
+      ? `https://api.streetrates.hng.tech/api/admin/update_faq/${id}`
+      : process.env.NODE_ENV === "development"
+      ? `http://localhost:8000/api/admin/update_faq/${id}`
+      : "";
+  const [formData, setFormData] = React.useState({ question: "", answer: "" });
+  // const [token, setToken] = React.useState("");
+  const token = localStorage.getItem("token");
+
+  React.useEffect(() => {
+    setNewdata(false);
+  }, [setNewdata]);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleEdit = () => {
+    setLoading(true);
+    const requestOptions = {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(formData),
+    };
+    fetch(endpoint, requestOptions)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setLoading(false);
+        setNewdata(true);
+        cancel();
+      });
+  };
+
   return (
     <Box sx={style}>
       <Typography
@@ -50,6 +81,9 @@ export default function EditContent({ cancel }) {
           </FormLabel>
           <TextField
             id="question"
+            value={formData.question}
+            onChange={handleChange}
+            name="question"
             fullWidth
             placeholder="Type in your question here"
           />
@@ -62,6 +96,9 @@ export default function EditContent({ cancel }) {
             Answer
           </FormLabel>
           <TextField
+            value={formData.answer}
+            onChange={handleChange}
+            name="answer"
             id="answer"
             fullWidth
             multiline
@@ -87,12 +124,14 @@ export default function EditContent({ cancel }) {
           >
             Cancel
           </Button>
-          <Button
+          <LoadingButton
+            loading={loading}
+            onClick={handleEdit}
             variant="contained"
             sx={{ borderRadius: "8px", p: "10px 20px" }}
           >
             Save Changes
-          </Button>
+          </LoadingButton>
         </Box>
       </Box>
     </Box>

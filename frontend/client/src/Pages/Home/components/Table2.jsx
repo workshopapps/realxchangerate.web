@@ -2,19 +2,24 @@ import { ListItem } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
 import { countries } from "../data";
+import { Link } from "react-router-dom";
+import DeleteIcon from "../assets/delete.svg";
 
-function Table2({ isocode, country }) {
+function Table2({ isocode, country, deleteIcon }) {
   const base_url = process.env.REACT_APP_BASE_URL;
   const [rates, setRates] = React.useState({});
 
   React.useEffect(() => {
     const fetchRates = async () => {
-      const response = await fetch(`${base_url}/rate/${isocode}`);
+      const response = await fetch(
+        `https://api.streetrates.hng.tech/rate/currency/currencies/${isocode}`
+      );
       const data = await response.json();
       return data;
     };
     fetchRates().then((ratesData) => {
       setRates(ratesData.data.rate);
+      console.log(setRates);
     });
   }, [base_url, isocode]);
 
@@ -40,10 +45,12 @@ function Table2({ isocode, country }) {
             alt=""
           />
         </Box>
-        <Box>
-          <Box>{isocode}</Box>
-          <Box sx={{ fontSize: "1rem" }}>{country}</Box>
-        </Box>
+        <Link>
+          <Box>
+            <Box style={{ color: "#555962" }}>{isocode}</Box>
+            <Box sx={{ fontSize: "1rem", color: "#94A3B8" }}>{country}</Box>
+          </Box>
+        </Link>
       </Box>
       {rates && (
         <Box
@@ -53,11 +60,15 @@ function Table2({ isocode, country }) {
         </Box>
       )}
       {rates && (
-        <Box
-          sx={{ display: "flex", alignItems: "baseline", textAlign: "left" }}
-        >
-          {Number(rates.official_buy).toFixed(2)}
-        </Box>
+        <>
+          <Box
+            sx={{ display: "flex", alignItems: "baseline", textAlign: "left" }}
+          >
+            {Number(rates.official_buy).toFixed(2)}
+          </Box>
+
+          {deleteIcon}
+        </>
       )}
     </ListItem>
   );
