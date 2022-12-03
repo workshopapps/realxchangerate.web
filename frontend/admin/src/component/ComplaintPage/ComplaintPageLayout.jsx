@@ -27,6 +27,7 @@ import { toast } from "react-toastify";
 function ComplaintPageLayout() {
   const [data, setData] = useState(null);
   const [adminMssg, setAdminMssg] = useState("");
+  const [currStatus, setCurrStatus] = useState("");
   const params = useParams();
 
   // const navigate = useNavigate();
@@ -46,6 +47,7 @@ function ComplaintPageLayout() {
       let issue = complaints.items.find((item) => item.id === id);
 
       setData(issue);
+      setCurrStatus(issue.status);
     }
   }, [complaints, params.id]);
 
@@ -81,9 +83,9 @@ function ComplaintPageLayout() {
     };
 
     dispatch(updateComplaint(info));
-    // if (loading !== "rejected") {
-    //   navigate("/admin/complaints");
-    // }
+    if (currStatus !== data?.status) {
+      toast.success(`Complaint ${data?.status}`);
+    }
   };
 
   const ITEM_HEIGHT = 48;
