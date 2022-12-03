@@ -5,7 +5,8 @@
   "homepage": "/admin",
   "dependencies": {
     "@craco/craco": "^7.0.0",
-    "@mui/material": "^5.10.14",
+    "@mui/lab": "^5.0.0-alpha.110",
+    "@mui/material": "^5.10.16",
     "@mui/styled-engine-sc": "^5.10.14",
     "@reduxjs/toolkit": "^1.9.0",
     "@testing-library/jest-dom": "^5.16.5",
@@ -19,6 +20,7 @@
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.4.3",
     "react-scripts": "5.0.1",
+    "react-toastify": "^9.1.1",
     "react-world-flags": "^1.5.1",
     "recharts": "^2.1.16",
     "redux": "^4.2.0",

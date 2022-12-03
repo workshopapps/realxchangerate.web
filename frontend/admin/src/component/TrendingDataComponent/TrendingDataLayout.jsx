@@ -9,12 +9,13 @@ import Chart from "./chart/Chart";
 
 const data = {
   tvl: "41.58b",
-  change: "1.32",
+  change: "1.32", //
 };
 const TrendingDataLayout = () => {
   return (
     <StyledWrapper>
       <StyledGrid>
+      <Chart />
         <StyledTrendCards>
           <StyledCard>
             <h3>Total Value Locked (USD)</h3>
@@ -27,7 +28,7 @@ const TrendingDataLayout = () => {
           </StyledCard>
         </StyledTrendCards>
 
-        <Chart />
+        
       </StyledGrid>
 
       <DataTable />

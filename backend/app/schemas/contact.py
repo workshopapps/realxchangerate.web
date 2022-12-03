@@ -2,13 +2,10 @@ from datetime import datetime
 from typing import Optional
 
 from pydantic import BaseModel, EmailStr
+import enum
 
 import enum
 from sqlalchemy import Integer, Enum
-
-class Status(enum.Enum):
-    Read = "Read"
-    Unread = "Unread"
 
 class ContactBase(BaseModel):
     name: str
@@ -21,9 +18,13 @@ class ContactCreate(ContactBase):
 
 
 class ContactUpdate(ContactBase):
-    status: Status
+    pass
 
 
 class Contact(ContactBase):
     id: int
     last_updated: Optional[datetime]
+
+class Status(enum.Enum):
+    Read = "Read"
+    Unread = "Unread"
