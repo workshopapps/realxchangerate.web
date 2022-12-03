@@ -1,4 +1,3 @@
-from datetime import datetime
 from app.models import Rate, Currency
 import logging
 from typing import Any
@@ -7,7 +6,11 @@ from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
 from app.api.deps import get_db
-from app.utils import get_binancep2p_rate, format_binance_response_data, make_official_rate_request, sma_rate
+from app.utils import (
+    get_binancep2p_rate,
+    format_binance_response_data,
+    make_official_rate_request,
+)
 
 router = APIRouter()
 
@@ -16,26 +19,35 @@ router = APIRouter()
 async def get_currency_rates_from_external_apis(db: Session = Depends(get_db)) -> Any:
     """
     This endpoint gets exchange rates from third-party API's and update the database.
-    Cron-job.org (https://cron-job.org/) calls this endpoint every 2 hours to update the rates.
+    Cron-job.org (https://cron-job.org/) calls this endpoint every 5 minutes to update the rates.
     Base Currency: `USD`
     """
     base_currency = "USD"
     currency_list = []
     try:
         all_currencies = db.query(Currency).all()
+        official_rate = await make_official_rate_request(base_currency=base_currency)
         for currency in all_currencies:
             currency_list.append(currency.isocode.upper())
             currency_code = currency.isocode.upper()
             resp_data = await get_binancep2p_rate(currency_code)
             formatted_data = await format_binance_response_data(resp_data)
-            official_rate = make_official_rate_request(
-                base_currency=base_currency, currency_list=currency_list)
-            parallel_buy, parallel_sell = formatted_data["buy_rate"], formatted_data["sell_rate"]
-            official_buy, official_sell = official_rate["rates"][
-                currency_code], official_rate["rates"][currency_code],
+            parallel_buy, parallel_sell = (
+                formatted_data["buy_rate"],
+                formatted_data["sell_rate"],
+            )
+            official_buy, official_sell = (
+                official_rate["rates"][currency_code],
+                official_rate["rates"][currency_code],
+            )
 
-            rate_obj = Rate(currency_id=currency.id, official_buy=official_buy, official_sell=official_sell,
-                            parallel_buy=parallel_buy, parallel_sell=parallel_sell)
+            rate_obj = Rate(
+                currency_id=currency.id,
+                official_buy=official_buy,
+                official_sell=official_sell,
+                parallel_buy=parallel_buy,
+                parallel_sell=parallel_sell,
+            )
             db.add(rate_obj)
             db.commit()
 
