@@ -16,8 +16,8 @@ const HistoricalCurrencyExchange = () => {
     if (currencyList.length > 0) {
       dispatch(GetCurrencyRates(currencyList));
     }
-    //eslint-disable-next-line
-  }, [dispatch]);
+
+  }, [currencyList]);
 
   return (
     <>
@@ -58,7 +58,7 @@ const HistoricalCurrencyExchange = () => {
             </Box>
           </Box>
 
-          <MainComponent data={currencyRates} />
+         {currencyRates.length > 0 && <MainComponent data={currencyRates} />}
         </Box>
       )}
     </>

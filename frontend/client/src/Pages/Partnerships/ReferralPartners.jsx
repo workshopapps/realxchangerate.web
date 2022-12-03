@@ -3,6 +3,7 @@ import styled from "styled-components";
 import groupIcon from "./assets/svg/GroupIcon.svg";
 import ReferralPartnersType from "./ReferralPartnersType";
 import checkMark from "./assets/svg/check.svg";
+import { Link } from "react-router-dom";
 
 // styles
 import {
@@ -19,7 +20,7 @@ const ReferralPartners = (props) => {
             <h2> {props.title}</h2>
             <p>{props.text}</p>
           </div>
-          <button className="high-button">{props.btn}</button>
+          <Link to={props.link} className="high-button">{props.btn}</Link>
         </div>
         <div>
           <ul>
@@ -36,7 +37,7 @@ const ReferralPartners = (props) => {
               <div>{props.list3}</div>
             </li>
           </ul>
-          <button className="low-button">{props.btn}</button>
+          <Link to={props.link} className="low-button">{props.btn}</Link>
         </div>
         {/* header
       <PartnersHeader>
