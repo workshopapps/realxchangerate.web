@@ -72,6 +72,7 @@ export const EntrepreneurSection = styled.section`
         border-radius: 0.3rem;
         font-weight: bold;
         background-color: #0062ff;
+        cursor: pointer;
         color: #ffffff;
         border: none;
         outline: none;
