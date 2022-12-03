@@ -1,6 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
+// const BASE_URL = `https://api.streetrates.hng.tech/api`;
+
 const initialState = {
   user: null,
   error: null,

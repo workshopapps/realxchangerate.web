@@ -5,7 +5,6 @@ export const currenciesList = [
     isocode: "NGN",
     id: 1,
   },
-
   {
     symbol: "USD",
     country: "United States",
@@ -28,7 +27,65 @@ export const currenciesList = [
     symbol: "EGP",
     country: "Egypt",
     isocode: "EGP",
+  },
+];
+
+export const tableCurrenciesList = [
+  {
+    symbol: "USD",
+    country: "United States",
+    isocode: "USD",
+    id: 1,
+  },
+  {
+    symbol: "GBR",
+    country: "United Kingdom",
+    isocode: "GBR",
+    id: 2,
+  },
+  {
+    symbol: "EUR",
+    country: "Germany",
+    isocode: "EUR",
+    id: 3,
+  },
+];
+
+export const addCurrency = [
+  {
+    symbol: "USD",
+    country: "United States",
+    incurrency: "United States Dollars",
+    isocode: "USD",
+    id: 4,
+  },
+  {
+    symbol: "INR",
+    country: "India",
+    incurrency: "Indian Rupees",
+    isocode: "INR",
+    id: 5,
+  },
+  {
+    symbol: "GHC",
+    country: "Ghana",
+    incurrency: "Ghana Cedis",
+    isocode: "GHC",
+    id: 6,
+  },
+  {
+    symbol: "JPY",
+    country: "Japan",
+    incurrency: "Japanese Yen",
+    isocode: "JPY",
     id: 7,
+  },
+  {
+    symbol: "KOR",
+    country: "South Korea",
+    incurrency: "South Korean Won",
+    isocode: "KOR",
+    id: 8,
   },
 ];
 
