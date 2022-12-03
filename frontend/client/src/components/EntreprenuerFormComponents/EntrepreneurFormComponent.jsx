@@ -2,12 +2,15 @@ import React from "react";
 import { FormSection } from "./entrepreneurFormStyle";
 import leftIcon from "../../assets/svg/arrow-left.svg";
 import InputField from "../shared/InputField/InputField";
+import { Link } from "react-router-dom";
 
 const EntrepreneurFormComponent = () => {
   return (
     <FormSection>
       <div className="header">
+        <Link to={'/ambassadors/entrepreneur-ambassador'}>
         <img src={leftIcon} alt="" />
+        </Link>
         <h2>Entrepreneur Ambassador Application Form</h2>
       </div>
       <form>

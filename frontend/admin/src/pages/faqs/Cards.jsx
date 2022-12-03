@@ -28,7 +28,7 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export default function FaqsCard({ faq }) {
+export default function FaqsCard({ faq, setNewdata }) {
   const [expanded, setExpanded] = React.useState(false);
   const [openDelete, setOpenDelete] = React.useState(false);
   const handleOpenDelete = () => setOpenDelete(true);
@@ -41,7 +41,6 @@ export default function FaqsCard({ faq }) {
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-
   return (
     <Card elevation={0} sx={{ maxWidth: "800px", border: "1px solid #CBD5E1" }}>
       <CardHeader
@@ -49,7 +48,8 @@ export default function FaqsCard({ faq }) {
           bgcolor: `${expanded ? "#0062FF" : "white"}`,
           color: `${expanded ? "white" : "black"}`,
         }}
-        title={faq.question}
+        // title
+        subheader={faq.question}
         action={
           <ExpandMore
             expand={expanded}
@@ -107,7 +107,11 @@ export default function FaqsCard({ faq }) {
           timeout: 500,
         }}
       >
-        <DeleteContent cancel={handleCloseDelete} />
+        <DeleteContent
+          cancel={handleCloseDelete}
+          id={faq.id}
+          setNewdata={setNewdata}
+        />
       </Modal>
       <Modal
         aria-labelledby="transition-modal-title"
@@ -120,7 +124,11 @@ export default function FaqsCard({ faq }) {
           timeout: 500,
         }}
       >
-        <EditContent cancel={handleCloseEdit} />
+        <EditContent
+          cancel={handleCloseEdit}
+          id={faq.id}
+          setNewdata={setNewdata}
+        />
       </Modal>
     </Card>
   );

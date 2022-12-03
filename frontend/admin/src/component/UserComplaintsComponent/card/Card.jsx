@@ -14,7 +14,7 @@ import Stack from "@mui/material/Stack";
 //     full_name: string;
 //     complaint: string;
 //      email: string
-//     status: 'Resolve' | 'Resolved' | 'Unresolved' | 'Still in Review';
+//     status: 'resolved' | 'unresolved' | 'in Review';
 // }
 
 export function Card({ data }) {
@@ -22,14 +22,22 @@ export function Card({ data }) {
 
   return (
     <StyledCardWrapper>
-      <StyledCardTitle>{data.full_name}</StyledCardTitle>
-      <StyledCardMessage>{data.complaint}</StyledCardMessage>
+      <StyledCardTitle>{data?.full_name}</StyledCardTitle>
+      <StyledCardMessage>{data?.complaint}</StyledCardMessage>
 
       <StyledCardButton
-        $complaintButton={`Resolve`}
+        $complaintButton={data?.status ? data?.status.toLowerCase() : "resolve"}
         onClick={() => navigate(`/admin/complaints/${data.id}`)}
       >
-        Resolve
+        {data?.status &&
+          (data?.status === "resolved"
+            ? "Resolved"
+            : data?.status === "Unresolved"
+            ? "Unresolved"
+            : data?.status === "in review"
+            ? "Still In Review"
+            : "Resolve")}
+        {!data.status && "Resolve"}
       </StyledCardButton>
     </StyledCardWrapper>
   );
@@ -44,7 +52,7 @@ export function CardSkeleton() {
     <StyledCardWrapper>
       <Stack spacing={1.5}>
         <Skeleton width="30%" variant="text" sx={{ fontSize: "1.5rem" }} />
-        <Skeleton variant="rounded" height={120} />
+        <Skeleton variant="rounded" height={100} />
 
         <Stack>
           <Skeleton

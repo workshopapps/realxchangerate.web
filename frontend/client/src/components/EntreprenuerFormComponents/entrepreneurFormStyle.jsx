@@ -7,9 +7,26 @@ export const FormSection = styled.section`
     padding: 10rem 13rem 5rem;
     display: flex;
     align-items: center;
+    @media (max-width: 1255px) {
+      padding: 10rem 7rem 5rem;
+    }
+    @media (max-width: 868px) {
+      padding: 10rem 4rem 5rem;
+    }
+    @media (max-width: 570px) {
+      padding: 10rem 2.7rem 5rem;
+    }
     h2 {
       font-size: 2.9rem;
       margin-left: 5rem;
+      @media (max-width: 868px) {
+        font-size: 2rem;
+        margin-left: 3rem;
+      }
+      @media (max-width: 570px) {
+        font-size: 1.7rem;
+        margin-left: 2rem;
+      }
     }
   }
   button {
@@ -75,6 +92,9 @@ export const FormSection = styled.section`
     .grid-half {
       width: 45%;
       margin-bottom: 7.5rem;
+      @media (max-width: 768px) {
+        width: 100%;
+      }
     }
     .grid-sec {
       margin: 7rem 0;

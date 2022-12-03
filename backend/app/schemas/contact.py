@@ -2,6 +2,7 @@ from datetime import datetime
 from typing import Optional
 
 from pydantic import BaseModel, EmailStr
+import enum
 
 import enum
 from sqlalchemy import Integer, Enum
@@ -27,3 +28,8 @@ class ContactUpdate(ContactBase):
 class Contact(ContactBase):
     id: int
     last_updated: Optional[datetime]
+
+class Status(enum.Enum):
+    resolved = "resolved"
+    unresolved = "unresolved"
+    in_review  = "in review"

@@ -1,36 +1,30 @@
-import { ListItem } from "@mui/material";
-import { Box } from "@mui/system";
+import { ListItem, Typography, Box } from "@mui/material";
 import React from "react";
 import { countries } from "../data";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import { maxWidth } from "@mui/system";
 
-function Table2({ isocode, country }) {
-  const base_url = process.env.REACT_APP_BASE_URL;
-  const [rates, setRates] = React.useState({});
-
-  React.useEffect(() => {
-    const fetchRates = async () => {
-      const response = await fetch(`${base_url}/rate/${isocode}`);
-      const data = await response.json();
-      return data;
-    };
-    fetchRates().then((ratesData) => {
-      setRates(ratesData.data.rate);
-    });
-  }, [base_url, isocode]);
-
+function Table2({ isocode, country, deleteIcon, rates, link }) {
   const countryDetails = countries.filter((countr) => countr.label === country);
   return (
-    <ListItem
-      sx={{
-        display: "flex",
-        // alignItems: "center",
-        justifyContent: "space-between",
-        borderTop: "1px solid #CBD5E1",
-        p: "2.3rem 1.3rem",
-        fontSize: "1.4rem",
-      }}
+    <Box
+      justifyContent="space-between"
+      display="flex"
+      flexDirection="row"
+      padding="10px"
+      alignItems="center"
+      borderTop="1px solid #CBD5E1"
+      fontSize="1.4rem"
     >
-      <Box sx={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          gap: "1rem",
+          width: "107px",
+        }}
+      >
         <Box>
           <img
             loading="lazy"
@@ -40,27 +34,30 @@ function Table2({ isocode, country }) {
             alt=""
           />
         </Box>
-        <Box>
-          <Box>{isocode}</Box>
-          <Box sx={{ fontSize: "1rem" }}>{country}</Box>
-        </Box>
+        <Link to={link}>
+          <Box>
+            <Box style={{ color: "#555962" }}>{isocode}</Box>
+            <Box sx={{ fontSize: "1rem", color: "#94A3B8" }}>{country}</Box>
+          </Box>
+        </Link>
       </Box>
-      {rates && (
-        <Box
-          sx={{ display: "flex", alignItems: "baseline", textAlign: "left" }}
-        >
-          {Number(rates.parallel_buy).toFixed(2)}
-        </Box>
-      )}
-      {rates && (
-        <Box
-          sx={{ display: "flex", alignItems: "baseline", textAlign: "left" }}
-        >
-          {Number(rates.official_buy).toFixed(2)}
-        </Box>
-      )}
-    </ListItem>
+
+      <Typography fontSize="1rem" textAlign="left">
+        {Number(rates.parallel_buy).toFixed(2)}
+      </Typography>
+
+      <>
+        <BankBox>{Number(rates.official_buy).toFixed(2)}</BankBox>
+        <Box>{deleteIcon}</Box>
+      </>
+    </Box>
   );
 }
 
 export default Table2;
+
+const BankBox = styled(Box)`
+  @media screen and (max-width: 480px) {
+    display: none;
+  }
+`;
