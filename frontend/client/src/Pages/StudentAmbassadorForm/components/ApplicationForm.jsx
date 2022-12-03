@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { FormSection } from "../style/Application.style";
+import { FormSection, MessageModal } from "../style/Application.style";
 import leftIcon from "../../../assets/svg/arrow-left.svg";
 import InputField from "../../../components/shared/InputField/InputField";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const ApplicationForm = () => {
   const [ambassadorDetails, setAmbassadorDetails] = useState({
@@ -39,14 +40,35 @@ const ApplicationForm = () => {
   } = ambassadorDetails;
 
   const [statusMessage, setStatusMessage] = useState("");
+  const [message, setMessage] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  setTimeout(() => setMessage(false), 5000);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setAmbassadorDetails({ ...ambassadorDetails, [name]: value });
   };
-  const handleSubmit = (e) => {
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(ambassadorDetails);
+
+    try {
+      const { data } = await axios.post(
+        "https://formsubmit.co/ajax/e79cf7c6eade7d5068495853b4cec9dc",
+        ambassadorDetails
+      );
+      setLoading(true);
+
+      if (data.success === "true") {
+        setMessage(true);
+        setStatusMessage("Your application has been received!");
+      }
+    } catch (error) {
+      setMessage(true);
+      error.message &&
+        setStatusMessage("You application was not received, try again!");
+    }
   };
 
   return (
@@ -57,6 +79,12 @@ const ApplicationForm = () => {
         </Link>
         <h2>Student Ambassador Application Form</h2>
       </div>
+
+      {message && (
+        <MessageModal>
+          <p>{statusMessage}</p>
+        </MessageModal>
+      )}
       <form>
         <div className="grid-two">
           <div>
@@ -199,7 +227,7 @@ const ApplicationForm = () => {
             cols="30"
             rows="10"
             value={howDidYouLearnAboutUs}
-            handleChange={handleChange}
+            onChange={handleChange}
           />
         </div>
         <div className="text-area">
@@ -212,10 +240,10 @@ const ApplicationForm = () => {
             cols="30"
             rows="10"
             value={reasonForApplication}
-            handleChange={handleChange}
+            onChange={handleChange}
           />
         </div>
-        <button type="submit" onClick={handleSubmit}>
+        <button type="submit" onClick={handleSubmit} disabled={loading}>
           Apply
         </button>
       </form>

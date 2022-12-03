@@ -133,3 +133,22 @@ export const FormSection = styled.section`
     }
   }
 `;
+
+export const MessageModal = styled.div`
+background: gray;
+border-radius: 8px;  
+position: fixed;
+left: 50%;
+transform: translate(-50%, -50%);
+z-index: 10;
+top: 50%;
+width: 60%;
+padding: 16px;
+text-align:center;
+margin: 1rem auto;
+
+@media( min-widtH; 768px) {
+  width:30%;
+  font-size; 24px;
+}
+`;
