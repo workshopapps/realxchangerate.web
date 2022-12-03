@@ -31,7 +31,7 @@ def get_all_contacts(db: Session = Depends(get_db)):
         "Status code": 200,
         "status": status
     }
-    
+
 
 @router.post("")
 def create_contact(

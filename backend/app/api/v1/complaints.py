@@ -18,11 +18,7 @@ def add_complaint(*, db: Session = Depends(get_db), complaint_in: schemas.Compla
         "Success": True,
         "Status code": 200,
         "complaint": complaint
-<<<<<<< HEAD
     }
-=======
-    }
-
 
 @router.get("/user_complaints/{id}")
 def get_user_complaint_by_id(id: int, db: Session = Depends(get_db)):
@@ -59,4 +55,4 @@ def delete_contact_detail(id: int, db: Session = Depends(get_db)):
         return {"success": False, "status_code": 404, "data": {"id": id}, "message": "User complaint not found!"}
 
     return {"success": True, "status_code": 200,  "message": "succesfully deleted!", "data": {"User complain": complaint_Detail}}
->>>>>>> d0c10cac25561c982c3b842eecd664fa38be4c16
+

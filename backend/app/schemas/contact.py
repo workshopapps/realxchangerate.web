@@ -6,10 +6,7 @@ import enum
 
 import enum
 from sqlalchemy import Integer, Enum
-
-class Status(enum.Enum):
-    Read = "Read"
-    Unread = "Unread"
+    
 
 class ContactBase(BaseModel):
     name: str
@@ -22,7 +19,7 @@ class ContactCreate(ContactBase):
 
 
 class ContactUpdate(ContactBase):
-    status: Status
+    pass
 
 
 class Contact(ContactBase):
@@ -30,6 +27,5 @@ class Contact(ContactBase):
     last_updated: Optional[datetime]
 
 class Status(enum.Enum):
-    resolved = "resolved"
-    unresolved = "unresolved"
-    in_review  = "in review"
+    Read = "Read"
+    Unread = "Unread"

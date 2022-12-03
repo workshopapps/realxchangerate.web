@@ -16,3 +16,4 @@ class Contact(Base):
     message = Column(Text, nullable=False)
     last_updated = Column(DateTime, default=datetime.utcnow())
     status = Column(Enum(Status), default=Status.Unread)
+
