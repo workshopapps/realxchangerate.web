@@ -5,7 +5,7 @@ export const StyledWrapper = styled.div`
     margin-bottom: 52px;
 
     h2 {
-        margin-bottom: 32px;
+        // margin-bottom: 32px;
         font-weight: 600;
         font-size: 20px;
         line-height: 28px;
@@ -34,6 +34,11 @@ export const StyledCardsWrapper = styled.div`
 export const StyledFilter = styled.div`
     /* max-width: 86px; */
     margin-bottom: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    // @media(max-width: ${props => props.theme.$styled.breakpoints.md})
 `;
 
 export const StyledPaginationWrapper = styled.div`

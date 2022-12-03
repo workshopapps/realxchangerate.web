@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-// const BASE_URL = `https://api.streetrates.hng.tech/api`;
+const endpoint = `https://api.streetrates.hng.tech/api/auth`;
 
 const initialState = {
   user: null,
@@ -9,12 +9,12 @@ const initialState = {
   registerStatus: "idle",
   loginStatus: "idle",
 };
-const endpoint =
-  process.env.NODE_ENV === "production"
-    ? "https://api.streetrates.hng.tech/api/auth"
-    : process.env.NODE_ENV === "development"
-    ? "http://localhost:8000/api/auth"
-    : "";
+// const endpoint =
+//   process.env.NODE_ENV === "production"
+//     ? "https://api.streetrates.hng.tech/api/auth"
+//     : process.env.NODE_ENV === "development"
+//     ? "http://localhost:8000/api/auth"
+//     : "";
 
 export const loginUser = createAsyncThunk(
   "user/login",
