@@ -46,6 +46,8 @@ import CurrencyProfile from "./Pages/CurrencyProfile/CurrencyProfile";
 import FileAComplaintForm from "./Pages/FileComplaints/components/ComplaintForm/ComplaintForm";
 // import ScrollToTop from "./utils/ScrollToTop";
 import PrivacyPolicy from "./Pages/PrivacyPolicy/PrivacyPolicy";
+import EntrepreneurAmbassador from "./Pages/EntrepreneurAmbassador/EntrepreneurAmbassador";
+import EntrepreneurFrom from "./Pages/EntrepreneurForm/EntrepreneurFrom";
 function App() {
   return (
     <>
@@ -102,6 +104,14 @@ function App() {
             <Route
               path="/ambassadors/student-ambassador"
               element={<StudentAmbassador />}
+            />
+            <Route
+              path="/ambassadors/entrepreneur-ambassador"
+              element={<EntrepreneurAmbassador/>}
+            />
+            <Route
+              path="/ambassadors/apply-to-become-entrepreneur-ambassador"
+              element={<EntrepreneurFrom/>}
             />
             <Route
               path="/student-ambassador/apply-to-become-student-ambassador"
