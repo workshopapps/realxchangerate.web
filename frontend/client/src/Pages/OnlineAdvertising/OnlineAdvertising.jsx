@@ -301,7 +301,7 @@ const StyledPx = styled.p`
     font-weight: 400;
     line-height: 24px;
     letter-spacing: 0em;
-    margin-top:24px;
+    margin-top:24px; //
   }
 `;
 
