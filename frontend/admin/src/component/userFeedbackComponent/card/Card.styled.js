@@ -19,12 +19,12 @@ export const StyledCardWrapper = styled.div`
 		display: flex;
 		justify-content: space-between;
 	}
-	.align-top {
-		// margin-top: 0.5rem;
-	}
+	// .align-top {
+	// 	// margin-top: 0.5rem;
+	// }
 	.alignBottom {
 		// border: 1px solid red;
-		margin-top: 1.5rem;
+		margin-top: 1rem;
 		// align-items: flex-end;
 		.date {
 			display: flex;
