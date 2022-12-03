@@ -11,39 +11,55 @@ const Form = ({ handleClose }) => {
   const [symbol, setSymbol] = useState("");
   const [name, setName] = useState("");
   const [form, setForm] = useState({
-    country: "",
-    isocode: "",
-    symbol: "",
-    name: "",
+    country: country,
+    isocode: isocode,
+    symbol: symbol,
+    name: name,
   });
-  const tok = localStorage.getItem("tok");
-  const handleSubmit = () => {
-    setForm({
-      country: country,
-      isocode: isocode,
-      symbol: symbol,
-      name: name,
-    });
-    alert("Currency Added");
-  };
-  const AddCurrency = async () => {
-    axios
-      .post("https://api.streetrates.hng.tech/api/admin/add_currency", {}, {})
-      .then(function (response) {
-        console.log("Authenticated");
-      })
-      .catch((error) => {
-        console.err(error);
-      });
-  };
 
-  useEffect(() => {
-    console.log(tok);
-  }, []);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const token = localStorage.getItem("token");
+      if (form.country === "") {
+        alert("Please Enter a value");
+        throw Error("Please enter a value");
+      }
+      const response = await axios.post(
+        "https://api.streetrates.hng.tech/api/admin/add_currency",
+
+        JSON.stringify(form),
+        {
+          headers: {
+            accept: "application/json",
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      alert("Currency Added");
+      window.location.reload();
+      return response;
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   return (
     <Container>
-      <form onSubmit={handleSubmit}>
+      <form
+        onSubmit={(e) => {
+          setForm({
+            country: country,
+            isocode: isocode,
+            symbol: symbol,
+            name: name,
+          });
+          handleSubmit(e);
+        }}
+      >
         <h2>Add Currrency</h2>
         <div className="inputs">
           <div className="select">

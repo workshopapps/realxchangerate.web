@@ -35,7 +35,7 @@ const ModalUi = ({ open, handleOpen, handleClose }) => {
         <Box
           sx={{
             width: "90%",
-            maxWidth: "500px",
+            maxWidth: "800px",
           }}
         >
           <Form handleClose={handleClose} />

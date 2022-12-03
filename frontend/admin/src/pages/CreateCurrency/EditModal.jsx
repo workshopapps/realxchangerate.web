@@ -4,10 +4,10 @@ import { Modal, Box, Button } from "@mui/material";
 import add from "../../assets/add.svg";
 import Form from "./EditForm.jsx";
 
-const ModalUi = ({ editOpen, handleEditOpen, handleEditClose }) => {
+const ModalUi = ({ editOpen, handleEditOpen, handleEditClose, editVal }) => {
   return (
     <>
-      <Button
+      {/* <Button
         onClick={handleEditOpen}
         variant="contained"
         disableElevation
@@ -20,12 +20,13 @@ const ModalUi = ({ editOpen, handleEditOpen, handleEditClose }) => {
       >
         <span style={{ textTransform: "capitalize" }}>Edit currency</span>
         <img src={add} alt="add" style={{ marginLeft: "10px" }} />
-      </Button>
+      </Button> */}
       <Modal
         open={editOpen}
         onClose={handleEditClose}
         sx={{
           height: "100vh",
+
           // border: '1px solid red',
           display: "flex",
           alignItems: "center",
@@ -38,7 +39,7 @@ const ModalUi = ({ editOpen, handleEditOpen, handleEditClose }) => {
             maxWidth: "500px",
           }}
         >
-          <Form handleClose={handleEditClose} />
+          <Form handleEditClose={handleEditClose} editVal={editVal} />
         </Box>
       </Modal>
     </>

@@ -51,12 +51,19 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 export default function CreateCurrency() {
   const [open, setOpen] = useState(false);
+  const [editVal, setEditVal] = useState({
+    country: "OMO",
+    isocode: "",
+    symbol: "",
+    name: "",
+  });
   const [editOpen, setEditOpen] = useState(false);
   const dispatch = useDispatch();
   const { currencies, requestStatus } = useSelector((state) => state.dashboard);
 
   useEffect(() => {
     dispatch(getTrending());
+    console.log(currencies);
   }, [dispatch]);
 
   const handleOpen = () => {
@@ -123,6 +130,7 @@ export default function CreateCurrency() {
             handleEditOpen={handleEditOpen}
             handleEditClose={handleEditClose}
             editOpen={editOpen}
+            editVal={editVal}
           />
         </div>
         <TableContainer
@@ -201,6 +209,8 @@ export default function CreateCurrency() {
                       <MenuDrop
                         handleEditOpen={handleEditOpen}
                         handleOpen={handleOpen}
+                        rowData={row}
+                        setRowData={setEditVal}
                       />
                     </StyledTableCell>
                   </StyledTableRow>

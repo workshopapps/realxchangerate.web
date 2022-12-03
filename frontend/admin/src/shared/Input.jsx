@@ -11,6 +11,7 @@ const Input = ({ text, value, handleChange }) => {
       size="small"
       value={value}
       onChange={(e) => handleChange(e.target.value)}
+      required
     />
   );
 };
