@@ -81,7 +81,7 @@ Fetch rates from a new rate from the binance API
 Add the rates 
 Divide by 2 and return the new rates
 
-"""
+# """
 def sma_rate(db: Session = Depends(get_db)):
     previous_buy_rate = crud.rate.get_last_parallel_buy_rate(db)
     new_buy_rate = format_binance_response_data().get("buy_rate")

@@ -27,7 +27,7 @@ async def get_currency_rates_from_external_apis(db: Session = Depends(get_db)) -
             currency_list.append(currency.isocode.upper())
             currency_code = currency.isocode.upper()
             resp_data = await get_binancep2p_rate(currency_code)
-            formatted_data = await sma_rate(db, resp_data)
+            formatted_data = await format_binance_response_data(resp_data)
             official_rate = make_official_rate_request(
                 base_currency=base_currency, currency_list=currency_list)
             parallel_buy, parallel_sell = formatted_data["buy_rate"], formatted_data["sell_rate"]
