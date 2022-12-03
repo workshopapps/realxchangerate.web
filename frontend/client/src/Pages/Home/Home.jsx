@@ -43,7 +43,6 @@ const Home = () => {
         console.log(data);
         setGetCurrency(data);
         setDateUpdate(data[0].rate.last_updated);
-        console.log(data[0].rate.last_updated);
       })
       .catch((e) => console.log(e));
 
@@ -150,6 +149,8 @@ const Home = () => {
                       (x) => x.currency.isocode === currency.isocode
                     ).rate
                   }
+                  link={currency.link}
+                  symbol={currency.symbol}
                   flag={currency.flag}
                   deleteIcon={
                     <img
