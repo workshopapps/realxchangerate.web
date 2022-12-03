@@ -51,6 +51,7 @@ import PrivacyPolicy from "./Pages/PrivacyPolicy/PrivacyPolicy";
 import EntrepreneurAmbassador from "./Pages/EntrepreneurAmbassador/EntrepreneurAmbassador";
 import EntrepreneurFrom from "./Pages/EntrepreneurForm/EntrepreneurFrom";
 import CompliancePage from "./Pages/CompliancePage/CompliancePage";
+import FaqOverview from './Pages/FaqOverview/FaqOverview';
 function App() {
   return (
     <>
@@ -69,6 +70,7 @@ function App() {
             {/* Adding path for one news  */}
             <Route path="/news/:id" element={<SingleNews />} />
             <Route path="/faq" element={<Faq />} />
+            <Route path="/faq-overview" element={<FaqOverview />} />
             <Route path="/integration-matrix" element={<IntegrationMatrix />} />
             <Route path="/partnerships" element={<Partnerships />} />
             <Route
@@ -112,11 +114,11 @@ function App() {
             />
             <Route
               path="/ambassadors/entrepreneur-ambassador"
-              element={<EntrepreneurAmbassador/>}
+              element={<EntrepreneurAmbassador />}
             />
             <Route
               path="/ambassadors/apply-to-become-entrepreneur-ambassador"
-              element={<EntrepreneurFrom/>}
+              element={<EntrepreneurFrom />}
             />
             <Route
               path="/student-ambassador/apply-to-become-student-ambassador"
