@@ -14,14 +14,14 @@ class Student(Base):
     dob = Column(DateTime)
     phone_number = Column(String, nullable=False)
 
-    address = relationship(
-        "Address", back_populates="student", uselist=False, cascade="all, delete")
+    addresses = relationship(
+        "Address", backref="student", uselist=False, cascade="all, delete")
     
-    school = relationship(
-        "School", back_populates="student", uselist=False, cascade="all, delete")
+    schools = relationship(
+        "School", backref="student", uselist=False, cascade="all, delete")
     
-    questions = relationship(
-        "Questions", back_populates="student", cascade="all, delete")
+    question = relationship(
+        "Questions", backref="student", cascade="all, delete")
 
 class Address(Base):
     __tablename__ = "address"
