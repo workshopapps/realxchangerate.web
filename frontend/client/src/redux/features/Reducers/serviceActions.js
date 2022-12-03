@@ -66,10 +66,13 @@ export const GetCurrencyData = (isocode) => async () => {
   }
 };
 export const GetCurrencyRates = (currencies) => async () => {
+  dispatch(setLoading(true));
   try {
     let currencyRates = currencies.map(async (ele) => {
-      const res = await RateService.GetCurrencyData(ele.isocode);
-      return res.data.data;
+      if (ele.isocode !== "USD") {
+        const res = await RateService.GetCurrencyData(ele.isocode);
+        return res.data.data;
+      }
     });
     Promise.all(currencyRates).then((values) =>
       dispatch(setCurrencyRates(values))

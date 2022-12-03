@@ -9,13 +9,25 @@ import styled from "styled-components";
 import add from "./assets/add.svg";
 import CircularProgressWithLabel from "@mui/material/CircularProgress";
 import DeleteIcon from "./assets/delete.svg";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
+import { useSelector } from "react-redux";
+import { dispatch } from "../../redux/store";
+import { GetCurrencyRates } from "../../redux/features/Reducers/serviceActions";
 
 const Home = () => {
+  const { currencyRates, currencyList } = useSelector((state) => state.service);
+
+  useEffect(() => {
+    if (currencyList.length > 0) {
+      dispatch(GetCurrencyRates(currencyList));
+    }
+    //eslint-disable-next-line
+  }, [currencyList]);
+
   const [currencies, setCurrencies] = useState(tableCurrenciesList);
   const handleEdit = () => {
     toggle();
@@ -107,25 +119,32 @@ const Home = () => {
           <Box>Currency</Box>
           <Box>parallel Rate</Box>
           <Box>Bank Rate</Box>
-          <Box></Box>
         </ListItem>
 
-        {currencies.map((currency) => (
-          <Table2
-            isocode={currency.isocode}
-            country={currency.country}
-            key={currency.id}
-            deleteIcon={
-              <img
-                src={DeleteIcon}
-                className="delete-cur"
-                alt=""
-                style={{ display: "none" }}
-                onClick={(e) => handleDelete(currency.id)}
-              />
-            }
-          />
-        ))}
+        {currencies.map((currency) => {
+          return (
+            <>
+            {currencyRates.length > 0 && <Table2
+              isocode={currency.isocode}
+              country={currency.country}
+              key={currency.id}
+              rates={currencyRates.find(
+                (x) => x.currency.isocode === currency.isocode
+              ).rate}
+              deleteIcon={
+                <img
+                  src={DeleteIcon}
+                  className="delete-cur"
+                  alt=""
+                  style={{ display: "none" }}
+                  onClick={(e) => handleDelete(currency.id)}
+                />
+              }
+            />}</>
+            
+            
+          );
+        })}
       </List>
       <StyledSelection>
         <PopupState variant="popover" popupId="demo-popup-menu">
