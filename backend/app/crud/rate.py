@@ -116,6 +116,7 @@ class CRUDRate(CRUDBase[Rate, RateCreate, RateBase]):
         }
 
         return response
+      
     def get_last_parallel_buy_rate(self, db: Session):
         # gets the last parallel_buy_rate
         last_buy_rate = db.query(Rate).order_by(Rate.parallel_buy.desc()).first()
