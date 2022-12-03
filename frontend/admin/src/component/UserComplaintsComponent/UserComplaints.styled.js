@@ -19,6 +19,7 @@ export const StyledWrapper = styled.div`
 `
 
 export const StyledCardsWrapper = styled.div`
+    margin-bottom: 50px;
     display: grid;
 
     grid-template-columns: 1fr;
@@ -29,3 +30,22 @@ export const StyledCardsWrapper = styled.div`
         grid-gap: 40px;
     }
 `
+
+export const StyledFilter = styled.div`
+    /* max-width: 86px; */
+    margin-bottom: 48px;
+`;
+
+export const StyledPaginationWrapper = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .page {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 20px;
+
+        color: #091E42;
+    }
+`;

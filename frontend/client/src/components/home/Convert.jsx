@@ -26,7 +26,7 @@ const Convert = () => {
   const [currency, setCurrecy] = React.useState("NGN");
   const [base, setBase] = React.useState("USD");
   const [buy, setbuy] = React.useState(true);
-  const [date, setDate] = React.useState("");
+  const [date, setDate] = React.useState("Loading ..");
 
   const endpoint =
     process.env.NODE_ENV === "development"
@@ -40,24 +40,38 @@ const Convert = () => {
       const data = await response.json();
       return data;
     };
-    var currentdate = new Date();
-    var datetime =
-      "Last Sync: " +
-      currentdate.getDate() +
-      "/" +
-      (currentdate.getMonth() + 1) +
-      "/" +
-      currentdate.getFullYear() +
-      " @ " +
-      currentdate.getHours() +
-      ":" +
-      currentdate.getMinutes() +
-      ":" +
-      currentdate.getSeconds();
-    setDate(datetime);
+    const fetchDate = async () => {
+      const response = await fetch(`${base_url}/rate/last_rate_update`);
+      const data = await response.json();
+      return data;
+    };
+
+    // var currentdate = new Date();
+    // var datetime =
+    //   "Last Sync: " +
+    //   currentdate.getDate() +
+    //   "/" +
+    //   (currentdate.getMonth() + 1) +
+    //   "/" +
+    //   currentdate.getFullYear() +
+    //   " @ " +
+    //   currentdate.getHours() +
+    //   ":" +
+    //   currentdate.getMinutes() +
+    //   ":" +
+    //   currentdate.getSeconds();
+    // setDate(Date(datetime));
+
     fetchRates().then((ratesData) => {
       setRates(ratesData.data.rate);
     });
+    fetchDate()
+      .then((UpdateDate) => {
+        setDate(Date(UpdateDate.Time));
+      })
+      .catch((err) => {
+        console.log("nooo");
+      });
   }, [base_url, endpoint, currency, date]);
   const handleSwitch = () => {
     setbuy(!buy);
@@ -109,6 +123,7 @@ const Convert = () => {
         border: "1px solid #BBBBBB",
         padding: { lg: "32px", xs: "8px" },
         mb: "64px",
+        boxShadow: "0 0 0 0",
       }}
     >
       <h2
@@ -303,7 +318,7 @@ const Convert = () => {
             <h6>
               With Streetrates, you always obtain the best exchange rate.{" "}
             </h6>
-            <p>Last updated Nov 16, 2022, 04:49 UTC</p>
+            <p>Last updated: ${date}</p>
           </div>
         </Rate>
       )}
