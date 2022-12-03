@@ -29,7 +29,7 @@ function ComplaintPageLayout() {
   const [adminMssg, setAdminMssg] = useState("");
   const params = useParams();
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const dispatch = useDispatch();
   const { complaints, loading } = useSelector((state) => state.complaints);
@@ -41,9 +41,9 @@ function ComplaintPageLayout() {
 
   useEffect(() => {
     // find particular complaint
-    if (complaints?.success) {
+    if (complaints) {
       const id = parseInt(params.id);
-      let issue = complaints.complaints.find((item) => item.id === id);
+      let issue = complaints.items.find((item) => item.id === id);
 
       setData(issue);
     }
