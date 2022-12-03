@@ -34,6 +34,7 @@ import {
   Home,
   StudentAmbassador,
   ApplyToAdvertise,
+  StudentAmbassadorForm,
 } from "./Pages";
 import GlobalStyle from "./styles/Globalstyle";
 import ErrorPage from "./Pages/404/ErrorPage";
@@ -85,6 +86,8 @@ function App() {
             <Route path="/teams" element={<Teams />} />
             <Route path="/api" element={<Api />} />
             <Route path="/bod" element={<BoardOfDirectors />} />
+            {/* Adding  get in touch route*/}
+            <Route path="/get-in-touch" element={<GetInTouch />} />
             <Route
               path="/historical-currency-exchange"
               element={<HistoricalCurrencyExchange />}
@@ -99,6 +102,10 @@ function App() {
             <Route
               path="/ambassadors/student-ambassador"
               element={<StudentAmbassador />}
+            />
+            <Route
+              path="/student-ambassador/apply-to-become-student-ambassador"
+              element={<StudentAmbassadorForm />}
             />
             <Route path="/ddff" element={<ErrorPage />} />
             <Route path="/*" element={<ErrorPage />} />

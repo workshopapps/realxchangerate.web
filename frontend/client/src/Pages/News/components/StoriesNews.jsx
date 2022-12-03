@@ -1,57 +1,81 @@
-import { Box, Stack, Typography } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import React from "react";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import moment from "moment";
+import ImageCard from "./ImageCard";
 
-export default function StoriesNews({ data }) {
+export default function StoriesNews({ data, id }) {
   return (
-    <Box
-      sx={{
-        flex: 1,
-        background: "#F7F7F7",
-        borderRadius: "4px",
-        padding: 2,
-      }}
-    >
-      <img src={data.img} alt="story imag" width="100%" />
-      <Typography
-        variant="h4"
-        sx={{
-          fontWeight: "500",
-          fontSize: { lg: "24px", md: "20px", sm: "20px", xs: "20px" },
-          lineHeight: "144.02%",
-          color: "#0F172A",
-          paddingTop: 1.5,
-          paddingBottom: 1.5,
-        }}
+    <Grid item sm={4}>
+      <Box
+        display="flex"
+        backgroundColor="#F8FAFC"
+        border="0.5px solid #94A3B8"
+        padding="16px"
+        borderRadius="4px"
+        flexDirection="column"
+        sx={{gap:{xs:"10px", lg:"16px"}}}
       >
-        {data.title}
-      </Typography>
-      <Stack direction="column">
+        {/* <>
+          {data.image_url === null ? (
+            <ImageCard category={data.category[0]} height="176px" />
+          ) : (
+            <img src={data.image_url} alt="i" height="176px" width="147px" />
+          )}
+        </> */}
+        <img src={data.image_url} alt="i" />
+
+        {data.content === null ? (
+          <a href={data.link} target="_blank" rel="noreferrer">
+            <Typography
+              fontWeight="500"
+              lineHeight="28px"
+              color="#0F172A"
+              sx={{
+                fontSize: { xs: "20px", sm:"18px", lg: "24px" },
+              }}
+            >
+              {data.title}
+            </Typography>
+          </a>
+        ) : (
+          <Link to={`/news/${id}`}>
+            <Typography
+              fontWeight="500"
+              lineHeight="28px"
+              color="#0F172A"
+              sx={{
+                fontSize: { xs: "16px", lg: "24px" },
+              }}
+            >
+              {data.title}
+            </Typography>
+          </Link>
+        )}
         <Typography
-          variant="p"
+          fontWeight="400"
+          lineHeight="28px"
+          color="#1E293B"
           sx={{
-            color: "#1E293B",
-            fontWeight: "400",
-            fontSize: "16px",
-            lineHeight: "143.52%",
+            fontSize: { xs: "16px", lg: "16px" },
           }}
         >
-          {data.label}
+          {/* {data.category[0].toUpperCase()} */}
+          BUSINESS
         </Typography>
         <Typography
-          variant="p"
+          fontWeight="400"
+          lineHeight="28px"
+          color="#334155"
           sx={{
-            color: "#64748B",
-            fontWeight: "400",
-            fontSize: "16px",
-            lineHeight: "143.52%",
-            paddingTop: 1.5,
+            fontSize: { xs: "10px", lg: "16px" },
           }}
         >
-          {data.view} || {data.date}
+          {moment(data.pubDate).format("Do MMMM, YYYY | h:mmA")}
         </Typography>
-      </Stack>
-    </Box>
+      </Box>
+    </Grid>
   );
 }
 
