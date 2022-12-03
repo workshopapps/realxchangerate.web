@@ -17,11 +17,15 @@ const MobileView = ({ data }) => {
             <MobileRowHeaderComponent rate="Bank Rate" />
             {data.map((val, key) => {
               return (
-                <MobileRowComponent
-                  country={val.currency}
-                  rate={Math.ceil(val.rate.official_buy)}
-                  key={key}
-                />
+                <>
+                  {val && (
+                    <MobileRowComponent
+                      country={val.currency}
+                      rate={Math.ceil(val.rate.official_buy)}
+                      key={key}
+                    />
+                  )}
+                </>
               );
             })}
           </Box>
@@ -31,12 +35,15 @@ const MobileView = ({ data }) => {
             <MobileRowHeaderComponent rate="Parallel Rate" />
             {data.map((val, key) => {
               return (
-                <>{val && </>
-                <MobileRowComponent
-                  country={val.currency}
-                  rate={val.rate.parallel_buy}
-                  key={key}
-                />
+                <>
+                  {val && (
+                    <MobileRowComponent
+                      country={val.currency}
+                      rate={Math.ceil(val.rate.parallel_buy)}
+                      key={key}
+                    />
+                  )}
+                </>
               );
             })}
           </Box>
