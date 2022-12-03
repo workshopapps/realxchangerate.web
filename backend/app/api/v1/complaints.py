@@ -38,3 +38,21 @@ def get_user_complaint_by_id(id: int, db: Session = Depends(get_db)):
     }
 
     return data
+
+
+@router.delete("/delete_User_complaint/{id}")
+def delete_contact_detail(id: int, db: Session = Depends(get_db)):
+    """delete a user complaint associated with the id provided
+
+    Args:
+        id (int): id
+    """
+    if id == 0:
+        return {"success": False, "status_code": 404, "data": {"id": id}, "message": "id starts from 1!"}
+
+    complaint_Detail = crud.complaint.remove(db, model_id=id)
+
+    if  not complaint_Detail:
+        return {"success": False, "status_code": 404, "data": {"id": id}, "message": "User complaint not found!"}
+
+    return {"success": True, "status_code": 200,  "message": "succesfully deleted!", "data": {"User complain": complaint_Detail}}
