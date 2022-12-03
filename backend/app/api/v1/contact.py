@@ -62,10 +62,10 @@ def get_contact_details_by_id(id: int, db: Session = Depends(get_db)):
 
 @router.delete("/delete_contact_detatil/{id}")
 def delete_contact_detail(id: int, db: Session = Depends(get_db)):
-    """delete contact detail associated with the id privided
+    """delete contact detail associated with the id provided
 
     Args:
-        faq_id (int): id
+        id (int): id
     """
     if id == 0:
         return {"success": False, "status_code": 404, "data": {"id": id}, "message": "id starts from 1!"}
