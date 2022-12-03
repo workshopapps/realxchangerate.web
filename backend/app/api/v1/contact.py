@@ -41,10 +41,12 @@ def get_all_contacts(db: Session = Depends(get_db)):
     return data
 
 
-@router.get("/contact_detatil/{id}")
+@router.get("/contact_detatils/{id}")
 def get_contact_details_by_id(id: int, db: Session = Depends(get_db)):
     """This endpoint returns a specific contact us detail using the unique id associated with it"""
 
+    if id == 0:
+        return {"success": False, "status_code": 404, "data": {"id": id}, "message": "id starts from 1!"}
     contact_Detail = crud.contact.get_currency_by_id(db, id)
     if not contact_Detail:
         raise HTTPException(
@@ -56,3 +58,21 @@ def get_contact_details_by_id(id: int, db: Session = Depends(get_db)):
     }
 
     return data
+
+
+@router.delete("/delete_contact_detatil/{id}")
+def delete_contact_detail(id: int, db: Session = Depends(get_db)):
+    """delete contact detail associated with the id privided
+
+    Args:
+        faq_id (int): id
+    """
+    if id == 0:
+        return {"success": False, "status_code": 404, "data": {"id": id}, "message": "id starts from 1!"}
+
+    contactDetail = crud.contact.remove(db, model_id=id)
+
+    if  not contactDetail:
+        return {"success": False, "status_code": 404, "data": {"id": id}, "message": "Contact us detail not found!"}
+
+    return {"success": True, "status_code": 200,  "message": "succesfully deleted!", "data": {"contact us": contactDetail}}
