@@ -5,26 +5,34 @@ import HorizontalNewsCard from "./components/HorizontalNewsCard";
 import MainNewsCard from "./components/MainNewsCard";
 import Loading from "../../components/Loader";
 import Selector from "./components/Selector";
-import { setLoading } from "../../redux/features/Reducers/servicesReducer";
-
-import { news, stories, articles } from "./staticData";
+import {
+  setLoading,
+  setNews,
+} from "../../redux/features/Reducers/servicesReducer";
 
 import StoriesNews from "./components/StoriesNews";
 import { dispatch } from "../../redux/store";
 import { useSelector } from "react-redux";
 
 export default function News() {
-  const { loading } = useSelector((state) => state.service);
+  const { loading, news } = useSelector((state) => state.service);
   const theme = useTheme();
   const darkMode = theme.palette.mode === "dark";
 
-  // useEffect(() => {
-  //   const ip = sessionStorage.getItem("ip");
-  //   dispatch(setLoading(true));
-  //   if (ip) {
-  //     dispatch(GetNews("155.94.247.229"));
-  //   }
-  // }, []);
+  useEffect(() => {
+    dispatch(setLoading(true));
+    const ip = sessionStorage.getItem("ip");
+    const lastUpdated = sessionStorage.getItem("lastUpdated");
+    const News = JSON.parse(sessionStorage.getItem("news"));
+    let outdated = new Date().getTime() > lastUpdated;
+
+    if (ip && outdated) {
+      dispatch(GetNews("155.94.247.229"));
+    } else {
+      dispatch(setLoading(false));
+      dispatch(setNews(News));
+    }
+  }, []);
 
   return (
     <>
@@ -84,7 +92,6 @@ export default function News() {
                       <HorizontalNewsCard
                         key={c.id}
                         data={c}
-                        id={news.indexOf(c)}
                       />
                     ))}
                   </Box>
@@ -106,7 +113,7 @@ export default function News() {
               <Box sx={{ display: { xs: "none", sm: "flex" } }}>
                 <Grid container width="100%" spacing="20px">
                   {news.slice(1, 4).map((s) => (
-                    <StoriesNews key={s.id} data={s} id={news.indexOf(s) + 1} />
+                    <StoriesNews key={s.id} data={s} />
                   ))}
                 </Grid>
               </Box>
@@ -119,7 +126,7 @@ export default function News() {
                 sx={{ display: { xs: "flex", sm: "none" } }}
               >
                 {news.slice(1, 4).map((s) => (
-                  <StoriesNews key={s.id} data={s} id={news.indexOf(s) + 1} />
+                  <StoriesNews key={s.id} data={s}  />
                 ))}
               </Box>
             </Box>
@@ -135,9 +142,8 @@ export default function News() {
             }}
             gap="24px"
           >
-
             <Typography
-            marginLeft="16px"
+              marginLeft="16px"
               sx={{
                 fontWeight: "600",
                 fontSize: "16px",

@@ -61,7 +61,7 @@ const Header = ({ data }) => {
           color: "#64748B",
         }}
       >
-        By : <b>{data.author}</b>
+        By : <b>{data.creator[0]}</b>
         <span
           style={{
             color: "#0F172A",

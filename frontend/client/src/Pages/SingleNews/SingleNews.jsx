@@ -1,31 +1,32 @@
-import { Box, Stack, Typography } from "@mui/material";
+import { Box,  Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { articles, news } from "./staticData";
 import CardArticles from "./components/CardArticles";
 import Header from "./components/Header";
 import NewsBody from "./components/NewsBody";
-// import { useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import LoaderComponent from "../../components/Loader";
 
 export default function SingleNews() {
-  const [data, setData] = useState(news[0]);
+  const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
-  // const { news } = useSelector((state) => state.service);
+  const { news } = useSelector((state) => state.service);
   const { id } = useParams();
 
   useEffect(() => {
-    // if (news.length > 0 && id < news.length) {
-    //   setData(news[parseInt(id) - 1]);
-    // }
-    setData(news[parseInt(id) - 1]);
-  }, [id]);
+    if (news.length > 0) {
+      let currentNews = news.find(ele => ele.id === id);
+      setData(currentNews);
+    }
+  }, [news, id]);
 
   useEffect(() => {
     if (data) {
       setLoading(false);
     }
   }, [data]);
+
+  console.log(data, id)
 
   return (
     <div style={{ borderTop: "1px solid #E2E8F0" }}>
@@ -74,7 +75,7 @@ export default function SingleNews() {
                 Similar article
               </Typography>
         
-                {articles.map((a) => (
+                {news.filter(ele => ele.id !== id).slice(1,3).map((a) => (
                   <CardArticles key={a.id} data={a} />
                 ))}
             </Box>

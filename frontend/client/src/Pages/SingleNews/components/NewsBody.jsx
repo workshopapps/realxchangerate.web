@@ -1,18 +1,18 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
 import moment from "moment";
+import { MainSectionImageCard } from "../../News/components/ImageCard";
 
 const NewsBody = ({ data }) => {
   return (
     <Box display="flex" flexDirection="column" gap="16px">
-      <img
-        src={data.image_url}
-        alt="img for news"
-        width="100%"
-        style={{
-          borderRadius: "4px",
-        }}
-      />
+      <>
+        {data.image_url === null ? (
+          <MainSectionImageCard category={data.category[0]} height="380px" />
+        ) : (
+          <img src={data.image_url} alt="i" height="100%" width="100%" />
+        )}
+      </>
       <Typography fontSize="16px" sx={{ display: { xs: "flex", sm: "none" } }}>
         {moment(data.pubDate).format("Do MMMM, YYYY  |  h:mmA")}
       </Typography>

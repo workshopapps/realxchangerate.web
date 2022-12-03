@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import { Box, Typography, Skeleton } from "@mui/material";
 import moment from "moment";
 import { Link } from "react-router-dom";
-import ImageCard from "./ImageCard";
+import {ImageCard} from "./ImageCard";
 
-export default function HorizontalNewsCard({ data, id }) {
+export default function HorizontalNewsCard({ data }) {
   return (
     <Box>
       {data ? (
@@ -16,10 +16,10 @@ export default function HorizontalNewsCard({ data, id }) {
         >
           <>
             {data.image_url === null ? (
-              <ImageCard category={data.category[0]} height="112px" />
+              <ImageCard category={data.category[0]} height="112px" width="147px" />
             ) : (
               
-              <img src={data.image_url} alt="i" height="100%" width="100%" />
+              <img src={data.image_url} alt="i" height="112px" width="127px" />
             )}
           </>
 
@@ -57,7 +57,7 @@ export default function HorizontalNewsCard({ data, id }) {
                 </Typography>
               </a>
             ) : (
-              <Link to={`/news/${id}`}>
+              <Link to={`/news/${data.id}`}>
                 <Typography
                   sx={{
                     fontWeight: "500",
