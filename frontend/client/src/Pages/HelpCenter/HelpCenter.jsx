@@ -29,7 +29,7 @@ const HelpCenter = () => {
                 
                 <Header style={{color:textColor}}>Hi, How can we help?</Header>
                 <Paragraph style={{color:textColor}}>
-                    Welcome to the StreetRate Help Center Portal. Here you will
+                    Welcome to the StreetRates Help Center Portal. Here you will
                     find answers to all your exchange rate questions. From
                     choosing your base currency and your country location, our
                     integrated matrix, services and more.
