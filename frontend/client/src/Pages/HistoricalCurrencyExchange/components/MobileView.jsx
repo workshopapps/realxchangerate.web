@@ -1,7 +1,4 @@
-import {
-  TabsList,
-  NewTab,
-} from "../syles/HistoricalCurrencyExchangeStyles";
+import { TabsList, NewTab } from "../syles/HistoricalCurrencyExchangeStyles";
 import { TabPanelUnstyled } from "@mui/base";
 import { MobileRowComponent, MobileRowHeaderComponent } from "./Row";
 import { Box } from "@mui/material";
@@ -34,9 +31,10 @@ const MobileView = ({ data }) => {
             <MobileRowHeaderComponent rate="Parallel Rate" />
             {data.map((val, key) => {
               return (
+                <>{val && </>
                 <MobileRowComponent
-                  country={val.country}
-                  rate={val.parallel_rates}
+                  country={val.currency}
+                  rate={val.rate.parallel_buy}
                   key={key}
                 />
               );
@@ -47,6 +45,5 @@ const MobileView = ({ data }) => {
     </Box>
   );
 };
-
 
 export default MobileView;
