@@ -87,7 +87,6 @@ async def sma_rate(previous_buy_rate, previous_sell_rate):
 
 def calculate_percentage_change(previous_rate, current_rate):
     """Function to calculate percentage change in two rates."""
-    # ((current_rate - previous_rate) / previous_rate) * 100
-    percentage_change = round(((current_rate - previous_rate) / previous_rate) * 100, 1)
+    percentage_change = str(round(((current_rate - previous_rate) / previous_rate) * 100, 2))
 
     return percentage_change

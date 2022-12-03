@@ -61,11 +61,15 @@ class CRUDRate(CRUDBase[Rate, RateCreate, RateBase]):
         Sends the percentage change of the last 2 rates of currency passed.
         """
         
-        
         # Respond with percentage change
 
         # Get the currency using the isocode
-        get_currency = currency.get_currency_by_isocode(isocode=isocode)
+        get_currency = currency.get_currency_by_isocode(db=db, isocode=isocode)
+
+        if get_currency == None:
+            response = {'status': False, 'message': 'Currency not found!'}
+
+            return response
 
         # Get the last two rates of the currency
         rates = get_currency.rates[-2:]
@@ -98,14 +102,20 @@ class CRUDRate(CRUDBase[Rate, RateCreate, RateBase]):
         official_buy_percentage_change = calculate_percentage_change(previous_official_buy_rate, current_official_buy_rate)
         official_sell_percentage_change = calculate_percentage_change(previous_official_sell_rate, current_official_sell_rate)
         
-        data = {
-            'parallel_buy_percentage_change': parallel_buy_percentage_change,
-            'parallel_sell_percentage_change': parallel_sell_percentage_change,
-            'official_buy_percentage_change': official_buy_percentage_change,
-            'official_sell_percentage_change': official_sell_percentage_change
+        response = {
+            'status': True,
+            'message': 'Percentage change gotten',
+            'data':{
+                'currency': get_currency.name,
+                'parallel_buy_percentage_change': parallel_buy_percentage_change,
+                'parallel_sell_percentage_change': parallel_sell_percentage_change,
+                'official_buy_percentage_change': official_buy_percentage_change,
+                'official_sell_percentage_change': official_sell_percentage_change
+            }
+            
         }
 
-        return data
+        return response
 
 
 rate = CRUDRate(Rate)
