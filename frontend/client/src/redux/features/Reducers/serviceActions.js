@@ -54,6 +54,7 @@ export const GetCurrencies = () => async () => {
     console.log(err);
   }
 };
+
 export const GetCurrencyData = (isocode) => async () => {
   try {
     const res = await RateService.GetCurrencyData(isocode);
@@ -65,10 +66,13 @@ export const GetCurrencyData = (isocode) => async () => {
   }
 };
 export const GetCurrencyRates = (currencies) => async () => {
+  dispatch(setLoading(true));
   try {
     let currencyRates = currencies.map(async (ele) => {
-      const res = await RateService.GetCurrencyData(ele.isocode);
-      return res.data.data;
+      if (ele.isocode !== "USD") {
+        const res = await RateService.GetCurrencyData(ele.isocode);
+        return res.data.data;
+      }
     });
     Promise.all(currencyRates).then((values) =>
       dispatch(setCurrencyRates(values))
@@ -83,10 +87,13 @@ export const GetCurrencyRates = (currencies) => async () => {
 
 export const GetNews = (ip) => async () => {
   try {
+    dispatch(setLoading(true));
     const res = await axios.get(
       `https://my-second-app-dot-wise-philosophy-348109.oa.r.appspot.com/api/news/${ip}`
     );
-    dispatch(setNews(res.data.results));
+    if (res.data.results.length > 0) {
+      dispatch(setNews(res.data.results));
+    }
 
     dispatch(setLoading(false));
   } catch (err) {

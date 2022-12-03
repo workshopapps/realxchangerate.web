@@ -1,23 +1,18 @@
 import { Drawer, Typography, Divider, Box, Link } from "@mui/material";
 import React from "react";
+import streetRates from "../assets/Logo.svg";
 
 const DrawerComponent = ({ isOpen, setIsOpen }) => {
   const drawer = (
     <Box onClick={setIsOpen} sx={{ textAlign: "center" }}>
-      <Typography
-        variant="h6"
-        sx={{
-          my: 3,
-          ml: 2,
-          fontSize: "23px",
-          lineHeight: "28px",
-          fontWeight: "600",
-        }}
-        letterSpacing="-0.04em"
-        role="heading"
-      >
-        Street Rate
-      </Typography>
+     
+      <Link to="/" style={{ color: "#0062ff" }}>
+            <img
+              style={{ width: "clamp(90px, 10vw, 140px)", margin: "20px auto" }}
+              src={streetRates}
+              alt=""
+            />
+          </Link>
       <Divider />
       <Box
         alignItems="center"

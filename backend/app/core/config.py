@@ -15,6 +15,7 @@ class Settings(BaseSettings):
     ALGORITHM: str = os.getenv("ALGORITHM")
     ACCESS_TOKEN_EXPIRE_MINUTES: int = os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES")
     SQLALCHEMY_DATABASE_URI: str = os.getenv("SQLALCHEMY_DATABASE_URI")
+    TELEGRAM_BOT_API: str = os.getenv("TELEGRAM_BOT_API_KEY")
 
     class Config:
         env_file = "env"

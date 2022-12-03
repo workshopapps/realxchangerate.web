@@ -52,13 +52,13 @@ const Header = () => {
           </Typography>
 
           <Typography
-            fontWeight="600"
+            fontWeight="400"
             sx={{
               fontSize: { xs: "20px", sm: "20px", md: "15px", lg: "20px" },
               lineHeight: { lg: "28px" },
             }}
           >
-            Bankstreet is a platform that allows User to recieve/veiw instant
+            Street Rate is a platform that allows User to recieve/veiw instant
             conversion rates using customized areas real-time charts that fit
             the Ecomony value and a historical conversion record from one to one
             year and to enhance the customer experience

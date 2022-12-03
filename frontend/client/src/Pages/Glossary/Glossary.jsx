@@ -46,7 +46,7 @@ function Glossary() {
           <div>
             <img src='/assets/png/search.png' alt='' />
           </div>
-          <input type='text' onChange={handleChange} />
+          <input type='text' onChange={handleChange} maxLength={1} />
         </Search>
       </Header>
       <Alphabet>
