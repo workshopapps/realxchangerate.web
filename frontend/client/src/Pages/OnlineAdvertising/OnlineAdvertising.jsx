@@ -13,7 +13,7 @@ const OnlineAdvertising = () => {
   const period = "2020 monthly average";
   return (
     <Container>
-    <Box  marginTop="50px" fontFamily= "'Inter', sans-serif" maxWidth='1440px' >
+    <Box  marginTop="50px" fontFamily= "'Inter', sans-serif"  >
       <Box style={{ color: textColor,position: 'relative' }}  margin="0px auto" sx={{
           maxWidth: { xs: "84%", sm: "90%", md: "84%" }
         }} >
@@ -23,12 +23,12 @@ const OnlineAdvertising = () => {
           <StyledH3>Our audience</StyledH3>
 
           <CustomButton style={{backgroundColor:'#0062ff', color:'#f8fafc'}}  ><Link style={{ color:'#f8fafc'}} to='/apply-to-advertise'>Apply to Advertise</Link></CustomButton>
-          <StyledP>
+          <StyledPx style={{marginTop:'24px'}}>
             Street Rates are the most sought after on the internet - They’re
             affulent , in-market, ready to transact, and have high credit
             scores. We offer a user-friendly environment for the consumers rates
             and interact with our advertising partners.
-          </StyledP>
+          </StyledPx>
           <StyledP>
             Our trusted, well known name and our objectivity are important to
             consumers who are on the verge of making important financial
@@ -286,6 +286,22 @@ const StyledP = styled.p`
     font-weight: 400;
     line-height: 24px;
     letter-spacing: 0em;
+  }
+`;
+const StyledPx = styled.p`
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.001em;
+  text-align: left;
+  margin-bottom: 4vh;
+  @media (min-width: 769px) {
+    font-family: Inter;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0em;
+    margin-top:24px; //
   }
 `;
 
