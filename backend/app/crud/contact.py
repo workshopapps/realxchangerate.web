@@ -12,7 +12,7 @@ class CRUDContact(CRUDBase[Contact, ContactCreate, ContactUpdate]):
 
     def get_currency_by_id(self, db: Session, id: int) -> Any:
         """Returns a specific contact detail using the contact id"""
-        return db.query(contact).filter(contact.id == id).first()
+        return db.query(Contact).filter(Contact.id == id).first()
 
 
 contact = CRUDContact(Contact)
