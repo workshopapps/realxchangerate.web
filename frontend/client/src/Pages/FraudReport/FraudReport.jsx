@@ -2,8 +2,8 @@ import { Box, Typography, Stack, styled } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
 import ads from "./pexels-marcus-herzberg-1058276.jpg";
-import confident from "./pexels-andrea-piacquadio-3771839.jpg";
-import registered from "./pexels-erik-mclean-5868633.jpg";
+import confident from "./pexels-andrea-piacquadio-837306.jpg";
+import registered from "./pexels-cadeau-maestro-1170412.jpg";
 import payments from "./pexels-michael-nunzio-4189458.jpg";
 
 
