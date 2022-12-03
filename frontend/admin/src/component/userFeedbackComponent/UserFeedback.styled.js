@@ -12,6 +12,12 @@ export const StyledWrapper = styled.div`
 
 		color: ${(props) => props.theme.$styled.colors.text900};
 	}
+
+	.paginationBox {
+		display: flex;
+		justify-content: flex-end;
+		margin: 1.5rem 0;
+	}
 `;
 
 export const StyledCardsWrapper = styled.div`
