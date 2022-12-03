@@ -56,7 +56,7 @@ const Value = () => {
     <Box
       backgroundColor="#F8FAFC"
       display="flex"
-      justfiyContent="center"
+      justifyContent="center"
       flexDirection="column"
       alignItems="center"
       width="100%"
@@ -102,7 +102,7 @@ const Value = () => {
 
         <Grid
           container
-          spacing="30px"
+          rowSpacing="30px"
           sx={{
             width: {
               xs: "100%",
