@@ -2,7 +2,7 @@ import { Modal, Box, Button } from "@mui/material";
 // import Box from '@mui/material';
 // import Button from '@mui/material';
 import add from "../../assets/add.svg";
-import Form from "./Form";
+import Form from "./AddForm";
 
 const ModalUi = ({ open, handleOpen, handleClose }) => {
   return (
@@ -35,7 +35,7 @@ const ModalUi = ({ open, handleOpen, handleClose }) => {
         <Box
           sx={{
             width: "90%",
-            maxWidth: "500px",
+            maxWidth: "800px",
           }}
         >
           <Form handleClose={handleClose} />
