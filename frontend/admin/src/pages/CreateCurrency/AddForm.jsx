@@ -23,7 +23,7 @@ const Form = ({ handleClose }) => {
     try {
       const token = localStorage.getItem("token");
       if (form.country === "") {
-        alert("Please Enter a value");
+        alert("Please Try again");
         throw Error("Please enter a value");
       }
       const response = await axios.post(

@@ -10,26 +10,27 @@ const Form = ({ handleEditClose, editVal }) => {
   const [isocode, setIsocode] = useState(editVal.isocode);
   const [symbol, setSymbol] = useState(editVal.symbol);
   const [name, setName] = useState(editVal.name);
-  const [form, setForm] = useState({
-    country: country,
-    isocode: isocode,
-    symbol: symbol,
-    name: name,
-  });
-  const [fro, setFro] = useState({});
+  const [form, setForm] = useState({});
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setFro(form);
+    setForm({
+      country: country,
+      isocode: isocode,
+      symbol: symbol,
+      name: name,
+    });
+
     try {
       const token = localStorage.getItem("token");
-      if (fro === {}) {
+      if (form === {}) {
         alert("Please Confirm your changes");
         throw Error("confirm");
       }
       const response = await axios.put(
         `https://api.streetrates.hng.tech/api/admin/update_currency/${editVal.isocode}?iso_code=${editVal.isocode}`,
 
-        form,
+        JSON.stringify(form),
 
         {
           headers: {
