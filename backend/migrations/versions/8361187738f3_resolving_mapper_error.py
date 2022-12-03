@@ -1,8 +1,8 @@
-"""complaints modification
+"""resolving mapper error
 
-Revision ID: 2d9db35f9c61
-Revises: 4edab9586fd5
-Create Date: 2022-11-30 02:36:53.582069
+Revision ID: 8361187738f3
+Revises: d27e22ac3508
+Create Date: 2022-12-03 15:30:34.029104
 
 """
 from alembic import op
@@ -10,8 +10,8 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '2d9db35f9c61'
-down_revision = '4edab9586fd5'
+revision = '8361187738f3'
+down_revision = 'd27e22ac3508'
 branch_labels = None
 depends_on = None
 

@@ -9,22 +9,48 @@ import styled from "styled-components";
 import add from "./assets/add.svg";
 import CircularProgressWithLabel from "@mui/material/CircularProgress";
 import DeleteIcon from "./assets/delete.svg";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
-
+import CountUp from "react-countup";
+import { useSelector } from "react-redux";
+import { dispatch } from "../../redux/store";
+import { GetCurrencyRates } from "../../redux/features/Reducers/serviceActions";
+import { countries } from "./data";
+import Countdown from "react-countdown-simple";
 const Home = () => {
+  const oneHour = new Date(
+    new Date().setHours(new Date().getHours() + 2)
+  ).toISOString();
+  const { currencyRates, currencyList } = useSelector((state) => state.service);
+  // const progressUpdate = document.getElementById("time").innerText;
   const [currencies, setCurrencies] = useState(tableCurrenciesList);
+  const [getCurrency, setGetCurrency] = useState([]);
+  const [dateUpdate, setDateUpdate] = useState("");
   const handleEdit = () => {
     toggle();
   };
+  useEffect(() => {
+    if (currencyList.length > 0) {
+      dispatch(GetCurrencyRates(currencyList));
+    }
 
+    fetch("https://api.streetrates.hng.tech/api/currency/currencies/flags")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setGetCurrency(data);
+        setDateUpdate(data[0].rate.last_updated);
+      })
+      .catch((e) => console.log(e));
+
+    //eslint-disable-next-line
+  }, [currencyList]);
   const handleDelete = (e) => {
     setCurrencies(currencies.filter((item) => item.id !== e));
   };
-
   function toggle() {
     const button = document.getElementById("edit");
     const deleteIcons = document.querySelectorAll(".delete-cur");
@@ -69,17 +95,17 @@ const Home = () => {
         <Convert />
       </Box>
       <StyledBox>
-        <Typography
+        <TypographyLive
           sx={{ color: "#0062FF", fontSize: "16px", fontWeight: 500 }}
         >
           LIVE RATES
-        </Typography>
-        <Typography
+        </TypographyLive>
+        <TypographyHead
           component="h2"
           sx={{ fontSize: "32px", maxWidth: "595px", fontWeight: 800 }}
         >
-          Live rates of popular currencies in Africa
-        </Typography>
+          Live rates of every currency around the world
+        </TypographyHead>
         <StyledEdit className="action" id="edit" onClick={() => handleEdit()}>
           Edit
         </StyledEdit>
@@ -105,27 +131,41 @@ const Home = () => {
           }}
         >
           <Box>Currency</Box>
-          <Box>parallel Rate</Box>
-          <Box>Bank Rate</Box>
+          <Box>Parallel </Box>
+          <StyledBankBox>Bank </StyledBankBox>
           <Box></Box>
         </ListItem>
 
-        {currencies.map((currency) => (
-          <Table2
-            isocode={currency.isocode}
-            country={currency.country}
-            key={currency.id}
-            deleteIcon={
-              <img
-                src={DeleteIcon}
-                className="delete-cur"
-                alt=""
-                style={{ display: "none" }}
-                onClick={(e) => handleDelete(currency.id)}
-              />
-            }
-          />
-        ))}
+        {currencies.map((currency) => {
+          return (
+            <>
+              {currencyRates.length > 0 && (
+                <Table2
+                  isocode={currency.isocode}
+                  country={currency.country}
+                  key={currency.id}
+                  rates={
+                    currencyRates.find(
+                      (x) => x.currency.isocode === currency.isocode
+                    ).rate
+                  }
+                  link={currency.link}
+                  symbol={currency.symbol}
+                  flag={currency.flag}
+                  deleteIcon={
+                    <img
+                      src={DeleteIcon}
+                      className="delete-cur"
+                      alt=""
+                      style={{ display: "none" }}
+                      onClick={(e) => handleDelete(currency.id)}
+                    />
+                  }
+                />
+              )}
+            </>
+          );
+        })}
       </List>
       <StyledSelection>
         <PopupState variant="popover" popupId="demo-popup-menu">
@@ -138,13 +178,20 @@ const Home = () => {
                 </div>
               </Button>
               <Menu {...bindMenu(popupState)}>
-                {addCurrency.map((item) => {
+                {getCurrency.map((item) => {
                   return (
                     <MenuItem
                       onClick={() => handleAdd(popupState.close, item)}
                       key={item.id}
                     >
-                      {item.isocode} - {item.incurrency}
+                      <img
+                        loading="lazy"
+                        width="20"
+                        src={`${item.flag}`}
+                        alt=""
+                        style={{ marginRight: "10px" }}
+                      />
+                      {item.isocode} - {item.country}
                     </MenuItem>
                   );
                 })}
@@ -154,10 +201,21 @@ const Home = () => {
         </PopupState>
         <div className="lastUpdate">
           <div style={{ position: "relative" }}>
-            <CircularProgressWithLabel variant="determinate" value={35} />
-            <i>35</i>
+            <CircularProgressWithLabel
+              variant="determinate"
+              value={59}
+              thickness={6}
+            />
+            <i>
+              <Countdown
+                targetDate={oneHour}
+                renderer={({ days, hours, minutes, seconds }) => (
+                  <span id="time">{minutes}</span>
+                )}
+              />
+            </i>
           </div>
-          <span>Last updated Nov 17, 2022, 15:55 UTC</span>
+          <span>Last updated {dateUpdate}</span>
         </div>
       </StyledSelection>
     </Box>
@@ -165,7 +223,20 @@ const Home = () => {
 };
 
 export default Home;
-const StyledBox = styled(Box)`
+const TypographyLive = styled(Typography)`
+  @media screen and (max-width: 480px) {
+    text-align: center;
+  }
+`;
+
+const TypographyHead = styled(Typography)`
+  @media screen and (max-width: 480px) {
+    text-align: center;
+  }
+`;
+const StyledBox = styled(Box)``;
+
+const StyledBankBox = styled(Box)`
   @media screen and (max-width: 480px) {
     display: none;
   }
@@ -212,14 +283,14 @@ const StyledSelection = styled.div`
     @media screen and (max-width: 480px) {
       max-width: 50%;
     }
-    i {
+    i span {
       position: absolute;
       font-style: normal;
       font-weight: 600;
       font-size: 16px;
       line-height: 22px;
-      right: 10px;
-      top: 10px;
+      right: 18px;
+      top: 9px;
     }
     span {
       font-weight: 400;
