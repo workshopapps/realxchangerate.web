@@ -19,37 +19,32 @@ import { toast } from "react-toastify";
 import styled from "styled-components";
 
 const Red = styled.span`
- color: red;
- `
+  color: red;
+`;
 
 const Green = styled.span`
-color: green;
-`
-
+  color: green;
+`;
 
 export default function DataTable() {
   const dispatch = useDispatch();
   const { currencies, requestStatus } = useSelector((state) => state.trending);
-//"build": "CI=false && craco build",
+  //"build": "CI=false && craco build",
 
-  useEffect(()=>{
-    dispatch(getTrending())
-  },[dispatch])
+  useEffect(() => {
+    dispatch(getTrending());
+  }, [dispatch]);
 
- 
   if (requestStatus === "pending") {
     toast.error("request pending");
   }
- console.log('CURRENCIES', currencies)
-
+  console.log("CURRENCIES", currencies);
 
   const cellSkeleton = (
     <Skeleton variant="rectangular" sx={{ mb: 1 }} width="100%" height="40px" />
   );
 
-
   return (
-
     <TableContainer component={Paper}>
       <Table
         sx={{ minWidth: 750 }}
@@ -82,64 +77,64 @@ export default function DataTable() {
           </TableRow>
         </TableHead>
 
-         <TableBody>
-          {requestStatus === "success"? (
-             currencies.map((data) => (
+        <TableBody>
+          {requestStatus === "success" ? (
+            currencies.map((data) => (
               <TableRow
-              key={data.data.id}
+                key={data?.data?.id}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
-              
                 <TableCell component="th" scope="row">
                   <StyledFlagAndCountry>
-                  <Flag
-                          code={data.data.isocode.slice(0,2)}
-                          style={{ width: "30px", marginRight: "10px" }}
-                        />
-                    <span>{data.data.country}</span>
+                    <Flag
+                      code={data?.data?.isocode?.slice(0, 2)}
+                      style={{ width: "30px", marginRight: "10px" }}
+                    />
+                    <span>{data?.data?.country}</span>
                   </StyledFlagAndCountry>
                 </TableCell>
-                <TableCell align="right">{data.data.isocode}</TableCell>
-                <TableCell align="right" >
-    
-                {data.data.one_day  > 0 ? <Green>{Math.round(data.data.one_day).toFixed(2)} %</Green>: <Red>{Math.round(data.data.one_day).toFixed(2)} %</Red>}
-                
-                </TableCell>
-                <TableCell align="right" >
-                  {data.data.seven_days >0 ? <Green>{Math.round(data.data.seven_days).toFixed(2)} %</Green>: <Red>{Math.round(data.data.seven_days).toFixed(2)} %</Red>}
-                
+                <TableCell align="right">{data?.data?.isocode}</TableCell>
+                <TableCell align="right">
+                  {data?.data?.one_day > 0 ? (
+                    <Green>
+                      {Math.round(data?.data?.one_day).toFixed(2)} %
+                    </Green>
+                  ) : (
+                    <Red>{Math.round(data?.data?.one_day).toFixed(2)} %</Red>
+                  )}
                 </TableCell>
                 <TableCell align="right">
-                  NA
+                  {data?.data?.seven_days > 0 ? (
+                    <Green>
+                      {Math.round(data?.data?.seven_days).toFixed(2)} %
+                    </Green>
+                  ) : (
+                    <Red>{Math.round(data?.data?.seven_days).toFixed(2)} %</Red>
+                  )}
                 </TableCell>
-                <TableCell align="right">
-                 NA
-                </TableCell>
-                <TableCell align="right">
-                  NA
-                </TableCell>
+                <TableCell align="right">NA</TableCell>
+                <TableCell align="right">NA</TableCell>
+                <TableCell align="right">NA</TableCell>
               </TableRow>
               //
-            
             ))
-            
           ) : (
             <>
-            {Array.from(Array(3)).map((_, index) => (
-              <TableRow
-                key={index}
-                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-              >
-                {Array.from(Array(7)).map((_, index) => (
-                  <TableCell key={index} component="th" scope="row">
-                    {cellSkeleton}
-                  </TableCell>
-                ))}
-              </TableRow>
-            ))}
-          </>
+              {Array.from(Array(3)).map((_, index) => (
+                <TableRow
+                  key={index}
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
+                  {Array.from(Array(7)).map((_, index) => (
+                    <TableCell key={index} component="th" scope="row">
+                      {cellSkeleton}
+                    </TableCell>
+                  ))}
+                </TableRow>
+              ))}
+            </>
           )}
-        </TableBody> 
+        </TableBody>
       </Table>
     </TableContainer>
   );
