@@ -27,8 +27,12 @@ import {
 import { dispatch } from "../redux/store";
 import { GetUserIp } from "../redux/features/Reducers/serviceActions";
 import { Languages } from "./index";
+import { useTranslation } from "react-i18next";
+// Adding tranlsation page
 const NavComponent = () => {
-  const { localLanguage, isNavLoading } = useSelector((state) => state.service);
+  const { t, i18n } = useTranslation();
+  const { currencyList, countryDetails, localLanguage, isNavLoading } =
+    useSelector((state) => state.service);
   const theme = useTheme();
   const colorMode = useContext(ColorModeContext);
   const [isOpen, setIsOpen] = useState(false);
@@ -47,9 +51,12 @@ const NavComponent = () => {
   const handleCloseItem = (ele) => {
     sessionStorage.setItem("localLanguage", JSON.stringify(currentLanguage));
     setCurrentLanguage(ele);
+    i18n.changeLanguage(ele.lanaguage);
     dispatch(setLocalLanguage(ele));
     setAnchorEl(null);
   };
+
+  console.log(currentLanguage);
 
   useEffect(() => {
     const ip = sessionStorage.getItem("ip");
@@ -63,12 +70,6 @@ const NavComponent = () => {
     dispatch(setDefaultCurrency(defaultCurrency));
     dispatch(setLocalLanguage(LocaleLanaguage));
   }, []);
-
-  useEffect(() => {
-    setCurrentLanguage(localLanguage);
-  }, [localLanguage]);
-
-  //console.log(localLanguage, currentLanguage);
 
   return (
     <Grid
@@ -206,13 +207,13 @@ const NavComponent = () => {
           </Menu>
         </Box>
         <Link to="/" style={{ color: "#0062ff" }}>
-          Home
+          {t("nav_home")}
         </Link>
         <Link to="/news" style={{ color: "#0062ff" }}>
-          News
+          {t("nav_news")}
         </Link>
         <Link to="/contact" style={{ color: "#0062ff" }}>
-          Contact
+          {t("nav_contact")}
         </Link>
       </Grid>
       <Box

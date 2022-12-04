@@ -159,8 +159,8 @@ const StyledContent = styled.div`
   margin-bottom: 48px;
 
   @media ${devices.mobile} {
-    gap:16px;
-    margin-bottom:40px;
+    gap: 16px;
+    margin-bottom: 40px;
   }
 `;
 const StyledHead = styled.h2`
@@ -182,6 +182,7 @@ const StyledText = styled.p`
     font-size: 14px;
     line-height: 20px;
     letter-spacing: 0.001em;
+    text-align: center;
   }
 `;
 
@@ -221,10 +222,16 @@ const TeamSection = styled.div`
 const TeamMembers = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 30px;
+  gap: 28px;
   justify-content: center;
   @media ${devices.mobile} {
+    width: 330px;
+    justify-content: flex-start;
     gap: 30px;
+    overflow: hidden;
+    overflow-x: scroll;
+    flex-wrap: nowrap;
+    flex-direction: row;
   }
 `;
 export const StyledTeam = styled.div`
