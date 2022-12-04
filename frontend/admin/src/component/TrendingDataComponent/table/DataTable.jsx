@@ -16,7 +16,7 @@ import { getTrending } from "../../../store/actions/trendingActions";
 import Flag from "react-world-flags";
 import { Skeleton } from "@mui/material";
 import { toast } from "react-toastify";
-import axios from "axios";
+
 
 export default function DataTable() {
   const dispatch = useDispatch();
@@ -116,7 +116,7 @@ export default function DataTable() {
 
 
   return (
-    
+
     <TableContainer component={Paper}>
       <Table
         sx={{ minWidth: 750 }}
@@ -150,28 +150,28 @@ export default function DataTable() {
         </TableHead>
 
          <TableBody>
-          {currencies ? (
+          {currencies? (
              currencies.map((data,index) => (
               <TableRow
-              key={data.id}
+              key={data.data.id}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
               
                 <TableCell component="th" scope="row">
                   <StyledFlagAndCountry>
                   <Flag
-                          code={data.isocode}
+                          code={data.data.isocode.slice(0,2)}
                           style={{ width: "30px", marginRight: "10px" }}
                         />
-                    <span>{data.country}</span>
+                    <span>{data.data.country}</span>
                   </StyledFlagAndCountry>
                 </TableCell>
-                <TableCell align="right">{data.isocode}</TableCell>
+                <TableCell align="right">{data.data.isocode}</TableCell>
                 <TableCell align="right">
-                  {data.one_day}
+                {data.data.one_day}
                 </TableCell>
                 <TableCell align="right">
-                  {data.seven_days}
+                  {data.data.seven_days}
                 </TableCell>
                 <TableCell align="right">
                   NaN
