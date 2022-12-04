@@ -90,28 +90,50 @@ const ApplicationForm = () => {
     return errors;
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
+
     setErrorMessage(validate(ambassadorDetails));
-    if (errorMessage) {
-      return;
-    }
+    const formData = {
+      info: {
+        first_name: firstName,
+        last_name: lastName,
+        email: email,
+        dob: DOB,
+        phone_number: phoneNumber,
+      },
+      address: {
+        address: address,
+        city: city,
+        country: country,
+      },
+      school: {
+        name: schoolName,
+        name_of_course: courseName,
+        year_of_entry: entryYear,
+        year_of_completion: completionYear,
+      },
+      question: [
+        {
+          question: "reason for application",
+          answer: reasonForApplication,
+        },
+      ],
+    };
 
-    try {
-      const { data } = await axios.post(
-        "https://formsubmit.co/ajax/e79cf7c6eade7d5068495853b4cec9dc",
-        ambassadorDetails
-      );
-
-      if (data.success === "true") {
+    axios
+      .post("https://api.streetrates.hng.tech/api/students/create", formData)
+      .then((res) => {
+        console.log(res);
         setMessage(true);
         setStatusMessage("Your application has been received!");
-      }
-    } catch (error) {
-      setMessage(false);
-      error && setStatusMessage("You application was not received, try again!");
-    }
+      })
+      .catch((err) => {
+        console.log(err);
+        setMessage(false);
+        err && setStatusMessage("You application was not received, try again!");
+      });
 
     setLoading(false);
     setAmbassadorDetails({
@@ -146,7 +168,7 @@ const ApplicationForm = () => {
           <p>{statusMessage}</p>
         </MessageModal>
       )}
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="grid-two">
           <div>
             <InputField
@@ -322,11 +344,7 @@ const ApplicationForm = () => {
           )}
         </div>
 
-        <button
-          type="submit"
-          onClick={handleSubmit}
-          disabled={loading & !errorMessage}
-        >
+        <button type="submit" disabled={loading & !errorMessage}>
           {loading & !errorMessage ? "submitting" : "Apply"}
         </button>
       </form>
