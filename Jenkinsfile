@@ -48,7 +48,8 @@ pipeline {
 			 	     //fi
 				     //nohup uvicorn app.main:app --host 0.0.0.0 --port 7015 --proxy-headers &
 			      //'''
-				sh "sudo .${WORKSPACE}/startup.sh"
+				sh "sudo chmod +x startup.sh"
+				sh "sudo ./startup.sh"
 				//sh "cd backend"
 				//sh "cd backend && python3 -m pip install --upgrade pip virtualenv"
 				//sh "cd backend && virtualenv -p python3 venv"
