@@ -2,6 +2,7 @@ import { Box, List, ListItem, Typography } from "@mui/material";
 import React from "react";
 import Convert from "../../components/home/Convert";
 import Hero from "../../components/home/Hero";
+import { useTranslation } from "react-i18next";
 // import Table from "./components/Table";
 import Table2 from "./components/Table2";
 import { tableCurrenciesList, addCurrency } from "./data";
@@ -29,6 +30,7 @@ const Home = () => {
   const [currencies, setCurrencies] = useState(tableCurrenciesList);
   const [getCurrency, setGetCurrency] = useState([]);
   const [dateUpdate, setDateUpdate] = useState("");
+  const { t } = useTranslation();
   const handleEdit = () => {
     toggle();
   };
@@ -98,13 +100,13 @@ const Home = () => {
         <TypographyLive
           sx={{ color: "#0062FF", fontSize: "16px", fontWeight: 500 }}
         >
-          LIVE RATES
+          {t("home_live")}
         </TypographyLive>
         <TypographyHead
           component="h2"
           sx={{ fontSize: "32px", maxWidth: "595px", fontWeight: 800 }}
         >
-          Live rates of every currency around the world
+          {t("home_title")}
         </TypographyHead>
         <StyledEdit className="action" id="edit" onClick={() => handleEdit()}>
           Edit
@@ -130,9 +132,9 @@ const Home = () => {
             color: "black",
           }}
         >
-          <Box>Currency</Box>
-          <Box>Parallel </Box>
-          <StyledBankBox>Bank </StyledBankBox>
+          <Box>{t("home_currency")}</Box>
+          <Box>{t("home_parallel")}</Box>
+          <Box>{t("home_Bank")}</Box>
           <Box></Box>
         </ListItem>
 
@@ -174,7 +176,7 @@ const Home = () => {
               <Button {...bindTrigger(popupState)}>
                 <div className="add">
                   <img src={add} alt="" />
-                  <span className="addspan">Add currency</span>
+                  <span className="addspan">{t("home_btn")}</span>
                 </div>
               </Button>
               <Menu {...bindMenu(popupState)}>
@@ -215,7 +217,9 @@ const Home = () => {
               />
             </i>
           </div>
-          <span>Last updated {dateUpdate}</span>
+          <span>
+            {t("home_update")} {dateUpdate}
+          </span>
         </div>
       </StyledSelection>
     </Box>
