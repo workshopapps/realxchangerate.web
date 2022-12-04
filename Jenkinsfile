@@ -24,7 +24,8 @@ pipeline {
 			steps {
 				sh "sudo cp -rf ${WORKSPACE}/frontend/client/build/* /var/www/streetrate.hng.tech/html/client/"
 				sh "sudo cp -fr ${WORKSPACE}/frontend/admin/build/* /var/www/streetrate.hng.tech/html/admin/"
-        			//sh "sudo cp -rf ${workspace}/backend/* /home/light/realxchangerate/backend"
+        			sh "sudo cp -rf ${workspace}/backend/* /home/light/realxchangerate/backend"
+				sh "./home/light/realxchangerate"
 				//sh "sudo su - light && whoami"
 				//sh "sudo systemctl restart realxchangerate.service"
 			}
