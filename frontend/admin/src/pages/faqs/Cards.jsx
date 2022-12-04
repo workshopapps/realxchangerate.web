@@ -49,7 +49,7 @@ export default function FaqsCard({ faq, setNewdata }) {
           color: `${expanded ? "white" : "black"}`,
         }}
         // title
-        subheader={faq.question}
+        subheader={<Typography>{faq.question}</Typography>}
         action={
           <ExpandMore
             expand={expanded}
