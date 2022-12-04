@@ -33,7 +33,7 @@ pipeline {
 		stage("build & deploy backend"){
 
 			steps {
-				sh "./home/light/realxchangerate"
+				sh "./home/light/realxchangerate.sh"
 				//sh "cd backend"
 				//sh "cd backend && python3 -m pip install --upgrade pip virtualenv"
 				//sh "cd backend && virtualenv -p python3 venv"
