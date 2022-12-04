@@ -8,6 +8,7 @@ import {
   StyledFaqBottom,
   StyledInput,
 } from "./FaqOverview.styled";
+import { useNavigate } from "react-router-dom";
 import { ReactComponent as SearchIcon } from "./assets/icons/search.svg";
 import FAQ_image from "./assets/images/faq_image.png";
 import Accordion from "@mui/material/Accordion";
@@ -19,6 +20,8 @@ import Skeleton from "@mui/material/Skeleton";
 
 function FaqOverview() {
   const [faqData, setFaqData] = useState(null);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -94,7 +97,9 @@ function FaqOverview() {
               team.`}
             </p>
           </div>
-          <button>Get in touch</button>
+          <button onClick={() => navigate("/get-in-touch")}>
+            Get in touch
+          </button>
         </StyledFaqBottom>
       </StyledWrapper>
     </Box>
