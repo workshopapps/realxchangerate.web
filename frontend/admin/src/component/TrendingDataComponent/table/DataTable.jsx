@@ -190,7 +190,7 @@ export default function DataTable() {
                   NA
                 </TableCell>
               </TableRow>
-              
+              //
             
             ))
             
