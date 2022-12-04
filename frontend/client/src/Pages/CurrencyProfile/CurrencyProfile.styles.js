@@ -15,6 +15,52 @@ export const Button = styled.button`
     }
 `;
 
+export const StyledSelection = styled.div`
+    display: flex;
+    margin: 20px 0px 50px 0px;
+    justify-content: space-between;
+    align-items: center;
+    .add {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .addspan {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 22px;
+        color: #0062ff;
+        @media screen and (max-width: 480px) {
+            font-size: 10px;
+        }
+    }
+    .lastUpdate {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        @media screen and (max-width: 480px) {
+            max-width: 50%;
+        }
+        i span {
+            position: absolute;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 22px;
+            right: 18px;
+            top: 9px;
+        }
+        span {
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 22px;
+            @media screen and (max-width: 480px) {
+                font-size: 10px;
+            }
+        }
+    }
+`;
+
 export const Bottom = styled.div`
     display: flex;
     align-items: center;
