@@ -34,7 +34,7 @@ function FeedbackPageLayout() {
 		}
 
 		// eslint-disable-next-line
-	}, []);
+	}, [contact, params]);
 
 	if (requestStatus === 'failed') {
 		toast.error('error fetching contacts');
