@@ -36,7 +36,8 @@ import {
   ApplyToAdvertise,
   StudentAmbassadorForm,
   Affiliate,
-  Referral
+  Referral,
+  Currency
 } from "./Pages";
 import GlobalStyle from "./styles/Globalstyle";
 import ErrorPage from "./Pages/404/ErrorPage";
@@ -73,7 +74,7 @@ function App() {
             <Route path="/partnerships" element={<Partnerships />} />
             <Route
               path="/currency-encyclopedia"
-              element={<CurrencyEncyclopedia />}
+              element={<Currency />}
             />{" "}
             <Route
               path="/currency-encyclopedia/:country"
