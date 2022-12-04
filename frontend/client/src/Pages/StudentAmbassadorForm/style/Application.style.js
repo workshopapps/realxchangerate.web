@@ -124,6 +124,7 @@ export const FormSection = styled.section`
 
     .text-area {
       display: flex;
+      padding: 16px;
       flex-direction: column;
       margin: 3.5rem 0;
       label {
@@ -154,7 +155,7 @@ export const MessageModal = styled.div`
   align-items: center;
   justify-content: center;
   font-weight: 600;
-  font-size: 20px;
+  font-size: 16px;
   margin: 1rem auto;
 
   p: @media (min-width: 768px) {

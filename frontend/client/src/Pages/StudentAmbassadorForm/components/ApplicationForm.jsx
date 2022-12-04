@@ -90,7 +90,7 @@ const ApplicationForm = () => {
     return errors;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
 
@@ -121,19 +121,20 @@ const ApplicationForm = () => {
         },
       ],
     };
+    try {
+      const res = await axios.post(
+        "https://api.streetrates.hng.tech/api/students/create/",
+        formData
+      );
 
-    axios
-      .post("https://api.streetrates.hng.tech/api/students/create", formData)
-      .then((res) => {
-        console.log(res);
+      if (res.status == 200) {
         setMessage(true);
         setStatusMessage("Your application has been received!");
-      })
-      .catch((err) => {
-        console.log(err);
-        setMessage(false);
-        err && setStatusMessage("You application was not received, try again!");
-      });
+      }
+    } catch (err) {
+      setMessage(false);
+      err && setStatusMessage("You application was not received, try again!");
+    }
 
     setLoading(false);
     setAmbassadorDetails({
@@ -345,7 +346,7 @@ const ApplicationForm = () => {
         </div>
 
         <button type="submit" disabled={loading & !errorMessage}>
-          {loading & !errorMessage ? "submitting" : "Apply"}
+          {loading ? "submitting" : "Apply"}
         </button>
       </form>
     </FormSection>
