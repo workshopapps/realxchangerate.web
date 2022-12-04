@@ -221,6 +221,9 @@ const Footer = () => {
             <Link href="/#/faq" color="inherit">
               FAQ
             </Link>
+            <Link href="/#/faq-overview" color="inherit">
+              FAQ Overview
+            </Link>
             <Link href="/#/complaint" color="inherit">
               File a complaint
             </Link>
@@ -329,8 +332,20 @@ const Footer = () => {
           />
           <DropDown
             title={"Support"}
-            Items={["Help Centre", "FAQ", "File a complaint", "Fraud Report"]}
-            Links={["help-center", "faq", "complaint", "fraud-report"]}
+            Items={[
+              "Help Centre",
+              "FAQ",
+              "FAQ Overview",
+              "File a complaint",
+              "Fraud Report",
+            ]}
+            Links={[
+              "help-center",
+              "faq",
+              "faq-overview",
+              "complaint",
+              "fraud-report",
+            ]}
           />
           <DropDown
             title={"Legal"}
