@@ -33,7 +33,22 @@ pipeline {
 		stage("build & deploy backend"){
 
 			steps {
-				sh "sudo ./home/light/realxchangerate.sh"
+			     sh '''#!/bin/bash
+				     source /home/light/realxchangerate/backend/venv/bin/activate
+				     cd /home/light/realxchangerate/backend
+				     PID=$(ps aux | grep 'uvicorn app.main:app' | awk {'print $2'} | xargs)
+				     if [ "$PID" != "" ]
+				     then
+				     kill -9 $PID
+				     sleep 2
+				     echo "" > nohup.out
+				     echo "Restarting FastAPI server"
+				     else
+				     echo "No such process. Starting new FastAPI server"
+			 	     fi
+				     nohup uvicorn app.main:app --host 0.0.0.0 --port 7015 --proxy-headers &
+			      '''
+				//sh "sudo ./home/light/realxchangerate.sh"
 				//sh "cd backend"
 				//sh "cd backend && python3 -m pip install --upgrade pip virtualenv"
 				//sh "cd backend && virtualenv -p python3 venv"
