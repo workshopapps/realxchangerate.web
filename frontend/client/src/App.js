@@ -50,7 +50,6 @@ import FileAComplaintForm from "./Pages/FileComplaints/components/ComplaintForm/
 import PrivacyPolicy from "./Pages/PrivacyPolicy/PrivacyPolicy";
 import EntrepreneurAmbassador from "./Pages/EntrepreneurAmbassador/EntrepreneurAmbassador";
 import EntrepreneurFrom from "./Pages/EntrepreneurForm/EntrepreneurFrom";
-import CompliancePage from "./Pages/CompliancePage/CompliancePage";
 function App() {
   return (
     <>
@@ -62,7 +61,7 @@ function App() {
             {/*---==== Contents Sections  ====---*/}
             <Route path="/" element={<Home />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/compliance" element={<CompliancePage />} />
+            <Route path="/compliance" element={<Compliance />} />
             <Route path="/help-center" element={<HelpCenter />} />
             <Route path="/currency-profile" element={<CurrencyProfile />} />
             <Route path="/news" element={<News />} />

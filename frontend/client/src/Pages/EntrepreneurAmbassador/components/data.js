@@ -1,9 +1,9 @@
-import JaneDoe from "../../Pages/Ambassadors/images/MainAmbassadors/JaneDoe.png";
-import MichaelPhillips from "../../Pages/Ambassadors/images/MainAmbassadors/MichaelPhillips.png";
-import JeremyDavis from "../../Pages/Ambassadors/images/MainAmbassadors/JeremyDavis.png";
-import TonyStones from "../../Pages/Ambassadors/images/MainAmbassadors/TonyStone.png";
-import MarthaMartins from "../../Pages/Ambassadors/images/MainAmbassadors/MarthaMartins.png";
-import ElizabethRowlings from "../../Pages/Ambassadors/images/MainAmbassadors/ElizabethRowlings.png";
+import JaneDoe from "../../Ambassadors/images/MainAmbassadors/JaneDoe.png";
+import MichaelPhillips from "../../Ambassadors/images/MainAmbassadors/MichaelPhillips.png";
+import JeremyDavis from "../../Ambassadors/images/MainAmbassadors/JeremyDavis.png";
+import TonyStones from "../../Ambassadors/images/MainAmbassadors/TonyStone.png";
+import MarthaMartins from "../../Ambassadors/images/MainAmbassadors/MarthaMartins.png";
+import ElizabethRowlings from "../../Ambassadors/images/MainAmbassadors/ElizabethRowlings.png";
 
 export const AmbassadorsData = [
   {

@@ -25,17 +25,14 @@ import {
   setUserIp,
 } from "../redux/features/Reducers/servicesReducer";
 import { dispatch } from "../redux/store";
-import {
-  GetUserIp,
-} from "../redux/features/Reducers/serviceActions";
-import {Languages} from "./index"
+import { GetUserIp } from "../redux/features/Reducers/serviceActions";
+import { Languages } from "./index";
 const NavComponent = () => {
-  const { currencyList, countryDetails, localLanguage, isNavLoading } =
-    useSelector((state) => state.service);
+  const { localLanguage, isNavLoading } = useSelector((state) => state.service);
   const theme = useTheme();
   const colorMode = useContext(ColorModeContext);
   const [isOpen, setIsOpen] = useState(false);
-  const [currentLanguage, setCurrentLanguage] = useState(localLanguage);
+  const [currentLanguage, setCurrentLanguage] = useState(null);
   const HandleDrawerState = () => {
     setIsOpen(!isOpen);
   };
@@ -48,26 +45,30 @@ const NavComponent = () => {
     setAnchorEl(null);
   };
   const handleCloseItem = (ele) => {
-   sessionStorage.setItem("localLanguage", JSON.stringify(currentLanguage))
+    sessionStorage.setItem("localLanguage", JSON.stringify(currentLanguage));
     setCurrentLanguage(ele);
     dispatch(setLocalLanguage(ele));
     setAnchorEl(null);
   };
 
-  console.log(currentLanguage)
-
   useEffect(() => {
     const ip = sessionStorage.getItem("ip");
     const defaultCurrency = JSON.parse(sessionStorage.getItem("localCurrency"));
+    const LocaleLanaguage = JSON.parse(sessionStorage.getItem("localLanguage"));
     if (!ip || !defaultCurrency) {
       dispatch(setNavLoading(true));
       dispatch(GetUserIp());
     }
     dispatch(setUserIp(ip));
     dispatch(setDefaultCurrency(defaultCurrency));
+    dispatch(setLocalLanguage(LocaleLanaguage));
   }, []);
 
+  useEffect(() => {
+    setCurrentLanguage(localLanguage);
+  }, [localLanguage]);
 
+  //console.log(localLanguage, currentLanguage);
 
   return (
     <Grid
@@ -171,7 +172,7 @@ const NavComponent = () => {
             id="basic-menu"
             anchorEl={anchorEl}
             open={open}
-            onClose={handleClose}
+            onClose={() => handleClose()}
             MenuListProps={{
               "aria-labelledby": "basic-button",
             }}
@@ -188,9 +189,7 @@ const NavComponent = () => {
                     gap: "6px",
                     flexDirection: "row",
                   }}
-                  onClick={() =>
-                    handleCloseItem(ele)
-                  }
+                  onClick={() => handleCloseItem(ele)}
                   key={ele.isocode}
                 >
                   <img

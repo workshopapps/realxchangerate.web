@@ -1,6 +1,6 @@
 import React from "react";
 import { EntrepreneurSection } from "./entrepreneurStyle";
-import heroImg from "../../assets/images/entrepreneur-hero-img.png";
+import heroImg from "../assets/entrepreneur-hero-img.png";
 import { AmbassadorsData } from "./data";
 import { Link } from "react-router-dom";
 
