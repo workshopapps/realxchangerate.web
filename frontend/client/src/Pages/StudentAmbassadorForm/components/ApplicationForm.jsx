@@ -42,6 +42,7 @@ const ApplicationForm = () => {
   const [statusMessage, setStatusMessage] = useState("");
   const [message, setMessage] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState({});
 
   setTimeout(() => setMessage(false), 5000);
 
@@ -50,9 +51,52 @@ const ApplicationForm = () => {
     setAmbassadorDetails({ ...ambassadorDetails, [name]: value });
   };
 
+  const validate = (value) => {
+    const errors = {};
+    if (!value.firstName) {
+      errors.firstName = "First name is required";
+    }
+    if (!value.last_name) {
+      errors.lastName = "Last name is required";
+    }
+    if (!value.email) {
+      errors.email = "Email is required";
+    }
+    if (!value.DOB) {
+      errors.DOB = "DOB is required";
+    }
+    if (!value.address) {
+      errors.address = "address is required";
+    }
+    if (!value.city) {
+      errors.city = "city is required";
+    }
+    if (!value.schoolName) {
+      errors.schoolName = "school name is required";
+    }
+    if (!value.courseName) {
+      errors.courseName = "course name is required";
+    }
+    if (!value.entryYear) {
+      errors.entryYear = "entry year is required";
+    }
+    if (!value.completionYear) {
+      errors.completionYear = "completion year is required";
+    }
+    if (!value.reasonForApplication) {
+      errors.reasonForApplication = "Please give a reason for application";
+    }
+
+    return errors;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+    setErrorMessage(validate(ambassadorDetails));
+    if (errorMessage) {
+      return;
+    }
 
     try {
       const { data } = await axios.post(
@@ -112,6 +156,8 @@ const ApplicationForm = () => {
               label="Name"
               value={firstName}
               handleChange={handleChange}
+              onBlur={() => setErrorMessage(validate(firstName))}
+              errorMessage={!firstName && errorMessage.firstName}
             />
           </div>
           <div>
@@ -121,6 +167,7 @@ const ApplicationForm = () => {
               name="lastName"
               value={lastName}
               handleChange={handleChange}
+              errorMessage={!lastName && errorMessage.lastName}
             />
           </div>
         </div>
@@ -132,6 +179,7 @@ const ApplicationForm = () => {
               label="Date of birth"
               value={DOB}
               handleChange={handleChange}
+              errorMessage={!DOB && errorMessage.DOB}
             />
           </div>
           <div>
@@ -154,6 +202,7 @@ const ApplicationForm = () => {
               label="Email"
               value={email}
               handleChange={handleChange}
+              errorMessage={!email && errorMessage.email}
             />
           </div>
         </div>
@@ -167,6 +216,7 @@ const ApplicationForm = () => {
               label="Address"
               value={address}
               handleChange={handleChange}
+              errorMessage={!address && errorMessage.address}
             />
           </div>
         </div>
@@ -178,6 +228,7 @@ const ApplicationForm = () => {
               label="City"
               value={city}
               handleChange={handleChange}
+              errorMessage={!city && errorMessage.city}
             />
           </div>
           <div className="select-field">
@@ -199,6 +250,7 @@ const ApplicationForm = () => {
               label="School name"
               value={schoolName}
               handleChange={handleChange}
+              errorMessage={!schoolName && errorMessage.schoolName}
             />
           </div>
         </div>
@@ -210,6 +262,7 @@ const ApplicationForm = () => {
               label="Name of course"
               value={courseName}
               handleChange={handleChange}
+              errorMessage={!courseName && errorMessage.courseName}
             />
           </div>
         </div>
@@ -221,6 +274,7 @@ const ApplicationForm = () => {
               label="Year of entry"
               value={entryYear}
               handleChange={handleChange}
+              errorMessage={!entryYear && errorMessage.entryYear}
             />
           </div>
           <div>
@@ -230,6 +284,7 @@ const ApplicationForm = () => {
               label="Year of completion"
               value={completionYear}
               handleChange={handleChange}
+              errorMessage={!completionYear && errorMessage.completionYear}
             />
           </div>
         </div>
@@ -258,11 +313,21 @@ const ApplicationForm = () => {
             rows="10"
             value={reasonForApplication}
             onChange={handleChange}
+            errorMessage={errorMessage.reasonForApplication}
           />
+          {!reasonForApplication && (
+            <p style={{ fontSize: "14px", color: "red", marginTop: "4px" }}>
+              {errorMessage.reasonForApplication}
+            </p>
+          )}
         </div>
 
-        <button type="submit" onClick={handleSubmit} disabled={loading}>
-          {loading ? "submitting" : "Apply"}
+        <button
+          type="submit"
+          onClick={handleSubmit}
+          disabled={loading & !errorMessage}
+        >
+          {loading & !errorMessage ? "submitting" : "Apply"}
         </button>
       </form>
     </FormSection>

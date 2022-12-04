@@ -1,7 +1,7 @@
 import React from "react";
 import { FormSection } from "./entrepreneurFormStyle";
-import leftIcon from "../../assets/svg/arrow-left.svg";
-import InputField from "../shared/InputField/InputField";
+import leftIcon from "../../../assets/svg/arrow-left.svg";
+import InputField from "../../../components/shared/InputField/InputField";
 import { Link } from "react-router-dom";
 
 const EntrepreneurFormComponent = () => {
