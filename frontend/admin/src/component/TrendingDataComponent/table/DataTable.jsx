@@ -168,10 +168,10 @@ export default function DataTable() {
                 </TableCell>
                 <TableCell align="right">{data.data.isocode}</TableCell>
                 <TableCell align="right">
-                {data.data.one_day}
+                {Math.round(data.data.one_day).toFixed(2)}
                 </TableCell>
-                <TableCell align="right">
-                  {data.data.seven_days}
+                <TableCell align="right" >
+                {Math.round(data.data.seven_days).toFixed(2)}
                 </TableCell>
                 <TableCell align="right">
                   NA
