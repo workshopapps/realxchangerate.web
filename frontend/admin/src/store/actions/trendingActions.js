@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const initialState = {
-  currencies: [],
+  currencies: null,
   message: null,
   error: null,
   requestStatus: "idle",
@@ -11,12 +11,24 @@ const initialState = {
 export const getTrending = createAsyncThunk(
   "currency/trending",
   async (payload, { rejectWithValue }) => {
+
+    const getIndividualData = async (isocode)=>{
+        const option = await axios.get(`https://api.streetrates.hng.tech/api/currency/trend/${isocode}`)
+        return option.data
+    }
+
     try {
       const res = await axios.get(
-        "https://api.streetrates.hng.tech/api/currency/"
+        "https://api.streetrates.hng.tech/api/currency/currencies" 
       );
+      
       if (res.status && res.status === 200) {
-        return res.data;
+        const optionsArray = await Promise.all([...res.data.currencies].map((item) => {
+            return getIndividualData(item.isocode);
+          }))
+          //console.log('OPTIONS', optionsArray)
+    return optionsArray
+    
       } else {
         return rejectWithValue(res);
       }
@@ -27,33 +39,10 @@ export const getTrending = createAsyncThunk(
   }
 );
 
-export const addCurrency = createAsyncThunk(
-  "currency/add",
-  async (payload, { rejectWithValue }) => {
-    try {
-      const res = await axios.post(
-        "https://exchange.hng.tech/backend/api/admin/add_currency/",
-        {
-          country: payload.country,
-          isocode: payload.isocode,
-          symbol: payload.symbol,
-          rate: payload.rate,
-        }
-      );
-      if (res.status && res.status === 200) {
-        return res.data;
-      } else {
-        return rejectWithValue(res);
-      }
-    } catch (err) {
-      console.log(err, "error");
-      return rejectWithValue(err.response.data);
-    }
-  }
-);
 
-export const dashboardSlice = createSlice({
-  name: "dashboard",
+
+export const trendingSlice = createSlice({
+  name: "trending",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -69,13 +58,8 @@ export const dashboardSlice = createSlice({
         state.requestStatus = "failed";
         state.error = action.payload;
       })
-      .addCase(addCurrency.fulfilled, (state, action) => {
-        state.message = action.payload;
-      })
-      .addCase(addCurrency.rejected, (state, action) => {
-        state.error = action.payload;
-      });
+    
   },
 });
 
-export default dashboardSlice.reducer;
+export default trendingSlice.reducer;
