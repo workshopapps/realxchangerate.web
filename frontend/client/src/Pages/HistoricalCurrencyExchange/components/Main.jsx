@@ -21,18 +21,17 @@ const MainComponent = ({ data }) => {
       >
         <Box width="100%" display="flex" flexDirection="column">
           <RowHeaderComponent />
-          {data.map((val, key) => {
+          {data.map((val) => {
             return (
-              <>
-                {val && (
+              <div key={data.indexOf(val)}>
+                {val !== undefined && val !== null && val.rate !== null && (
                   <RowComponent
-                    key={key}
                     country={val.currency}
                     bank={Math.ceil(val.rate.official_buy)}
                     parallel={Math.ceil(val.rate.parallel_buy)}
                   />
                 )}
-              </>
+              </div>
             );
           })}
         </Box>

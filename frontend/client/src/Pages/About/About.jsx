@@ -17,44 +17,44 @@ import Download from "./components/Download";
 const About = () => {
   const teamMember = [
     {
-      name: "Person name",
+      name: "Isaac Adariku",
       image: teamate1,
-      designation: "designation",
+      designation: "Mentor",
     },
     {
-      name: "Person name",
+      name: "Obiekwe Agnes",
       image: teamate2,
-      designation: "designation",
+      designation: "Program Coordinator",
     },
     {
-      name: "Person name",
+      name: "Flourish Agnes",
       image: teamate3,
-      designation: "designation",
+      designation: "Design Lead",
     },
     {
-      name: "Person name",
+      name: "Folajomi Bello",
       image: teamate4,
-      designation: "designation",
+      designation: "Design Mentor",
     },
     {
-      name: "Person name",
+      name: "Mark Essien",
       image: teamate5,
-      designation: "designation",
+      designation: "Chief Mentor",
     },
     {
-      name: "Person name",
+      name: "Agwaraonye Cynthia",
       image: teamate6,
-      designation: "designation",
+      designation: "Marketing Mentor",
     },
     {
-      name: "Person name",
+      name: "Isaac Adariku",
       image: teamate7,
-      designation: "designation",
+      designation: "Mentor",
     },
     {
-      name: "Person name",
+      name: "Folajomi Bello",
       image: teamate8,
-      designation: "designation",
+      designation: "Design Mentor",
     },
   ];
   const theme = useTheme();
@@ -69,7 +69,7 @@ const About = () => {
         flexDirection="column"
         sx={{ gap: { xs: "27px", sm: "80px" } }}
       >
-        <Container about={true} textColor={textColor}>
+        <Container about textColor={textColor}>
           <Header />
         </Container>
 
@@ -159,8 +159,8 @@ const StyledContent = styled.div`
   margin-bottom: 48px;
 
   @media ${devices.mobile} {
-    gap:16px;
-    margin-bottom:40px;
+    gap: 16px;
+    margin-bottom: 40px;
   }
 `;
 const StyledHead = styled.h2`
@@ -182,6 +182,7 @@ const StyledText = styled.p`
     font-size: 14px;
     line-height: 20px;
     letter-spacing: 0.001em;
+    text-align: center;
   }
 `;
 
@@ -221,10 +222,16 @@ const TeamSection = styled.div`
 const TeamMembers = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 30px;
+  gap: 28px;
   justify-content: center;
   @media ${devices.mobile} {
+    width: 330px;
+    justify-content: flex-start;
     gap: 30px;
+    overflow: hidden;
+    overflow-x: scroll;
+    flex-wrap: nowrap;
+    flex-direction: row;
   }
 `;
 export const StyledTeam = styled.div`

@@ -19,7 +19,7 @@ const Hero = () => {
           <button
             className="btn1"
             onClick={() => {
-              navigate("/ambassadors");
+              navigate("/ambassadors/entrepreneur-ambassador");
             }}
           >
             Apply as an entrepreneur

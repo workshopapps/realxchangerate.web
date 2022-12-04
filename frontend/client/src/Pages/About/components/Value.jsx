@@ -31,6 +31,7 @@ const ListItem = ({ image, title, content }) => {
             lineHeight: { xs: "28px", sm: "32px" },
           }}
           color="#4B4B4B"
+          textAlign="center"
         >
           {title}
         </Typography>
@@ -43,7 +44,7 @@ const ListItem = ({ image, title, content }) => {
           lineHeight: { xs: "24px", sm: "28px" },
         }}
         color="#202020"
-        textAlign="left"
+        textAlign="center"
       >
         {content}
       </Typography>
@@ -56,7 +57,7 @@ const Value = () => {
     <Box
       backgroundColor="#F8FAFC"
       display="flex"
-      justfiyContent="center"
+      justifyContent="center"
       flexDirection="column"
       alignItems="center"
       width="100%"
@@ -102,7 +103,7 @@ const Value = () => {
 
         <Grid
           container
-          spacing="30px"
+          spacing="24px"
           sx={{
             width: {
               xs: "100%",
@@ -132,7 +133,7 @@ const Value = () => {
             />
           </Grid>
 
-          <Grid item sm={6} md={3}>
+          <Grid item sm={6} md={3} >
             <ListItem
               image={InnovationIcon}
               title="Innovation"

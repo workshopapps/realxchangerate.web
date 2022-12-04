@@ -24,6 +24,7 @@
     "react-world-flags": "^1.5.1",
     "recharts": "^2.1.16",
     "redux": "^4.2.0",
+    "serve": "^14.1.2",
     "styled-components": "^5.3.6",
     "web-vitals": "^2.1.4"
   },

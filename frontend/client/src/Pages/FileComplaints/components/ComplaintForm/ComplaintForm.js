@@ -23,19 +23,19 @@ const ComplaintForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     setDisableBtn(true);
 
-    const formData = {
-      name: nameRef.current.value,
+
+    const complaintData = {
+      full_name: nameRef.current.value,
       email: emailRef.current.value,
-      message: messageRef.current.value,
+      complaint: messageRef.current.value,
     };
 
     axios
       .post(
         "https://api.streetrates.hng.tech/api/complaints/add_complaints",
-        formData
+        complaintData
       )
       .then((res) => {
         nameRef.current.value = "";
@@ -50,7 +50,7 @@ const ComplaintForm = () => {
       })
       .catch((error) => {
         setShowSuccess(true);
-        setShowMessage("Couldn't send message, please try again.");
+        setShowMessage("Couldn't send message, please try again!");
         setMessageBg("red");
         setDisableBtn(false);
       });

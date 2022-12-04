@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import BackButton from "../shared/BackButton/BackButton";
 import {
   StyledComplaintForm,
@@ -17,22 +17,20 @@ import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import { useDispatch, useSelector } from "react-redux";
-import { getComplaints } from "../../store/actions/complaintsActions";
+import {
+  getComplaints,
+  updateComplaint,
+} from "../../store/actions/complaintsActions";
 // import Loader from "../shared/Loader/Loader";
 import { toast } from "react-toastify";
 
-const testData = {
-  full_name: "Rapha Paula",
-  complaint: `Hi, I noticed that it’s a bit hard for me to toggle between currencies when using the convert feature, please can this be checked and possibly worked on? I would like to perform a lot of transactions which rely on my use of the convert feature on the web app.`,
-  id: 123,
-  email: "raphaPaula@gmail.com",
-  status: "Resolved",
-  timestamp: "2022-12-01T02:21:29.653125",
-};
-
 function ComplaintPageLayout() {
   const [data, setData] = useState(null);
+  const [adminMssg, setAdminMssg] = useState("");
+  const [currStatus, setCurrStatus] = useState("");
   const params = useParams();
+
+  // const navigate = useNavigate();
 
   const dispatch = useDispatch();
   const { complaints, loading } = useSelector((state) => state.complaints);
@@ -44,24 +42,51 @@ function ComplaintPageLayout() {
 
   useEffect(() => {
     // find particular complaint
-    if (complaints?.success) {
+    if (complaints) {
       const id = parseInt(params.id);
-      let issue = complaints.complaints.find((item) => item.id === id);
+      let issue = complaints.items.find((item) => item.id === id);
 
       setData(issue);
+      setCurrStatus(issue.status);
     }
   }, [complaints, params.id]);
 
-  if (loading === "failed") {
+  if (!complaints && loading === "failed") {
     toast.error("error fetching complaints");
   }
+  if (complaints && loading === "rejected") {
+    toast.error("update failed");
+  }
 
-  // const onMutate = (e) => {
-  //   setData((prev) => ({
-  //     ...prev,
-  //     [e.target.name]: e.target.value,
-  //   }));
-  // };
+  const onMutate = (e) => {
+    setData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const handleAdminMssg = (e) => {
+    setAdminMssg(e.target.value);
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    if (adminMssg) {
+      setAdminMssg("");
+      toast.success(`Complaint ${data?.status.toLowerCase()}`);
+    }
+
+    const info = {
+      id: data?.id,
+      status: data?.status,
+    };
+
+    dispatch(updateComplaint(info));
+    if (currStatus !== data?.status) {
+      toast.success(`Complaint ${data?.status}`);
+    }
+  };
 
   const ITEM_HEIGHT = 48;
   const ITEM_PADDING_TOP = 8;
@@ -74,8 +99,6 @@ function ComplaintPageLayout() {
     },
   };
 
-  // if (!complaints || !data) return <Loader />;
-
   return (
     <StyledWrapper>
       <StyledPageHeader>
@@ -83,7 +106,7 @@ function ComplaintPageLayout() {
         <h3>Complaint #{params.id}</h3>
       </StyledPageHeader>
 
-      <StyledComplaintForm>
+      <StyledComplaintForm onSubmit={onSubmit}>
         <StyledGrayWrapper>
           <StyledGrid>
             <div>
@@ -148,7 +171,8 @@ function ComplaintPageLayout() {
               rows="4"
               id="message"
               name="message"
-              // onChange={onMutate}
+              onChange={handleAdminMssg}
+              value={adminMssg}
             ></StyledTextArea>
           </div>
 
@@ -163,19 +187,19 @@ function ComplaintPageLayout() {
               inputProps={{ "aria-label": "Without label" }}
               id="status"
               name="status"
-              value="Unresolved"
-              // onChange={onMutate}
+              value={data?.status ? data?.status : "unresolved"}
+              onChange={onMutate}
             >
-              <MenuItem id="status" value="Closed">
+              {/* <MenuItem id="status" value="Closed">
                 Closed
-              </MenuItem>
-              <MenuItem id="status" value="Resolved">
+              </MenuItem> */}
+              <MenuItem id="status" value="resolved">
                 Resolved
               </MenuItem>
-              <MenuItem id="status" value="Still in Review">
+              <MenuItem id="status" value="in review">
                 Still in Review
               </MenuItem>
-              <MenuItem id="status" value="Unresolved">
+              <MenuItem id="status" value="unresolved">
                 Unresolved
               </MenuItem>
             </Select>
@@ -184,7 +208,10 @@ function ComplaintPageLayout() {
 
         <StyledButtonWrapper>
           <StyledFormButtonCancel>Cancel</StyledFormButtonCancel>
-          <StyledFormButtonSubmit disabled={!data ? true : false}>
+          <StyledFormButtonSubmit
+            onClick={onSubmit}
+            disabled={!data ? true : false}
+          >
             Save Changes
           </StyledFormButtonSubmit>
         </StyledButtonWrapper>

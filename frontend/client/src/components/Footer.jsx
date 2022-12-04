@@ -3,7 +3,9 @@ import React from "react";
 import DropDown from "./DropDown";
 import streetRates from "../assets/Logo.svg";
 import { Filter } from "iconsax-react";
+import { useTranslation } from "react-i18next";
 const Footer = () => {
+  const { t } = useTranslation();
   return (
     <Box backgroundColor="#00296B">
       <Box
@@ -50,25 +52,25 @@ const Footer = () => {
               }}
               letterSpacing="-0.02em"
             >
-              Company
+              {t("footer_company")}
             </Typography>
             <Link href="/#/about" color="inherit">
-              About Us
+              {t("footer_about")}
             </Link>
             <Link href="/#/careers" color="inherit">
-              Careers
+              {t("footer_Careers")}
             </Link>
             <Link href="/#/partnerships" color="inherit">
-              Partnership
+              {t("footer_Partnership")}
             </Link>
             <Link href="/#/teams" color="inherit">
-              Meet the team
+              {t("footer_Meet")}
             </Link>
             <Link href="/#/press" color="inherit">
-              Press
+              {t("footer_Press")}
             </Link>
             <Link href="/#/bod" color="inherit">
-              Board of directors
+              {t("footer_directors")}
             </Link>
           </Stack>
           <Stack
@@ -97,13 +99,13 @@ const Footer = () => {
               }}
               letterSpacing="-0.02em"
             >
-              Links
+              {t("footer_links")}
             </Typography>
             <Link href="/#/news" color="inherit">
-              News
+              {t("footer_news")}
             </Link>
             <Link href="/#/contact" color="inherit">
-              Contact Us
+              {t("footer_contact")}
             </Link>
           </Stack>
           <Stack
@@ -219,6 +221,9 @@ const Footer = () => {
             <Link href="/#/faq" color="inherit">
               FAQ
             </Link>
+            <Link href="/#/faq-overview" color="inherit">
+              FAQ Overview
+            </Link>
             <Link href="/#/complaint" color="inherit">
               File a complaint
             </Link>
@@ -327,8 +332,20 @@ const Footer = () => {
           />
           <DropDown
             title={"Support"}
-            Items={["Help Centre", "FAQ", "File a complaint", "Fraud Report"]}
-            Links={["help-center", "faq", "complaint", "fraud-report"]}
+            Items={[
+              "Help Centre",
+              "FAQ",
+              "FAQ Overview",
+              "File a complaint",
+              "Fraud Report",
+            ]}
+            Links={[
+              "help-center",
+              "faq",
+              "faq-overview",
+              "complaint",
+              "fraud-report",
+            ]}
           />
           <DropDown
             title={"Legal"}

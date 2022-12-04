@@ -20,21 +20,23 @@ import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
 import {
   setDefaultCurrency,
+  setLocalLanguage,
   setNavLoading,
   setUserIp,
 } from "../redux/features/Reducers/servicesReducer";
 import { dispatch } from "../redux/store";
-import {
-  GetCurrencyData,
-  GetUserIp,
-} from "../redux/features/Reducers/serviceActions";
+import { GetUserIp } from "../redux/features/Reducers/serviceActions";
+import { Languages } from "./index";
+import { useTranslation } from "react-i18next";
+// Adding tranlsation page
 const NavComponent = () => {
-  const { currencyList, countryDetails, defaultCurrency, isNavLoading } =
+  const { t, i18n } = useTranslation();
+  const { currencyList, countryDetails, localLanguage, isNavLoading } =
     useSelector((state) => state.service);
   const theme = useTheme();
   const colorMode = useContext(ColorModeContext);
   const [isOpen, setIsOpen] = useState(false);
-  const [localCurrency, setLocalCurrency] = useState(defaultCurrency);
+  const [currentLanguage, setCurrentLanguage] = useState(null);
   const HandleDrawerState = () => {
     setIsOpen(!isOpen);
   };
@@ -47,30 +49,27 @@ const NavComponent = () => {
     setAnchorEl(null);
   };
   const handleCloseItem = (ele) => {
-    setLocalCurrency(ele);
-    dispatch(setDefaultCurrency(ele));
+    sessionStorage.setItem("localLanguage", JSON.stringify(currentLanguage));
+    setCurrentLanguage(ele);
+    i18n.changeLanguage(ele.lanaguage);
+    dispatch(setLocalLanguage(ele));
     setAnchorEl(null);
   };
+
+  console.log(currentLanguage);
 
   useEffect(() => {
     const ip = sessionStorage.getItem("ip");
     const defaultCurrency = JSON.parse(sessionStorage.getItem("localCurrency"));
+    const LocaleLanaguage = JSON.parse(sessionStorage.getItem("localLanguage"));
     if (!ip || !defaultCurrency) {
       dispatch(setNavLoading(true));
       dispatch(GetUserIp());
     }
     dispatch(setUserIp(ip));
     dispatch(setDefaultCurrency(defaultCurrency));
+    dispatch(setLocalLanguage(LocaleLanaguage));
   }, []);
-
-  // useEffect(() => {
-  //   if (defaultCurrency) {
-  //     let country = currencyList.find(
-  //       (x) => x.country === defaultCurrency.label
-  //     );
-  //     dispatch(GetCurrencyData(country.isocode));
-  //   }
-  // }, [defaultCurrency, currencyList]);
 
   return (
     <Grid
@@ -154,14 +153,14 @@ const NavComponent = () => {
                   loading="lazy"
                   height="20"
                   src={
-                    localCurrency
-                      ? `https://flagcdn.com/h20/${localCurrency.code.toLowerCase()}.png `
+                    currentLanguage
+                      ? `https://flagcdn.com/h20/${currentLanguage.label}.png `
                       : NavFlag
                   }
                   srcSet={
-                    localCurrency
-                      ? `https://flagcdn.com/h40/${localCurrency.code.toLowerCase()}.png 2x,
-                     https://flagcdn.com/h60/${localCurrency.code.toLowerCase()}.png 3x`
+                    currentLanguage
+                      ? `https://flagcdn.com/h40/${currentLanguage.label}.png 2x,
+                     https://flagcdn.com/h60/${currentLanguage.label}.png 3x`
                       : NavFlag
                   }
                   alt=""
@@ -174,7 +173,7 @@ const NavComponent = () => {
             id="basic-menu"
             anchorEl={anchorEl}
             open={open}
-            onClose={handleClose}
+            onClose={() => handleClose()}
             MenuListProps={{
               "aria-labelledby": "basic-button",
             }}
@@ -183,7 +182,7 @@ const NavComponent = () => {
               height: "auto",
             }}
           >
-            {currencyList.map((ele) => {
+            {Languages.map((ele) => {
               return (
                 <MenuItem
                   sx={{
@@ -191,20 +190,14 @@ const NavComponent = () => {
                     gap: "6px",
                     flexDirection: "row",
                   }}
-                  onClick={() =>
-                    handleCloseItem(countryDetails[currencyList.indexOf(ele)])
-                  }
+                  onClick={() => handleCloseItem(ele)}
                   key={ele.isocode}
                 >
                   <img
                     loading="lazy"
                     width="20"
-                    src={`https://flagcdn.com/w20/${countryDetails[
-                      currencyList.indexOf(ele)
-                    ].code.toLowerCase()}.png`}
-                    srcSet={`https://flagcdn.com/w40/${countryDetails[
-                      currencyList.indexOf(ele)
-                    ].code.toLowerCase()}.png 2x`}
+                    src={`https://flagcdn.com/w20/${ele.label}.png`}
+                    srcSet={`https://flagcdn.com/w40/${ele.label}.png 2x`}
                     alt=""
                   />
                   <Typography marginRight="5px">{ele.isocode}</Typography>
@@ -214,13 +207,13 @@ const NavComponent = () => {
           </Menu>
         </Box>
         <Link to="/" style={{ color: "#0062ff" }}>
-          Home
+          {t("nav_home")}
         </Link>
         <Link to="/news" style={{ color: "#0062ff" }}>
-          News
+          {t("nav_news")}
         </Link>
         <Link to="/contact" style={{ color: "#0062ff" }}>
-          Contact
+          {t("nav_contact")}
         </Link>
       </Grid>
       <Box
