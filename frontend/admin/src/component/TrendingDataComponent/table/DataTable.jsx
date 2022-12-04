@@ -16,6 +16,15 @@ import { getTrending } from "../../../store/actions/trendingActions";
 import Flag from "react-world-flags";
 import { Skeleton } from "@mui/material";
 import { toast } from "react-toastify";
+import styled from "styled-components";
+
+const Red = styled.span`
+ color: red;
+ `
+
+const Green = styled.span`
+color: green;
+`
 
 
 export default function DataTable() {
@@ -167,11 +176,14 @@ export default function DataTable() {
                   </StyledFlagAndCountry>
                 </TableCell>
                 <TableCell align="right">{data.data.isocode}</TableCell>
-                <TableCell align="right">
-                {Math.round(data.data.one_day).toFixed(2)}
+                <TableCell align="right" >
+    
+                {data.data.one_day  > 0 ? <Green>{Math.round(data.data.one_day).toFixed(2)}</Green>: <Red>{Math.round(data.data.one_day).toFixed(2)}</Red>}
+                
                 </TableCell>
                 <TableCell align="right" >
-                {Math.round(data.data.seven_days).toFixed(2)}
+                  {data.data.seven_days >0 ? <Green>{Math.round(data.data.seven_days).toFixed(2)}</Green>: <Red>{Math.round(data.data.seven_days).toFixed(2)}</Red>}
+                
                 </TableCell>
                 <TableCell align="right">
                   NA
