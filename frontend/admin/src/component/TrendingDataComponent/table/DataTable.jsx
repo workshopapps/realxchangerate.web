@@ -30,7 +30,7 @@ color: green;
 export default function DataTable() {
   const dispatch = useDispatch();
   const { currencies, requestStatus } = useSelector((state) => state.trending);
-
+//"build": "CI=false && craco build",
 
   useEffect(()=>{
     dispatch(getTrending())
