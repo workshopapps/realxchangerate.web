@@ -1,5 +1,4 @@
 import React from 'react'
-import EnCurrencyCh from '../encurrencychange/EnCurrencyCh'
 import EnInfo from '../encyinfo/EnInfo'
 import EnStat from '../enstat/EnStat';
 import EnDetail from "../endetail/EnDetail";
@@ -9,8 +8,6 @@ const Detailpage = () => {
     <div>
       <EnInfo />
       <div>
-        <EnCurrencyCh />
-
         <EnDetail  />
       </div>
 
