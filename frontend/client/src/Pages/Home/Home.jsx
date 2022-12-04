@@ -5,7 +5,7 @@ import Hero from "../../components/home/Hero";
 import { useTranslation } from "react-i18next";
 // import Table from "./components/Table";
 import Table2 from "./components/Table2";
-import { tableCurrenciesList, addCurrency } from "./data";
+import { tableCurrenciesList } from "./data";
 import styled from "styled-components";
 import add from "./assets/add.svg";
 import CircularProgressWithLabel from "@mui/material/CircularProgress";
@@ -15,11 +15,9 @@ import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
-import CountUp from "react-countup";
 import { useSelector } from "react-redux";
 import { dispatch } from "../../redux/store";
 import { GetCurrencyRates } from "../../redux/features/Reducers/serviceActions";
-import { countries } from "./data";
 import Countdown from "react-countdown-simple";
 const Home = () => {
   const oneHour = new Date(
@@ -30,7 +28,6 @@ const Home = () => {
   const [currencies, setCurrencies] = useState(tableCurrenciesList);
   const [getCurrency, setGetCurrency] = useState([]);
   const [dateUpdate, setDateUpdate] = useState("");
-  const { t } = useTranslation();
   const handleEdit = () => {
     toggle();
   };
@@ -42,7 +39,6 @@ const Home = () => {
     fetch("https://api.streetrates.hng.tech/api/currency/currencies/flags")
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setGetCurrency(data);
         setDateUpdate(data[0].rate.last_updated);
       })
@@ -100,13 +96,13 @@ const Home = () => {
         <TypographyLive
           sx={{ color: "#0062FF", fontSize: "16px", fontWeight: 500 }}
         >
-          {t("home_live")}
+          LIVE RATES
         </TypographyLive>
         <TypographyHead
           component="h2"
           sx={{ fontSize: "32px", maxWidth: "595px", fontWeight: 800 }}
         >
-          {t("home_title")}
+          Live rates of every currency around the world
         </TypographyHead>
         <StyledEdit className="action" id="edit" onClick={() => handleEdit()}>
           Edit
@@ -132,9 +128,9 @@ const Home = () => {
             color: "black",
           }}
         >
-          <Box>{t("home_currency")}</Box>
-          <Box>{t("home_parallel")}</Box>
-          <Box>{t("home_Bank")}</Box>
+          <Box>Currency</Box>
+          <Box>Parallel </Box>
+          <StyledBankBox>Bank </StyledBankBox>
           <Box></Box>
         </ListItem>
 
@@ -176,7 +172,7 @@ const Home = () => {
               <Button {...bindTrigger(popupState)}>
                 <div className="add">
                   <img src={add} alt="" />
-                  <span className="addspan">{t("home_btn")}</span>
+                  <span className="addspan">Add currency</span>
                 </div>
               </Button>
               <Menu {...bindMenu(popupState)}>
@@ -217,9 +213,7 @@ const Home = () => {
               />
             </i>
           </div>
-          <span>
-            {t("home_update")} {dateUpdate}
-          </span>
+          <span>Last updated {dateUpdate}</span>
         </div>
       </StyledSelection>
     </Box>

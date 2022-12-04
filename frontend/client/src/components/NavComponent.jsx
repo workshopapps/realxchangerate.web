@@ -36,7 +36,7 @@ const NavComponent = () => {
   const theme = useTheme();
   const colorMode = useContext(ColorModeContext);
   const [isOpen, setIsOpen] = useState(false);
-  const [currentLanguage, setCurrentLanguage] = useState(localLanguage);
+  const [currentLanguage, setCurrentLanguage] = useState(null);
   const HandleDrawerState = () => {
     setIsOpen(!isOpen);
   };
@@ -61,12 +61,14 @@ const NavComponent = () => {
   useEffect(() => {
     const ip = sessionStorage.getItem("ip");
     const defaultCurrency = JSON.parse(sessionStorage.getItem("localCurrency"));
+    const LocaleLanaguage = JSON.parse(sessionStorage.getItem("localLanguage"));
     if (!ip || !defaultCurrency) {
       dispatch(setNavLoading(true));
       dispatch(GetUserIp());
     }
     dispatch(setUserIp(ip));
     dispatch(setDefaultCurrency(defaultCurrency));
+    dispatch(setLocalLanguage(LocaleLanaguage));
   }, []);
 
   return (
@@ -171,7 +173,7 @@ const NavComponent = () => {
             id="basic-menu"
             anchorEl={anchorEl}
             open={open}
-            onClose={handleClose}
+            onClose={() => handleClose()}
             MenuListProps={{
               "aria-labelledby": "basic-button",
             }}

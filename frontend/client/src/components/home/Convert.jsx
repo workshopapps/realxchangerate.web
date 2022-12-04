@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { noWCommas } from "../../utils";
 import styles from "./home.module.css";
 import { HiOutlineSwitchVertical } from "react-icons/hi";
 import { HiOutlineSwitchHorizontal } from "react-icons/hi";
@@ -76,7 +75,6 @@ const Convert = () => {
     });
     fetchDate()
       .then((UpdateDate) => {
-        console.log(UpdateDate);
         setDate(Date(UpdateDate.Time));
       })
       .catch((err) => {
