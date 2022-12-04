@@ -191,7 +191,7 @@ function Careers() {
           {coreValues.map((value, n) => {
             let position =
               n > index ? "nextCard" : n === index ? "activeCard" : "prevCard";
-            return <Carousel {...value} cardStyle={position} />;
+            return <Carousel {...value} cardStyle={position} key={coreValues.indexOf(value)}/>;
           })}
 
           <ArrowBack className="left" onClick={slideLeft} />

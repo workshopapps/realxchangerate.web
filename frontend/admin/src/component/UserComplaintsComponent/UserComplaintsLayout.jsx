@@ -36,7 +36,9 @@ export default function UserComplaintsLayout() {
   // filter the complaints
   useEffect(() => {
     if (complaints) {
-      setFilteredComplaints(complaints.complaints);
+      setFilteredComplaints(complaints?.items);
+
+      handlePage(complaints?.items.length);
     }
   }, [complaints]);
 
@@ -69,7 +71,7 @@ export default function UserComplaintsLayout() {
     setFilterState(e.target.value);
 
     if (e.target.value !== "all") {
-      let arr = complaints?.complaints.filter(
+      let arr = complaints?.items.filter(
         (item) => item.status === e.target.value
       );
       setFilteredComplaints(arr);
@@ -78,8 +80,8 @@ export default function UserComplaintsLayout() {
 
       handlePage(arr.length);
     } else {
-      setFilteredComplaints(complaints?.complaints);
-      handlePage(complaints?.complaints.length);
+      setFilteredComplaints(complaints?.items);
+      handlePage(complaints?.items.length);
     }
   };
 

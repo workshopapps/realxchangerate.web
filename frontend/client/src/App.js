@@ -36,7 +36,7 @@ import {
   ApplyToAdvertise,
   StudentAmbassadorForm,
   Affiliate,
-  Referral
+  Referral,
 } from "./Pages";
 import GlobalStyle from "./styles/Globalstyle";
 import ErrorPage from "./Pages/404/ErrorPage";
@@ -50,7 +50,6 @@ import FileAComplaintForm from "./Pages/FileComplaints/components/ComplaintForm/
 import PrivacyPolicy from "./Pages/PrivacyPolicy/PrivacyPolicy";
 import EntrepreneurAmbassador from "./Pages/EntrepreneurAmbassador/EntrepreneurAmbassador";
 import EntrepreneurFrom from "./Pages/EntrepreneurForm/EntrepreneurFrom";
-import CompliancePage from "./Pages/CompliancePage/CompliancePage";
 import FaqOverview from './Pages/FaqOverview/FaqOverview';
 function App() {
   return (
@@ -63,16 +62,25 @@ function App() {
             {/*---==== Contents Sections  ====---*/}
             <Route path="/" element={<Home />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/compliance" element={<CompliancePage />} />
+            <Route path="/compliance" element={<Compliance />} />
             <Route path="/help-center" element={<HelpCenter />} />
-            <Route path="/currency-profile" element={<CurrencyProfile />} />
+            <Route
+              path="/:id/currency-profile"
+              element={<CurrencyProfile />}
+            />
             <Route path="/news" element={<News />} />
             {/* Adding path for one news  */}
             <Route path="/news/:id" element={<SingleNews />} />
             <Route path="/faq" element={<Faq />} />
             <Route path="/faq-overview" element={<FaqOverview />} />
-            <Route path="/integration-matrix" element={<IntegrationMatrix />} />
-            <Route path="/partnerships" element={<Partnerships />} />
+            <Route
+              path="/integration-matrix"
+              element={<IntegrationMatrix />}
+            />
+            <Route
+              path="/partnerships"
+              element={<Partnerships />}
+            />
             <Route
               path="/currency-encyclopedia"
               element={<CurrencyEncyclopedia />}
@@ -87,11 +95,20 @@ function App() {
             <Route path="/press/article" element={<Article />} />
             <Route path="/careers" element={<Careers />} />
             <Route path="/about" element={<About />} />
-            <Route path="/partnerships/affiliate" element={<Affiliate />} />
-            <Route path="/partnerships/referral" element={<Referral />} />
+            <Route
+              path="/partnerships/affiliate"
+              element={<Affiliate />}
+            />
+            <Route
+              path="/partnerships/referral"
+              element={<Referral />}
+            />
             <Route path="/complaint" element={<FileAComplaint />} />
             {/* adding complaint form route */}
-            <Route path="/complaint/form" element={<FileAComplaintForm />} />
+            <Route
+              path="/complaint/form"
+              element={<FileAComplaintForm />}
+            />
             <Route path="/teams" element={<Teams />} />
             <Route path="/api" element={<Api />} />
             <Route path="/bod" element={<BoardOfDirectors />} />
@@ -102,11 +119,23 @@ function App() {
               element={<HistoricalCurrencyExchange />}
             />
             <Route path="/fraud-report" element={<FraudReport />} />
-            <Route path="/Cookie-policy" element={<CookiePolicy />} />
-            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route
+              path="/Cookie-policy"
+              element={<CookiePolicy />}
+            />
+            <Route
+              path="/privacy-policy"
+              element={<PrivacyPolicy />}
+            />
             <Route path="/glossary" element={<Glossary />} />
-            <Route path="/advertising" element={<OnlineAdvertising />} />
-            <Route path="/apply-to-advertise" element={<ApplyToAdvertise />} />
+            <Route
+              path="/advertising"
+              element={<OnlineAdvertising />}
+            />
+            <Route
+              path="/apply-to-advertise"
+              element={<ApplyToAdvertise />}
+            />
             <Route path="/ambassadors" element={<Ambassadors />} />
             <Route
               path="/ambassadors/student-ambassador"

@@ -2,9 +2,10 @@ import { Box, List, ListItem, Typography } from "@mui/material";
 import React from "react";
 import Convert from "../../components/home/Convert";
 import Hero from "../../components/home/Hero";
+import { useTranslation } from "react-i18next";
 // import Table from "./components/Table";
 import Table2 from "./components/Table2";
-import { tableCurrenciesList, addCurrency } from "./data";
+import { tableCurrenciesList } from "./data";
 import styled from "styled-components";
 import add from "./assets/add.svg";
 import CircularProgressWithLabel from "@mui/material/CircularProgress";
@@ -14,11 +15,9 @@ import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
-import CountUp from "react-countup";
 import { useSelector } from "react-redux";
 import { dispatch } from "../../redux/store";
 import { GetCurrencyRates } from "../../redux/features/Reducers/serviceActions";
-import { countries } from "./data";
 import Countdown from "react-countdown-simple";
 const Home = () => {
   const oneHour = new Date(
@@ -40,10 +39,8 @@ const Home = () => {
     fetch("https://api.streetrates.hng.tech/api/currency/currencies/flags")
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setGetCurrency(data);
         setDateUpdate(data[0].rate.last_updated);
-        console.log(data[0].rate.last_updated);
       })
       .catch((e) => console.log(e));
 
@@ -132,12 +129,12 @@ const Home = () => {
           }}
         >
           <Box>Currency</Box>
-          <Box>parallel </Box>
+          <Box>Parallel </Box>
           <StyledBankBox>Bank </StyledBankBox>
           <Box></Box>
         </ListItem>
 
-        {getCurrency.map((currency) => {
+        {currencies.map((currency) => {
           return (
             <>
               {currencyRates.length > 0 && (
@@ -150,6 +147,9 @@ const Home = () => {
                       (x) => x.currency.isocode === currency.isocode
                     ).rate
                   }
+                  link={currency.link}
+                  symbol={currency.symbol}
+                  flag={currency.flag}
                   deleteIcon={
                     <img
                       src={DeleteIcon}
