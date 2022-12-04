@@ -35,6 +35,8 @@ import {
   StudentAmbassador,
   ApplyToAdvertise,
   StudentAmbassadorForm,
+  Affiliate,
+  Referral
 } from "./Pages";
 import GlobalStyle from "./styles/Globalstyle";
 import ErrorPage from "./Pages/404/ErrorPage";
@@ -46,6 +48,9 @@ import CurrencyProfile from "./Pages/CurrencyProfile/CurrencyProfile";
 import FileAComplaintForm from "./Pages/FileComplaints/components/ComplaintForm/ComplaintForm";
 // import ScrollToTop from "./utils/ScrollToTop";
 import PrivacyPolicy from "./Pages/PrivacyPolicy/PrivacyPolicy";
+import EntrepreneurAmbassador from "./Pages/EntrepreneurAmbassador/EntrepreneurAmbassador";
+import EntrepreneurFrom from "./Pages/EntrepreneurForm/EntrepreneurFrom";
+import CompliancePage from "./Pages/CompliancePage/CompliancePage";
 function App() {
   return (
     <>
@@ -57,7 +62,7 @@ function App() {
             {/*---==== Contents Sections  ====---*/}
             <Route path="/" element={<Home />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/compliance" element={<Compliance />} />
+            <Route path="/compliance" element={<CompliancePage />} />
             <Route path="/help-center" element={<HelpCenter />} />
             <Route path="/currency-profile" element={<CurrencyProfile />} />
             <Route path="/news" element={<News />} />
@@ -80,12 +85,16 @@ function App() {
             <Route path="/press/article" element={<Article />} />
             <Route path="/careers" element={<Careers />} />
             <Route path="/about" element={<About />} />
+            <Route path="/partnerships/affiliate" element={<Affiliate />} />
+            <Route path="/partnerships/referral" element={<Referral />} />
             <Route path="/complaint" element={<FileAComplaint />} />
             {/* adding complaint form route */}
             <Route path="/complaint/form" element={<FileAComplaintForm />} />
             <Route path="/teams" element={<Teams />} />
             <Route path="/api" element={<Api />} />
             <Route path="/bod" element={<BoardOfDirectors />} />
+            {/* Adding  get in touch route*/}
+            <Route path="/get-in-touch" element={<GetInTouch />} />
             <Route
               path="/historical-currency-exchange"
               element={<HistoricalCurrencyExchange />}
@@ -100,6 +109,14 @@ function App() {
             <Route
               path="/ambassadors/student-ambassador"
               element={<StudentAmbassador />}
+            />
+            <Route
+              path="/ambassadors/entrepreneur-ambassador"
+              element={<EntrepreneurAmbassador/>}
+            />
+            <Route
+              path="/ambassadors/apply-to-become-entrepreneur-ambassador"
+              element={<EntrepreneurFrom/>}
             />
             <Route
               path="/student-ambassador/apply-to-become-student-ambassador"

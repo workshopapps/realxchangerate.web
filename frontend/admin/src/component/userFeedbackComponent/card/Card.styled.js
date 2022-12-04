@@ -7,8 +7,8 @@ export const StyledCardWrapper = styled.div`
 	padding: 24px;
 	display: flex;
 	flex-direction: column;
-	justify-content: start;
-	gap: 10px;
+	justify-content: space-between;
+
 	box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
 	&:hover {
 		box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1),
@@ -19,8 +19,13 @@ export const StyledCardWrapper = styled.div`
 		display: flex;
 		justify-content: space-between;
 	}
+	// .align-top {
+	// 	// margin-top: 0.5rem;
+	// }
 	.alignBottom {
-		align-items: flex-end;
+		// border: 1px solid red;
+		margin-top: 0.5rem;
+		// align-items: flex-end;
 		.date {
 			display: flex;
 			align-items: center;
@@ -47,6 +52,7 @@ export const Name = styled.h3`
 	color: ${(props) => props.theme.$styled.colors.text900};
 `;
 export const Email = styled.h3`
+	margin-bottom: 1.5rem;
 	font-weight: 500;
 	font-size: 0.875rem;
 	color: ${(props) => props.theme.$styled.colors.text900};
@@ -55,19 +61,7 @@ export const Email = styled.h3`
 export const StyledCardMessage = styled.p`
 	margin-block-end: 8px;
 	font-weight: 400;
-	font-size: 14px;
+	font-size: clamp(0.8rem, 1.5vw, 0.875rem);
 	line-height: 20px;
 	color: ${(props) => props.theme.$styled.colors.text600};
 `;
-
-// export const Button = styled.button`
-// 	padding: 7px 0;
-// 	border-radius: 5px;
-// 	background: inherit;
-// 	width: 90px;
-// 	background: #ffffff;
-// 	border: 1px solid #cbd5e1;
-// 	:hover {
-// 		border: 1px solid #388e3c;
-// 	}
-// `;

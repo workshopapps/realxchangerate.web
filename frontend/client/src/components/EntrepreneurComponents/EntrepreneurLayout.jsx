@@ -1,12 +1,14 @@
 import React from "react";
 import { EntrepreneurSection } from "./entrepreneurStyle";
-import heroImg from '../../assets/images/entrepreneur-hero-img.png'
+import heroImg from "../../assets/images/entrepreneur-hero-img.png";
 import { AmbassadorsData } from "./data";
+import { Link } from "react-router-dom";
 
 const EntrepreneurLayout = () => {
   return (
     <EntrepreneurSection>
       <div className="hero">
+        <div className=""></div>
         <div className="grid grid-1">
           <img src={heroImg} alt="" />
         </div>
@@ -22,41 +24,22 @@ const EntrepreneurLayout = () => {
             bring authenticity and assist in the growth of our brand are
             encouraged to apply.
           </p>
-          <button>Apply Now</button>
+          <Link to={"/ambassadors/apply-to-become-entrepreneur-ambassador"}>
+            <button>Apply Now</button>
+          </Link>
         </div>
       </div>
       <div className="profile-gallery">
         <h2>Meet our entrepreneur ambassadors</h2>
         <div className="profile-grid">
-          {/* <div className="profile-card">
-            <div className="profile-img">
-
-            </div>
-            <h4>Martha Martins</h4>
-            <p>Entrepreneur</p>
-          </div>
-          <div className="profile-card">
-            <div className="profile-img">
-
-            </div>
-            <h4>Martha Martins</h4>
-            <p>Entrepreneur</p>
-          </div>
-          <div className="profile-card">
-            <div className="profile-img">
-
-            </div>
-            <h4>Martha Martins</h4>
-            <p>Entrepreneur</p>
-          </div> */}
           {AmbassadorsData.map((item) => (
             <div className="profile-card" key={item.id}>
-            <div className="profile-img">
-              <img src={item.image} alt="img" />
+              <div className="profile-img">
+                <img src={item.image} alt="img" />
+              </div>
+              <h4>{item.name}</h4>
+              <p>{item.title}</p>
             </div>
-            <h4>{item.name}</h4>
-            <p>{item.title}</p>
-          </div>
           ))}
         </div>
       </div>

@@ -23,12 +23,16 @@ const MainComponent = ({ data }) => {
           <RowHeaderComponent />
           {data.map((val, key) => {
             return (
-              <RowComponent
-                key={key}
-                country={val.currency}
-                bank={Math.ceil(val.rate.official_buy)}
-                parallel={Math.ceil(val.rate.parallel_buy)}
-              />
+              <>
+                {val && (
+                  <RowComponent
+                    key={key}
+                    country={val.currency}
+                    bank={Math.ceil(val.rate.official_buy)}
+                    parallel={Math.ceil(val.rate.parallel_buy)}
+                  />
+                )}
+              </>
             );
           })}
         </Box>
