@@ -36,12 +36,7 @@ export default function DataTable() {
     dispatch(getTrending())
   },[dispatch])
 
-  if (requestStatus === "failed") {
-    toast.error("request failed");
-  }
-  if (requestStatus === "success") {
-    toast.error("request suceeded");
-  }
+ 
   if (requestStatus === "pending") {
     toast.error("request pending");
   }
@@ -178,11 +173,11 @@ export default function DataTable() {
                 <TableCell align="right">{data.data.isocode}</TableCell>
                 <TableCell align="right" >
     
-                {data.data.one_day  > 0 ? <Green>{Math.round(data.data.one_day).toFixed(2)}</Green>: <Red>{Math.round(data.data.one_day).toFixed(2)}</Red>}
+                {data.data.one_day  > 0 ? <Green>{Math.round(data.data.one_day).toFixed(2)} %</Green>: <Red>{Math.round(data.data.one_day).toFixed(2)} %</Red>}
                 
                 </TableCell>
                 <TableCell align="right" >
-                  {data.data.seven_days >0 ? <Green>{Math.round(data.data.seven_days).toFixed(2)}</Green>: <Red>{Math.round(data.data.seven_days).toFixed(2)}</Red>}
+                  {data.data.seven_days >0 ? <Green>{Math.round(data.data.seven_days).toFixed(2)} %</Green>: <Red>{Math.round(data.data.seven_days).toFixed(2)} %</Red>}
                 
                 </TableCell>
                 <TableCell align="right">
