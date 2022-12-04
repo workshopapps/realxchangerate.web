@@ -1,5 +1,5 @@
 import React from 'react'
-import EntrepreneurFormComponent from '../../components/EntreprenuerFormComponents/EntrepreneurFormComponent'
+import EntrepreneurFormComponent from './components/EntrepreneurFormComponent'
 
 const EntrepreneurFrom = () => {
   return (
