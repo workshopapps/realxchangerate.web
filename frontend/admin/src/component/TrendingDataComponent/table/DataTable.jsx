@@ -36,12 +36,7 @@ export default function DataTable() {
     dispatch(getTrending())
   },[dispatch])
 
-  if (requestStatus === "failed") {
-    toast.error("request failed");
-  }
-  if (requestStatus === "success") {
-    toast.error("request suceeded");
-  }
+ 
   if (requestStatus === "pending") {
     toast.error("request pending");
   }
