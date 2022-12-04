@@ -174,13 +174,13 @@ export default function DataTable() {
                   {data.data.seven_days}
                 </TableCell>
                 <TableCell align="right">
-                  NaN
+                  NA
                 </TableCell>
                 <TableCell align="right">
-                 NaN
+                 NA
                 </TableCell>
                 <TableCell align="right">
-                  NaN
+                  NA
                 </TableCell>
               </TableRow>
               
