@@ -38,7 +38,7 @@ pipeline {
 				sh "cd backend && virtualenv -p python3 venv"
         			sh "cd backend && source venv/bin/activate"
 				sh "cd backend && pip3 install -r requirements.txt --force"
-				sh "cd backend && nohup uvicorn app.main:app --host 0.0.0.0 --port 7015 --proxy-headers --name streetrate &"
+				sh "cd backend && nohup uvicorn app.main:app --host 0.0.0.0 --port 7015 --proxy-headers -a streetrate &"
 			} 
         	}
 
