@@ -17,13 +17,6 @@ import Box from "@mui/material/Box";
 import { ReactComponent as PlusIcon } from "./assets/icons/plus.svg";
 import Skeleton from "@mui/material/Skeleton";
 
-const initData = [
-  {
-    title: "What is a street bank exchange rate app?",
-    details:
-      "It is an App that shows you a country’s real time street market rate",
-  },
-];
 function FaqOverview() {
   const [faqData, setFaqData] = useState(null);
 
