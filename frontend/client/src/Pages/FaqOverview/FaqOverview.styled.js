@@ -144,6 +144,7 @@ export const StyledFaqBottom = styled.div`
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    gap: 18px;
 
     background: #E6EFFF;
     border-radius: 16px;
@@ -181,5 +182,12 @@ export const StyledFaqBottom = styled.div`
         border: 0;
         outline: 0;
         color: #F8FAFC;
+    }
+
+    @media(max-width: 768px){
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        gap: 18px;
     }
 `

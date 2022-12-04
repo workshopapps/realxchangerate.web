@@ -41,78 +41,7 @@ export default function DataTable() {
     toast.error("request pending");
   }
  console.log('CURRENCIES', currencies)
-  // const currentRows = [
-  //   {
-  //     day: -1.34,
-  //     week: -0.34,
-  //     month: -4.34,
-  //     tvl: 47.34,
-  //     mktcap: "1,234,340",
-  //   },
-  //   {
-  //     day: 2.23,
-  //     week: 0.23,
-  //     month: 3.23,
-  //     tvl: 256,
-  //     mktcap: "1,267,456",
-  //   },
-  //   {
-  //     day: 0.21,
-  //     week: 0.21,
-  //     month: 6.21,
-  //     tvl: 56,
-  //     mktcap: "46.4t",
-  //   },
-  //   {
-  //     day: -3.92,
-  //     week: -0.92,
-  //     month: -6.92,
-  //     tvl: 34.45,
-  //     mktcap: "3,678,123",
-  //   },
-  //   {
-  //     day: -1.34,
-  //     week: -0.34,
-  //     month: -4.34,
-  //     tvl: 47.34,
-  //     mktcap: "1,234,340",
-  //   },
-  //   {
-  //     day: -1.34,
-  //     week: -0.34,
-  //     month: -4.34,
-  //     tvl: 47.34,
-  //     mktcap: "1,234,340",
-  //   },
-  //   {
-  //     day: 2.23,
-  //     week: 0.23,
-  //     month: 3.23,
-  //     tvl: 256,
-  //     mktcap: "1,267,456",
-  //   },
-  //   {
-  //     day: 0.21,
-  //     week: 0.21,
-  //     month: 6.21,
-  //     tvl: 56,
-  //     mktcap: "46.4t",
-  //   },
-  //   {
-  //     day: -3.92,
-  //     week: -0.92,
-  //     month: -6.92,
-  //     tvl: 34.45,
-  //     mktcap: "3,678,123",
-  //   },
-  //   {
-  //     day: -1.34,
-  //     week: -0.34,
-  //     month: -4.34,
-  //     tvl: 47.34,
-  //     mktcap: "1,234,340",
-  //   },
-  // ];
+
 
   const cellSkeleton = (
     <Skeleton variant="rectangular" sx={{ mb: 1 }} width="100%" height="40px" />
@@ -154,8 +83,8 @@ export default function DataTable() {
         </TableHead>
 
          <TableBody>
-          {currencies? (
-             currencies.map((data,index) => (
+          {requestStatus === "success"? (
+             currencies.map((data) => (
               <TableRow
               key={data.data.id}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -190,7 +119,7 @@ export default function DataTable() {
                   NA
                 </TableCell>
               </TableRow>
-              
+              //
             
             ))
             
