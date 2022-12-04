@@ -124,7 +124,6 @@ export const FormSection = styled.section`
 
     .text-area {
       display: flex;
-      padding: 16px;
       flex-direction: column;
       margin: 3.5rem 0;
       label {
@@ -132,7 +131,8 @@ export const FormSection = styled.section`
         margin-bottom: 0.8rem;
         font-weight: bold;
       }
-      textArea {
+      textarea {
+        padding: 16px;
         border-radius: 0.4rem;
       }
     }
