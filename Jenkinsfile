@@ -34,8 +34,8 @@ pipeline {
 
 			steps {
 			     sh '''#!/bin/bash
-				     source /home/light/realxchangerate/backend/venv/bin/activate
-				     cd /home/light/realxchangerate/backend
+				     source /backend/venv/bin/activate
+				     cd /backend
 				     PID=$(ps aux | grep 'uvicorn app.main:app' | awk {'print $2'} | xargs)
 				     if [ "$PID" != "" ]
 				     then
