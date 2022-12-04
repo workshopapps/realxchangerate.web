@@ -16,7 +16,16 @@ import { getTrending } from "../../../store/actions/trendingActions";
 import Flag from "react-world-flags";
 import { Skeleton } from "@mui/material";
 import { toast } from "react-toastify";
-import axios from "axios";
+import styled from "styled-components";
+
+const Red = styled.span`
+ color: red;
+ `
+
+const Green = styled.span`
+color: green;
+`
+
 
 export default function DataTable() {
   const dispatch = useDispatch();
@@ -27,12 +36,7 @@ export default function DataTable() {
     dispatch(getTrending())
   },[dispatch])
 
-  if (requestStatus === "failed") {
-    toast.error("request failed");
-  }
-  if (requestStatus === "success") {
-    toast.error("request suceeded");
-  }
+ 
   if (requestStatus === "pending") {
     toast.error("request pending");
   }
@@ -116,7 +120,7 @@ export default function DataTable() {
 
 
   return (
-    
+
     <TableContainer component={Paper}>
       <Table
         sx={{ minWidth: 750 }}
@@ -150,37 +154,40 @@ export default function DataTable() {
         </TableHead>
 
          <TableBody>
-          {currencies ? (
+          {currencies? (
              currencies.map((data,index) => (
               <TableRow
-              key={data.id}
+              key={data.data.id}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
               
                 <TableCell component="th" scope="row">
                   <StyledFlagAndCountry>
                   <Flag
-                          code={data.isocode}
+                          code={data.data.isocode.slice(0,2)}
                           style={{ width: "30px", marginRight: "10px" }}
                         />
-                    <span>{data.country}</span>
+                    <span>{data.data.country}</span>
                   </StyledFlagAndCountry>
                 </TableCell>
-                <TableCell align="right">{data.isocode}</TableCell>
-                <TableCell align="right">
-                  {data.one_day}
+                <TableCell align="right">{data.data.isocode}</TableCell>
+                <TableCell align="right" >
+    
+                {data.data.one_day  > 0 ? <Green>{Math.round(data.data.one_day).toFixed(2)} %</Green>: <Red>{Math.round(data.data.one_day).toFixed(2)} %</Red>}
+                
+                </TableCell>
+                <TableCell align="right" >
+                  {data.data.seven_days >0 ? <Green>{Math.round(data.data.seven_days).toFixed(2)} %</Green>: <Red>{Math.round(data.data.seven_days).toFixed(2)} %</Red>}
+                
                 </TableCell>
                 <TableCell align="right">
-                  {data.seven_days}
+                  NA
                 </TableCell>
                 <TableCell align="right">
-                  NaN
+                 NA
                 </TableCell>
                 <TableCell align="right">
-                 NaN
-                </TableCell>
-                <TableCell align="right">
-                  NaN
+                  NA
                 </TableCell>
               </TableRow>
               

@@ -80,6 +80,7 @@ export default function EditContent({ cancel, id, setNewdata }) {
             Question
           </FormLabel>
           <TextField
+            required
             id="question"
             value={formData.question}
             onChange={handleChange}
@@ -96,6 +97,7 @@ export default function EditContent({ cancel, id, setNewdata }) {
             Answer
           </FormLabel>
           <TextField
+            required
             value={formData.answer}
             onChange={handleChange}
             name="answer"
@@ -125,6 +127,7 @@ export default function EditContent({ cancel, id, setNewdata }) {
             Cancel
           </Button>
           <LoadingButton
+            disabled={!formData.question || !formData.answer}
             loading={loading}
             onClick={handleEdit}
             variant="contained"
