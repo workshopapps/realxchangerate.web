@@ -11,16 +11,16 @@ const Selector = () => {
           display: { xs: "none", sm: "flex" },
         }}
         fontSize="16px"
-        lineHeigh="20px"
+        lineHeight="20px"
         color="#0F172A"
       >
-        <Typography fontSize="16px" lineHeigh="20px" color="#0F172A">
+        <Typography fontSize="16px" lineHeight="20px" color="#0F172A">
           All
         </Typography>
-        <Typography fontSize="16px" lineHeigh="20px" color="#0F172A">
+        <Typography fontSize="16px" lineHeight="20px" color="#0F172A">
           Stocks
         </Typography>
-        <Typography fontSize="16px" lineHeigh="20px" color="#0F172A">
+        <Typography fontSize="16px" lineHeight="20px" color="#0F172A">
           Crypto
         </Typography>
         <Typography
@@ -29,7 +29,7 @@ const Selector = () => {
             cursor: "pointer",
           }}
           fontSize="16px"
-          lineHeigh="20px"
+          lineHeight="20px"
           color="#0F172A"
         >
           Currencies
@@ -45,16 +45,16 @@ const Selector = () => {
             }}
           />
         </Typography>
-        <Typography fontSize="16px" lineHeigh="20px" color="#0F172A">
+        <Typography fontSize="16px" lineHeight="20px" color="#0F172A">
           Indicies
         </Typography>
-        <Typography fontSize="16px" lineHeigh="20px" color="#0F172A">
+        <Typography fontSize="16px" lineHeight="20px" color="#0F172A">
           Future
         </Typography>
-        <Typography fontSize="16px" lineHeigh="20px" color="#0F172A">
+        <Typography fontSize="16px" lineHeight="20px" color="#0F172A">
           Bonds
         </Typography>
-        <Typography fontSize="16px" lineHeigh="20px" color="#0F172A">
+        <Typography fontSize="16px" lineHeight="20px" color="#0F172A">
           World economy
         </Typography>
       </Box>
