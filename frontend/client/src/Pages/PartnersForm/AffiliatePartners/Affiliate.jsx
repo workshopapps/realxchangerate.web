@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Logo from "./Assets/Logo.png";
 import { nations } from "./data";
+import { addPartner } from "./database";
+import { Link, useNavigate } from 'react-router-dom'
+
 
 const Affiliate = () => {
   const [firstname, setFirstname] = useState("");
@@ -17,6 +20,36 @@ const Affiliate = () => {
   const [message, setMessage] = useState("");
   const [country, setCountry] = useState("");
   const [countries, setCountries] = useState(nations);
+  const navigate = useNavigate()
+
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(false)
+  const [loaded, setLoaded] = useState(false)
+
+  if(loading) {
+    return <>
+      <Response>
+        <p>Hold on while your form is submitted...</p>
+      </Response>
+    </>
+  }
+  
+  if(loaded) {
+    return <>
+      <Response>
+        <p>Your form has been successfully submitted.</p>
+        <button className="btn" onClick={()=>navigate('/')}>Return Home</button>
+      </Response>
+    </>
+  }
+
+  if(error) {
+    return <>
+      <Response>
+        <p>Oops! something went wrong...</p>
+      </Response>
+    </>
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -34,6 +67,24 @@ const Affiliate = () => {
       message: message,
       country: country,
     };
+    setLoading(true)
+    const loader = setTimeout(()=> {
+      addPartner("affiliate", data).then(message => {
+          console.log(message)
+          setLoading(false)
+          setLoaded(true)
+      }).catch(error => {
+        setLoading(true)
+        const timeout = setTimeout(()=>{
+          console.log(error)
+          setLoading(false)
+          setError(true)
+        },5000)
+        const redirect = setTimeout(()=>{
+          navigate(-1)
+        },5500)
+      })
+    },3000)
   };
   return (
     <Container>
@@ -421,3 +472,54 @@ const StyledSection = styled.div`
     }
   }
 `;
+
+const Response = styled.div`
+  width: 100%;
+  height: 75vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  padding: 50px;
+
+    p {
+      font-family: "Inter";
+      font-style: normal;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 24px;
+      width: 100%;
+      text-align: center;
+    }
+
+   .btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    width: 125px;
+    height: 48px;
+    background: #0062ff;
+    border-radius: 4px;
+    border: none;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    color: #f8fafc;
+  }
+
+  @media screen and (min-width: 768px) {
+    height: 85vh;
+    p {
+      font-size: 24px;
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    height: 95vh;
+  }
+`
