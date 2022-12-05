@@ -3,8 +3,8 @@ import styled from "styled-components";
 import Logo from "./Assets/Logo.png";
 import { nations } from "./data";
 import { addPartner } from "./database";
-import { Link, useNavigate } from 'react-router-dom'
-
+import { Link, useNavigate } from "react-router-dom";
+import { CircularProgress } from "@mui/material";
 
 const Affiliate = () => {
   const [firstname, setFirstname] = useState("");
@@ -20,36 +20,18 @@ const Affiliate = () => {
   const [message, setMessage] = useState("");
   const [country, setCountry] = useState("");
   const [countries, setCountries] = useState(nations);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(false)
-  const [loaded, setLoaded] = useState(false)
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+  const [loaded, setLoaded] = useState(false);
 
-  if(loading) {
-    return <>
-      <Response>
-        <p>Hold on while your form is submitted...</p>
-      </Response>
-    </>
-  }
-  
-  if(loaded) {
-    return <>
-      <Response>
-        <p>Your form has been successfully submitted.</p>
-        <button className="btn" onClick={()=>navigate('/')}>Return Home</button>
-      </Response>
-    </>
-  }
-
-  if(error) {
-    return <>
-      <Response>
-        <p>Oops! something went wrong...</p>
-      </Response>
-    </>
-  }
+  // <Response>
+  //   <p>Your form has been successfully submitted.</p>
+  //   <button className="btn" onClick={() => navigate("/")}>
+  //     Return Home
+  //   </button>
+  // </Response>
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -67,24 +49,19 @@ const Affiliate = () => {
       message: message,
       country: country,
     };
-    setLoading(true)
-    const loader = setTimeout(()=> {
-      addPartner("affiliate", data).then(message => {
-          console.log(message)
-          setLoading(false)
-          setLoaded(true)
-      }).catch(error => {
-        setLoading(true)
-        const timeout = setTimeout(()=>{
-          console.log(error)
-          setLoading(false)
-          setError(true)
-        },5000)
-        const redirect = setTimeout(()=>{
-          navigate(-1)
-        },5500)
+    setLoading(true);
+    addPartner("affiliate", data)
+      .then((message) => {
+        console.log(message);
+        setLoading(false);
+        navigate("/partnerships");
       })
-    },3000)
+      .catch((error) => {
+        setLoading(true);
+        console.log(error);
+        setLoading(false);
+        setError(true);
+      });
   };
   return (
     <Container>
@@ -103,6 +80,7 @@ const Affiliate = () => {
                 <div>
                   <label htmlFor="name">Name</label>
                   <input
+                    required
                     type="text"
                     name="name"
                     id="name"
@@ -113,6 +91,7 @@ const Affiliate = () => {
                 </div>
                 <div>
                   <input
+                    required
                     type="text"
                     name="name"
                     id="name"
@@ -127,6 +106,7 @@ const Affiliate = () => {
                 <div>
                   <label htmlFor="birthdate">Date of Birth</label>
                   <input
+                    required
                     type="date"
                     name="birthdate"
                     id="birthdate"
@@ -138,6 +118,7 @@ const Affiliate = () => {
                 <div>
                   <label htmlFor="phone">Phone number</label>
                   <input
+                    required
                     type="tel"
                     name="phone"
                     id="phone"
@@ -150,6 +131,7 @@ const Affiliate = () => {
               <div className="email">
                 <label htmlFor="email">Email</label>
                 <input
+                  required
                   type="email"
                   name="email"
                   id="email"
@@ -163,6 +145,7 @@ const Affiliate = () => {
               <div className="address">
                 <label htmlFor="address">Address</label>
                 <input
+                  required
                   type="text"
                   name="address"
                   id="address"
@@ -175,6 +158,7 @@ const Affiliate = () => {
                 <div>
                   <label htmlFor="city">City</label>
                   <input
+                    required
                     type="text"
                     name="city"
                     id="city"
@@ -245,31 +229,16 @@ const Affiliate = () => {
                 name="message"
                 id="message"
                 value={message}
+                required
                 onChange={(e) => setMessage(e.target.value)}
               ></textarea>
             </div>
 
             <div className="submission">
-              {firstname &&
-              lastname &&
-              dob &&
-              phone &&
-              email &&
-              address &&
-              city &&
-              business &&
-              title &&
-              country &&
-              message &&
-              website ? (
-                <button className="btn" type="submit">
-                  Apply
-                </button>
-              ) : (
-                <button className="btnDisabled" disabled="disabled">
-                  Apply
-                </button>
-              )}
+              {loading && <CircularProgress sx={{ m: "0 auto" }} />}
+              <button className="btn" type="submit">
+                Apply
+              </button>
             </div>
           </form>
         </div>
@@ -483,17 +452,17 @@ const Response = styled.div`
   gap: 50px;
   padding: 50px;
 
-    p {
-      font-family: "Inter";
-      font-style: normal;
-      font-weight: 600;
-      font-size: 16px;
-      line-height: 24px;
-      width: 100%;
-      text-align: center;
-    }
+  p {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    width: 100%;
+    text-align: center;
+  }
 
-   .btn {
+  .btn {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -522,4 +491,4 @@ const Response = styled.div`
   @media screen and (min-width: 1024px) {
     height: 95vh;
   }
-`
+`;
