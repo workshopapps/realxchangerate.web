@@ -27,6 +27,8 @@ class CRUDAdvert(CRUDBase[Advert, AdvertCreate, AdvertUpdate]):
 
     def get_all_adverts(self, db: Session):
         """Returns all adverts"""
-        return db.query(Advert).all()    
+        return db.query(Advert).all() 
+
+      
 
 advert=CRUDAdvert(Advert)

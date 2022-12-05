@@ -196,8 +196,6 @@ async def get_all_adverts(*, db: Session = Depends(get_db)):
 
 
 
-
-
 class ComplaintsPagination(BaseModel):
     complaint: str
     id: int
