@@ -127,8 +127,8 @@ const ApplicationForm = () => {
         key={vertical + horizontal}
         color="success"
       >
-        <Alert  severity="success" sx={{ width: "100%" }}>
-          <Typography fontSize="14px">{successMessage}</Typography>
+        <Alert  severity="success" sx={{ width: "100%", height:"50px", fontSize:"14px" }}>
+          {successMessage}
         </Alert>
       </Snackbar>
     </Container>
