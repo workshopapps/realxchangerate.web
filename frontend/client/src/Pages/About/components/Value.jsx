@@ -11,17 +11,23 @@ const ListItem = ({ image, title, content }) => {
       display="flex"
       justifyContent="center"
       flexDirection="column"
-      alignItems="center"
+      alignItems="left"
       gap="20px"
     >
       <Box
         display="flex"
         justifyContent="center"
         flexDirection="column"
-        alignItems="center"
+        alignItems="left"
         gap="10px"
       >
-        <img src={image} alt="" />
+        <Box
+          display="flex"
+          flexDirection="row"
+          sx={{ alignItems: { xs: "center", sm: "left" }, justifyContent:{xs:"center", sm:"left"} }}
+        >
+          <img src={image} alt="" width="50px" height="100%" />
+        </Box>
 
         <Typography
           fontWeight="600"
@@ -29,9 +35,9 @@ const ListItem = ({ image, title, content }) => {
           sx={{
             fontSize: { xs: "22px", sm: "24px", md: "28px" },
             lineHeight: { xs: "28px", sm: "32px" },
+            textAlign: { xs: "center", sm: "left" },
           }}
           color="#4B4B4B"
-          textAlign="center"
         >
           {title}
         </Typography>
@@ -44,7 +50,7 @@ const ListItem = ({ image, title, content }) => {
           lineHeight: { xs: "24px", sm: "28px" },
         }}
         color="#202020"
-        textAlign="center"
+        textAlign="left"
       >
         {content}
       </Typography>
@@ -72,7 +78,7 @@ const Value = () => {
           justifyContent: { xs: "center", md: "center" },
           width: { xs: "85%", sm: "80%", md: "90%", lg: "83.5%" },
           margin: { xs: "32px auto", sm: "48px auto", lg: "56px auto" },
-          gap: {xs:"30px", sm: "18px", md: "24px" },
+          gap: { xs: "30px", sm: "16px", md: "24px" },
         }}
         textAlign="center"
       >
@@ -93,7 +99,7 @@ const Value = () => {
           sx={{
             fontSize: { xs: "14px", sm: "15px", md: "15px", lg: "20px" },
             lineHeight: { lg: "28px" },
-            textAlign: { xs: "left", sm: "center" },
+            textAlign: { xs: "center" },
             letterSpacing: { xs: "0.001em", sm: "auto" },
           }}
         >
@@ -113,7 +119,7 @@ const Value = () => {
             margin: {
               xs: "0px",
               sm: "22px auto 0px",
-              md: "16px auto 0px",
+              md: "38px auto 0px",
             },
           }}
         >
@@ -133,7 +139,7 @@ const Value = () => {
             />
           </Grid>
 
-          <Grid item sm={6} md={3} >
+          <Grid item sm={6} md={3}>
             <ListItem
               image={InnovationIcon}
               title="Innovation"
