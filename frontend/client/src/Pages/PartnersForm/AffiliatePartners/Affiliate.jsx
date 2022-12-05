@@ -18,12 +18,10 @@ const Affiliate = () => {
   const [country, setCountry] = useState('')
   const [countries, setCountries] = useState(nations)
 
-  let data = {firstname: firstname, lastname: lastname, birthdate: dob, phoneNumber: phone, email: email, address: address, city: city, business: business, website: website, title: title, message: message, country: country}
-
-  console.log(data)
-
+  
   const handleSubmit = e => {
     e.preventDefault()
+    let data = {firstname: firstname, lastname: lastname, birthdate: dob, phoneNumber: phone, email: email, address: address, city: city, business: business, website: website, title: title, message: message, country: country}
   }
   return (
     <Container>
@@ -53,7 +51,7 @@ const Affiliate = () => {
                         <div className='birth-and-contact'>
                             <div>
                                 <label htmlFor="birthdate">Date of Birth</label>
-                                <input type="date" name="birthdate" id="birthdate" placeholder='DD/MM/YYYY' value={dob} onSelect={e=>setDob(e.target.value)} style={{textTransform: 'uppercase'}} />
+                                <input type="date" name="birthdate" id="birthdate" placeholder='DD/MM/YYYY' onSelect={e=>setDob(e.target.value)} style={{textTransform: 'uppercase'}} />
                             </div>
                             <div>
                                 <label htmlFor="phone">Phone number</label>
