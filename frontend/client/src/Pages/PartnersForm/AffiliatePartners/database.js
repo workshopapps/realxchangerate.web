@@ -18,9 +18,9 @@ const app = initializeApp(firebaseConfig);
 // export dp instance
 const db = getFirestore(app);
 
-export const addAffiliate = async (data) => {
+export const addPartner = async (table, data) => {
   try {
-    const docRef = await addDoc(collection(db, "affiliate"), data);
+    const docRef = await addDoc(collection(db, table), data);
     return "Document written with ID: " + docRef.id;
   } catch (e) {
     return "Error adding document: " + e;
