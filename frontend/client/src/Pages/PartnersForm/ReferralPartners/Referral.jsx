@@ -1,64 +1,92 @@
-import React from 'react'
+import React, {useState} from 'react'
 import styled from 'styled-components'
 import Logo from '../AffiliatePartners/Assets/Logo.png'
+import { nations } from '../AffiliatePartners/data'
 
-const Referral = () => {
+const Affiliate = () => {
+  const [firstname, setFirstname] = useState('')
+  const [lastname, setLastname] = useState('')
+  const [dob, setDob] = useState('')
+  const [phone, setPhone] = useState('')
+  const [email, setEmail] = useState('')
+  const [address, setAddress] = useState('')
+  const [city, setCity] = useState('')
+  const [business, setBusiness] = useState('')
+  const [website, setWebsite] = useState('')
+  const [title, setTitle] = useState('')
+  const [message, setMessage] = useState('')
+  const [country, setCountry] = useState('')
+  const [countries, setCountries] = useState(nations)
+
+  
+  const handleSubmit = e => {
+    e.preventDefault()
+    let data = {firstname: firstname, lastname: lastname, birthdate: dob, phoneNumber: phone, email: email, address: address, city: city, business: business, website: website, title: title, message: message, country: country}
+  }
   return (
     <Container>
         <StyledHero>
             <div className='header'>
                 <img src={Logo} alt="StreetRate" />
                 <p>
-                    StreetRate Affiliate Partner Application
+                    StreetRate Referral Partner Application
                 </p>
             </div>
         </StyledHero>
 
         <StyledSection>    
             <div className='main'>
-                <form action="">
+                <form onSubmit={handleSubmit}>
                     <div className='personal-details'>
                         <div className='name'>
                             <div>
                                 <label htmlFor="name">Name</label>
-                                <input type="text" name="name" id="name" placeholder='First name' />
+                                <input type="text" name="name" id="name" placeholder='First name' value={firstname} onChange={(e)=>setFirstname(e.target.value)} />
                             </div>
                             <div>
-                                <input type="text" name="name" id="name" placeholder='Last name' />
+                                <input type="text" name="name" id="name" placeholder='Last name' value={lastname} onChange={(e)=>setLastname(e.target.value)} />
                             </div>
                         </div>
 
                         <div className='birth-and-contact'>
                             <div>
                                 <label htmlFor="birthdate">Date of Birth</label>
-                                <input type="date" name="birthdate" id="birthdate" placeholder='DD/MM/YYYY' />
+                                <input type="date" name="birthdate" id="birthdate" placeholder='DD/MM/YYYY' onSelect={e=>setDob(e.target.value)} style={{textTransform: 'uppercase'}} />
                             </div>
                             <div>
                                 <label htmlFor="phone">Phone number</label>
-                                <input type="number" name="phone" id="phone" />
+                                <input type="tel" name="phone" id="phone" value={phone} onChange={e=>setPhone(e.target.value)} />
                             </div>
                         </div>
                         
                         <div className='email'>
                             <label htmlFor="email">Email</label>
-                            <input type="email" name="email" id="email" />
+                            <input type="email" name="email" id="email" value={email} onChange={e=>setEmail(e.target.value)} />
                         </div>
                     </div>
 
                     <div className='location'>
                         <div className="address">
                             <label htmlFor="address">Address</label>
-                            <input type="text" name="address" id="address" />
+                            <input type="text" name="address" id="address" value={address} onChange={e=>setAddress(e.target.value)} />
                         </div>
 
                         <div className="location-details">
                             <div>
                                 <label htmlFor="city">City</label>
-                                <input type="text" name="city" id="city" />
+                                <input type="text" name="city" id="city" value={city} onChange={e=>setCity(e.target.value)} />
                             </div>
                             <div>
                                 <label htmlFor="country">Country</label>
-                                <select name="country" id="country"></select>
+                                <select name="country" id="country" value={country} onChange={e=>setCountry(e.target.value)}>
+                                    {
+                                        countries.map((country,index) => {
+                                            return <>
+                                                <option key={index} >{country}</option>
+                                            </>
+                                        })
+                                    }
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -66,27 +94,31 @@ const Referral = () => {
                     <div className="business">
                         <div className="company">
                             <label htmlFor="business">Business Name</label>
-                            <input type="text" name="business" id="business" />
+                            <input type="text" name="business" id="business" value={business} onChange={e=>setBusiness(e.target.value)} />
                         </div>
                         <div className="others">
                             <div className="website">
                                 <label htmlFor="website">Website/LinkedIn</label>
-                                <input type="text" name="website" id="website" />
+                                <input type="text" name="website" id="website" value={website} onChange={e=>setWebsite(e.target.value)} />
                             </div>
                             <div className="title">
                                 <label htmlFor="title">Title</label>
-                                <input type="text" name="title" id="title" />
+                                <input type="text" name="title" id="title" value={title} onChange={e=>setTitle(e.target.value)} />
                             </div>
                         </div>
                     </div>
 
                     <div className="content">
-                        <label htmlFor="objective">Why are you looking to refer leads to StreetRates?</label>
-                        <textarea name="" id=""></textarea>
+                        <label htmlFor="objective">Why are you looking to refer leads to StreetRates</label>
+                        <textarea name="message" id="message" value={message} onChange={e=>setMessage(e.target.value)}></textarea>
                     </div>
 
                     <div className="submission">
-                        <button className='btn' type='submit'>Apply</button>
+                        {
+                            (
+                                firstname && lastname && dob && phone && email && address && city && business && title && country && message && website
+                            ) ? <button className='btn' type='submit'>Apply</button> : <button className='btnDisabled' disabled='disabled'>Apply</button>
+                        }
                     </div>
                 </form>
             </div>
@@ -95,7 +127,7 @@ const Referral = () => {
   )
 }
 
-export default Referral
+export default Affiliate
 
 const Container = styled.div`
   max-width: 1440px;
@@ -210,6 +242,25 @@ const StyledSection = styled.div`
         font-size: 16px;
         line-height: 24px;
         color: #F8FAFC;
+    }
+
+    .btnDisabled {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        width: 125px;
+        height: 48px;
+        // background: #0062FF;
+        border-radius: 4px;
+        border: none;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 24px;
+        // color: #F8FAFC;
     }
 
     @media screen and (min-width: 768px) {
