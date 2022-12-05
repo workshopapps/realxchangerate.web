@@ -23,7 +23,8 @@ import UserFeedback from "./pages/userFeedbacks/UserFeedback";
 // react-toastify
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Affiliates from "./pages/affiliates/Affiliates";
+import Affiliates from "./pages/partners/Affiliates";
+import Referrals from "./pages/partners/Refferrals";
 
 function App() {
   AOS.init({
@@ -41,6 +42,7 @@ function App() {
             <Route path="/admin/trending" element={<TrendingData />} />
             <Route path="/admin/faqs" element={<Faqs />} />
             <Route path="/admin/affiliates" element={<Affiliates />} />
+            <Route path="/admin/referrals" element={<Referrals />} />
 
             <Route path="/admin/complaints" element={<UserComplaints />} />
             <Route path="/admin/complaints/:id" element={<ComplaintPage />} />
