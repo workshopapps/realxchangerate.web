@@ -155,8 +155,8 @@ const StyledContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
-  margin-bottom: 48px;
+  gap: 16px;
+  margin-bottom: 64px;
 
   @media ${devices.mobile} {
     gap: 16px;
