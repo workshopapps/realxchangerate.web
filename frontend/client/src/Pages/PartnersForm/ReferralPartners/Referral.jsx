@@ -78,11 +78,11 @@ const Affiliate = () => {
                             </div>
                             <div>
                                 <label htmlFor="country">Country</label>
-                                <select name="country" id="country">
+                                <select name="country" id="country" value={country} onChange={e=>setCountry(e.target.value)}>
                                     {
                                         countries.map((country,index) => {
                                             return <>
-                                                <option key={index} value={country} onSelect={e=>setCountry(e.target.value)}>{country}</option>
+                                                <option key={index} >{country}</option>
                                             </>
                                         })
                                     }
