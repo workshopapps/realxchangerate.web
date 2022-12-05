@@ -18,6 +18,10 @@ class Rates {
   async GetCurrencyData(isocode){
     return this.request.get(`/rate/${isocode}`)
   }
+
+  async ApplyToAdvertise(data){
+    return this.request.post(`/online_adverts`, data)
+  }
 }
 
 

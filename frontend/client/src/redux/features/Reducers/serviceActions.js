@@ -113,3 +113,5 @@ export const GetNews = (ip) => async () => {
     dispatch(setLoading(false));
   }
 };
+
+

@@ -1,26 +1,23 @@
 import { Box, Grid, Typography, useTheme } from "@mui/material";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { GetNews } from "../../redux/features/Reducers/serviceActions";
 import HorizontalNewsCard from "./components/HorizontalNewsCard";
 import MainNewsCard from "./components/MainNewsCard";
 import Loading from "../../components/Loader";
 import Selector from "./components/Selector";
-import {
-  setLoading,
-  setNews,
-} from "../../redux/features/Reducers/servicesReducer";
+import { setNews } from "../../redux/features/Reducers/servicesReducer";
 
 import StoriesNews from "./components/StoriesNews";
 import { dispatch } from "../../redux/store";
 import { useSelector } from "react-redux";
 
 export default function News() {
-  const { loading, news } = useSelector((state) => state.service);
+  const { news } = useSelector((state) => state.service);
+  const [loading, setLoading] = useState(true);
   const theme = useTheme();
   const darkMode = theme.palette.mode === "dark";
 
   useEffect(() => {
-    dispatch(setLoading(true));
     const ip = sessionStorage.getItem("ip");
     const lastUpdated = sessionStorage.getItem("lastUpdated");
     const News = JSON.parse(sessionStorage.getItem("news"));
@@ -29,10 +26,20 @@ export default function News() {
     if (ip && outdated) {
       dispatch(GetNews("155.94.247.229"));
     } else {
-      dispatch(setLoading(false));
       dispatch(setNews(News));
     }
   }, []);
+
+  useEffect(() => {
+    if (news) {
+      if (news.length > 0) {
+        setLoading(false);
+      }
+    }
+    else{
+      dispatch(GetNews("155.94.247.229"));
+    }
+  }, [news]);
 
   return (
     <>
@@ -89,10 +96,7 @@ export default function News() {
                     </Typography>
 
                     {news.slice(0, 4).map((c) => (
-                      <HorizontalNewsCard
-                        key={c.id}
-                        data={c}
-                      />
+                      <HorizontalNewsCard key={c.id} data={c} />
                     ))}
                   </Box>
                 </Box>
@@ -126,7 +130,7 @@ export default function News() {
                 sx={{ display: { xs: "flex", sm: "none" } }}
               >
                 {news.slice(1, 4).map((s) => (
-                  <StoriesNews key={s.id} data={s}  />
+                  <StoriesNews key={s.id} data={s} />
                 ))}
               </Box>
             </Box>
