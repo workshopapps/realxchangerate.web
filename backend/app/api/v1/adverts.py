@@ -21,3 +21,19 @@ def create_contact(
         "Success": True,
         "message": "Thank you. We'll get in touch as soon as possible.",
     }
+
+
+@router.get("/get_all_adverts")
+async def get_all_adverts(*, db: Session = Depends(get_db)):
+
+    """Returns all adverts from the database"""
+
+    adverts = crud.advert.get_all_adverts(db)
+
+    if adverts is None:
+        return {"success": False, "status_code": 404, "message": "No adverts available!"}
+
+    if len(adverts) == 0:
+        return {"success": True, "status_code": 200, "message": "No adverts in database!"}
+
+    return {"success": True, "status_code": 200, "adverts": adverts}
