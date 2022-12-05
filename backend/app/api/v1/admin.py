@@ -194,6 +194,20 @@ async def get_all_adverts(*, db: Session = Depends(get_db)):
 
 
 
+@router.get("/get_adverts/{id}")
+async def get_advert_by_id(id:int, db: Session = Depends(get_db)):
+    
+    """get adverts by id"""
+
+    advert = crud.advert.get_adverts_by_id(db=db, id=id)
+    if id == 0:
+        return {"success": False, "status_code": 404, "message": "id starts from 1!"} 
+
+    if advert is None:
+        return {"success": False, "status_code": 404, "message": "Advert not found!"}       
+
+    return {"success": True, "status_code": 200, "advert": advert}
+
 
 
 class ComplaintsPagination(BaseModel):
