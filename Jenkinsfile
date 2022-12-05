@@ -24,7 +24,6 @@ pipeline {
 			steps {
 				sh "sudo cp -rf ${WORKSPACE}/frontend/client/build/* /var/www/streetrate.hng.tech/html/client/"
 				sh "sudo cp -fr ${WORKSPACE}/frontend/admin/build/* /var/www/streetrate.hng.tech/html/admin/"
-        			sh "sudo cp -rf ${workspace}/backend/* /home/light/realxchangerate/backend"
 				//sh "sudo su - light && whoami"
 				//sh "sudo systemctl restart realxchangerate.service"
 			}
@@ -48,6 +47,7 @@ pipeline {
 			 	     //fi
 				     //nohup uvicorn app.main:app --host 0.0.0.0 --port 7015 --proxy-headers &
 			      //'''
+				sh "sudo cp -rf ${workspace}/backend/* /home/light/realxchangerate/backend"
 				//sh "sudo chmod +x ${WORKSPACE}/startup.sh"
 				sh "sudo bash /home/light/realxchangerate.sh"
 				//sh "cd backend"
