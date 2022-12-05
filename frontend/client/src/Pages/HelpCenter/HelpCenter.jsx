@@ -1,9 +1,9 @@
 import React from "react";
-import { Container, Grid, useTheme } from "@mui/material";
+import {  Grid, useTheme,Box,Typography } from "@mui/material";
 import {
     Header,
     Title,
-    Wrapper,
+    //Wrapper,
     Paragraph,
     Section,
     Text,
@@ -18,47 +18,60 @@ const HelpCenter = () => {
 	const textColor = DarkMode ? "#fff" : ""
 
     return (
-        <Container
-            style={{
-                maxWidth: "1440px"
-            }}
-            sx={{
-                paddingLeft: { xs: 2, sm: 2, md: 2, lg: 9, xl: 9 },
-                paddingRight: { xs: 2, sm: 2, md: 2, lg: 9, xl: 9 },
-            }}
+        <Box
+        fontFamily= "'Inter', sans-serif" maxWidth="1440px"
         >
-            <Wrapper>
-                <Title style={{color:textColor}} position={{ align: "left", marginTop: "10px" }}>
-                    Help Center
-                </Title>
+            <Box 
+            margin="0px auto"
+            sx={{
+                maxWidth: { xs: "84%", sm: "90%", md: "84%" }
+              }}>
+                
                 <Header style={{color:textColor}}>Hi, How can we help?</Header>
                 <Paragraph style={{color:textColor}}>
-                    Welcome to the StreetRate Help Center Portal. Here you will
+                    Welcome to the StreetRates Help Center Portal. Here you will
                     find answers to all your exchange rate questions. From
                     choosing your base currency and your country location, our
-                    integrated matrix, services and more.
+                    integrated matrix, services and more. 
                 </Paragraph>
-                <Section>
-                    <Title position={{ align: "center" }}>
+                <Section style={{marginTop:"64px"}}>
+                    <Title position={{ align: "center" }} >
                         Still in need of support? Our support team are available
                         to help.{" "}
                     </Title>
                     <SubSection>
-                        <Text>Email: Contact@streetrate.com</Text>
-                        <Text>
-                            Contact Address: 2, Hamilton Avenue, Silicon Valley,
+                        <Text ><Typography sx={{
+                            fontWeight: 600,
+                            lineHeight: {xs:'20px', sm:'24px'},
+                            fontSize:{xs:'14px',sm:'18px'},
+                            display:'inline',
+                            textDecoration:'none'
+                        }}>Email:</Typography> <span style={{textDecoration:"underline"}}>Contact@streetrate.com</span></Text>
+                        <Text style={{marginTop:'20px',marginBottom:'20px', }}>
+                            <Typography sx={{
+                            fontWeight: 600,
+                            lineHeight: {xs:'20px', sm:'24px'},
+                            fontSize:{xs:'14px',sm:'18px'},
+                            display:'inline'
+                        }}>Contact Address:</Typography> 2, Hamilton Avenue, Silicon Valley,
                             California
                         </Text>
-                        <Text>International Contact: +62 528 124 5600</Text>
+                        <Text><Typography sx={{
+                            fontWeight: 600,
+                            lineHeight: {xs:'20px', sm:'24px'},
+                            fontSize:{xs:'14px',sm:'18px'},
+                            display:'inline'
+                        }}>International Contact:</Typography> +62 528 124 5600</Text>
                     </SubSection>
                 </Section>
+                
                 <Title
                     position={{
                         align: "left",
-                        marginTop: "60px",
+                        marginTop: "64px",
                     }}
                     style={{
-                        marginBottom: "30px",
+                        marginBottom: "10px",
                         color:textColor
                     }}
                 >
@@ -69,11 +82,12 @@ const HelpCenter = () => {
                     style={{
                         marginBottom: "80px",
                     }}
+                    direction = {{xs: 'column', md:'row'}}
                     spacing={5}
                     alignItems="stretch"
                 >
                     <Grid item xs={12} sm={4}>
-                        <Section>
+                        <Section style={{border:'1px solid #E2E8F0'}}>
                             <SubTitle>
                                 What is the best time to exchange my money?
                             </SubTitle>
@@ -86,7 +100,7 @@ const HelpCenter = () => {
                         </Section>
                     </Grid>
                     <Grid item xs={12} sm={4}>
-                        <Section>
+                        <Section style={{border:'1px solid #E2E8F0'}}>
                             <SubTitle>How can I convert my money?</SubTitle>
                             <Text>
                                 We have paterned with Aboki FX to offer you a
@@ -97,7 +111,7 @@ const HelpCenter = () => {
                         </Section>
                     </Grid>
                     <Grid item xs={12} sm={4}>
-                        <Section>
+                        <Section style={{border:'1px solid #E2E8F0'}}>
                             <SubTitle>
                                 Which currencies can i convert with the currency
                                 converter?
@@ -110,8 +124,8 @@ const HelpCenter = () => {
                         </Section>
                     </Grid>
                 </Grid>
-            </Wrapper>
-        </Container>
+            </Box>
+        </Box>
     );
 };
 

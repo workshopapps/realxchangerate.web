@@ -8,11 +8,27 @@ from app.api.deps import get_db
 from app.models.rate import Rate
 from app.models.currency import Currency
 from app.api.deps import get_location
+from app.crud.rate import rate
 from datetime import datetime, timedelta
 router = APIRouter()
 
-#  get rates ofbject for a spcific isocode
 
+@router.get("/last_rate_update")
+def last_update_rate(db: Session = Depends(get_db)):
+    """
+    returns the last date and time the currency rates where updated
+    """
+    time = db.query(Rate).order_by(Rate.last_updated.desc()).first().last_updated
+    if not time:
+        raise HTTPException(
+            status_code=404, detail=f"No record found")
+    return{
+        "Success": True,
+        "Time": time
+    }
+
+
+#  get rates ofbject for a spcific isocode
 
 @router.get("/{isocode}")
 def get_rate_by_isocode(isocode, db: Session = Depends(get_db)):
@@ -226,5 +242,28 @@ def get_highest_and_lowest_rates(isocode, db: Session = Depends(get_db)):
     return {
         "success": True,
         "status_code": 200,
-        "data": {"currency": currency, "rates": result},
+         "data": {"currency": currency, "rates": {"highest":result["highest"].parallel_buy, "lowest": result["lowest"].parallel_buy}},
+    }
+
+@router.get("/percentage_change/{isocode}")
+def get_percentage_change(isocode, db: Session = Depends(get_db)):
+    """
+    Get percentage change of parallel and official rates of currency by isocode
+
+    Args:
+        isocode (str): Currency isocode
+    """
+    calculate_percentage_rates = rate.get_percentage_rate_change(db=db, isocode=isocode)
+    
+    if calculate_percentage_rates['status'] == False:
+        return {
+        "success": False,
+        'message': calculate_percentage_rates['message']
+        }, 404
+
+    
+    return {
+        "success": True,
+        "status_code": 200,
+        "data": calculate_percentage_rates['data'],
     }

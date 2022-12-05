@@ -7,16 +7,21 @@ from app.api.v1 import api_router
 from app.core import settings
 from app.api.v1 import password_email_reset
 
-app = FastAPI(title=settings.PROJECT_NAME, root_path="")
-origins = [
+app = FastAPI(title=settings.PROJECT_NAME)
+origins = [    
     "http://localhost",
     "http://localhost:3000",
+    "https://streetrates.hng.tech",
+    "https://api.streetrates.hng.tech",
+    "https://api.streetrates.hng.tech/*",
+    "https://streetrates.hng.tech/*",
     "https://team-bevel-client.netlify.app",
     "https://exchange.hng.tech",
     "https://exchange.hng.tech/*",
     "https://team-bevel-client.netlify.app/*",
     "http://exchange.hng.tech:3008",
     "http://exchange.hng.tech:3008/*",
+    "*"
 ]
 app.add_middleware(
     CORSMiddleware,

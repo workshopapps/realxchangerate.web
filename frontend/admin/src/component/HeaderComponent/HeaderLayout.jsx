@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { StyledHeaderTools, StyledHeaderWrapper } from "./headerLayout.styled";
 import { ReactComponent as NotificationIcon } from "../../assets/icons/notification_icon.svg";
-import { ReactComponent as TitleLogo } from "../../assets/icons/title_logo.svg";
+import { ReactComponent as TitleLogo } from "../../assets/Logo.svg";
 import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
 import HeaderSearch from "./search/HeaderSearch";
@@ -24,12 +24,12 @@ const userData = {
 const settings = [
   {
     option: "Account",
-    route: "/account",
+    route: "/admin/account",
   },
-  {
-    option: "Logout",
-    route: "/logout",
-  },
+  // {
+  //   option: "Logout",
+  //   route: "/admin/login",
+  // },
 ];
 
 function HeaderLayout(props) {
@@ -54,10 +54,16 @@ function HeaderLayout(props) {
     <>
       <StyledHeaderWrapper>
         <Box sx={{ pt: 1, pr: 4, display: { xs: "block", md: "none" } }}>
-          <TitleLogo width="130px" />
+          <TitleLogo width="110px" />
         </Box>
 
-        <Box sx={{ ml: "auto", display: { xs: "none", sm: "block" } }}>
+        <Box
+          sx={{
+            flexGrow: 1,
+            ml: "auto",
+            display: { xs: "none", sm: "block" },
+          }}
+        >
           <HeaderSearch />
         </Box>
 
@@ -125,7 +131,15 @@ function HeaderLayout(props) {
         </StyledHeaderTools>
       </StyledHeaderWrapper>
       <Divider />
-      {menuOpen ? <DropdownMenu setMenuOpen={setMenuOpen} /> : null}
+      {menuOpen ? (
+        <Box
+          sx={{
+            display: { xs: "block", sm: "none" },
+          }}
+        >
+          <DropdownMenu setMenuOpen={setMenuOpen} />
+        </Box>
+      ) : null}
       <Notifications show={notificationsOpen} close={setNotificationsOpen} />
     </>
   );

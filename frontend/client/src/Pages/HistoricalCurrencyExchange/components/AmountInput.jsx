@@ -1,19 +1,20 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
-import { RightArrow } from "../assets/";
+import { DownArrow } from "../assets";
 import PropTypes from "prop-types";
 
 const AmountInput = ({ flag, amount, setAmount }) => {
   const TextInput = {
     border: "none",
-    width: "50%",
+    padding:"3px",
+    width: "90%",
     "::focus": {
       border: "none",
     },
     "::blur": {
       border: "none",
     },
-    height: "20px",
+    height: "25px",
     backgroundColor: "inherit",
     color: "inherit",
   };
@@ -23,6 +24,7 @@ const AmountInput = ({ flag, amount, setAmount }) => {
       display="flex"
       flexDirection="row"
       border="1px solid #9B9DFD"
+      justifyContent="space-between"
       alignItems="center"
       height="44px"
       borderRadius="6px"
@@ -38,17 +40,10 @@ const AmountInput = ({ flag, amount, setAmount }) => {
       }}
     >
       <Box display="flex" width="50%" gap="5px" alignItems="center">
-        <Typography
-          lineHeight="24px"
-          fontWeight="400"
-          sx={{
-            fontSize: { xs: "14px", sm: "10px", md: "12px", xl: "14px" },
-          }}
-        >
-          Amount
-        </Typography>
+        
         <input
           type="text"
+          placeholder="Amount"
           style={TextInput}
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
@@ -58,7 +53,7 @@ const AmountInput = ({ flag, amount, setAmount }) => {
       <Box
         display="flex"
         sx={{
-          gap: { xs: "4px", sm: "3px", xl: "7px" },
+          gap: { xs: "8px", sm: "10px" },
         }}
         justifyContent="center"
         alignItems="center"
@@ -71,10 +66,16 @@ const AmountInput = ({ flag, amount, setAmount }) => {
           fontWeight="400"
           color="#6B7280"
         >
-          US Dollar (USD)
+         NGN
         </Typography>
-        <img src={flag} height={20} width={20} alt="Flag" />
-        <img src={RightArrow} height={20} width={20} alt="arrow" />
+        <img
+        loading="lazy"
+        width="20"
+        src={ `https://flagcdn.com/w20/ng.png `}
+        srcSet={`https://flagcdn.com/w40/ng.png 2x`}
+        alt=""
+      />
+        <img src={DownArrow} height={20} width={20} alt="arrow" />
       </Box>
     </Box>
   );

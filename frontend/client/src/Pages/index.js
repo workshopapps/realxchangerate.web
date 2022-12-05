@@ -21,6 +21,11 @@ export { default as FraudReport } from "./FraudReport/FraudReport";
 export { default as CookiePolicy } from "./CookiePolicy/CookiePolicy";
 export { default as Glossary } from "./Glossary/Glossary";
 export { default as OnlineAdvertising } from "./OnlineAdvertising/OnlineAdvertising";
+export { default as ApplyToAdvertise } from "./ApplyToAdvertise/ApplyToAdvertise";
 export { default as Ambassadors } from "./Ambassadors/Ambassadors";
 export { default as Welcome } from "./Welcome/Welcome";
-
+export { default as PrivacyPolicy } from "./PrivacyPolicy/PrivacyPolicy";
+export { default as StudentAmbassador } from "./StudentAmbassador/StudentAmbassador";
+export { default as StudentAmbassadorForm } from "./StudentAmbassadorForm/StudentAmbassadorForm";
+export { default as Affiliate } from "./PartnersForm/AffiliatePartners/Affiliate";
+export { default as Referral } from "./PartnersForm/ReferralPartners/Referral"

@@ -1,6 +1,8 @@
 import { NavLink } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
+import { useDispatch } from "react-redux";
+import { logout } from "../../../store/actions/userActions";
 import { ReactComponent as DashboardIconWhite } from "../../../assets/icons/dashboard_icon.svg";
 import { ReactComponent as DashboardIcon } from "../../../assets/icons/dashboard_black_icon.svg";
 import { ReactComponent as AnalyticsIcon } from "../../../assets/icons/analytics_icon.svg";
@@ -26,20 +28,21 @@ const navigationOptions = [
     icon: <AnalyticsIcon />,
     iconActive: <AnalyticsIconWhite />,
   },
-  {
-    item: "Logout",
-    route: "/logout",
-    icon: <LogoutIcon />,
-    iconActive: <LogoutIconWhite />,
-  },
 ];
 
 function SidebarNavigation() {
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    dispatch(logout());
+  };
+
   return (
     <StyledSidebarNavigation>
       <nav>
         {navigationOptions.map((option, index) => (
-          <NavLink key={index} to={option.route}>
+          <NavLink key={index} to={`/admin${option.route}`}>
             {({ isActive }) => (
               <StyledSidebarNavigationOption $isActive={isActive}>
                 <div className="icon">
@@ -54,6 +57,21 @@ function SidebarNavigation() {
             )}
           </NavLink>
         ))}
+
+        <NavLink onClick={handleLogout} to={`/admin/login`}>
+          {({ isActive }) => (
+            <StyledSidebarNavigationOption $isActive={isActive}>
+              <div className="icon">
+                <Tooltip title="Logout" placement="right">
+                  {isActive ? <LogoutIconWhite /> : <LogoutIcon />}
+                </Tooltip>
+              </div>
+              <Box sx={{ display: { xs: "none", md: "block" } }}>
+                <p className="option">Logout</p>
+              </Box>
+            </StyledSidebarNavigationOption>
+          )}
+        </NavLink>
       </nav>
 
       <Divider />

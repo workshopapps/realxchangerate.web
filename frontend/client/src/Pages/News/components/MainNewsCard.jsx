@@ -1,56 +1,89 @@
-import { Box, Stack, Typography, useTheme } from "@mui/material";
+import { Box, Typography, useTheme, Skeleton } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
-import im from "../assets/before.png";
+import moment from "moment";
+import { MainSectionImageCard } from "./ImageCard";
 
-export default function MainNewsCard() {
-  const theme = useTheme()
-  const darkMode = theme.palette.mode === 'dark'
+export default function MainNewsCard({ currentNews }) {
+  const theme = useTheme();
+  const darkMode = theme.palette.mode === "dark";
+
   return (
-    <Box flex={2}>
-      <Stack>
-        <img src={im} alt="im" width="100%" />
-        <Typography variant="p" color="#64748B" mt={1}>
-          15 November, 2022 | 9:45pm
-        </Typography>
-        <Box mt={2}>
-          <Typography
-            variant="h3"
-            color="#0F172A"
-            sx={{
-              fontWeight: "500",
-              fontSize: { md: "32px", xs: "22px" },
-              marginBottom: 1,
-              lineHeight: { md: "39px", xs: "24px" },
-            }}
-          >
-            <Link
-              to="/news/1"
-              style={{
-                textDecoration: "none",
-                color: darkMode ? "#fff": "#0F172A",
-              }}
+    <Box
+      width="50%"
+      sx={{
+        width: { sm: "40%", md: "50%" },
+        marginBottom: { xs: "24px", sm: "0px" },
+      }}
+    >
+      {currentNews ? (
+        <Box display="flex" flexDirection="column" gap="16px" mt="7px" w="100%">
+          <>
+            {currentNews.image_url === null ? (
+              <MainSectionImageCard
+                category={currentNews.category[0]}
+                height="380px"
+              />
+            ) : (
+              <img
+                src={currentNews.image_url}
+                alt="i"
+                height="100%"
+                width="100%"
+              />
+            )}
+          </>
+          <Box display="flex" flexDirection="column" gap="24px">
+            <Typography
+              color="#334155"
+              sx={{ fontSize: { xs: "16px", sm: "13px", md: "16px" } }}
+              lineHeight="19px"
             >
-              Global stocks rally, dollar drops as U.S. inflation data spurs
-              optimism
-            </Link>
-          </Typography>
-          <Typography
-            variant="p"
-            color={darkMode ? "#fff": "#1E293B"}
-            sx={{
-              fontWeight: "400",
-              fontSize: "16px",
-              lineHeight: { sm: "24px", md: "24px", lg: "24px", xs: "144.02%" },
-            }}
-          >
-            Global stock rallied as the dollar and bond yields slid further on
-            tuesday after more data signaled U.S inflation was off its peak,
-            while an improving outlook for china’s economy gave investors plenty
-            to cheer.
-          </Typography>
+              {moment(currentNews.pubDate).format("Do MMMM, YYYY  |  h:mmA")}
+            </Typography>
+
+            <Box display="flex" flexDirection="column" gap="12px">
+              <Typography
+                color="#0F172A"
+                sx={{
+                  fontWeight: "500",
+                  fontSize: { xs: "16px", sm: "22px", md: "27px", lg: "32px" },
+                  lineHeight: { xs: "24px", md: "39px" },
+                }}
+              >
+                <Link
+                  to={`/news/${currentNews.id}`}
+                  style={{
+                    textDecoration: "none",
+                    color: darkMode ? "#fff" : "#0F172A",
+                  }}
+                >
+                  {currentNews.title}
+                </Link>
+              </Typography>
+              <Typography
+                color={darkMode ? "#fff" : "#1E293B"}
+                fontSize="16px"
+                sx={{
+                  fontWeight: "400",
+
+                  lineHeight: {
+                    xs: "24px",
+                  },
+                }}
+              >
+                {currentNews.description}
+              </Typography>
+            </Box>
+          </Box>
         </Box>
-      </Stack>
+      ) : (
+        <Box>
+          <Skeleton height={100} />
+          <Skeleton height={100} />
+          <Skeleton height={100} />
+        </Box>
+      )}
     </Box>
   );
 }

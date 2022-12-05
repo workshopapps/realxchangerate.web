@@ -1,21 +1,73 @@
-import { Box, Grid, Typography, IconButton } from "@mui/material";
-import React, { useState, useContext } from "react";
+import {
+  Box,
+  Grid,
+  Typography,
+  IconButton,
+  Menu,
+  MenuItem,
+  Button,
+  Skeleton,
+} from "@mui/material";
+import { useSelector } from "react-redux";
+import React, { useState, useContext, useEffect } from "react";
 import { useTheme } from "@mui/material";
 import DrawerComponent from "./Drawer";
 import { Link } from "react-router-dom";
 import { DownArrow, NavFlag, MenuIcon, MenuIconDark } from "../assets/index";
+import streetRates from "../assets/Logo.svg";
 import { ColorModeContext } from "../Main";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
-
+import {
+  setDefaultCurrency,
+  setLocalLanguage,
+  setNavLoading,
+  setUserIp,
+} from "../redux/features/Reducers/servicesReducer";
+import { dispatch } from "../redux/store";
+import {
+  GetUserIp,
+} from "../redux/features/Reducers/serviceActions";
+import {Languages} from "./index"
 const NavComponent = () => {
+  const { currencyList, countryDetails, localLanguage, isNavLoading } =
+    useSelector((state) => state.service);
   const theme = useTheme();
   const colorMode = useContext(ColorModeContext);
   const [isOpen, setIsOpen] = useState(false);
-
+  const [currentLanguage, setCurrentLanguage] = useState(localLanguage);
   const HandleDrawerState = () => {
     setIsOpen(!isOpen);
   };
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+  const handleCloseItem = (ele) => {
+   sessionStorage.setItem("localLanguage", JSON.stringify(currentLanguage))
+    setCurrentLanguage(ele);
+    dispatch(setLocalLanguage(ele));
+    setAnchorEl(null);
+  };
+
+  console.log(currentLanguage)
+
+  useEffect(() => {
+    const ip = sessionStorage.getItem("ip");
+    const defaultCurrency = JSON.parse(sessionStorage.getItem("localCurrency"));
+    if (!ip || !defaultCurrency) {
+      dispatch(setNavLoading(true));
+      dispatch(GetUserIp());
+    }
+    dispatch(setUserIp(ip));
+    dispatch(setDefaultCurrency(defaultCurrency));
+  }, []);
+
+
 
   return (
     <Grid
@@ -48,11 +100,14 @@ const NavComponent = () => {
           role="heading"
         >
           <Link to="/" style={{ color: "#0062ff" }}>
-            Street Rate
+            <img
+              style={{ width: "clamp(90px, 10vw, 140px)", marginTop: "20px" }}
+              src={streetRates}
+              alt=""
+            />
           </Link>
         </Typography>
       </Grid>
-
       <Grid
         alignItems="center"
         sx={{
@@ -76,20 +131,87 @@ const NavComponent = () => {
             <Brightness4Icon height="1.75em" width="1.75em" />
           )}
         </IconButton>
-
         <Box gap="6px" display="flex">
-          <img src={NavFlag} alt="flagImage" />
-          <img src={DownArrow} alt="arrow" />
+          {isNavLoading ? (
+            <Box display="flex" gap="1px" flexDirection="column">
+              <Skeleton variant="rounded" width={70} height={5} />
+              <Skeleton variant="rounded" width={70} height={5} />
+              <Skeleton variant="rounded" width={70} height={5} />
+            </Box>
+          ) : (
+            <Button
+              id="basic-button"
+              aria-controls={open ? "basic-menu" : undefined}
+              aria-haspopup="true"
+              aria-expanded={open ? "true" : undefined}
+              onClick={handleClick}
+            >
+              <Box display="flex" flexDirection="row" gap="6px">
+                <img
+                  loading="lazy"
+                  height="20"
+                  src={
+                    currentLanguage
+                      ? `https://flagcdn.com/h20/${currentLanguage.label}.png `
+                      : NavFlag
+                  }
+                  srcSet={
+                    currentLanguage
+                      ? `https://flagcdn.com/h40/${currentLanguage.label}.png 2x,
+                     https://flagcdn.com/h60/${currentLanguage.label}.png 3x`
+                      : NavFlag
+                  }
+                  alt=""
+                />
+                <img src={DownArrow} alt="arrow" />
+              </Box>
+            </Button>
+          )}
+          <Menu
+            id="basic-menu"
+            anchorEl={anchorEl}
+            open={open}
+            onClose={handleClose}
+            MenuListProps={{
+              "aria-labelledby": "basic-button",
+            }}
+            width="120px"
+            sx={{
+              height: "auto",
+            }}
+          >
+            {Languages.map((ele) => {
+              return (
+                <MenuItem
+                  sx={{
+                    display: "flex",
+                    gap: "6px",
+                    flexDirection: "row",
+                  }}
+                  onClick={() =>
+                    handleCloseItem(ele)
+                  }
+                  key={ele.isocode}
+                >
+                  <img
+                    loading="lazy"
+                    width="20"
+                    src={`https://flagcdn.com/w20/${ele.label}.png`}
+                    srcSet={`https://flagcdn.com/w40/${ele.label}.png 2x`}
+                    alt=""
+                  />
+                  <Typography marginRight="5px">{ele.isocode}</Typography>
+                </MenuItem>
+              );
+            })}
+          </Menu>
         </Box>
-
         <Link to="/" style={{ color: "#0062ff" }}>
           Home
         </Link>
-
         <Link to="/news" style={{ color: "#0062ff" }}>
           News
         </Link>
-
         <Link to="/contact" style={{ color: "#0062ff" }}>
           Contact
         </Link>
@@ -126,5 +248,4 @@ const NavComponent = () => {
     </Grid>
   );
 };
-
 export default NavComponent;

@@ -1,6 +1,5 @@
 import { Box, Typography } from "@mui/material";
 import React from "react";
-import scan from "../../assets/scan-image.png";
 import styles from "./home.module.css";
 
 function Hero() {
@@ -18,8 +17,16 @@ function Hero() {
         easily check the bank exchange rates and parallel market rates to get
         the best deal possible.
       </Typography>
-      <img src={scan} alt="scan our item to download" width="75%" />
-      <Box className="store">
+      <Box
+        className="store"
+        sx={{
+          width: "100%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: "1.4rem",
+        }}
+      >
         <a href="#!">
           <img src="/apple-store.svg" alt="" />
         </a>

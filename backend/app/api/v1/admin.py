@@ -6,8 +6,11 @@ from app.models.rate import Rate
 from app.models.currency import Currency
 from app import schemas, crud
 from app.api.deps import get_db
+from fastapi_pagination import add_pagination, Page, paginate
+from pydantic import BaseModel
 
 router = APIRouter()
+add_pagination(router)
 
 
 @router.post("/create/")
@@ -54,7 +57,7 @@ def add_faq(*, db: Session = Depends(get_db), faq_in: schemas.FaqCreate) -> Any:
     """
     This endpoint stores a new FAQ into the database.
     """
-    faq = crud.faq.create(db=db, obj_in = faq_in)
+    faq = crud.faq.create(db=db, obj_in=faq_in)
     return {
         "Success": True,
         "Status code": 200,
@@ -105,6 +108,23 @@ def update_rate(iso_code: str, update_param: schemas.RateUpdate, db: Session = D
     }
 
 
+@router.put("/update_faq/{id}")
+def update_faq(id: int, update: schemas.FaqUpdate, db: Session = Depends(get_db)):
+    """Update Faqs in the database"""
+
+    faqs = crud.faq.get(db=db, model_id=id)
+
+    if not faqs:
+        raise HTTPException(status_code=404, detail=f"faq not found")
+
+    # update  stores faq in the database
+    update = crud.faq.update(db=db, db_obj=faqs, obj_in=update)
+    return {
+        "success": True,
+        "data": update
+    }
+
+
 @router.delete("/delete_currency")
 def delete_currency(*, db: Session = Depends(get_db), isocode: str):
     """delete currency and all associated rates
@@ -137,7 +157,7 @@ def delete_rate(*, db: Session = Depends(get_db), rate_id: int):
     return {"success": True, "status_code": 200, "data": {"rate": rate_query}, "message": "rate deleted!"}
 
 
-@router.delete("/delete_faq")
+@router.delete("/delete_faq/{faq_id}")
 def delete_faq(*, db: Session = Depends(get_db), faq_id: int):
     """delete selected faq
 
@@ -155,7 +175,18 @@ def delete_faq(*, db: Session = Depends(get_db), faq_id: int):
     return {"success": True, "status_code": 200, "data": {"faq": faq_query}, "message": "rate deleted!"}
 
 
-@router.get("/get_all_complaints")
+class ComplaintsPagination(BaseModel):
+    complaint: str
+    id: int
+    status: Any
+    full_name: str
+    email: str
+    timestamp: Any
+
+    class Config:
+        orm_mode = True
+
+@router.get("/get_all_complaints", response_model=Page[ComplaintsPagination])
 def get_all_complaints(db: Session = Depends(get_db)):
     """
     Gets all complaints from the database
@@ -169,41 +200,41 @@ def get_all_complaints(db: Session = Depends(get_db)):
     if len(complaints) == 0:
         return {"success": True, "status_code": 200, "message": "No complaints recorded!"}
 
-    return {"success": True, "status_code": 200, "complaints": complaints}
+    return paginate(complaints)
+    return {"success": True, "status_code": 200, "complaints": paginate(complaints)}
 
 
+@router.put(
+    "/update_complaint_status/{id}",
+)
+async def update_complaint_status(id: int, data: schemas.ComplaintUpdate, db: Session = Depends(get_db)):
+    """updates the status of a complaint.
+    Returns the complaint id if the status is successfully updated
+    Args:
+        id (int): A unique identifier of a complaint
+        data: A pydantic schema that defines the request parameters
+    Returns:
+        HTTP_200_OK (status updated succesfully): {data:complaint}
+    Raises
+        HTTP_424_FAILED_DEPENDENCY: status update unssucessfull
+    """
 
-@router.get("/get_all_faqs")
-async def get_all_faqs(*, db:Session = Depends(get_db)):
+    complaint = crud.complaint.get(db, id)
+    if complaint is None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="complaint id does not exist",
+        )
 
-    """Returns all faqs from the database"""
+    complaint = crud.currency.update(db=db, db_obj=complaint, obj_in=data)
 
-    faqs = crud.faq.get_all_faqs(db)
-
-    if faqs is None:
-        return {"success": False, "status_code": 404, "message": "No faqs available!"}
-
-    if len(faqs) == 0:
-        return {"success": True, "status_code": 200, "message": "No faqs recorded!"}
-
-    return {"success": True, "status_code": 200, "faqs": faqs}
-
-
-
-# @router.put("/update_faq")
-# def update_faq(question: str, update: schemas.FaqUpdate, db: Session = Depends(get_db)):
-
-#     """Update Faqs in the database"""
-
-#     faqs = crud.faq.get_faqs_by_question(db=db, question = question)
+    return{
+        "success": True,
+        "status_code": 200,
+        "message": "status updated succesfully",
+        "data": complaint,
+    }
 
 
-#     if not faqs:
-#         raise HTTPException(status_code=404, detail=f"faq not found")
-
-#     # update  stores faq in the database
-#     update = crud.faq.update(db=db, db_obj=faqs, obj_in=update)
-#     return {
-#         "success": True,
-#         "data": update
-#     }
+# Leave at bottom of page
+add_pagination(router)

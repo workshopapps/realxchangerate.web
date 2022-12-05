@@ -1,7 +1,10 @@
-import React, { useState, useMemo, createContext } from "react";
+import React, { useState, useMemo, createContext, useEffect } from "react";
 import { ThemeProvider, createTheme, Box, CssBaseline } from "@mui/material";
 import App from "./App";
-import { getDesignTokens } from "./styles/DarkMode";
+import { dispatch } from "./redux/store";
+import {
+  GetCurrencies,
+} from "./redux/features/Reducers/serviceActions";
 
 export const ColorModeContext = createContext({ toggleColorMode: () => {} });
 
@@ -17,30 +20,40 @@ const Main = () => {
     []
   );
 
-  const theme = useMemo(() => createTheme({
-    typography: {
-      fontFamily: "Inter, sans-serif",
-    },
-  
-    breakpoints: {
-      values: {
-        xs: 200,
-        sm: 481,
-        md: 769,
-        lg: 1025,
-        xl: 1201,
-      },
-    },
-    palette: {
-      mode}
+  const theme = useMemo(
+    () =>
+      createTheme({
+        typography: {
+          fontFamily: "Inter, sans-serif",
+        },
 
-  }), [mode]);
+        breakpoints: {
+          values: {
+            xs: 200,
+            sm: 481,
+            md: 769,
+            lg: 1025,
+            xl: 1201,
+          },
+        },
+        palette: {
+          mode,
+        },
+      }),
+    [mode]
+  );
+
+  useEffect(() => {
+    dispatch(GetCurrencies());
+  }, []);
 
   return (
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Box
+          width="100%"
+          height="100vh"
           sx={{ backgroundColor: "background.default", color: "text.primary" }}
         >
           <App />
