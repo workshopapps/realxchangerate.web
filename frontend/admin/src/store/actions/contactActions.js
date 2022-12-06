@@ -62,6 +62,34 @@ export const getContact = createAsyncThunk(
 	}
 );
 
+export const deleteContact = createAsyncThunk(
+	'delete/contact',
+	async (payload, { rejectWithValue }) => {
+		const token = localStorage.getItem('token');
+		// console.log(payload);
+		try {
+			const res = await axios.delete(
+				`https://api.streetrates.hng.tech/api/contacts/delete_contact_detatil/${payload}`,
+				{
+					headers: {
+						accept: 'application/json',
+						Authorization: `Bearer ${token}`,
+					},
+				}
+			);
+			if (res.status && res.status === 200) {
+				console.log(res.data.data);
+				return res.data;
+			} else {
+				return rejectWithValue(res);
+			}
+		} catch (err) {
+			console.log(err, 'erorr');
+			return rejectWithValue(err.response.data);
+		}
+	}
+);
+
 export const contactSlice = createSlice({
 	name: 'contact',
 	initialState,
@@ -87,6 +115,16 @@ export const contactSlice = createSlice({
 				state.requestStatus = 'success';
 			})
 			.addCase(getContact.rejected, (state, action) => {
+				state.requestStatus = 'failed';
+				state.error = action.payload;
+			})
+			.addCase(deleteContact.fulfilled, (state, action) => {
+				state.requestStatus = 'success';
+				// state.contacts = state.contacts.filter((item) =>
+				// 	console.log(action.payload.data['contact us'].id, item.id)
+				// );
+			})
+			.addCase(deleteContact.rejected, (state, action) => {
 				state.requestStatus = 'failed';
 				state.error = action.payload;
 			});
