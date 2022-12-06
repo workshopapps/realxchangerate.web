@@ -175,6 +175,29 @@ def delete_faq(*, db: Session = Depends(get_db), faq_id: int):
     return {"success": True, "status_code": 200, "data": {"faq": faq_query}, "message": "rate deleted!"}
 
 
+
+
+@router.get("/get_all_adverts")
+async def get_all_adverts(*, db: Session = Depends(get_db)):
+
+    """Returns all adverts from the database"""
+
+    adverts = crud.advert.get_all_adverts(db)
+
+    if adverts is None:
+        return {"success": False, "status_code": 404, "message": "No adverts available!"}
+
+    if len(adverts) == 0:
+        return {"success": True, "status_code": 200, "message": "No adverts in the database!"}
+
+    return {"success": True, "status_code": 200, "adverts": adverts}
+
+
+
+
+
+
+
 class ComplaintsPagination(BaseModel):
     complaint: str
     id: int
