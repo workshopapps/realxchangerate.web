@@ -1,5 +1,5 @@
 import React from 'react'
-import EntrepreneurLayout from '../../components/EntrepreneurComponents/EntrepreneurLayout'
+import EntrepreneurLayout from './components/EntrepreneurLayout'
 
 const EntrepreneurAmbassador = () => {
   return (

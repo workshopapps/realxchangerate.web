@@ -5,7 +5,7 @@ const baseURL = "https://api.streetrates.hng.tech/api";
 const headers = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Credentials": true,
-  "Content-Type": "application/json, charset=utf-8",
+  "Content-Type": "application/json",
 };
 
 const axiosInstance = axios.create({

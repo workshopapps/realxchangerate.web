@@ -131,7 +131,8 @@ export const FormSection = styled.section`
         margin-bottom: 0.8rem;
         font-weight: bold;
       }
-      textArea {
+      textarea {
+        padding: 16px;
         border-radius: 0.4rem;
       }
     }
@@ -154,7 +155,7 @@ export const MessageModal = styled.div`
   align-items: center;
   justify-content: center;
   font-weight: 600;
-  font-size: 20px;
+  font-size: 16px;
   margin: 1rem auto;
 
   p: @media (min-width: 768px) {
