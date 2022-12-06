@@ -52,6 +52,7 @@ import PrivacyPolicy from "./Pages/PrivacyPolicy/PrivacyPolicy";
 import EntrepreneurAmbassador from "./Pages/EntrepreneurAmbassador/EntrepreneurAmbassador";
 import EntrepreneurFrom from "./Pages/EntrepreneurForm/EntrepreneurFrom";
 import FaqOverview from "./Pages/FaqOverview/FaqOverview";
+import ResponseToast from "./components/shared/InputField/ResponseToast";
 function App() {
   return (
     <>
@@ -59,6 +60,7 @@ function App() {
       <Router>
         <div className="App">
           <NavComponent />
+          <ResponseToast />
           <ScrollToTop />
             <Routes>
               {/*---==== Contents Sections  ====---*/}
