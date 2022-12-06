@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const initialState = {
-  currencies: null,
+  currencies: [],
   message: null,
   error: null,
   requestStatus: "idle",
@@ -11,24 +11,26 @@ const initialState = {
 export const getTrending = createAsyncThunk(
   "currency/trending",
   async (payload, { rejectWithValue }) => {
-
-    const getIndividualData = async (isocode)=>{
-        const option = await axios.get(`https://api.streetrates.hng.tech/api/currency/trend/${isocode}`)
-        return option.data
-    }
+    const getIndividualData = async (isocode) => {
+      const option = await axios.get(
+        `https://api.streetrates.hng.tech/api/currency/trend/${isocode}`
+      );
+      return option.data;
+    };
 
     try {
       const res = await axios.get(
-        "https://api.streetrates.hng.tech/api/currency/currencies" 
+        "https://api.streetrates.hng.tech/api/currency/currencies"
       );
-      
+
       if (res.status && res.status === 200) {
-        const optionsArray = await Promise.all([...res.data.currencies].map((item) => {
+        const optionsArray = await Promise.all(
+          [...res.data.currencies].map((item) => {
             return getIndividualData(item.isocode);
-          }))
-          //console.log('OPTIONS', optionsArray)
-    return optionsArray
-    
+          })
+        );
+        //console.log('OPTIONS', optionsArray)
+        return optionsArray;
       } else {
         return rejectWithValue(res);
       }
@@ -38,8 +40,6 @@ export const getTrending = createAsyncThunk(
     }
   }
 );
-
-
 
 export const trendingSlice = createSlice({
   name: "trending",
@@ -57,8 +57,7 @@ export const trendingSlice = createSlice({
       .addCase(getTrending.rejected, (state, action) => {
         state.requestStatus = "failed";
         state.error = action.payload;
-      })
-    
+      });
   },
 });
 

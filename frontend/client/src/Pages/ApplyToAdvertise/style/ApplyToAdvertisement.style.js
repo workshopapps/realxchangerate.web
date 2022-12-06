@@ -175,6 +175,11 @@ const Container = styled.div`
       cursor: pointer;
     }
 
+    button:disabled {
+      cursor: none;
+      opacity:0.5;
+    }
+
     .inputs--container {
       margin-right: 120px;
 

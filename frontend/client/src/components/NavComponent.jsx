@@ -56,8 +56,6 @@ const NavComponent = () => {
     setAnchorEl(null);
   };
 
-  console.log(currentLanguage);
-
   useEffect(() => {
     const ip = sessionStorage.getItem("ip");
     const defaultCurrency = JSON.parse(sessionStorage.getItem("localCurrency"));

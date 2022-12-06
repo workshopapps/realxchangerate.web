@@ -184,7 +184,7 @@ export default function CreateCurrency() {
                     >
                       <div style={{ display: "flex", alignItems: "center" }}>
                         <Flag
-                          code={row.isocode.slice(0, 2)}
+                          code={row?.isocode?.slice(0, 2)}
                           style={{ width: "30px", marginRight: "10px" }}
                         />
                         <span>{row.country}</span>
