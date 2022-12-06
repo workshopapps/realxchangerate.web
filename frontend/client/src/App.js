@@ -4,6 +4,9 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
+
+import * as Sentry from "@sentry/react";
+
 import NavComponent from "./components/NavComponent";
 import Footer from "./components/Footer";
 import "./assets/css/style.css";
@@ -165,4 +168,5 @@ function App() {
     </>
   );
 }
-export default App;
+// export default App;
+export default Sentry.withProfiler(App)
