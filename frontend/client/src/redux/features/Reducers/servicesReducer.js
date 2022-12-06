@@ -16,6 +16,10 @@ const initialState = {
     isocode : "ENG"
 },
   news: [],
+  response : {
+    message:"",
+    type:""
+  }
 };
 
 const ServiceSlice = createSlice({
@@ -53,6 +57,12 @@ const ServiceSlice = createSlice({
     setNews: (state, action) => {
       state.news = action.payload;
     },
+    createResponse : (state, action) => {
+      state.response = {
+        message : action.payload.message,
+        type: action.payload.type
+      }
+    }
   },
 });
 
@@ -66,7 +76,8 @@ export const {
   setCurrencyRates,
   setNews,
   setNavLoading,
-  setLocalLanguage
+  setLocalLanguage, 
+  createResponse
 } = ServiceSlice.actions;
 
 export default ServiceSlice.reducer;
