@@ -2,7 +2,6 @@ import { useNavigate } from 'react-router-dom';
 import { FaTimes } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 import {
-	// StyledCardButton,
 	StyledCardMessage,
 	Name,
 	Email,
