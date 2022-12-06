@@ -1,98 +1,64 @@
-// pipeline {
-//     environment {
-//         registry = 'kaisbettaieb/fastapi-example'
-//         registryCredential = 'dockerhub-credentials'
-//         dockerImage = ''
-//         scannerHome = tool 'SonarQube scanner'
-//         sonarToken = credentials('credentials-sonar')
-//         build_version = "1+${BUILD_NUMBER}"
-//     }
-//     agent any
+pipeline {
 
-//     stages {
-//         stage('Clone github repo') {
-//             steps {
-//                 git credentialsId: 'github-credentials', url: 'https://github.com/workshopapps/realxchangerate.web', branch: 'merge-dev'
-//             }
-//         }
+	agent any
+	stages {	
 
-//         stage('Build Backend') {
-//             steps {
-//                 sh 'pip install -r requirements.txt --user'
-//             }
-//         }
+		stage("build frontend-client"){
 
-//         stage('Unit testing') {
-//             steps {
-//                 sh 'python -m unittest discover'
-//             }
-//         }
+			steps {
+				sh "cd frontend"
+				sh "cd frontend/client && npm i --force && CI=false npm run build"
+			} 
+          }
+    
+    		stage("build frontend-admin"){
 
-//         stage('SonarQube analysis') {
-//             steps {
-//                 withSonarQubeEnv('SonarQube') {
-//                     bat "${scannerHome}\\sonar-scanner.bat -Dsonar.login=$sonarToken"
-//                 }
-//             }
-//         }
+			steps {
+				sh "cd frontend"
+				sh "cd frontend/admin && npm i --force && CI=false npm run build"
+			} 
+          }
+    
+		stage("deploy frontend") {
+		
+			steps {
+				sh "sudo cp -rf ${WORKSPACE}/frontend/client/build/* /var/www/streetrate.hng.tech/html/client/"
+				sh "sudo cp -fr ${WORKSPACE}/frontend/admin/build/* /var/www/streetrate.hng.tech/html/admin/"
+				//sh "sudo su - light && whoami"
+				//sh "sudo systemctl restart realxchangerate.service"
+			}
+			
+		}
+		stage("build & deploy backend"){
 
-//         stage('Quality Gate') {
-//             steps {
-//                 timeout(time: 1, unit: 'HOURS') {
-//                     waitForQualityGate abortPipeline: true
-//                 }
-//             }
-//         }
+			steps {
+			     //sh '''#!/bin/bash
+				     //source ${WORKSPACE}/backend/venv/bin/activate
+				     //cd ${WORKSPACE}/backend
+				     //PID=$(ps aux | grep 'uvicorn app.main:app' | awk {'print $2'} | xargs)
+				     //if [ "$PID" != "" ]
+				     //then
+				     //kill -9 $PID
+				     //sleep 2
+				     //echo "" > nohup.out
+				     //echo "Restarting FastAPI server"
+				     //else
+				     //echo "No such process. Starting new FastAPI server"
+			 	     //fi
+				     //nohup uvicorn app.main:app --host 0.0.0.0 --port 7015 --proxy-headers &
+			      //'''
+				sh "sudo cp -rf ${workspace}/backend/* /home/light/realxchangerate/backend"
+				//sh "sudo chmod +x ${WORKSPACE}/startup.sh"
+				sh "sudo bash /home/light/realxchangerate.sh"
+				//sh "cd backend"
+				//sh "cd backend && python3 -m pip install --upgrade pip virtualenv"
+				//sh "cd backend && virtualenv -p python3 venv"
+        			//sh "cd backend && source venv/bin/activate"
+				//sh "cd backend && pip3 install -r requirements.txt"
+				//sh "cd backend && nohup uvicorn app.main:app --host 0.0.0.0 --port 7015 --proxy-headers &"
+			} 
+        	}
 
-//         stage('Artifactory configuration') {
-//             steps {
-//                 rtServer(
-//                     id: 'ARTIFACTORY_SERVER',
-//                     url: 'https://kaisbettaieb.jfrog.io/artifactory',
-//                     credentialsId: 'artifactory-credentials'
-//                 )
-//             }
-//         }
+        	}	
 
-//         stage('Build python package') {
-//             steps {
-//                 sh '''
-//                     python setup.py sdist bdist_wheel
-//                 '''
-//             }
-//         }
-
-//         stage('Upload packages') {
-//             steps {
-//                 rtUpload(
-//                     serverId: 'ARTIFACTORY_SERVER',
-//                     spec: '''{
-//                         "files": [
-//                             {
-//                                 "pattern": "dist/",
-//                                 "target": "artifactory-python-dev-local/"
-//                             }
-//                         ]
-//                     }'''
-//                 )
-//             }
-//         }
-
-//         stage('Publish build info') {
-//             steps {
-//                 rtPublishBuildInfo(
-//                     serverId: 'ARTIFACTORY_SERVER'
-//                 )
-//             }
-//         }
-
-//         stage('Commit in prod branch') {
-//             steps {
-//                 sh '''
-//                     echo "commit prod branch"
-//                 '''
-//             }
-//         }
-
-//     }
-// }
+	}

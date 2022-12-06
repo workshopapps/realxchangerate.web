@@ -1,0 +1,86 @@
+.convert .button {
+  background-color: #00296b !important;
+  border-radius: 10px;
+}
+.convert .rate {
+  font-size: 1.7rem;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.convert .rate .rate,
+.convert .rate .convert {
+  color: #0062ff;
+  font-weight: 700;
+}
+.convert .rate .rate {
+  font-size: 4rem;
+}
+.convert .rate .convert {
+  font-size: 2.5rem;
+  order: 2 !important;
+}
+.convert form {
+  padding: 1.5rem;
+}
+.convert input {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #94a3b8;
+  border-radius: 1rem;
+}
+.convert label {
+  font-size: 2rem;
+  font-weight: bold;
+  /* margin-bottom: 5rem !important; */
+  position: absolute;
+  top: -10px;
+}
+.convert .label {
+  color: black !important;
+}
+.hero {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: center;
+  line-height: 1.8rem;
+  gap: 1rem;
+  text-align: center;
+  width: 100%;
+  margin: 1.5rem 0;
+}
+.hero .simple {
+  color: #0062ff;
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  letter-spacing: 4px;
+}
+.hero h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  text-align: center;
+  /* line-height: 3rem; */
+}
+.hero p {
+  line-height: 2.5rem;
+  font-weight: 400;
+  font-size: 1.5rem;
+  color: #555962;
+}
+#currency1 {
+  padding: 0px;
+}
+/* @media screen and (min-width: 768px) {
+  .hero {
+    width: 100%;
+  
+    align-items: center;
+  }
+  .hero h1 {
+    font-size: 4.5rem;
+  }
+} */

@@ -46,7 +46,7 @@ export const HeroContent = styled.div`
   flex-direction: column;
   gap: 30px;
   top: 50%;
-  left: 100px;
+  left: 20%;
   transform: translateY(-50%);
 
   @media screen and (max-width: 395px) {

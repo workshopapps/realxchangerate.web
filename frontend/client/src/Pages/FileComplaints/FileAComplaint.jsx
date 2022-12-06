@@ -1,15 +1,9 @@
-import Article from "../../components/complaint-page/article/Article";
-import Hero from "../../components/complaint-page/hero/Hero";
-import Support from "../../components/complaint-page/support/Support";
-import Topic from "../../components/complaint-page/topic/Topic";
+import MainPage from "./components/MainPage/ComplaintMainPage";
 
 const FileAComplaint = () => {
   return (
     <>
-      <Hero />
-      <Topic />
-      <Support />
-      <Article />
+      <MainPage />
     </>
   );
 };

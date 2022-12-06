@@ -8,13 +8,29 @@ from app.api.deps import get_db
 from app.models.rate import Rate
 from app.models.currency import Currency
 from app.api.deps import get_location
-
+from app.crud.rate import rate
+from datetime import datetime, timedelta
 router = APIRouter()
+
+
+@router.get("/last_rate_update")
+def last_update_rate(db: Session = Depends(get_db)):
+    """
+    returns the last date and time the currency rates where updated
+    """
+    time = db.query(Rate).order_by(Rate.last_updated.desc()).first().last_updated
+    if not time:
+        raise HTTPException(
+            status_code=404, detail=f"No record found")
+    return{
+        "Success": True,
+        "Time": time
+    }
+
 
 #  get rates ofbject for a spcific isocode
 
-
-@router.get('/{isocode}')
+@router.get("/{isocode}")
 def get_rate_by_isocode(isocode, db: Session = Depends(get_db)):
     """
     Get rate of selected currency
@@ -24,66 +40,116 @@ def get_rate_by_isocode(isocode, db: Session = Depends(get_db)):
     """
     currency = crud.currency.get_currency_by_isocode(db, isocode=isocode)
     if currency == None:
-        return {
-            "success": False, "message": "Currency not found", "status_code": 404
-        }
-    rate = db.query(Rate).filter(Rate.currency_id == currency.id).order_by(
-        Rate.last_updated.desc()).first()
-    return {"success": True, "status_code": 200, "data": {"currency": currency, "rate": rate}}
+        return {"success": False, "message": "Currency not found", "status_code": 404}
+    rate = (
+        db.query(Rate)
+        .filter(Rate.currency_id == currency.id)
+        .order_by(Rate.last_updated.desc())
+        .first()
+    )
+    return {
+        "success": True,
+        "status_code": 200,
+        "data": {"currency": currency, "rate": rate},
+    }
+
+
+@router.get("/all/{isocode}")
+def get_all_rates_by_isocode(isocode, db: Session = Depends(get_db)):
+    """
+    Get all the rates of selected currency by isocode
+
+    Args:
+        isocode (str): Country isocode
+    """
+    currency = crud.currency.get_currency_by_isocode(db, isocode=isocode)
+    if currency == None:
+        return {"success": False, "message": "Currency not found", "status_code": 404}
+    rate = (
+        db.query(Rate)
+        .filter(Rate.currency_id == currency.id)
+        .order_by(Rate.last_updated.desc())
+        .all()
+    )
+    return {
+        "success": True,
+        "status_code": 200,
+        "data": {"currency": currency, "rate": rate},
+    }
 
     # """get the last 5 rates of a currency by its isocode."""
-@router.get('/history/{isocode}')
-def get_rates_by_limit(isocode, db:Session = Depends(get_db),limit: int = 15):
-    #queries for currency based on isocode
+
+
+@router.get("/history/{isocode}")
+def get_rates_by_limit(isocode, db: Session = Depends(get_db), limit: int = 15):
+    # queries for currency based on isocode
     currency = crud.currency.get_currency_by_isocode(db, isocode=isocode)
-    
-    #return 404 status code if no currency was found
+
+    # return 404 status code if no currency was found
     if currency == None:
         raise HTTPException(status_code=404, detail="Currency not found")
 
-    #restrict limit to < 15 rate objects
+    # restrict limit to < 15 rate objects
     if limit > 15:
-        raise HTTPException(status_code=400, detail="Not more than 15 rates per request")
+        raise HTTPException(
+            status_code=400, detail="Not more than 15 rates per request"
+        )
 
-    #get rate objects based on limit set
-    rate = crud.rate.get_rates_by_limit(db,currency_id=currency.id, limit=limit)
+    # get rate objects based on limit set
+    rate = crud.rate.get_rates_by_limit(
+        db, currency_id=currency.id, limit=limit)
 
-    #return no content if no rate object was found
+    # return no content if no rate object was found
     if rate == None:
         raise HTTPException(status_code=204, detail="No Content")
-     
-    #return response with status code 200, currency and list of rates 
-    return  {"status_code":200,"data": {"currency":currency, "rates":rate}}
 
-@router.get('/ip/{ip}')
+    # return response with status code 200, currency and list of rates
+    return {"status_code": 200, "data": {"currency": currency, "rates": rate}}
+
+
+@router.get("/ip/{ip}")
 def get_currency_by_ip(ip, db: Session = Depends(get_db)):
     # Get country
     country = get_location(ip)
 
     currency = db.query(Currency).filter(Currency.country == country).first()
 
-    rates = db.query(Rate).filter(Rate.currency_id == currency.id).order_by(
-        Rate.last_updated.desc()).all()[:5]
+    rates = (
+        db.query(Rate)
+        .filter(Rate.currency_id == currency.id)
+        .order_by(Rate.last_updated.desc())
+        .all()[:5]
+    )
     if len(rates) == 0:
         return {
-            "success": False, "message": "No rate history found", "status_code": 404
+            "success": False,
+            "message": "No rate history found",
+            "status_code": 404,
         }
-    return {"success": True, "status_code": 200, "data": {"currency": currency, "rate": rates}}
+    return {
+        "success": True,
+        "status_code": 200,
+        "data": {"currency": currency, "rate": rates},
+    }
 
 
 @router.get("/", response_model=List[schemas.Rate])
-def get_all_rates(db: Session = Depends(get_db), skip: int = 0, limit: int = 100) -> Any:
+def get_all_rates(
+    db: Session = Depends(get_db), skip: int = 0, limit: int = 100
+) -> Any:
     """
     get all rates.
     """
     rate = crud.rate.get_multi(db, skip=skip, limit=limit)
     if not rate:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
-                            detail="rates are not available at the moment")
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="rates are not available at the moment",
+        )
     return rate
 
 
-@router.get("/convert")
+@router.get("/convert/calc")
 def convert_currency(
     *,
     db: Session = Depends(get_db),
@@ -101,7 +167,8 @@ def convert_currency(
     from_currency_obj = crud.currency.get_currency_by_isocode(
         db, isocode=from_currency_in
     )
-    to_currency_obj = crud.currency.get_currency_by_isocode(db, isocode=to_currency_in)
+    to_currency_obj = crud.currency.get_currency_by_isocode(
+        db, isocode=to_currency_in)
     if from_currency_obj is None or to_currency_obj is None:
         return {"success": False, "message": "Please send a valid currency isocode."}
 
@@ -136,3 +203,67 @@ def convert_currency(
         }
     except:
         return {"success": False, "message": "Failed to convert currencies."}
+
+
+@router.get("/date/{hour}")
+def get_rates_before_hour(hour: int, db: Session = Depends(get_db)):
+    """Get rates before a particular hour"""
+    time = datetime.now() - timedelta(hours=hour)
+    rates = db.query(Rate).filter(Rate.last_updated <= time).all()
+
+    data = {
+        "success": True,
+        "status_code": 200,
+        "rates": rates
+    }
+
+    return data
+
+@router.get("/high_low/{isocode}")
+def get_highest_and_lowest_rates(isocode, db: Session = Depends(get_db)):
+    """
+    Get the highest and lowest rates for a selected currency by isocode
+
+    Args:
+        isocode (str): Country isocode
+    """
+    currency = crud.currency.get_currency_by_isocode(db, isocode=isocode)
+    if currency == None:
+        return {"success": False, "message": "Currency not found", "status_code": 404}
+    result = {}
+    rate = (
+        db.query(Rate)
+        .filter(Rate.currency_id == currency.id)
+        .order_by(Rate.parallel_buy.desc())
+        .all()
+    )
+    result["highest"] = rate[0]
+    result["lowest"] = rate[-1]
+    return {
+        "success": True,
+        "status_code": 200,
+         "data": {"currency": currency, "rates": {"highest":result["highest"].parallel_buy, "lowest": result["lowest"].parallel_buy}},
+    }
+
+@router.get("/percentage_change/{isocode}")
+def get_percentage_change(isocode, db: Session = Depends(get_db)):
+    """
+    Get percentage change of parallel and official rates of currency by isocode
+
+    Args:
+        isocode (str): Currency isocode
+    """
+    calculate_percentage_rates = rate.get_percentage_rate_change(db=db, isocode=isocode)
+    
+    if calculate_percentage_rates['status'] == False:
+        return {
+        "success": False,
+        'message': calculate_percentage_rates['message']
+        }, 404
+
+    
+    return {
+        "success": True,
+        "status_code": 200,
+        "data": calculate_percentage_rates['data'],
+    }

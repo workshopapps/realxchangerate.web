@@ -1,9 +1,12 @@
-import { useMediaQuery, Box, Typography, Stack } from "@mui/material";
+import { useMediaQuery, Box, Typography, Stack, useTheme } from "@mui/material";
 import { BackgroundImage, BackgroundImageMobile } from "./assets/index";
 import ContactForm from "./ContactForm";
 import ContactInfo from "./ContactInfo";
 
 const Contact = () => {
+  const theme = useTheme()
+  const darkMode = theme.palette.mode === 'dark'
+  const textColor = darkMode ? "#fff" : '#202020'
   const mobileScreen = useMediaQuery("(max-width:481px)");
   const backgroundImage = mobileScreen
     ? BackgroundImageMobile
@@ -77,7 +80,7 @@ const Contact = () => {
               lineHeight: { xs: "33px", sm: "42px", md: "48px" },
               fontWeight: { xs: "500" },
             }}
-            color="#202020"
+            color={textColor}
             letterSpacing="-0.02em"
           >
             We would love to hear from you, Get in touch with us
@@ -91,17 +94,17 @@ const Contact = () => {
               width: { xs: "100%", sm: "425px", md: "507px" },
               display: { xs: "none", sm: "flex" },
             }}
-            color="#4B4B4B"
+            color={textColor}
             letterSpacing="-0.023mm"
           >
             To make inquiries about our services, you can leave us a message. We
             promise to send you a response as soon as possible.
           </Typography>
 
-          <ContactForm />
+          <ContactForm textColor={textColor}/>
         </Stack>
 
-        <ContactInfo />
+        <ContactInfo textColor={textColor}/>
       </Box>
     </Box>
   );

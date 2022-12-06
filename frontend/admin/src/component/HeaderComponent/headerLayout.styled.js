@@ -1,76 +1,59 @@
 import styled from 'styled-components'
 
 export const StyledHeaderWrapper = styled.div`
-    margin-block: 49px 67px;
+    position: relative;
+    padding: 24px 10px 14px 10px;
 
-    display: flex;
-    align-items: center;
-    gap: 32px;
-    justify-content: space-between;
-`
-export const StyledHeaderSearch = styled.div`
-    max-width: 720px;
-    flex-grow: 1;
-`
-export const StyledHeaderUtils = styled.div`
-    display: flex;
-    gap: 16px;
-    align-items: center;
-`
-
-//  SEARCH
-export const SearchWrapper = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 0px 0px 0px 16px;
-    gap: 10px;
-    margin: 2px;
+    gap: 8px;
 
-    border: 1px solid ${props => props.theme.palette.secondary.main};
-    border-radius: ${props => props.theme.$styled.borderRadius.xs};
-
-    &:hover {
-    border: 'none';
-    outline: 1.2px solid ${props => props.theme.palette.secondary.dark};
+    @media screen and (min-width: ${props => props.theme.$styled.breakpoints.lg}) {
+        padding-inline: 32px;
+    }
+    @media (min-width: ${props => props.theme.$styled.breakpoints.md}) {
+       justify-content: start;
     }
 `
-export const StyledSearchIconWrapper = styled.div`
-    max-width: 720px;
+
+export const StyledHeaderTools = styled.div`
+    margin-left: 10px;
     display: flex;
     flex-direction: row;
-    justify-content: center;
     align-items: center;
-    padding: 10px;
+    padding: 0px;
+    gap: 8px;
 
-    cursor: pointer;
+    .headerNotif {
+        animation: bounce 1s;
+        animation-iteration-count: 3.5;
+        animation-fill-mode: none;
 
-    width: 44px;
-    height: 44px;
-
-    background-color: ${props => props.theme.palette.secondary.main};
-    border-radius: ${props => props.theme.$styled.borderRadius.xs};
-
-    &:hover {
-        background-color: ${props => props.theme.palette.secondary.dark};;
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(-25%);
+                animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+            }
+            50% {
+                transform: translateY(0);
+                animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+            }
+        }
     }
-`
-export const StyledSearchInput = styled.input.attrs({
-    type: "text",
-})`
+    .headerNotif:hover {
+        animation: bounce 1s infinite;
 
-    background-color: ${props => props.theme.$styled.colors.body};
-    color: ${props => props.theme.$styled.colors.text500};
-    width: 100%;
-    border: 0;
-
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
-
-  &:focus {
-    border: 0;
-    outline: 0;
-  }
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(-25%);
+                animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+            }
+            50% {
+                transform: translateY(0);
+                animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+            }
+        }
+    }
 `

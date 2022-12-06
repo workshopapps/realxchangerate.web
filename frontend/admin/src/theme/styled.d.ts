@@ -22,13 +22,20 @@ interface CustomTheme {
       text50: string;
 
       // blue
-      blue800: string;
+      blue50: string;
 
       // red
       red500: string;
 
       // green
+      green500: string;
       green50: string;
+    };
+    breakpoints: {
+      sm: string;
+      md: string;
+      lg: string;
+      xl: string;
     };
   };
 }

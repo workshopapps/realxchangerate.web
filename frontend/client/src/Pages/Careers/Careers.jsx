@@ -1,6 +1,7 @@
 import React from "react";
+import { useTheme } from "@mui/material";
 import styled from "styled-components";
-import Button from "../../components/CareerButton";
+import Button from "./components/CareerButton";
 
 import squiggly from "./assets/squiggly.svg";
 import Hi from "./assets/heroImg.svg";
@@ -13,8 +14,8 @@ import values from "./assets/values.svg";
 import group4 from "./assets/Group 4.png";
 import circle from "./assets/circle.svg";
 import { useState } from "react";
-import Paginator from "../../components/Paginator";
-import Benefit from "../../components/Benefit";
+import Paginator from "./components/Paginator";
+import Benefit from "./components/Benefit";
 import favourite from "./assets/favourite.svg";
 import money from "./assets/money.svg";
 import home from "./assets/home.svg";
@@ -32,13 +33,13 @@ import Entertainment from "./assets/Entertainment.svg";
 
 import steps from "./assets/steps.svg";
 import Line from "./assets/Line (2).svg";
-import Role from "../../components/Role";
+import Role from "./components/Role";
 import misc06 from "./assets/Misc_06.svg";
 import { HashLink } from "react-router-hash-link";
 import { ArrowBack } from "@mui/icons-material";
-import Carousel from "../../components/Carousel";
-import IntroCard from "../../components/IntroCard";
-import GlobalStyle from "./Boilerplate.style";
+import Carousel from "./components/Carousel";
+import IntroCard from "./components/IntroCard";
+import GlobalStyle from "./styles/Boilerplate.style";
 const coreValues = [
   {
     number: "01/05",
@@ -73,6 +74,25 @@ const coreValues = [
 ];
 
 function Careers() {
+  // const rates = useSelector((state) => state.service.currencyRates);
+  // const currencies = useSelector((state) => state.service.currencyList);
+  // const handleRates = async () => {
+  //   const curren = await GetCurrencies();
+  //   return curren;
+  // };
+  // useEffect(() => {
+  //   handleRates().then((val) => {
+  //     console.log(val);
+  //   });
+  //   // console.log(currencies);
+  //   // GetCurrencyRates();
+  //   // console.log(rates);
+  // });
+
+  const theme = useTheme();
+  const darkMode = theme.palette.mode === "dark";
+  const textColor = darkMode ? "#fff" : "#000";
+  const backgroundColor = darkMode ? theme.palette.grey[900] : "var(--gray-50)";
   const [index, setIndex] = useState(0);
 
   const slideLeft = () => {
@@ -121,7 +141,7 @@ function Careers() {
           </HeroImg>
         </HeroContent>
       </HeroSection>
-      <IntroSection>
+      <IntroSection style={{ backgroundColor: backgroundColor }}>
         <WhoWeAre>
           <h3>
             Who we{" "}
@@ -129,7 +149,7 @@ function Careers() {
               are <img src={smiley} alt="" />
             </span>
           </h3>
-          <p className="desc">
+          <p className="desc" style={{ color: textColor }}>
             We are problem solvers who are deeply focused on building the future
             of finance for users across the globe. We strongly believe that
             teamwork and a constant desire to improve helps us achieve that.
@@ -171,7 +191,7 @@ function Careers() {
           {coreValues.map((value, n) => {
             let position =
               n > index ? "nextCard" : n === index ? "activeCard" : "prevCard";
-            return <Carousel {...value} cardStyle={position} />;
+            return <Carousel {...value} cardStyle={position} key={coreValues.indexOf(value)}/>;
           })}
 
           <ArrowBack className="left" onClick={slideLeft} />

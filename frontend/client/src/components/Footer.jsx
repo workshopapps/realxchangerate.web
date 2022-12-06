@@ -1,8 +1,11 @@
 import { Box, Stack, Typography, Link } from "@mui/material";
 import React from "react";
 import DropDown from "./DropDown";
-
+import streetRates from "../assets/Logo.svg";
+import { Filter } from "iconsax-react";
+import { useTranslation } from "react-i18next";
 const Footer = () => {
+  const { t } = useTranslation();
   return (
     <Box backgroundColor="#00296B">
       <Box
@@ -49,28 +52,27 @@ const Footer = () => {
               }}
               letterSpacing="-0.02em"
             >
-              Company
+              {t("footer_company")}
             </Typography>
             <Link href="/#/about" color="inherit">
-              About Us
+              {t("footer_about")}
             </Link>
             <Link href="/#/careers" color="inherit">
-              Careers
+              {t("footer_Careers")}
             </Link>
             <Link href="/#/partnerships" color="inherit">
-              Patnerships
+              {t("footer_Partnership")}
             </Link>
             <Link href="/#/teams" color="inherit">
-              Meet the team
+              {t("footer_Meet")}
             </Link>
             <Link href="/#/press" color="inherit">
-              Press
+              {t("footer_Press")}
             </Link>
             <Link href="/#/bod" color="inherit">
-              Board of directors
+              {t("footer_directors")}
             </Link>
           </Stack>
-
           <Stack
             flex="auto"
             direction="column"
@@ -97,19 +99,15 @@ const Footer = () => {
               }}
               letterSpacing="-0.02em"
             >
-              Links
+              {t("footer_links")}
             </Typography>
-            <Link href="/#/convert" color="inherit">
-              Convert
-            </Link>
             <Link href="/#/news" color="inherit">
-              News
+              {t("footer_news")}
             </Link>
             <Link href="/#/contact" color="inherit">
-              Contact Us
+              {t("footer_contact")}
             </Link>
           </Stack>
-
           <Stack
             flex="auto"
             direction="column"
@@ -144,20 +142,16 @@ const Footer = () => {
             <Link href="/#/historical-currency-exchange" color="inherit">
               Historical currency exchange
             </Link>
-
             <Link href="/#/glossary" color="inherit">
               Glossary
             </Link>
-
             <Link href="/#/advertising" color="inherit">
               Online Advertising
             </Link>
-
             <Link href="/#/ambassadors" color="inherit">
               Ambassadors
             </Link>
           </Stack>
-
           <Stack
             flex="auto"
             direction="column"
@@ -193,7 +187,6 @@ const Footer = () => {
               Integration matrix
             </Link>
           </Stack>
-
           <Stack
             flex="auto"
             direction="column"
@@ -228,6 +221,9 @@ const Footer = () => {
             <Link href="/#/faq" color="inherit">
               FAQ
             </Link>
+            <Link href="/#/faq-overview" color="inherit">
+              FAQ Overview
+            </Link>
             <Link href="/#/complaint" color="inherit">
               File a complaint
             </Link>
@@ -235,7 +231,6 @@ const Footer = () => {
               Fraud report
             </Link>
           </Stack>
-
           <Stack
             flex="auto"
             direction="column"
@@ -264,21 +259,20 @@ const Footer = () => {
             >
               Legal
             </Typography>
-            <Link href="/#/" color="inherit">
+            <Link href="/#/privacy-policy" color="inherit">
               Privacy Policy
             </Link>
-            <Link href="/terms" color="inherit">
+            <Link href="/#/terms" color="inherit">
               Terms and Conditions
             </Link>
-            <Link href="/#/CookiePolicy" color="inherit">
+            <Link href="/#/Cookie-policy" color="inherit">
               Cookie Policy
             </Link>
-            <Link href="/compliance" color="inherit">
+            <Link href="/#/compliance" color="inherit">
               Compliance
             </Link>
           </Stack>
         </Box>
-
         {/* mobile view */}
         <Box
           sx={{
@@ -309,11 +303,10 @@ const Footer = () => {
               "bod",
             ]}
           />
-
           <DropDown
             title={"Links"}
-            Items={["Convert", "News", "Contact Us"]}
-            Links={["convert", "news", "contact"]}
+            Items={["News", "Contact Us"]}
+            Links={["news", "contact"]}
           />
           <DropDown
             title={"Resources"}
@@ -339,8 +332,20 @@ const Footer = () => {
           />
           <DropDown
             title={"Support"}
-            Items={["Help Centre", "FAQ", "File a complaint", "Fraud Report"]}
-            Links={["help-center", "faq", "complaint", "fraud-report"]}
+            Items={[
+              "Help Centre",
+              "FAQ",
+              "FAQ Overview",
+              "File a complaint",
+              "Fraud Report",
+            ]}
+            Links={[
+              "help-center",
+              "faq",
+              "faq-overview",
+              "complaint",
+              "fraud-report",
+            ]}
           />
           <DropDown
             title={"Legal"}
@@ -353,11 +358,9 @@ const Footer = () => {
             Links={["#", "terms", "CookiePolicy", "compliance"]}
           />
         </Box>
-
         <Box margin="20px 0px">
           <hr style={{ height: "1px", backgroundColor: "#CBD5E1" }} />
         </Box>
-
         <Box
           display="flex"
           padding="20px 0px"
@@ -365,22 +368,16 @@ const Footer = () => {
           alignItems="center"
           color="#F8FAFC"
         >
-          <Typography
-            sx={{
-              fontSize: {
-                xs: "19px",
-                sm: "20px",
-                md: "24px",
-                lg: "19px",
-              },
-              lineHeight: { xs: "23px" },
-              fontWeight: { xs: "800" },
+          <img
+            style={{
+              width: "clamp(90px, 10vw, 140px)",
+              marginTop: "20px",
+              filter:
+                "invert(100%) sepia(94%) saturate(0%) hue-rotate(54deg) brightness(106%) contrast(103%)",
             }}
-            letterSpacing="-0.02em"
-          >
-            Street Rate
-          </Typography>
-
+            src={streetRates}
+            alt=""
+          />
           <Typography
             sx={{
               fontSize: { xs: "12px" },
@@ -396,5 +393,4 @@ const Footer = () => {
     </Box>
   );
 };
-
 export default Footer;

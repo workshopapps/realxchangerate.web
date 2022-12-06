@@ -1,57 +1,62 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const SearchWrapper = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0px 0px 0px 16px;
-    gap: 10px;
-    margin: 2px;
-    
-    border: 1px solid ${props => props.theme.palette.secondary.main};
-    border-radius: ${props => props.theme.$styled.borderRadius.xs};
+  padding: 0px 0px 0px 16px;
 
-    &:hover {
-        border: 'none';
-        outline: 1.2px solid ${props => props.theme.palette.secondary.dark};
-    }
-`
+  display: flex;
+  width: 80%;
+  max-width: 400px;
+  margin: auto;
+  align-items: center;
+  gap: 2px;
+
+  border: 1.3px solid ${(props) => props.theme.$styled.colors.text400};
+  border-radius: ${(props) => props.theme.$styled.borderRadius.sm};
+
+  &:hover {
+    /* box-shadow: 0 0 0 .15vw rgba(135, 207, 235, 0.186); */
+    border: 1.3px solid ${(props) => props.theme.$styled.colors.text600};
+  }
+
+  @media (min-width: ${(props) => props.theme.$styled.breakpoints.md}) {
+    max-width: 660px;
+    margin: 0;
+  }
+`;
 export const StyledSearchIconWrapper = styled.div`
-    max-width: 720px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
+  cursor: pointer;
 
-    cursor: pointer;
-
-    width: 44px;
-    height: 44px;
-
-    background-color: ${props => props.theme.palette.secondary.main};
-    border-radius: ${props => props.theme.$styled.borderRadius.xs};
-
-    &:hover {
-        background-color: ${props => props.theme.palette.secondary.dark};;
-    }
-`
+  &:active svg {
+    transform: scale(0.95);
+  }
+`;
 export const StyledSearchInput = styled.input.attrs({
-    type: "text",
+  type: "text",
 })`
+  background-color: inherit;
+  color: ${(props) => props.theme.$styled.colors.tex600};
 
-    background-color: ${props => props.theme.$styled.colors.body};
-    color: ${props => props.theme.$styled.colors.text500};
-    width: 100%;
-    border: 0;
+  display: inline-block;
 
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
+  width: 100%;
+  border: 0;
+
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.001em;
 
   &:focus {
     border: 0;
     outline: 0;
   }
-`
+
+  @media (min-width: ${(props) => props.theme.$styled.breakpoints.md}) {
+    min-width: 205px;
+  }
+  @media (min-width: ${(props) => props.theme.$styled.breakpoints.lg}) {
+    &:focus {
+      width: 360px;
+    }
+  }
+`;

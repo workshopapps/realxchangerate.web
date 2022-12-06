@@ -1,4 +1,6 @@
 import { Box, Typography } from "@mui/material";
+import { countries } from "../../../utils/data";
+import Country from "./Country";
 
 export const RowComponent = ({ country, bank, parallel }) => {
   return (
@@ -16,24 +18,22 @@ export const RowComponent = ({ country, bank, parallel }) => {
         padding="12px 24px"
         width="100%"
       >
-        {country}
+        <Country name={country.isocode} image={countries.find(x => x.label === country.country).code}/>
         <Typography
-          color="#111827"
           fontSize="14px"
           fontWeight="400"
           lineHeight="20px"
           letterSpacing="0.01em"
         >
-          N{bank}
+          {bank}
         </Typography>
         <Typography
-          color="#111827"
           fontSize="14px"
           fontWeight="400"
           lineHeight="20px"
           letterSpacing="0.01em"
         >
-          N{parallel}
+          {parallel}
         </Typography>
       </Box>
     </Box>
@@ -56,8 +56,8 @@ export const MobileRowComponent = ({ country, rate }) => {
         padding="12px 24px"
         width="100%"
       >
-        {country}
-        <Typography fontSize='14px'>N{rate}</Typography>
+        <Country name={country.isocode} image={countries.find(x => x.label === country.country).code}/>
+        <Typography fontSize='14px'>{rate}</Typography>
       </Box>
     </Box>
   );
