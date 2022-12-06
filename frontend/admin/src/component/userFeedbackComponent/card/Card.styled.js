@@ -19,9 +19,15 @@ export const StyledCardWrapper = styled.div`
 		// border: 1px solid red;
 		position: absolute;
 		right: -3px;
-		top: -3px;
+		top: -5px;
+		background-color: red;
+		padding: 2px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border-radius: 50%;
 		> * {
-			color: red;
+			color: white;
 			cursor: pointer;
 		}
 	}
