@@ -26,8 +26,6 @@ import "react-toastify/dist/ReactToastify.css";
 import Affiliates from "./pages/partners/Affiliates";
 import Referrals from "./pages/partners/Refferrals";
 
-import * as Sentry from "@sentry/react";
-
 function App() {
   AOS.init({
     offset: 80,
@@ -72,5 +70,4 @@ function App() {
   );
 }
 
-// export default App;
-export default Sentry.withProfiler(App)
+export default App;
