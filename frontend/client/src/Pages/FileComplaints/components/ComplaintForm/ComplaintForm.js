@@ -8,12 +8,12 @@ import {
 import ArrowLeft from "../assets/arrow-left.svg";
 
 import axios from "axios";
+import { dispatch } from "../../../../redux/store";
+import { createResponse } from "../../../../redux/features/Reducers/servicesReducer";
+import { ErrorHandler } from "../../../../utils/ErrorHandler";
 
 const ComplaintForm = () => {
   const [disableBtn, setDisableBtn] = useState(false);
-  const [showSuccess, setShowSuccess] = useState(false);
-  const [message, setShowMessage] = useState("");
-  const [messageBg, setMessageBg] = useState("");
 
   const navigate = useNavigate();
 
@@ -41,46 +41,22 @@ const ComplaintForm = () => {
         nameRef.current.value = "";
         emailRef.current.value = "";
         messageRef.current.value = "";
-
-        setShowSuccess(true);
-        setShowMessage(
-          "Message sent successfully. You'll be redirected to the homepage."
-        );
-        setMessageBg("green");
+        dispatch(createResponse({type:"success", message:"Message sent successfully. You'll be redirected to the homepage."}))
+        setDisableBtn(false)
+        setTimeout(()=> {
+          navigate("/")
+        }, 3000)
+        
       })
       .catch((error) => {
-        setShowSuccess(true);
-        setShowMessage("Couldn't send message, please try again!");
-        setMessageBg("red");
+        dispatch(createResponse(ErrorHandler(error)))
         setDisableBtn(false);
       });
   };
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowSuccess(false);
-    }, 3000);
-
-    const timer2 = setTimeout(() => {
-      if (messageBg === "green") {
-        navigate("/");
-      }
-    }, 3000);
-
-    return () => {
-      clearTimeout(timer);
-      clearTimeout(timer2);
-    };
-    // eslint-disable-next-line
-  }, [showSuccess, messageBg]);
-
   return (
     <>
-      {showSuccess && (
-        <SuccessMessage style={{ backgroundColor: `${messageBg}` }}>
-          {message}
-        </SuccessMessage>
-      )}
+      
       <StyledFormTop>
         <img
           src={ArrowLeft}

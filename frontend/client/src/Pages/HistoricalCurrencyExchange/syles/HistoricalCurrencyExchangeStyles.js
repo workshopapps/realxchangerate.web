@@ -89,10 +89,7 @@ justify-content:right;
   flex-direction:column;
 }
   height:44px;
-  width:320px;
-  @media (max-width:450px){
-     width:300px;
-}
+  width:380px;
 }
 .arrow{
   margin-left:14px;

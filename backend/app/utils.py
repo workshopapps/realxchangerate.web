@@ -7,7 +7,7 @@ from typing import Any, Dict, List, Optional
 import aiohttp
 import requests
 from app import crud
-from fastapi import Depends
+from fastapi import APIRouter, Depends, HTTPException, Query, status
 from app.api.deps import get_db
 from sqlalchemy.orm import Session
 from app.schemas import BinanceRequestSchema, BinanaceResponseSchema
@@ -65,8 +65,9 @@ async def format_binance_response_data(response_data: List[Dict[str, Any]]) -> A
     return {"buy_rate": buy_rate, "sell_rate": sell_rate}
 
 
-async def make_official_rate_request(base_currency: str) -> Any:
-    url = f"{official_rate_endpoint}?base={base_currency}"
+def make_official_rate_request(base_currency: str, currency_list: List[str]) -> Any:
+    currencies = ','.join(currency_list)
+    url = f"{official_rate_endpoint}?base={base_currency}&symbols={currencies}"
     response = requests.get(url)
     data = response.json()
     return data
