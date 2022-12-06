@@ -241,4 +241,3 @@ export const StyledTeam = styled.div`
   align-items: center;
   gap: 16px;
 `;
-
