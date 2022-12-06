@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Logo from "../AffiliatePartners/Assets/Logo.png";
 import { nations } from "../AffiliatePartners/data";
 import { addPartner } from "../AffiliatePartners/database";
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 
 const Referral = () => {
