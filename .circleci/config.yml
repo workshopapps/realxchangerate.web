@@ -273,6 +273,40 @@ jobs:
             EC2_PUBLIC_DNS=44.203.211.6
             ssh -o StrictHostKeyChecking=no $EC2_USERNAME@$EC2_PUBLIC_DNS "/home/ubuntu/run.sh"
 
+  # deploy-docker-compose:
+  #   docker:
+  #     # Docker image here that supports Ansible
+  #     - image: python:3.7-alpine3.11
+  #   steps:
+  #     # Checkout code from git
+  #     - checkout
+  #     - add_ssh_keys:
+  #         fingerprints: ["09:86:cf:93:4e:a9:6f:70:4a:20:c2:63:f5:e2:48:6c"]
+  #     # attach workspace
+  #     - attach_workspace:
+  #         at: ~/
+  #     - run:
+  #         name: Install openssh
+  #         command: |
+  #           apk add --update openssh
+  #     - run:
+  #         name: Install dependencies
+  #         command: |
+  #           apk add --update tar gzip && apk add --update ansible
+  #           pip install awscli
+  #     - run:
+  #         name: install node and npm
+  #         command: |
+  #           apk add --update nodejs npm
+  #     - run:
+  #         name: Deploy backend code
+  #         no_output_timeout: 30m
+  #         command: |
+  #           cd .circleci/ansible
+  #           echo "Contents  of the inventory.txt file is :"
+  #           cat inventory.txt
+  #           ansible-playbook -i inventory.txt deploy.yml
+
 workflows:
   default:
     # testing
@@ -283,28 +317,24 @@ workflows:
       # - test-frontend-client
       # - test-frontend-admin
       # - test-backend
-      - build-frontend-client-docker-image:
-          requires: [build-frontend-client] #remember to channge to test
-          filters:
-            branches:
-              only: [main]
+      # - build-frontend-client-docker-image:
+      #     requires: [build-frontend-client] #remember to channge to test
+      #     filters:
+      #       branches:
+      #         only: [main]
 
-      - build-frontend-admin-docker-image:
-          requires: [build-frontend-admin] #remember to channge to test
-          filters:
-            branches:
-              only: [main]
+      # - build-frontend-admin-docker-image:
+      #     requires: [build-frontend-admin] #remember to channge to test
+      #     filters:
+      #       branches:
+      #         only: [main]
 
-      - build-backend-docker-image:
-          requires: [build-backend] #remember to channge to test
-          filters:
-            branches:
-              only: [main]
+      # - build-backend-docker-image:
+      #     requires: [build-backend] #remember to channge to test
+      #     filters:
+      #       branches:
+      #         only: [main]
 
-      - deploy-images-using-ssh:
-          requires:
-            [
-              build-frontend-client-docker-image,
-              build-backend-docker-image,
-              build-frontend-admin-docker-image,
-            ]
+      # - deploy-images-using-ssh:
+      #     requires:
+      #       [build-frontend-client-docker-image, build-backend-docker-image, build-frontend-admin-docker-image]

@@ -207,7 +207,12 @@ function ComplaintPageLayout() {
         </StyledGrid>
 
         <StyledButtonWrapper>
-          <StyledFormButtonCancel>Cancel</StyledFormButtonCancel>
+          <StyledFormButtonCancel
+            type="button"
+            onClick={() => window.history.go(-1)}
+          >
+            Cancel
+          </StyledFormButtonCancel>
           <StyledFormButtonSubmit
             onClick={onSubmit}
             disabled={!data ? true : false}

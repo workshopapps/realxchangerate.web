@@ -19,8 +19,6 @@ sentry_sdk.init(
     traces_sample_rate=1.0,
 )
 
-app = FastAPI()
-
 app = FastAPI(title=settings.PROJECT_NAME)
 origins = [    
     "http://localhost",
@@ -35,7 +33,7 @@ origins = [
     "https://team-bevel-client.netlify.app/*",
     "http://exchange.hng.tech:3008",
     "http://exchange.hng.tech:3008/*",
-    "*"
+    "*",
 ]
 app.add_middleware(
     CORSMiddleware,

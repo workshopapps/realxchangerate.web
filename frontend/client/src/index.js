@@ -10,7 +10,7 @@ import "./translation/i18n";
 import * as Sentry from "@sentry/react";
 import { BrowserTracing } from "@sentry/tracing";
 
-process.env.NODE_ENV == "production" && Sentry.init({
+process.env.NODE_ENV === "production" && Sentry.init({
   dsn: "https://b8eb1a11ad654e99994c510a60ddb487@o4504276826914816.ingest.sentry.io/4504278718152704",
   integrations: [new BrowserTracing()],
 
@@ -19,7 +19,6 @@ process.env.NODE_ENV == "production" && Sentry.init({
   // We recommend adjusting this value in production
   tracesSampleRate: 1.0,
 });
-
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

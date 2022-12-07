@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import RateService from "../../../redux/features/Utils/Axios/apis";
 import Container from "../style/ApplyToAdvertisement.style";
 import { Snackbar, Alert, Typography } from "@mui/material";
+import { dispatch } from "../../../redux/store";
+import { createResponse } from "../../../redux/features/Reducers/servicesReducer";
+import { ErrorHandler } from "../../../utils/ErrorHandler";
 
 const ApplicationForm = () => {
   const [email, setEmail] = useState("");
@@ -10,13 +13,7 @@ const ApplicationForm = () => {
   const [referenceNumber, setReferenceNumber] = useState("");
   const [bannerId, setBannerId] = useState("");
   const [btnDisabled, setBtnDisabled] = useState(true);
-  const [successMessage, setMessage] = useState(null);
-  const [state, setState] = useState({
-    open: false,
-    vertical: "top",
-    horizontal: "center",
-  });
-  const { vertical, horizontal, open } = state;
+  
 
   useEffect(() => {
     const EmailRegex =
@@ -46,17 +43,14 @@ const ApplicationForm = () => {
 
     try {
       const res = await RateService.ApplyToAdvertise(formBody);
-      setMessage(res.data.message);
-      setState({ open: true, vertical: "top", horizontal: "center" });
-
+      dispatch(createResponse({type:"success", message:res.data.message}))
       setEmail("");
       setBannerId("");
       setReferenceNumber("");
       setPizelSize("");
       setNumberOfImpressions("");
     } catch (err) {
-      setMessage("An Error Occoured");
-      console.log(err);
+      dispatch(createResponse(ErrorHandler(err)))
     }
   };
   return (
@@ -120,17 +114,7 @@ const ApplicationForm = () => {
         </div>
       </div>
 
-      <Snackbar
-        anchorOrigin={{ vertical, horizontal }}
-        open={open}
-        onClose={() => setState({ ...state, open: false })}
-        key={vertical + horizontal}
-        color="success"
-      >
-        <Alert  severity="success" sx={{ width: "100%", height:"50px", fontSize:"14px" }}>
-          {successMessage}
-        </Alert>
-      </Snackbar>
+      
     </Container>
   );
 };
