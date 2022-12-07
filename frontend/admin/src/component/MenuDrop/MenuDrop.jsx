@@ -5,9 +5,31 @@ import more from "../../assets/more.svg";
 import plus from "../../assets/plus.svg";
 import del from "../../assets/delete.svg";
 import create from "../../assets/create.svg";
+import axios from "axios";
 
-function MenuDrop({ handleOpen }) {
+function MenuDrop({ handleOpen, handleEditOpen, setRowData, rowData }) {
   const [drop, setDrop] = useState(false);
+  const handleDelete = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      const response = await axios.delete(
+        `https://api.streetrates.hng.tech/api/admin/delete_currency?isocode=${rowData.isocode}`,
+
+        {
+          headers: {
+            accept: "application/json",
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      alert("Currency Deleted");
+      window.location.reload();
+      return response;
+    } catch (err) {
+      console.error(err);
+    }
+  };
   return (
     <>
       <MenuDropDown>
@@ -24,6 +46,8 @@ function MenuDrop({ handleOpen }) {
               <Option
                 onClick={() => {
                   setDrop(false);
+                  handleEditOpen(true);
+                  setRowData(rowData);
                 }}
               >
                 <img src={create} alt="" />
@@ -41,6 +65,7 @@ function MenuDrop({ handleOpen }) {
               <Option
                 onClick={() => {
                   setDrop(false);
+                  handleDelete();
                 }}
               >
                 <img src={del} alt="delete" />
@@ -62,6 +87,7 @@ const MenuDropDown = styled.div`
 const DropDown = styled.div`
   position: absolute;
   background-color: white;
+  z-index: 999;
   /* bottom: 20px; */
   padding: 24px 16px;
   .items {

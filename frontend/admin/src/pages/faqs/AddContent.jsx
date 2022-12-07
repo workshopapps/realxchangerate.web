@@ -77,6 +77,7 @@ export default function AddContent({ cancel, setNewdata }) {
             Question
           </FormLabel>
           <TextField
+            required
             value={formData.question}
             onChange={handleChange}
             name="question"
@@ -93,6 +94,7 @@ export default function AddContent({ cancel, setNewdata }) {
             Answer
           </FormLabel>
           <TextField
+            required
             value={formData.answer}
             onChange={handleChange}
             name="answer"
@@ -122,6 +124,7 @@ export default function AddContent({ cancel, setNewdata }) {
             Cancel
           </Button>
           <LoadingButton
+            disabled={!formData.question || !formData.answer}
             loading={loading}
             variant="contained"
             sx={{ borderRadius: "8px", p: "10px 20px" }}

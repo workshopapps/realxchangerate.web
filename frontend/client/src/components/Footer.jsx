@@ -3,7 +3,9 @@ import React from "react";
 import DropDown from "./DropDown";
 import streetRates from "../assets/Logo.svg";
 import { Filter } from "iconsax-react";
+import { useTranslation } from "react-i18next";
 const Footer = () => {
+  const { t } = useTranslation();
   return (
     <Box backgroundColor="#00296B">
       <Box
@@ -50,25 +52,25 @@ const Footer = () => {
               }}
               letterSpacing="-0.02em"
             >
-              Company
+              {t("footer_company")}
             </Typography>
             <Link href="/#/about" color="inherit">
-              About Us
+              {t("footer_about")}
             </Link>
             <Link href="/#/careers" color="inherit">
-              Careers
+              {t("footer_Careers")}
             </Link>
             <Link href="/#/partnerships" color="inherit">
-              Partnership
+              {t("footer_Partnership")}
             </Link>
             <Link href="/#/teams" color="inherit">
-              Meet the team
+              {t("footer_Meet")}
             </Link>
             <Link href="/#/press" color="inherit">
-              Press
+              {t("footer_Press")}
             </Link>
             <Link href="/#/bod" color="inherit">
-              Board of directors
+              {t("footer_directors")}
             </Link>
           </Stack>
           <Stack
@@ -97,13 +99,13 @@ const Footer = () => {
               }}
               letterSpacing="-0.02em"
             >
-              Links
+              {t("footer_links")}
             </Typography>
             <Link href="/#/news" color="inherit">
-              News
+              {t("footer_news")}
             </Link>
             <Link href="/#/contact" color="inherit">
-              Contact Us
+              {t("footer_contact")}
             </Link>
           </Stack>
           <Stack
@@ -132,22 +134,22 @@ const Footer = () => {
               }}
               letterSpacing="-0.02em"
             >
-              Resources
+              {t("footer_resources")}
             </Typography>
             <Link href="/#/currency-encyclopedia" color="inherit">
-              Currency Encyclopedia
+              {t("Currency_Encyclopedia")}
             </Link>
             <Link href="/#/historical-currency-exchange" color="inherit">
-              Historical currency exchange
+              {t("footer_historic")}
             </Link>
             <Link href="/#/glossary" color="inherit">
-              Glossary
+              {t("footer_Glossary")}
             </Link>
             <Link href="/#/advertising" color="inherit">
-              Online Advertising
+              {t("footer_Advertising")}
             </Link>
             <Link href="/#/ambassadors" color="inherit">
-              Ambassadors
+              {t("footer_Ambassadors")}
             </Link>
           </Stack>
           <Stack
@@ -176,13 +178,13 @@ const Footer = () => {
               }}
               letterSpacing="-0.02em"
             >
-              Product
+              {t("footer_product")}
             </Typography>
             <Link href="/#/api" color="inherit">
               API
             </Link>
             <Link href="/#/integration-matrix" color="inherit">
-              Integration matrix
+              {t("footer_integration")}
             </Link>
           </Stack>
           <Stack
@@ -211,19 +213,22 @@ const Footer = () => {
               }}
               letterSpacing="-0.02em"
             >
-              Support
+              {t("footer_support")}
             </Typography>
             <Link href="/#/help-center" color="inherit">
-              Help Center
+              {t("footer_help")}
             </Link>
             <Link href="/#/faq" color="inherit">
               FAQ
             </Link>
+            <Link href="/#/faq-overview" color="inherit">
+              {t("footer_faq")}
+            </Link>
             <Link href="/#/complaint" color="inherit">
-              File a complaint
+              {t("footer_complaint")}
             </Link>
             <Link href="/#/fraud-report" color="inherit">
-              Fraud report
+              {t("footer_fraud")}
             </Link>
           </Stack>
           <Stack
@@ -252,19 +257,19 @@ const Footer = () => {
               }}
               letterSpacing="-0.02em"
             >
-              Legal
+              {t("footer_legal")}
             </Typography>
             <Link href="/#/privacy-policy" color="inherit">
-              Privacy Policy
+              {t("footer_privacy")}
             </Link>
             <Link href="/#/terms" color="inherit">
-              Terms and Conditions
+              {t("footer_terms")}
             </Link>
             <Link href="/#/Cookie-policy" color="inherit">
-              Cookie Policy
+              {t("footer_cookie")}
             </Link>
             <Link href="/#/compliance" color="inherit">
-              Compliance
+              {t("footer_compliance")}
             </Link>
           </Stack>
         </Box>
@@ -280,14 +285,14 @@ const Footer = () => {
           alignItems="center"
         >
           <DropDown
-            title={"Company"}
+            title={t("footer_company")}
             Items={[
-              "About Us",
-              "Careers",
-              "Patnerships",
-              "Meet the team",
-              "Press",
-              "Board of directors",
+              t("footer_about"),
+              t("footer_Careers"),
+              t("footer_Partnership"),
+              t("footer_Meet"),
+              t("footer_Press"),
+              t("footer_directors"),
             ]}
             Links={[
               "about",
@@ -299,18 +304,18 @@ const Footer = () => {
             ]}
           />
           <DropDown
-            title={"Links"}
-            Items={["News", "Contact Us"]}
+            title={t("footer_links")}
+            Items={[t("footer_news"), t("footer_contact")]}
             Links={["news", "contact"]}
           />
           <DropDown
-            title={"Resources"}
+            title={t("footer_resources")}
             Items={[
-              "Currency Encyclopedia",
-              "Historical currency exchange",
-              "Glossary",
-              "Online Advertising",
-              "Ambassadors",
+              t("Currency_Encyclopedia"),
+              t("footer_historic"),
+              t("footer_Glossary"),
+              t("footer_Advertising"),
+              t("footer_Ambassadors"),
             ]}
             Links={[
               "currency-encyclopedia",
@@ -321,22 +326,34 @@ const Footer = () => {
             ]}
           />
           <DropDown
-            title={"Product"}
-            Items={["API", "Integration matrix"]}
+            title={t("footer_product")}
+            Items={["API", t("footer_integration")]}
             Links={["api", "integration-matrix"]}
           />
           <DropDown
-            title={"Support"}
-            Items={["Help Centre", "FAQ", "File a complaint", "Fraud Report"]}
-            Links={["help-center", "faq", "complaint", "fraud-report"]}
+            title={t("footer_support")}
+            Items={[
+              t("footer_help"),
+              t("footer_faq"),
+              "FAQ Overview",
+              t("footer_complaint"),
+              t("footer_fraud"),
+            ]}
+            Links={[
+              "help-center",
+              "faq",
+              "faq-overview",
+              "complaint",
+              "fraud-report",
+            ]}
           />
           <DropDown
-            title={"Legal"}
+            title={t("footer_legal")}
             Items={[
-              "Private Policy",
-              "Terms and Conditions",
-              "Cookie Policy",
-              "Compliance",
+              t("footer_privacy"),
+              t("footer_terms"),
+              t("footer_cookie"),
+              t("footer_compliance"),
             ]}
             Links={["#", "terms", "CookiePolicy", "compliance"]}
           />

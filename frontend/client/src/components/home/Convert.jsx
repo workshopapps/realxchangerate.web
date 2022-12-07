@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import { noWCommas } from "../../utils";
 import styles from "./home.module.css";
 import { HiOutlineSwitchVertical } from "react-icons/hi";
 import { HiOutlineSwitchHorizontal } from "react-icons/hi";
+import { useTranslation } from "react-i18next";
 import {
   Box,
   Button,
@@ -11,8 +11,8 @@ import {
   FormControl,
   InputLabel,
   MenuItem,
+  OutlinedInput,
   Select,
-  TextField,
   useMediaQuery,
   useTheme,
 } from "@mui/material";
@@ -21,6 +21,8 @@ import autoAnimate from "@formkit/auto-animate";
 import { useSelector } from "react-redux";
 
 const Convert = () => {
+  // Adding translation
+  const { t } = useTranslation();
   const base_url = process.env.REACT_APP_BASE_URL;
   const localBase = "http://localhost:8000/api";
   const [rates, setRates] = React.useState({});
@@ -73,7 +75,6 @@ const Convert = () => {
     });
     fetchDate()
       .then((UpdateDate) => {
-        console.log(UpdateDate);
         setDate(Date(UpdateDate.Time));
       })
       .catch((err) => {
@@ -142,43 +143,42 @@ const Convert = () => {
           fontSize: "clamp(20px, 5vw, 24px)",
           lineHeight: "40px",
           textAlign: "center",
-          marginBottom: "40px",
+          marginBottom: "1.1rem",
         }}
       >
-        Start Conversion
+        {t("convert_title")}
       </h2>
       <Box sx={{ width: { xs: "100%" } }}>
         <Box
           component="form"
+          ref={parent}
           sx={{
             display: "flex",
             flexDirection: { md: "row", xs: "column" },
             flexWrap: "no-wrap",
             width: "100%",
-            // justifyContent: "space-between",
-            alignItems: "center",
-            gap: "26px",
+            justifyContent: "center",
+            alignItems: "flex-end",
+            gap: "1rem",
           }}
         >
           <AmountInput>
-            <TextField
-              InputLabelProps={{
-                shrink: true,
-                inputMode: "numeric",
-                // pattern: "[0-9]*",
-              }}
-              placeholder="enter amount"
-              variant="outlined"
-              type="number"
-              name="amount"
-              sx={{
-                width: "100%",
-                paddingTop: "6px",
-              }}
-              label="Amount"
-              value={convert}
-              onChange={(e) => setconvert(e.target.value)}
-            />
+            <FormControl sx={{ width: "100%" }}>
+              <InputLabel
+                htmlFor="amount"
+                sx={{ color: "black !important", top: "-12px !important" }}
+              >
+                {t("convert_amount")}
+              </InputLabel>
+              <OutlinedInput
+                placeholder="enter amount"
+                id="amount"
+                type="number"
+                name="amount"
+                value={convert}
+                onChange={(e) => setconvert(e.target.value)}
+              />
+            </FormControl>
           </AmountInput>
           {/* <Box
             ref={parent}
@@ -191,14 +191,17 @@ const Convert = () => {
               mt: { xs: "1rem", lg: "1.5rem" },
             }}
           > */}
+          {/* <div ref={parent}> */}
           {buy ? (
             <SelectCurrency>
               <FormControl
                 variant="outlined"
                 fullWidth
-                sx={{ flexBasis: "30%", mt: { xs: "15px", lg: "5px" } }}
+                sx={{ flexBasis: "30%", mt: { xs: "10px", lg: "5px" } }}
               >
-                <InputLabel className={styles.label}>From:</InputLabel>
+                <InputLabel className={styles.label}>
+                  {t("convert_from")}
+                </InputLabel>
                 <Select
                   name="currency"
                   id="currency1"
@@ -262,7 +265,9 @@ const Convert = () => {
                 fullWidth
                 sx={{ flexBasis: "30%", mt: { xs: "15px", lg: "5px" } }}
               >
-                <InputLabel className={styles.label}>To:</InputLabel>
+                <InputLabel className={styles.label}>
+                  {t("convert_to")}
+                </InputLabel>
                 <Select
                   name="currency"
                   variant="outlined"
@@ -286,7 +291,9 @@ const Convert = () => {
                 fullWidth
                 sx={{ flexBasis: "30%", mt: { xs: "15px", lg: "5px" } }}
               >
-                <InputLabel className={styles.label}>To:</InputLabel>
+                <InputLabel className={styles.label}>
+                  {t("convert_to")}
+                </InputLabel>
                 <Select
                   name="currency"
                   id="currency1"
@@ -303,6 +310,7 @@ const Convert = () => {
               </FormControl>
             </SelectCurrency>
           )}
+          {/* </div> */}
 
           {/* </Box> */}
         </Box>
@@ -310,7 +318,7 @@ const Convert = () => {
       {convert && Object.keys(rates).length > 0 && (
         <Rate>
           <div className="convert">
-            <h4>Result</h4>
+            <h4>{t("convert_result")}</h4>
             <h3>
               {rates}
               <span>{buy ? base : currency}</span>
@@ -323,10 +331,10 @@ const Convert = () => {
             </div>
           </div>
           <div>
-            <h6>
-              With Streetrates, you always obtain the best exchange rate.{" "}
-            </h6>
-            <p>Last updated: {date}</p>
+            <h6>{t("convert_street")}</h6>
+            <p>
+              {t("convert_last")} {date}
+            </p>
           </div>
         </Rate>
       )}

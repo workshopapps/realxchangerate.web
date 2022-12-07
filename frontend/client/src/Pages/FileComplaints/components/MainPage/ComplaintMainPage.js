@@ -27,7 +27,6 @@ const enquiriesData = [
     heading: "FAQ",
     description:
       "Get some answers to some of the most commonly asked questions and feedback.",
-
   },
 ];
 
@@ -97,7 +96,7 @@ const ComplaintMainPage = () => {
           {enquiriesData.map((data) => {
             return (
               <div
-                key={data.id}
+                key={enquiriesData.indexOf(data)}
                 onClick={() => {
                   if (data.heading === "FAQ") {
                     navigate("/faq");

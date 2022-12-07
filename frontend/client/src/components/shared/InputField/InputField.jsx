@@ -16,6 +16,12 @@ const InputSection = styled.section`
     color: #94a3b8;
     border-radius: 0.4rem;
   }
+
+  p {
+    color: red;
+    font-size: 14px;
+    margin-top: 4px;
+  }
 `;
 
 const InputField = ({
@@ -25,6 +31,8 @@ const InputField = ({
   placeHolder,
   handleChange,
   value,
+  errorMessage,
+  onBlur,
 }) => {
   return (
     <InputSection>
@@ -34,8 +42,10 @@ const InputField = ({
         name={name}
         placeholder={placeHolder}
         onChange={handleChange}
+        onBlur={onBlur}
         value={value}
       />
+      <p>{errorMessage}</p>
     </InputSection>
   );
 };

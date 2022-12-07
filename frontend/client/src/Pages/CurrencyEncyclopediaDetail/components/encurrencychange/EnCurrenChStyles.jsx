@@ -1,42 +1,51 @@
 import styled from "styled-components";
 
 export const CurrencyContainer = styled.div`
-  width: 45%;
-  height: 378px;
-  margin: 0px 60px 0px 0px;
+  display: ${({ display }) => (display ? "flex" : "none")};
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 16px;
+  height: 324px;
+  border: 1px solid #E2E8F0;
+  border-radius: 8px;
+  background: #F8FAFC;
+  box-sizing: border-box;
+  
+  @media screen and (min-width: 768px) {
+    width: 40%;
+  }
 
-  border-radius: 4px;
-  display: ${({ display }) => (display ? "" : "none")};
-  background: ${({ color }) => (color ? "white" : " #f6faff")};
-
-  @media screen and (min-width: 350px) and (max-width: 800px) {
-    display: block;
-    display: ${({ display }) => (!display ? "block" : "none")};
-    height: 468px;
-    height: 325px;
-    width: 95%;
-    margin: 45px 15px 0px 15px;
+  @media screen and (min-width: 1440px) {
+    width: 30%;
   }
 `;
+
 export const Container = styled.div`
-  height: 144px;
+  height: fit-content;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
 
-  @media screen and (max-width: 768px) {
-    padding: 1em;
-  }
+  // @media screen and (max-width: 768px) {
+  //   padding: 1em;
+  // }
 `;
 
 export const Header = styled.h1`
-  font-family: "Poppins";
+  font-family: 'Inter';
   font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 21px;
-  color: #131825;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+  display: flex;
+  align-items: center;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  color: #0F172A;
 
   @media screen and (max-width: 768px) {
     margin-right: 1em;
@@ -86,7 +95,7 @@ export const Button = styled.button`
   background: #0062ff;
   border-radius: 4px;
   border: 1px solid #0062ff;
-  width: 107px;
+  width: 80%;
   height: 48px;
   color: #f8fafc;
   font-family: "Inter";
@@ -99,8 +108,11 @@ export const Button = styled.button`
   }
 `;
 export const ButtonWrapper = styled.div`
-  margin-top: 38px;
-  @media screen and (max-width: 768px) {
-    margin-top: 26px;
-  }
+  margin-top: 26px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  // @media screen and (max-width: 768px) {
+  //   margin-top: 26px;
+  // }
 `;

@@ -1,8 +1,8 @@
 import React from "react";
 import TrendingDataLayout from "../../component/TrendingDataComponent/TrendingDataLayout";
 
-const Notification = () => {
+const TrendingData = () => {
   return <TrendingDataLayout />;
 };
 
-export default Notification;
+export default TrendingData;

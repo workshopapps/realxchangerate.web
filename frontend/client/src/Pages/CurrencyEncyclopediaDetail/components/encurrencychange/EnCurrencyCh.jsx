@@ -17,13 +17,10 @@ const EnCurrencyCh = ({ display, color }) => {
   return (
     <CurrencyContainer display={display} color={color}>
       <Container>
-        <Header>Currency set for canadian Dollar (CAD)</Header>
-        <img src={flag} alt="" style={{ width: "7%" }} />
-        <Text>CAD-Canadian Dollar</Text>
+        <Header>Select a Currency</Header>
       </Container>
 
-      <HorizontalRule />
-      <TextHighlight>Change Currency</TextHighlight>
+      {/* <HorizontalRule /> */}
       <Container>
         <Select>
           <CountrySort />
