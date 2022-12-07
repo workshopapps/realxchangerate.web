@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { HashRouter, Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import "./App.css";
 import Layout from "./layout/Layout";
@@ -35,7 +35,7 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <BrowserRouter>
+      <HashRouter>
         <GlobalStyle />
         <Routes>
           <Route path="/admin" element={<Layout />}>
@@ -55,7 +55,7 @@ function App() {
           <Route path="/admin/login" element={<Login />} />
           <Route path="/admin/forgotpassword" element={<ForgotPassword />} />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
       <ToastContainer
         position="top-right"
         autoClose={5000}
