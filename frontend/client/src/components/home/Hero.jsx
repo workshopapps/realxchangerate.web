@@ -23,16 +23,9 @@ function Hero() {
       <Box
         className="store"
         sx={{
-          width: "100%",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          gap: "1.4rem",
+          m: "0 auto",
         }}
       >
-        <a href="#!">
-          <img src="/apple-store.svg" alt="" />
-        </a>
         <a href="#!">
           <img src="/googleplay.svg" alt="" />
         </a>
