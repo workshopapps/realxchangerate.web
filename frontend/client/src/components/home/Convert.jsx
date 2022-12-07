@@ -94,7 +94,6 @@ const Convert = () => {
 
   const CurrencyMenu = (props) => {
     const { currency } = props;
-    console.log(countryDetails);
     const details = countryDetails.filter(
       (countr) => countr?.label === currency.country
     );
@@ -324,7 +323,7 @@ const Convert = () => {
             <h4>{t("convert_result")}</h4>
             <h3>
               {rates}
-              <span>{buy ? base : currency}</span>
+              <span>{buy ? currency : base}</span>
             </h3>
             <div className="xchng">
               <h4>
