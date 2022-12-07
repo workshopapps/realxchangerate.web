@@ -31,13 +31,55 @@ export const addCurrency = createAsyncThunk(
   "currency/add",
   async (payload, { rejectWithValue }) => {
     try {
+      const token = localStorage.getItem("token");
       const res = await axios.post(
-        "https://exchange.hng.tech/backend/api/admin/add_currency/",
+        "https://api.streetrates.hng.tech/api/admin/add_currency/",
         {
           country: payload.country,
           isocode: payload.isocode,
           symbol: payload.symbol,
           rate: payload.rate,
+        },
+        {
+          headers: {
+            accept: "application/json",
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      if (res.status && res.status === 200) {
+        return res.data;
+      } else {
+        return rejectWithValue(res);
+      }
+    } catch (err) {
+      console.log(err, "error");
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+
+export const editCurrency = createAsyncThunk(
+  "currency/edit",
+  async (payload, { rejectWithValue }) => {
+    try {
+      const token = localStorage.getItem("token");
+      const res = await axios.put(
+        `https://api.streetrates.hng.tech/api/admin/update_currency/${payload.isocode}?iso_code=${payload.isocode}`,
+
+        {
+          country: payload.country,
+          isocode: payload.isocode,
+          symbol: payload.symbol,
+          name: payload.name,
+        },
+        {
+          headers: {
+            accept: "application/json",
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
         }
       );
       if (res.status && res.status === 200) {
@@ -74,6 +116,17 @@ export const dashboardSlice = createSlice({
       })
       .addCase(addCurrency.rejected, (state, action) => {
         state.error = action.payload;
+      })
+      .addCase(editCurrency.pending, (state, action) => {
+        state.requestStatus = "pending";
+      })
+      .addCase(editCurrency.fulfilled, (state, action) => {
+        state.requestStatus = "success";
+        state.message = action.payload;
+      })
+      .addCase(editCurrency.rejected, (state, action) => {
+        state.requestStatus = "failed";
+        state.message = action.payload;
       });
   },
 });
