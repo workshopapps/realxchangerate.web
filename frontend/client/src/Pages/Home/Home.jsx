@@ -75,7 +75,8 @@ const Home = () => {
         gap: "4rem",
         maxWidth: "1440px",
         margin: "auto",
-        p: { xs: "1.5rem", md: "4rem", lg: "5rem 10rem" },
+        p: { xs: "2rem", md: "4rem", lg: "5rem 10rem" },
+        pt: { xs: "5rem" },
       }}
     >
       <Box

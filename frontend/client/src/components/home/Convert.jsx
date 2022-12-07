@@ -11,8 +11,8 @@ import {
   FormControl,
   InputLabel,
   MenuItem,
+  OutlinedInput,
   Select,
-  TextField,
   useMediaQuery,
   useTheme,
 } from "@mui/material";
@@ -143,7 +143,7 @@ const Convert = () => {
           fontSize: "clamp(20px, 5vw, 24px)",
           lineHeight: "40px",
           textAlign: "center",
-          marginBottom: "40px",
+          marginBottom: "1.1rem",
         }}
       >
         {t("convert_title")}
@@ -151,35 +151,34 @@ const Convert = () => {
       <Box sx={{ width: { xs: "100%" } }}>
         <Box
           component="form"
+          ref={parent}
           sx={{
             display: "flex",
             flexDirection: { md: "row", xs: "column" },
             flexWrap: "no-wrap",
             width: "100%",
-            // justifyContent: "space-between",
-            alignItems: "center",
-            gap: "26px",
+            justifyContent: "center",
+            alignItems: "flex-end",
+            gap: "1rem",
           }}
         >
           <AmountInput>
-            <TextField
-              InputLabelProps={{
-                shrink: true,
-                inputMode: "numeric",
-                // pattern: "[0-9]*",
-              }}
-              placeholder="enter amount"
-              variant="outlined"
-              type="number"
-              name="amount"
-              sx={{
-                width: "100%",
-                paddingTop: "6px",
-              }}
-              label={t("convert_amount")}
-              value={convert}
-              onChange={(e) => setconvert(e.target.value)}
-            />
+            <FormControl sx={{ width: "100%" }}>
+              <InputLabel
+                htmlFor="amount"
+                sx={{ color: "black !important", top: "-12px !important" }}
+              >
+                {t("convert_amount")}
+              </InputLabel>
+              <OutlinedInput
+                placeholder="enter amount"
+                id="amount"
+                type="number"
+                name="amount"
+                value={convert}
+                onChange={(e) => setconvert(e.target.value)}
+              />
+            </FormControl>
           </AmountInput>
           {/* <Box
             ref={parent}
@@ -192,12 +191,13 @@ const Convert = () => {
               mt: { xs: "1rem", lg: "1.5rem" },
             }}
           > */}
+          {/* <div ref={parent}> */}
           {buy ? (
             <SelectCurrency>
               <FormControl
                 variant="outlined"
                 fullWidth
-                sx={{ flexBasis: "30%", mt: { xs: "15px", lg: "5px" } }}
+                sx={{ flexBasis: "30%", mt: { xs: "10px", lg: "5px" } }}
               >
                 <InputLabel className={styles.label}>
                   {t("convert_from")}
@@ -310,6 +310,7 @@ const Convert = () => {
               </FormControl>
             </SelectCurrency>
           )}
+          {/* </div> */}
 
           {/* </Box> */}
         </Box>
