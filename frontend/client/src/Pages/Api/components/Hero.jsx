@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import heroImage from '../assets/heroImage.png'
+import styled from "styled-components";
+import heroImage from "../assets/heroImage.png";
 
 const StyledHero = styled.section`
   padding: 18.7rem 12rem 19.5rem 12rem;
@@ -97,13 +97,17 @@ export const Hero = () => {
       <div className="hero-text">
         <h1>The Most Reliable Currency Data API in the World</h1>
         <p>
-          Our currency exchange rate API offers real-time, precise, and dependable currency exchange data for hundreds of different global currencies and has years of FX and currency knowledge. StreetRate proprietary rates are sourced from financial data providers and central bank.
+          Our currency exchange rate API offers real-time, precise, and
+          dependable currency exchange data for hundreds of different global
+          currencies and has years of FX and currency knowledge. StreetRate
+          proprietary rates are sourced from financial data providers and
+          central bank.
         </p>
-        <button>Get  Started</button>
+        <button>Get Started</button>
       </div>
       <div className="hero-image">
-        <img src={heroImage} alt='Hero SVG' />
+        <img className="img" src={heroImage} alt="Hero SVG" />
       </div>
     </StyledHero>
-  )
-}
+  );
+};

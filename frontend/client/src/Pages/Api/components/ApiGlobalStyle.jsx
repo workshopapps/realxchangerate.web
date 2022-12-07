@@ -21,11 +21,12 @@ export const ApiGlobalStyle = createGlobalStyle`
         font-weight: 400;
         overflow-x: hidden;
     }
-    img {
+    .img {
         width: 100%;
         height: 100%;
         object-fit: cover;
         object-position: center;
+  
     }
     h1, h2, h3, h4, h5, h6 {
         color: #0f172a;
