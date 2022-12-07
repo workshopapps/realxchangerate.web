@@ -25,7 +25,7 @@ const Download = () => {
       <Box
         display="flex"
         alignItems="center"
-        justifyContent="center"
+        justifyContent="space-between"
         sx={{
           width: { xs: "60%", sm: "84%", lg: "84%" },
           margin: { xs: "0px auto 0px", md: "0px auto" },
@@ -58,12 +58,13 @@ const Download = () => {
           >
             Download the StreetRate App Via
           </Typography>
-          <img src={PlayStore} alt="" />
-          <img src={AppleIcon} alt="" />
+          <Box display="flex" gap="32px">
+            <img src={PlayStore} alt="" />
+            <img src={AppleIcon} alt="" />
+          </Box>
         </Box>
         <Box
           width="100%"
-          marginLeft="-25px"
           sx={{
             marginTop: { sm: "40px", md: "100px" },
             display: { xs: "none", sm: "flex" },

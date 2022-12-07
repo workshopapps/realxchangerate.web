@@ -15,7 +15,8 @@ import arrow from "../../assets/arrow_forward.svg";
 import Card from "./Card";
 import createIcon from "../../assets/create_new.svg";
 import updateIcon from "../../assets/update.svg";
-import ModalUi from "./Modal";
+import AddModalUi from "./AddModal";
+import EditModalUi from "./EditModal";
 import { Button, Skeleton } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { getTrending } from "../../store/actions/dashboardActions";
@@ -50,11 +51,19 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 export default function CreateCurrency() {
   const [open, setOpen] = useState(false);
+  const [editVal, setEditVal] = useState({
+    country: "OMO",
+    isocode: "",
+    symbol: "",
+    name: "",
+  });
+  const [editOpen, setEditOpen] = useState(false);
   const dispatch = useDispatch();
   const { currencies, requestStatus } = useSelector((state) => state.dashboard);
 
   useEffect(() => {
     dispatch(getTrending());
+    console.log(currencies);
   }, [dispatch]);
 
   const handleOpen = () => {
@@ -62,6 +71,13 @@ export default function CreateCurrency() {
   };
   const handleClose = () => {
     setOpen(!open);
+  };
+
+  const handleEditOpen = () => {
+    setEditOpen(!editOpen);
+  };
+  const handleEditClose = () => {
+    setEditOpen(!editOpen);
   };
 
   const cellSkeleton = (
@@ -105,10 +121,16 @@ export default function CreateCurrency() {
             <h1>Currency Overview</h1>
             <p>Create and edit currency exchange rates</p>
           </div>
-          <ModalUi
+          <AddModalUi
             handleOpen={handleOpen}
             handleClose={handleClose}
             open={open}
+          />
+          <EditModalUi
+            handleEditOpen={handleEditOpen}
+            handleEditClose={handleEditClose}
+            editOpen={editOpen}
+            editVal={editVal}
           />
         </div>
         <TableContainer
@@ -162,7 +184,7 @@ export default function CreateCurrency() {
                     >
                       <div style={{ display: "flex", alignItems: "center" }}>
                         <Flag
-                          code={row.isocode.slice(0, 2)}
+                          code={row?.isocode?.slice(0, 2)}
                           style={{ width: "30px", marginRight: "10px" }}
                         />
                         <span>{row.country}</span>
@@ -184,7 +206,12 @@ export default function CreateCurrency() {
                       align="right"
                       style={{ color: "rgba(71, 85, 105, 1)" }}
                     >
-                      <MenuDrop handleOpen={handleOpen} />
+                      <MenuDrop
+                        handleEditOpen={handleEditOpen}
+                        handleOpen={handleOpen}
+                        rowData={row}
+                        setRowData={setEditVal}
+                      />
                     </StyledTableCell>
                   </StyledTableRow>
                 ))
