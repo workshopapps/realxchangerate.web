@@ -21,7 +21,7 @@ export const getTrending = createAsyncThunk(
         return rejectWithValue(res);
       }
     } catch (err) {
-      console.log(err, "erorr");
+      console.log(err, "error");
       return rejectWithValue(err.response.data);
     }
   }
