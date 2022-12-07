@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { FormSection, MessageModal } from "../style/Application.style";
 import leftIcon from "../../../assets/svg/arrow-left.svg";
 import InputField from "../../../components/shared/InputField/InputField";
+import { countries } from "../../Home/data";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
@@ -257,9 +258,11 @@ const ApplicationForm = () => {
           <div className="select-field">
             <label htmlFor="country">Country</label>
             <select name="country" id="country">
-              <option value={country} handleChange={handleChange}>
-                {country}
-              </option>
+              {countries.map(({ label, code }) => (
+                <option key={code} value={label} handleChange={handleChange}>
+                  {label}
+                </option>
+              ))}
             </select>
           </div>
         </div>
