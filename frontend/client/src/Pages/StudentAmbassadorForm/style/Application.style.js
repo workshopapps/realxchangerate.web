@@ -100,8 +100,10 @@ export const FormSection = styled.section`
           border-color: #94a3b8;
           color: #94a3b8;
           border-radius: 0.4rem;
+        }
       }
     }
+
     .grid-half {
       width: 45%;
       margin-bottom: 7.5rem;

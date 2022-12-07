@@ -180,8 +180,7 @@ const ApplicationForm = () => {
               label="Name"
               value={firstName}
               handleChange={handleChange}
-              onBlur={() => setErrorMessage(validate(firstName))}
-              errorMessage={!firstName && errorMessage.firstName}
+              errorMessage={errorMessage.firstName}
             />
           </div>
           <div>
@@ -191,7 +190,7 @@ const ApplicationForm = () => {
               name="lastName"
               value={lastName}
               handleChange={handleChange}
-              errorMessage={!lastName && errorMessage.lastName}
+              errorMessage={errorMessage.lastName}
             />
           </div>
         </div>
@@ -203,7 +202,7 @@ const ApplicationForm = () => {
               label="Date of birth"
               value={DOB}
               handleChange={handleChange}
-              errorMessage={!DOB && errorMessage.DOB}
+              errorMessage={errorMessage.DOB}
             />
           </div>
           <div>
@@ -226,7 +225,7 @@ const ApplicationForm = () => {
               label="Email"
               value={email}
               handleChange={handleChange}
-              errorMessage={!email && errorMessage.email}
+              errorMessage={errorMessage.email}
             />
           </div>
         </div>
@@ -240,7 +239,7 @@ const ApplicationForm = () => {
               label="Address"
               value={address}
               handleChange={handleChange}
-              errorMessage={!address && errorMessage.address}
+              errorMessage={errorMessage.address}
             />
           </div>
         </div>
@@ -252,7 +251,7 @@ const ApplicationForm = () => {
               label="City"
               value={city}
               handleChange={handleChange}
-              errorMessage={!city && errorMessage.city}
+              errorMessage={errorMessage.city}
             />
           </div>
           <div className="select-field">
@@ -276,7 +275,7 @@ const ApplicationForm = () => {
               label="School name"
               value={schoolName}
               handleChange={handleChange}
-              errorMessage={!schoolName && errorMessage.schoolName}
+              errorMessage={errorMessage.schoolName}
             />
           </div>
         </div>
@@ -288,7 +287,7 @@ const ApplicationForm = () => {
               label="Name of course"
               value={courseName}
               handleChange={handleChange}
-              errorMessage={!courseName && errorMessage.courseName}
+              errorMessage={errorMessage.courseName}
             />
           </div>
         </div>
@@ -300,7 +299,7 @@ const ApplicationForm = () => {
               label="Year of entry"
               value={entryYear}
               handleChange={handleChange}
-              errorMessage={!entryYear && errorMessage.entryYear}
+              errorMessage={errorMessage.entryYear}
             />
           </div>
           <div>
@@ -310,7 +309,7 @@ const ApplicationForm = () => {
               label="Year of completion"
               value={completionYear}
               handleChange={handleChange}
-              errorMessage={!completionYear && errorMessage.completionYear}
+              errorMessage={errorMessage.completionYear}
             />
           </div>
         </div>
