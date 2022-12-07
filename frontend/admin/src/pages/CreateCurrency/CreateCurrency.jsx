@@ -8,13 +8,11 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
-import { mockData } from "./mockData";
 import { MainWrapper, Container, Integration } from "./currStyles";
 import arrow from "../../assets/arrow_forward.svg";
 
 import Card from "./Card";
-import createIcon from "../../assets/create_new.svg";
-import updateIcon from "../../assets/update.svg";
+
 import AddModalUi from "./AddModal";
 import EditModalUi from "./EditModal";
 import { Button, Skeleton } from "@mui/material";

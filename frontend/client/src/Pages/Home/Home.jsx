@@ -9,7 +9,7 @@ import { tableCurrenciesList } from "./data";
 import styled from "styled-components";
 import add from "./assets/add.svg";
 import CircularProgressWithLabel from "@mui/material/CircularProgress";
-import DeleteIcon from "./assets/delete.svg";
+import DeleteIcon from "./assets/delete.png";
 import { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
@@ -28,6 +28,8 @@ const Home = () => {
   const [currencies, setCurrencies] = useState(tableCurrenciesList);
   const [getCurrency, setGetCurrency] = useState([]);
   const [dateUpdate, setDateUpdate] = useState("");
+  // Adding translation
+  const { t } = useTranslation();
   const handleEdit = () => {
     toggle();
   };
@@ -75,7 +77,8 @@ const Home = () => {
         gap: "4rem",
         maxWidth: "1440px",
         margin: "auto",
-        p: { xs: "1.5rem", md: "4rem", lg: "5rem 10rem" },
+        p: { xs: "2rem", md: "4rem", lg: "5rem 10rem" },
+        pt: { xs: "5rem" },
       }}
     >
       <Box
@@ -96,17 +99,17 @@ const Home = () => {
         <TypographyLive
           sx={{ color: "#0062FF", fontSize: "16px", fontWeight: 500 }}
         >
-          LIVE RATES
+          {t("home_live")}
         </TypographyLive>
         <TypographyHead
           component="h2"
           sx={{ fontSize: "32px", maxWidth: "595px", fontWeight: 800 }}
         >
-          Live rates of every currency around the world
+          {t("home_title")}
         </TypographyHead>
-        <StyledEdit className="action" id="edit" onClick={() => handleEdit()}>
-          Edit
-        </StyledEdit>
+        {/* <StyledEdit className="action" id="edit" onClick={() => handleEdit()}>
+          {t("home_btn")}
+        </StyledEdit> */}
       </StyledBox>
       {/* Table  */}
       <List
@@ -128,9 +131,9 @@ const Home = () => {
             color: "black",
           }}
         >
-          <Box>Currency</Box>
-          <Box>Parallel </Box>
-          <StyledBankBox>Bank </StyledBankBox>
+          <Box>{t("home_currency")}</Box>
+          <Box>{t("home_parallel")}</Box>
+          <StyledBankBox>{t("home_Bank")}</StyledBankBox>
           <Box></Box>
         </ListItem>
 
@@ -151,13 +154,34 @@ const Home = () => {
                   symbol={currency.symbol}
                   flag={currency.flag}
                   deleteIcon={
-                    <img
-                      src={DeleteIcon}
-                      className="delete-cur"
-                      alt=""
-                      style={{ display: "none" }}
-                      onClick={(e) => handleDelete(currency.id)}
-                    />
+                    <PopupState variant="popover" popupId="demo-popup-menu">
+                      {(popupState) => (
+                        <React.Fragment>
+                          <Button {...bindTrigger(popupState)}>
+                            <div className="add">
+                              <img
+                                src={DeleteIcon}
+                                className="delete-cur"
+                                alt=""
+                                style={
+                                  {
+                                    /*display: "none"*/
+                                  }
+                                }
+                              />
+                            </div>
+                          </Button>
+                          <Menu {...bindMenu(popupState)}>
+                            <MenuItem
+                              onClick={(e) => handleDelete(currency.id)}
+                            >
+                              Delete
+                            </MenuItem>
+                            <MenuItem>Currency Profile</MenuItem>
+                          </Menu>
+                        </React.Fragment>
+                      )}
+                    </PopupState>
                   }
                 />
               )}
@@ -172,7 +196,7 @@ const Home = () => {
               <Button {...bindTrigger(popupState)}>
                 <div className="add">
                   <img src={add} alt="" />
-                  <span className="addspan">Add currency</span>
+                  <span className="addspan">{t("home_add")}</span>
                 </div>
               </Button>
               <Menu {...bindMenu(popupState)}>
@@ -197,7 +221,7 @@ const Home = () => {
             </React.Fragment>
           )}
         </PopupState>
-        <div className="lastUpdate">
+        {/* <div className="lastUpdate">
           <div style={{ position: "relative" }}>
             <CircularProgressWithLabel
               variant="determinate"
@@ -213,8 +237,10 @@ const Home = () => {
               />
             </i>
           </div>
-          <span>Last updated {dateUpdate}</span>
-        </div>
+          <span>
+            {t("home_updatee")} {dateUpdate}
+          </span>
+        </div> */}
       </StyledSelection>
     </Box>
   );

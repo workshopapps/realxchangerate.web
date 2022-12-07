@@ -134,22 +134,22 @@ const Footer = () => {
               }}
               letterSpacing="-0.02em"
             >
-              Resources
+              {t("footer_resources")}
             </Typography>
             <Link href="/#/currency-encyclopedia" color="inherit">
-              Currency Encyclopedia
+              {t("Currency_Encyclopedia")}
             </Link>
             <Link href="/#/historical-currency-exchange" color="inherit">
-              Historical currency exchange
+              {t("footer_historic")}
             </Link>
             <Link href="/#/glossary" color="inherit">
-              Glossary
+              {t("footer_Glossary")}
             </Link>
             <Link href="/#/advertising" color="inherit">
-              Online Advertising
+              {t("footer_Advertising")}
             </Link>
             <Link href="/#/ambassadors" color="inherit">
-              Ambassadors
+              {t("footer_Ambassadors")}
             </Link>
           </Stack>
           <Stack
@@ -178,13 +178,13 @@ const Footer = () => {
               }}
               letterSpacing="-0.02em"
             >
-              Product
+              {t("footer_product")}
             </Typography>
             <Link href="/#/api" color="inherit">
               API
             </Link>
             <Link href="/#/integration-matrix" color="inherit">
-              Integration matrix
+              {t("footer_integration")}
             </Link>
           </Stack>
           <Stack
@@ -213,22 +213,22 @@ const Footer = () => {
               }}
               letterSpacing="-0.02em"
             >
-              Support
+              {t("footer_support")}
             </Typography>
             <Link href="/#/help-center" color="inherit">
-              Help Center
+              {t("footer_help")}
             </Link>
             <Link href="/#/faq" color="inherit">
               FAQ
             </Link>
             <Link href="/#/faq-overview" color="inherit">
-              FAQ Overview
+              {t("footer_faq")}
             </Link>
             <Link href="/#/complaint" color="inherit">
-              File a complaint
+              {t("footer_complaint")}
             </Link>
             <Link href="/#/fraud-report" color="inherit">
-              Fraud report
+              {t("footer_fraud")}
             </Link>
           </Stack>
           <Stack
@@ -257,19 +257,19 @@ const Footer = () => {
               }}
               letterSpacing="-0.02em"
             >
-              Legal
+              {t("footer_legal")}
             </Typography>
             <Link href="/#/privacy-policy" color="inherit">
-              Privacy Policy
+              {t("footer_privacy")}
             </Link>
             <Link href="/#/terms" color="inherit">
-              Terms and Conditions
+              {t("footer_terms")}
             </Link>
             <Link href="/#/Cookie-policy" color="inherit">
-              Cookie Policy
+              {t("footer_cookie")}
             </Link>
             <Link href="/#/compliance" color="inherit">
-              Compliance
+              {t("footer_compliance")}
             </Link>
           </Stack>
         </Box>
@@ -285,14 +285,14 @@ const Footer = () => {
           alignItems="center"
         >
           <DropDown
-            title={"Company"}
+            title={t("footer_company")}
             Items={[
-              "About Us",
-              "Careers",
-              "Patnerships",
-              "Meet the team",
-              "Press",
-              "Board of directors",
+              t("footer_about"),
+              t("footer_Careers"),
+              t("footer_Partnership"),
+              t("footer_Meet"),
+              t("footer_Press"),
+              t("footer_directors"),
             ]}
             Links={[
               "about",
@@ -304,18 +304,18 @@ const Footer = () => {
             ]}
           />
           <DropDown
-            title={"Links"}
-            Items={["News", "Contact Us"]}
+            title={t("footer_links")}
+            Items={[t("footer_news"), t("footer_contact")]}
             Links={["news", "contact"]}
           />
           <DropDown
-            title={"Resources"}
+            title={t("footer_resources")}
             Items={[
-              "Currency Encyclopedia",
-              "Historical currency exchange",
-              "Glossary",
-              "Online Advertising",
-              "Ambassadors",
+              t("Currency_Encyclopedia"),
+              t("footer_historic"),
+              t("footer_Glossary"),
+              t("footer_Advertising"),
+              t("footer_Ambassadors"),
             ]}
             Links={[
               "currency-encyclopedia",
@@ -326,18 +326,18 @@ const Footer = () => {
             ]}
           />
           <DropDown
-            title={"Product"}
-            Items={["API", "Integration matrix"]}
+            title={t("footer_product")}
+            Items={["API", t("footer_integration")]}
             Links={["api", "integration-matrix"]}
           />
           <DropDown
-            title={"Support"}
+            title={t("footer_support")}
             Items={[
-              "Help Centre",
-              "FAQ",
+              t("footer_help"),
+              t("footer_faq"),
               "FAQ Overview",
-              "File a complaint",
-              "Fraud Report",
+              t("footer_complaint"),
+              t("footer_fraud"),
             ]}
             Links={[
               "help-center",
@@ -348,12 +348,12 @@ const Footer = () => {
             ]}
           />
           <DropDown
-            title={"Legal"}
+            title={t("footer_legal")}
             Items={[
-              "Private Policy",
-              "Terms and Conditions",
-              "Cookie Policy",
-              "Compliance",
+              t("footer_privacy"),
+              t("footer_terms"),
+              t("footer_cookie"),
+              t("footer_compliance"),
             ]}
             Links={["#", "terms", "CookiePolicy", "compliance"]}
           />

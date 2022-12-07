@@ -11,8 +11,8 @@ import {
   FormControl,
   InputLabel,
   MenuItem,
+  OutlinedInput,
   Select,
-  TextField,
   useMediaQuery,
   useTheme,
 } from "@mui/material";
@@ -28,7 +28,7 @@ const Convert = () => {
   const [rates, setRates] = React.useState({});
   const [convert, setconvert] = React.useState(1);
   const [currency, setCurrecy] = React.useState("NGN");
-  const [base, setBase] = React.useState("EGP");
+  const [base, setBase] = React.useState("USD");
   const [buy, setBuy] = React.useState(true);
   const [date, setDate] = React.useState("Loading ..");
   const [rate, setRate] = React.useState("loading ..");
@@ -91,10 +91,12 @@ const Convert = () => {
   React.useEffect(() => {
     parent.current && autoAnimate(parent.current);
   }, [parent]);
+
   const CurrencyMenu = (props) => {
     const { currency } = props;
+    console.log(countryDetails);
     const details = countryDetails.filter(
-      (countr) => countr.label === currency.country
+      (countr) => countr?.label === currency.country
     );
     return (
       <MenuItem
@@ -113,8 +115,8 @@ const Convert = () => {
           <img
             loading="lazy"
             width="20"
-            src={`https://flagcdn.com/w20/${details[0].code.toLowerCase()}.png`}
-            srcSet={`https://flagcdn.com/w40/${details[0].code.toLowerCase()}.png 2x`}
+            src={`https://flagcdn.com/w20/${details[0]?.code.toLowerCase()}.png`}
+            srcSet={`https://flagcdn.com/w40/${details[0]?.code.toLowerCase()}.png 2x`}
             alt=""
           />
         </Box>
@@ -123,6 +125,7 @@ const Convert = () => {
       </MenuItem>
     );
   };
+
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("md"));
   return (
@@ -143,7 +146,7 @@ const Convert = () => {
           fontSize: "clamp(20px, 5vw, 24px)",
           lineHeight: "40px",
           textAlign: "center",
-          marginBottom: "40px",
+          marginBottom: "1.1rem",
         }}
       >
         {t("convert_title")}
@@ -151,35 +154,34 @@ const Convert = () => {
       <Box sx={{ width: { xs: "100%" } }}>
         <Box
           component="form"
+          ref={parent}
           sx={{
             display: "flex",
             flexDirection: { md: "row", xs: "column" },
             flexWrap: "no-wrap",
             width: "100%",
-            // justifyContent: "space-between",
-            alignItems: "center",
-            gap: "26px",
+            justifyContent: "center",
+            alignItems: "flex-end",
+            gap: "1rem",
           }}
         >
           <AmountInput>
-            <TextField
-              InputLabelProps={{
-                shrink: true,
-                inputMode: "numeric",
-                // pattern: "[0-9]*",
-              }}
-              placeholder="enter amount"
-              variant="outlined"
-              type="number"
-              name="amount"
-              sx={{
-                width: "100%",
-                paddingTop: "6px",
-              }}
-              label={t("convert_amount")}
-              value={convert}
-              onChange={(e) => setconvert(e.target.value)}
-            />
+            <FormControl sx={{ width: "100%" }}>
+              <InputLabel
+                htmlFor="amount"
+                sx={{ color: "black !important", top: "-12px !important" }}
+              >
+                {t("convert_amount")}
+              </InputLabel>
+              <OutlinedInput
+                placeholder="enter amount"
+                id="amount"
+                type="number"
+                name="amount"
+                value={convert}
+                onChange={(e) => setconvert(e.target.value)}
+              />
+            </FormControl>
           </AmountInput>
           {/* <Box
             ref={parent}
@@ -192,12 +194,13 @@ const Convert = () => {
               mt: { xs: "1rem", lg: "1.5rem" },
             }}
           > */}
+          {/* <div ref={parent}> */}
           {buy ? (
             <SelectCurrency>
               <FormControl
                 variant="outlined"
                 fullWidth
-                sx={{ flexBasis: "30%", mt: { xs: "15px", lg: "5px" } }}
+                sx={{ flexBasis: "30%", mt: { xs: "10px", lg: "5px" } }}
               >
                 <InputLabel className={styles.label}>
                   {t("convert_from")}
@@ -310,6 +313,7 @@ const Convert = () => {
               </FormControl>
             </SelectCurrency>
           )}
+          {/* </div> */}
 
           {/* </Box> */}
         </Box>

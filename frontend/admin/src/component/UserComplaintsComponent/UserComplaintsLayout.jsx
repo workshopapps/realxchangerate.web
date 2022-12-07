@@ -7,7 +7,10 @@ import {
   StyledWrapper,
 } from "./UserComplaints.styled";
 import { useDispatch, useSelector } from "react-redux";
-import { getComplaints } from "../../store/actions/complaintsActions";
+import {
+  getComplaints,
+  resetLoading,
+} from "../../store/actions/complaintsActions";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import OutlinedInput from "@mui/material/OutlinedInput";
@@ -31,6 +34,10 @@ export default function UserComplaintsLayout() {
   // get complaints
   useEffect(() => {
     dispatch(getComplaints());
+
+    return () => {
+      dispatch(resetLoading());
+    };
   }, [dispatch]);
 
   // filter the complaints
