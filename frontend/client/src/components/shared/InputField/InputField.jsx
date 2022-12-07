@@ -57,7 +57,6 @@ const InputField = ({
         onBlur={handleFocused}
         focused={focused.toString()}
         value={value}
-        required
       />
       <p>{errorMessage}</p>
     </InputSection>

@@ -143,15 +143,13 @@ export const FormSection = styled.section`
 `;
 
 export const MessageModal = styled.div`
-  background: gray;
+  background: #4bb543;
   border-radius: 8px;
   position: fixed;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 10;
-  top: 50%;
-  width: 60%;
-  height: 200px;
+  top: 10%;
   color: white;
   display: flex;
   padding: 16px;
@@ -160,9 +158,4 @@ export const MessageModal = styled.div`
   font-weight: 600;
   font-size: 16px;
   margin: 1rem auto;
-
-  p: @media (min-width: 768px) {
-    width: 30%;
-    font-size: 36px;
-  }
 `;

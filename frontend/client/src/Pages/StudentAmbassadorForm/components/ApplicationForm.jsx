@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FormSection, MessageModal } from "../style/Application.style";
 import leftIcon from "../../../assets/svg/arrow-left.svg";
 import InputField from "../../../components/shared/InputField/InputField";
 import { countries } from "../../Home/data";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { SuccessMessage } from "../../FileComplaints/components/ComplaintForm/ComplaintForm.styled";
 
 const ApplicationForm = () => {
   const [ambassadorDetails, setAmbassadorDetails] = useState({
@@ -45,8 +46,6 @@ const ApplicationForm = () => {
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState({});
 
-  setTimeout(() => setMessage(false), 5000);
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setAmbassadorDetails({ ...ambassadorDetails, [name]: value });
@@ -57,7 +56,7 @@ const ApplicationForm = () => {
     if (!value.firstName) {
       errors.firstName = "First name is required";
     }
-    if (!value.last_name) {
+    if (!value.lastName) {
       errors.lastName = "Last name is required";
     }
     if (!value.email) {
@@ -66,11 +65,17 @@ const ApplicationForm = () => {
     if (!value.DOB) {
       errors.DOB = "DOB is required";
     }
+    if (!value.phoneNumber) {
+      errors.phoneNumber = "DOB is required";
+    }
     if (!value.address) {
       errors.address = "address is required";
     }
     if (!value.city) {
       errors.city = "city is required";
+    }
+    if (!value.country) {
+      errors.country = "DOB is required";
     }
     if (!value.schoolName) {
       errors.schoolName = "school name is required";
@@ -131,6 +136,7 @@ const ApplicationForm = () => {
       if (res.status == 200) {
         setMessage(true);
         setStatusMessage("Your application has been received!");
+        return setTimeout(() => setMessage(false), 3000);
       }
     } catch (err) {
       setMessage(false);
@@ -213,6 +219,7 @@ const ApplicationForm = () => {
               label="Phone number"
               value={phoneNumber}
               handleChange={handleChange}
+              errorMessage={errorMessage.phoneNumber}
             />
           </div>
         </div>
