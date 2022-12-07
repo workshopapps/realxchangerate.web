@@ -24,7 +24,7 @@ export default function News() {
     let outdated = new Date().getTime() > lastUpdated;
 
     if (ip && outdated) {
-      dispatch(GetNews("155.94.247.229"));
+      dispatch(GetNews(ip));
     } else {
       dispatch(setNews(News));
     }
@@ -32,8 +32,14 @@ export default function News() {
 
   useEffect(() => {
     if (news) {
-      if (news.length > 0) {
-        setLoading(false);
+      if (news.length > 0 && news.length < 5) {
+         dispatch(GetNews("155.94.247.229"))
+    
+      }
+      else{
+        if(news.length > 5){
+          setLoading(false)
+        }
       }
     }
     else{
@@ -63,8 +69,6 @@ export default function News() {
             }}
           >
             <Box display="flex" flexDirection="column" gap="24px">
-              <Selector />
-
               <Box
                 display="flex"
                 flexDirection="row"

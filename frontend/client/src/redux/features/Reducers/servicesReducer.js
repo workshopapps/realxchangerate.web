@@ -7,19 +7,19 @@ const initialState = {
   currencyRates: [],
   countryDetails: [],
   isLoading: false,
-  isNavLoading : false,
+  isNavLoading: false,
   currencyData: null,
-  localLanguage : {
-    lanaguage : "en",
-    country:"England",
-    label:"gb",
-    isocode : "ENG"
-},
+  localLanguage: {
+    lanaguage: "en",
+    country: "England",
+    label: "gb",
+    isocode: "ENG",
+  },
   news: [],
-  response : {
-    message:"",
-    type:""
-  }
+  response: {
+    message: "",
+    type: "",
+  },
 };
 
 const ServiceSlice = createSlice({
@@ -30,7 +30,7 @@ const ServiceSlice = createSlice({
       state.isLoading = action.payload;
     },
     setNavLoading: (state, action) => {
-      state.isNavLoading = action.payload
+      state.isNavLoading = action.payload;
     },
     setUserIp: (state, action) => {
       state.userIp = action.payload;
@@ -38,7 +38,7 @@ const ServiceSlice = createSlice({
     setDefaultCurrency: (state, action) => {
       state.defaultCurrency = action.payload;
     },
-    setLocalLanguage : (state, action) => {
+    setLocalLanguage: (state, action) => {
       state.localLanguage = action.payload;
     },
     setCurrencyData: (state, action) => {
@@ -57,12 +57,12 @@ const ServiceSlice = createSlice({
     setNews: (state, action) => {
       state.news = action.payload;
     },
-    createResponse : (state, action) => {
+    createResponse: (state, action) => {
       state.response = {
-        message : action.payload.message,
-        type: action.payload.type
-      }
-    }
+        message: action.payload.message,
+        type: action.payload.type,
+      };
+    },
   },
 });
 
@@ -76,8 +76,8 @@ export const {
   setCurrencyRates,
   setNews,
   setNavLoading,
-  setLocalLanguage, 
-  createResponse
+  setLocalLanguage,
+  createResponse,
 } = ServiceSlice.actions;
 
 export default ServiceSlice.reducer;
