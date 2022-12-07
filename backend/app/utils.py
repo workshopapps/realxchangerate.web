@@ -73,9 +73,8 @@ async def format_binance_response_data(response_data: List[Dict[str, Any]]) -> A
     return {"buy_rate": buy_rate, "sell_rate": sell_rate}
 
 
-def make_official_rate_request(base_currency: str, currency_list: List[str]) -> Any:
-    currencies = ','.join(currency_list)
-    url = f"{official_rate_endpoint}?base={base_currency}&symbols={currencies}"
+async def make_official_rate_request(base_currency: str) -> Any:
+    url = f"{official_rate_endpoint}?base={base_currency}"
     response = requests.get(url)
     data = response.json()
     return data
