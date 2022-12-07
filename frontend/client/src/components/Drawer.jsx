@@ -5,19 +5,19 @@ import streetRates from "../assets/Logo.svg";
 const DrawerComponent = ({ isOpen, setIsOpen }) => {
   const drawer = (
     <Box onClick={setIsOpen} sx={{ textAlign: "center" }}>
-     
       <Link to="/" style={{ color: "#0062ff" }}>
-            <img
-              style={{ width: "clamp(90px, 10vw, 140px)", margin: "20px auto" }}
-              src={streetRates}
-              alt=""
-            />
-          </Link>
+        <img
+          style={{ width: "clamp(90px, 10vw, 140px)", margin: "20px auto" }}
+          src={streetRates}
+          alt=""
+        />
+      </Link>
       <Divider />
       <Box
-        alignItems="center"
+        alignItems="flex-start"
         display="flex"
         gap="20px"
+        paddingLeft={"20px"}
         marginTop="20px"
         flexDirection="column"
         fontWeight="400"
