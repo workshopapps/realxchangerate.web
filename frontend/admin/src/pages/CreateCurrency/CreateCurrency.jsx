@@ -63,7 +63,7 @@ export default function CreateCurrency() {
 
   useEffect(() => {
     dispatch(getTrending());
-    console.log(currencies);
+    // console.log(currencies);
   }, [dispatch]);
 
   const handleOpen = () => {
@@ -200,7 +200,7 @@ export default function CreateCurrency() {
                       align="left"
                       style={{ color: "rgba(71, 85, 105, 1)" }}
                     >
-                      {mockData[index].rate}
+                      {mockData[index]?.rate}
                     </StyledTableCell>
                     <StyledTableCell
                       align="right"
