@@ -88,6 +88,9 @@ const DropDown = styled.div`
   position: absolute;
   background-color: white;
   z-index: 999;
+  margin-bottom: 30px;
+  top: -10px;
+  left: -10px;
   /* bottom: 20px; */
   padding: 24px 16px;
   .items {
