@@ -80,6 +80,7 @@ export const FormSection = styled.section`
       .select-field {
         width: 45%;
         display: flex;
+        position: relative;
         flex-direction: column;
         @media (max-width: 1025px) {
           width: 48.5%;
@@ -95,10 +96,10 @@ export const FormSection = styled.section`
         select {
           padding: 1rem 1.8rem;
           font-size: 1.6rem;
+          background: transparent;
           border-color: #94a3b8;
           color: #94a3b8;
           border-radius: 0.4rem;
-        }
       }
     }
     .grid-half {

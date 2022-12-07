@@ -259,7 +259,7 @@ const ApplicationForm = () => {
             <label htmlFor="country">Country</label>
             <select name="country" id="country">
               {countries.map(({ label, code }) => (
-                <option key={code} value={label} handleChange={handleChange}>
+                <option key={code} value={country} onChange={handleChange}>
                   {label}
                 </option>
               ))}
