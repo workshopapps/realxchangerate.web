@@ -16,9 +16,10 @@ const DrawerComponent = ({ isOpen, setIsOpen }) => {
       </Link>
       <Divider />
       <Box
-        alignItems="center"
+        alignItems="flex-start"
         display="flex"
         gap="20px"
+        paddingLeft={"20px"}
         marginTop="20px"
         flexDirection="column"
         fontWeight="400"
