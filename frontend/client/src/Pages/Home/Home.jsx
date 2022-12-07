@@ -28,6 +28,8 @@ const Home = () => {
   const [currencies, setCurrencies] = useState(tableCurrenciesList);
   const [getCurrency, setGetCurrency] = useState([]);
   const [dateUpdate, setDateUpdate] = useState("");
+  // Adding translation
+  const { t } = useTranslation();
   const handleEdit = () => {
     toggle();
   };
@@ -97,16 +99,16 @@ const Home = () => {
         <TypographyLive
           sx={{ color: "#0062FF", fontSize: "16px", fontWeight: 500 }}
         >
-          LIVE RATES
+          {t("home_live")}
         </TypographyLive>
         <TypographyHead
           component="h2"
           sx={{ fontSize: "32px", maxWidth: "595px", fontWeight: 800 }}
         >
-          Live rates of every currency around the world
+          {t("home_title")}
         </TypographyHead>
         <StyledEdit className="action" id="edit" onClick={() => handleEdit()}>
-          Edit
+          {t("home_btn")}
         </StyledEdit>
       </StyledBox>
       {/* Table  */}
@@ -129,9 +131,9 @@ const Home = () => {
             color: "black",
           }}
         >
-          <Box>Currency</Box>
-          <Box>Parallel </Box>
-          <StyledBankBox>Bank </StyledBankBox>
+          <Box>{t("home_currency")}</Box>
+          <Box>{t("home_parallel")}</Box>
+          <StyledBankBox>{t("home_Bank")}</StyledBankBox>
           <Box></Box>
         </ListItem>
 
@@ -173,7 +175,7 @@ const Home = () => {
               <Button {...bindTrigger(popupState)}>
                 <div className="add">
                   <img src={add} alt="" />
-                  <span className="addspan">Add currency</span>
+                  <span className="addspan">{t("home_add")}</span>
                 </div>
               </Button>
               <Menu {...bindMenu(popupState)}>
@@ -214,7 +216,9 @@ const Home = () => {
               />
             </i>
           </div>
-          <span>Last updated {dateUpdate}</span>
+          <span>
+            {t("home_updatee")} {dateUpdate}
+          </span>
         </div>
       </StyledSelection>
     </Box>

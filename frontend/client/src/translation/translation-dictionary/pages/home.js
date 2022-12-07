@@ -50,7 +50,7 @@ export default [
     es: "Agregar moneda",
   },
   {
-    key: "home_update",
+    key: "home_updatee",
     en: "Last updated ",
     de: "Zuletzt aktualisiert ",
     fr: "Dernière mise à jour ",

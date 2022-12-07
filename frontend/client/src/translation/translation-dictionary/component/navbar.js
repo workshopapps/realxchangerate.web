@@ -15,6 +15,20 @@ export default [
     es: "noticias",
   },
   {
+    key: "nav_convert",
+    en: "Convert",
+    de: "Konvertieren",
+    fr: "Convertir",
+    es: "Convertir",
+  },
+  {
+    key: "nav_curency",
+    en: "Currency Profile",
+    de: "Währungsprofil",
+    fr: "Profil de devise",
+    es: "Perfil de moneda",
+  },
+  {
     key: "nav_contact",
     en: "Contact",
     de: "Kontakt",
