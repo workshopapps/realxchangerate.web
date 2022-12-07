@@ -54,10 +54,10 @@ async def get_currency_rates_from_external_apis(db: Session = Depends(get_db)) -
                     db.add(rate_obj)
                     db.commit()
                     updated_currencies_list.append(currency_code)
-            return {
-                "success": True,
-                "message": f"Rates of {len(updated_currencies_list)}/{len(currency_list)} currencies updated successfully.",
-            }
+        return {
+            "success": True,
+            "message": f"Rates of {len(updated_currencies_list)}/{len(currency_list)} currencies updated successfully.",
+        }
     except Exception as e:
         logging.error(e)
         return {"success": False, "message": "Unable to update rates"}
