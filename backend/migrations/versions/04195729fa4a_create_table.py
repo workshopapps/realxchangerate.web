@@ -1,8 +1,8 @@
-"""Migrate to mysql
+"""create table
 
-Revision ID: c524d5df67a4
+Revision ID: 04195729fa4a
 Revises: 
-Create Date: 2022-12-07 12:33:19.299698
+Create Date: 2022-12-07 12:16:25.245012
 
 """
 from alembic import op
@@ -11,7 +11,7 @@ import sqlalchemy_utils
 
 
 # revision identifiers, used by Alembic.
-revision = 'c524d5df67a4'
+revision = '04195729fa4a'
 down_revision = None
 branch_labels = None
 depends_on = None
