@@ -49,6 +49,33 @@ export const loginUser = createAsyncThunk(
   }
 );
 
+export const getUser = createAsyncThunk(
+  "user/get",
+  async (_, { rejectWithValue }) => {
+    const token = localStorage.getItem('token');
+    try {
+      const res = await axios.get(`https://api.streetrates.hng.tech/api/user`, {
+        headers: {
+          accept: 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (res.status && res.status === 200) {
+        return res.data;
+      } else {
+        localStorage.removeItem('token');
+        return rejectWithValue(res);
+      }
+    } catch (err) {
+      console.log(err.message, 'erorr');
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+
+
+
 export const userSlice = createSlice({
   name: "user",
   initialState,
@@ -67,6 +94,14 @@ export const userSlice = createSlice({
         state.user = action.payload;
       })
       .addCase(loginUser.rejected, (state, action) => {
+        state.loginStatus = "failed";
+        state.error = action.payload;
+      })
+      .addCase(getUser.pending, (state, action) => {
+        state.loginStatus = "idle";
+        state.error = action.payload;
+      })
+      .addCase(getUser.rejected, (state, action) => {
         state.loginStatus = "failed";
         state.error = action.payload;
       });
