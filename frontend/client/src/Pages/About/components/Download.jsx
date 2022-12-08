@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Typography, useMediaQuery } from "@mui/material";
+import { Box, Typography, useMediaQuery, useTheme} from "@mui/material";
 import tabletImage from "../assets/Tablet.png";
 import mobileImage from "../assets/mobile-image.png";
 import AppleIcon from "../assets/icons/Appleicon.svg";
@@ -9,10 +9,13 @@ const Download = () => {
   const tabletLower = useMediaQuery("(min-width:481px)");
   const tablet = tabletLower && tabletUpper;
   const image = tablet ? tabletImage : mobileImage;
+  const theme = useTheme();
+  const darkMode = theme.palette.mode === "dark";
+
   return (
     <Box
       width="100%"
-      backgroundColor="#F8FAFC"
+      backgroundColor={darkMode ? "#00050C": "#F8FAFC"}
       display="flex"
       justifyContent="center"
       alignItems="center"
