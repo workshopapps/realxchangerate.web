@@ -86,7 +86,7 @@ export default function CreateCurrency() {
     dispatch(getBaseDetails("NGN"));
     dispatch(getRates(baseCurrency));
 
-    console.log(baseCurrency);
+    //eslint-disable-next-line 
   }, [dispatch]);
 
   const handleOpen = () => {
