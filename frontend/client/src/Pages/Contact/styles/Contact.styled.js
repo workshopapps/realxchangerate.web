@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Button = styled.div`
   background-color: #00368c;
   min-height: 64px;
+  cursor: pointer;
   width: 200px;
   display: flex;
   align-items: center;
@@ -45,10 +46,10 @@ export const DisabledButton = styled.div`
 `;
 
 export const TextInput = styled.input`
-padding:"10px 12px";
-height:"100px";
-border:"0.873687px solid #D1D5DB";
-font-size:"14px";
-line-height:"20px";
-font-weight:"400";
+  padding: "10px 12px";
+  height: "100px";
+  border: "0.873687px solid #D1D5DB";
+  font-size: "14px";
+  line-height: "20px";
+  font-weight: "400";
 `;
