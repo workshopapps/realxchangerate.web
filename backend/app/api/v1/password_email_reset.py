@@ -32,7 +32,7 @@ from fastapi import APIRouter, Depends, HTTPException, status
 router = APIRouter()
 
 
-email_sender = 'ejibe750@gmail.com'
+email_sender = 'ikechukwummachukwu2020@gmail..com'
 email_password = config('MAIL_PASSWORD')
 
 
@@ -52,6 +52,9 @@ router = APIRouter()
 
 @router.post("/forgot_password")
 async def sending_mail(email: EmailStr, db: Session = Depends(get_db)):
+    """
+    Send a reset password email to the mail provided
+    """
     admin_email = crud.admin.get_by_email(db, email=email)
     if not admin_email:
         raise HTTPException(
@@ -73,7 +76,7 @@ async def sending_mail(email: EmailStr, db: Session = Depends(get_db)):
             smtp.sendmail(email_sender, email_receiver, em.as_string())
     except SMTPResponseException as e:
         print(f'An error occured, error: {e}')
-        return {"Message": "Oops!!! \nCould not send message"}
+        return {"Message": "Oops!!! Could not send message"}
     return {"Message":"Your message has been sent!"}
 
 
