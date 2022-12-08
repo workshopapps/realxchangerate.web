@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Box, useMediaQuery } from "@mui/material";
 import { Arrow, InverseArrow } from "../assets";
 import AmountInput from "./AmountInput";
@@ -46,6 +46,7 @@ const TopComponent = () => {
       </div>
     );
   };
+
 
   return (
     <Box
