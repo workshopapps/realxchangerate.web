@@ -31,7 +31,7 @@ import { useTranslation } from "react-i18next";
 // Adding tranlsation page
 const NavComponent = () => {
   const { t, i18n } = useTranslation();
-  const { currencyList, countryDetails, localLanguage, isNavLoading } =
+  const { isNavLoading } =
     useSelector((state) => state.service);
   const theme = useTheme();
   const colorMode = useContext(ColorModeContext);

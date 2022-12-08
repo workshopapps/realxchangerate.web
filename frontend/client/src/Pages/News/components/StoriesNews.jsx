@@ -16,7 +16,7 @@ export default function StoriesNews({ data }) {
         padding="14px"
         borderRadius="4px"
         flexDirection="column"
-        sx={{ gap: { xs: "10px"} }}
+        sx={{ gap: { xs: "7px" } }}
       >
         <Box height="176px">
           {data.image_url === null ? (
@@ -37,7 +37,7 @@ export default function StoriesNews({ data }) {
               lineHeight="16px"
               color="#0F172A"
               sx={{
-                fontSize: {xs:"16px", sm:"14px", md: "16px"},
+                fontSize: { xs: "16px", sm: "12px", md: "16px" },
               }}
             >
               {data.title}
@@ -50,7 +50,7 @@ export default function StoriesNews({ data }) {
               lineHeight="16px"
               color="#0F172A"
               sx={{
-                fontSize: {xs:"16px", sm:"14px", md: "16px"},
+                fontSize: { xs: "16px", sm: "12px", md: "16px" },
               }}
             >
               {data.title}
@@ -62,7 +62,7 @@ export default function StoriesNews({ data }) {
           lineHeight="28px"
           color="#1E293B"
           sx={{
-            fontSize: { xs: "14px", sm:"12", md:"14px"},
+            fontSize: { xs: "14px", sm: "12px", md: "14px" },
           }}
         >
           {/* {data.category[0].toUpperCase()} */}

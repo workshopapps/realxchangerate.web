@@ -9,7 +9,7 @@ const Header = ({ data }) => {
       <Breadcrumbs aria-label="breadcrumb" sx={{display:{xs:"none", sm:"flex"}}}>
         <Link
           underline="hover"
-          color="#64748B"
+          color="#00000"
           to="/news"
           style={{
             fontWeight: "400",
@@ -47,7 +47,6 @@ const Header = ({ data }) => {
             sm: "132.52%",
             xs: "132.52%",
           },
-          color: "#0F172A",
         }}
       >
         {data.title}

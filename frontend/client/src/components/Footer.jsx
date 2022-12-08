@@ -2,7 +2,6 @@ import { Box, Stack, Typography, Link } from "@mui/material";
 import React from "react";
 import DropDown from "./DropDown";
 import streetRates from "../assets/Logo.svg";
-import { Filter } from "iconsax-react";
 import { useTranslation } from "react-i18next";
 const Footer = () => {
   const { t } = useTranslation();
