@@ -26,6 +26,7 @@ from email.message import EmailMessage
 import os
 import ssl
 import smtplib
+from smtplib import SMTPResponseException
 from decouple import config
 from typing import Any, List
 from fastapi import APIRouter, Depends, HTTPException, status
@@ -72,7 +73,7 @@ async def sending_mail(email: EmailStr, db: Session = Depends(get_db)):
         with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=context) as smtp:
             smtp.login(email_sender, email_password)
             smtp.sendmail(email_sender, email_receiver, em.as_string())
-    except HTTPException as e:
+    except SMTPResponseException as e:
         print(f'An error occured, error: {e}')
         return {"Message": "Oops!!! \nCould not send message"}
     return {"Message":"Your message has been sent!"}
