@@ -8,7 +8,7 @@ from app.api.deps import get_db
 router = APIRouter()
 
 @router.post("")
-def create_contact(
+def create_advert(
     *,
     db: Session = Depends(get_db),
     advert_in: schemas.AdvertCreate,
