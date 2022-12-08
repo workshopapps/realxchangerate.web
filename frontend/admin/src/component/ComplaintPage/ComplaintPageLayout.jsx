@@ -18,7 +18,7 @@ import MenuItem from "@mui/material/MenuItem";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  getComplaints,
+  getOneComplaint,
   updateComplaint,
 } from "../../store/actions/complaintsActions";
 // import Loader from "../shared/Loader/Loader";
@@ -28,33 +28,33 @@ function ComplaintPageLayout() {
   const [data, setData] = useState(null);
   const [adminMssg, setAdminMssg] = useState("");
   const [currStatus, setCurrStatus] = useState("");
-  const params = useParams();
 
-  // const navigate = useNavigate();
+  const params = useParams();
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
-  const { complaints, loading } = useSelector((state) => state.complaints);
+  const { complaint, loading } = useSelector((state) => state.complaints);
 
   useEffect(() => {
-    // get all complaints
-    dispatch(getComplaints());
-  }, [dispatch]);
+    // get complaint
+
+    const info = { id: params.id };
+    dispatch(getOneComplaint(info));
+  }, [dispatch, params.id]);
 
   useEffect(() => {
-    // find particular complaint
-    if (complaints) {
-      const id = parseInt(params.id);
-      let issue = complaints.items.find((item) => item.id === id);
-
-      setData(issue);
-      setCurrStatus(issue.status);
+    if (complaint.Success) {
+      setData(complaint.Contacts);
+      setCurrStatus(complaint.Contacts.status);
     }
-  }, [complaints, params.id]);
+  }, [complaint]);
 
-  if (!complaints && loading === "failed") {
-    toast.error("error fetching complaints");
+  console.log(complaint);
+
+  if (!complaint.Success && loading === "failed") {
+    toast.error("error fetching complaint");
   }
-  if (complaints && loading === "rejected") {
+  if (complaint.Success && loading === "rejected") {
     toast.error("update failed");
   }
 
