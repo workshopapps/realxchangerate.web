@@ -1,4 +1,4 @@
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, Grid, Typography, useTheme } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
@@ -6,17 +6,19 @@ import moment from "moment";
 import { ImageCard } from "./ImageCard";
 
 export default function StoriesNews({ data }) {
+  const theme = useTheme();
+  const darkMode = theme.palette.mode === "dark";
   return (
     <Grid item sm={4}>
       <Box
         height="348px"
         display="flex"
-        backgroundColor="#F8FAFC"
-        border="0.5px solid #94A3B8"
+        backgroundColor={darkMode ? "#000A1B" : "#F8FAFC"}
+        border={darkMode ? "0.5px solid #000E25" : "0.5px solid #94A3B8"}
         padding="14px"
         borderRadius="4px"
         flexDirection="column"
-        sx={{ gap: { xs: "10px"} }}
+        sx={{ gap: { xs: "7px" } }}
       >
         <Box height="176px">
           {data.image_url === null ? (
@@ -35,9 +37,9 @@ export default function StoriesNews({ data }) {
             <Typography
               fontWeight="500"
               lineHeight="16px"
-              color="#0F172A"
+              color={darkMode ? "#FAFAFA" : "#0F172A"}
               sx={{
-                fontSize: {xs:"16px", sm:"14px", md: "16px"},
+                fontSize: { xs: "16px", sm: "12px", md: "16px" },
               }}
             >
               {data.title}
@@ -48,9 +50,9 @@ export default function StoriesNews({ data }) {
             <Typography
               fontWeight="500"
               lineHeight="16px"
-              color="#0F172A"
+              color={darkMode ? "#FAFAFA" : "#0F172A"}
               sx={{
-                fontSize: {xs:"16px", sm:"14px", md: "16px"},
+                fontSize: { xs: "16px", sm: "12px", md: "16px" },
               }}
             >
               {data.title}
@@ -60,9 +62,9 @@ export default function StoriesNews({ data }) {
         <Typography
           fontWeight="400"
           lineHeight="28px"
-          color="#1E293B"
+          color={darkMode ? "#8C9FBC" : "#1E293B"}
           sx={{
-            fontSize: { xs: "14px", sm:"12", md:"14px"},
+            fontSize: { xs: "14px", sm: "12px", md: "14px" },
           }}
         >
           {/* {data.category[0].toUpperCase()} */}
@@ -71,7 +73,7 @@ export default function StoriesNews({ data }) {
         <Typography
           fontWeight="400"
           lineHeight="28px"
-          color="#334155"
+          color={darkMode ? "#8C9FBC" : "#334155"}
           sx={{
             fontSize: { xs: "10px", lg: "13px" },
           }}

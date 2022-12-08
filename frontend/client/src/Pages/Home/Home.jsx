@@ -1,4 +1,4 @@
-import { Box, List, ListItem, Typography } from "@mui/material";
+import { Box, List, ListItem, Typography, useTheme } from "@mui/material";
 import React from "react";
 import Convert from "../../components/home/Convert";
 import Hero from "../../components/home/Hero";
@@ -20,6 +20,8 @@ import { dispatch } from "../../redux/store";
 import { GetCurrencyRates } from "../../redux/features/Reducers/serviceActions";
 import Countdown from "react-countdown-simple";
 const Home = () => {
+  const theme = useTheme();
+  const dark = theme.palette.mode === "dark";
   const oneHour = new Date(
     new Date().setHours(new Date().getHours() + 2)
   ).toISOString();
@@ -30,9 +32,7 @@ const Home = () => {
   const [dateUpdate, setDateUpdate] = useState("");
   // Adding translation
   const { t } = useTranslation();
-  const handleEdit = () => {
-    toggle();
-  };
+
   useEffect(() => {
     if (currencyList.length > 0) {
       dispatch(GetCurrencyRates(currencyList));
@@ -79,6 +79,7 @@ const Home = () => {
         margin: "auto",
         p: { xs: "2rem", md: "4rem", lg: "5rem 10rem" },
         pt: { xs: "5rem" },
+        backgroundColor: dark ? "#00050c" : "",
       }}
     >
       <Box
@@ -114,7 +115,7 @@ const Home = () => {
       {/* Table  */}
       <List
         style={{
-          border: "1px solid #CBD5E1",
+          border: dark ? "" : "1px solid #CBD5E1",
           padding: "0",
           borderRadius: "5px",
         }}
@@ -124,17 +125,17 @@ const Home = () => {
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            bgcolor: "#F1F5F9",
+            bgcolor: dark ? "" : "#F1F5F9",
             fontSize: "1.7rem",
             p: "1.5rem",
             fontWeight: 600,
-            color: "black",
+            color: dark ? "#FAFAFA" : "black",
           }}
         >
           <Box>{t("home_currency")}</Box>
           <Box>{t("home_parallel")}</Box>
           <StyledBankBox>{t("home_Bank")}</StyledBankBox>
-          <Box></Box>
+          <Box style={{ width: "60px" }}></Box>
         </ListItem>
 
         {currencies.map((currency) => {
@@ -199,12 +200,13 @@ const Home = () => {
                   <span className="addspan">{t("home_add")}</span>
                 </div>
               </Button>
-              <Menu {...bindMenu(popupState)}>
+              <Menu {...bindMenu(popupState)} >
                 {getCurrency.map((item) => {
                   return (
                     <MenuItem
                       onClick={() => handleAdd(popupState.close, item)}
                       key={item.id}
+                      sx={{backgroundColor : dark ? "#001E4E" : "", padding:"3"}}
                     >
                       <img
                         loading="lazy"
@@ -221,26 +223,6 @@ const Home = () => {
             </React.Fragment>
           )}
         </PopupState>
-        {/* <div className="lastUpdate">
-          <div style={{ position: "relative" }}>
-            <CircularProgressWithLabel
-              variant="determinate"
-              value={59}
-              thickness={6}
-            />
-            <i>
-              <Countdown
-                targetDate={oneHour}
-                renderer={({ days, hours, minutes, seconds }) => (
-                  <span id="time">{minutes}</span>
-                )}
-              />
-            </i>
-          </div>
-          <span>
-            {t("home_updatee")} {dateUpdate}
-          </span>
-        </div> */}
       </StyledSelection>
     </Box>
   );

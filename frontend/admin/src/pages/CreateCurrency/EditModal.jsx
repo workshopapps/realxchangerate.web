@@ -1,7 +1,4 @@
-import { Modal, Box, Button } from "@mui/material";
-// import Box from '@mui/material';
-// import Button from '@mui/material';
-import add from "../../assets/add.svg";
+import { Modal, Box } from "@mui/material";
 import Form from "./EditForm.jsx";
 
 const ModalUi = ({ editOpen, handleEditOpen, handleEditClose, editVal }) => {

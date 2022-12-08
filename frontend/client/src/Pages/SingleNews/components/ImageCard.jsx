@@ -1,12 +1,13 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, useTheme } from "@mui/material";
 import React from "react";
 
 export const MainSectionImageCard = ({ category }) => {
+  const theme = useTheme();
+  const darkMode = theme.palette.mode === "dark";
   return (
     <Box
       display="flex"
-      backgroundColor="#14008C"
-      borderRadius="4px"
+      backgroundColor={darkMode ? "#09003B":"#14008C"}
       sx={{
         minWidth: {
           lg: "147px",
@@ -31,10 +32,12 @@ export const MainSectionImageCard = ({ category }) => {
 
 
 export const ImageCard = ({ category, height, width }) => {
+  const theme = useTheme();
+  const darkMode = theme.palette.mode === "dark";
   return (
     <Box
       display="flex"
-      backgroundColor="#14008C"
+      backgroundColor={darkMode ? "#09003B":"#14008C"}
       borderRadius="4px"
       sx={{
         width: width,

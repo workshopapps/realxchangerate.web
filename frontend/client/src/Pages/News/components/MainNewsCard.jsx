@@ -35,7 +35,7 @@ export default function MainNewsCard({ currentNews }) {
           </>
           <Box display="flex" flexDirection="column" gap="24px">
             <Typography
-              color="#334155"
+              color={darkMode ? "#8C9FBC" : "#334155"}
               sx={{ fontSize: { xs: "16px", sm: "13px", md: "16px" } }}
               lineHeight="19px"
             >
@@ -55,14 +55,14 @@ export default function MainNewsCard({ currentNews }) {
                   to={`/news/${currentNews.id}`}
                   style={{
                     textDecoration: "none",
-                    color: darkMode ? "#fff" : "#0F172A",
+                    color: darkMode ? "#FAFAFA" : "#0F172A",
                   }}
                 >
                   {currentNews.title}
                 </Link>
               </Typography>
               <Typography
-                color={darkMode ? "#fff" : "#1E293B"}
+                color={darkMode ? "#8C9FBC" : "#1E293B"}
                 fontSize="16px"
                 sx={{
                   fontWeight: "400",

@@ -13,7 +13,7 @@ const LoaderComponent = () => {
       alignItems="center"
       justifyContent="center"
     >
-      <img id="loader" width={150} height={150} src={Loader} alt="loader" />;
+      <img id="loader" width={150} height={150} src={Loader} alt="loader" />
     </Box>
   );
 };
