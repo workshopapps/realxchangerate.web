@@ -48,14 +48,15 @@ export default function News() {
           flexDirection="column"
           alignItems="center"
           maxWidth="1440px"
-          margin="0px auto 40px"
+          margin="0px auto"
+          backgroundColor={darkMode ? "#00050C" : ""}
         >
           <Box
             display="flex"
             flexDirection="column"
             sx={{
               width: { xs: "90%", lg: "84%" },
-              margin: { xs: "40px auto", sm: "0px auto" },
+              margin: { xs: "40px auto", sm: "40px auto 80px" },
               gap: { sm: "24px", md: "32px" },
             }}
           >

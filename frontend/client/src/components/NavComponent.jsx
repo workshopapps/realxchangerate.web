@@ -70,11 +70,13 @@ const NavComponent = () => {
   }, []);
 
   return (
-    <Grid
+    <Box width="100%" backgroundColor={theme.palette.mode === "dark" ? "#000A1A" : ""}>
+<Grid
       sx={{
         minHeight: { xs: "56px", sm: "100px" },
         justifyContent: { xs: "space-between" },
         maxWidth: { xs: "90%", lg: "84%" },
+        
       }}
       minHeight="100px"
       display="flex"
@@ -204,13 +206,13 @@ const NavComponent = () => {
             })}
           </Menu>
         </Box>
-        <Link to="/" style={{ color: "#0062ff" }}>
+        <Link to="/" style={{ color: theme.palette.mode === "dark" ? "#8C9FBC" :"#0062ff" }}>
           {t("nav_home")}
         </Link>
-        <Link to="/news" style={{ color: "#0062ff" }}>
+        <Link to="/news" style={{ color: theme.palette.mode === "dark" ? "#8C9FBC" :"#0062ff" }}>
           {t("nav_news")}
         </Link>
-        <Link to="/contact" style={{ color: "#0062ff" }}>
+        <Link to="/contact" style={{ color: theme.palette.mode === "dark" ? "#8C9FBC" :"#0062ff" }}>
           {t("nav_contact")}
         </Link>
       </Grid>
@@ -318,6 +320,8 @@ const NavComponent = () => {
         navItems={["Home", "Convert", "Currency Profile", "News", "Contact"]}
       />
     </Grid>
+    </Box>
+    
   );
 };
 export default NavComponent;
