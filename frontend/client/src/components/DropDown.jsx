@@ -16,7 +16,7 @@ const DropDown = ({ title, Items, Links }) => {
     <>
       <Accordion
         style={{
-          backgroundColor: DarkMode ? "#00296B" : "inherit",
+          backgroundColor: DarkMode ? "#000E25" : "inherit",
           backgroundImage:"none",
           boxShadow: "none",
           color: "#F8FAFC",

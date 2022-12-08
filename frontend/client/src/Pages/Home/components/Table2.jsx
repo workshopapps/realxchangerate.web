@@ -1,4 +1,4 @@
-import { ListItem, Typography, Box } from "@mui/material";
+import {  Typography, Box, useTheme } from "@mui/material";
 import React from "react";
 import { countries } from "../data";
 import { Link } from "react-router-dom";
@@ -6,6 +6,8 @@ import styled from "styled-components";
 import { maxWidth } from "@mui/system";
 
 function Table2({ isocode, country, deleteIcon, rates, link, symbol }) {
+  const theme = useTheme();
+  const dark = theme.palette.mode === "dark";
   const countryDetails = countries.filter((countr) => countr.label === country);
   return (
     <Box
@@ -14,7 +16,7 @@ function Table2({ isocode, country, deleteIcon, rates, link, symbol }) {
       flexDirection="row"
       padding="10px"
       alignItems="center"
-      borderTop="1px solid #CBD5E1"
+      borderTop={dark ?"1px solid #001E4E" :"1px solid #CBD5E1"}
       fontSize="1.4rem"
     >
       <Link to={`/${isocode}/currency-profile`}>
@@ -35,8 +37,8 @@ function Table2({ isocode, country, deleteIcon, rates, link, symbol }) {
             />
           </Box>
           <Box>
-            <Box style={{ color: "#555962" }}>{isocode}</Box>
-            <Box sx={{ fontSize: "1rem", color: "#94A3B8" }}>{country}</Box>
+            <Box style={{ color: dark ? '#8C9FBC' : "#555962" }}>{isocode}</Box>
+            <Box sx={{ fontSize: "1rem", color: dark ? '#FAFAFA' : "#94A3B8" }}>{country}</Box>
           </Box>
         </Box>
       </Link>

@@ -3,8 +3,11 @@ import React from "react";
 import styled from "styled-components";
 import scanImage from "../assets/scan-image.png";
 import { noWCommas } from "../utils/utils";
+import { useTheme } from "@mui/material";
 
 const Hero = () => {
+  const { theme } = useTheme();
+  const dark = theme.palette.mode === "dark";
   const [rates, setRates] = React.useState({});
   const [convert, setconvert] = React.useState(1);
   const endpoint =
@@ -71,7 +74,7 @@ const Hero = () => {
 
     p {
       margin-top: 20px;
-      color: #555962;
+      color: ${dark ? "#E2E2E2": "#555962"};
       line-height: 28px;
       font-size: 20px;
     }
