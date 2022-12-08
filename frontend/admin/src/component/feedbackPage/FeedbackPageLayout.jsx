@@ -27,8 +27,9 @@ function FeedbackPageLayout() {
 	const { contact, requestStatus } = useSelector((state) => state.contacts);
 
 	useEffect(() => {
+		const idParams = params.id;
 		if (!contact) {
-			dispatch(getContact(params.id));
+			dispatch(getContact(idParams));
 		} else {
 			setData(contact);
 		}

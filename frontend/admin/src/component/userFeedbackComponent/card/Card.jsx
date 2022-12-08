@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
+import { FaTimes } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 import {
-	// StyledCardButton,
 	StyledCardMessage,
 	Name,
 	Email,
@@ -10,14 +10,27 @@ import {
 } from './Card.styled';
 import { Button, Skeleton, Stack } from '@mui/material';
 import calIcon from '../../../assets/calendarIcon.svg';
-// import { Data } from '../../../pages/userFeedbacks/mockData';
+import { useDispatch } from 'react-redux';
+import {
+	deleteContact,
+	getContacts,
+} from '../../../store/actions/contactActions';
 
 export function Card({ data }) {
 	const navigate = useNavigate();
 	const date = new Date(data['last_updated']);
+	const dispatch = useDispatch();
+
+	const handleClick = () => {
+		dispatch(deleteContact(data.id));
+		dispatch(getContacts());
+	};
 
 	return (
 		<StyledCardWrapper>
+			<div className='delete'>
+				<FaTimes onClick={handleClick} />
+			</div>
 			<div className='align-top'>
 				<div className='align'>
 					<div>
