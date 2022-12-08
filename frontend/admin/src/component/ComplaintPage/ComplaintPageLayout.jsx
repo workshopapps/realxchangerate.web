@@ -12,6 +12,11 @@ import {
   StyledFormButtonSubmit,
   StyledFormButtonCancel,
   StyledGrayWrapper,
+  StyledDeleteNo,
+  StyledDeleteQuestion,
+  StyledDeleteQuestionWrapper,
+  StyledDeleteYes,
+  StyledCardDelete,
 } from "./ComplaintPage.styled";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
@@ -20,20 +25,47 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   getOneComplaint,
   updateComplaint,
+  deleteComplaint,
 } from "../../store/actions/complaintsActions";
 // import Loader from "../shared/Loader/Loader";
 import { toast } from "react-toastify";
+import Button from "@mui/material/Button";
+import { ReactComponent as DeleteIcon } from "../../assets/icons/x_icon.svg";
+import Box from "@mui/material/Box";
+import Modal from "@mui/material/Modal";
+import Fade from "@mui/material/Fade";
+import Backdrop from "@mui/material/Backdrop";
+
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  maxWidth: 400,
+  width: "fit-content",
+  bgcolor: "background.paper",
+  // border: "2px solid #000",
+  boxShadow: 24,
+  borderRadius: "12px",
+  p: 4,
+};
 
 function ComplaintPageLayout() {
   const [data, setData] = useState(null);
   const [adminMssg, setAdminMssg] = useState("");
   const [currStatus, setCurrStatus] = useState("");
 
-  const params = useParams();
-  const navigate = useNavigate();
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { complaint, loading } = useSelector((state) => state.complaints);
+  const params = useParams();
+
+  const { complaint, loading, deleteStatus } = useSelector(
+    (state) => state.complaints
+  );
 
   useEffect(() => {
     // get complaint
@@ -43,18 +75,18 @@ function ComplaintPageLayout() {
   }, [dispatch, params.id]);
 
   useEffect(() => {
-    if (complaint.Success) {
-      setData(complaint.Contacts);
-      setCurrStatus(complaint.Contacts.status);
+    if (complaint?.Success) {
+      setData(complaint?.Contacts);
+      setCurrStatus(complaint?.Contacts.status);
     }
   }, [complaint]);
 
-  console.log(complaint);
+  // console.log(complaint);
 
-  if (!complaint.Success && loading === "failed") {
+  if (!complaint?.Success && loading === "failed") {
     toast.error("error fetching complaint");
   }
-  if (complaint.Success && loading === "rejected") {
+  if (complaint?.Success && loading === "rejected") {
     toast.error("update failed");
   }
 
@@ -67,6 +99,25 @@ function ComplaintPageLayout() {
 
   const handleAdminMssg = (e) => {
     setAdminMssg(e.target.value);
+  };
+
+  const handleDelete = () => {
+    const info = {
+      id: data?.id,
+    };
+
+    dispatch(deleteComplaint(info));
+
+    handleClose();
+
+    if (deleteStatus === "success") {
+      setTimeout(() => {
+        navigate("/admin/complaints");
+      }, 2000);
+      toast.success(`Complaint #${data?.id} has been deleted`);
+    } else if (deleteStatus === "failed") {
+      toast.error(`Deletion failed`);
+    }
   };
 
   const onSubmit = (e) => {
@@ -106,6 +157,41 @@ function ComplaintPageLayout() {
         <h3>Complaint #{params.id}</h3>
       </StyledPageHeader>
 
+      <StyledCardDelete>
+        <Button
+          onClick={handleOpen}
+          variant="outlined"
+          startIcon={<DeleteIcon fill="#D32F2F" />}
+          color="error"
+        >
+          Delete
+        </Button>
+
+        <Modal
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="confirm delete"
+          aria-describedby="modal to confirm delete"
+          closeAfterTransition
+          BackdropComponent={Backdrop}
+          BackdropProps={{
+            timeout: 500,
+          }}
+        >
+          <Fade in={open}>
+            <Box sx={style}>
+              <StyledDeleteQuestion>
+                Confirm this complaint would be deleted
+                <StyledDeleteQuestionWrapper>
+                  <StyledDeleteYes onClick={handleDelete}>YES</StyledDeleteYes>
+                  <StyledDeleteNo onClick={handleClose}>NO</StyledDeleteNo>
+                </StyledDeleteQuestionWrapper>
+              </StyledDeleteQuestion>
+            </Box>
+          </Fade>
+        </Modal>
+      </StyledCardDelete>
+
       <StyledComplaintForm onSubmit={onSubmit}>
         <StyledGrayWrapper>
           <StyledGrid>
@@ -113,6 +199,7 @@ function ComplaintPageLayout() {
               <label htmlFor="name">Name</label>
               <StyledInputWrapper>
                 <input
+                  style={{ backgroundColor: "inherit" }}
                   disabled
                   type="text"
                   id="full_name"
@@ -126,6 +213,7 @@ function ComplaintPageLayout() {
               <label htmlFor="name">Email</label>
               <StyledInputWrapper>
                 <input
+                  style={{ backgroundColor: "inherit" }}
                   disabled
                   type="email"
                   id="name"
@@ -140,6 +228,7 @@ function ComplaintPageLayout() {
             <div>
               <label htmlFor="complaint">Complaint</label>
               <StyledTextArea
+                style={{ backgroundColor: "inherit" }}
                 disabled
                 rows="4"
                 id="complaint"
@@ -153,6 +242,7 @@ function ComplaintPageLayout() {
               <StyledInputWrapper>
                 <input
                   disabled
+                  style={{ backgroundColor: "inherit" }}
                   type="text"
                   id="id"
                   name="id"
