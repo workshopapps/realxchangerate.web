@@ -12,7 +12,7 @@ from app.api.v1 import faq
 from app.api.v1 import complaints
 from app.api.v1 import contact
 from app.api.v1 import student
-from app.api.v1 import gmail
+from app.api.v1 import adverts
 
 api_router = APIRouter()
 
@@ -32,4 +32,5 @@ api_router.include_router(complaints.router, prefix="/complaints", tags=["compla
 api_router.include_router(contact.router, prefix="/contacts", tags=["contacts"])
 api_router.include_router(student.router, prefix="/students", tags=["students"])
 
-api_router.include_router(gmail.router, prefix="", tags=["gmail"])
+api_router.include_router(adverts.router, prefix="/online_adverts", tags=["adverts"])
+

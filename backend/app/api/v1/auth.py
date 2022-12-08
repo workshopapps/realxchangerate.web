@@ -103,4 +103,8 @@ async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(
     
     return {"access_token": access_token, "token_type": "bearer"}
 
+@router.get("/user")
+async def admin_users_me(current_user: schemas.Admin = Depends(get_current_active_user)):
+    return current_user
+
 
