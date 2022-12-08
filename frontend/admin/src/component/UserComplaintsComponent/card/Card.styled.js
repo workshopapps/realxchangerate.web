@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 
 export const StyledCardWrapper = styled.div`
+    position: relative;
+
     background: #FFFFFF;
     border: 1px solid #CBD5E1;
     border-radius: 16px;
