@@ -87,6 +87,7 @@ const Convert = () => {
     setCurrecy(base);
     setBuy(!buy);
   };
+  console.log(currency, base, buy)
   const parent = React.useRef(null);
   React.useEffect(() => {
     parent.current && autoAnimate(parent.current);
@@ -342,7 +343,7 @@ const Convert = () => {
             <h4>{t("convert_result")}</h4>
             <h3>
               {rates}
-              <span>{buy ? currency : base}</span>
+              <span>{currency}</span>
             </h3>
             <div className="xchng">
               <h4>
