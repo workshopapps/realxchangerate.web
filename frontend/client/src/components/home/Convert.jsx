@@ -126,6 +126,7 @@ const Convert = () => {
   };
 
   const theme = useTheme();
+  const dark = theme.palette.mode === "dark";
   const matches = useMediaQuery(theme.breakpoints.up("md"));
   return (
     <Card
@@ -137,11 +138,12 @@ const Convert = () => {
         padding: { lg: "32px", xs: "8px" },
         mb: "64px",
         boxShadow: "0 0 0 0",
+        backgroundColor: dark ? "#000A1B" : "",
       }}
     >
       <h2
         style={{
-          color: "#0F172A",
+          color: dark ? "#FAFAFA" : "#0F172A",
           fontSize: "clamp(20px, 5vw, 24px)",
           lineHeight: "40px",
           textAlign: "center",
@@ -168,7 +170,10 @@ const Convert = () => {
             <FormControl sx={{ width: "100%" }}>
               <InputLabel
                 htmlFor="amount"
-                sx={{ color: "black !important", top: "-12px !important" }}
+                sx={{
+                  color: dark ? "#8C9FBC" : "#0F172A",
+                  top: "-12px !important",
+                }}
               >
                 {t("convert_amount")}
               </InputLabel>
@@ -201,7 +206,10 @@ const Convert = () => {
                 fullWidth
                 sx={{ flexBasis: "30%", mt: { xs: "10px", lg: "5px" } }}
               >
-                <InputLabel className={styles.label}>
+                <InputLabel
+                  sx={{ color: dark ? "#8C9FBC" : "#0F172A" }}
+                  className={styles.label}
+                >
                   {t("convert_from")}
                 </InputLabel>
                 <Select
@@ -226,7 +234,12 @@ const Convert = () => {
                 fullWidth
                 sx={{ flexBasis: "30%", mt: { xs: "15px", lg: "5px" } }}
               >
-                <InputLabel className={styles.label}>From:</InputLabel>
+                <InputLabel
+                  sx={{ color: dark ? "#8C9FBC" : "#0F172A" }}
+                  className={styles.label}
+                >
+                  From:
+                </InputLabel>
                 <Select
                   name="currency"
                   id="currency1"
@@ -267,7 +280,10 @@ const Convert = () => {
                 fullWidth
                 sx={{ flexBasis: "30%", mt: { xs: "15px", lg: "5px" } }}
               >
-                <InputLabel className={styles.label}>
+                <InputLabel
+                  sx={{ color: dark ? "#8C9FBC" : "#0F172A" }}
+                  className={styles.label}
+                >
                   {t("convert_to")}
                 </InputLabel>
                 <Select
@@ -293,7 +309,10 @@ const Convert = () => {
                 fullWidth
                 sx={{ flexBasis: "30%", mt: { xs: "15px", lg: "5px" } }}
               >
-                <InputLabel className={styles.label}>
+                <InputLabel
+                  sx={{ color: dark ? "#8C9FBC" : "#0F172A" }}
+                  className={styles.label}
+                >
                   {t("convert_to")}
                 </InputLabel>
                 <Select

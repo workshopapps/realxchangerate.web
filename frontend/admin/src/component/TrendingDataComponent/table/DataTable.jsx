@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -8,8 +8,6 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import {
   StyledFlagAndCountry,
-  StyledGrowth,
-  StyledLoss,
 } from "./DataTable.styled";
 import { useDispatch, useSelector } from "react-redux";
 import { getTrending } from "../../../store/actions/trendingActions";

@@ -24,25 +24,16 @@ export default function News() {
     let outdated = new Date().getTime() > lastUpdated;
 
     if (ip && outdated) {
-      dispatch(GetNews(ip));
+      dispatch(GetNews("155.94.247.229"));
     } else {
       dispatch(setNews(News));
     }
   }, []);
 
   useEffect(() => {
-    if (news) {
-      if (news.length > 0 && news.length < 5) {
-         dispatch(GetNews("155.94.247.229"))
-    
-      }
-      else{
-        if(news.length > 5){
-          setLoading(false)
-        }
-      }
-    }
-    else{
+    if (news.length > 0) {
+      setLoading(false);
+    } else {
       dispatch(GetNews("155.94.247.229"));
     }
   }, [news]);
@@ -57,14 +48,15 @@ export default function News() {
           flexDirection="column"
           alignItems="center"
           maxWidth="1440px"
-          margin="0px auto 40px"
+          margin="0px auto"
+          backgroundColor={darkMode ? "#00050C" : ""}
         >
           <Box
             display="flex"
             flexDirection="column"
             sx={{
               width: { xs: "90%", lg: "84%" },
-              margin: { xs: "40px auto", sm: "0px auto" },
+              margin: { xs: "40px auto", sm: "40px auto 80px" },
               gap: { sm: "24px", md: "32px" },
             }}
           >
@@ -91,6 +83,7 @@ export default function News() {
                   <Box display="flex" flexDirection="column" gap="24px">
                     <Typography
                       sx={{
+                        color: "#000000",
                         fontWeight: "500",
                         fontSize: "24px",
                         lineHeight: "144.02%",
