@@ -3,63 +3,74 @@ import { countries } from "../../../utils/data";
 import Country from "./Country";
 
 export const RowComponent = ({ country, bank, parallel }) => {
+  let image = countries.find((x) => x.label === country.country);
   return (
-    <Box
-      display="flex"
-      height="45px"
-      width="100%"
-      sx={{ sm: { borderBottom: "1px solid #E2E8F0" } }}
-    >
-      <Box
-        display="flex"
-        justifyContent="space-between"
-        alignItems="center"
-        fontSize="18px"
-        padding="12px 24px"
-        width="100%"
-      >
-        <Country name={country.isocode} image={countries.find(x => x.label === country.country).code}/>
-        <Typography
-          fontSize="14px"
-          fontWeight="400"
-          lineHeight="20px"
-          letterSpacing="0.01em"
+    <>
+      {image && (
+        <Box
+          display="flex"
+          height="45px"
+          width="100%"
+          sx={{ sm: { borderBottom: "1px solid #E2E8F0" } }}
         >
-          {bank}
-        </Typography>
-        <Typography
-          fontSize="14px"
-          fontWeight="400"
-          lineHeight="20px"
-          letterSpacing="0.01em"
-        >
-          {parallel}
-        </Typography>
-      </Box>
-    </Box>
+          <Box
+            display="flex"
+            justifyContent="space-between"
+            alignItems="center"
+            fontSize="18px"
+            padding="12px 24px"
+            width="100%"
+          >
+            <Country name={country.isocode} image={image} />
+
+            <Typography
+              fontSize="14px"
+              fontWeight="400"
+              lineHeight="20px"
+              letterSpacing="0.01em"
+            >
+              {bank}
+            </Typography>
+            <Typography
+              fontSize="14px"
+              fontWeight="400"
+              lineHeight="20px"
+              letterSpacing="0.01em"
+            >
+              {parallel}
+            </Typography>
+          </Box>
+        </Box>
+      )}
+    </>
   );
 };
 
 export const MobileRowComponent = ({ country, rate }) => {
+  let image = countries.find((x) => x.label === country.country);
   return (
-    <Box
-      display="flex"
-      height="45px"
-      alignItems="center"
-      width="100%"
-      sx={{ sm: { borderBottom: "1px solid #E2E8F0" } }}
-    >
-      <Box
-        display="flex"
-        justifyContent="space-between"
-        alignItems="center"
-        padding="12px 24px"
-        width="100%"
-      >
-        <Country name={country.isocode} image={countries.find(x => x.label === country.country).code}/>
-        <Typography fontSize='14px'>{rate}</Typography>
-      </Box>
-    </Box>
+    <>
+      {image && (
+        <Box
+          display="flex"
+          height="45px"
+          alignItems="center"
+          width="100%"
+          sx={{ sm: { borderBottom: "1px solid #E2E8F0" } }}
+        >
+          <Box
+            display="flex"
+            justifyContent="space-between"
+            alignItems="center"
+            padding="12px 24px"
+            width="100%"
+          >
+            {image && <Country name={country.isocode} image={image} />}
+            <Typography fontSize="14px">{rate}</Typography>
+          </Box>
+        </Box>
+      )}
+    </>
   );
 };
 

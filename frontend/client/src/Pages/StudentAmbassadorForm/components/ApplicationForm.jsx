@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import { FormSection, MessageModal } from "../style/Application.style";
 import leftIcon from "../../../assets/svg/arrow-left.svg";
 import InputField from "../../../components/shared/InputField/InputField";
 import { countries } from "../../Home/data";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { SuccessMessage } from "../../FileComplaints/components/ComplaintForm/ComplaintForm.styled";
 
 const ApplicationForm = () => {
   const [ambassadorDetails, setAmbassadorDetails] = useState({
@@ -133,7 +132,7 @@ const ApplicationForm = () => {
         formData
       );
 
-      if (res.status == 200) {
+      if (res.status === 200) {
         setMessage(true);
         setStatusMessage("Your application has been received!");
         return setTimeout(() => setMessage(false), 3000);

@@ -27,8 +27,8 @@ export const currenciesList = [
 
 export const countries = [
   { code: "AD", label: "Andorra", phone: "376" },
-  
-{code: "EU", phone: '00', label: 'EU'},
+
+  { code: "EU", phone: "00", label: "EU" },
   {
     code: "AE",
     label: "United Arab Emirates",
@@ -415,7 +415,6 @@ export const countries = [
     code: "US",
     label: "United States",
     phone: "1",
-    suggested: true,
   },
   { code: "UY", label: "Uruguay", phone: "598" },
   { code: "UZ", label: "Uzbekistan", phone: "998" },

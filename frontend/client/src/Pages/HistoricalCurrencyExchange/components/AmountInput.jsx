@@ -1,12 +1,16 @@
-import React from "react";
-import { Box, Typography } from "@mui/material";
+import React, { useState } from "react";
+import { Box, Typography, Button, Menu, MenuItem } from "@mui/material";
 import { DownArrow } from "../assets";
 import PropTypes from "prop-types";
+import { useSelector } from "react-redux";
+import { countries } from "../../../utils/data";
 
-const AmountInput = ({ flag, amount, setAmount }) => {
+const AmountInput = ({ amount, setAmount, defaultCurrency }) => {
+  const { currencyList } = useSelector((state) => state.service);
+  const [currentCurrency, setCurrentCurrency] = useState(defaultCurrency);
   const TextInput = {
     border: "none",
-    padding:"3px",
+    padding: "3px",
     width: "90%",
     "::focus": {
       border: "none",
@@ -17,6 +21,19 @@ const AmountInput = ({ flag, amount, setAmount }) => {
     height: "25px",
     backgroundColor: "inherit",
     color: "inherit",
+  };
+
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+  const handleCloseItem = (ele) => {
+    setAnchorEl(null);
+    setCurrentCurrency(ele);
   };
 
   return (
@@ -40,7 +57,6 @@ const AmountInput = ({ flag, amount, setAmount }) => {
       }}
     >
       <Box display="flex" width="50%" gap="5px" alignItems="center">
-        
         <input
           type="text"
           placeholder="Amount"
@@ -58,34 +74,85 @@ const AmountInput = ({ flag, amount, setAmount }) => {
         justifyContent="center"
         alignItems="center"
       >
-        <Typography
-          sx={{
-            fontSize: { xs: "12px", sm: "10px", md: "12px", xl: "14px" },
-          }}
-          lineHeight="20px"
-          fontWeight="400"
-          color="#6B7280"
+        <Button
+          id="basic-button"
+          aria-controls={open ? "basic-menu" : undefined}
+          aria-haspopup="true"
+          aria-expanded={open ? "true" : undefined}
+          onClick={handleClick}
         >
-         NGN
-        </Typography>
-        <img
-        loading="lazy"
-        width="20"
-        src={ `https://flagcdn.com/w20/ng.png `}
-        srcSet={`https://flagcdn.com/w40/ng.png 2x`}
-        alt=""
-      />
-        <img src={DownArrow} height={20} width={20} alt="arrow" />
+          <Box display="flex" flexDirection="row" gap="6px">
+            <img
+              loading="lazy"
+              height="20"
+              src={
+                currentCurrency
+                  ? `https://flagcdn.com/h20/${currentCurrency.code.toLowerCase()}.png `
+                  : ""
+              }
+              srcSet={
+                currentCurrency
+                  ? `https://flagcdn.com/h40/${currentCurrency.code.toLowerCase()}.png 2x,
+                     https://flagcdn.com/h60/${currentCurrency.code.toLowerCase()}.png 3x`
+                  : ""
+              }
+              alt=""
+            />
+            <img src={DownArrow} height={20} width={20} alt="arrow" />
+          </Box>
+        </Button>
+
+        <Menu
+          id="basic-menu"
+          anchorEl={anchorEl}
+          open={open}
+          onClose={() => handleClose()}
+          MenuListProps={{
+            "aria-labelledby": "basic-button",
+          }}
+          width="120px"
+          sx={{
+            height: "auto",
+          }}
+        >
+          {currencyList.map((ele) => {
+            let image = countries.find((x) => ele.country === x.label);
+            return (
+              <MenuItem
+                sx={{
+                  display: "flex",
+                  gap: "6px",
+                  flexDirection: "row",
+                }}
+                onClick={() => handleCloseItem(image)}
+                key={ele.isocode}
+              >
+                {image && (
+                  <>
+                    {" "}
+                    <img
+                      loading="lazy"
+                      width="20"
+                      src={`https://flagcdn.com/w20/${image.code.toLowerCase()}.png`}
+                      srcSet={`https://flagcdn.com/w40/${image.code.toLowerCase()}.png 2x`}
+                      alt=""
+                    />
+                    <Typography marginRight="5px">{ele.isocode}</Typography>{" "}
+                  </>
+                )}
+              </MenuItem>
+            );
+          })}
+        </Menu>
       </Box>
     </Box>
   );
 };
 
 AmountInput.propTypes = {
-  flag : PropTypes.string.isRequired,
+  flag: PropTypes.string.isRequired,
   amount: PropTypes.string.isRequired,
-  setAmount: PropTypes.func.isRequired
-}
+  setAmount: PropTypes.func.isRequired,
+};
 
 export default AmountInput;
-

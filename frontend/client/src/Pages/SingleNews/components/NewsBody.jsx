@@ -22,7 +22,6 @@ const NewsBody = ({ data }) => {
           fontWeight: "600",
           fontSize: "24px",
           lineHeight: "24px",
-          color: "#0F172A",
         }}
       >
         Introduction
@@ -33,7 +32,6 @@ const NewsBody = ({ data }) => {
           fontWeight: "500",
           fontSize: "20px",
           lineHeight: "24px",
-          color: "#0F172A",
         }}
       >
         {data.description}
@@ -44,7 +42,6 @@ const NewsBody = ({ data }) => {
           fontWeight: "400",
           fontSize: "16px",
           lineHeight: "24px",
-          color: "#0F172A",
         }}
       >
         {data.content}
