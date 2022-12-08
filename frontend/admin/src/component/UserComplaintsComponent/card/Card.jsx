@@ -32,7 +32,7 @@ export function Card({ data }) {
         {data?.status &&
           (data?.status === "resolved"
             ? "Resolved"
-            : data?.status === "Unresolved"
+            : data?.status === "unresolved"
             ? "Unresolved"
             : data?.status === "in review"
             ? "Still In Review"

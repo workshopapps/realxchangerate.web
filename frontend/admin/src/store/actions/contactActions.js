@@ -9,12 +9,40 @@ const initialState = {
 };
 
 export const getContacts = createAsyncThunk(
-	'get/contact',
+	'get/contacts',
 	async (payload, { rejectWithValue }) => {
 		const token = localStorage.getItem('token');
 		try {
 			const res = await axios.get(
 				'https://api.streetrates.hng.tech/api/contacts/contact_details',
+				{
+					headers: {
+						accept: 'application/json',
+						Authorization: `Bearer ${token}`,
+					},
+				}
+			);
+			if (res.status && res.status === 200) {
+				return res.data;
+			} else {
+				return rejectWithValue(res);
+			}
+		} catch (err) {
+			console.log(err, 'erorr');
+			return rejectWithValue(err.response.data);
+		}
+	}
+);
+
+// get single contact
+export const getContact = createAsyncThunk(
+	'get/contact',
+	async (payload, { rejectWithValue }) => {
+		const token = localStorage.getItem('token');
+		console.log(payload);
+		try {
+			const res = await axios.get(
+				`https://api.streetrates.hng.tech/api/contacts/contact_detatils/${payload}`,
 				{
 					headers: {
 						accept: 'application/json',
@@ -48,6 +76,17 @@ export const contactSlice = createSlice({
 				state.requestStatus = 'success';
 			})
 			.addCase(getContacts.rejected, (state, action) => {
+				state.requestStatus = 'failed';
+				state.error = action.payload;
+			})
+			.addCase(getContact.pending, (state, action) => {
+				state.requestStatus = 'pending';
+			})
+			.addCase(getContact.fulfilled, (state, action) => {
+				state.contact = action.payload.Contacts;
+				state.requestStatus = 'success';
+			})
+			.addCase(getContact.rejected, (state, action) => {
 				state.requestStatus = 'failed';
 				state.error = action.payload;
 			});
