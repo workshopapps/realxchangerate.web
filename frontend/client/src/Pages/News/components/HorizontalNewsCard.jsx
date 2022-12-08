@@ -10,14 +10,16 @@ export default function HorizontalNewsCard({ data }) {
   const darkMode = theme.palette.mode === "dark";
 
   return (
-    <Box backgroundColor={darkMode ? "#000A1B" : ""}>
+    <Box>
       {data ? (
         <Box
           display="flex"
           flexDirection="row"
           sx={{
             gap: { xs: "15px", md: "20px", lg: "24px" },
-            backgroundColor: { xs: "#F8FAFC", sm: "#fff" },
+            backgroundColor: darkMode
+              ? {xs:"#000A1B"}
+              : { xs: "#F8FAFC", sm: "#fff" },
             padding: { xs: "17px", sm: "auto" },
           }}
         >
