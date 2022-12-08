@@ -15,7 +15,6 @@ export default function AddContent({ cancel, setNewdata }) {
       : "";
   const [formData, setFormData] = React.useState({ question: "", answer: "" });
   const [loading, setLoading] = React.useState(false);
-  const [errortext, setErrortext] = React.useState("");
 
   const token = localStorage.getItem("token");
   const handleChange = (e) => {

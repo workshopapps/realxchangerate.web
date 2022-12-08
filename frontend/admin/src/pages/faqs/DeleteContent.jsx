@@ -9,7 +9,6 @@ import { style } from "./styles";
 
 export default function DeleteContent({ cancel, id, setNewdata }) {
   const [loading, setLoading] = React.useState(false);
-  const [errortext, setErrortext] = React.useState("");
   const token = localStorage.getItem("token");
 
   const endpoint =
