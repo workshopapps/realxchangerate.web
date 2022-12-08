@@ -105,9 +105,7 @@ const About = () => {
             </TeamMembers>
           </TeamSection>
         </Container>
-        <Container>
           <Download />
-        </Container>
       </Box>
     </>
   );
