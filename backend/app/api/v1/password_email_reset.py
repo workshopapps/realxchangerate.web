@@ -11,7 +11,6 @@ from app.models.admin import Admin
 from decouple import config
 from fastapi import FastAPI, Depends, HTTPException
 from app.schemas.admin import AdminUpdate, AdminCreate
-from fastapi_mail import FastMail, MessageSchema, ConnectionConfig
 from starlette.requests import Request
 from pydantic import EmailStr, BaseModel
 from app.api.deps import get_db
