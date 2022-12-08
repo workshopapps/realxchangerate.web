@@ -68,11 +68,12 @@ const About = () => {
         display="flex"
         flexDirection="column"
         sx={{ gap: { xs: "27px", sm: "80px" } }}
+        width="100%"
         backgroundColor={DarkMode ? "#00050C" : ""}
       >
-        <Container about textColor={textColor}>
+      
           <Header />
-        </Container>
+        
 
         <Container textColor={textColor}>
           <Mission />
@@ -104,9 +105,7 @@ const About = () => {
             </TeamMembers>
           </TeamSection>
         </Container>
-        <Container>
           <Download />
-        </Container>
       </Box>
     </>
   );
@@ -132,7 +131,7 @@ const Container = styled.div`
   background-color: ${(props) => {
     if (props.about) {
       return `
-        #00296b;
+        ${props.darkMode ? "#00050C" :"#00296b"};
         color: #fff;
     `;
     } else if (props.noBg) {
@@ -149,6 +148,7 @@ const Container = styled.div`
   }};
 
   display: flex;
+  width:100%;
   justify-content: center;
 `;
 

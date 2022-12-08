@@ -15,15 +15,15 @@ import {
   StyledTooltip,
   StyledTotalTvl,
 } from "./Chart.styled";
-import { ReactComponent as TvlGrowth } from "./tvl_small_growth.svg";
+
 import { useLocation } from "react-router-dom";
 
-const CustomTooltip = ({ active, payload, label }) => {
+const CustomTooltip = ({ active, payload, label, symbol }) => {
   if (active && payload && payload.length) {
     return (
       <StyledTooltip>
         <p>
-          {"$"}
+          {symbol}
           {`${payload[0].value}`}
         </p>
       </StyledTooltip>
@@ -33,7 +33,7 @@ const CustomTooltip = ({ active, payload, label }) => {
   return null;
 };
 
-const dar = [
+const fallbackDar = [
   {
     name: "JAN",
     tvl: 2300,
@@ -115,7 +115,6 @@ export default function Chart() {
   });
   const path = useLocation();
 
-  // console.log(path.pathname.split("/")[1]);
   useEffect(() => {
     console.log("hello World");
     const fetchTrending = async () => {
@@ -143,13 +142,10 @@ export default function Chart() {
             currency: response.data.data.currency.isocode,
             symbol: response.data.data.currency.symbol,
           });
-          // return response.data;
         }
       } catch (error) {
         console.error(error.response);
       }
-
-      // console.log()
     };
     fetchTrending();
     const intervalId = setInterval(fetchTrending, 3600000);
@@ -158,8 +154,6 @@ export default function Chart() {
     };
   }, [path]);
 
-  // Name: response.data.data.rates[0].last_updated.split("T")[1].split(":")[0]
-  // tvl: response.data.data.rates[0].parallel_buy
   return (
     <StyledChartWrapper>
       <StyledChartTop>
@@ -170,11 +164,6 @@ export default function Chart() {
           </h2>
           <p>{data ? "" : "Data unavailable"}</p>
           <div>
-            {/* <p className="totalTvl">$41.58b</p> */}
-            {/* <p className="growth">
-              <TvlGrowth width="7.68px" height="7.68px" />
-              1.3%
-            </p> */}
             <p className="compare">VS HOURLY</p>
           </div>
         </StyledTotalTvl>
@@ -188,7 +177,7 @@ export default function Chart() {
       >
         <ResponsiveContainer>
           <AreaChart
-            data={data ? data : dar}
+            data={data ? data : fallbackDar}
             margin={{
               top: 10,
               right: 0,
@@ -225,7 +214,7 @@ export default function Chart() {
               orientation="right"
               style={{ color: "#615E83", fontSize: "10px" }}
             />
-            <Tooltip content={<CustomTooltip />} />
+            <Tooltip content={<CustomTooltip symbol={values.symbol} />} />
             <Area
               type="monotone"
               dataKey="tvl"

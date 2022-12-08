@@ -14,7 +14,12 @@ const Header = () => {
   const image = tablet ? tabletImage : mobileImage;
 
   return (
-    <Box backgroundColor={darkMode ? "#000A1B" : "#00296B"} display="flex" w="100%">
+    <Box
+      backgroundColor={darkMode ? "#000A1B" : "#00296B"}
+      display="flex"
+      w="100%"
+     
+    >
       <Box
         alignItems="center"
         sx={{
@@ -48,6 +53,7 @@ const Header = () => {
                 fontSize: { xs: "32px", sm: "36px" },
                 lineHeight: { xs: "40px", sm: "44px" },
               }}
+               color="#F5F5F5"
             >
               About us
             </Typography>
@@ -58,6 +64,7 @@ const Header = () => {
                 fontSize: { xs: "20px", sm: "20px", md: "15px", lg: "20px" },
                 lineHeight: { lg: "28px" },
               }}
+              color="#F5F5F5"
             >
               Street Rates is a platform that allows users to recieve/view
               instant conversion rates using customized areas real-time charts
