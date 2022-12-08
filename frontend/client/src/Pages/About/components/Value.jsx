@@ -1,11 +1,13 @@
 import React from "react";
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, Grid, Typography, useTheme } from "@mui/material";
 import CommunityIcon from "../assets/icons/Community.svg";
 import DiversityIcon from "../assets/icons/Diversity.svg";
 import EntrepreneurshipIcon from "../assets/icons/Entrprenuership.svg";
 import InnovationIcon from "../assets/icons/Innovation.svg";
 
 const ListItem = ({ image, title, content }) => {
+  const theme = useTheme();
+  const darkMode = theme.palette.mode === "dark";
   return (
     <Box
       display="flex"
@@ -24,7 +26,10 @@ const ListItem = ({ image, title, content }) => {
         <Box
           display="flex"
           flexDirection="row"
-          sx={{ alignItems: { xs: "center", sm: "left" }, justifyContent:{xs:"center", sm:"left"} }}
+          sx={{
+            alignItems: { xs: "center", sm: "left" },
+            justifyContent: { xs: "center", sm: "left" },
+          }}
         >
           <img src={image} alt="" width="50px" height="100%" />
         </Box>
@@ -37,7 +42,7 @@ const ListItem = ({ image, title, content }) => {
             lineHeight: { xs: "28px", sm: "32px" },
             textAlign: { xs: "center", sm: "left" },
           }}
-          color="#4B4B4B"
+          color={darkMode ? "#FAFAFA" : "#4B4B4B"}
         >
           {title}
         </Typography>
@@ -49,7 +54,7 @@ const ListItem = ({ image, title, content }) => {
           fontSize: { xs: "16px", sm: "15px", md: "15px", lg: "20px" },
           lineHeight: { xs: "24px", sm: "28px" },
         }}
-        color="#202020"
+        color={darkMode ? "#DFDFDF" : "#202020"}
         textAlign="left"
       >
         {content}
@@ -59,9 +64,11 @@ const ListItem = ({ image, title, content }) => {
 };
 
 const Value = () => {
+  const theme = useTheme();
+  const darkMode = theme.palette.mode === "dark";
   return (
     <Box
-      backgroundColor="#F8FAFC"
+      backgroundColor={darkMode ? "#00050C" : "#F8FAFC"}
       display="flex"
       justifyContent="center"
       flexDirection="column"
@@ -95,7 +102,7 @@ const Value = () => {
 
         <Typography
           fontWeight="400"
-          color="#202020"
+          color={darkMode ? "#FAFAFA" : "#202020"}
           sx={{
             fontSize: { xs: "14px", sm: "15px", md: "15px", lg: "20px" },
             lineHeight: { lg: "28px" },

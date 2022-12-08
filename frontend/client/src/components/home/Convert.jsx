@@ -87,7 +87,7 @@ const Convert = () => {
     setCurrecy(base);
     setBuy(!buy);
   };
-  console.log(currency, base, buy)
+
   const parent = React.useRef(null);
   React.useEffect(() => {
     parent.current && autoAnimate(parent.current);

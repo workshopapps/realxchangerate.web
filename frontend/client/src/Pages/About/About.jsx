@@ -68,6 +68,7 @@ const About = () => {
         display="flex"
         flexDirection="column"
         sx={{ gap: { xs: "27px", sm: "80px" } }}
+        backgroundColor={DarkMode ? "#00050C" : ""}
       >
         <Container about textColor={textColor}>
           <Header />
