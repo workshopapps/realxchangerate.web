@@ -2,7 +2,6 @@ import { Button } from "@mui/material";
 import axios from "axios";
 import React, { useState } from "react";
 import Input from "../../shared/Input";
-import BasicSelect from "../../shared/Select";
 import { Container } from "./formstyles";
 
 const Form = ({ handleEditClose, editVal }) => {
