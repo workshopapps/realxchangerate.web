@@ -1,13 +1,21 @@
-import React, { useState } from "react";
-import { Box, Typography, Button, Menu, MenuItem } from "@mui/material";
+import React, { useState, useEffect } from "react";
+import {
+  Box,
+  Typography,
+  Button,
+  Menu,
+  MenuItem,
+  Skeleton,
+} from "@mui/material";
 import { DownArrow } from "../assets";
 import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
 import { countries } from "../../../utils/data";
 
 const AmountInput = ({ amount, setAmount, defaultCurrency }) => {
-  const { currencyList } = useSelector((state) => state.service);
-  const [currentCurrency, setCurrentCurrency] = useState(defaultCurrency);
+  const { currencyList, isNavLoading } = useSelector((state) => state.service);
+  const [currentCurrency, setCurrentCurrency] = useState(null);
+  const [loading, setLoading] = useState(true);
   const TextInput = {
     border: "none",
     padding: "3px",
@@ -35,6 +43,17 @@ const AmountInput = ({ amount, setAmount, defaultCurrency }) => {
     setAnchorEl(null);
     setCurrentCurrency(ele);
   };
+
+  useEffect(() => {
+    if (currentCurrency === null) {
+      const DefaultCurrency = JSON.parse(
+        sessionStorage.getItem("localCurrency")
+      );
+      setCurrentCurrency(DefaultCurrency);
+    }
+    setCurrentCurrency(defaultCurrency);
+    setLoading(false);
+  }, [defaultCurrency]);
 
   return (
     <Box
@@ -74,33 +93,41 @@ const AmountInput = ({ amount, setAmount, defaultCurrency }) => {
         justifyContent="center"
         alignItems="center"
       >
-        <Button
-          id="basic-button"
-          aria-controls={open ? "basic-menu" : undefined}
-          aria-haspopup="true"
-          aria-expanded={open ? "true" : undefined}
-          onClick={handleClick}
-        >
-          <Box display="flex" flexDirection="row" gap="6px">
-            <img
-              loading="lazy"
-              height="20"
-              src={
-                currentCurrency
-                  ? `https://flagcdn.com/h20/${currentCurrency.code.toLowerCase()}.png `
-                  : ""
-              }
-              srcSet={
-                currentCurrency
-                  ? `https://flagcdn.com/h40/${currentCurrency.code.toLowerCase()}.png 2x,
-                     https://flagcdn.com/h60/${currentCurrency.code.toLowerCase()}.png 3x`
-                  : ""
-              }
-              alt=""
-            />
-            <img src={DownArrow} height={20} width={20} alt="arrow" />
+        {loading ? (
+          <Box display="flex" gap="1px" flexDirection="column">
+            <Skeleton variant="rounded" width={70} height={5} />
+            <Skeleton variant="rounded" width={70} height={5} />
+            <Skeleton variant="rounded" width={70} height={5} />
           </Box>
-        </Button>
+        ) : (
+          <Button
+            id="basic-button"
+            aria-controls={open ? "basic-menu" : undefined}
+            aria-haspopup="true"
+            aria-expanded={open ? "true" : undefined}
+            onClick={handleClick}
+          >
+            <Box display="flex" flexDirection="row" gap="6px">
+              <img
+                loading="lazy"
+                height="20"
+                src={
+                  currentCurrency
+                    ? `https://flagcdn.com/h20/${currentCurrency.code.toLowerCase()}.png `
+                    : ""
+                }
+                srcSet={
+                  currentCurrency
+                    ? `https://flagcdn.com/h40/${currentCurrency.code.toLowerCase()}.png 2x,
+                     https://flagcdn.com/h60/${currentCurrency.code.toLowerCase()}.png 3x`
+                    : ""
+                }
+                alt=""
+              />
+              <img src={DownArrow} height={20} width={20} alt="arrow" />
+            </Box>
+          </Button>
+        )}
 
         <Menu
           id="basic-menu"
