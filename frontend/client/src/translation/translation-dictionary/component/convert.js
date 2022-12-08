@@ -9,9 +9,9 @@ export default [
   },
   {
     key: "convert_amount",
-    en: "amount",
+    en: "Amount",
     de: "Menge",
-    fr: "montant",
+    fr: "Montant",
     es: "Monto",
   },
   {
@@ -23,10 +23,10 @@ export default [
   },
   {
     key: "convert_to",
-    en: "to:",
-    de: "zu:",
-    fr: "vers:",
-    es: "a:",
+    en: "To:",
+    de: "Zu:",
+    fr: "Vers:",
+    es: "A:",
   },
   {
     key: "convert_result",

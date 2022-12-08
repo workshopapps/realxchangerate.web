@@ -7,6 +7,18 @@ from app.api.v1 import api_router
 from app.core import settings
 from app.api.v1 import password_email_reset
 
+# pip install --upgrade 'sentry-sdk[fastapi]' 
+import sentry_sdk
+
+sentry_sdk.init(
+    dsn="https://de5ca00ef65048f3b948bb2d0e952ab4@o4504276826914816.ingest.sentry.io/4504278710943744",
+
+    # Set traces_sample_rate to 1.0 to capture 100%
+    # of transactions for performance monitoring.
+    # We recommend adjusting this value in production,
+    traces_sample_rate=1.0,
+)
+
 app = FastAPI(title=settings.PROJECT_NAME)
 origins = [    
     "http://localhost",
@@ -21,6 +33,7 @@ origins = [
     "https://team-bevel-client.netlify.app/*",
     "http://exchange.hng.tech:3008",
     "http://exchange.hng.tech:3008/*",
+    "*",
 ]
 app.add_middleware(
     CORSMiddleware,
