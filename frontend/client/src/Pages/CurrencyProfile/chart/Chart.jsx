@@ -16,7 +16,7 @@ import {
   StyledTotalTvl,
 } from "./Chart.styled";
 import { ReactComponent as TvlGrowth } from "./tvl_small_growth.svg";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const CustomTooltip = ({ active, payload, label }) => {
   if (active && payload && payload.length) {
@@ -114,7 +114,8 @@ export default function Chart() {
     currency: "Loading",
   });
   const path = useLocation();
-  console.log(path.pathname.split("/")[1]);
+
+  // console.log(path.pathname.split("/")[1]);
   useEffect(() => {
     console.log("hello World");
     const fetchTrending = async () => {
@@ -136,7 +137,7 @@ export default function Chart() {
             }),
           ];
           setData(chartData);
-          console.log(chartData);
+
           setValues({
             country: response.data.data.currency.country,
             currency: response.data.data.currency.isocode,
@@ -155,7 +156,7 @@ export default function Chart() {
     return () => {
       clearInterval(intervalId);
     };
-  }, []);
+  }, [path]);
 
   // Name: response.data.data.rates[0].last_updated.split("T")[1].split(":")[0]
   // tvl: response.data.data.rates[0].parallel_buy
@@ -167,7 +168,7 @@ export default function Chart() {
           <h2>
             {values.currency} {values.symbol}
           </h2>
-
+          <p>{data ? "" : "Data unavailable"}</p>
           <div>
             {/* <p className="totalTvl">$41.58b</p> */}
             {/* <p className="growth">
