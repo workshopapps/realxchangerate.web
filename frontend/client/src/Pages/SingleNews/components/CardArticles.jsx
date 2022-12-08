@@ -1,4 +1,4 @@
-import { Box, Card, Typography } from "@mui/material";
+import { Box, Card, Typography, useTheme } from "@mui/material";
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
@@ -6,6 +6,8 @@ import moment from "moment";
 import { ImageCard } from "../../News/components/ImageCard";
 
 export default function CardArticles({ data }) {
+  const theme = useTheme();
+  const darkMode = theme.palette.mode === "dark";
   return (
     <Box
       display="flex"
@@ -31,7 +33,7 @@ export default function CardArticles({ data }) {
           fontSize: { xs: "20px", md: "24px" },
           lineHeight: "144.02%",
 
-          color: "#0F172A",
+          color: darkMode ? "#FAFAFA": "#0F172A",
         }}
       >
         {data.title}
@@ -45,7 +47,7 @@ export default function CardArticles({ data }) {
             fontSize: "12px",
             lineHeight: "143.52%",
 
-            color: "#0F172A",
+            color: darkMode ? "#8C9FBC": "#0F172A",
           }}
         >
           {data.author}
@@ -56,7 +58,7 @@ export default function CardArticles({ data }) {
             fontSize: "12px",
             lineHeight: "143.52%",
 
-            color: "#0F172A",
+            color: darkMode ? "#8C9FBC": "#0F172A",
           }}
         >
           {moment(data.date).format("Do MMMM, YYYY")}
@@ -67,7 +69,7 @@ export default function CardArticles({ data }) {
           fontWeight: "400",
           fontSize: "16px",
           lineHeight: "144.02%",
-          color: "#0F172A",
+          color: darkMode ? "#FAFAFA": "#0F172A",
         }}
       >
         {data.intro}
@@ -76,7 +78,7 @@ export default function CardArticles({ data }) {
         <Link
           to={`/news/${data.id}`}
           style={{
-            color: "#0064F1",
+            color:"#0064F1",
           }}
         >
           Continue Reading
