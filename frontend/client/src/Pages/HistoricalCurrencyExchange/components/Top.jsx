@@ -1,7 +1,8 @@
-import { useState} from "react";
+import { useState, useEffect } from "react";
 import { Box, useMediaQuery } from "@mui/material";
-import {  Arrow, InverseArrow } from "../assets";
+import { Arrow, InverseArrow } from "../assets";
 import AmountInput from "./AmountInput";
+import { useSelector } from "react-redux";
 
 const TopComponent = () => {
   const mobileScreen = useMediaQuery("(max-width:481px)");
@@ -10,24 +11,25 @@ const TopComponent = () => {
   const [baseAmount, setBaseAmount] = useState("");
   const [calculatedAmount, setCalculatedAmount] = useState("");
 
+  const { defaultCurrency } = useSelector((state) => state.service);
+
   const BaseConversion = (value) => {
-    setBaseAmount(value)
+    setBaseAmount(value);
     const rate = 400;
-    let result = (rate * parseInt(value))
-    result = isNaN(result) ? "" : result
-    
+    let result = rate * parseInt(value);
+    result = isNaN(result) ? "" : result;
+
     setCalculatedAmount(result.toLocaleString());
-  }
+  };
 
   const ReverseConversion = (value) => {
-    setCalculatedAmount(value)
+    setCalculatedAmount(value);
     const rate = 400;
-    let result = (parseInt(value) / rate)
-    result = isNaN(result) ? "" : result
+    let result = parseInt(value) / rate;
+    result = isNaN(result) ? "" : result;
 
     setBaseAmount(result.toLocaleString());
-  }
-
+  };
 
   const CalendarStyle = {
     height: "44px",
@@ -45,6 +47,7 @@ const TopComponent = () => {
     );
   };
 
+
   return (
     <Box
       display="flex"
@@ -61,13 +64,21 @@ const TopComponent = () => {
     >
       <Calender />
 
-      <AmountInput flag={""} amount={baseAmount} setAmount={BaseConversion} />
+      <AmountInput
+        defaultCurrency={{
+          code: "US",
+          label: "United States",
+          phone: "1",
+        }}
+        amount={baseAmount}
+        setAmount={BaseConversion}
+      />
       <Box display="flex" alignSelf="center" justifyContent="center">
         <img src={CurrencyArrow} alt="icon" />
       </Box>
 
       <AmountInput
-        flag={""}
+        defaultCurrency={defaultCurrency}
         amount={calculatedAmount}
         setAmount={ReverseConversion}
       />

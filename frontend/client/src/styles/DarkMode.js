@@ -31,8 +31,8 @@ export const getDesignTokens = (mode) => ({
           primary: grey,
           divider: grey[900],
           background: {
-            default: grey[900],
-            paper: grey[900],
+            default: grey[600],
+            paper: grey[600],
           },
           text: {
             primary: "#fff",

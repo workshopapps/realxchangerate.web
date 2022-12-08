@@ -1,4 +1,4 @@
-import { Box, Stack, Pagination } from "@mui/material";
+import { Box } from "@mui/material";
 import { RowHeaderComponent, RowComponent } from "./Row";
 import MobileView from "./MobileView";
 
@@ -44,24 +44,6 @@ const MainComponent = ({ data }) => {
       >
         <MobileView data={data} />
       </Box>
-
-      {data.length > 10 && (
-        <Stack
-          width="100%"
-          alignItems="center"
-          justifyContent="center"
-          marginTop="30px"
-          spacing={2}
-        >
-          <Pagination
-            showFirstButton
-            showLastButton
-            count={3}
-            variant="outlined"
-            shape="rounded"
-          />
-        </Stack>
-      )}
     </Box>
   );
 };

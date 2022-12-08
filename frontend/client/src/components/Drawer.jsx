@@ -1,12 +1,14 @@
-import { Drawer, Typography, Divider, Box, Link } from "@mui/material";
+import { Drawer, useTheme, Divider, Box, Link } from "@mui/material";
 import React from "react";
 import streetRates from "../assets/Logo.svg";
 import { useTranslation } from "react-i18next";
 
 const DrawerComponent = ({ isOpen, setIsOpen }) => {
+  const theme = useTheme()
+	const DarkMode = theme.palette.mode === 'dark'
   const { t } = useTranslation();
   const drawer = (
-    <Box onClick={setIsOpen} sx={{ textAlign: "center" }}>
+    <Box onClick={setIsOpen} sx={{ textAlign: "center", backgroundColor: DarkMode ? "#000E25" : "inherit", height:"100vh" }}>
       <Link to="/" style={{ color: "#0062ff" }}>
         <img
           style={{ width: "clamp(90px, 10vw, 140px)", margin: "20px auto" }}
