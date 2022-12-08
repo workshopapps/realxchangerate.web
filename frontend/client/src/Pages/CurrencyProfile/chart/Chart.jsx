@@ -18,12 +18,12 @@ import {
 import { ReactComponent as TvlGrowth } from "./tvl_small_growth.svg";
 import { useLocation } from "react-router-dom";
 
-const CustomTooltip = ({ active, payload, label }) => {
+const CustomTooltip = ({ active, payload, label, symbol }) => {
   if (active && payload && payload.length) {
     return (
       <StyledTooltip>
         <p>
-          {"$"}
+          {symbol}
           {`${payload[0].value}`}
         </p>
       </StyledTooltip>
@@ -137,7 +137,7 @@ export default function Chart() {
             }),
           ];
           setData(chartData);
-
+          console.log(response.data.data);
           setValues({
             country: response.data.data.currency.country,
             currency: response.data.data.currency.isocode,
@@ -225,7 +225,7 @@ export default function Chart() {
               orientation="right"
               style={{ color: "#615E83", fontSize: "10px" }}
             />
-            <Tooltip content={<CustomTooltip />} />
+            <Tooltip content={<CustomTooltip symbol={values.symbol} />} />
             <Area
               type="monotone"
               dataKey="tvl"
