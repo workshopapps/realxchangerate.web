@@ -1,5 +1,6 @@
 from __future__ import print_function
 
+import os
 import base64
 from email.message import EmailMessage
 
@@ -7,7 +8,7 @@ import google.auth
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
-
+from decouple import config
 from typing import Any, List
 from fastapi import APIRouter, Depends, HTTPException, status
 

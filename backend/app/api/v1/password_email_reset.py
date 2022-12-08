@@ -6,7 +6,6 @@ import uuid
 from app import schemas, crud
 from app.api.deps import get_db
 from starlette.responses import JSONResponse
-import os
 from app.models.admin import Admin
 from decouple import config
 from fastapi import FastAPI, Depends, HTTPException
