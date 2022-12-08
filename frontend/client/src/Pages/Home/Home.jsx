@@ -9,7 +9,7 @@ import { tableCurrenciesList } from "./data";
 import styled from "styled-components";
 import add from "./assets/add.svg";
 import CircularProgressWithLabel from "@mui/material/CircularProgress";
-import DeleteIcon from "./assets/delete.svg";
+import DeleteIcon from "./assets/delete.png";
 import { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
@@ -107,9 +107,9 @@ const Home = () => {
         >
           {t("home_title")}
         </TypographyHead>
-        <StyledEdit className="action" id="edit" onClick={() => handleEdit()}>
+        {/* <StyledEdit className="action" id="edit" onClick={() => handleEdit()}>
           {t("home_btn")}
-        </StyledEdit>
+        </StyledEdit> */}
       </StyledBox>
       {/* Table  */}
       <List
@@ -154,13 +154,34 @@ const Home = () => {
                   symbol={currency.symbol}
                   flag={currency.flag}
                   deleteIcon={
-                    <img
-                      src={DeleteIcon}
-                      className="delete-cur"
-                      alt=""
-                      style={{ display: "none" }}
-                      onClick={(e) => handleDelete(currency.id)}
-                    />
+                    <PopupState variant="popover" popupId="demo-popup-menu">
+                      {(popupState) => (
+                        <React.Fragment>
+                          <Button {...bindTrigger(popupState)}>
+                            <div className="add">
+                              <img
+                                src={DeleteIcon}
+                                className="delete-cur"
+                                alt=""
+                                style={
+                                  {
+                                    /*display: "none"*/
+                                  }
+                                }
+                              />
+                            </div>
+                          </Button>
+                          <Menu {...bindMenu(popupState)}>
+                            <MenuItem
+                              onClick={(e) => handleDelete(currency.id)}
+                            >
+                              Delete
+                            </MenuItem>
+                            <MenuItem>Currency Profile</MenuItem>
+                          </Menu>
+                        </React.Fragment>
+                      )}
+                    </PopupState>
                   }
                 />
               )}
@@ -200,7 +221,7 @@ const Home = () => {
             </React.Fragment>
           )}
         </PopupState>
-        <div className="lastUpdate">
+        {/* <div className="lastUpdate">
           <div style={{ position: "relative" }}>
             <CircularProgressWithLabel
               variant="determinate"
@@ -219,7 +240,7 @@ const Home = () => {
           <span>
             {t("home_updatee")} {dateUpdate}
           </span>
-        </div>
+        </div> */}
       </StyledSelection>
     </Box>
   );

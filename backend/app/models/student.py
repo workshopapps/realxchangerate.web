@@ -8,11 +8,11 @@ class Student(Base):
     __tablename__ = "student"
 
     id = Column(Integer, primary_key=True, index=True)
-    first_name = Column(String)
-    last_name = Column(String)
+    first_name = Column(String(255))
+    last_name = Column(String(255))
     email = Column(EmailType, unique=True)
     dob = Column(DateTime)
-    phone_number = Column(String, nullable=False)
+    phone_number = Column(String(255), nullable=False)
 
     addresses = relationship(
         "Address", backref="student", uselist=False, cascade="all, delete")
@@ -27,22 +27,22 @@ class Address(Base):
     __tablename__ = "address"
     id = Column(Integer, primary_key=True, index=True)
     student_id = Column(Integer, ForeignKey("student.id"), nullable=False)
-    address = Column(String)
-    city = Column(String)
-    country = Column(String)
+    address = Column(String(255))
+    city = Column(String(255))
+    country = Column(String(255))
 
 class School(Base):
     __tablename__ = "school"
     id = Column(Integer, primary_key=True, index=True)
     student_id = Column(Integer, ForeignKey("student.id"), nullable=False)
-    name = Column(String, nullable=False)
-    name_of_course = Column(String, nullable=False)
-    year_of_entry = Column(String, nullable=False)
-    year_of_completion = Column(String)
+    name = Column(String(255), nullable=False)
+    name_of_course = Column(String(255), nullable=False)
+    year_of_entry = Column(String(255), nullable=False)
+    year_of_completion = Column(String(255))
 
 class Questions(Base):
     __tablename__ = "questions"
     id = Column(Integer, primary_key=True, index=True)
     student_id = Column(Integer, ForeignKey("student.id"), nullable=False)
-    question = Column(String, nullable=False)
+    question = Column(String(255), nullable=False)
     answer = Column(Text)

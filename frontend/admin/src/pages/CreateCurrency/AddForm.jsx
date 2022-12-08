@@ -1,7 +1,6 @@
 import { Button } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Input from "../../shared/Input";
-import BasicSelect from "../../shared/Select";
 import { Container } from "./formstyles";
 import axios from "axios";
 

@@ -47,27 +47,34 @@ async def get_binancep2p_rate(currency_code: str) -> Optional[Dict[str, Any]]:
 
 async def format_binance_response_data(response_data: List[Dict[str, Any]]) -> Any:
     """
-    Takes a Binance p2p endpoint response and extract the rates.
+    Format Binance p2p API response.
     """
     formatted_data = []
     for d in response_data:
         formatted_data.append(BinanaceResponseSchema(**d).dict())
 
-    # Get the BUY Data and [5] being the average.
-    buy_data = formatted_data[1]["data"][5]
+    buy_data = formatted_data[1]["data"]
+    sell_data = formatted_data[0]["data"]
+    
+    # If either buy_data or sell_data is empty, set it to the other data.
+    if len(buy_data) < 1:
+        buy_data = sell_data
+    elif len(sell_data) < 1:
+        sell_data = buy_data
 
-    # Get the SELL Data and [5] being the average.
-    sell_data = formatted_data[0]["data"][5]
+    # If either buy_data or sell_data is still empty, return an empty dictionary.
+    if len(buy_data) < 1 or len(sell_data) < 1:
+        return None
 
-    buy_rate = buy_data["adv"]["price"]
-    sell_rate = sell_data["adv"]["price"]
+    # Otherwise, extract the buy and sell rates.
+    buy_rate = buy_data[0]["adv"]["price"]
+    sell_rate = sell_data[0]["adv"]["price"]
 
     return {"buy_rate": buy_rate, "sell_rate": sell_rate}
 
 
-def make_official_rate_request(base_currency: str, currency_list: List[str]) -> Any:
-    currencies = ','.join(currency_list)
-    url = f"{official_rate_endpoint}?base={base_currency}&symbols={currencies}"
+async def make_official_rate_request(base_currency: str) -> Any:
+    url = f"{official_rate_endpoint}?base={base_currency}"
     response = requests.get(url)
     data = response.json()
     return data

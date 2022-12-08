@@ -28,7 +28,7 @@ const Convert = () => {
   const [rates, setRates] = React.useState({});
   const [convert, setconvert] = React.useState(1);
   const [currency, setCurrecy] = React.useState("NGN");
-  const [base, setBase] = React.useState("EGP");
+  const [base, setBase] = React.useState("USD");
   const [buy, setBuy] = React.useState(true);
   const [date, setDate] = React.useState("Loading ..");
   const [rate, setRate] = React.useState("loading ..");
@@ -91,10 +91,11 @@ const Convert = () => {
   React.useEffect(() => {
     parent.current && autoAnimate(parent.current);
   }, [parent]);
+
   const CurrencyMenu = (props) => {
     const { currency } = props;
     const details = countryDetails.filter(
-      (countr) => countr.label === currency.country
+      (countr) => countr?.label === currency.country
     );
     return (
       <MenuItem
@@ -113,8 +114,8 @@ const Convert = () => {
           <img
             loading="lazy"
             width="20"
-            src={`https://flagcdn.com/w20/${details[0].code.toLowerCase()}.png`}
-            srcSet={`https://flagcdn.com/w40/${details[0].code.toLowerCase()}.png 2x`}
+            src={`https://flagcdn.com/w20/${details[0]?.code.toLowerCase()}.png`}
+            srcSet={`https://flagcdn.com/w40/${details[0]?.code.toLowerCase()}.png 2x`}
             alt=""
           />
         </Box>
@@ -123,6 +124,7 @@ const Convert = () => {
       </MenuItem>
     );
   };
+
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("md"));
   return (
@@ -321,7 +323,7 @@ const Convert = () => {
             <h4>{t("convert_result")}</h4>
             <h3>
               {rates}
-              <span>{buy ? base : currency}</span>
+              <span>{buy ? currency : base}</span>
             </h3>
             <div className="xchng">
               <h4>

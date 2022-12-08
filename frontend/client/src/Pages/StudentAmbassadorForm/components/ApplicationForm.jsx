@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FormSection, MessageModal } from "../style/Application.style";
 import leftIcon from "../../../assets/svg/arrow-left.svg";
 import InputField from "../../../components/shared/InputField/InputField";
+import { countries } from "../../Home/data";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { SuccessMessage } from "../../FileComplaints/components/ComplaintForm/ComplaintForm.styled";
 
 const ApplicationForm = () => {
   const [ambassadorDetails, setAmbassadorDetails] = useState({
@@ -44,8 +46,6 @@ const ApplicationForm = () => {
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState({});
 
-  setTimeout(() => setMessage(false), 5000);
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setAmbassadorDetails({ ...ambassadorDetails, [name]: value });
@@ -56,7 +56,7 @@ const ApplicationForm = () => {
     if (!value.firstName) {
       errors.firstName = "First name is required";
     }
-    if (!value.last_name) {
+    if (!value.lastName) {
       errors.lastName = "Last name is required";
     }
     if (!value.email) {
@@ -65,11 +65,17 @@ const ApplicationForm = () => {
     if (!value.DOB) {
       errors.DOB = "DOB is required";
     }
+    if (!value.phoneNumber) {
+      errors.phoneNumber = "DOB is required";
+    }
     if (!value.address) {
       errors.address = "address is required";
     }
     if (!value.city) {
       errors.city = "city is required";
+    }
+    if (!value.country) {
+      errors.country = "DOB is required";
     }
     if (!value.schoolName) {
       errors.schoolName = "school name is required";
@@ -130,6 +136,7 @@ const ApplicationForm = () => {
       if (res.status == 200) {
         setMessage(true);
         setStatusMessage("Your application has been received!");
+        return setTimeout(() => setMessage(false), 3000);
       }
     } catch (err) {
       setMessage(false);
@@ -179,8 +186,7 @@ const ApplicationForm = () => {
               label="Name"
               value={firstName}
               handleChange={handleChange}
-              onBlur={() => setErrorMessage(validate(firstName))}
-              errorMessage={!firstName && errorMessage.firstName}
+              errorMessage={errorMessage.firstName}
             />
           </div>
           <div>
@@ -190,7 +196,7 @@ const ApplicationForm = () => {
               name="lastName"
               value={lastName}
               handleChange={handleChange}
-              errorMessage={!lastName && errorMessage.lastName}
+              errorMessage={errorMessage.lastName}
             />
           </div>
         </div>
@@ -202,7 +208,7 @@ const ApplicationForm = () => {
               label="Date of birth"
               value={DOB}
               handleChange={handleChange}
-              errorMessage={!DOB && errorMessage.DOB}
+              errorMessage={errorMessage.DOB}
             />
           </div>
           <div>
@@ -213,6 +219,7 @@ const ApplicationForm = () => {
               label="Phone number"
               value={phoneNumber}
               handleChange={handleChange}
+              errorMessage={errorMessage.phoneNumber}
             />
           </div>
         </div>
@@ -225,7 +232,7 @@ const ApplicationForm = () => {
               label="Email"
               value={email}
               handleChange={handleChange}
-              errorMessage={!email && errorMessage.email}
+              errorMessage={errorMessage.email}
             />
           </div>
         </div>
@@ -239,7 +246,7 @@ const ApplicationForm = () => {
               label="Address"
               value={address}
               handleChange={handleChange}
-              errorMessage={!address && errorMessage.address}
+              errorMessage={errorMessage.address}
             />
           </div>
         </div>
@@ -251,15 +258,17 @@ const ApplicationForm = () => {
               label="City"
               value={city}
               handleChange={handleChange}
-              errorMessage={!city && errorMessage.city}
+              errorMessage={errorMessage.city}
             />
           </div>
           <div className="select-field">
             <label htmlFor="country">Country</label>
             <select name="country" id="country">
-              <option value={country} handleChange={handleChange}>
-                {country}
-              </option>
+              {countries.map(({ label, code }) => (
+                <option key={code} value={country} onChange={handleChange}>
+                  {label}
+                </option>
+              ))}
             </select>
           </div>
         </div>
@@ -273,7 +282,7 @@ const ApplicationForm = () => {
               label="School name"
               value={schoolName}
               handleChange={handleChange}
-              errorMessage={!schoolName && errorMessage.schoolName}
+              errorMessage={errorMessage.schoolName}
             />
           </div>
         </div>
@@ -285,7 +294,7 @@ const ApplicationForm = () => {
               label="Name of course"
               value={courseName}
               handleChange={handleChange}
-              errorMessage={!courseName && errorMessage.courseName}
+              errorMessage={errorMessage.courseName}
             />
           </div>
         </div>
@@ -297,7 +306,7 @@ const ApplicationForm = () => {
               label="Year of entry"
               value={entryYear}
               handleChange={handleChange}
-              errorMessage={!entryYear && errorMessage.entryYear}
+              errorMessage={errorMessage.entryYear}
             />
           </div>
           <div>
@@ -307,7 +316,7 @@ const ApplicationForm = () => {
               label="Year of completion"
               value={completionYear}
               handleChange={handleChange}
-              errorMessage={!completionYear && errorMessage.completionYear}
+              errorMessage={errorMessage.completionYear}
             />
           </div>
         </div>

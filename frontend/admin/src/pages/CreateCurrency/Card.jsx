@@ -1,8 +1,6 @@
 import React from "react";
 import { Container } from "./cardStyles";
-import SharedButton from "../../shared/Button";
 import { Link } from "react-router-dom";
-import { border } from "@mui/system";
 import styled from "styled-components";
 // import createIcon from '../../assets/create_new.svg';
 
