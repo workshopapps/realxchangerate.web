@@ -1,35 +1,23 @@
 import os
-from typing import Any, List,  Optional, Union, Dict
-from fastapi import APIRouter, Depends, HTTPException, status, BackgroundTasks
+from typing import Any, Union, Dict
+from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-import uuid
-from app import schemas, crud
-from app.api.deps import get_db
-from starlette.responses import JSONResponse
-from app.models.admin import Admin
+from app import crud
+
+
 from decouple import config
-from fastapi import FastAPI, Depends, HTTPException
-from app.schemas.admin import AdminUpdate, AdminCreate
-from starlette.requests import Request
-from pydantic import EmailStr, BaseModel
+from app.schemas.admin import AdminUpdate
+from pydantic import EmailStr
 from app.api.deps import get_db
-from sqlalchemy.orm import Session
 
-from typing import List
-
-from app.crud import admin
 
 
 from email.message import EmailMessage
-import os
 import ssl
 import smtplib
 from smtplib import SMTPResponseException
-from decouple import config
-from typing import Any, List
-from fastapi import APIRouter, Depends, HTTPException, status
 
-router = APIRouter()
+
 
 
 email_sender = 'mmachiejibe@gmail.com'
