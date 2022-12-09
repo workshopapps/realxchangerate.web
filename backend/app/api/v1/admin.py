@@ -155,6 +155,7 @@ def delete_rate(*, db: Session = Depends(get_db), rate_id: int):
         return {"success": False, "status_code": 404, "data": {"id": rate_id}, "message": "Not found!"}
 
     return {"success": True, "status_code": 200, "data": {"rate": rate_query}, "message": "rate deleted!"}
+    
 
 
 @router.delete("/delete_faq/{faq_id}")
@@ -173,6 +174,24 @@ def delete_faq(*, db: Session = Depends(get_db), faq_id: int):
         return {"success": False, "status_code": 404, "data": {"id": faq_id}, "message": "Not found!"}
 
     return {"success": True, "status_code": 200, "data": {"faq": faq_query}, "message": "rate deleted!"}
+
+
+
+@router.get("/get_adverts/{id}")
+async def get_advert_by_id(id:int, db: Session = Depends(get_db)):
+    
+    """get adverts by id"""
+
+    advert = crud.advert.get_adverts_by_id(db=db, id=id)
+    if id == 0:
+        return {"success": False, "status_code": 404, "message": "id starts from 1!"} 
+
+    if advert is None:
+        return {"success": False, "status_code": 404, "message": "Advert not found!"}       
+
+    return {"success": True, "status_code": 200, "advert": advert} 
+
+
 
 
 class ComplaintsPagination(BaseModel):
@@ -202,6 +221,22 @@ def get_all_complaints(db: Session = Depends(get_db)):
 
     return paginate(complaints)
     return {"success": True, "status_code": 200, "complaints": paginate(complaints)}
+
+
+@router.get("/get_all_adverts")
+async def get_all_adverts(*, db: Session = Depends(get_db)):
+
+    """Returns all adverts from the database"""
+
+    adverts = crud.advert.get_all_adverts(db)
+
+    if adverts is None:
+        return {"success": False, "status_code": 404, "message": "No adverts available!"}
+
+    if len(adverts) == 0:
+        return {"success": True, "status_code": 200, "message": "No adverts in the database!"}
+
+    return {"success": True, "status_code": 200, "adverts": adverts}    
 
 
 @router.put(
