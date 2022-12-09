@@ -15,17 +15,16 @@ const MobileView = ({ data }) => {
         <TabPanelUnstyled value={0}>
           <Box width="100%">
             <MobileRowHeaderComponent rate="Bank Rate" />
-            {data.map((val, key) => {
+            {data.map((val) => {
               return (
-                <>
-                  {val && (
+                <div key={data.indexOf(val)}>
+                  {(val !== undefined && val !== null && val.rate !== null ) && (
                     <MobileRowComponent
                       country={val.currency}
                       rate={Math.ceil(val.rate.official_buy)}
-                      key={key}
                     />
                   )}
-                </>
+                </div>
               );
             })}
           </Box>
@@ -33,17 +32,16 @@ const MobileView = ({ data }) => {
         <TabPanelUnstyled value={1}>
           <Box width="100%">
             <MobileRowHeaderComponent rate="Parallel Rate" />
-            {data.map((val, key) => {
+            {data.map((val) => {
               return (
-                <>
-                  {val && (
+                <div key={data.indexOf(val)}>
+                  {(val !== undefined && val !== null && val.rate !== null ) && (
                     <MobileRowComponent
                       country={val.currency}
                       rate={Math.ceil(val.rate.parallel_buy)}
-                      key={key}
                     />
                   )}
-                </>
+                </div>
               );
             })}
           </Box>

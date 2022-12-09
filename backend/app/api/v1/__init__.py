@@ -31,4 +31,6 @@ api_router.include_router(faq.router, prefix="/faq", tags=["faq"])
 api_router.include_router(complaints.router, prefix="/complaints", tags=["complaints"])
 api_router.include_router(contact.router, prefix="/contacts", tags=["contacts"])
 api_router.include_router(student.router, prefix="/students", tags=["students"])
+
 api_router.include_router(adverts.router, prefix="/online_adverts", tags=["adverts"])
+

@@ -7,6 +7,7 @@ class AdvertBase(BaseModel):
     pixel_size: str
     link_to_banner_image: str
 
+
 class AdvertCreate(AdvertBase):
     number_of_impressions: str
     ref_number: int

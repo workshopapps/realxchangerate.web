@@ -7,7 +7,10 @@ import {
   StyledWrapper,
 } from "./UserComplaints.styled";
 import { useDispatch, useSelector } from "react-redux";
-import { getComplaints } from "../../store/actions/complaintsActions";
+import {
+  getComplaints,
+  resetLoading,
+} from "../../store/actions/complaintsActions";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import OutlinedInput from "@mui/material/OutlinedInput";
@@ -31,12 +34,18 @@ export default function UserComplaintsLayout() {
   // get complaints
   useEffect(() => {
     dispatch(getComplaints());
+
+    return () => {
+      dispatch(resetLoading());
+    };
   }, [dispatch]);
 
   // filter the complaints
   useEffect(() => {
     if (complaints) {
-      setFilteredComplaints(complaints.complaints);
+      setFilteredComplaints(complaints?.items);
+
+      handlePage(complaints?.items.length);
     }
   }, [complaints]);
 
@@ -69,7 +78,7 @@ export default function UserComplaintsLayout() {
     setFilterState(e.target.value);
 
     if (e.target.value !== "all") {
-      let arr = complaints?.complaints.filter(
+      let arr = complaints?.items.filter(
         (item) => item.status === e.target.value
       );
       setFilteredComplaints(arr);
@@ -78,8 +87,8 @@ export default function UserComplaintsLayout() {
 
       handlePage(arr.length);
     } else {
-      setFilteredComplaints(complaints?.complaints);
-      handlePage(complaints?.complaints.length);
+      setFilteredComplaints(complaints?.items);
+      handlePage(complaints?.items.length);
     }
   };
 
