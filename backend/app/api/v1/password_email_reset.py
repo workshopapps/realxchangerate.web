@@ -3,7 +3,7 @@ from typing import Any, Union, Dict
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from app import crud
-
+from app.models import Admin
 
 from decouple import config
 from app.schemas.admin import AdminUpdate
@@ -20,7 +20,7 @@ from smtplib import SMTPResponseException
 
 
 
-email_sender = 'mmachiejibe@gmail.com'
+email_sender = 'ejibe750@gmail.com'
 email_password = config('MAIL_PASSWORD')
 
 
@@ -69,12 +69,12 @@ async def sending_mail(email: EmailStr, db: Session = Depends(get_db)):
 
 
 @router.patch("/reset_password")
-def reset_password(*, email: str, password: str,
+def reset_password(*, email: str,
                    db: Session = Depends(get_db), obj_in: Union[AdminUpdate, Dict[str, Any]]) -> Any:
     details = crud.admin.get_by_email(db=db, email=email)
     if details:
         password = crud.admin.update(db=db, db_obj=details, obj_in=obj_in)
-        return password
+        return ({"message":"password updated"})
     else:
         return {"message": "user not found"}
 
