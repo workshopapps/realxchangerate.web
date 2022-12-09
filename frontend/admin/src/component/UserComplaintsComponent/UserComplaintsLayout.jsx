@@ -103,6 +103,7 @@ export default function UserComplaintsLayout() {
 
   // update complaints / filter
   const onFilterChange = (e) => {
+    setCurrentPage(1);
     setFilterState(e.target.value);
 
     if (e.target.value !== "all") {
@@ -110,10 +111,10 @@ export default function UserComplaintsLayout() {
         (item) => item.status === e.target.value
       );
       setFilteredComplaints(arr);
-      handlePage(arr?.length, currentPage);
+      handlePage(arr?.length, 1);
     } else {
       setFilteredComplaints(complaints?.items);
-      handlePage(complaints?.items.length, currentPage);
+      handlePage(complaints?.items.length, 1);
     }
   };
 
