@@ -11,7 +11,7 @@ class AdminCreate(AdminBase):
     password: str
 
 
-class AdminUpdate(AdminBase):
+class AdminUpdate(BaseModel):
     password: Optional[str] = None
 
 

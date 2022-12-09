@@ -68,12 +68,12 @@ async def sending_mail(email: EmailStr, db: Session = Depends(get_db)):
     return {"Message":"Your message has been sent!"}
 
 
-@router.patch("/reset_password")
+@router.patch("/reset_password/{email}")
 def reset_password(*, email: str,
                    db: Session = Depends(get_db), obj_in: Union[AdminUpdate, Dict[str, Any]]) -> Any:
-    details = crud.admin.get_by_email(db=db, email=email)
-    if details:
-        password = crud.admin.update(db=db, db_obj=details, obj_in=obj_in)
+    email = crud.admin.get_by_email(db=db, email=email)
+    if email:
+        password = crud.admin.update(db=db, db_obj=email, obj_in=obj_in)
         return ({"message":"password updated"})
     else:
         return {"message": "user not found"}
