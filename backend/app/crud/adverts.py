@@ -27,13 +27,10 @@ class CRUDAdvert(CRUDBase[Advert, AdvertCreate, AdvertUpdate]):
         db.refresh(db_oj)
         return db_oj
 
-<<<<<<< HEAD
+
+
     def get_all_adverts(self, db: Session):
         """Returns all adverts"""
-        return db.query(Advert).all() 
+        return db.query(Advert).all()     
 
-      
-
-=======
->>>>>>> ce5faa93c55423d102c22c04b2328a6bc23d7e2d
 advert=CRUDAdvert(Advert)
