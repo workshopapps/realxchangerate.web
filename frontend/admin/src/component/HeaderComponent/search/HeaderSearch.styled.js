@@ -23,6 +23,7 @@ export const SearchWrapper = styled.div`
     margin: 0;
   }
 `;
+
 export const StyledSearchIconWrapper = styled.div`
   cursor: pointer;
 
@@ -30,6 +31,7 @@ export const StyledSearchIconWrapper = styled.div`
     transform: scale(0.95);
   }
 `;
+
 export const StyledSearchInput = styled.input.attrs({
   type: "text",
 })`
@@ -51,12 +53,12 @@ export const StyledSearchInput = styled.input.attrs({
     outline: 0;
   }
 
-  @media (min-width: ${(props) => props.theme.$styled.breakpoints.md}) {
-    min-width: 205px;
-  }
-  @media (min-width: ${(props) => props.theme.$styled.breakpoints.lg}) {
-    &:focus {
-      width: 360px;
-    }
-  }
+  // @media (min-width: ${(props) => props.theme.$styled.breakpoints.md}) {
+  //   min-width: 205px;
+  // }
+  // @media (min-width: ${(props) => props.theme.$styled.breakpoints.lg}) {
+  //   &:focus {
+  //     width: 360px;
+  //   }
+  // }
 `;
