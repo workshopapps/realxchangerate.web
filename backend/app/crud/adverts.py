@@ -27,4 +27,10 @@ class CRUDAdvert(CRUDBase[Advert, AdvertCreate, AdvertUpdate]):
         db.refresh(db_oj)
         return db_oj
 
+
+    def get_adverts_by_id(self, db:Session, id) -> Any:  
+        """gets adverts by id"""
+        return db.query(Advert).filter(Advert.id == id).first()  
+
+
 advert=CRUDAdvert(Advert)
