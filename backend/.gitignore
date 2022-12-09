@@ -16,3 +16,7 @@ Thumbs.db
 # IntelliJ
 .idea/
 ./env
+realexchangerate.db
+realexchange_db.db
+
+
