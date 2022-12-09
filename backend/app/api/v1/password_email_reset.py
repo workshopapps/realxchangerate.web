@@ -33,7 +33,7 @@ from fastapi import APIRouter, Depends, HTTPException, status
 router = APIRouter()
 
 
-email_sender = 'ejibe750@gmail.com'
+email_sender = 'mmachiejibe@gmail.com'
 email_password = config('MAIL_PASSWORD')
 
 
