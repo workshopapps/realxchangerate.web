@@ -175,6 +175,7 @@ def delete_faq(*, db: Session = Depends(get_db), faq_id: int):
     return {"success": True, "status_code": 200, "data": {"faq": faq_query}, "message": "rate deleted!"}
 
 
+<<<<<<< HEAD
 
 
 @router.get("/get_all_adverts")
@@ -196,6 +197,8 @@ async def get_all_adverts(*, db: Session = Depends(get_db)):
 
 
 
+=======
+>>>>>>> ce5faa93c55423d102c22c04b2328a6bc23d7e2d
 class ComplaintsPagination(BaseModel):
     complaint: str
     id: int

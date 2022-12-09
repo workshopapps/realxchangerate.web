@@ -6,12 +6,10 @@ import uuid
 from app import schemas, crud
 from app.api.deps import get_db
 from starlette.responses import JSONResponse
-import os
 from app.models.admin import Admin
 from decouple import config
 from fastapi import FastAPI, Depends, HTTPException
 from app.schemas.admin import AdminUpdate, AdminCreate
-from fastapi_mail import FastMail, MessageSchema, ConnectionConfig
 from starlette.requests import Request
 from pydantic import EmailStr, BaseModel
 from app.api.deps import get_db
@@ -22,21 +20,31 @@ from typing import List
 from app.crud import admin
 
 
-class EmailSchema(BaseModel):
-    email: EmailStr
+from email.message import EmailMessage
+import os
+import ssl
+import smtplib
+from smtplib import SMTPResponseException
+from decouple import config
+from typing import Any, List
+from fastapi import APIRouter, Depends, HTTPException, status
+
+router = APIRouter()
 
 
+email_sender = 'mmachiejibe@gmail.com'
+email_password = config('MAIL_PASSWORD')
 
 
-conf = ConnectionConfig(
-    MAIL_USERNAME=config('MAIL_USERNAME'),
-    MAIL_PASSWORD=config('MAIL_PASSWORD'),
-    MAIL_FROM=config('MAIL_FROM'),
-    MAIL_PORT=config('MAIL_PORT', cast=int),
-    MAIL_SERVER=config('MAIL_SERVER'),
-    MAIL_TLS=config('MAIL_TLS', cast=bool),
-    MAIL_SSL=config('MAIL_SSL', cast=bool),
-)
+subject = 'Reset your password'
+
+body = """
+Hello, click on this link to reset your password:\n
+https://streetrates.hng.tech \n
+If you did not request for this, kindly disregard the email and contact us on the streetrates web app.
+
+"""
+
 
 
 router = APIRouter()
@@ -44,43 +52,32 @@ router = APIRouter()
 
 @router.post("/forgot_password")
 async def sending_mail(email: EmailStr, db: Session = Depends(get_db)):
+    """
+    Send a reset password email to the mail provided
+    """
     admin_email = crud.admin.get_by_email(db, email=email)
     if not admin_email:
         raise HTTPException(
             status_code=404,
             detail="Email address does not exist, please enter a valid email"
         )
-    email = [email]
-    template = """
-            <html>
-            <body>
+    email_receiver = email
+    em = EmailMessage()
+    em['From'] = email_sender
+    em['To'] = email_receiver
+    em['Subject'] = subject
+    em.set_content(body)
 
 
-                <p>Hello !!! Did you request for a password reset?
-                <br></p>
-                <p>
-                <a href="{{ url_for('reset_password', path='api/reset_password') }}" target="_blank">
-                click here to reset your password
-            </a>
-                <p> If this is not you, secure your account by turning on 2-factor authentication<p>
-            </body>
-            </html>
-            """
-
-    message = MessageSchema(
-        subject="Reset-password Token",
-        recipients=email,
-        body=template,
-        subtype="html"
-    )
-
-    fm = FastMail(conf)
+    context = ssl.create_default_context()
     try:
-        await fm.send_message(message)
-    except:
-        return 'message: Your connection is not secure!'
-
-    return JSONResponse(status_code=200, content={"message": "email has been sent"})
+        with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=context) as smtp:
+            smtp.login(email_sender, email_password)
+            smtp.sendmail(email_sender, email_receiver, em.as_string())
+    except SMTPResponseException as e:
+        print(f'An error occured, error: {e}')
+        return {"Message": "Oops!!! Could not send message"}
+    return {"Message":"Your message has been sent!"}
 
 
 @router.patch("/reset_password")
@@ -92,7 +89,4 @@ def reset_password(*, email: str, password: str,
         return password
     else:
         return {"message": "user not found"}
-# def login_with_password(*,
-# db: Session = Depends(get_db), email: str, password: str) -> Any:
-#     logging = crud.admin.authenticate(db=db, email=email, password=password)
-#     return logging
+

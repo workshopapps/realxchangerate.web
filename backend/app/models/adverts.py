@@ -1,6 +1,8 @@
-from sqlalchemy import Column, Integer, String, Boolean, DateTime, ForeignKey, Text, BigInteger
+from sqlalchemy import Column, Integer, String, Boolean, DateTime
 from datetime import datetime
 from sqlalchemy_utils import EmailType
+
+
 from sqlalchemy.orm import relationship
 from app.database.base_class import Base
 
