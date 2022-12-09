@@ -8,7 +8,7 @@ from app.api.deps import get_db
 router = APIRouter()
 
 @router.post("")
-def create_contact(
+def create_advert(
     *,
     db: Session = Depends(get_db),
     advert_in: schemas.AdvertCreate,
@@ -16,11 +16,9 @@ def create_contact(
     """
     This endpoints stores online_advert page information into the database for management use.
     """
+
     crud.advert.create(db=db, obj_in=advert_in)
     return {
         "Success": True,
         "message": "Thank you. We'll get in touch as soon as possible.",
     }
-
-
-

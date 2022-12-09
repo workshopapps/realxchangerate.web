@@ -25,7 +25,7 @@ export default function UserFeedbackLayout() {
 	}, [contacts]);
 
 	if (requestStatus === 'failed') {
-		toast.error('error fetching complaints');
+		toast.error('error fetching contacts');
 	}
 
 	const indexOfLastUser = currentPage * postsPerPage;

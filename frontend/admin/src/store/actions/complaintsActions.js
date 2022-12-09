@@ -71,7 +71,11 @@ export const updateComplaint = createAsyncThunk(
 export const complaintsSlice = createSlice({
 	name: 'complaints',
 	initialState,
-	reducers: {},
+	reducers: {
+		resetLoading: (state) => {
+			state.loading = 'idle'
+		}
+	},
 	extraReducers: (builder) => {
 		builder
 			.addCase(getComplaints.pending, (state, action) => {
@@ -95,4 +99,6 @@ export const complaintsSlice = createSlice({
 	},
 });
 
+
+export const { resetLoading } = complaintsSlice.actions;
 export default complaintsSlice.reducer;

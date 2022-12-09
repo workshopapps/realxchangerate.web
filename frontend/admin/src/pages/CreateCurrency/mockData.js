@@ -86,4 +86,10 @@ export const mockData = [
     code: "CNY",
     rate: 7.08,
   },
+  {
+    name: "China",
+    flag: CN,
+    code: "CNY",
+    rate: 7.08,
+  },
 ];

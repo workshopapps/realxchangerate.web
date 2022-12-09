@@ -27,9 +27,10 @@ import { toast } from "react-toastify";
 function ComplaintPageLayout() {
   const [data, setData] = useState(null);
   const [adminMssg, setAdminMssg] = useState("");
+  const [currStatus, setCurrStatus] = useState("");
   const params = useParams();
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const dispatch = useDispatch();
   const { complaints, loading } = useSelector((state) => state.complaints);
@@ -41,11 +42,12 @@ function ComplaintPageLayout() {
 
   useEffect(() => {
     // find particular complaint
-    if (complaints?.success) {
+    if (complaints) {
       const id = parseInt(params.id);
-      let issue = complaints.complaints.find((item) => item.id === id);
+      let issue = complaints.items.find((item) => item.id === id);
 
       setData(issue);
+      setCurrStatus(issue.status);
     }
   }, [complaints, params.id]);
 
@@ -81,9 +83,9 @@ function ComplaintPageLayout() {
     };
 
     dispatch(updateComplaint(info));
-    // if (loading !== "rejected") {
-    //   navigate("/admin/complaints");
-    // }
+    if (currStatus !== data?.status) {
+      toast.success(`Complaint ${data?.status}`);
+    }
   };
 
   const ITEM_HEIGHT = 48;
@@ -205,7 +207,12 @@ function ComplaintPageLayout() {
         </StyledGrid>
 
         <StyledButtonWrapper>
-          <StyledFormButtonCancel>Cancel</StyledFormButtonCancel>
+          <StyledFormButtonCancel
+            type="button"
+            onClick={() => window.history.go(-1)}
+          >
+            Cancel
+          </StyledFormButtonCancel>
           <StyledFormButtonSubmit
             onClick={onSubmit}
             disabled={!data ? true : false}

@@ -10,10 +10,12 @@ import {
   setCurrencyRates,
   setNews,
   setNavLoading,
+  createResponse,
 } from "./servicesReducer";
 import axios from "axios";
 import RateService from "../Utils/Axios/apis";
 import { countries } from "../../../utils/data";
+import { ErrorHandler } from "../../../utils/ErrorHandler";
 
 export const GetUserIp = () => async () => {
   try {
@@ -23,7 +25,7 @@ export const GetUserIp = () => async () => {
     dispatch(setUserIp(res.data));
   } catch (err) {
     dispatch(setNavLoading(false));
-    console.log(err);
+    dispatch(createResponse(ErrorHandler(err)))
   }
 };
 export const GetDefaultCurrency = (ip) => async () => {
@@ -36,7 +38,7 @@ export const GetDefaultCurrency = (ip) => async () => {
     dispatch(setNavLoading(false));
   } catch (err) {
     dispatch(setNavLoading(false));
-    console.log(err);
+    dispatch(createResponse(ErrorHandler(err)))
   }
 };
 export const GetCurrencies = () => async () => {
@@ -52,7 +54,7 @@ export const GetCurrencies = () => async () => {
     dispatch(setLoading(false));
   } catch (err) {
     dispatch(setLoading(false));
-    console.log(err);
+    dispatch(createResponse(ErrorHandler(err)))
   }
 };
 
@@ -63,9 +65,10 @@ export const GetCurrencyData = (isocode) => async () => {
     dispatch(setLoading(false));
   } catch (err) {
     dispatch(setLoading(false));
-    console.log(err);
+    dispatch(createResponse(ErrorHandler(err)))
   }
 };
+
 export const GetCurrencyRates = (currencies) => async () => {
   dispatch(setLoading(true));
   try {
@@ -81,7 +84,7 @@ export const GetCurrencyRates = (currencies) => async () => {
 
     dispatch(setLoading(false));
   } catch (err) {
-    console.log(err);
+    dispatch(createResponse(ErrorHandler(err)))
     dispatch(setLoading(false));
   }
 };
@@ -109,7 +112,9 @@ export const GetNews = (ip) => async () => {
 
     dispatch(setLoading(false));
   } catch (err) {
-    console.log(err);
+    dispatch(createResponse(ErrorHandler(err)))
     dispatch(setLoading(false));
   }
 };
+
+

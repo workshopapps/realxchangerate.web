@@ -4,8 +4,11 @@ import viewIcon from "../../assets/icons/password_view.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../../store/actions/userActions";
 import { useNavigate } from "react-router-dom";
+import { LoadingButton } from "@mui/lab";
+import { CircularProgress } from "@mui/material";
 
 const LoginPage = () => {
+  const [loading, setLoading] = useState(false);
   const [formState, setFormState] = useState({
     email: "",
     password: "",
@@ -33,11 +36,12 @@ const LoginPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    setLoading(true);
     if (email === "" || password === "") {
       alert("please enter your email and password");
     }
     dispatch(loginUser({ email, password }));
+    // setLoading(false);
   };
 
   const handleViewPassword = () => {
@@ -86,9 +90,10 @@ const LoginPage = () => {
             <input type="checkbox" name="verify" id="verify" />
             <label htmlFor="verify">Always keep me logged in</label>
           </div>
-          <button type="submit" onSubmit={handleSubmit}>
+          {loading && <CircularProgress sx={{ m: "0 auto" }} />}
+          <LoadingButton type="submit" onSubmit={handleSubmit}>
             Login
-          </button>
+          </LoadingButton>
         </form>
         <div className="signup">
           <p>Don’t have an account?</p>

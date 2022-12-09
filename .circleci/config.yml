@@ -209,8 +209,6 @@ jobs:
             docker tag app-ad hacklight/xchange-fe-admin:v1
             docker push hacklight/xchange-fe-admin:v1
 
-
-
   build-backend-docker-image:
     docker:
       # Docker image that supports docker
@@ -319,24 +317,24 @@ workflows:
       # - test-frontend-client
       # - test-frontend-admin
       # - test-backend
-      - build-frontend-client-docker-image:
-          requires: [build-frontend-client] #remember to channge to test
-          filters:
-            branches:
-              only: [main]
-              
-      - build-frontend-admin-docker-image:
-          requires: [build-frontend-admin] #remember to channge to test
-          filters:
-            branches:
-              only: [main]
+      # - build-frontend-client-docker-image:
+      #     requires: [build-frontend-client] #remember to channge to test
+      #     filters:
+      #       branches:
+      #         only: [main]
 
-      - build-backend-docker-image:
-          requires: [build-backend] #remember to channge to test
-          filters:
-            branches:
-              only: [main]
+      # - build-frontend-admin-docker-image:
+      #     requires: [build-frontend-admin] #remember to channge to test
+      #     filters:
+      #       branches:
+      #         only: [main]
 
-      - deploy-images-using-ssh:
-          requires:
-            [build-frontend-client-docker-image, build-backend-docker-image, build-frontend-admin-docker-image]
+      # - build-backend-docker-image:
+      #     requires: [build-backend] #remember to channge to test
+      #     filters:
+      #       branches:
+      #         only: [main]
+
+      # - deploy-images-using-ssh:
+      #     requires:
+      #       [build-frontend-client-docker-image, build-backend-docker-image, build-frontend-admin-docker-image]
