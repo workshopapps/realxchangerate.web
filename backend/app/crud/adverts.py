@@ -27,15 +27,4 @@ class CRUDAdvert(CRUDBase[Advert, AdvertCreate, AdvertUpdate]):
         db.refresh(db_oj)
         return db_oj
 
-<<<<<<< HEAD
-    def get_all_adverts(self, db: Session):
-        """Returns all adverts"""
-        return db.query(Advert).all() 
-
-    def get_adverts_by_id(self, db:Session, id) -> Any:  
-        """gets adverts by id"""
-        return db.query(Advert).filter(Advert.id == id).first()    
-
-=======
->>>>>>> 6f57805a769a6279cd050f6849011e394528fb69
 advert=CRUDAdvert(Advert)
