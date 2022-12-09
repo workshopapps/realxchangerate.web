@@ -10,7 +10,7 @@ class Advert(Base):
     __tablename__ = "advert"
 
     id = Column(Integer, primary_key=True, index=True)
-    email = Column(EmailType, unique=True, index=True)
+    email = Column(EmailType)
     pixel_size = Column(String(100), nullable=False)
     number_of_impressions = Column(String(200), nullable=False)
     ref_number = Column(Integer)
