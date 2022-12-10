@@ -27,7 +27,7 @@ export const getRates = createAsyncThunk(
   async (baseCurrency, { rejectWithValue }) => {
     try {
       const currencies = await getCurrencies();
-      console.log("here", currencies);
+
       const currRates = await currencies.map(async (curr) => {
         const response = await axios.get(
           `${endpoint}/rate/convert/calc?from_currency=${baseCurrency}&to_currency=${curr.isocode}&amount=1`
@@ -39,7 +39,7 @@ export const getRates = createAsyncThunk(
         }
       });
       const val = await Promise.allSettled(currRates);
-      console.log("omo", val[0]);
+
       return val;
     } catch (err) {
       console.error(err);
@@ -86,7 +86,7 @@ const rateSlice = createSlice({
       })
       .addCase(getBaseDetails.rejected, (state, action) => {
         state.error = action.payload;
-        console.log("OMO: ", action.payload);
+
         state.currencyStatus = "failed";
       })
 
