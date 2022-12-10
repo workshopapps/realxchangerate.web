@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Button, DisabledButton } from "./styles/Contact.styled";
+import axios from "axios";
 import { Typography, Stack, TextField, Snackbar, Alert } from "@mui/material";
 
-const ContactForm = ({textColor}) => {
+const ContactForm = ({ textColor }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [btnDisabled, setBtnDisabled] = useState(true);
+  const [nameBlur, setNameBlur] = useState(false);
+  const [emailBlur, setEmailBlur] = useState(false);
+  const [messagelBlur, setMessagelBlur] = useState(false);
   const [alert, setAlert] = useState(false);
 
   useEffect(() => {
@@ -18,33 +22,27 @@ const ContactForm = ({textColor}) => {
     }
   }, [name, message, email]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    fetch("https://formsubmit.co/ajax/e79cf7c6eade7d5068495853b4cec9dc", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify({
-        name: name,
-        email: email,
-        message: message,
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.success === "true") {
-          console.log(data);
-          setAlert(true);
-          setName("");
-          setEmail("");
-          setMessage("");
-          setTimeout(() => setAlert(false), 3000);
+    try {
+      const res = await axios.post(
+        "https://api.streetrates.hng.tech/api/contacts",
+        {
+          name: name,
+          email: email,
+          message: message,
         }
-      })
-      .catch((error) => console.log(error.message));
+      );
+
+      setAlert(true);
+      setName("");
+      setEmail("");
+      setMessage("");
+      setTimeout(() => setAlert(false), 3000);
+    } catch (error) {
+      return;
+    }
   };
 
   return (
@@ -95,7 +93,19 @@ const ContactForm = ({textColor}) => {
             }}
             value={name}
             onChange={(e) => setName(e.target.value)}
+            onBlur={() => setNameBlur(true)}
           />
+          {nameBlur && !name && (
+            <Typography
+              style={{
+                color: "red",
+                fontSize: "12px",
+                marginTop: "4px",
+              }}
+            >
+              Name is required
+            </Typography>
+          )}
         </Stack>
 
         <Stack direction="column" letterSpacing="0.001em" gap="5px">
@@ -122,8 +132,20 @@ const ContactForm = ({textColor}) => {
               fontWeight: "400",
             }}
             value={email}
+            onBlur={() => setEmailBlur(true)}
             onChange={(e) => setEmail(e.target.value)}
           />
+          {emailBlur && !email && (
+            <Typography
+              style={{
+                color: "red",
+                fontSize: "12px",
+                marginTop: "4px",
+              }}
+            >
+              Email is required
+            </Typography>
+          )}
         </Stack>
 
         <Stack direction="column" letterSpacing="0.001em" gap="5px">
@@ -152,7 +174,19 @@ const ContactForm = ({textColor}) => {
             }}
             value={message}
             onChange={(e) => setMessage(e.target.value)}
+            onBlur={() => setMessagelBlur(true)}
           />
+          {messagelBlur && !message && (
+            <Typography
+              style={{
+                color: "red",
+                fontSize: "12px",
+                marginTop: "4px",
+              }}
+            >
+              Please leave a message
+            </Typography>
+          )}
         </Stack>
 
         <>

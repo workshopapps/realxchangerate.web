@@ -28,7 +28,6 @@
 .convert input {
   font-size: 1.5rem;
   font-weight: 400;
-  color: #94a3b8;
   border-radius: 1rem;
 }
 .convert label {
@@ -38,9 +37,7 @@
   position: absolute;
   top: -7px;
 }
-.convert .label {
-  color: black !important;
-}
+
 .hero {
   display: flex;
   flex-direction: column;

@@ -23,10 +23,10 @@ function Hero() {
       <Box
         className="store"
         sx={{
-          m: "0 auto",
+          m: "10px auto",
         }}
       >
-        <a href="#!">
+        <a href="https://appetize.io/app/dma6cyb75uzgdhnucyd6oo24wm?device=pixel4&osVersion=12.0&scale=75">
           <img src="/googleplay.svg" alt="" />
         </a>
       </Box>

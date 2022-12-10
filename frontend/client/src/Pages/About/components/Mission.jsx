@@ -59,7 +59,6 @@ const Mission = () => {
           </Typography>
           <Typography
             fontWeight="400"
-            color="#202020"
             sx={{
               fontSize: { xs: "20px", sm: "15px", md: "15px", lg: "20px" },
               lineHeight: { xs: "28px" },
@@ -109,7 +108,6 @@ const Mission = () => {
           <Typography
             textAlign="justify"
             fontWeight="400"
-            color="#202020"
             sx={{
               fontSize: { xs: "20px", sm: "15px", md: "15px", lg: "20px" },
               lineHeight: { xs: "28px" },

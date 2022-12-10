@@ -9,7 +9,6 @@ import { style } from "./styles";
 
 export default function EditContent({ cancel, id, setNewdata }) {
   const [loading, setLoading] = React.useState(false);
-  const [errortext, setErrortext] = React.useState("");
   const endpoint =
     process.env.NODE_ENV === "production"
       ? `https://api.streetrates.hng.tech/api/admin/update_faq/${id}`

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 const InputSection = styled.section`
@@ -9,12 +9,20 @@ const InputSection = styled.section`
     margin-bottom: 0.8rem;
     font-weight: bold;
   }
+
   input {
     padding: 1rem 1.8rem;
     font-size: 1.6rem;
     border: 1px solid #94a3b8;
     color: #94a3b8;
+    outline: none;
     border-radius: 0.4rem;
+  }
+  input:invalid[focused="true"] {
+    border: 1px solid red;
+  }
+  input:invalid[focused="true"] {
+    border: 1px solid red;
   }
 
   p {
@@ -32,8 +40,12 @@ const InputField = ({
   handleChange,
   value,
   errorMessage,
-  onBlur,
 }) => {
+  const [focused, setFocused] = useState(false);
+  const handleFocused = () => {
+    setFocused(true);
+  };
+
   return (
     <InputSection>
       <label htmlFor={name}>{label}</label>
@@ -42,7 +54,8 @@ const InputField = ({
         name={name}
         placeholder={placeHolder}
         onChange={handleChange}
-        onBlur={onBlur}
+        onBlur={handleFocused}
+        focused={focused.toString()}
         value={value}
       />
       <p>{errorMessage}</p>

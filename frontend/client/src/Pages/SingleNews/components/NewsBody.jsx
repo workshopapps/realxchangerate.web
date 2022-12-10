@@ -1,11 +1,13 @@
 import React from "react";
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, useTheme } from "@mui/material";
 import moment from "moment";
 import { MainSectionImageCard } from "../../News/components/ImageCard";
 
 const NewsBody = ({ data }) => {
+  const theme = useTheme();
+  const darkMode = theme.palette.mode === "dark";
   return (
-    <Box display="flex" flexDirection="column" gap="16px">
+    <Box display="flex" flexDirection="column" gap="16px" color={darkMode ? "#FAFAFA" :""}>
       <>
         {data.image_url === null ? (
           <MainSectionImageCard category={data.category[0]} height="380px" />
@@ -22,7 +24,6 @@ const NewsBody = ({ data }) => {
           fontWeight: "600",
           fontSize: "24px",
           lineHeight: "24px",
-          color: "#0F172A",
         }}
       >
         Introduction
@@ -33,7 +34,6 @@ const NewsBody = ({ data }) => {
           fontWeight: "500",
           fontSize: "20px",
           lineHeight: "24px",
-          color: "#0F172A",
         }}
       >
         {data.description}
@@ -44,7 +44,6 @@ const NewsBody = ({ data }) => {
           fontWeight: "400",
           fontSize: "16px",
           lineHeight: "24px",
-          color: "#0F172A",
         }}
       >
         {data.content}

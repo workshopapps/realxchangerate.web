@@ -1,7 +1,6 @@
 import { Button } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Input from "../../shared/Input";
-import BasicSelect from "../../shared/Select";
 import { Container } from "./formstyles";
 import axios from "axios";
 
@@ -10,22 +9,18 @@ const Form = ({ handleClose }) => {
   const [isocode, setIsocode] = useState("");
   const [symbol, setSymbol] = useState("");
   const [name, setName] = useState("");
-  const [form, setForm] = useState({
-    country: country,
-    isocode: isocode,
-    symbol: symbol,
-    name: name,
-  });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    const form = {
+      country: country,
+      isocode: isocode,
+      symbol: symbol,
+      name: name,
+    };
     try {
       const token = localStorage.getItem("token");
-      if (form.country === "") {
-        alert("Please Try again");
-        throw Error("Please enter a value");
-      }
+
       const response = await axios.post(
         "https://api.streetrates.hng.tech/api/admin/add_currency",
 
@@ -51,12 +46,6 @@ const Form = ({ handleClose }) => {
     <Container>
       <form
         onSubmit={(e) => {
-          setForm({
-            country: country,
-            isocode: isocode,
-            symbol: symbol,
-            name: name,
-          });
           handleSubmit(e);
         }}
       >

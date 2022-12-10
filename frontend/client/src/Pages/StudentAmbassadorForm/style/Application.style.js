@@ -80,6 +80,7 @@ export const FormSection = styled.section`
       .select-field {
         width: 45%;
         display: flex;
+        position: relative;
         flex-direction: column;
         @media (max-width: 1025px) {
           width: 48.5%;
@@ -95,12 +96,14 @@ export const FormSection = styled.section`
         select {
           padding: 1rem 1.8rem;
           font-size: 1.6rem;
+          background: transparent;
           border-color: #94a3b8;
           color: #94a3b8;
           border-radius: 0.4rem;
         }
       }
     }
+
     .grid-half {
       width: 45%;
       margin-bottom: 7.5rem;
@@ -140,15 +143,13 @@ export const FormSection = styled.section`
 `;
 
 export const MessageModal = styled.div`
-  background: gray;
+  background: #4bb543;
   border-radius: 8px;
   position: fixed;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 10;
-  top: 50%;
-  width: 60%;
-  height: 200px;
+  top: 10%;
   color: white;
   display: flex;
   padding: 16px;
@@ -157,9 +158,4 @@ export const MessageModal = styled.div`
   font-weight: 600;
   font-size: 16px;
   margin: 1rem auto;
-
-  p: @media (min-width: 768px) {
-    width: 30%;
-    font-size: 36px;
-  }
 `;

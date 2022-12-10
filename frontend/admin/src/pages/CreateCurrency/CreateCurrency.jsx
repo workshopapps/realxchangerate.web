@@ -8,13 +8,11 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
-import { mockData } from "./mockData";
 import { MainWrapper, Container, Integration } from "./currStyles";
 import arrow from "../../assets/arrow_forward.svg";
 
 import Card from "./Card";
-import createIcon from "../../assets/create_new.svg";
-import updateIcon from "../../assets/update.svg";
+
 import AddModalUi from "./AddModal";
 import EditModalUi from "./EditModal";
 import { Button, Skeleton } from "@mui/material";
@@ -26,6 +24,8 @@ import cuate from "../../assets/cuate.png";
 import contact from "../../assets/contact.png";
 import styled from "styled-components";
 import MenuDrop from "../../component/MenuDrop/MenuDrop";
+import { getBaseDetails, getRates } from "../../store/actions/rateActions";
+import { toast } from "react-toastify";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -52,18 +52,41 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 export default function CreateCurrency() {
   const [open, setOpen] = useState(false);
   const [editVal, setEditVal] = useState({
-    country: "OMO",
+    country: "",
     isocode: "",
     symbol: "",
     name: "",
   });
   const [editOpen, setEditOpen] = useState(false);
+  const [currencyNo, setCurrencyNo] = useState(10);
+  const [viewMore, setViewMore] = useState(true);
   const dispatch = useDispatch();
   const { currencies, requestStatus } = useSelector((state) => state.dashboard);
+  const {
+    currencyRates,
 
+    baseCurrency,
+    baseCurrencyDetails,
+    currencyStatus,
+    error,
+  } = useSelector((state) => state.rates);
+
+  const handleViewMore = () => {
+    if (10 + currencyNo > currencies.length) {
+      setCurrencyNo(currencies.length);
+      setViewMore(false);
+    } else {
+      setCurrencyNo((prev) => {
+        return prev + 10;
+      });
+    }
+  };
   useEffect(() => {
     dispatch(getTrending());
-    console.log(currencies);
+    dispatch(getBaseDetails("NGN"));
+    dispatch(getRates(baseCurrency));
+
+    //eslint-disable-next-line 
   }, [dispatch]);
 
   const handleOpen = () => {
@@ -80,6 +103,9 @@ export default function CreateCurrency() {
     setEditOpen(!editOpen);
   };
 
+  if (currencyStatus === "failed") {
+    toast.error(error);
+  }
   const cellSkeleton = (
     <Skeleton variant="rectangular" sx={{ mb: 1 }} width="100%" height="40px" />
   );
@@ -134,7 +160,7 @@ export default function CreateCurrency() {
           />
         </div>
         <TableContainer
-          style={{ margin: "auto -10px", width: "auto" }}
+          style={{ margin: "auto -10px", width: "auto", overflowY: "visible" }}
           component={Paper}
         >
           <Table
@@ -151,7 +177,7 @@ export default function CreateCurrency() {
                   Code
                 </StyledTableCell>
                 <StyledTableCell align="left" sx={{ fontWeight: "700" }}>
-                  Rate/₦
+                  {`Rate/${baseCurrencyDetails.symbol}`}
                 </StyledTableCell>
                 <StyledTableCell align="right">
                   {/* Carbs&nbsp;(g) */}
@@ -175,57 +201,67 @@ export default function CreateCurrency() {
                   ))}
                 </>
               ) : (
-                currencies.map((row, index) => (
-                  <StyledTableRow key={row.country}>
-                    <StyledTableCell
-                      component="th"
-                      scope="row"
-                      style={{ color: "rgba(71, 85, 105, 1)" }}
-                    >
-                      <div style={{ display: "flex", alignItems: "center" }}>
-                        <Flag
-                          code={row?.isocode?.slice(0, 2)}
-                          style={{ width: "30px", marginRight: "10px" }}
+                currencies
+                  .filter((currency) => {
+                    return currency.isocode !== baseCurrency;
+                  })
+                  .slice(0, currencyNo)
+                  .map((row, index) => (
+                    <StyledTableRow key={row.country}>
+                      <StyledTableCell
+                        component="th"
+                        scope="row"
+                        style={{ color: "rgba(71, 85, 105, 1)" }}
+                      >
+                        <div style={{ display: "flex", alignItems: "center" }}>
+                          <Flag
+                            code={row?.isocode?.slice(0, 2)}
+                            style={{ width: "30px", marginRight: "10px" }}
+                          />
+                          <span>{row.country}</span>
+                        </div>
+                      </StyledTableCell>
+                      <StyledTableCell
+                        align="left"
+                        style={{ color: "rgba(71, 85, 105, 1)" }}
+                      >
+                        {row.isocode}
+                      </StyledTableCell>
+                      <StyledTableCell
+                        align="left"
+                        style={{ color: "rgba(71, 85, 105, 1)" }}
+                      >
+                        {currencyRates === []
+                          ? "loading.."
+                          : currencyRates[index]?.rate?.parallel_buy}
+                      </StyledTableCell>
+                      <StyledTableCell
+                        align="right"
+                        style={{ color: "rgba(71, 85, 105, 1)" }}
+                      >
+                        <MenuDrop
+                          handleEditOpen={handleEditOpen}
+                          handleOpen={handleOpen}
+                          rowData={row}
+                          setRowData={setEditVal}
                         />
-                        <span>{row.country}</span>
-                      </div>
-                    </StyledTableCell>
-                    <StyledTableCell
-                      align="left"
-                      style={{ color: "rgba(71, 85, 105, 1)" }}
-                    >
-                      {row.isocode}
-                    </StyledTableCell>
-                    <StyledTableCell
-                      align="left"
-                      style={{ color: "rgba(71, 85, 105, 1)" }}
-                    >
-                      {mockData[index].rate}
-                    </StyledTableCell>
-                    <StyledTableCell
-                      align="right"
-                      style={{ color: "rgba(71, 85, 105, 1)" }}
-                    >
-                      <MenuDrop
-                        handleEditOpen={handleEditOpen}
-                        handleOpen={handleOpen}
-                        rowData={row}
-                        setRowData={setEditVal}
-                      />
-                    </StyledTableCell>
-                  </StyledTableRow>
-                ))
+                      </StyledTableCell>
+                    </StyledTableRow>
+                  ))
               )}
             </TableBody>
           </Table>
         </TableContainer>
-        <Button
-          variant="text"
-          sx={{ my: 2, textTransform: "capitalize", fontSize: "0.8rem" }}
-        >
-          view more currencies{" "}
-          <img src={arrow} alt="arrow" style={{ marginLeft: "10px" }} />
-        </Button>
+        {viewMore && (
+          <Button
+            variant="text"
+            sx={{ my: 2, textTransform: "capitalize", fontSize: "0.8rem" }}
+            onClick={handleViewMore}
+          >
+            view more currencies{" "}
+            <img src={arrow} alt="arrow" style={{ marginLeft: "10px" }} />
+          </Button>
+        )}
       </Container>
     </MainWrapper>
   );

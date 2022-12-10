@@ -2,7 +2,6 @@ import { Button } from "@mui/material";
 import axios from "axios";
 import React, { useState } from "react";
 import Input from "../../shared/Input";
-import BasicSelect from "../../shared/Select";
 import { Container } from "./formstyles";
 
 const Form = ({ handleEditClose, editVal }) => {
@@ -10,16 +9,16 @@ const Form = ({ handleEditClose, editVal }) => {
   const [isocode, setIsocode] = useState(editVal.isocode);
   const [symbol, setSymbol] = useState(editVal.symbol);
   const [name, setName] = useState(editVal.name);
-  const [form, setForm] = useState({});
+  // const [form, setForm] = useState({});
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setForm({
+    const form = {
       country: country,
       isocode: isocode,
       symbol: symbol,
       name: name,
-    });
+    };
 
     try {
       const token = localStorage.getItem("token");
@@ -30,7 +29,7 @@ const Form = ({ handleEditClose, editVal }) => {
       const response = await axios.put(
         `https://api.streetrates.hng.tech/api/admin/update_currency/${editVal.isocode}?iso_code=${editVal.isocode}`,
 
-        JSON.stringify(form),
+        form,
 
         {
           headers: {
@@ -51,12 +50,6 @@ const Form = ({ handleEditClose, editVal }) => {
     <Container>
       <form
         onSubmit={(e) => {
-          setForm({
-            country: country,
-            isocode: isocode,
-            symbol: symbol,
-            name: name,
-          });
           handleSubmit(e);
         }}
       >

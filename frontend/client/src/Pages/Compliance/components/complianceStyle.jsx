@@ -14,11 +14,10 @@ export const ComplianceSection = styled.section`
   h1 {
     font-size: 2.9rem;
     margin: 1rem 0;
-    color: #00296b;
+    color: #0062ff;
   }
   p {
     font-size: 1.6rem;
-    color: #0f172a;
   }
   .section-body {
     max-width: 75rem;

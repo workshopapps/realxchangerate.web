@@ -1,13 +1,15 @@
-import { Box, Stack, Typography, Link } from "@mui/material";
+import { Box, Stack, Typography, Link, useTheme } from "@mui/material";
 import React from "react";
 import DropDown from "./DropDown";
 import streetRates from "../assets/Logo.svg";
-import { Filter } from "iconsax-react";
 import { useTranslation } from "react-i18next";
 const Footer = () => {
+  const theme = useTheme();
+  const dark = theme.palette.mode === "dark";
+
   const { t } = useTranslation();
   return (
-    <Box backgroundColor="#00296B">
+    <Box backgroundColor={dark ? "#000E25" : "#00296B"}>
       <Box
         margin="0px auto"
         pt="56px"
@@ -37,7 +39,7 @@ const Footer = () => {
               fontWeight: { xs: "400" },
               width: { sm: "173.33px" },
             }}
-            color="#F8FAFC"
+            color={dark ? "#E2E8F0" : "#F8FAFC"}
             letterSpacing="0.001em"
           >
             <Typography
@@ -51,6 +53,7 @@ const Footer = () => {
                 fontWeight: { xs: "700" },
               }}
               letterSpacing="-0.02em"
+              color="#F8FAFC"
             >
               {t("footer_company")}
             </Typography>
@@ -84,7 +87,7 @@ const Footer = () => {
               fontWeight: { xs: "400" },
               width: { sm: "173.33px" },
             }}
-            color="#F8FAFC"
+            color={dark ? "#E2E8F0" : "#F8FAFC"}
             letterSpacing="0.001em"
           >
             <Typography
@@ -98,6 +101,7 @@ const Footer = () => {
                 fontWeight: { xs: "700" },
               }}
               letterSpacing="-0.02em"
+              color="#F8FAFC"
             >
               {t("footer_links")}
             </Typography>
@@ -119,7 +123,7 @@ const Footer = () => {
               fontWeight: { xs: "400" },
               width: { sm: "173.33px" },
             }}
-            color="#F8FAFC"
+            color={dark ? "#E2E8F0" : "#F8FAFC"}
             letterSpacing="0.001em"
           >
             <Typography
@@ -133,6 +137,7 @@ const Footer = () => {
                 fontWeight: { xs: "700" },
               }}
               letterSpacing="-0.02em"
+              color="#F8FAFC"
             >
               {t("footer_resources")}
             </Typography>
@@ -163,7 +168,7 @@ const Footer = () => {
               fontWeight: { xs: "400" },
               width: { sm: "173.33px" },
             }}
-            color="#F8FAFC"
+            color={dark ? "#E2E8F0" : "#F8FAFC"}
             letterSpacing="0.001em"
           >
             <Typography
@@ -176,7 +181,7 @@ const Footer = () => {
                 lineHeight: { xs: "23px" },
                 fontWeight: { xs: "700" },
               }}
-              letterSpacing="-0.02em"
+              letterSpacing="-0.02em"  color="#F8FAFC"
             >
               {t("footer_product")}
             </Typography>
@@ -198,7 +203,7 @@ const Footer = () => {
               fontWeight: { xs: "400" },
               width: { sm: "173.33px" },
             }}
-            color="#F8FAFC"
+            color={dark ? "#E2E8F0" : "#F8FAFC"}
             letterSpacing="0.001em"
           >
             <Typography
@@ -211,7 +216,7 @@ const Footer = () => {
                 lineHeight: { xs: "23px" },
                 fontWeight: { xs: "700" },
               }}
-              letterSpacing="-0.02em"
+              letterSpacing="-0.02em"  color="#F8FAFC"
             >
               {t("footer_support")}
             </Typography>
@@ -242,7 +247,7 @@ const Footer = () => {
               fontWeight: { xs: "400" },
               width: { sm: "173.33px" },
             }}
-            color="#F8FAFC"
+            color={dark ? "#E2E8F0" : "#F8FAFC"}
             letterSpacing="0.001em"
           >
             <Typography
@@ -255,7 +260,7 @@ const Footer = () => {
                 lineHeight: { xs: "23px" },
                 fontWeight: { xs: "700" },
               }}
-              letterSpacing="-0.02em"
+              letterSpacing="-0.02em"  color="#F8FAFC"
             >
               {t("footer_legal")}
             </Typography>

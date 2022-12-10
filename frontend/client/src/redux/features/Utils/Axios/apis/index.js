@@ -22,6 +22,10 @@ class Rates {
   async ApplyToAdvertise(data){
     return this.request.post(`/online_adverts`, data)
   }
+
+   async GetNews(ip){
+    return this.request.get(`/news/${ip}`)
+  }
 }
 
 

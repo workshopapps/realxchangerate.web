@@ -47,6 +47,8 @@ const Main = () => {
     dispatch(GetCurrencies());
   }, []);
 
+
+
   return (
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
@@ -54,7 +56,7 @@ const Main = () => {
         <Box
           width="100%"
           height="100vh"
-          sx={{ backgroundColor: "background.default", color: "text.primary" }}
+          sx={{ backgroundColor: mode === "dark" ? "#00050c" : "background.default", color: "text.primary" }}
         >
           <App />
         </Box>
