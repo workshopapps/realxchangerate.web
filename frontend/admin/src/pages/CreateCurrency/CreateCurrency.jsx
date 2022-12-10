@@ -26,6 +26,9 @@ import styled from "styled-components";
 import MenuDrop from "../../component/MenuDrop/MenuDrop";
 import { getBaseDetails, getRates } from "../../store/actions/rateActions";
 import { toast } from "react-toastify";
+// import Menu from "@mui/material/Menu";
+// import MenuItem from "@mui/material/MenuItem";
+// import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -57,6 +60,7 @@ export default function CreateCurrency() {
     symbol: "",
     name: "",
   });
+
   const [editOpen, setEditOpen] = useState(false);
   const [currencyNo, setCurrencyNo] = useState(10);
   const [viewMore, setViewMore] = useState(true);
@@ -83,11 +87,17 @@ export default function CreateCurrency() {
   };
   useEffect(() => {
     dispatch(getTrending());
-    dispatch(getBaseDetails("NGN"));
-    dispatch(getRates(baseCurrency));
+    console.log("kai", currencies);
+    dispatch(getBaseDetails("USD"));
+    console.log("CURRENCY RATES", currencyRates);
+    dispatch(getRates("USD"));
 
-    //eslint-disable-next-line 
+    //eslint-disable-next-line
   }, [dispatch]);
+  useEffect(() => {
+    // const Rates = Promise.all()
+    //eslint-disable-next-line
+  }, [currencyRates]);
 
   const handleOpen = () => {
     setOpen(!open);
@@ -103,7 +113,7 @@ export default function CreateCurrency() {
     setEditOpen(!editOpen);
   };
 
-  if (currencyStatus === "failed") {
+  if (currencyStatus === "failed" || requestStatus === "failed") {
     toast.error(error);
   }
   const cellSkeleton = (
@@ -231,9 +241,9 @@ export default function CreateCurrency() {
                         align="left"
                         style={{ color: "rgba(71, 85, 105, 1)" }}
                       >
-                        {currencyRates === []
-                          ? "loading.."
-                          : currencyRates[index]?.rate?.parallel_buy}
+                        {currencyRates[index]?.status === "fulfilled"
+                          ? currencyRates[index]?.value?.data?.parallel_total
+                          : "-"}
                       </StyledTableCell>
                       <StyledTableCell
                         align="right"
