@@ -20,6 +20,7 @@ import { GetCurrencyRates } from "../../redux/features/Reducers/serviceActions";
 import { tableCurrenciesList } from "../Home/data";
 import { AddCircle } from "iconsax-react";
 import Chart from "./chart/Chart";
+import DataCards from "./datacards/DataCards";
 //
 //
 const CurrencyProfile = () => {
@@ -76,31 +77,31 @@ const CurrencyProfile = () => {
   //
 
   //
-  const CurrencyMenu = (props) => {
-    const { currency } = props;
-    const countryDetails = countries.filter(
-      (countr) => countr.label === currency.country
-    );
-    return (
-      <MenuItem
-        key={currency.isocode}
-        value={currency.isocode}
-        sx={{ display: "flex", gap: "1rem" }}
-      >
-        <Box>
-          <img
-            loading="lazy"
-            width="20"
-            src={`https://flagcdn.com/w20/${countryDetails[0].code.toLowerCase()}.png`}
-            srcSet={`https://flagcdn.com/w40/${countryDetails[0].code.toLowerCase()}.png 2x`}
-            alt=""
-          />
-        </Box>
-        <Box>{currency.country}</Box>
-        <Box>({currency.isocode})</Box>
-      </MenuItem>
-    );
-  };
+  // const CurrencyMenu = (props) => {
+  //   const { currency } = props;
+  //   const countryDetails = countries.filter(
+  //     (countr) => countr.label === currency.country
+  //   );
+  //   return (
+  //     <MenuItem
+  //       key={currency.isocode}
+  //       value={currency.isocode}
+  //       sx={{ display: "flex", gap: "1rem" }}
+  //     >
+  //       <Box>
+  //         <img
+  //           loading="lazy"
+  //           width="20"
+  //           src={`https://flagcdn.com/w20/${countryDetails[0].code.toLowerCase()}.png`}
+  //           srcSet={`https://flagcdn.com/w40/${countryDetails[0].code.toLowerCase()}.png 2x`}
+  //           alt=""
+  //         />
+  //       </Box>
+  //       <Box>{currency.country}</Box>
+  //       <Box>({currency.isocode})</Box>
+  //     </MenuItem>
+  //   );
+  // };
   //
   //
   return (
@@ -116,6 +117,8 @@ const CurrencyProfile = () => {
       <Box style={{ margin: "90px auto" }}>
         <Chart />
       </Box>
+
+      <DataCards />
 
       <div
         style={{
@@ -195,6 +198,7 @@ const CurrencyProfile = () => {
           );
         })}
       </List>
+
       <StyledSelection>
         <PopupState variant="popover" popupId="demo-popup-menu">
           {(popupState) => (
