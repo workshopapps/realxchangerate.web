@@ -9,7 +9,7 @@ class Suggestion(Base):
     id = Column(Integer, primary_key=True, index=True)
     email = Column(EmailType, nullable=False, index=True)
     full_name = Column(String(255), nullable=False, index=True)
-    Suggestion = Column(String(1000), nullable=False, index=True)
+    Suggestion = Column(String(255), nullable=False, index=True)
 
     def to_dict(self):
         return {
