@@ -19,7 +19,7 @@ export const StyledWrapper = styled.div`
 `
 
 export const StyledCardsWrapper = styled.div`
-    margin-bottom: 50px;
+    margin-bottom: 30px;
     display: grid;
 
     grid-template-columns: 1fr;
@@ -52,5 +52,11 @@ export const StyledPaginationWrapper = styled.div`
         line-height: 20px;
 
         color: #091E42;
+    }
+
+    @media (max-width: ${props => props.theme.$styled.breakpoints.md}) {
+        flex-direction: column-reverse;
+        gap: 16px;
+        align-items: end;
     }
 `;

@@ -16,9 +16,14 @@ def create_advert(
     """
     This endpoints stores online_advert page information into the database for management use.
     """
-
-    crud.advert.create(db=db, obj_in=advert_in)
-    return {
-        "Success": True,
-        "message": "Thank you. We'll get in touch as soon as possible.",
-    }
+    try:
+        crud.advert.create(db=db, obj_in=advert_in)
+        return {
+            "Success": True,
+            "message": "Thank you. We'll get in touch as soon as possible.",
+        }
+    except:
+          return {
+            "Success": False,
+            "message": "Please check your fields and try again",
+        }

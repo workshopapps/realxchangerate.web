@@ -71,9 +71,7 @@ const About = () => {
         width="100%"
         backgroundColor={DarkMode ? "#00050C" : ""}
       >
-      
-          <Header />
-        
+        <Header />
 
         <Container textColor={textColor}>
           <Mission />
@@ -83,7 +81,7 @@ const About = () => {
           <Value />
         </Container>
         <Container textColor={textColor}>
-          <TeamSection>
+          {/* <TeamSection>
             <StyledContent>
               <StyledHead>Meet the Brilliant Team</StyledHead>
               <StyledText>
@@ -91,7 +89,7 @@ const About = () => {
                 good
               </StyledText>
             </StyledContent>
-            <TeamMembers>
+            {/* <TeamMembers>
               {teamMember.map((member) => {
                 return (
                   <TeamMember
@@ -102,10 +100,9 @@ const About = () => {
                   />
                 );
               })}
-            </TeamMembers>
-          </TeamSection>
+            </TeamMembers> */}
+          {/* </TeamSection>  */}
         </Container>
-          <Download />
       </Box>
     </>
   );
@@ -131,7 +128,7 @@ const Container = styled.div`
   background-color: ${(props) => {
     if (props.about) {
       return `
-        ${props.darkMode ? "#00050C" :"#00296b"};
+        ${props.darkMode ? "#00050C" : "#00296b"};
         color: #fff;
     `;
     } else if (props.noBg) {
@@ -148,7 +145,7 @@ const Container = styled.div`
   }};
 
   display: flex;
-  width:100%;
+  width: 100%;
   justify-content: center;
 `;
 

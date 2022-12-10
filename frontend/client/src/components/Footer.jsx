@@ -105,8 +105,13 @@ const Footer = () => {
             >
               {t('footer_links')}
             </Typography>
+<<<<<<< HEAD
             <Link href='/#/news' color='inherit'>
               {t('footer_news')}
+=======
+            <Link href="/#/blogs" color="inherit">
+              {t("footer_news")}
+>>>>>>> 556b577284bf1edc9ae2626e6de1767fd15211e5
             </Link>
             <Link href='/#/contact' color='inherit'>
               {t('footer_contact')}
@@ -315,9 +320,15 @@ const Footer = () => {
             ]}
           />
           <DropDown
+<<<<<<< HEAD
             title={t('footer_links')}
             Items={[t('footer_news'), t('footer_contact')]}
             Links={['news', 'contact']}
+=======
+            title={t("footer_links")}
+            Items={[t("footer_news"), t("footer_contact")]}
+            Links={["blogs", "contact"]}
+>>>>>>> 556b577284bf1edc9ae2626e6de1767fd15211e5
           />
           <DropDown
             title={t('footer_resources')}
@@ -367,7 +378,11 @@ const Footer = () => {
               t('footer_cookie'),
               t('footer_compliance'),
             ]}
+<<<<<<< HEAD
             Links={['#', 'terms', 'CookiePolicy', 'compliance']}
+=======
+            Links={["privacy-policy", "terms", "Cookie-policy", "compliance"]}
+>>>>>>> 556b577284bf1edc9ae2626e6de1767fd15211e5
           />
         </Box>
         <Box margin='20px 0px'>

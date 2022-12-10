@@ -19,6 +19,8 @@ import { useSelector } from "react-redux";
 import { dispatch } from "../../redux/store";
 import { GetCurrencyRates } from "../../redux/features/Reducers/serviceActions";
 import Countdown from "react-countdown-simple";
+import Download from "../About/components/Download";
+import { Link } from "react-router-dom";
 const Home = () => {
   const theme = useTheme();
   const dark = theme.palette.mode === "dark";
@@ -69,162 +71,174 @@ const Home = () => {
     closeModal();
   };
   return (
-    <Box
-      sx={{
-        display: "flex",
-        // flexDirection: { sx: "column", md: "row" },
-        flexDirection: "column",
-        gap: "4rem",
-        maxWidth: "1440px",
-        margin: "auto",
-        p: { xs: "2rem", md: "4rem", lg: "5rem 10rem" },
-        pt: { xs: "5rem" },
-        backgroundColor: dark ? "#00050c" : "",
-      }}
-    >
+    <>
       <Box
         sx={{
           display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-
-          flexDirection: { sm: "column", xs: "column-reverse" },
-
-          gap: "2.4rem",
+          // flexDirection: { sx: "column", md: "row" },
+          flexDirection: "column",
+          gap: "4rem",
+          maxWidth: "1440px",
+          margin: "auto",
+          p: { xs: "2rem", md: "4rem", lg: "5rem 10rem" },
+          pt: { xs: "5rem" },
+          backgroundColor: dark ? "#00050c" : "",
         }}
       >
-        <Hero />
-        <Convert />
-      </Box>
-      <StyledBox>
-        <TypographyLive
-          sx={{ color: "#0062FF", fontSize: "16px", fontWeight: 500 }}
-        >
-          {t("home_live")}
-        </TypographyLive>
-        <TypographyHead
-          component="h2"
-          sx={{ fontSize: "32px", maxWidth: "595px", fontWeight: 800 }}
-        >
-          {t("home_title")}
-        </TypographyHead>
-        {/* <StyledEdit className="action" id="edit" onClick={() => handleEdit()}>
-          {t("home_btn")}
-        </StyledEdit> */}
-      </StyledBox>
-      {/* Table  */}
-      <List
-        style={{
-          border: dark ? "" : "1px solid #CBD5E1",
-          padding: "0",
-          borderRadius: "5px",
-        }}
-      >
-        <ListItem
+        <Box
           sx={{
             display: "flex",
-            alignItems: "center",
             justifyContent: "space-between",
-            bgcolor: dark ? "" : "#F1F5F9",
-            fontSize: "1.7rem",
-            p: "1.5rem",
-            fontWeight: 600,
-            color: dark ? "#FAFAFA" : "black",
+            alignItems: "flex-end",
+
+            flexDirection: { sm: "column", xs: "column-reverse" },
+
+            gap: "2.4rem",
           }}
         >
-          <Box>{t("home_currency")}</Box>
-          <Box>{t("home_parallel")}</Box>
-          <StyledBankBox>{t("home_Bank")}</StyledBankBox>
-          <Box style={{ width: "60px" }}></Box>
-        </ListItem>
+          <Hero />
+          <Convert />
+        </Box>
+        <StyledBox>
+          <TypographyLive
+            sx={{ color: "#0062FF", fontSize: "16px", fontWeight: 500 }}
+          >
+            {t("home_live")}
+          </TypographyLive>
+          <TypographyHead
+            component="h2"
+            sx={{ fontSize: "32px", maxWidth: "595px", fontWeight: 800 }}
+          >
+            {t("home_title")}
+          </TypographyHead>
+          {/* <StyledEdit className="action" id="edit" onClick={() => handleEdit()}>
+          {t("home_btn")}
+        </StyledEdit> */}
+        </StyledBox>
+        {/* Table  */}
+        <List
+          style={{
+            border: dark ? "" : "1px solid #CBD5E1",
+            padding: "0",
+            borderRadius: "5px",
+          }}
+        >
+          <ListItem
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              bgcolor: dark ? "" : "#F1F5F9",
+              fontSize: "1.7rem",
+              p: "1.5rem",
+              fontWeight: 600,
+              color: dark ? "#FAFAFA" : "black",
+            }}
+          >
+            <Box>{t("home_currency")}</Box>
+            <Box>{t("home_parallel")}</Box>
+            <StyledBankBox>{t("home_Bank")}</StyledBankBox>
+            <Box style={{ width: "60px" }}></Box>
+          </ListItem>
 
-        {currencies.map((currency) => {
-          return (
-            <>
-              {currencyRates.length > 0 && (
-                <Table2
-                  isocode={currency.isocode}
-                  country={currency.country}
-                  key={currency.id}
-                  rates={
-                    currencyRates.find(
-                      (x) => x.currency.isocode === currency.isocode
-                    ).rate
-                  }
-                  link={currency.link}
-                  symbol={currency.symbol}
-                  flag={currency.flag}
-                  deleteIcon={
-                    <PopupState variant="popover" popupId="demo-popup-menu">
-                      {(popupState) => (
-                        <React.Fragment>
-                          <Button {...bindTrigger(popupState)}>
-                            <div className="add">
-                              <img
-                                src={DeleteIcon}
-                                className="delete-cur"
-                                alt=""
-                                style={
-                                  {
-                                    /*display: "none"*/
+          {currencies.map((currency) => {
+            return (
+              <>
+                {currencyRates.length > 0 && (
+                  <Table2
+                    country={currency.country}
+                    key={currency.id}
+                    rates={
+                      currencyRates.find(
+                        (x) => x.currency.isocode === currency.isocode
+                      ).rate
+                    }
+                    link={currency.link}
+                    symbol={currency.symbol}
+                    flag={currency.flag}
+                    deleteIcon={
+                      <PopupState variant="popover" popupId="demo-popup-menu">
+                        {(popupState) => (
+                          <React.Fragment>
+                            <Button {...bindTrigger(popupState)}>
+                              <div className="add">
+                                <img
+                                  src={DeleteIcon}
+                                  className="delete-cur"
+                                  alt=""
+                                  style={
+                                    {
+                                      /*display: "none"*/
+                                    }
                                   }
-                                }
-                              />
-                            </div>
-                          </Button>
-                          <Menu {...bindMenu(popupState)}>
-                            <MenuItem
-                              onClick={(e) => handleDelete(currency.id)}
-                            >
-                              Delete
-                            </MenuItem>
-                            <MenuItem>Currency Profile</MenuItem>
-                          </Menu>
-                        </React.Fragment>
-                      )}
-                    </PopupState>
-                  }
-                />
-              )}
-            </>
-          );
-        })}
-      </List>
-      <StyledSelection>
-        <PopupState variant="popover" popupId="demo-popup-menu">
-          {(popupState) => (
-            <React.Fragment>
-              <Button {...bindTrigger(popupState)}>
-                <div className="add">
-                  <img src={add} alt="" />
-                  <span className="addspan">{t("home_add")}</span>
-                </div>
-              </Button>
-              <Menu {...bindMenu(popupState)} >
-                {getCurrency.map((item) => {
-                  return (
-                    <MenuItem
-                      onClick={() => handleAdd(popupState.close, item)}
-                      key={item.id}
-                      sx={{backgroundColor : dark ? "#001E4E" : "", padding:"3"}}
-                    >
-                      <img
-                        loading="lazy"
-                        width="20"
-                        src={`${item.flag}`}
-                        alt=""
-                        style={{ marginRight: "10px" }}
-                      />
-                      {item.isocode} - {item.country}
-                    </MenuItem>
-                  );
-                })}
-              </Menu>
-            </React.Fragment>
-          )}
-        </PopupState>
-      </StyledSelection>
-    </Box>
+                                />
+                              </div>
+                            </Button>
+                            <Menu {...bindMenu(popupState)}>
+                              <MenuItem
+                                onClick={(e) => handleDelete(currency.id)}
+                              >
+                                Delete
+                              </MenuItem>
+                              <MenuItem>
+                                <Link
+                                  style={{ color: "#000" }}
+                                  to={`/${currency.isocode}/currency-profile`}
+                                >
+                                  Currency Profile
+                                </Link>
+                              </MenuItem>
+                            </Menu>
+                          </React.Fragment>
+                        )}
+                      </PopupState>
+                    }
+                  />
+                )}
+              </>
+            );
+          })}
+        </List>
+        <StyledSelection>
+          <PopupState variant="popover" popupId="demo-popup-menu">
+            {(popupState) => (
+              <React.Fragment>
+                <Button {...bindTrigger(popupState)}>
+                  <div className="add">
+                    <img src={add} alt="" />
+                    <span className="addspan">{t("home_add")}</span>
+                  </div>
+                </Button>
+                <Menu {...bindMenu(popupState)}>
+                  {getCurrency.map((item) => {
+                    return (
+                      <MenuItem
+                        onClick={() => handleAdd(popupState.close, item)}
+                        key={item.id}
+                        sx={{
+                          backgroundColor: dark ? "#001E4E" : "",
+                          padding: "3",
+                        }}
+                      >
+                        <img
+                          loading="lazy"
+                          width="20"
+                          src={`${item.flag}`}
+                          alt=""
+                          style={{ marginRight: "10px" }}
+                        />
+                        {item.isocode} - {item.country}
+                      </MenuItem>
+                    );
+                  })}
+                </Menu>
+              </React.Fragment>
+            )}
+          </PopupState>
+        </StyledSelection>
+      </Box>
+      <Download />
+    </>
   );
 };
 

@@ -57,11 +57,19 @@ export default [
     es: 'Enlaces',
   },
   {
+<<<<<<< HEAD
     key: 'footer_news',
     en: 'News',
     de: 'Nachrichten',
     fr: 'Actualités',
     es: 'noticias',
+=======
+    key: "footer_news",
+    en: "Blog",
+    de: "Bloggen",
+    fr: "Blog",
+    es: "Blog",
+>>>>>>> 556b577284bf1edc9ae2626e6de1767fd15211e5
   },
   {
     key: 'footer_contact',
