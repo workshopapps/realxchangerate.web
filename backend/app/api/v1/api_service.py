@@ -28,7 +28,7 @@ async def get_currency_rates_from_external_apis(db: Session = Depends(get_db)) -
     currency_list = []
     updated_currencies_list = []
     try:
-        all_currencies = db.query(Currency).all()
+        all_currencies = db.query(Currency).filter(Currency.isocode != "USD").all()
         official_rate = await make_official_rate_request(base_currency=base_currency)
         for currency in all_currencies:
             currency_list.append(currency.isocode.upper())
