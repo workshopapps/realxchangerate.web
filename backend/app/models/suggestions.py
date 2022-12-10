@@ -10,3 +10,11 @@ class Suggestion(Base):
     email = Column(EmailType, nullable=False, index=True)
     full_name = Column(String(255), nullable=False, index=True)
     Suggestion = Column(String(255), nullable=False, index=True)
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "email": self.email,
+            "full_name": self.full_name,
+            "suggestion": self.Suggestion
+        }
