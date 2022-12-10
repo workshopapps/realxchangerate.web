@@ -10,17 +10,37 @@ const initialState = {
 };
 const endpoint = `https://api.streetrates.hng.tech/api`;
 
+export const getCurrencies = async () => {
+  try {
+    const res = await axios.get(
+      "https://api.streetrates.hng.tech/api/currency/"
+    );
+    if (res.status && res.status === 200) {
+      return res.data;
+    }
+  } catch (err) {
+    console.log(err, "error");
+  }
+};
 export const getRates = createAsyncThunk(
   "rates/getRates",
   async (baseCurrency, { rejectWithValue }) => {
     try {
-      const response = await axios.get(
-        `${endpoint}/currency/currencies/${baseCurrency}`
-      );
-      if (response && response.status === 200) {
-        // console.log(response.data);
-        return response.data;
-      }
+      const currencies = await getCurrencies();
+      console.log("here", currencies);
+      const currRates = await currencies.map(async (curr) => {
+        const response = await axios.get(
+          `${endpoint}/rate/convert/calc?from_currency=${baseCurrency}&to_currency=${curr.isocode}&amount=1`
+        );
+        if (response && response.status === 200) {
+          // console.log(response.data);
+
+          return await response.data;
+        }
+      });
+      const val = await Promise.allSettled(currRates);
+      console.log("omo", val[0]);
+      return val;
     } catch (err) {
       console.error(err);
       return rejectWithValue(err.message);
