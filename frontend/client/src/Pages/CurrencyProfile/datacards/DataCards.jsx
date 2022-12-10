@@ -1,12 +1,17 @@
-import { Container } from "@mui/material";
+import { Box, Container } from "@mui/material";
 import React from "react";
 import { useLocation } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import HighLow from "./HighLow";
+import OneMonth from "./Month";
+import OneDay from "./OneDay";
+import OneHour from "./OneHour";
+import SevenDays from "./SevenDays";
 
 function DataCards() {
   const path = useLocation();
   const [highLow, setHighLow] = React.useState({});
+  const [trend, setTrend] = React.useState({});
 
   React.useEffect(() => {
     const fetchHighLowRate = async () => {
@@ -21,6 +26,30 @@ function DataCards() {
       }
       return await response.json();
     };
+
+    const fetchTrend = async () => {
+      const response = await fetch(
+        `https://api.streetrates.hng.tech/api/currency/trend/${
+          path.pathname.split("/")[1]
+        }`
+      );
+      if (response.status !== 200) {
+        console.log("server error", response.statusText);
+        toast("Server down, please try again later");
+      }
+      return await response.json();
+    };
+
+    fetchTrend()
+      .then((data) => {
+        setTrend(data.data);
+        console.log(data.data);
+      })
+      .catch((error) => {
+        console.log("error fetching highest and lowest rates", error);
+        toast("Error fetching highes and lowest rates");
+      });
+
     fetchHighLowRate()
       .then((data) => {
         setHighLow(data.data.rates);
@@ -33,8 +62,24 @@ function DataCards() {
   }, [path.pathname]);
 
   return (
-    <Container maxWidth="100%" sx={{}}>
+    <Container
+      maxWidth="100%"
+      sx={{ display: "flex", flexDirection: "column", gap: "1rem" }}
+    >
       <ToastContainer />
+      <Box
+        sx={{
+          display: "flex",
+          gap: "1rem",
+          flexWrap: "wrap",
+          justifyContent: "space-between",
+        }}
+      >
+        <OneHour rate={trend.one_hour} />
+        <OneDay rate={trend.one_day} />
+        <SevenDays rate={trend.seven_days} />
+        <OneMonth rate={trend.one_month} />
+      </Box>
       <HighLow rates={highLow} />
     </Container>
   );

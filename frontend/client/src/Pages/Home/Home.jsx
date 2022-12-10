@@ -69,7 +69,6 @@ const Home = () => {
       deleteIcons.forEach((e) => (e.style.display = "block"));
     }
   }
-  const handleEdit = () => {};
 
   const handleAdd = (closeModal, item) => {
     setCurrencies([...currencies, item]);
