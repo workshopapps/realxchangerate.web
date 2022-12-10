@@ -9,10 +9,10 @@ export default [
   },
   {
     key: "home_title",
-    en: "Live rates of popular currencies in Africa",
-    de: "Live-Kurse beliebter Währungen in Afrika",
-    fr: "Taux en direct des monnaies populaires en Afrique",
-    es: "Cotizaciones en vivo de monedas populares en África",
+    en: "Add your favorite currency ",
+    de: "Fügen Sie Ihre Lieblingswährung hinzu",
+    fr: "Ajoutez votre devise préférée",
+    es: "Agrega tu moneda favorita",
   },
   {
     key: "home_btn",
