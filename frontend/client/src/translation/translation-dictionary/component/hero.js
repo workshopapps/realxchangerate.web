@@ -2,14 +2,14 @@
 export default [
   {
     key: "hero_title",
-    en: "SIMPLE AND QUICK",
+    en: "Today’s Exchange Rates",
     de: "EINFACH UND SCHNELL",
     fr: "SIMPLE ET RAPIDE",
     es: "Sencilla y rápida",
   },
   {
     key: "hero_sub",
-    en: "Check parallel market rate In Real time",
+    en: "Check parallel market rates In Real time",
     de: "Überprüfen Sie den parallelen Marktpreis in Echtzeit",
     fr: "Vérifiez le taux du marché parallèle en temps réel",
     es: "Consultar cotización mercado paralelo En tiempo real",

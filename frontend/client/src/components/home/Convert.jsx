@@ -137,7 +137,6 @@ const Convert = () => {
         width: { xs: "100%" },
         border: "1px solid #BBBBBB",
         padding: { lg: "32px", xs: "8px" },
-        mb: "64px",
         boxShadow: "0 0 0 0",
         backgroundColor: dark ? "#000A1B" : "",
       }}
@@ -369,7 +368,7 @@ const Rate = styled.div`
   display: flex;
   justify-content: space-between;
   padding-left: 16px;
-  padding-right: 80px;
+  /* padding-right: 80px; */
   h4 {
     font-size: 18px;
     line-height: 28px;

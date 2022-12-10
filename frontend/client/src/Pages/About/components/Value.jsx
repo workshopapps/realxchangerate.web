@@ -110,8 +110,8 @@ const Value = () => {
             letterSpacing: { xs: "0.001em", sm: "auto" },
           }}
         >
-          Offering a unique experience and providing an accurate of any country
-          exchange rate of your choice
+          Offering a unique experience and providing accurate exchange rates of
+          any currency of your choice.
         </Typography>
 
         <Grid
@@ -142,7 +142,7 @@ const Value = () => {
             <ListItem
               image={DiversityIcon}
               title="Diversity"
-              content="At StreetRate we embrace our interdependence as humans, our rich cultures, and places we come from."
+              content="At StreetRates, we embrace our interdependence as humans, our rich cultures, and places we come from."
             />
           </Grid>
 

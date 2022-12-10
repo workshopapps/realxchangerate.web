@@ -75,9 +75,9 @@ function App() {
                 path="/:id/currency-profile"
                 element={<CurrencyProfile />}
               />
-              <Route path="/news" element={<News />} />
+              <Route path="/blogs" element={<News />} />
               {/* Adding path for one news  */}
-              <Route path="/news/:id" element={<SingleNews />} />
+              <Route path="/blogs/:id" element={<SingleNews />} />
               <Route path="/faq" element={<Faq />} />
               <Route path="/faq-overview" element={<FaqOverview />} />
               <Route

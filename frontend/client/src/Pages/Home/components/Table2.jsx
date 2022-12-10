@@ -1,4 +1,4 @@
-import {  Typography, Box, useTheme } from "@mui/material";
+import { Typography, Box, useTheme } from "@mui/material";
 import React from "react";
 import { countries } from "../data";
 import { Link } from "react-router-dom";
@@ -16,32 +16,32 @@ function Table2({ isocode, country, deleteIcon, rates, link, symbol }) {
       flexDirection="row"
       padding="10px"
       alignItems="center"
-      borderTop={dark ?"1px solid #001E4E" :"1px solid #CBD5E1"}
+      borderTop={dark ? "1px solid #001E4E" : "1px solid #CBD5E1"}
       fontSize="1.4rem"
     >
-      <Link to={`/${isocode}/currency-profile`}>
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            gap: "1rem",
-            width: "107px",
-          }}
-        >
-          <Box>
-            <img
-              loading="lazy"
-              width="20"
-              src={`https://flagcdn.com/w20/${countryDetails[0]?.code.toLowerCase()}.png`}
-              alt=""
-            />
-          </Box>
-          <Box>
-            <Box style={{ color: dark ? '#8C9FBC' : "#555962" }}>{isocode}</Box>
-            <Box sx={{ fontSize: "1rem", color: dark ? '#FAFAFA' : "#94A3B8" }}>{country}</Box>
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          gap: "1rem",
+          width: "107px",
+        }}
+      >
+        <Box>
+          <img
+            loading="lazy"
+            width="20"
+            src={`https://flagcdn.com/w20/${countryDetails[0]?.code.toLowerCase()}.png`}
+            alt=""
+          />
+        </Box>
+        <Box>
+          <Box style={{ color: dark ? "#8C9FBC" : "#555962" }}>{isocode}</Box>
+          <Box sx={{ fontSize: "1rem", color: dark ? "#FAFAFA" : "#94A3B8" }}>
+            {country}
           </Box>
         </Box>
-      </Link>
+      </Box>
       <Typography fontSize="16px" textAlign="left">
         {symbol} {Number(rates?.parallel_buy).toFixed(2)}
       </Typography>

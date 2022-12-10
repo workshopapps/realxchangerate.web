@@ -8,28 +8,24 @@ function Hero() {
   return (
     <Box className={styles.hero}>
       <Typography
-        variant="h4"
+        variant="h1"
         sx={{
-          textTransform: "uppercase",
+          textTransform: "titlecase",
         }}
         className={styles.simple}
       >
         {t("hero_title")}
       </Typography>
-      <Typography variant="h1" component="h1">
+      <Typography variant="h4" component="h4">
         {t("hero_sub")}
       </Typography>
-      <Typography component="p">{t("hero_texte")}</Typography>
-      <Box
+      {/* <Typography component="p">{t("hero_texte")}</Typography> */}
+      {/* <Box
         className="store"
         sx={{
           m: "10px auto",
         }}
-      >
-        <a href="https://appetize.io/app/dma6cyb75uzgdhnucyd6oo24wm?device=pixel4&osVersion=12.0&scale=75">
-          <img src="/googleplay.svg" alt="" />
-        </a>
-      </Box>
+      ></Box> */}
     </Box>
   );
 }
