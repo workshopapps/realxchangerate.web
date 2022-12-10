@@ -1,4 +1,4 @@
-import { IconButton } from "@mui/material";
+import { IconButton, Menu, MenuItem } from "@mui/material";
 import React, { useState } from "react";
 import styled from "styled-components";
 import more from "../../assets/more.svg";
@@ -9,6 +9,8 @@ import axios from "axios";
 
 function MenuDrop({ handleOpen, handleEditOpen, setRowData, rowData }) {
   const [drop, setDrop] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const anchorOpen = Boolean(anchorEl);
   const handleDelete = async () => {
     try {
       const token = localStorage.getItem("token");
@@ -30,48 +32,74 @@ function MenuDrop({ handleOpen, handleEditOpen, setRowData, rowData }) {
       console.error(err);
     }
   };
+  const handleAnchorClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleAnchorClose = () => {
+    setAnchorEl(null);
+  };
   return (
     <>
       <MenuDropDown>
-        <IconButton
+        {/* <IconButton
           onClick={() => {
             setDrop(!drop);
           }}
         >
           <img src={more} alt="options" />
+        </IconButton> */}
+        <IconButton onClick={(e) => handleAnchorClick(e)}>
+          <img src={more} alt="options" />
         </IconButton>
+        <Menu
+          id="basic-menu"
+          anchorEl={anchorEl}
+          open={anchorOpen}
+          onClose={handleAnchorClose}
+          MenuListProps={{
+            "aria-labelledby": "basic-button",
+          }}
+        >
+          <MenuItem onClick={handleAnchorClose}>
+            {" "}
+            <Option
+              onClick={() => {
+                setDrop(false);
+                handleEditOpen(true);
+                setRowData(rowData);
+              }}
+            >
+              <img src={create} alt="" />
+              Edit Currency
+            </Option>
+          </MenuItem>
+          <MenuItem onClick={handleAnchorClose}>
+            {" "}
+            <Option
+              onClick={() => {
+                setDrop(false);
+                handleOpen(true);
+              }}
+            >
+              <img src={plus} alt="" />
+              Add Currency
+            </Option>
+          </MenuItem>
+          <MenuItem onClick={handleAnchorClose}>
+            <Option
+              onClick={() => {
+                setDrop(false);
+                handleDelete();
+              }}
+            >
+              <img src={del} alt="delete" />
+              Delete Currency
+            </Option>
+          </MenuItem>
+        </Menu>
         {drop && (
           <DropDown>
-            <div className="items">
-              <Option
-                onClick={() => {
-                  setDrop(false);
-                  handleEditOpen(true);
-                  setRowData(rowData);
-                }}
-              >
-                <img src={create} alt="" />
-                Edit Currency
-              </Option>
-              <Option
-                onClick={() => {
-                  setDrop(false);
-                  handleOpen(true);
-                }}
-              >
-                <img src={plus} alt="" />
-                Add Currency
-              </Option>
-              <Option
-                onClick={() => {
-                  setDrop(false);
-                  handleDelete();
-                }}
-              >
-                <img src={del} alt="delete" />
-                Delete Currency
-              </Option>
-            </div>
+            <div className="items"></div>
           </DropDown>
         )}
       </MenuDropDown>

@@ -72,7 +72,7 @@ export default function HorizontalNewsCard({ data }) {
                 </Typography>
               </a>
             ) : (
-              <Link to={`/news/${data.id}`}>
+              <Link to={`/blogs/${data.id}`}>
                 <Typography
                   sx={{
                     fontWeight: "500",
