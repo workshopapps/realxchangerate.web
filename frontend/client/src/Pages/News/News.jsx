@@ -31,10 +31,12 @@ export default function News() {
   }, []);
 
   useEffect(() => {
-    if (news.length > 0) {
-      setLoading(false);
-    } else {
-      dispatch(GetNews("155.94.247.229"));
+    if (news) {
+      if (news.length > 0) {
+        setLoading(false);
+      } else {
+        dispatch(GetNews("155.94.247.229"));
+      }
     }
   }, [news]);
 
@@ -71,7 +73,7 @@ export default function News() {
                   display="flex"
                   flexDirection="column"
                   backgroundColor={darkMode ? "#000A1B" : "#FAFAFA"}
-                  borderLeft={darkMode ? "" :"1px solid #D4D4D4"}
+                  borderLeft={darkMode ? "" : "1px solid #D4D4D4"}
                   borderRadius="4px"
                   padding="20px"
                   sx={{
@@ -82,7 +84,7 @@ export default function News() {
                   <Box display="flex" flexDirection="column" gap="24px">
                     <Typography
                       sx={{
-                        color: darkMode ? "#FAFAFA": "#000000",
+                        color: darkMode ? "#FAFAFA" : "#000000",
                         fontWeight: "500",
                         fontSize: "24px",
                         lineHeight: "144.02%",
