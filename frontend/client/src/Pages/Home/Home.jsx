@@ -135,7 +135,7 @@ const Home = () => {
           <Box>{t("home_currency")}</Box>
           <Box>{t("home_parallel")}</Box>
           <StyledBankBox>{t("home_Bank")}</StyledBankBox>
-          <Box></Box>
+          <Box style={{ width: "60px" }}></Box>
         </ListItem>
 
         {currencies.map((currency) => {

@@ -47,7 +47,6 @@ export default function News() {
           display="flex"
           flexDirection="column"
           alignItems="center"
-          maxWidth="1440px"
           margin="0px auto"
           backgroundColor={darkMode ? "#00050C" : ""}
         >
@@ -71,8 +70,8 @@ export default function News() {
                 <Box
                   display="flex"
                   flexDirection="column"
-                  backgroundColor="#FAFAFA"
-                  borderLeft="1px solid #D4D4D4"
+                  backgroundColor={darkMode ? "#000A1B" : "#FAFAFA"}
+                  borderLeft={darkMode ? "" :"1px solid #D4D4D4"}
                   borderRadius="4px"
                   padding="20px"
                   sx={{
@@ -83,7 +82,7 @@ export default function News() {
                   <Box display="flex" flexDirection="column" gap="24px">
                     <Typography
                       sx={{
-                        color: "#000000",
+                        color: darkMode ? "#FAFAFA": "#000000",
                         fontWeight: "500",
                         fontSize: "24px",
                         lineHeight: "144.02%",

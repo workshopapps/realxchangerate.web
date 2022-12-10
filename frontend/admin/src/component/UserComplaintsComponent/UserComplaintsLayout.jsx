@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { Card, CardSkeleton } from "./card/Card";
 import {
   StyledCardsWrapper,
@@ -14,22 +14,59 @@ import {
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import OutlinedInput from "@mui/material/OutlinedInput";
-import Pagination from "@mui/material/Pagination";
 import { toast } from "react-toastify";
 import Box from "@mui/material/Box";
+import PaginationXD from "./pagination/Pagination";
 
 export default function UserComplaintsLayout() {
+  const { complaints, loading } = useSelector((state) => state.complaints);
   const [filterState, setFilterState] = useState("all");
   const [filteredComplaints, setFilteredComplaints] = useState(null);
+  // pagination
+  const [currentPage, setCurrentPage] = useState(1);
+  const postsPerPage = 4;
+  const indexOfLastComplaint = currentPage * postsPerPage;
+  const indexOfFirstComplaint = indexOfLastComplaint - postsPerPage;
+  const currentComplaints = filteredComplaints?.slice(
+    indexOfFirstComplaint,
+    indexOfLastComplaint
+  );
+
   const [pageInfo, setPageInfo] = useState({
-    currTotal: filteredComplaints?.length || 3,
-    startCount: filteredComplaints?.length === 0 ? 0 : 1,
+    start: 1,
+    currShown: 3,
+    total: 3,
   });
 
-  // when api, set filteredComplaintsas null then update on fullfil
-
   const dispatch = useDispatch();
-  const { complaints, loading } = useSelector((state) => state.complaints);
+
+  const handlePage = useCallback((totalItems, currPage) => {
+    let startPage;
+    let endPage;
+
+    if (currPage <= 1) {
+      startPage = 1;
+    } else {
+      startPage = (currPage - 1) * 4 + 1;
+    }
+
+    let ab = totalItems - currPage * 4;
+    if (ab === 0) {
+      endPage = totalItems;
+    } else if (ab > 0) {
+      endPage = currPage * 4;
+    } else if (ab < 0) {
+      endPage = currPage * 4 + ab;
+    }
+
+    setPageInfo((prev) => ({
+      ...prev,
+      start: startPage,
+      currShown: endPage,
+
+      total: totalItems,
+    }));
+  }, []);
 
   // get complaints
   useEffect(() => {
@@ -40,14 +77,14 @@ export default function UserComplaintsLayout() {
     };
   }, [dispatch]);
 
-  // filter the complaints
+  // pass complaints to filteredComplaints
   useEffect(() => {
     if (complaints) {
       setFilteredComplaints(complaints?.items);
 
-      handlePage(complaints?.items.length);
+      handlePage(complaints?.items.length, 1);
     }
-  }, [complaints]);
+  }, [complaints, handlePage]);
 
   if (!complaints && loading === "failed") {
     toast.error("error fetching complaints");
@@ -64,17 +101,9 @@ export default function UserComplaintsLayout() {
     },
   };
 
-  const handlePage = (total) => {
-    let ab = total === 0 ? 0 : 1;
-    let bc = total;
-    setPageInfo((prev) => ({
-      ...prev,
-      currTotal: bc,
-      startCount: ab,
-    }));
-  };
-
+  // update complaints / filter
   const onFilterChange = (e) => {
+    setCurrentPage(1);
     setFilterState(e.target.value);
 
     if (e.target.value !== "all") {
@@ -82,15 +111,15 @@ export default function UserComplaintsLayout() {
         (item) => item.status === e.target.value
       );
       setFilteredComplaints(arr);
-
-      //
-
-      handlePage(arr.length);
+      handlePage(arr?.length, 1);
     } else {
       setFilteredComplaints(complaints?.items);
-      handlePage(complaints?.items.length);
+      handlePage(complaints?.items.length, 1);
     }
   };
+
+  // change page FIX THIS PAGINATE!
+  const paginate = (value) => setCurrentPage(value);
 
   return (
     <StyledWrapper>
@@ -130,7 +159,7 @@ export default function UserComplaintsLayout() {
             <CardSkeleton />
           </>
         )}
-        {filteredComplaints?.map((item, index) => (
+        {currentComplaints?.map((item, index) => (
           <Card key={index} data={item} />
         ))}
 
@@ -141,10 +170,18 @@ export default function UserComplaintsLayout() {
 
       <StyledPaginationWrapper>
         <p className="page">
-          {`Showing ${pageInfo.startCount} - ${pageInfo.currTotal} results of ${pageInfo.currTotal} records`}
+          {`Showing ${pageInfo.start} - ${pageInfo.currShown} results of ${pageInfo.total} records`}
         </p>
 
-        <Pagination count={1} shape="rounded" />
+        {/* <Pagination count={1} shape="rounded" /> */}
+        <PaginationXD
+          postsPerPage={postsPerPage}
+          totalPosts={filteredComplaints?.length || 0}
+          paginate={paginate}
+          setCurrentPage={setCurrentPage}
+          currentPage={currentPage}
+          handlePage={handlePage}
+        />
       </StyledPaginationWrapper>
     </StyledWrapper>
   );
