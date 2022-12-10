@@ -88,17 +88,13 @@ export default function CreateCurrency() {
   };
   useEffect(() => {
     dispatch(getTrending());
-    console.log("kai", currencies);
+
     dispatch(getBaseDetails("USD"));
-    console.log("CURRENCY RATES", currencyRates);
+
     dispatch(getRates("USD"));
 
     //eslint-disable-next-line
   }, [dispatch]);
-  useEffect(() => {
-    // const Rates = Promise.all()
-    //eslint-disable-next-line
-  }, [currencyRates]);
 
   const handleOpen = () => {
     setOpen(!open);

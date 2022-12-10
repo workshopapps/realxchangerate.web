@@ -42,12 +42,12 @@ function Table2({ isocode, country, deleteIcon, rates, link, symbol }) {
           </Box>
         </Box>
       </Box>
-      <Typography fontSize="16px" textAlign="left">
+      <Typography fontSize="16px" width="61px" textAlign="left">
         {symbol} {Number(rates?.parallel_buy).toFixed(2)}
       </Typography>
 
       <>
-        <BankBox fontSize="16px">
+        <BankBox fontSize="16px" width="61px">
           {symbol} {Number(rates?.official_buy).toFixed(2)}
         </BankBox>
         <Box>{deleteIcon}</Box>
