@@ -109,6 +109,7 @@ const fallbackDar = [
 ];
 export default function Chart() {
   const [data, setData] = useState([]);
+  const [yval, setYval] = useState([750, 0]);
   const [values, setValues] = useState({
     country: "Loading",
     currency: "Loading",
@@ -116,35 +117,60 @@ export default function Chart() {
   const path = useLocation();
 
   useEffect(() => {
-    console.log("hello World");
+    const hours = [
+      { name: "24h", val: 36 },
+      { name: "21h", val: 72 },
+      { name: "18h", val: 108 },
+      { name: "15h", val: 144 },
+      { name: "12h", val: 180 },
+      { name: "9h", val: 216 },
+      { name: "6h", val: 252 },
+      { name: "3h", val: 287 },
+    ];
+
     const fetchTrending = async () => {
       try {
         const response = await axios.get(
-          `https://api.streetrates.hng.tech/api/rate/history/${
+          `https://api.streetrates.hng.tech/api/rate/all/${
             path.pathname.split("/")[1]
           }?limit=15`
         );
-        if (response && response.status === 200) {
-          const chartData = [
-            ...response.data.data.rates.map((chartDat) => {
-              return {
-                name: `${chartDat.last_updated.split("T")[1].split(":")[0]} H`,
-                tvl: chartDat.parallel_buy,
-                pv: 2400,
-                amt: 2400,
-              };
-            }),
-          ];
-          setData(chartData);
 
-          setValues({
-            country: response.data.data.currency.country,
-            currency: response.data.data.currency.isocode,
-            symbol: response.data.data.currency.symbol,
-          });
-        }
+        const chartData = hours.map((item) => {
+          return {
+            name: item.name,
+            rate: response.data.data.rate[item.val].parallel_buy,
+          };
+        });
+
+        // const chartData = [
+        //   ...response.data.data.rate.slice(0,288).map((chartDat) => {
+
+        //     return {
+        //       name: `${chartDat.last_updated.split("T")[1].split(":")[0]} H`,
+        //       rate: chartDat.parallel_buy,
+        //       // rate:
+        //       pv: 2400,
+        //       amt: 2400,
+
+        //     };
+
+        //   }),
+        // ];
+        //sorting by 3hours
+        // const sortedData= chartData.filter((item)=>{
+        //   item.name !==
+        // })
+        setData(chartData);
+
+        setValues({
+          country: response.data.data.currency.country,
+          currency: response.data.data.currency.isocode,
+          symbol: response.data.data.currency.symbol,
+        });
       } catch (error) {
-        console.error(error.response);
+        console.error(error);
+        console.log("rrr");
       }
     };
     fetchTrending();
@@ -153,6 +179,13 @@ export default function Chart() {
       clearInterval(intervalId);
     };
   }, [path]);
+
+  useEffect(() => {
+    let rates = data.map((item) => {
+      return item.rate;
+    });
+    setYval(rates);
+  }, [data]);
 
   return (
     <StyledChartWrapper>
@@ -211,13 +244,16 @@ export default function Chart() {
             <YAxis
               axisLine={false}
               tickLine={false}
+              dataKey="rate"
               orientation="right"
+              type="number"
+              domain={`[${Math.max(yval)}, ${Math.min(yval)}]`}
               style={{ color: "#615E83", fontSize: "10px" }}
             />
             <Tooltip content={<CustomTooltip symbol={values.symbol} />} />
             <Area
               type="monotone"
-              dataKey="tvl"
+              dataKey="rate"
               stroke="#0062FF"
               fill="url(#colorValue)"
               //   fill="#5496FF80"
