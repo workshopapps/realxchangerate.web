@@ -5,7 +5,7 @@ export const cardStyle = {
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
-  width: { xs: "100%", sm: 200 },
+  width: { xs: "100%", sm: 230 },
   // flex: "1 1 200px",
 };
 
