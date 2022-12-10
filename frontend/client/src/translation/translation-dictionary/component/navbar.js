@@ -30,7 +30,7 @@ export default [
   },
   {
     key: "nav_contact",
-    en: "Contact",
+    en: "About Us",
     de: "Kontakt",
     fr: "Contact",
     es: "contacto",

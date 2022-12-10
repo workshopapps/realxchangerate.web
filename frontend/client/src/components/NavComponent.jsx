@@ -153,6 +153,7 @@ const NavComponent = () => {
                 <Box display="flex" flexDirection="row" gap="6px">
                   <img
                     loading="lazy"
+                    width="20"
                     height="20"
                     src={
                       currentLanguage
@@ -225,7 +226,7 @@ const NavComponent = () => {
             {t("nav_news")}
           </Link>
           <Link
-            to="/contact"
+            to="/about"
             style={{
               color: theme.palette.mode === "dark" ? "#8C9FBC" : "#0062ff",
             }}
@@ -334,7 +335,7 @@ const NavComponent = () => {
         <DrawerComponent
           isOpen={isOpen}
           setIsOpen={HandleDrawerState}
-          navItems={["Home", "Convert", "Currency Profile", "News", "Contact"]}
+          navItems={["Home", "Blog", "About Us"]}
         />
       </Grid>
     </Box>

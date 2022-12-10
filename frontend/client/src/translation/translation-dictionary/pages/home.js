@@ -16,7 +16,7 @@ export default [
   },
   {
     key: "home_btn",
-    en: "Edit",
+    en: "Remove Currency",
     de: "Bearbeiten",
     fr: "Éditer",
     es: "Editar",

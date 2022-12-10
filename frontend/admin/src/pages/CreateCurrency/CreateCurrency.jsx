@@ -15,7 +15,7 @@ import Card from "./Card";
 
 import AddModalUi from "./AddModal";
 import EditModalUi from "./EditModal";
-import { Button, Skeleton } from "@mui/material";
+import { Button, IconButton, Skeleton } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { getTrending } from "../../store/actions/dashboardActions";
 import Flag from "react-world-flags";
@@ -26,6 +26,10 @@ import styled from "styled-components";
 import MenuDrop from "../../component/MenuDrop/MenuDrop";
 import { getBaseDetails, getRates } from "../../store/actions/rateActions";
 import { toast } from "react-toastify";
+import Menu from "@mui/material/Menu";
+import more from "../../assets/more.svg";
+import MenuItem from "@mui/material/MenuItem";
+// import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -57,9 +61,11 @@ export default function CreateCurrency() {
     symbol: "",
     name: "",
   });
+
   const [editOpen, setEditOpen] = useState(false);
   const [currencyNo, setCurrencyNo] = useState(10);
   const [viewMore, setViewMore] = useState(true);
+  const [currs, setCurrs] = useState([]);
   const dispatch = useDispatch();
   const { currencies, requestStatus } = useSelector((state) => state.dashboard);
   const {
@@ -83,11 +89,16 @@ export default function CreateCurrency() {
   };
   useEffect(() => {
     dispatch(getTrending());
-    dispatch(getBaseDetails("NGN"));
-    dispatch(getRates(baseCurrency));
 
-    //eslint-disable-next-line 
+    dispatch(getBaseDetails("USD"));
+
+    dispatch(getRates("USD"));
+
+    //eslint-disable-next-line
   }, [dispatch]);
+  useEffect(() => {
+    setCurrs(currencyRates);
+  }, [currencyRates]);
 
   const handleOpen = () => {
     setOpen(!open);
@@ -103,7 +114,7 @@ export default function CreateCurrency() {
     setEditOpen(!editOpen);
   };
 
-  if (currencyStatus === "failed") {
+  if (currencyStatus === "failed" || requestStatus === "failed") {
     toast.error(error);
   }
   const cellSkeleton = (
@@ -231,9 +242,9 @@ export default function CreateCurrency() {
                         align="left"
                         style={{ color: "rgba(71, 85, 105, 1)" }}
                       >
-                        {currencyRates === []
-                          ? "loading.."
-                          : currencyRates[index]?.rate?.parallel_buy}
+                        {currs[index]?.status === "fulfilled"
+                          ? currs[index]?.value?.data?.parallel_total
+                          : "-"}
                       </StyledTableCell>
                       <StyledTableCell
                         align="right"
