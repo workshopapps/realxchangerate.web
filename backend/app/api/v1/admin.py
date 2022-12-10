@@ -8,6 +8,7 @@ from app import schemas, crud
 from app.api.deps import get_db
 from fastapi_pagination import add_pagination, Page, paginate
 from pydantic import BaseModel
+from app.models import Suggestion
 
 router = APIRouter()
 add_pagination(router)
@@ -269,6 +270,17 @@ async def update_complaint_status(id: int, data: schemas.ComplaintUpdate, db: Se
         "message": "status updated succesfully",
         "data": complaint,
     }
+
+@router.get("/suggestions")
+def get_all_suggestions(db: Session = Depends(get_db)):
+    
+    """get all suggestions"""
+
+    suggestions = db.query(Suggestion).all()
+    if not suggestions:
+        raise HTTPException(status_code=404, detail="No suggestions")
+
+    return {"success": True, "status_code": 200, "suggestions": suggestions}
 
 
 # Leave at bottom of page
