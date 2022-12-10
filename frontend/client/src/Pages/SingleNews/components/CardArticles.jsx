@@ -26,7 +26,7 @@ export default function CardArticles({ data }) {
               <img src={data.image_url} alt="i" height="150px" width="100%" />
             )}
           </>
-          <Link to={`/news/${data.id}`}>
+          <Link to={`/blogs/${data.id}`}>
           <Typography
         sx={{
           fontWeight: "500",
@@ -76,7 +76,7 @@ export default function CardArticles({ data }) {
       </Typography>
       <Box mt={2} pb={2}>
         <Link
-          to={`/news/${data.id}`}
+          to={`/blogs/${data.id}`}
           style={{
             color:"#0064F1",
           }}

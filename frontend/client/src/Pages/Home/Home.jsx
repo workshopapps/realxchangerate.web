@@ -111,9 +111,9 @@ const Home = () => {
           >
             {t("home_title")}
           </TypographyHead>
-          {/* <StyledEdit className="action" id="edit" onClick={() => handleEdit()}>
-          {t("home_btn")}
-        </StyledEdit> */}
+          <StyledEdit className="action" id="edit" onClick={() => handleEdit()}>
+            {t("home_btn")}
+          </StyledEdit>
         </StyledBox>
         {/* Table  */}
         <List
@@ -135,7 +135,7 @@ const Home = () => {
               color: dark ? "#FAFAFA" : "black",
             }}
           >
-            <Box>{t("home_currency")}</Box>
+            <Box style={{ width: "80px" }}>{t("home_currency")}</Box>
             <Box>{t("home_parallel")}</Box>
             <StyledBankBox>{t("home_Bank")}</StyledBankBox>
             <Box style={{ width: "60px" }}></Box>
