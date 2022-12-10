@@ -15,5 +15,5 @@ def create_suggestion(*,  db: Session = Depends(get_db), suggestion_in: schemas.
 	db.add(suggestion)
 	db.commit()
 	if suggestion:
-		return suggestion
+		return {"status": "success", "suggestion": suggestion.to_dict()}
 	return {"status": "failure"}
