@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useTransition } from "react";
 import styled from "styled-components";
 import Value from "./components/Value";
 import { useTheme, Box } from "@mui/material";
@@ -14,7 +14,9 @@ import teamate8 from "./assets/person8.png";
 import Header from "./components/Header";
 import Mission from "./components/Mission";
 import Download from "./components/Download";
+import { UseTranslationOptions } from "react-i18next";
 const About = () => {
+  const { t } = useTransition();
   const teamMember = [
     {
       name: "Isaac Adariku",

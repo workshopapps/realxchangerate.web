@@ -5,12 +5,18 @@ import footer from "./component/footer";
 import hero from "./component/hero";
 import convert from "./component/convert";
 import home from "./pages/home";
+import about from "./pages/about";
+import termAndCondition from "./pages/termAndCondition";
+import glossary from "./pages/glossary";
 
 const resources = {};
 
 const Translations = [
   // Pages
+  ...termAndCondition,
+  ...about,
   ...home,
+  ...glossary,
   // Components
   ...navbar,
   ...footer,
