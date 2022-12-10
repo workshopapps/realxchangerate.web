@@ -31,11 +31,9 @@ const DrawerComponent = ({ isOpen, setIsOpen }) => {
       >
         <Link href="/">{t("nav_home")}</Link>
 
-        <Link href="/#/convert">{t("nav_convert")}</Link>
-
         <Link href="/#/">{t("nav_curency")}</Link>
 
-        <Link href="/#/news">{t("nav_news")}</Link>
+        <Link href="/#/blogs">{t("nav_news")}</Link>
 
         <Link href="/#/contact">{t("nav_contact")}</Link>
       </Box>

@@ -31,8 +31,7 @@ import { useTranslation } from "react-i18next";
 // Adding tranlsation page
 const NavComponent = () => {
   const { t, i18n } = useTranslation();
-  const { isNavLoading } =
-    useSelector((state) => state.service);
+  const { isNavLoading } = useSelector((state) => state.service);
   const theme = useTheme();
   const colorMode = useContext(ColorModeContext);
   const [isOpen, setIsOpen] = useState(false);
@@ -70,258 +69,274 @@ const NavComponent = () => {
   }, []);
 
   return (
-    <Box width="100%" backgroundColor={theme.palette.mode === "dark" ? "#000A1A" : ""}>
-<Grid
-      sx={{
-        minHeight: { xs: "56px", sm: "100px" },
-        justifyContent: { xs: "space-between" },
-        maxWidth: { xs: "90%", lg: "84%" },
-        
-      }}
-      minHeight="100px"
-      display="flex"
-      margin="0px auto"
-      padding="0px"
-      flexDirection="row"
+    <Box
+      width="100%"
+      backgroundColor={theme.palette.mode === "dark" ? "#000A1A" : ""}
     >
-      <Grid display="flex" justifyContent="center" alignItems="center">
-        <Typography
-          sx={{
-            fontSize: {
-              xs: "23px",
-              sm: "17px",
-              md: "24px",
-              lg: "29px",
-              xl: "34px",
-            },
-            lineHeight: { xs: "28px", sm: "40px" },
-            fontWeight: { xs: "600", sm: "700" },
-          }}
-          color="#0062ff"
-          letterSpacing="-0.04em"
-          role="heading"
-        >
-          <Link to="/" style={{ color: "#0062ff" }}>
-            <img
-              style={{ width: "clamp(90px, 10vw, 140px)", marginTop: "20px" }}
-              src={streetRates}
-              alt=""
-            />
-          </Link>
-        </Typography>
-      </Grid>
       <Grid
-        alignItems="center"
         sx={{
-          fontSize: { sm: "12px", md: "16px" },
-          gap: { sm: "9px", md: "20px", lg: "24px" },
-          display: { xs: "none", sm: "flex" },
-          width: { md: "606pxx" },
+          minHeight: { xs: "56px", sm: "100px" },
+          justifyContent: { xs: "space-between" },
+          maxWidth: { xs: "90%", lg: "84%" },
         }}
-        fontWeight="400"
-        lineHeight="24px"
-        color="#94A3B8"
+        minHeight="100px"
+        display="flex"
+        margin="0px auto"
+        padding="0px"
+        flexDirection="row"
       >
-        <IconButton
-          sx={{ ml: 1 }}
-          onClick={colorMode.toggleColorMode}
-          color="inherit"
-        >
-          {theme.palette.mode === "dark" ? (
-            <Brightness7Icon height="1.75em" width="1.75em" />
-          ) : (
-            <Brightness4Icon height="1.75em" width="1.75em" />
-          )}
-        </IconButton>
-        <Box gap="6px" display="flex">
-          {isNavLoading ? (
-            <Box display="flex" gap="1px" flexDirection="column">
-              <Skeleton variant="rounded" width={70} height={5} />
-              <Skeleton variant="rounded" width={70} height={5} />
-              <Skeleton variant="rounded" width={70} height={5} />
-            </Box>
-          ) : (
-            <Button
-              id="basic-button"
-              aria-controls={open ? "basic-menu" : undefined}
-              aria-haspopup="true"
-              aria-expanded={open ? "true" : undefined}
-              onClick={handleClick}
-            >
-              <Box display="flex" flexDirection="row" gap="6px">
-                <img
-                  loading="lazy"
-                  height="20"
-                  src={
-                    currentLanguage
-                      ? `https://flagcdn.com/h20/${currentLanguage.label}.png `
-                      : NavFlag
-                  }
-                  srcSet={
-                    currentLanguage
-                      ? `https://flagcdn.com/h40/${currentLanguage.label}.png 2x,
-                     https://flagcdn.com/h60/${currentLanguage.label}.png 3x`
-                      : NavFlag
-                  }
-                  alt=""
-                />
-                <img src={DownArrow} alt="arrow" />
-              </Box>
-            </Button>
-          )}
-          <Menu
-            id="basic-menu"
-            anchorEl={anchorEl}
-            open={open}
-            onClose={() => handleClose()}
-            MenuListProps={{
-              "aria-labelledby": "basic-button",
-            }}
-            width="120px"
+        <Grid display="flex" justifyContent="center" alignItems="center">
+          <Typography
             sx={{
-              height: "auto",
+              fontSize: {
+                xs: "23px",
+                sm: "17px",
+                md: "24px",
+                lg: "29px",
+                xl: "34px",
+              },
+              lineHeight: { xs: "28px", sm: "40px" },
+              fontWeight: { xs: "600", sm: "700" },
             }}
+            color="#0062ff"
+            letterSpacing="-0.04em"
+            role="heading"
           >
-            {Languages.map((ele) => {
-              return (
-                <MenuItem
-                  sx={{
-                    display: "flex",
-                    gap: "6px",
-                    flexDirection: "row",
-                  }}
-                  onClick={() => handleCloseItem(ele)}
-                  key={ele.isocode}
-                >
+            <Link to="/" style={{ color: "#0062ff" }}>
+              <img
+                style={{ width: "clamp(90px, 10vw, 140px)", marginTop: "20px" }}
+                src={streetRates}
+                alt=""
+              />
+            </Link>
+          </Typography>
+        </Grid>
+        <Grid
+          alignItems="center"
+          sx={{
+            fontSize: { sm: "12px", md: "16px" },
+            gap: { sm: "9px", md: "20px", lg: "24px" },
+            display: { xs: "none", sm: "flex" },
+            width: { md: "606pxx" },
+          }}
+          fontWeight="400"
+          lineHeight="24px"
+          color="#94A3B8"
+        >
+          <IconButton
+            sx={{ ml: 1 }}
+            onClick={colorMode.toggleColorMode}
+            color="inherit"
+          >
+            {theme.palette.mode === "dark" ? (
+              <Brightness7Icon height="1.75em" width="1.75em" />
+            ) : (
+              <Brightness4Icon height="1.75em" width="1.75em" />
+            )}
+          </IconButton>
+          <Box gap="6px" display="flex">
+            {isNavLoading ? (
+              <Box display="flex" gap="1px" flexDirection="column">
+                <Skeleton variant="rounded" width={70} height={5} />
+                <Skeleton variant="rounded" width={70} height={5} />
+                <Skeleton variant="rounded" width={70} height={5} />
+              </Box>
+            ) : (
+              <Button
+                id="basic-button"
+                aria-controls={open ? "basic-menu" : undefined}
+                aria-haspopup="true"
+                aria-expanded={open ? "true" : undefined}
+                onClick={handleClick}
+              >
+                <Box display="flex" flexDirection="row" gap="6px">
                   <img
                     loading="lazy"
-                    width="20"
-                    src={`https://flagcdn.com/w20/${ele.label}.png`}
-                    srcSet={`https://flagcdn.com/w40/${ele.label}.png 2x`}
+                    height="20"
+                    src={
+                      currentLanguage
+                        ? `https://flagcdn.com/h20/${currentLanguage.label}.png `
+                        : `https://flagcdn.com/h20/gb.png `
+                    }
+                    srcSet={
+                      currentLanguage
+                        ? `https://flagcdn.com/h40/${currentLanguage.label}.png 2x,
+                     https://flagcdn.com/h60/${currentLanguage.label}.png 3x`
+                        : `https://flagcdn.com/h20/gb.png `
+                    }
                     alt=""
                   />
-                  <Typography marginRight="5px">{ele.isocode}</Typography>
-                </MenuItem>
-              );
-            })}
-          </Menu>
-        </Box>
-        <Link to="/" style={{ color: theme.palette.mode === "dark" ? "#8C9FBC" :"#0062ff" }}>
-          {t("nav_home")}
-        </Link>
-        <Link to="/news" style={{ color: theme.palette.mode === "dark" ? "#8C9FBC" :"#0062ff" }}>
-          {t("nav_news")}
-        </Link>
-        <Link to="/contact" style={{ color: theme.palette.mode === "dark" ? "#8C9FBC" :"#0062ff" }}>
-          {t("nav_contact")}
-        </Link>
-      </Grid>
-      <Box
-        sx={{ display: { xs: "flex", sm: "none" } }}
-        justifyContent="center"
-        alignItems="center"
-        gap="10px"
-      >
-        <IconButton
-          sx={{ ml: 1 }}
-          onClick={colorMode.toggleColorMode}
-          color="inherit"
+                  <img src={DownArrow} alt="arrow" />
+                </Box>
+              </Button>
+            )}
+            <Menu
+              id="basic-menu"
+              anchorEl={anchorEl}
+              open={open}
+              onClose={() => handleClose()}
+              MenuListProps={{
+                "aria-labelledby": "basic-button",
+              }}
+              width="120px"
+              sx={{
+                height: "auto",
+              }}
+            >
+              {Languages.map((ele) => {
+                return (
+                  <MenuItem
+                    sx={{
+                      display: "flex",
+                      gap: "6px",
+                      flexDirection: "row",
+                    }}
+                    onClick={() => handleCloseItem(ele)}
+                    key={ele.isocode}
+                  >
+                    <img
+                      loading="lazy"
+                      width="20"
+                      src={`https://flagcdn.com/w20/${ele.label}.png`}
+                      srcSet={`https://flagcdn.com/w40/${ele.label}.png 2x`}
+                      alt=""
+                    />
+                    <Typography marginRight="5px">{ele.isocode}</Typography>
+                  </MenuItem>
+                );
+              })}
+            </Menu>
+          </Box>
+          <Link
+            to="/"
+            style={{
+              color: theme.palette.mode === "dark" ? "#8C9FBC" : "#0062ff",
+            }}
+          >
+            {t("nav_home")}
+          </Link>
+          <Link
+            to="/blogs"
+            style={{
+              color: theme.palette.mode === "dark" ? "#8C9FBC" : "#0062ff",
+            }}
+          >
+            {t("nav_news")}
+          </Link>
+          <Link
+            to="/contact"
+            style={{
+              color: theme.palette.mode === "dark" ? "#8C9FBC" : "#0062ff",
+            }}
+          >
+            {t("nav_contact")}
+          </Link>
+        </Grid>
+        <Box
+          sx={{ display: { xs: "flex", sm: "none" } }}
+          justifyContent="center"
+          alignItems="center"
+          gap="10px"
         >
-          {theme.palette.mode === "dark" ? (
-            <Brightness7Icon height="2em" width="2em" />
-          ) : (
-            <Brightness4Icon height="2em" width="2em" />
-          )}
-        </IconButton>
+          <IconButton
+            sx={{ ml: 1 }}
+            onClick={colorMode.toggleColorMode}
+            color="inherit"
+          >
+            {theme.palette.mode === "dark" ? (
+              <Brightness7Icon height="2em" width="2em" />
+            ) : (
+              <Brightness4Icon height="2em" width="2em" />
+            )}
+          </IconButton>
 
-        <Box gap="6px" display="flex">
-          {isNavLoading ? (
-            <Box display="flex" gap="1px" flexDirection="column">
-              <Skeleton variant="rounded" width={70} height={5} />
-              <Skeleton variant="rounded" width={70} height={5} />
-              <Skeleton variant="rounded" width={70} height={5} />
-            </Box>
-          ) : (
-            <Button
-              id="basic-button"
-              aria-controls={open ? "basic-menu" : undefined}
-              aria-haspopup="true"
-              aria-expanded={open ? "true" : undefined}
-              onClick={handleClick}
-            >
-              <Box display="flex" flexDirection="row" gap="6px">
-                <img
-                  loading="lazy"
-                  height="20"
-                  src={
-                    currentLanguage
-                      ? `https://flagcdn.com/h20/${currentLanguage.label}.png `
-                      : NavFlag
-                  }
-                  srcSet={
-                    currentLanguage
-                      ? `https://flagcdn.com/h40/${currentLanguage.label}.png 2x,
-                     https://flagcdn.com/h60/${currentLanguage.label}.png 3x`
-                      : NavFlag
-                  }
-                  alt=""
-                />
-                <img src={DownArrow} alt="arrow" />
+          <Box gap="6px" display="flex">
+            {isNavLoading ? (
+              <Box display="flex" gap="1px" flexDirection="column">
+                <Skeleton variant="rounded" width={70} height={5} />
+                <Skeleton variant="rounded" width={70} height={5} />
+                <Skeleton variant="rounded" width={70} height={5} />
               </Box>
-            </Button>
-          )}
-          <Menu
-            id="basic-menu"
-            anchorEl={anchorEl}
-            open={open}
-            onClose={() => handleClose()}
-            MenuListProps={{
-              "aria-labelledby": "basic-button",
-            }}
-            width="120px"
-            sx={{
-              height: "auto",
-            }}
-          >
-            {Languages.map((ele) => {
-              return (
-                <MenuItem
-                  sx={{
-                    display: "flex",
-                    gap: "6px",
-                    flexDirection: "row",
-                  }}
-                  onClick={() => handleCloseItem(ele)}
-                  key={ele.isocode}
-                >
+            ) : (
+              <Button
+                id="basic-button"
+                aria-controls={open ? "basic-menu" : undefined}
+                aria-haspopup="true"
+                aria-expanded={open ? "true" : undefined}
+                onClick={handleClick}
+              >
+                <Box display="flex" flexDirection="row" gap="6px">
                   <img
                     loading="lazy"
-                    width="20"
-                    src={`https://flagcdn.com/w20/${ele.label}.png`}
-                    srcSet={`https://flagcdn.com/w40/${ele.label}.png 2x`}
+                    height="20"
+                    src={
+                      currentLanguage
+                        ? `https://flagcdn.com/h20/${currentLanguage.label}.png `
+                        : `https://flagcdn.com/h20/gb.png `
+                    }
+                    srcSet={
+                      currentLanguage
+                        ? `https://flagcdn.com/h40/${currentLanguage.label}.png 2x,
+                     https://flagcdn.com/h60/${currentLanguage.label}.png 3x`
+                        : `https://flagcdn.com/h20/gb.png `
+                    }
                     alt=""
                   />
-                  <Typography marginRight="5px">{ele.isocode}</Typography>
-                </MenuItem>
-              );
-            })}
-          </Menu>
+                  <img src={DownArrow} alt="arrow" />
+                </Box>
+              </Button>
+            )}
+            <Menu
+              id="basic-menu"
+              anchorEl={anchorEl}
+              open={open}
+              onClose={() => handleClose()}
+              MenuListProps={{
+                "aria-labelledby": "basic-button",
+              }}
+              width="120px"
+              sx={{
+                height: "auto",
+              }}
+            >
+              {Languages.map((ele) => {
+                return (
+                  <MenuItem
+                    sx={{
+                      display: "flex",
+                      gap: "6px",
+                      flexDirection: "row",
+                    }}
+                    onClick={() => handleCloseItem(ele)}
+                    key={ele.isocode}
+                  >
+                    <img
+                      loading="lazy"
+                      width="20"
+                      src={`https://flagcdn.com/w20/${ele.label}.png`}
+                      srcSet={`https://flagcdn.com/w40/${ele.label}.png 2x`}
+                      alt=""
+                    />
+                    <Typography marginRight="5px">{ele.isocode}</Typography>
+                  </MenuItem>
+                );
+              })}
+            </Menu>
+          </Box>
+          <Box cursor="pointer" onClick={() => setIsOpen(true)}>
+            <img
+              src={theme.palette.mode === "dark" ? MenuIconDark : MenuIcon}
+              alt="MenuIcon"
+            />
+          </Box>
         </Box>
-        <Box cursor="pointer" onClick={() => setIsOpen(true)}>
-          <img
-            src={theme.palette.mode === "dark" ? MenuIconDark : MenuIcon}
-            alt="MenuIcon"
-          />
-        </Box>
-      </Box>
-      <DrawerComponent
-        isOpen={isOpen}
-        setIsOpen={HandleDrawerState}
-        navItems={["Home", "Convert", "Currency Profile", "News", "Contact"]}
-      />
-    </Grid>
+        <DrawerComponent
+          isOpen={isOpen}
+          setIsOpen={HandleDrawerState}
+          navItems={["Home", "Convert", "Currency Profile", "News", "Contact"]}
+        />
+      </Grid>
     </Box>
-    
   );
 };
 export default NavComponent;

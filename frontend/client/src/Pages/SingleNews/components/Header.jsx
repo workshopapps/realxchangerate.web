@@ -68,7 +68,7 @@ const Header = ({ data }) => {
           color: darkMode ? "#8C9FBC" : "#0F172A",
         }}
       >
-        By : <b>{data.creator[0]}</b>
+        By : {data.creator && <b>{data.creator[0]}</b>}
       </Typography>
       <Typography
         fontSize="16px"
