@@ -15,7 +15,7 @@ import Card from "./Card";
 
 import AddModalUi from "./AddModal";
 import EditModalUi from "./EditModal";
-import { Button, Skeleton } from "@mui/material";
+import { Button, IconButton, Skeleton } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { getTrending } from "../../store/actions/dashboardActions";
 import Flag from "react-world-flags";
@@ -26,8 +26,9 @@ import styled from "styled-components";
 import MenuDrop from "../../component/MenuDrop/MenuDrop";
 import { getBaseDetails, getRates } from "../../store/actions/rateActions";
 import { toast } from "react-toastify";
-// import Menu from "@mui/material/Menu";
-// import MenuItem from "@mui/material/MenuItem";
+import Menu from "@mui/material/Menu";
+import more from "../../assets/more.svg";
+import MenuItem from "@mui/material/MenuItem";
 // import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
