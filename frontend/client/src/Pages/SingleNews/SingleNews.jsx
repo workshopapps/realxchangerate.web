@@ -23,9 +23,11 @@ export default function SingleNews() {
   }, []);
 
   useEffect(() => {
-    if (news.length > 0) {
-      let currentNews = news.find((ele) => ele.id === id);
-      setData(currentNews);
+    if (news) {
+      if (news.length > 0) {
+        let currentNews = news.find((ele) => ele.id === id);
+        setData(currentNews);
+      }
     }
   }, [news, id]);
 

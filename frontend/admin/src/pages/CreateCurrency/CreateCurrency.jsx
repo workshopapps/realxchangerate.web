@@ -65,6 +65,7 @@ export default function CreateCurrency() {
   const [editOpen, setEditOpen] = useState(false);
   const [currencyNo, setCurrencyNo] = useState(10);
   const [viewMore, setViewMore] = useState(true);
+  const [currs, setCurrs] = useState([]);
   const dispatch = useDispatch();
   const { currencies, requestStatus } = useSelector((state) => state.dashboard);
   const {
@@ -95,6 +96,9 @@ export default function CreateCurrency() {
 
     //eslint-disable-next-line
   }, [dispatch]);
+  useEffect(() => {
+    setCurrs(currencyRates);
+  }, [currencyRates]);
 
   const handleOpen = () => {
     setOpen(!open);
@@ -238,8 +242,8 @@ export default function CreateCurrency() {
                         align="left"
                         style={{ color: "rgba(71, 85, 105, 1)" }}
                       >
-                        {currencyRates[index]?.status === "fulfilled"
-                          ? currencyRates[index]?.value?.data?.parallel_total
+                        {currs[index]?.status === "fulfilled"
+                          ? currs[index]?.value?.data?.parallel_total
                           : "-"}
                       </StyledTableCell>
                       <StyledTableCell
