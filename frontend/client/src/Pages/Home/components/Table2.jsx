@@ -18,39 +18,44 @@ function Table2({ isocode, country, deleteIcon, rates, link, symbol }) {
       alignItems="center"
       borderTop={dark ? "1px solid #001E4E" : "1px solid #CBD5E1"}
       fontSize="1.4rem"
+      height="70px"
     >
-      <Box
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          gap: "1rem",
-          width: "107px",
-        }}
-      >
-        <Box>
-          <img
-            loading="lazy"
-            width="20"
-            src={`https://flagcdn.com/w20/${countryDetails[0]?.code.toLowerCase()}.png`}
-            alt=""
-          />
-        </Box>
-        <Box>
-          <Box style={{ color: dark ? "#8C9FBC" : "#555962" }}>{isocode}</Box>
-          <Box sx={{ fontSize: "1rem", color: dark ? "#FAFAFA" : "#94A3B8" }}>
-            {country}
+      <Link to={`/${isocode}/currency-profile`}>
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            gap: "1rem",
+            width: "107px",
+          }}
+        >
+          <Box>
+            <img
+              loading="lazy"
+              width="20"
+              src={`https://flagcdn.com/w20/${countryDetails[0]?.code.toLowerCase()}.png`}
+              alt=""
+            />
+          </Box>
+          <Box>
+            <Box style={{ color: dark ? "#8C9FBC" : "#555962" }}>{isocode}</Box>
+            <Box sx={{ fontSize: "1rem", color: dark ? "#FAFAFA" : "#94A3B8" }}>
+              {country}
+            </Box>
           </Box>
         </Box>
-      </Box>
-      <Typography fontSize="16px" textAlign="left">
+      </Link>
+      <Typography fontSize="16px" width="61px" textAlign="left">
         {symbol} {Number(rates?.parallel_buy).toFixed(2)}
       </Typography>
 
       <>
-        <BankBox fontSize="16px">
+        <BankBox fontSize="16px" width="61px">
           {symbol} {Number(rates?.official_buy).toFixed(2)}
         </BankBox>
-        <Box>{deleteIcon}</Box>
+        <Box width="100px">
+          <Box>{deleteIcon}</Box>
+        </Box>
       </>
     </Box>
   );

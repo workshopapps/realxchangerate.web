@@ -46,7 +46,7 @@ export default function StoriesNews({ data }) {
             </Typography>
           </a>
         ) : (
-          <Link to={`/news/${data.id}`}>
+          <Link to={`/blogs/${data.id}`}>
             <Typography
               fontWeight="500"
               lineHeight="16px"

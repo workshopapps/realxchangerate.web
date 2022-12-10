@@ -9,7 +9,7 @@ import { tableCurrenciesList } from "./data";
 import styled from "styled-components";
 import add from "./assets/add.svg";
 import CircularProgressWithLabel from "@mui/material/CircularProgress";
-import DeleteIcon from "./assets/delete.png";
+import DeleteIcon from "./assets/delete.svg";
 import { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
@@ -50,6 +50,10 @@ const Home = () => {
 
     //eslint-disable-next-line
   }, [currencyList]);
+
+  const handleEdit = () => {
+    toggle();
+  };
   const handleDelete = (e) => {
     setCurrencies(currencies.filter((item) => item.id !== e));
   };
@@ -111,9 +115,9 @@ const Home = () => {
           >
             {t("home_title")}
           </TypographyHead>
-          {/* <StyledEdit className="action" id="edit" onClick={() => handleEdit()}>
-          {t("home_btn")}
-        </StyledEdit> */}
+          <StyledEdit className="action" id="edit" onClick={() => handleEdit()}>
+            {t("home_btn")}
+          </StyledEdit>
         </StyledBox>
         {/* Table  */}
         <List
@@ -135,10 +139,10 @@ const Home = () => {
               color: dark ? "#FAFAFA" : "black",
             }}
           >
-            <Box>{t("home_currency")}</Box>
-            <Box>{t("home_parallel")}</Box>
+            <Box style={{ width: "107px" }}>{t("home_currency")}</Box>
+            <Box style={{ width: "107px" }}>{t("home_parallel")}</Box>
             <StyledBankBox>{t("home_Bank")}</StyledBankBox>
-            <Box style={{ width: "60px" }}></Box>
+            <Box style={{ width: "130px" }}></Box>
           </ListItem>
 
           {currencies.map((currency) => {
@@ -156,42 +160,14 @@ const Home = () => {
                     link={currency.link}
                     symbol={currency.symbol}
                     flag={currency.flag}
+                    isocode={currency.isocode}
                     deleteIcon={
-                      <PopupState variant="popover" popupId="demo-popup-menu">
-                        {(popupState) => (
-                          <React.Fragment>
-                            <Button {...bindTrigger(popupState)}>
-                              <div className="add">
-                                <img
-                                  src={DeleteIcon}
-                                  className="delete-cur"
-                                  alt=""
-                                  style={
-                                    {
-                                      /*display: "none"*/
-                                    }
-                                  }
-                                />
-                              </div>
-                            </Button>
-                            <Menu {...bindMenu(popupState)}>
-                              <MenuItem
-                                onClick={(e) => handleDelete(currency.id)}
-                              >
-                                Delete
-                              </MenuItem>
-                              <MenuItem>
-                                <Link
-                                  style={{ color: "#000" }}
-                                  to={`/${currency.isocode}/currency-profile`}
-                                >
-                                  Currency Profile
-                                </Link>
-                              </MenuItem>
-                            </Menu>
-                          </React.Fragment>
-                        )}
-                      </PopupState>
+                      <img
+                        src={DeleteIcon}
+                        className="delete-cur"
+                        alt=""
+                        onClick={() => handleDelete}
+                      />
                     }
                   />
                 )}

@@ -9,10 +9,10 @@ export default [
   },
   {
     key: "nav_news",
-    en: "News",
-    de: "Nachrichten",
-    fr: "Actualités",
-    es: "noticias",
+    en: "Blog",
+    de: "Blog",
+    fr: "Blog",
+    es: "Blog",
   },
   {
     key: "nav_convert",
