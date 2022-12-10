@@ -19,6 +19,7 @@ import { useSelector } from "react-redux";
 import { dispatch } from "../../redux/store";
 import { GetCurrencyRates } from "../../redux/features/Reducers/serviceActions";
 import Countdown from "react-countdown-simple";
+import { Link } from "react-router-dom";
 const Home = () => {
   const theme = useTheme();
   const dark = theme.palette.mode === "dark";
@@ -178,7 +179,11 @@ const Home = () => {
                             >
                               Delete
                             </MenuItem>
-                            <MenuItem>Currency Profile</MenuItem>
+                            <MenuItem>
+                              <Link to={`${currency.isocode}/currency-profile`}>
+                                Currency Profile
+                              </Link>
+                            </MenuItem>
                           </Menu>
                         </React.Fragment>
                       )}
@@ -200,13 +205,16 @@ const Home = () => {
                   <span className="addspan">{t("home_add")}</span>
                 </div>
               </Button>
-              <Menu {...bindMenu(popupState)} >
+              <Menu {...bindMenu(popupState)}>
                 {getCurrency.map((item) => {
                   return (
                     <MenuItem
                       onClick={() => handleAdd(popupState.close, item)}
                       key={item.id}
-                      sx={{backgroundColor : dark ? "#001E4E" : "", padding:"3"}}
+                      sx={{
+                        backgroundColor: dark ? "#001E4E" : "",
+                        padding: "3",
+                      }}
                     >
                       <img
                         loading="lazy"
