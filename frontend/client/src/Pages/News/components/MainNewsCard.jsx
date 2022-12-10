@@ -52,7 +52,7 @@ export default function MainNewsCard({ currentNews }) {
                 }}
               >
                 <Link
-                  to={`/news/${currentNews.id}`}
+                  to={`/blogs/${currentNews.id}`}
                   style={{
                     textDecoration: "none",
                     color: darkMode ? "#FAFAFA" : "#0F172A",
