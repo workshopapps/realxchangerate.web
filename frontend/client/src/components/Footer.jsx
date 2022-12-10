@@ -105,7 +105,7 @@ const Footer = () => {
             >
               {t("footer_links")}
             </Typography>
-            <Link href="/#/blogs" color="inherit">
+            <Link href="/#/news" color="inherit">
               {t("footer_news")}
             </Link>
             <Link href="/#/contact" color="inherit">
@@ -311,7 +311,7 @@ const Footer = () => {
           <DropDown
             title={t("footer_links")}
             Items={[t("footer_news"), t("footer_contact")]}
-            Links={["blogs", "contact"]}
+            Links={["news", "contact"]}
           />
           <DropDown
             title={t("footer_resources")}
