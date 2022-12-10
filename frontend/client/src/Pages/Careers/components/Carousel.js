@@ -37,6 +37,6 @@ const CarouselContainer = styled.div`
     width: 70%;
   }
   @media screen and (max-width: 600px) {
-    width: 70%;
+    width: 100%;
   }
 `;
