@@ -62,14 +62,12 @@ const Download = () => {
                 textAlign: { xs: "center", sm: "left" },
               }}
             >
-              Download the StreetRate App Via
+              Download the StreetRates App Via
             </Typography>
             <Box display="flex" gap="32px">
               <a href="https://appetize.io/app/dma6cyb75uzgdhnucyd6oo24wm?device=pixel4&osVersion=12.0&scale=75">
                 <img src={PlayStore} alt="" />
               </a>
-
-              <img src={AppleIcon} alt="" />
             </Box>
           </Box>
           <Box

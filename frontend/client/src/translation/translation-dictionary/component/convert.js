@@ -2,10 +2,10 @@
 export default [
   {
     key: "convert_title",
-    en: "Start Conversion",
-    de: "Konvertierung starten",
-    fr: "Commencer la conversion",
-    es: "Iniciar conversión",
+    en: "Convert",
+    de: "Konvertieren",
+    fr: "Convertir",
+    es: "Convertir",
   },
   {
     key: "convert_amount",

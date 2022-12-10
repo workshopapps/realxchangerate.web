@@ -58,10 +58,10 @@ export default [
   },
   {
     key: "footer_news",
-    en: "News",
-    de: "Nachrichten",
-    fr: "Actualités",
-    es: "noticias",
+    en: "Blog",
+    de: "Bloggen",
+    fr: "Blog",
+    es: "Blog",
   },
   {
     key: "footer_contact",

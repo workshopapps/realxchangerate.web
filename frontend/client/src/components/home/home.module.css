@@ -50,11 +50,11 @@
   margin: 1.5rem 0;
 }
 .hero .simple {
-  color: #0062ff;
-  font-weight: 500;
-  font-size: 1.5rem;
+  color: #000;
+  font-weight: 700;
   line-height: 2rem;
-  letter-spacing: 4px;
+  letter-spacing: 3px;
+  margin-bottom: 10px;
 }
 .hero h1 {
   font-size: 3.5rem;
