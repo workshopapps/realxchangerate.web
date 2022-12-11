@@ -18,7 +18,7 @@ export default function HorizontalNewsCard({ data }) {
           sx={{
             gap: { xs: "15px", md: "20px", lg: "24px" },
             backgroundColor: darkMode
-              ? { xs: "#000A1B", sm: "#000A1B" }
+              ? { xs: " #161C2C", sm: " #161C2C" }
               : { xs: "#F8FAFC", sm: "#fff" },
             padding: { xs: "17px", sm: "auto" },
           }}
