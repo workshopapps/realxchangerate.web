@@ -20,7 +20,7 @@ import Skeleton from "@mui/material/Skeleton";
 
 import { useTranslation } from "react-i18next";
 import { useTheme } from "@mui/material";
-
+import { useTranslation } from "react-i18next";
 
 function FaqOverview() {
   const { t } = useTranslation();
@@ -33,7 +33,6 @@ function FaqOverview() {
       .get(`https://api.streetrates.hng.tech/api/faq/get_all_faqs`)
       .then(({ data }) => setFaqData(data.faqs));
   }, []);
-
 
   const theme = useTheme();
   const dark = theme.palette.mode === "dark";
@@ -144,11 +143,11 @@ function FaqOverview() {
                 {t("still_got_que")}
               </h4>
               <p style={{ color: `${dark ? "#FAFAFA" : ""}` }}>
-               {t("cant_find_answer")}
+                {t("cant_find_answer")}
               </p>
             </div>
             <button onClick={() => navigate("/get-in-touch")}>
-               {t("get_in_touch")}
+              {t("get_in_touch")}
             </button>
           </StyledFaqBottom>
         </StyledWrapper>
