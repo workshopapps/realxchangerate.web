@@ -34,7 +34,7 @@ function Glossary() {
 
   return (
     <>
-      <Header style={{ backgroundColor: darkMode ? "#00050C" : "" }}>
+      <Header style={{ backgroundColor: darkMode ? "#131825" : "" }}>
         <ImageArround>
           <LeftTop src="/assets/png/8 1.png" alt="" />
           <LeftMiddle src="/assets/png/2 1.png" alt="" />
@@ -64,7 +64,7 @@ function Glossary() {
           />
         </Search>
       </Header>
-      <Alphabet style={{ backgroundColor: darkMode ? "#00050C" : "" }}>
+      <Alphabet style={{ backgroundColor: darkMode ? "#131825" : "" }}>
         {filteredData.map((b) =>
           b?.items && b?.items?.length ? (
             <h4 style={{ color: darkMode ? "#FCFCFC" : "" }}>{b.name}</h4>
@@ -73,7 +73,7 @@ function Glossary() {
           )
         )}
       </Alphabet>
-      <Parent style={{ backgroundColor: darkMode ? "#00050C" : "" }}>
+      <Parent style={{ backgroundColor: darkMode ? "#131825" : "" }}>
         {filteredData.map((b) =>
           b?.items && b?.items?.length ? (
             <Box>

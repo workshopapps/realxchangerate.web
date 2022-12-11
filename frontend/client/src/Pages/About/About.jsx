@@ -69,15 +69,22 @@ const About = () => {
         flexDirection="column"
         sx={{ gap: { xs: "27px", sm: "80px" } }}
         width="100%"
-        backgroundColor={DarkMode ? "#00050C" : ""}
+        backgroundColor={DarkMode ? "#131825" : ""}
       >
         <Header />
 
-        <Container textColor={textColor}>
+        <Container
+          textColor={textColor}
+          style={{ backgroundColor: `${DarkMode ? "#131825" : ""}` }}
+        >
           <Mission />
         </Container>
 
-        <Container values={true} textColor={textColor}>
+        <Container
+          values={true}
+          textColor={textColor}
+          style={{ backgroundColor: `${DarkMode ? "#131825" : ""}` }}
+        >
           <Value />
         </Container>
         <Container textColor={textColor}>
@@ -128,7 +135,7 @@ const Container = styled.div`
   background-color: ${(props) => {
     if (props.about) {
       return `
-        ${props.darkMode ? "#00050C" : "#00296b"};
+        ${props.darkMode ? "#131825" : "#00296b"};
         color: #fff;
     `;
     } else if (props.noBg) {

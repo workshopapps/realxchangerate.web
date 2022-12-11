@@ -72,7 +72,7 @@ const NavComponent = () => {
   return (
     <Box
       width="100%"
-      backgroundColor={theme.palette.mode === "dark" ? "#000A1A" : ""}
+      backgroundColor={theme.palette.mode === "dark" ? "#131825" : ""}
     >
       <Grid
         sx={{
@@ -212,7 +212,7 @@ const NavComponent = () => {
           <Link
             to="/"
             style={{
-              color: theme.palette.mode === "dark" ? "#8C9FBC" : "#0062ff",
+              color: theme.palette.mode === "dark" ? "#94A3B8" : "#0062ff",
             }}
           >
             {t("nav_home")}
@@ -220,7 +220,7 @@ const NavComponent = () => {
           <Link
             to="/blogs"
             style={{
-              color: theme.palette.mode === "dark" ? "#8C9FBC" : "#0062ff",
+              color: theme.palette.mode === "dark" ? "#94A3B8" : "#0062ff",
             }}
           >
             {t("nav_news")}
@@ -228,7 +228,7 @@ const NavComponent = () => {
           <Link
             to="/about"
             style={{
-              color: theme.palette.mode === "dark" ? "#8C9FBC" : "#0062ff",
+              color: theme.palette.mode === "dark" ? "#94A3B8" : "#0062ff",
             }}
           >
             {t("nav_contact")}

@@ -8,8 +8,9 @@ const TermsAndConditions = () => {
   const theme = useTheme();
   const DarkMode = theme.palette.mode === "dark";
 
-  const textColor = DarkMode ? "#fff" : "";
+  const textColor = DarkMode ? "#FAFAFA" : "";
   return (
+<Box backgroundColor={DarkMode ? "#131825" : ""}>
     <Box
       sx={{
         maxWidth: { xs: "90%", lg: "84%" },
@@ -28,28 +29,28 @@ const TermsAndConditions = () => {
           <h4 style={{ color: textColor, marginBlock: "30px 0px" }}>
             {t("term_sub_1")}
           </h4>
-          <p>{t("term_p4")}</p>
+          <p style={{ color: textColor }}>{t("term_p4")}</p>
 
           <h5 style={{ color: textColor }}>{t("term_subtitle_2")}</h5>
-          <p>{t("term_p6")}</p>
+          <p style={{ color: textColor }}>{t("term_p6")}</p>
 
           <h5 style={{ color: textColor }}>{t("term_sub_2")}</h5>
-          <p>{t("term_p6")}</p>
+          <p style={{ color: textColor }}>{t("term_p6")}</p>
 
           <h4 style={{ color: textColor, marginBlock: "30px 0px" }}>
             {t("term_sub_3")}
           </h4>
 
           <h5 style={{ color: textColor }}>{t("term_sub_3")}</h5>
-          <p>{t("term_p7")}</p>
+          <p style={{ color: textColor }}>{t("term_p7")}</p>
 
           <h5 style={{ color: textColor }}>{t("term_sub_4")}</h5>
-          <p>{t("term_p8")}</p>
+          <p style={{ color: textColor }}>{t("term_p8")}</p>
 
           <h4 style={{ color: textColor, marginBlock: "30px 0px" }}>
             {t("term_sub_4")}
           </h4>
-          <p>{t("term_p9")}</p>
+          <p style={{ color: textColor }}>{t("term_p9")}</p>
         </TermsWrapper>
 
         {/* style(STR-17): fixes aligment and spacing */}
@@ -58,12 +59,12 @@ const TermsAndConditions = () => {
           <h2 style={{ color: textColor, marginBlock: "60px 20px" }}>
             {t("term_sub_5")}
           </h2>
-          <p>{t("term_p10")}</p>
-          <p>{t("term_p11")}</p>
-          <p>{t("term_p12")}</p>
-          <p>{t("term_p13")}</p>
+          <p style={{ color: textColor }}>{t("term_p10")}</p>
+          <p style={{ color: textColor }}>{t("term_p11")}</p>
+          <p style={{ color: textColor }}>{t("term_p12")}</p>
+          <p style={{ color: textColor }}>{t("term_p13")}</p>
         </TermsWrapper>
-      </div>
+      </Box>
     </Box>
   );
 };

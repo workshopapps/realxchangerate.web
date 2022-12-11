@@ -71,7 +71,7 @@ const Value = () => {
   const { t } = useTranslation();
   return (
     <Box
-      backgroundColor={darkMode ? "#00050C" : "#F8FAFC"}
+      backgroundColor={darkMode ? "#131825" : "#F8FAFC"}
       display="flex"
       justifyContent="center"
       flexDirection="column"

@@ -55,8 +55,7 @@ const Main = () => {
         <CssBaseline />
         <Box
           width="100%"
-          height="100vh"
-          sx={{ backgroundColor: mode === "dark" ? "#00050c" : "background.default", color: "text.primary" }}
+          sx={{ backgroundColor: mode === "dark" ? "#131825" : "background.default", color: "text.primary" }}
         >
           <App />
         </Box>

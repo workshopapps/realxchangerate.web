@@ -8,7 +8,7 @@ const ComplianceLayout = () => {
   return (
     <Box
       display="flex"
-      backgroundColor={darkMode ? "#00050C" : ""}
+      backgroundColor={darkMode ? "#131825" : ""}
       sx={{
         marginInline: "auto",
         maxWidth: { xs: "90%", lg: "84%" },

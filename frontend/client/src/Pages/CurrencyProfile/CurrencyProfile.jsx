@@ -233,7 +233,7 @@ const CurrencyProfile = () => {
           )}
         </PopupState>
         <div className="lastUpdate">
-          <div style={{ position: "relative" }}>
+          {/* <div style={{ position: "relative" }}>
             <CircularProgressWithLabel
               variant="determinate"
               value={59}
@@ -243,11 +243,11 @@ const CurrencyProfile = () => {
               <Countdown
                 targetDate={oneHour}
                 renderer={({ days, hours, minutes, seconds }) => (
-                  <span id="time">{minutes}</span>
+                  <span id="time" >{minutes}</span>
                 )}
               />
             </i>
-          </div>
+          </div> */}
           <span>
             Last updated{" "}
             {dateUpdate

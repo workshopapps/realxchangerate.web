@@ -18,7 +18,7 @@ const Header = () => {
 
   return (
     <Box
-      backgroundColor={darkMode ? "#000A1B" : "#00296B"}
+      backgroundColor={darkMode ? "#131825" : "#00296B"}
       display="flex"
       w="100%"
     >
