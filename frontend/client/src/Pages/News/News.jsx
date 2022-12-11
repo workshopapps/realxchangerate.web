@@ -50,7 +50,7 @@ export default function News() {
           flexDirection="column"
           alignItems="center"
           margin="0px auto"
-          backgroundColor={darkMode ? "#00050C" : ""}
+          backgroundColor={darkMode ? "#131825" : ""}
         >
           <Box
             display="flex"
@@ -72,8 +72,8 @@ export default function News() {
                 <Box
                   display="flex"
                   flexDirection="column"
-                  backgroundColor={darkMode ? "#000A1B" : "#FAFAFA"}
-                  borderLeft={darkMode ? "" : "1px solid #D4D4D4"}
+                  backgroundColor={darkMode ? "#161C2C" : "#FAFAFA"}
+                  borderLeft={darkMode ? "#000A1B" : "1px solid #D4D4D4"}
                   borderRadius="4px"
                   padding="20px"
                   sx={{

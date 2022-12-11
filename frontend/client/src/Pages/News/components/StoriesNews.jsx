@@ -13,8 +13,8 @@ export default function StoriesNews({ data }) {
       <Box
         height="348px"
         display="flex"
-        backgroundColor={darkMode ? "#000A1B" : "#F8FAFC"}
-        border={darkMode ? "0.5px solid #000E25" : "0.5px solid #94A3B8"}
+        backgroundColor={darkMode ? "#161C2C" : "#F8FAFC"}
+        border={darkMode ? "0.5px solid #161C2C " : "0.5px solid #94A3B8"}
         padding="14px"
         borderRadius="4px"
         flexDirection="column"

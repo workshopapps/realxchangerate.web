@@ -78,7 +78,7 @@ const Convert = () => {
         setDate(Date(UpdateDate.Time));
       })
       .catch((err) => {
-        console.err(err);
+        console.error(err);
       });
   }, [base_url, endpoint, currency, date, base, convert]);
 

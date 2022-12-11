@@ -3,10 +3,10 @@ import { Box, useTheme } from "@mui/material";
 import { ComplianceSection } from "./complianceStyle";
 
 const ComplianceLayout = () => {
-  const theme = useTheme()
-  const darkMode = theme.palette.mode === "dark"
+  const theme = useTheme();
+  const darkMode = theme.palette.mode === "dark";
   return (
-    <Box display="flex" backgroundColor={darkMode ? "#00050C" : ""}>
+    <Box display="flex" backgroundColor={darkMode ? "#131825" : ""}>
       <ComplianceSection>
         <div className="">
           <h2>COMPLIANCE</h2>

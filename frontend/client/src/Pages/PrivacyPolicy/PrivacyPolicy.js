@@ -12,7 +12,7 @@ const PrivacyPolicy = () => {
   const textColor = DarkMode ? "#FAFAFA" : "#1e293b";
 
   return (
-    <Box display="flex" backgroundColor={DarkMode ? "#00050C" : ""}>
+    <Box display="flex" backgroundColor={DarkMode ? "#131825" : ""}>
       <Container textColor={textColor}>
         <section style={{ marginBottom: "48px" }}>
           <h1>Privacy Policy</h1>
