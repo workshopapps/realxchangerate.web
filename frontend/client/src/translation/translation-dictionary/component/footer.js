@@ -210,4 +210,11 @@ export default [
     fr: 'Termes et conditions',
     es: 'Términos y condiciones',
   },
+  {
+    key: 'footer_suggestion',
+    en: 'Suggestion Box',
+    de: 'Geschäftsbedingungen',
+    fr: 'Termes et conditions',
+    es: 'Términos y condiciones',
+  },
 ];

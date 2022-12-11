@@ -177,26 +177,26 @@ const Footer = () => {
             alignItems="flex-start"
             gap="16px"
             sx={{
-              fontSize: { xs: '14px' },
-              lineHeight: { xs: '20px' },
-              fontWeight: { xs: '400' },
-              width: { sm: '173.33px' },
+              fontSize: { xs: "14px" },
+              lineHeight: { xs: "20px" },
+              fontWeight: { xs: "400" },
+              width: { sm: "173.33px" },
             }}
-            color={dark ? '#E2E8F0' : '#F8FAFC'}
-            letterSpacing='0.001em'
+            color={dark ? "#E2E8F0" : "#F8FAFC"}
+            letterSpacing="0.001em"
           >
             <Typography
               sx={{
                 fontSize: {
-                  xs: '19px',
-                  sm: '15px',
-                  lg: '19px',
+                  xs: "19px",
+                  sm: "15px",
+                  lg: "19px",
                 },
-                lineHeight: { xs: '23px' },
-                fontWeight: { xs: '700' },
+                lineHeight: { xs: "23px" },
+                fontWeight: { xs: "700" },
               }}
-              letterSpacing='-0.02em'
-              color='#F8FAFC'
+              letterSpacing="-0.02em"
+              color="#F8FAFC"
             >
               {t("footer_product")}
             </Typography>
@@ -248,9 +248,6 @@ const Footer = () => {
             </Link>
             <Link href='/#/feedback' color='inherit'>
               {t('footer_feedback')}
-            </Link>
-            <Link href='/#/fraud-report' color='inherit'>
-              {t('footer_fraud')}
             </Link>
           </Stack> */}
               <Stack
