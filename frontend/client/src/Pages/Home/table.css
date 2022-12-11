@@ -1,0 +1,43 @@
+.search-table {
+  margin: 0;
+}
+.search-table,
+td,
+th {
+  border-collapse: collapse;
+  border-top: 1px solid #cbd5e1;
+}
+th {
+  padding: 20px 7px;
+  font-size: 15px;
+  color: #444;
+}
+td {
+  padding: 5px 10px;
+  height: 35px;
+}
+
+.search-table-outter {
+  overflow-x: scroll;
+}
+th,
+td {
+  min-width: 300px;
+}
+
+.search-table {
+  border: 1px solid #cbd5e1;
+  border-radius: 5px;
+  margin: auto;
+}
+
+.search-table-outter {
+  border-radius: 5px;
+}
+
+@media screen and (max-width: 480px) {
+  th,
+  td {
+    min-width: 200px;
+  }
+}

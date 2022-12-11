@@ -8,7 +8,6 @@ import Table2 from "./components/Table2";
 import { tableCurrenciesList } from "./data";
 import styled from "styled-components";
 import add from "./assets/add.svg";
-import CircularProgressWithLabel from "@mui/material/CircularProgress";
 import DeleteIcon from "./assets/delete.svg";
 import { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
@@ -18,9 +17,13 @@ import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
 import { useSelector } from "react-redux";
 import { dispatch } from "../../redux/store";
 import { GetCurrencyRates } from "../../redux/features/Reducers/serviceActions";
-import Countdown from "react-countdown-simple";
 import Download from "../About/components/Download";
+import background from "./assets/Waves.png";
+import HomeCards from "./components/HomeCards";
+// import styles from "./";
 import { Link } from "react-router-dom";
+import "./table.css";
+
 const Home = () => {
   const theme = useTheme();
   const dark = theme.palette.mode === "dark";
@@ -32,6 +35,7 @@ const Home = () => {
   const [currencies, setCurrencies] = useState(tableCurrenciesList);
   const [getCurrency, setGetCurrency] = useState([]);
   const [dateUpdate, setDateUpdate] = useState("");
+
   // Adding translation
   const { t } = useTranslation();
 
@@ -62,7 +66,7 @@ const Home = () => {
     const deleteIcons = document.querySelectorAll(".delete-cur");
 
     if (button.innerHTML === "Done") {
-      button.innerHTML = "Edit";
+      button.innerHTML = "Remove Currency";
       deleteIcons.forEach((e) => (e.style.display = "none"));
     } else {
       button.innerHTML = "Done";
@@ -84,8 +88,11 @@ const Home = () => {
           gap: "4rem",
           maxWidth: "1440px",
           margin: "auto",
-          p: { xs: "2rem", md: "4rem", lg: "5rem 10rem" },
+          p: { xs: "2rem", md: "4rem", lg: "1rem 10rem" },
           pt: { xs: "5rem" },
+          backgroundImage: `url(${background})`,
+          backgroundSize: "contain",
+          backgroundRepeat: "no-repeat",
           backgroundColor: dark ? "#00050c" : "",
         }}
       >
@@ -95,13 +102,14 @@ const Home = () => {
             justifyContent: "space-between",
             alignItems: "flex-end",
 
-            flexDirection: { sm: "column", xs: "column-reverse" },
+            flexDirection: "column",
 
             gap: "2.4rem",
           }}
         >
           <Hero />
           <Convert />
+          <HomeCards />
         </Box>
         <StyledBox>
           <TypographyLive
@@ -120,7 +128,7 @@ const Home = () => {
           </StyledEdit>
         </StyledBox>
         {/* Table  */}
-        <List
+        {/* <List
           style={{
             border: dark ? "" : "1px solid #CBD5E1",
             padding: "0",
@@ -137,6 +145,8 @@ const Home = () => {
               p: "1.5rem",
               fontWeight: 600,
               color: dark ? "#FAFAFA" : "black",
+              gap: "160px",
+              overflowX: "scroll",
             }}
           >
             <Box style={{ width: "107px" }}>{t("home_currency")}</Box>
@@ -165,8 +175,9 @@ const Home = () => {
                       <img
                         src={DeleteIcon}
                         className="delete-cur"
+                        style={{ display: "none" }}
                         alt=""
-                        onClick={() => handleDelete}
+                        onClick={(e) => handleDelete(currency.id)}
                       />
                     }
                   />
@@ -174,7 +185,72 @@ const Home = () => {
               </>
             );
           })}
-        </List>
+        </List> */}
+
+        <div class="search-table-outter wrapper">
+          <table class="search-table inner">
+            <tr
+              style={{
+                backgroundColor: dark ? "" : "#F1F5F9",
+                fontSize: "1.7rem",
+                p: "1.5rem",
+                fontWeight: 600,
+                color: dark ? "#FAFAFA" : "black",
+                gap: "160px",
+                overflowX: "scroll",
+              }}
+            >
+              <th>
+                <Box style={{ width: "107px", textAlign: "left" }}>
+                  {t("home_currency")}
+                </Box>
+              </th>
+              <th>
+                <Box style={{ width: "107px", textAlign: "left" }}>
+                  {t("home_parallel")}
+                </Box>
+              </th>
+              <th>
+                <StyledBankBox style={{ textAlign: "left" }}>
+                  {t("home_Bank")}
+                </StyledBankBox>
+              </th>
+              <th>
+                <Box style={{ width: "130px", textAlign: "left" }}></Box>
+              </th>
+            </tr>
+            {currencies.map((currency) => {
+              return (
+                <>
+                  {currencyRates.length > 0 && (
+                    <Table2
+                      country={currency.country}
+                      key={currency.id}
+                      rates={
+                        currencyRates.find(
+                          (x) => x.currency.isocode === currency.isocode
+                        ).rate
+                      }
+                      link={currency.link}
+                      symbol={currency.symbol}
+                      flag={currency.flag}
+                      isocode={currency.isocode}
+                      deleteIcon={
+                        <img
+                          src={DeleteIcon}
+                          className="delete-cur"
+                          style={{ display: "none" }}
+                          alt=""
+                          onClick={(e) => handleDelete(currency.id)}
+                        />
+                      }
+                    />
+                  )}
+                </>
+              );
+            })}
+          </table>
+        </div>
         <StyledSelection>
           <PopupState variant="popover" popupId="demo-popup-menu">
             {(popupState) => (
@@ -233,9 +309,9 @@ const TypographyHead = styled(Typography)`
 const StyledBox = styled(Box)``;
 
 const StyledBankBox = styled(Box)`
-  @media screen and (max-width: 480px) {
+  /* @media screen and (max-width: 480px) {
     display: none;
-  }
+  } */
 `;
 
 const StyledEdit = styled.button`
