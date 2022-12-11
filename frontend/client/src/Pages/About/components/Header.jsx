@@ -15,10 +15,9 @@ const Header = () => {
 
   return (
     <Box
-      backgroundColor={darkMode ? "#000A1B" : "#00296B"}
+      backgroundColor={darkMode ? "#131825" : "#00296B"}
       display="flex"
       w="100%"
-     
     >
       <Box
         alignItems="center"
@@ -53,7 +52,7 @@ const Header = () => {
                 fontSize: { xs: "32px", sm: "36px" },
                 lineHeight: { xs: "40px", sm: "44px" },
               }}
-               color="#F5F5F5"
+              color="#F5F5F5"
             >
               About us
             </Typography>
