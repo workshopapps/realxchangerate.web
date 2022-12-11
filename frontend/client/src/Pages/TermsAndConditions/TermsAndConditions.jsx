@@ -127,9 +127,7 @@ const TermsAndConditions = () => {
         {/* style(STR-17): fixes aligment and spacing */}
 
         <TermsWrapper>
-          <h2 style={{ color: textColor, marginBlock: "60px 20px" }}>
-            Liability Disclaimers
-          </h2>
+          <h2 style={{ color: textColor }}>Liability Disclaimers</h2>
           <p style={{ color: textColor }}>
             The information on this website is provided for general reference
             purposes only. While every effort is made to ensure that the site is

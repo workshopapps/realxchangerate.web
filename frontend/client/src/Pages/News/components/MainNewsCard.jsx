@@ -35,7 +35,7 @@ export default function MainNewsCard({ currentNews }) {
           </>
           <Box display="flex" flexDirection="column" gap="24px">
             <Typography
-              color={darkMode ? "#8C9FBC" : "#334155"}
+              color={darkMode ? "#ECECEC" : "#334155"}
               sx={{ fontSize: { xs: "16px", sm: "13px", md: "16px" } }}
               lineHeight="19px"
             >

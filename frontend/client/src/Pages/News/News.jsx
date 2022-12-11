@@ -49,7 +49,7 @@ export default function News() {
           display="flex"
           flexDirection="column"
           alignItems="center"
-          margin="0px auto"
+          margin="0px auto 30px"
           backgroundColor={darkMode ? "#131825" : ""}
         >
           <Box
@@ -73,7 +73,7 @@ export default function News() {
                   display="flex"
                   flexDirection="column"
                   backgroundColor={darkMode ? "#161C2C" : "#FAFAFA"}
-                  borderLeft={darkMode ? "#000A1B" : "1px solid #D4D4D4"}
+                  borderLeft={darkMode ? "1px solid #000815" : "1px solid #D4D4D4"}
                   borderRadius="4px"
                   padding="20px"
                   sx={{
@@ -107,7 +107,7 @@ export default function News() {
                 sx={{
                   fontWeight: "500",
                   lineHeight: "144.02%",
-                  color: darkMode ? "#fff" : "#0F172A",
+                  color: darkMode ? "#FAFAFA" : "#0F172A",
                 }}
               >
                 Top Stories
@@ -150,7 +150,7 @@ export default function News() {
                 fontWeight: "600",
                 fontSize: "16px",
                 lineHeight: "144.02%",
-                color: "#0F172A",
+                color: darkMode ? "#FAFAFA" : "#000000",
               }}
             >
               Trending News
