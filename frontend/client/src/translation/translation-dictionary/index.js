@@ -6,6 +6,7 @@ import hero from "./component/hero";
 import convert from "./component/convert";
 import home from "./pages/home";
 import privacyPolicy from "./pages/privacyPolicy";
+import faq from "./pages/faq";
 
 const resources = {};
 
@@ -13,6 +14,7 @@ const Translations = [
   // Pages
   ...home,
   ...privacyPolicy,
+  ...faq,
   // Components
   ...navbar,
   ...footer,

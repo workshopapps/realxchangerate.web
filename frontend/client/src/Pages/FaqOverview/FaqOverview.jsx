@@ -17,8 +17,10 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import Box from "@mui/material/Box";
 import { ReactComponent as PlusIcon } from "./assets/icons/plus.svg";
 import Skeleton from "@mui/material/Skeleton";
+import { useTranslation } from "react-i18next";
 
 function FaqOverview() {
+  const { t } = useTranslation();
   const [faqData, setFaqData] = useState(null);
 
   const navigate = useNavigate();
@@ -28,8 +30,6 @@ function FaqOverview() {
       .get(`https://api.streetrates.hng.tech/api/faq/get_all_faqs`)
       .then(({ data }) => setFaqData(data.faqs));
   }, []);
-
-  console.log(faqData);
 
   return (
     <Box
@@ -42,7 +42,7 @@ function FaqOverview() {
         <StyledGrid>
           <StyledFaq id="mainXD">
             <h3>FAQ</h3>
-            <p>Have any questions? We are here to help.</p>
+            <p>{t("got_que")}</p>
             <div className="searchWrapper">
               <div className="icon">
                 <SearchIcon />
@@ -50,9 +50,9 @@ function FaqOverview() {
               <StyledInput
                 id="search"
                 name="search"
-                placeholder="Search FAQs"
+                placeholder={`${t("search")} FAQs`}
               />
-              <button>Search</button>
+              <button>{t("search")}</button>
             </div>
           </StyledFaq>
 
@@ -91,14 +91,11 @@ function FaqOverview() {
 
         <StyledFaqBottom>
           <div>
-            <h4>Still have questions?</h4>
-            <p>
-              {`Can’t find answer you’re looking for? Please chat our support
-              team.`}
-            </p>
+            <h4>{t("still_got_quw")}</h4>
+            <p>{t("cant_find_answer")}</p>
           </div>
           <button onClick={() => navigate("/get-in-touch")}>
-            Get in touch
+            {t("get_in_touch")}
           </button>
         </StyledFaqBottom>
       </StyledWrapper>
