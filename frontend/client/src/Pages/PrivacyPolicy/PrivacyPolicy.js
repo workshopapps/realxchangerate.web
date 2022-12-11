@@ -14,7 +14,7 @@ const PrivacyPolicy = () => {
   return (
     <Box display="flex" backgroundColor={DarkMode ? "#00050C" : ""}>
       <Container textColor={textColor}>
-        <section style={{ marginBottom: "48px" }}>
+        <section style={{ marginBottom: "38px" }}>
           <h1>Privacy Policy</h1>
           <p>Version 2.0 (effective up to and including 4 August 2022)</p>
           <p>Version 3.0 (Effective from 5 August 2023)</p>

@@ -14,7 +14,7 @@ const TermsAndConditions = () => {
         marginInline: "auto",
       }}
     >
-      <div style={{ marginBlockEnd: "60px" }}>
+      <div style={{ marginBlock: "60px 40px" }}>
         <PageTitle style={{ color: textColor }}>
           Terms of Use and Liability Disclaimers
         </PageTitle>
@@ -38,7 +38,7 @@ const TermsAndConditions = () => {
             such changes
           </p>
 
-          <h4 style={{ color: textColor, marginBlock: "30px 0px" }}>
+          <h4 style={{ color: textColor, marginBlock: "40px 0px" }}>
             1. Copyright / Permission to Reproduce
           </h4>
           <p>
@@ -70,7 +70,7 @@ const TermsAndConditions = () => {
             of charge.
           </p>
 
-          <h4 style={{ color: textColor, marginBlock: "30px 0px" }}>
+          <h4 style={{ color: textColor, marginBlock: "40px 0px" }}>
             2. Third Parties
           </h4>
 
@@ -101,7 +101,7 @@ const TermsAndConditions = () => {
             express prior written permission of Street Rate.
           </p>
 
-          <h4 style={{ color: textColor, marginBlock: "30px 0px" }}>
+          <h4 style={{ color: textColor, marginBlock: "40px 0px" }}>
             3. Non-Investment Advice
           </h4>
           <p>
