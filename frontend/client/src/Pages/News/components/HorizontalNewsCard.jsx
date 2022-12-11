@@ -18,7 +18,7 @@ export default function HorizontalNewsCard({ data }) {
           sx={{
             gap: { xs: "15px", md: "20px", lg: "24px" },
             backgroundColor: darkMode
-              ? { xs: "#000A1B", sm: "#000A1B" }
+              ? { xs: "", sm: "#000A1B" }
               : { xs: "#F8FAFC", sm: "#fff" },
             padding: { xs: "17px", sm: "auto" },
           }}
@@ -49,7 +49,7 @@ export default function HorizontalNewsCard({ data }) {
                 fontWeight: "400",
                 fontSize: { xs: "11px", lg: "16px" },
                 lineHeight: "19px",
-                color: darkMode ? "#8C9FBC" : "#7C7C7C",
+                color: darkMode ? "#ECECEC" : "#7C7C7C",
               }}
             >
               {moment(data.pubDate).format("Do MMMM, YYYY  |  h:mmA")}
