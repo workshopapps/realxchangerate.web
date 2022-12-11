@@ -8,6 +8,7 @@ import home from "./pages/home";
 import about from "./pages/about";
 import termAndCondition from "./pages/termAndCondition";
 import glossary from "./pages/glossary";
+import cookies from "./pages/cookies";
 
 const resources = {};
 
@@ -18,6 +19,7 @@ const Translations = [
   ...home,
   ...glossary,
   // Components
+  ...cookies,
   ...navbar,
   ...footer,
   ...hero,

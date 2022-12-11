@@ -158,7 +158,7 @@ const Footer = () => {
                 <Link href="/#/glossary" color="inherit">
                   {t("footer_Glossary")}
                 </Link>
-                <Link href="/#/faq-overview" color="inherit">
+                <Link href="/#/faq" color="inherit">
                   {t("footer_faq")}
                 </Link>
                 <Link href="/#/suggestions" color="inherit">
@@ -318,7 +318,7 @@ const Footer = () => {
                 t("footer_faq"),
                 t("footer_suggestion"),
               ]}
-              Links={["faq", "glossary", "suggestions"]}
+              Links={["glossary", "faq", "suggestions"]}
             />
 
             <DropDown
@@ -329,7 +329,7 @@ const Footer = () => {
                 t("footer_cookie"),
                 t("footer_compliance"),
               ]}
-              Links={["#", "terms", "CookiePolicy", "compliance"]}
+              Links={["privacy-policy", "terms", "Cookie-policy", "compliance"]}
             />
           </Box>
           <Box margin="20px 0px">
