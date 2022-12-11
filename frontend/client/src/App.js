@@ -15,8 +15,8 @@ import {
   Compliance,
   HelpCenter,
   News,
-  Feedback,
   Faq,
+  Suggestion,
   IntegrationMatrix,
   Partnerships,
   CurrencyEncyclopedia,
@@ -109,10 +109,10 @@ function App() {
             <Route path='/Cookie-policy' element={<CookiePolicy />} />
             <Route path='/privacy-policy' element={<PrivacyPolicy />} />
             <Route path='/glossary' element={<Glossary />} />
-            <Route path='/feedback' element={<Feedback />} />
             <Route path='/advertising' element={<OnlineAdvertising />} />
             <Route path='/apply-to-advertise' element={<ApplyToAdvertise />} />
             <Route path='/ambassadors' element={<Ambassadors />} />
+            <Route path='/suggestions' element={<Suggestion />} />
             <Route
               path='/ambassadors/student-ambassador'
               element={<StudentAmbassador />}

@@ -30,4 +30,4 @@ export { default as StudentAmbassadorForm } from './StudentAmbassadorForm/Studen
 export { default as Affiliate } from './PartnersForm/AffiliatePartners/Affiliate';
 export { default as Referral } from './PartnersForm/ReferralPartners/Referral';
 export { default as Currency } from './Currency/Currency';
-export { default as Feedback } from './Feedback/Feedback';
+export { default as Suggestion } from './Suggestion/Suggestion';

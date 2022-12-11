@@ -65,6 +65,7 @@ export default function CreateCurrency() {
   const [editOpen, setEditOpen] = useState(false);
   const [currencyNo, setCurrencyNo] = useState(10);
   const [viewMore, setViewMore] = useState(true);
+  const [currs, setCurrs] = useState([]);
   const dispatch = useDispatch();
   const { currencies, requestStatus } = useSelector((state) => state.dashboard);
   const {
@@ -88,16 +89,15 @@ export default function CreateCurrency() {
   };
   useEffect(() => {
     dispatch(getTrending());
-    console.log("kai", currencies);
+
     dispatch(getBaseDetails("USD"));
-    console.log("CURRENCY RATES", currencyRates);
+
     dispatch(getRates("USD"));
 
     //eslint-disable-next-line
   }, [dispatch]);
   useEffect(() => {
-    // const Rates = Promise.all()
-    //eslint-disable-next-line
+    setCurrs(currencyRates);
   }, [currencyRates]);
 
   const handleOpen = () => {
@@ -242,8 +242,8 @@ export default function CreateCurrency() {
                         align="left"
                         style={{ color: "rgba(71, 85, 105, 1)" }}
                       >
-                        {currencyRates[index]?.status === "fulfilled"
-                          ? currencyRates[index]?.value?.data?.parallel_total
+                        {currs[index]?.status === "fulfilled"
+                          ? currs[index]?.value?.data?.parallel_total
                           : "-"}
                       </StyledTableCell>
                       <StyledTableCell

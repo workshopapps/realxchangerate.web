@@ -2,7 +2,6 @@ import React from "react";
 import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
 import tabletImage from "../assets/Tablet.png";
 import mobileImage from "../assets/mobile-image.png";
-import AppleIcon from "../assets/icons/Appleicon.svg";
 import PlayStore from "../assets/icons/PlayStore.svg";
 const Download = () => {
   const tabletUpper = useMediaQuery("(max-width:789px)");

@@ -5,6 +5,7 @@ import footer from "./component/footer";
 import hero from "./component/hero";
 import convert from "./component/convert";
 import home from "./pages/home";
+import cookies from './pages/cookies'
 
 const resources = {};
 
@@ -12,6 +13,7 @@ const Translations = [
   // Pages
   ...home,
   // Components
+  ...cookies,
   ...navbar,
   ...footer,
   ...hero,

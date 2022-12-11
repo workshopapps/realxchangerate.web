@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-const Feedback = () => {
+const Suggestion = () => {
   const [disableBtn, setDisableBtn] = useState(false);
   const navigate = useNavigate();
 
@@ -80,18 +80,21 @@ const Feedback = () => {
   );
 };
 
-export default Feedback;
+export default Suggestion;
 
 export const StyledComplaintForm = styled.section`
   padding: 85px 0;
   display: flex;
   flex-direction: column;
   max-width: 600px;
-  margin-left: 5rem;
+  margin-left: 10rem;
   @media screen and (max-width: 600px) {
     padding: 60px 0;
     margin-left: 0;
     align-items: center;
+  }
+  @media only screen and (max-width: 992px) {
+    margin-left: 5rem;
   }
 
   & h3 {

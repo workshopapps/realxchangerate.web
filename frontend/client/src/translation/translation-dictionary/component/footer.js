@@ -142,10 +142,10 @@ export default [
   },
   {
     key: 'footer_faq',
-    en: 'FAQ Overview',
-    de: 'FAQ Überblick',
-    fr: 'FAQ Aperçu',
-    es: 'FAQ Visión general',
+    en: 'FAQs',
+    de: 'FAQs',
+    fr: 'FAQs',
+    es: 'FAQs',
   },
   {
     key: 'footer_complaint',
@@ -199,6 +199,13 @@ export default [
   {
     key: 'footer_terms',
     en: 'Terms and Conditions',
+    de: 'Geschäftsbedingungen',
+    fr: 'Termes et conditions',
+    es: 'Términos y condiciones',
+  },
+  {
+    key: 'footer_suggestion',
+    en: 'Suggestion Box',
     de: 'Geschäftsbedingungen',
     fr: 'Termes et conditions',
     es: 'Términos y condiciones',

@@ -70,9 +70,9 @@ export const currenciesList = [
 
 export const tableCurrenciesList = [
   {
-    symbol: "$",
-    country: "Canada",
-    isocode: "CAD",
+    symbol: "₦",
+    country: "Nigeria",
+    isocode: "NGN",
     id: 1,
     link: "",
   },
