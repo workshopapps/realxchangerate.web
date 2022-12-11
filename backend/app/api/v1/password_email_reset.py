@@ -28,7 +28,7 @@ subject = 'Reset your password'
 
 body = """
 Hello, click on this link to reset your password:\n
-https://streetrates.hng.tech \n
+https://streetrates.hng.tech/admin/resetpassword \n
 If you did not request for this, kindly disregard the email and contact us on the streetrates web app.
 
 """
