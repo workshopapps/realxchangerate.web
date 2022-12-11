@@ -3,14 +3,20 @@ import { Box, useTheme } from "@mui/material";
 import { ComplianceSection } from "./complianceStyle";
 
 const ComplianceLayout = () => {
-  const theme = useTheme()
-  const darkMode = theme.palette.mode === "dark"
+  const theme = useTheme();
+  const darkMode = theme.palette.mode === "dark";
   return (
-    <Box display="flex" backgroundColor={darkMode ? "#00050C" : ""}>
+    <Box
+      display="flex"
+      backgroundColor={darkMode ? "#00050C" : ""}
+      sx={{
+        marginInline: "auto",
+        maxWidth: { xs: "90%", lg: "84%" },
+      }}
+    >
       <ComplianceSection>
-        <div className="">
-          <h2>COMPLIANCE</h2>
-          <h1>StreetRate Compliance</h1>
+        <div>
+          <h1 style={{ marginBlock: "30px 20px" }}>StreetRate Compliance</h1>
           <p>
             Let’s inform you of our compliance and how it is important for your
             activity on StreetRate
