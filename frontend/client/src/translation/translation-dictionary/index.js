@@ -5,16 +5,15 @@ import footer from './component/footer';
 import hero from './component/hero';
 import convert from './component/convert';
 import home from './pages/home';
-import compliance from './pages/compliance';
+import cookies from './pages/cookies';
 
 const resources = {};
 
 const Translations = [
 	// Pages
 	...home,
-	...compliance,
-
 	// Components
+	...cookies,
 	...navbar,
 	...footer,
 	...hero,
