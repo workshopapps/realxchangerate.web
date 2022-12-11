@@ -2,8 +2,8 @@ import React from "react";
 import { List } from "../style/Privacy.styled";
 const Introduction = () => {
   return (
-    <section>
-      <h2 style={{ marginBottom: "28px" }}>Introduction</h2>
+    <section style={{ marginBlock: "70px" }}>
+      <h2 style={{ marginBottom: "18px" }}>Introduction</h2>
       <div>
         <p>Hello!👋 We&lsquo;re StreetRates. </p>
         <p>
