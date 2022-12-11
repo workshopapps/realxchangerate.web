@@ -431,11 +431,11 @@ const AmountInput = styled.div`
     height: 1.45rem;
     padding: 12px 16;
   }
-  @media screen and (min-width: 768px) {
+  /* @media screen and (min-width: 768px) {
     margin-top: 0px;
     height: 65px;
     width: 30%;
-  }
+  } */
   @media screen and (min-width: 1025px) {
     height: 55px;
     width: 30%;
@@ -464,7 +464,7 @@ const SelectCurrency = styled.div`
       padding: 12px 16px;
     }
   }
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 1025px) {
     width: 30%;
     #currency1 {
       padding: 12px 16px;
