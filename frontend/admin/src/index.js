@@ -6,6 +6,9 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { store } from "./store/store";
 
+// import * as atatus from 'atatus-spa';
+// atatus.config('6cc0bcd74dfc46d1ac3057040240ae69').install();
+
 import * as Sentry from "@sentry/react";
 import { BrowserTracing } from "@sentry/tracing";
 
