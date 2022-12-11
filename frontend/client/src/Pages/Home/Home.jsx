@@ -201,17 +201,31 @@ const Home = () => {
               }}
             >
               <th>
-                <Box style={{ width: "107px", textAlign: "left" }}>
+                <Box
+                  style={{
+                    width: "107px",
+                    textAlign: "left",
+                    color: `${dark ? "white" : ""}`,
+                  }}
+                >
                   {t("home_currency")}
                 </Box>
               </th>
               <th>
-                <Box style={{ width: "107px", textAlign: "left" }}>
+                <Box
+                  style={{
+                    width: "107px",
+                    textAlign: "left",
+                    color: `${dark ? "white" : ""}`,
+                  }}
+                >
                   {t("home_parallel")}
                 </Box>
               </th>
               <th>
-                <StyledBankBox style={{ textAlign: "left" }}>
+                <StyledBankBox
+                  style={{ textAlign: "left", color: `${dark ? "white" : ""}` }}
+                >
                   {t("home_Bank")}
                 </StyledBankBox>
               </th>
@@ -334,6 +348,7 @@ const StyledEdit = styled.button`
 const StyledSelection = styled.div`
   display: flex;
   justify-content: space-between;
+  margin-bottom: 64px;
   .add {
     display: flex;
     align-items: center;
