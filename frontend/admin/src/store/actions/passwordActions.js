@@ -2,7 +2,6 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const initialState = {
-	email: null,
 	requestStatus: 'idle',
 };
 
@@ -35,7 +34,7 @@ export const userForgotPassword = createAsyncThunk(
 	}
 );
 
-export const contactSlice = createSlice({
+export const passwordSlice = createSlice({
 	name: 'password',
 	initialState,
 	reducers: {},
@@ -45,7 +44,6 @@ export const contactSlice = createSlice({
 				state.requestStatus = 'pending';
 			})
 			.addCase(userForgotPassword.fulfilled, (state, action) => {
-				state.contacts = action.payload.Contacts;
 				state.requestStatus = 'success';
 			})
 			.addCase(userForgotPassword.rejected, (state, action) => {
@@ -55,4 +53,4 @@ export const contactSlice = createSlice({
 	},
 });
 
-export default contactSlice.reducer;
+export default passwordSlice.reducer;
