@@ -6,11 +6,17 @@ const ComplianceLayout = () => {
   const theme = useTheme();
   const darkMode = theme.palette.mode === "dark";
   return (
-    <Box display="flex" backgroundColor={darkMode ? "#131825" : ""}>
+    <Box
+      display="flex"
+      backgroundColor={darkMode ? "#131825" : ""}
+      sx={{
+        marginInline: "auto",
+        maxWidth: { xs: "90%", lg: "84%" },
+      }}
+    >
       <ComplianceSection>
-        <div className="">
-          <h2>COMPLIANCE</h2>
-          <h1>StreetRate Compliance</h1>
+        <div>
+          <h1 style={{ marginBlock: "30px 20px" }}>StreetRate Compliance</h1>
           <p>
             Let’s inform you of our compliance and how it is important for your
             activity on StreetRate

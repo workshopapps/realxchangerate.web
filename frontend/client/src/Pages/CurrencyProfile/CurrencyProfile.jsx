@@ -21,6 +21,7 @@ import { tableCurrenciesList } from "../Home/data";
 import { AddCircle } from "iconsax-react";
 import Chart from "./chart/Chart";
 import DataCards from "./datacards/DataCards";
+import dayjs from "dayjs";
 //
 //
 const CurrencyProfile = () => {
@@ -247,7 +248,12 @@ const CurrencyProfile = () => {
               />
             </i>
           </div>
-          <span>Last updated {dateUpdate}</span>
+          <span>
+            Last updated{" "}
+            {dateUpdate
+              ? dayjs(dateUpdate).format("h:mm A, MMM D")
+              : dayjs().format("h:mm A, MMM D")}
+          </span>
         </div>
       </StyledSelection>
     </Container>

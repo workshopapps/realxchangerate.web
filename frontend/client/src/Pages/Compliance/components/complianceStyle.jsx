@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 export const ComplianceSection = styled.section`
-  padding: 0 5%;
+  // padding: 0 5%;
 
   > div {
-    max-width: 1210px;
+    // max-width: 1210px;
     margin: auto;
   }
   h2 {
@@ -20,7 +20,7 @@ export const ComplianceSection = styled.section`
     font-size: 1.6rem;
   }
   .section-body {
-    max-width: 75rem;
+    // max-width: 75rem;
     margin: 3rem 0 7rem;
     p {
       margin: 2rem 0;
