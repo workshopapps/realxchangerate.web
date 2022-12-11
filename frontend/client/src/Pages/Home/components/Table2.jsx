@@ -10,7 +10,7 @@ function Table2({ isocode, country, deleteIcon, rates, link, symbol }) {
   const dark = theme.palette.mode === "dark";
   const countryDetails = countries.filter((countr) => countr.label === country);
   return (
-    <Box
+    <tr
       justifyContent="space-between"
       display="flex"
       flexDirection="row"
@@ -19,52 +19,87 @@ function Table2({ isocode, country, deleteIcon, rates, link, symbol }) {
       borderTop={dark ? "1px solid #001E4E" : "1px solid #CBD5E1"}
       fontSize="1.4rem"
       height="70px"
+      gap="150px"
+      overflowX="scroll"
+      style={{ position: "relative" }}
     >
-      <Link to={`/${isocode}/currency-profile`}>
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            gap: "1rem",
-            width: "107px",
-          }}
-        >
-          <Box>
-            <img
-              loading="lazy"
-              width="20"
-              src={`https://flagcdn.com/w20/${countryDetails[0]?.code.toLowerCase()}.png`}
-              alt=""
-            />
-          </Box>
-          <Box>
-            <Box style={{ color: dark ? "#8C9FBC" : "#555962" }}>{isocode}</Box>
-            <Box sx={{ fontSize: "1rem", color: dark ? "#FAFAFA" : "#94A3B8" }}>
-              {country}
+      <td>
+        <Link to={`/${isocode}/currency-profile`}>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              gap: "1rem",
+            }}
+          >
+            <Box>
+              <img
+                loading="lazy"
+                width="20"
+                src={`https://flagcdn.com/w20/${countryDetails[0]?.code.toLowerCase()}.png`}
+                alt=""
+              />
+            </Box>
+            <Box>
+              <Box style={{ color: dark ? "#8C9FBC" : "#555962" }}>
+                {isocode}
+              </Box>
+              <Box
+                sx={{ fontSize: "1rem", color: dark ? "#FAFAFA" : "#94A3B8" }}
+              >
+                {country}
+              </Box>
             </Box>
           </Box>
-        </Box>
-      </Link>
-      <Typography fontSize="16px" width="61px" textAlign="left">
-        {symbol} {Number(rates?.parallel_buy).toFixed(2)}
-      </Typography>
-
-      <>
-        <BankBox fontSize="16px" width="61px">
+        </Link>
+      </td>
+      <td>
+        <Typography fontSize="16px" textAlign="left">
+          {symbol} {Number(rates?.parallel_buy).toFixed(2)}
+        </Typography>
+      </td>
+      <td>
+        <BankBox fontSize="16px">
           {symbol} {Number(rates?.official_buy).toFixed(2)}
         </BankBox>
-        <Box width="100px">
-          <Box>{deleteIcon}</Box>
-        </Box>
-      </>
-    </Box>
+      </td>
+      <td>
+        <DeleteBox>{deleteIcon}</DeleteBox>
+      </td>
+    </tr>
   );
 }
 
 export default Table2;
 
-const BankBox = styled(Box)`
+const BankBox = styled(Box)``;
+
+const DeleteBox = styled(Box)`
   @media screen and (max-width: 480px) {
-    display: none;
+    /* position: fixed; */
+    position: absolute;
+    left: 300px;
+    right: 20px;
+    top: 20px;
+    animation-name: scale-in-hor-right;
+    animation-duration: 1s;
+    animation-timing-function: ease;
+    animation-delay: 0s;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    animation-fill-mode: none;
+
+    @keyframes scale-in-hor-right {
+      0% {
+        transform: scaleX(0);
+        transform-origin: 100% 100%;
+        opacity: 1;
+      }
+      100% {
+        transform: scaleX(1);
+        transform-origin: 100% 100%;
+        opacity: 1;
+      }
+    }
   }
 `;

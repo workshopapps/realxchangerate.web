@@ -21,6 +21,8 @@ import Download from "../About/components/Download";
 import background from "./assets/Waves.png";
 import HomeCards from "./components/HomeCards";
 // import styles from "./";
+import { Link } from "react-router-dom";
+import "./table.css";
 
 const Home = () => {
   const theme = useTheme();
@@ -33,6 +35,7 @@ const Home = () => {
   const [currencies, setCurrencies] = useState(tableCurrenciesList);
   const [getCurrency, setGetCurrency] = useState([]);
   const [dateUpdate, setDateUpdate] = useState("");
+
   // Adding translation
   const { t } = useTranslation();
 
@@ -63,7 +66,7 @@ const Home = () => {
     const deleteIcons = document.querySelectorAll(".delete-cur");
 
     if (button.innerHTML === "Done") {
-      button.innerHTML = "Edit";
+      button.innerHTML = "Remove Currency";
       deleteIcons.forEach((e) => (e.style.display = "none"));
     } else {
       button.innerHTML = "Done";
@@ -125,7 +128,7 @@ const Home = () => {
           </StyledEdit>
         </StyledBox>
         {/* Table  */}
-        <List
+        {/* <List
           style={{
             border: dark ? "" : "1px solid #CBD5E1",
             padding: "0",
@@ -142,6 +145,8 @@ const Home = () => {
               p: "1.5rem",
               fontWeight: 600,
               color: dark ? "#FAFAFA" : "black",
+              gap: "160px",
+              overflowX: "scroll",
             }}
           >
             <Box style={{ width: "107px" }}>{t("home_currency")}</Box>
@@ -170,8 +175,9 @@ const Home = () => {
                       <img
                         src={DeleteIcon}
                         className="delete-cur"
+                        style={{ display: "none" }}
                         alt=""
-                        onClick={() => handleDelete}
+                        onClick={(e) => handleDelete(currency.id)}
                       />
                     }
                   />
@@ -179,7 +185,72 @@ const Home = () => {
               </>
             );
           })}
-        </List>
+        </List> */}
+
+        <div class="search-table-outter wrapper">
+          <table class="search-table inner">
+            <tr
+              style={{
+                backgroundColor: dark ? "" : "#F1F5F9",
+                fontSize: "1.7rem",
+                p: "1.5rem",
+                fontWeight: 600,
+                color: dark ? "#FAFAFA" : "black",
+                gap: "160px",
+                overflowX: "scroll",
+              }}
+            >
+              <th>
+                <Box style={{ width: "107px", textAlign: "left" }}>
+                  {t("home_currency")}
+                </Box>
+              </th>
+              <th>
+                <Box style={{ width: "107px", textAlign: "left" }}>
+                  {t("home_parallel")}
+                </Box>
+              </th>
+              <th>
+                <StyledBankBox style={{ textAlign: "left" }}>
+                  {t("home_Bank")}
+                </StyledBankBox>
+              </th>
+              <th>
+                <Box style={{ width: "130px", textAlign: "left" }}></Box>
+              </th>
+            </tr>
+            {currencies.map((currency) => {
+              return (
+                <>
+                  {currencyRates.length > 0 && (
+                    <Table2
+                      country={currency.country}
+                      key={currency.id}
+                      rates={
+                        currencyRates.find(
+                          (x) => x.currency.isocode === currency.isocode
+                        ).rate
+                      }
+                      link={currency.link}
+                      symbol={currency.symbol}
+                      flag={currency.flag}
+                      isocode={currency.isocode}
+                      deleteIcon={
+                        <img
+                          src={DeleteIcon}
+                          className="delete-cur"
+                          style={{ display: "none" }}
+                          alt=""
+                          onClick={(e) => handleDelete(currency.id)}
+                        />
+                      }
+                    />
+                  )}
+                </>
+              );
+            })}
+          </table>
+        </div>
         <StyledSelection>
           <PopupState variant="popover" popupId="demo-popup-menu">
             {(popupState) => (
@@ -238,9 +309,9 @@ const TypographyHead = styled(Typography)`
 const StyledBox = styled(Box)``;
 
 const StyledBankBox = styled(Box)`
-  @media screen and (max-width: 480px) {
+  /* @media screen and (max-width: 480px) {
     display: none;
-  }
+  } */
 `;
 
 const StyledEdit = styled.button`

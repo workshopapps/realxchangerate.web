@@ -4,11 +4,18 @@ import streetRates from "../assets/Logo.svg";
 import { useTranslation } from "react-i18next";
 
 const DrawerComponent = ({ isOpen, setIsOpen }) => {
-  const theme = useTheme()
-	const DarkMode = theme.palette.mode === 'dark'
+  const theme = useTheme();
+  const DarkMode = theme.palette.mode === "dark";
   const { t } = useTranslation();
   const drawer = (
-    <Box onClick={setIsOpen} sx={{ textAlign: "center", backgroundColor: DarkMode ? "#000E25" : "inherit", height:"100vh" }}>
+    <Box
+      onClick={setIsOpen}
+      sx={{
+        textAlign: "center",
+        backgroundColor: DarkMode ? "#000E25" : "inherit",
+        height: "100vh",
+      }}
+    >
       <Link to="/" style={{ color: "#0062ff" }}>
         <img
           style={{ width: "clamp(90px, 10vw, 140px)", margin: "20px auto" }}
@@ -30,8 +37,6 @@ const DrawerComponent = ({ isOpen, setIsOpen }) => {
         color="#0062ff"
       >
         <Link href="/">{t("nav_home")}</Link>
-
-        <Link href="/#/">{t("nav_curency")}</Link>
 
         <Link href="/#/blogs">{t("nav_news")}</Link>
 

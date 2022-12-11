@@ -6,6 +6,7 @@ import moment from "moment";
 const Header = ({ data }) => {
   const theme = useTheme();
   const darkMode = theme.palette.mode === "dark";
+
   return (
     <Box
       display="flex"
