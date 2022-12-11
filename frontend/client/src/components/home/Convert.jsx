@@ -367,7 +367,7 @@ const Rate = styled.div`
   align-items: center;
   display: flex;
   justify-content: space-between;
-  padding-left: 16px;
+  padding: 0 1rem;
   /* padding-right: 80px; */
   h4 {
     font-size: 18px;
@@ -428,7 +428,8 @@ const AmountInput = styled.div`
   margin-top: 20px;
   /* height: 70px; */
   & input {
-    padding: 12px 16px;
+    height: 1.45rem;
+    padding: 12px 16;
   }
   @media screen and (min-width: 768px) {
     margin-top: 0px;

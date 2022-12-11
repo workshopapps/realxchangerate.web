@@ -8,7 +8,6 @@ import Table2 from "./components/Table2";
 import { tableCurrenciesList } from "./data";
 import styled from "styled-components";
 import add from "./assets/add.svg";
-import CircularProgressWithLabel from "@mui/material/CircularProgress";
 import DeleteIcon from "./assets/delete.svg";
 import { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
@@ -18,9 +17,11 @@ import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
 import { useSelector } from "react-redux";
 import { dispatch } from "../../redux/store";
 import { GetCurrencyRates } from "../../redux/features/Reducers/serviceActions";
-import Countdown from "react-countdown-simple";
 import Download from "../About/components/Download";
-import { Link } from "react-router-dom";
+import background from "./assets/Waves.png";
+import HomeCards from "./components/HomeCards";
+// import styles from "./";
+
 const Home = () => {
   const theme = useTheme();
   const dark = theme.palette.mode === "dark";
@@ -84,8 +85,11 @@ const Home = () => {
           gap: "4rem",
           maxWidth: "1440px",
           margin: "auto",
-          p: { xs: "2rem", md: "4rem", lg: "5rem 10rem" },
+          p: { xs: "2rem", md: "4rem", lg: "1rem 10rem" },
           pt: { xs: "5rem" },
+          backgroundImage: `url(${background})`,
+          backgroundSize: "contain",
+          backgroundRepeat: "no-repeat",
           backgroundColor: dark ? "#00050c" : "",
         }}
       >
@@ -95,13 +99,14 @@ const Home = () => {
             justifyContent: "space-between",
             alignItems: "flex-end",
 
-            flexDirection: { sm: "column", xs: "column-reverse" },
+            flexDirection: "column",
 
             gap: "2.4rem",
           }}
         >
           <Hero />
           <Convert />
+          <HomeCards />
         </Box>
         <StyledBox>
           <TypographyLive
