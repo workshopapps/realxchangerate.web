@@ -48,7 +48,7 @@ function Glossary() {
             {t("glossary_main_title")}
           </h1>
           <h4 style={{ color: darkMode ? "#FAFAFA" : "" }}>
-            What are you interested in?
+            {t("glossary_sub")}
           </h4>
         </Head>
         <Search>

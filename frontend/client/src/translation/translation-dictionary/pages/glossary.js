@@ -4,7 +4,14 @@ export default [
     key: "glossary_main_title",
     en: "Glossary",
     de: "Glossar",
-    fr: "Glossaire",
+    fr: "Lexique",
     es: "Glosario",
+  },
+  {
+    key: "glossary_sub",
+    en: "What are you interested in?",
+    de: "Was interessiert dich?",
+    fr: "Qu'est-ce qui vous intéresse?",
+    es: "¿En que estas interesado?",
   },
 ];
