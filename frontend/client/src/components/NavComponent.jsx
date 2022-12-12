@@ -101,7 +101,7 @@ const NavComponent = () => {
         >
           <Toolbar
             variant="dense"
-            sx={{ padding: "0px !important", display: "block" }}
+            sx={{ padding: "10px 0px !important", display: "block" }}
           >
             <Grid
               sx={{
@@ -128,7 +128,7 @@ const NavComponent = () => {
                     src={streetRates}
                     alt=""
                   /> */}
-                  <NewLogo />
+                  <NewLogo height="46px" />
                 </Link>
               </Grid>
 
