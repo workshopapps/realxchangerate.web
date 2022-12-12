@@ -15,6 +15,7 @@ const Form = () => {
 	useEffect(() => {
 		if (requestStatus === 'failed') {
 			toast.error('error changing password');
+			// setEmail('');
 		}
 		if (requestStatus === 'success') {
 			navigate('/admin/resetpassword');

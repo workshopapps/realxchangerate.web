@@ -46,7 +46,6 @@ const Modal = ({ popup, setPopup }) => {
 	};
 	return (
 		<>
-			(
 			<Container>
 				<FaTimes className='close' onClick={() => handleClick()} />
 				<div className='popup'>
@@ -54,7 +53,6 @@ const Modal = ({ popup, setPopup }) => {
 					<img src={emailIcon} alt='success' />
 				</div>
 			</Container>
-			)
 		</>
 	);
 };
