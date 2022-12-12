@@ -127,7 +127,7 @@ function Liverates() {
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead
             sx={{
-              backgroundColor: "#F1F5F9",
+              backgroundColor: dark ? "#333" : "#F1F5F9",
             }}
           >
             <TableRow>
@@ -172,6 +172,8 @@ function Liverates() {
                                       // display: "none",
                                       width: "16px",
                                       margin: "auto",
+                                      filter: dark? 
+                                        "invert(100%) sepia(100%) saturate(1%) hue-rotate(228deg) brightness(102%) contrast(101%)":"",
                                     }}
                                     alt=""
                                   />
