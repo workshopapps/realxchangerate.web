@@ -70,7 +70,7 @@ function DataCards() {
           display: "flex",
           gap: "1rem",
           flexWrap: "wrap",
-          justifyContent: "space-between",
+          justifyContent: { lg: "space-between" },
         }}
       >
         <OneHour rate={trend.one_hour} />
