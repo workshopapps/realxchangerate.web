@@ -11,8 +11,6 @@ import about from "./pages/about";
 import termAndCondition from "./pages/termAndCondition";
 import glossary from "./pages/glossary";
 import cookies from "./pages/cookies";
-import privacyPolicy from "./pages/privacyPolicy";
-import faq from "./pages/faq";
 
 const resources = {};
 
@@ -21,11 +19,9 @@ const Translations = [
   ...termAndCondition,
   ...about,
   ...home,
-  ...privacyPolicy,
   ...faq,
   ...glossary,
   ...privacyPolicy,
-  ...faq,
   // Components
   ...cookies,
   ...navbar,

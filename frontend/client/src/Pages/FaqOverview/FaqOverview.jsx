@@ -20,7 +20,6 @@ import Skeleton from "@mui/material/Skeleton";
 
 import { useTranslation } from "react-i18next";
 import { useTheme } from "@mui/material";
-import { useTranslation } from "react-i18next";
 
 function FaqOverview() {
   const { t } = useTranslation();
