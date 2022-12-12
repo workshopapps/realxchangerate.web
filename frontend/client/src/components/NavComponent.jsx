@@ -16,8 +16,9 @@ import { Link } from "react-router-dom";
 import { DownArrow, NavFlag, MenuIcon, MenuIconDark } from "../assets/index";
 import streetRates from "../assets/Logo.svg";
 import { ColorModeContext } from "../Main";
-import Brightness4Icon from "@mui/icons-material/Brightness4";
-import Brightness7Icon from "@mui/icons-material/Brightness7";
+import { Brightness4 as Brightness4Icon } from "@mui/icons-material";
+import { Brightness7 as Brightness7Icon } from "@mui/icons-material";
+
 import {
   setDefaultCurrency,
   setLocalLanguage,
