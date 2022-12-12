@@ -1,7 +1,7 @@
-import React, { useRef, useState } from 'react';
-import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import React, { useRef, useState } from "react";
+import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Suggestion = () => {
   const [disableBtn, setDisableBtn] = useState(false);
@@ -18,18 +18,23 @@ const Suggestion = () => {
     const SuggetionData = {
       full_name: nameRef.current.value,
       email: emailRef.current.value,
-      suggestion: messageRef.current.value,
+      complaint: messageRef.current.value,
     };
 
+    console.log(SuggetionData);
+
     axios
-      .post('https://api.streetrates.hng.tech/api/suggestions/', SuggetionData)
+      .post(
+        "https://api.streetrates.hng.tech/api/complaints/add_complaints",
+        SuggetionData
+      )
       .then((res) => {
-        nameRef.current.value = '';
-        emailRef.current.value = '';
-        messageRef.current.value = '';
+        nameRef.current.value = "";
+        emailRef.current.value = "";
+        messageRef.current.value = "";
         setDisableBtn(false);
         setTimeout(() => {
-          navigate('/');
+          navigate("/");
         }, 3000);
       })
       .catch((error) => {
@@ -46,34 +51,34 @@ const Suggestion = () => {
       </p>
 
       <form onSubmit={handleSubmit}>
-        <label htmlFor='name'>Full Name:</label>
+        <label htmlFor="name">Full Name:</label>
         <input
           ref={nameRef}
-          type='text'
-          id='name'
-          placeholder='Enter your name'
+          type="text"
+          id="name"
+          placeholder="Enter your name"
           required
         />
 
-        <label htmlor='email'>Email Address:</label>
+        <label htmlor="email">Email Address:</label>
         <input
           ref={emailRef}
-          type='text'
-          id='email'
-          placeholder='Enter your email'
+          type="text"
+          id="email"
+          placeholder="Enter your email"
           required
         />
 
-        <label htmlFor='description'> Your Suggestion:</label>
+        <label htmlFor="description"> Your Suggestion:</label>
         <textarea
           ref={messageRef}
-          id='description'
-          placeholder='Type your message'
+          id="description"
+          placeholder="Type your message"
           required
         ></textarea>
 
-        <button type='submit' disabled={disableBtn}>
-          {disableBtn ? 'Submitting' : 'Submit'}
+        <button type="submit" disabled={disableBtn}>
+          {disableBtn ? "Submitting" : "Submit"}
         </button>
       </form>
     </StyledComplaintForm>
