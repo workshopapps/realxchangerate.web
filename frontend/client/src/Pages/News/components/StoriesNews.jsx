@@ -14,7 +14,7 @@ export default function StoriesNews({ data }) {
         height="348px"
         display="flex"
         backgroundColor={darkMode ? "#161C2C" : "#F8FAFC"}
-        border={darkMode ? "0.5px solid #161C2C " : "0.5px solid #94A3B8"}
+        border={darkMode ? "" : "0.5px solid #94A3B8"}
         padding="14px"
         borderRadius="4px"
         flexDirection="column"
@@ -62,7 +62,7 @@ export default function StoriesNews({ data }) {
         <Typography
           fontWeight="400"
           lineHeight="28px"
-          color={darkMode ? "#8C9FBC" : "#1E293B"}
+          color={darkMode ? "#ECECEC" : "#1E293B"}
           sx={{
             fontSize: { xs: "14px", sm: "12px", md: "14px" },
           }}
@@ -73,7 +73,7 @@ export default function StoriesNews({ data }) {
         <Typography
           fontWeight="400"
           lineHeight="28px"
-          color={darkMode ? "#8C9FBC" : "#334155"}
+          color={darkMode ? "#ECECEC" : "#334155"}
           sx={{
             fontSize: { xs: "10px", lg: "13px" },
           }}

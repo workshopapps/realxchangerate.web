@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useTransition } from "react";
 import styled from "styled-components";
 import Value from "./components/Value";
 import { useTheme, Box } from "@mui/material";
@@ -13,7 +13,7 @@ import { useTheme, Box } from "@mui/material";
 // import teamate8 from "./assets/person8.png";
 import Header from "./components/Header";
 import Mission from "./components/Mission";
-// import Download from "./components/Download";
+import Download from "./components/Download";
 const About = () => {
   // const teamMember = [
   //   {
