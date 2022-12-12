@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Container, Typography, Grid, List, ListItem } from "@mui/material";
 import { Box } from "@mui/material";
@@ -23,6 +24,7 @@ import Chart from "./chart/Chart";
 import DataCards from "./datacards/DataCards";
 import dayjs from "dayjs";
 import Liverates from "../Home/Liverates";
+
 //
 //
 const CurrencyProfile = () => {
@@ -129,6 +131,7 @@ const CurrencyProfile = () => {
       <Liverates />
     </Container>
   );
+
 };
 
 export default CurrencyProfile;

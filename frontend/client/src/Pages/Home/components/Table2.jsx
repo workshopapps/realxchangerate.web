@@ -29,8 +29,10 @@ function Table2({ isocode, country, deleteIcon, rates, link, symbol }) {
     >
       <StyledTableCell>
         <Link to={`/${isocode}/currency-profile`}>
+
           <Tooltip title={country} placement="right-start">
             <Button>
+
               <Box
                 sx={{
                   display: "flex",
@@ -56,6 +58,7 @@ function Table2({ isocode, country, deleteIcon, rates, link, symbol }) {
                     {isocode}
                   </Box>
                   {/* <Box
+
                 sx={{ fontSize: "1rem", color: dark ? "#FAFAFA" : "#94A3B8" }}
               >
                  

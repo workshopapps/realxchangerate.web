@@ -29,7 +29,9 @@ const Home = () => {
           backgroundImage: `url(${background})`,
           backgroundSize: "contain",
           backgroundRepeat: "no-repeat",
+
           backgroundColor: dark ? "#131825" : "",
+
         }}
       >
         <Box

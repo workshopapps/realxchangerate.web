@@ -28,7 +28,7 @@ subject = 'Reset your password'
 
 body = """
 Hello, click on this link to reset your password:\n
-https://streetrates.hng.tech \n
+https://streetrates.hng.tech/admin/resetpassword \n
 If you did not request for this, kindly disregard the email and contact us on the streetrates web app.
 
 """
@@ -41,7 +41,12 @@ router = APIRouter()
 @router.post("/forgot_password")
 async def sending_mail(email: EmailStr, db: Session = Depends(get_db)):
     """
-    Send a reset password email to the mail provided
+    -Send a reset password email to the mail provided\n
+    -Sample_email to use: streetrates.hng@gmail.com\n
+    -password: !@12qwAS\n
+    -Sign in link: https://mail.google.com/mail/u/2/#inbox \n
+    -Go to the inbox to view the message
+
     """
     admin_email = crud.admin.get_by_email(db, email=email)
     if not admin_email:

@@ -4,6 +4,7 @@ import App from "./App";
 import { dispatch } from "./redux/store";
 import {
   GetCurrencies,
+  GetUserIp
 } from "./redux/features/Reducers/serviceActions";
 
 export const ColorModeContext = createContext({ toggleColorMode: () => {} });
@@ -44,6 +45,7 @@ const Main = () => {
   );
 
   useEffect(() => {
+    dispatch(GetUserIp())
     dispatch(GetCurrencies());
   }, []);
 

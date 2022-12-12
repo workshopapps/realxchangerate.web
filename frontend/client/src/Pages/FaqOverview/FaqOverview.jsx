@@ -17,9 +17,12 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import Box from "@mui/material/Box";
 import { ReactComponent as PlusIcon } from "./assets/icons/plus.svg";
 import Skeleton from "@mui/material/Skeleton";
+
+import { useTranslation } from "react-i18next";
 import { useTheme } from "@mui/material";
 
 function FaqOverview() {
+  const { t } = useTranslation();
   const [faqData, setFaqData] = useState(null);
 
   const navigate = useNavigate();
@@ -46,7 +49,7 @@ function FaqOverview() {
             <StyledFaq id="mainXD">
               <h3 style={{ color: `${dark ? "#FAFAFA" : "#161C2C"}` }}>FAQ</h3>
               <p style={{ color: `${dark ? "#FAFAFA" : "#161C2C"}` }}>
-                Have any questions? We are here to help.
+                {t("got_que")}
               </p>
               <div
                 className="searchWrapper"
@@ -66,13 +69,13 @@ function FaqOverview() {
                 <StyledInput
                   id="search"
                   name="search"
-                  placeholder="Search FAQs"
+                  placeholder={`${t("search")} FAQs`}
                   style={{
                     backgroundColor: `${dark ? "#161C2C" : ""}`,
                     color: `${dark ? "#FAFAFA" : "#161C2C"}`,
                   }}
                 />
-                <button>Search</button>
+                <button>{t("search")}</button>
               </div>
             </StyledFaq>
 
@@ -136,15 +139,14 @@ function FaqOverview() {
           >
             <div>
               <h4 style={{ color: `${dark ? "#FAFAFA" : ""}` }}>
-                Still have questions?
+                {t("still_got_que")}
               </h4>
               <p style={{ color: `${dark ? "#FAFAFA" : ""}` }}>
-                {`Can’t find answer you’re looking for? Please chat our support
-              team.`}
+                {t("cant_find_answer")}
               </p>
             </div>
             <button onClick={() => navigate("/get-in-touch")}>
-              Get in touch
+              {t("get_in_touch")}
             </button>
           </StyledFaqBottom>
         </StyledWrapper>

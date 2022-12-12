@@ -72,8 +72,10 @@ export default function News() {
                 <Box
                   display="flex"
                   flexDirection="column"
+
                   backgroundColor={darkMode ? "#161C2C" : "#FAFAFA"}
                   borderLeft={darkMode ? "1px solid #000815" : "1px solid #D4D4D4"}
+
                   borderRadius="4px"
                   padding="20px"
                   sx={{
