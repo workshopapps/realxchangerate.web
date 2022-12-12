@@ -72,9 +72,9 @@ export default [
   },
   {
     key: "home_card_three",
-    en: "Get the best deals and exchange your money",
-    de: "Holen Sie sich die besten Angebote und tauschen Sie Ihr Geld um",
-    fr: "Obtenez les meilleures offres et échangez votre argent",
-    es: "Consigue las mejores ofertas y cambia tu dinero",
+    en: "Know the best deals before exchanging your money",
+    de: "Kennen Sie die besten Angebote, bevor Sie Ihr Geld wechseln",
+    fr: "Connaître les meilleures offres avant d'échanger votre argent",
+    es: "Conoce las mejores ofertas antes de cambiar tu dinero",
   },
 ];

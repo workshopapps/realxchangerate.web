@@ -21,7 +21,6 @@ import Download from "../About/components/Download";
 import background from "./assets/Waves.png";
 import HomeCards from "./components/HomeCards";
 // import styles from "./";
-import { Link } from "react-router-dom";
 import "./table.css";
 
 const Home = () => {
@@ -95,7 +94,6 @@ const Home = () => {
           backgroundRepeat: "no-repeat",
 
           backgroundColor: dark ? "#131825" : "",
-
         }}
       >
         <Box
@@ -203,7 +201,6 @@ const Home = () => {
               }}
             >
               <th>
-
                 <Box
                   style={{
                     width: "107px",
@@ -211,12 +208,10 @@ const Home = () => {
                     color: `${dark ? "white" : ""}`,
                   }}
                 >
-
                   {t("home_currency")}
                 </Box>
               </th>
               <th>
-
                 <Box
                   style={{
                     width: "107px",
@@ -224,16 +219,13 @@ const Home = () => {
                     color: `${dark ? "white" : ""}`,
                   }}
                 >
-
                   {t("home_parallel")}
                 </Box>
               </th>
               <th>
-
                 <StyledBankBox
                   style={{ textAlign: "left", color: `${dark ? "white" : ""}` }}
                 >
-
                   {t("home_Bank")}
                 </StyledBankBox>
               </th>

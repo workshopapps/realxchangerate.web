@@ -1,17 +1,21 @@
-import { Card, CardContent, CardMedia, Typography } from "@mui/material";
+import { Card, CardContent, Typography } from "@mui/material";
 import React from "react";
 
 function Cards({ text, image, color, bg }) {
   return (
     <Card
-      elevation={0}
+      elevation={2}
       sx={{
         p: { xs: 0, md: 2 },
-        border: "0.5px solid #5F626B",
+        // border: "0.5px solid #5F626B",
         borderRadius: "1rem",
         flex: { sm: "0 1 300px" },
         bgcolor: bg,
         color: color,
+        "&:hover": {
+          transition: "all 0.5s ease",
+          transform: "scale(1.1)",
+        },
       }}
     >
       <CardContent

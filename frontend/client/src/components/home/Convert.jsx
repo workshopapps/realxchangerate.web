@@ -158,6 +158,7 @@ const Convert = () => {
         padding: { lg: "32px", xs: "8px" },
         // boxShadow: "0 0 0 0",
         backgroundColor: dark ? "#000A1B" : "",
+        mb: "6rem",
       }}
     >
       <h2
