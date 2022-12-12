@@ -40,7 +40,7 @@ const ListItem = ({ image, title, content }) => {
           fontWeight="600"
           letterSpacing="-0.02em"
           sx={{
-            fontSize: { xs: "22px", sm: "24px", md: "28px" },
+            fontSize: { xs: "22px", sm: "24px", xl: "28px" },
             lineHeight: { xs: "28px", sm: "32px" },
             textAlign: { xs: "center", sm: "left" },
           }}
@@ -132,7 +132,7 @@ const Value = () => {
             },
           }}
         >
-          <Grid item sm={6} md={3}>
+          <Grid item sm={12} md={6} lg={3}>
             <ListItem
               image={EntrepreneurshipIcon}
               title={t("about_Entrepreneurship")}
@@ -140,7 +140,7 @@ const Value = () => {
             />
           </Grid>
 
-          <Grid item sm={6} md={3}>
+          <Grid item sm={12} md={6} lg={3}>
             <ListItem
               image={DiversityIcon}
               title={t("about_Diversity")}
@@ -148,7 +148,7 @@ const Value = () => {
             />
           </Grid>
 
-          <Grid item sm={6} md={3}>
+          <Grid item sm={12} md={6} lg={3}>
             <ListItem
               image={InnovationIcon}
               title={t("about_Innovation")}
@@ -156,7 +156,7 @@ const Value = () => {
             />
           </Grid>
 
-          <Grid item sm={6} md={3}>
+          <Grid item sm={12} md={6} lg={3}>
             <ListItem
               image={CommunityIcon}
               title={t("about_Community")}
