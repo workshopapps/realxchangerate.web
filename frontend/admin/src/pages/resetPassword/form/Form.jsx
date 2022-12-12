@@ -1,17 +1,17 @@
 import { Container } from './formStyles';
 import { useState } from 'react';
-// import { useDispatch } from 'react-redux';
-// import { userForgotPassword } from '../../../store/actions/passwordActions';
+import { useDispatch } from 'react-redux';
+import { resetPassword } from '../../../store/actions/passwordActions';
 
 const Form = () => {
-	// const [reset, setReset] = useState(false);
-	// const dispatch = useDispatch();
+	const dispatch = useDispatch();
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
+
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		// dispatch(userForgotPassword({ email }));
-		console.log('heyy');
+		dispatch(resetPassword({ email, password }));
+		// console.log(email, password);
 	};
 
 	return (

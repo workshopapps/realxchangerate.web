@@ -2,6 +2,7 @@
 import styled from 'styled-components';
 import { FaTimes } from 'react-icons/fa';
 import emailIcon from '../../../assets/icons8-mai.png';
+// import { NavLink } from 'react-router-dom';
 
 const Container = styled.section`
 	position: absolute;
@@ -15,7 +16,7 @@ const Container = styled.section`
 	align-items: center;
 	.popup {
 		width: 90%;
-		max-width: 300px;
+		max-width: 600px;
 		padding: 40px 0;
 		background-color: #fff;
 		border-radius: 8px;
@@ -23,6 +24,10 @@ const Container = styled.section`
 		justify-content: center;
 		align-items: center;
 		flex-direction: column;
+		h1 {
+			font-weight: 600;
+			font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+		}
 	}
 	.close {
 		position: absolute;
@@ -41,7 +46,7 @@ const Modal = ({ popup, setPopup }) => {
 			<Container>
 				<FaTimes className='close' onClick={() => setPopup(!popup)} />
 				<div className='popup'>
-					<h1>check your inbox!</h1>
+					<h1> we've sent a link to your email!</h1>
 					<img src={emailIcon} alt='success' />
 				</div>
 			</Container>
