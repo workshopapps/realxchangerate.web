@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Container, Typography, Grid, List, ListItem } from '@mui/material';
 import { Box } from '@mui/material';
@@ -22,6 +23,7 @@ import { AddCircle } from 'iconsax-react';
 import Chart from './chart/Chart';
 import DataCards from './datacards/DataCards';
 import dayjs from 'dayjs';
+
 //
 //
 const CurrencyProfile = () => {
@@ -228,6 +230,7 @@ const CurrencyProfile = () => {
 				</PopupState>
 				<div className='lastUpdate'>
 					{/* <div style={{ position: "relative" }}>
+
             <CircularProgressWithLabel
               variant="determinate"
               value={59}

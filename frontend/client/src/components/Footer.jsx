@@ -1,9 +1,11 @@
+
 import { Box, Stack, Typography, Link, useTheme } from '@mui/material';
 import React from 'react';
 import DropDown from './DropDown';
 import streetRates from '../assets/Logo.svg';
 import { useTranslation } from 'react-i18next';
 import footerLogo from '../assets/footer-logo.png';
+
 const Footer = () => {
   const theme = useTheme();
   const dark = theme.palette.mode === 'dark';
@@ -26,6 +28,7 @@ const Footer = () => {
         <div>
           <Box
             sx={{
+
               display: { xs: 'none', sm: 'flex' },
               gap: { md: '32px' },
             }}
@@ -48,10 +51,12 @@ const Footer = () => {
                 }}
                 color={dark ? '#E2E8F0' : '#F8FAFC'}
                 letterSpacing='0.001em'
+
               >
                 <Typography
                   sx={{
                     fontSize: {
+
                       xs: '19px',
                       sm: '15px',
                       lg: '19px',
@@ -69,6 +74,7 @@ const Footer = () => {
                 </Link>
                 <Link href='/#/blogs' color='inherit'>
                   {t('footer_news')}
+
                 </Link>
                 {/* <Link href="/#/careers" color="inherit">
               {t("footer_Careers")}
@@ -121,6 +127,7 @@ const Footer = () => {
             </Link>
           </Stack> */}
               <Stack
+
                 flex='auto'
                 direction='column'
                 alignItems='flex-start'
@@ -133,10 +140,12 @@ const Footer = () => {
                 }}
                 color={dark ? '#E2E8F0' : '#F8FAFC'}
                 letterSpacing='0.001em'
+
               >
                 <Typography
                   sx={{
                     fontSize: {
+
                       xs: '19px',
                       sm: '15px',
                       lg: '19px',
@@ -148,6 +157,7 @@ const Footer = () => {
                   color='#F8FAFC'
                 >
                   {t('footer_resources')}
+
                 </Typography>
                 {/* <Link href="/#/currency-encyclopedia" color="inherit">
               {t("Currency_Encyclopedia")}
@@ -155,6 +165,7 @@ const Footer = () => {
             <Link href="/#/historical-currency-exchange" color="inherit">
               {t("footer_historic")}
             </Link> */}
+
                 <Link href='/#/glossary' color='inherit'>
                   {t('footer_Glossary')}
                 </Link>
@@ -164,6 +175,7 @@ const Footer = () => {
                 </Link>
                 <Link href='/#/suggestions' color='inherit'>
                   {t('footer_suggestion')}
+
                 </Link>
                 {/* <Link href="/#/advertising" color="inherit">
               {t("footer_Advertising")}
@@ -252,6 +264,7 @@ const Footer = () => {
             </Link>
           </Stack> */}
               <Stack
+
                 flex='auto'
                 direction='column'
                 alignItems='flex-start'
@@ -264,10 +277,12 @@ const Footer = () => {
                 }}
                 color={dark ? '#E2E8F0' : '#F8FAFC'}
                 letterSpacing='0.001em'
+
               >
                 <Typography
                   sx={{
                     fontSize: {
+
                       xs: '19px',
                       sm: '15px',
                       lg: '19px',
@@ -291,6 +306,7 @@ const Footer = () => {
                 </Link>
                 <Link href='/#/compliance' color='inherit'>
                   {t('footer_compliance')}
+
                 </Link>
               </Stack>
             </div>
@@ -298,6 +314,7 @@ const Footer = () => {
           {/* mobile view */}
           <Box
             sx={{
+
               display: { xs: 'flex', sm: 'none' },
               gap: { xs: '22px' },
             }}
@@ -354,6 +371,7 @@ const Footer = () => {
                 fontWeight: { xs: '400' },
               }}
               letterSpacing='-0.02em'
+
             >
               © 2022 Bevel All rights reserved.
             </Typography>

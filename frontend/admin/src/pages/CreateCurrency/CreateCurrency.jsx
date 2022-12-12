@@ -93,9 +93,10 @@ export default function CreateCurrency() {
   useEffect(() => {
     dispatch(getTrending());
 
-    dispatch(getBaseDetails('USD'));
 
-    dispatch(getRates('USD'));
+    dispatch(getBaseDetails("USD"));
+
+    dispatch(getRates("USD"));
 
     //eslint-disable-next-line
   }, [dispatch]);
@@ -258,9 +259,10 @@ export default function CreateCurrency() {
                         align='right'
                         style={{ color: 'rgba(71, 85, 105, 1)' }}
                       >
-                        {currs[index]?.status === 'fulfilled'
+
+                        {currs[index]?.status === "fulfilled"
                           ? currs[index]?.value?.data?.parallel_total
-                          : '-'}
+                          : "-"}
                       </StyledTableCell>
                       <StyledTableCell
                         align='right'
