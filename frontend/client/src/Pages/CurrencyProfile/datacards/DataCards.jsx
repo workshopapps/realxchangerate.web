@@ -43,7 +43,6 @@ function DataCards() {
     fetchTrend()
       .then((data) => {
         setTrend(data.data);
-        console.log(data.data);
       })
       .catch((error) => {
         console.log("error fetching highest and lowest rates", error);
@@ -53,7 +52,6 @@ function DataCards() {
     fetchHighLowRate()
       .then((data) => {
         setHighLow(data.data.rates);
-        console.log(data.data);
       })
       .catch((error) => {
         console.log("error fetching highest and lowest rates", error);
