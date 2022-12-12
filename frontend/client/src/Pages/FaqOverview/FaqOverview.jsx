@@ -71,7 +71,7 @@ function FaqOverview() {
                 <StyledInput
                   id="search"
                   name="search"
-                  placeholder=={`${t("search")} FAQs`}
+                  placeholder={`${t("search")} FAQs`}
                   style={{
                     backgroundColor: `${dark ? "#161C2C" : ""}`,
                     color: `${dark ? "#FAFAFA" : "#161C2C"}`,
