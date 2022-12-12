@@ -39,7 +39,7 @@ export const getContact = createAsyncThunk(
 	'get/contact',
 	async (payload, { rejectWithValue }) => {
 		const token = localStorage.getItem('token');
-		console.log(payload);
+		// console.log(payload);
 		try {
 			const res = await axios.get(
 				`https://api.streetrates.hng.tech/api/contacts/contact_detatils/${payload}`,
