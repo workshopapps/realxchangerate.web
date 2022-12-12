@@ -12,12 +12,13 @@ import { useSelector } from "react-redux";
 import React, { useState, useContext, useEffect } from "react";
 import { useTheme } from "@mui/material";
 import DrawerComponent from "./Drawer";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { DownArrow, NavFlag, MenuIcon, MenuIconDark } from "../assets/index";
 import streetRates from "../assets/Logo.svg";
 import { ColorModeContext } from "../Main";
-import Brightness4Icon from "@mui/icons-material/Brightness4";
-import Brightness7Icon from "@mui/icons-material/Brightness7";
+// import Brightness4Icon from "@mui/icons-material/Brightness4";
+// import Brightness7Icon from "@mui/icons-material/Brightness7";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
 import {
   setDefaultCurrency,
   setLocalLanguage,
@@ -31,8 +32,18 @@ import { useTranslation } from "react-i18next";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import { StyledGlassEffect, StyledWrapper } from "./navbarStyles/Navbar.styled";
+import Tooltip from "@mui/material/Tooltip";
+import HamburgerMenu from "./navbarMenu/menu/HamburgerMenu";
+import DropdownMenu from "./navbarMenu/dropdown/DropdownMenu";
+import { ReactComponent as NewLogo } from "../assets/svg/newLogo.svg";
 
 // Adding tranlsation page
+/* Primary/Blue 900 */
+
+// color: #00296B;
+/* Neutral/Gray 400 */
+
+// color: #94A3B8;
 const NavComponent = () => {
   const { t, i18n } = useTranslation();
   const { isNavLoading } = useSelector((state) => state.service);
@@ -98,15 +109,15 @@ const NavComponent = () => {
                 justifyContent: { xs: "space-between" },
                 maxWidth: { xs: "90%", lg: "84%" },
               }}
-              // minHeight="100px"
               display="flex"
               margin="0px auto"
               padding="0px"
               flexDirection="row"
             >
+              {/* Logo */}
               <Grid display="flex" justifyContent="center" alignItems="center">
                 <Link to="/" style={{ display: "flex", alignItems: "center" }}>
-                  <img
+                  {/* <img
                     style={{
                       // width: "90px",
                       height: "50px",
@@ -116,38 +127,38 @@ const NavComponent = () => {
                     }}
                     src={streetRates}
                     alt=""
-                  />
+                  /> */}
+                  <NewLogo />
                 </Link>
               </Grid>
+
+              {/* nav desktop */}
               <Grid
                 alignItems="center"
                 sx={{
-                  fontSize: { sm: "12px", md: "16px" },
-                  gap: { sm: "9px", md: "20px", lg: "24px" },
-                  display: { xs: "none", sm: "flex" },
-                  width: { md: "606pxx" },
+                  fontSize: { md: "16px" },
+                  gap: { md: "20px", lg: "24px" },
+                  display: { xs: "none", md: "flex" },
+                  // width: { md: "606pxx" },
                 }}
-                fontWeight="400"
+                fontWeight="500"
                 lineHeight="24px"
-                color="#94A3B8"
+                // color="#94A3B8"
+                color={theme.palette.mode === "dark" ? "#ddd" : "#00000080"}
               >
+                {/* theme */}
                 <IconButton
                   sx={{ ml: 1 }}
                   onClick={colorMode.toggleColorMode}
                   color="inherit"
                 >
-                  {theme.palette.mode === "dark" ? (
-                    <Brightness7Icon height="1.75em" width="1.75em" />
-                  ) : (
-                    <Brightness4Icon height="1.75em" width="1.75em" />
-                  )}
+                  <DarkModeIcon fontSize="large" />
                 </IconButton>
+                {/* langiage */}
                 <Box gap="6px" display="flex">
                   {isNavLoading ? (
                     <Box display="flex" gap="1px" flexDirection="column">
-                      <Skeleton variant="rounded" width={70} height={5} />
-                      <Skeleton variant="rounded" width={70} height={5} />
-                      <Skeleton variant="rounded" width={70} height={5} />
+                      <Skeleton variant="rectangular" width={40} height={25} />
                     </Box>
                   ) : (
                     <Button
@@ -157,11 +168,16 @@ const NavComponent = () => {
                       aria-expanded={open ? "true" : undefined}
                       onClick={handleClick}
                     >
-                      <Box display="flex" flexDirection="row" gap="6px">
+                      <Box
+                        display="flex"
+                        flexDirection="row"
+                        gap="6px"
+                        sx={{ alignItems: "center" }}
+                      >
                         <img
                           loading="lazy"
+                          height="12"
                           width="20"
-                          height="20"
                           src={
                             currentLanguage
                               ? `https://flagcdn.com/h20/${currentLanguage.label}.png `
@@ -175,7 +191,12 @@ const NavComponent = () => {
                           }
                           alt=""
                         />
-                        <img src={DownArrow} alt="arrow" />
+                        <img
+                          height="15"
+                          width="20"
+                          src={DownArrow}
+                          alt="arrow"
+                        />
                       </Box>
                     </Button>
                   )}
@@ -218,59 +239,71 @@ const NavComponent = () => {
                     })}
                   </Menu>
                 </Box>
-                <Link
+
+                <NavLink
                   to="/"
-                  style={{
-                    color:
-                      theme.palette.mode === "dark" ? "#8C9FBC" : "#0062ff",
-                  }}
+                  style={({ isActive }) => ({
+                    color: isActive
+                      ? theme.palette.mode === "dark"
+                        ? "#fff"
+                        : "#00296B"
+                      : theme.palette.mode === "dark"
+                      ? "#aaa"
+                      : "#94A3B8",
+                  })}
                 >
                   {t("nav_home")}
-                </Link>
-                <Link
+                </NavLink>
+                <NavLink
                   to="/blogs"
-                  style={{
-                    color:
-                      theme.palette.mode === "dark" ? "#8C9FBC" : "#0062ff",
-                  }}
+                  style={({ isActive }) => ({
+                    color: isActive
+                      ? theme.palette.mode === "dark"
+                        ? "#fff"
+                        : "#00296B"
+                      : theme.palette.mode === "dark"
+                      ? "#aaa"
+                      : "#94A3B8",
+                  })}
                 >
                   {t("nav_news")}
-                </Link>
-                <Link
+                </NavLink>
+                <NavLink
                   to="/about"
-                  style={{
-                    color:
-                      theme.palette.mode === "dark" ? "#8C9FBC" : "#0062ff",
-                  }}
+                  style={({ isActive }) => ({
+                    color: isActive
+                      ? theme.palette.mode === "dark"
+                        ? "#fff"
+                        : "#00296B"
+                      : theme.palette.mode === "dark"
+                      ? "#aaa"
+                      : "#94A3B8",
+                  })}
                 >
                   {t("nav_contact")}
-                </Link>
+                </NavLink>
               </Grid>
+
+              {/* nav mobile */}
               <Box
-                sx={{ display: { xs: "flex", sm: "none" } }}
+                sx={{ display: { xs: "flex", md: "none" } }}
                 justifyContent="center"
                 alignItems="center"
-                gap="10px"
+                gap="4px"
               >
                 <IconButton
                   sx={{ ml: 1 }}
                   onClick={colorMode.toggleColorMode}
-                  color="inherit"
+                  color="#475569"
                 >
-                  {theme.palette.mode === "dark" ? (
-                    <Brightness7Icon height="2em" width="2em" />
-                  ) : (
-                    <Brightness4Icon height="2em" width="2em" />
-                  )}
+                  <DarkModeIcon fontSize="large" />
                 </IconButton>
 
-                <Box gap="6px" display="flex">
+                <Box>
                   {isNavLoading ? (
-                    <Box display="flex" gap="1px" flexDirection="column">
-                      <Skeleton variant="rounded" width={70} height={5} />
-                      <Skeleton variant="rounded" width={70} height={5} />
-                      <Skeleton variant="rounded" width={70} height={5} />
-                    </Box>
+                    <>
+                      <Skeleton variant="rectangular" width={40} height={25} />
+                    </>
                   ) : (
                     <Button
                       id="basic-button"
@@ -278,11 +311,18 @@ const NavComponent = () => {
                       aria-haspopup="true"
                       aria-expanded={open ? "true" : undefined}
                       onClick={handleClick}
+                      sx={{ px: 0 }}
                     >
-                      <Box display="flex" flexDirection="row" gap="6px">
+                      <Box
+                        display="flex"
+                        flexDirection="row"
+                        gap="2px"
+                        sx={{ alignItems: "center" }}
+                      >
                         <img
                           loading="lazy"
-                          height="20"
+                          height="12"
+                          width="20"
                           src={
                             currentLanguage
                               ? `https://flagcdn.com/h20/${currentLanguage.label}.png `
@@ -296,7 +336,12 @@ const NavComponent = () => {
                           }
                           alt=""
                         />
-                        <img src={DownArrow} alt="arrow" />
+                        <img
+                          height="15"
+                          width="20"
+                          src={DownArrow}
+                          alt="arrow"
+                        />
                       </Box>
                     </Button>
                   )}
@@ -339,23 +384,25 @@ const NavComponent = () => {
                     })}
                   </Menu>
                 </Box>
-                <Box cursor="pointer" onClick={() => setIsOpen(true)}>
-                  <img
+                <Box cursor="pointer" onClick={() => setIsOpen(!isOpen)}>
+                  {/* <img
                     src={
                       theme.palette.mode === "dark" ? MenuIconDark : MenuIcon
                     }
                     alt="MenuIcon"
-                  />
+                  /> */}
+                  <HamburgerMenu openHamburger={isOpen} />
                 </Box>
               </Box>
-              <DrawerComponent
+              {/* <DrawerComponent
                 isOpen={isOpen}
                 setIsOpen={HandleDrawerState}
                 navItems={["Home", "Blog", "About Us"]}
-              />
+              /> */}
             </Grid>
           </Toolbar>
         </AppBar>
+        {/* {isOpen && <DropdownMenu isOpen={isOpen} setMenuOpen={setIsOpen} />} */}
       </Box>
 
       <Box sx={{ height: "64px" }}></Box>
