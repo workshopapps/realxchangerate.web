@@ -14,8 +14,8 @@ function Cards({ text, image, color, bg }) {
         color: color,
         boxShadow: "0px 5px 10px rgba(180, 180, 180, 0.25)",
         "&:hover": {
-          transition: "all 0.5s ease",
-          transform: "scale(1.1)",
+          transition: "all 0.3s ease-in",
+          transform: "scale(1.04)",
         },
       }}
     >
