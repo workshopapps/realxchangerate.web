@@ -4,11 +4,13 @@ import missionImage from "../assets/mission-image.png";
 import missionTablet from "../assets/missionTablet.png";
 import visionImage from "../assets/vision-image.png";
 import visionTablet from "../assets/visionTablet.png";
+import { useTranslation } from "react-i18next";
 
 const Mission = () => {
   const tabletUpper = useMediaQuery("(max-width:789px)");
   const tabletLower = useMediaQuery("(min-width:481px)");
   const tablet = tabletLower && tabletUpper;
+  const { t } = useTranslation();
 
   const mission = tablet ? missionTablet : missionImage;
   const vision = tablet ? visionTablet : visionImage;
@@ -55,7 +57,7 @@ const Mission = () => {
             }}
             textAlign="center"
           >
-            Our Mission
+            {t("about_mission")}
           </Typography>
           <Typography
             fontWeight="400"
@@ -64,8 +66,7 @@ const Mission = () => {
               lineHeight: { xs: "28px" },
             }}
           >
-            To create a onestop platform that allow user to view their current
-            and standard economic money rate in other currencies
+            {t("about_missionP")}
           </Typography>
         </Box>
       </Box>
@@ -103,7 +104,7 @@ const Mission = () => {
             }}
             textAlign="center"
           >
-            Our Vision
+            {t("about_vision")}
           </Typography>
           <Typography
             textAlign="justify"
@@ -113,8 +114,7 @@ const Mission = () => {
               lineHeight: { xs: "28px" },
             }}
           >
-            To prepare the users mindset for any expenditure in any country of
-            their choice
+            {t("about_visionp")}
           </Typography>
         </Box>
 

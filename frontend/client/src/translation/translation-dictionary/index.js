@@ -5,13 +5,19 @@ import footer from "./component/footer";
 import hero from "./component/hero";
 import convert from "./component/convert";
 import home from "./pages/home";
-import cookies from './pages/cookies'
+import about from "./pages/about";
+import termAndCondition from "./pages/termAndCondition";
+import glossary from "./pages/glossary";
+import cookies from "./pages/cookies";
 
 const resources = {};
 
 const Translations = [
   // Pages
+  ...termAndCondition,
+  ...about,
   ...home,
+  ...glossary,
   // Components
   ...cookies,
   ...navbar,
