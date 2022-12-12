@@ -14,7 +14,7 @@ const LoginPage = () => {
     email: "",
     password: "",
   });
-  const [passwordState, setPasswordState] = useState("text");
+  const [passwordState, setPasswordState] = useState("password");
 
   const { email, password } = formState;
 
@@ -28,7 +28,7 @@ const LoginPage = () => {
       navigate("/admin");
     } else {
       console.log(error);
-      if (error && loginStatus === 'failed') {
+      if (error && loginStatus === "failed") {
         toast.error(error.detail, {
           pauseOnFocusLoss: false,
           position: toast.POSITION.BOTTOM_RIGHT,
@@ -100,7 +100,9 @@ const LoginPage = () => {
             <input type="checkbox" name="verify" id="verify" />
             <label htmlFor="verify">Always keep me logged in</label>
           </div>
-          {loginStatus === 'loading' && <CircularProgress sx={{ m: "0 auto" }} />}
+          {loginStatus === "loading" && (
+            <CircularProgress sx={{ m: "0 auto" }} />
+          )}
           <LoadingButton type="submit" onSubmit={handleSubmit}>
             Login
           </LoadingButton>

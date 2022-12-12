@@ -5,11 +5,15 @@ export const LoginSection = styled.section`
   height: 100vh;
   border: 1px solid transparent;
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   .login-modal {
     width: 93%;
     max-width: 32rem;
-    margin: auto;
-    margin-top: 7rem;
+    /* margin: auto; */
+    /* margin-top: 7rem; */
     h2 {
       font-style: normal;
       font-weight: 700;
