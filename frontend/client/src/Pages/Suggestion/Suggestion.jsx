@@ -1,7 +1,10 @@
-import React, { useRef, useState } from "react";
-import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import React, { useRef, useState } from 'react';
+import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import SuggestionImage from './Images/Suggestion.png';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Suggestion = () => {
   const [disableBtn, setDisableBtn] = useState(false);
@@ -21,21 +24,21 @@ const Suggestion = () => {
       complaint: messageRef.current.value,
     };
 
-    console.log(SuggetionData);
-
     axios
       .post(
-        "https://api.streetrates.hng.tech/api/complaints/add_complaints",
+        'https://api.streetrates.hng.tech/api/complaints/add_complaints',
         SuggetionData
       )
       .then((res) => {
-        nameRef.current.value = "";
-        emailRef.current.value = "";
-        messageRef.current.value = "";
+        nameRef.current.value = '';
+        emailRef.current.value = '';
+        messageRef.current.value = '';
+        if (res.status === 200)
+          toast.success('Submitted successfully. Ridirecting to home page');
         setDisableBtn(false);
         setTimeout(() => {
-          navigate("/");
-        }, 3000);
+          navigate('/');
+        }, 2000);
       })
       .catch((error) => {
         setDisableBtn(false);
@@ -43,105 +46,145 @@ const Suggestion = () => {
   };
 
   return (
-    <StyledComplaintForm>
-      <h3>We Value your Feedback</h3>
-      <p>
-        We are continously working to make our platform better. We'd love to
-        hear any suggestions that can help us deliver a better experince.
-      </p>
+    <Wrapper>
+      <StyledComplaintForm>
+        <h3>We Value your Feedback</h3>
+        <p>
+          We are continously working to make our platform better. We'd love to
+          hear any suggestions that can help us deliver a better experince.
+        </p>
 
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="name">Full Name:</label>
-        <input
-          ref={nameRef}
-          type="text"
-          id="name"
-          placeholder="Enter your name"
-          required
-        />
+        <form onSubmit={handleSubmit}>
+          <label htmlFor='name'>Full Name:</label>
+          <input
+            ref={nameRef}
+            type='text'
+            id='name'
+            placeholder='Enter your name'
+            required
+          />
 
-        <label htmlor="email">Email Address:</label>
-        <input
-          ref={emailRef}
-          type="text"
-          id="email"
-          placeholder="Enter your email"
-          required
-        />
+          <label htmlor='email'>Email Address:</label>
+          <input
+            ref={emailRef}
+            type='text'
+            id='email'
+            placeholder='Enter your email'
+            required
+          />
 
-        <label htmlFor="description"> Your Suggestion:</label>
-        <textarea
-          ref={messageRef}
-          id="description"
-          placeholder="Type your message"
-          required
-        ></textarea>
+          <label htmlFor='description'> Your Suggestion:</label>
+          <textarea
+            ref={messageRef}
+            id='description'
+            placeholder='Type your message'
+            required
+          ></textarea>
 
-        <button type="submit" disabled={disableBtn}>
-          {disableBtn ? "Submitting" : "Submit"}
-        </button>
-      </form>
-    </StyledComplaintForm>
+          <button type='submit' disabled={disableBtn}>
+            {disableBtn ? 'Submitting' : 'Submit'}
+          </button>
+        </form>
+      </StyledComplaintForm>
+      <ImageWrapper>
+        <img src={SuggestionImage} alt='Suggestion' />
+      </ImageWrapper>
+      <ToastContainer />
+    </Wrapper>
   );
 };
 
 export default Suggestion;
 
-export const StyledComplaintForm = styled.section`
-  padding: 85px 0;
+const Wrapper = styled.section`
   display: flex;
-  flex-direction: column;
-  max-width: 600px;
-  margin-left: 10rem;
-  @media screen and (max-width: 600px) {
-    padding: 60px 0;
-    margin-left: 0;
-    align-items: center;
-  }
-  @media only screen and (max-width: 992px) {
-    margin-left: 5rem;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 0;
+
+  @media only screen and (min-width: 768px) {
+    flex-direction: row;
+    padding: 5rem;
+    gap: 1.5rem;
   }
 
+  @media only screen and (min-width: 992px) {
+    align-items: center;
+    justify-content: center;
+    padding: 5rem;
+    gap: 5rem;
+  }
+  @media screen and (min-width: 1200px) {
+    padding: 5rem 10rem;
+    margin: 0 auto;
+    max-width: 1440px;
+  }
+`;
+
+const ImageWrapper = styled.div`
+  width: 90%;
+  display: none;
+
+  @media only screen and (min-width: 768px) {
+    width: 45%;
+    margin: 0;
+    display: block;
+
+    img {
+      width: 100%;
+      object-fit: contain;
+    }
+  }
+
+  @media only screen and (min-width: 992px) {
+    width: 45%;
+  }
+  @media screen and (min-width: 1200px) {
+  }
+`;
+
+const StyledComplaintForm = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 55%;
   & h3 {
     font-size: 38px;
     font-weight: 700;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
     text-align: start;
 
-    @media screen and (max-width: 1000px) {
-      font-size: 34px;
+    @media screen and (min-width: 768px) {
+      font-size: 25px;
     }
 
     @media screen and (max-width: 600px) {
-      width: 90%;
       text-align: start;
-      font-size: 27px;
+      font-size: 25px;
       line-height: 1.2;
     }
   }
 
   & p {
-    font-size: 18px;
+    font-size: 17px;
     text-align: start;
     margin-bottom: 30px;
     line-height: 1.5;
     font-weight: 400;
 
-    @media screen and (max-width: 1100px) {
-      font-size: 17px;
+    @media screen and (min-width: 768px) {
+      font-size: 15px;
     }
 
     @media screen and (max-width: 600px) {
-      width: 90%;
       text-align: start;
-      font-size: 15px;
+      font-size: 14px;
     }
   }
 
   & form {
     display: flex;
     flex-direction: column;
-    width: 90%;
+
     max-width: 600px;
 
     & label {
@@ -189,22 +232,7 @@ export const StyledComplaintForm = styled.section`
       }
     }
   }
-`;
-
-export const SuccessMessage = styled.div`
-  position: fixed;
-  left: 50%;
-  top: 10%;
-  font-size: 16px;
-  padding: 15px 10px;
-  transform: translate(-50%, -50%);
-  border: none;
-  color: white;
-  font-weight: bold;
-  z-index: 1000;
-  text-align: center;
-
-  @media screen and (max-width: 500px) {
-    font-size: 14px;
+  @media screen and (max-width: 600px) {
+    width: 90%;
   }
 `;
