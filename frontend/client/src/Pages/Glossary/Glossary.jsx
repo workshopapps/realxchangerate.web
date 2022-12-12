@@ -17,6 +17,7 @@ import {
   Head,
 } from "./GlossaryElement";
 import { boxes } from "./GlossaryData";
+import { useTranslation } from "react-i18next";
 // test
 function Glossary() {
   const theme = useTheme();
@@ -29,6 +30,7 @@ function Glossary() {
   const handleChange = (e) => {
     setSearchField(e.target.value);
   };
+  const { t } = useTranslation();
 
   return (
     <>
@@ -42,9 +44,11 @@ function Glossary() {
           <RightBottom src="/assets/png/5 1.png" alt="" />
         </ImageArround>
         <Head>
-          <h1 style={{ color: darkMode ? "#0062FF" : "#00296B" }}>Glossary</h1>
+          <h1 style={{ color: darkMode ? "#0062FF" : "#00296B" }}>
+            {t("glossary_main_title")}
+          </h1>
           <h4 style={{ color: darkMode ? "#FAFAFA" : "" }}>
-            What are you interested in?
+            {t("glossary_sub")}
           </h4>
         </Head>
         <Search>

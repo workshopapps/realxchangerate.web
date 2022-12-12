@@ -93,7 +93,9 @@ const Home = () => {
           backgroundImage: `url(${background})`,
           backgroundSize: "contain",
           backgroundRepeat: "no-repeat",
+
           backgroundColor: dark ? "#131825" : "",
+
         }}
       >
         <Box
@@ -201,6 +203,7 @@ const Home = () => {
               }}
             >
               <th>
+
                 <Box
                   style={{
                     width: "107px",
@@ -208,10 +211,12 @@ const Home = () => {
                     color: `${dark ? "white" : ""}`,
                   }}
                 >
+
                   {t("home_currency")}
                 </Box>
               </th>
               <th>
+
                 <Box
                   style={{
                     width: "107px",
@@ -219,13 +224,16 @@ const Home = () => {
                     color: `${dark ? "white" : ""}`,
                   }}
                 >
+
                   {t("home_parallel")}
                 </Box>
               </th>
               <th>
+
                 <StyledBankBox
                   style={{ textAlign: "left", color: `${dark ? "white" : ""}` }}
                 >
+
                   {t("home_Bank")}
                 </StyledBankBox>
               </th>

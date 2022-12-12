@@ -41,12 +41,14 @@ function Table2({ isocode, country, deleteIcon, rates, link, symbol }) {
               />
             </Box>
             <Box>
+
               <Box
                 style={{
                   color: dark ? "#8C9FBC" : "#555962",
                   fontSize: "16px",
                 }}
               >
+
                 {isocode}
               </Box>
               <Box

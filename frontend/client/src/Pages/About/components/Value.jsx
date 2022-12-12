@@ -4,10 +4,12 @@ import CommunityIcon from "../assets/icons/Community.svg";
 import DiversityIcon from "../assets/icons/Diversity.svg";
 import EntrepreneurshipIcon from "../assets/icons/Entrprenuership.svg";
 import InnovationIcon from "../assets/icons/Innovation.svg";
+import { useTranslation } from "react-i18next";
 
 const ListItem = ({ image, title, content }) => {
   const theme = useTheme();
   const darkMode = theme.palette.mode === "dark";
+
   return (
     <Box
       display="flex"
@@ -66,6 +68,7 @@ const ListItem = ({ image, title, content }) => {
 const Value = () => {
   const theme = useTheme();
   const darkMode = theme.palette.mode === "dark";
+  const { t } = useTranslation();
   return (
     <Box
       backgroundColor={darkMode ? "#131825" : "#F8FAFC"}
@@ -97,7 +100,7 @@ const Value = () => {
             lineHeight: { xs: "40px", sm: "44px" },
           }}
         >
-          Our Values
+          {t("about_value")}
         </Typography>
 
         <Typography
@@ -110,8 +113,7 @@ const Value = () => {
             letterSpacing: { xs: "0.001em", sm: "auto" },
           }}
         >
-          Offering a unique experience and providing accurate exchange rates of
-          any currency of your choice.
+          {t("about_valuep")}
         </Typography>
 
         <Grid
@@ -133,32 +135,32 @@ const Value = () => {
           <Grid item sm={6} md={3}>
             <ListItem
               image={EntrepreneurshipIcon}
-              title="Entrepreneurship"
-              content="Ability to identify problems, and collaboratively solve them to create opportunities for everyone."
+              title={t("about_Entrepreneurship")}
+              content={t("about_EntrepreneurshipP")}
             />
           </Grid>
 
           <Grid item sm={6} md={3}>
             <ListItem
               image={DiversityIcon}
-              title="Diversity"
-              content="At StreetRates, we embrace our interdependence as humans, our rich cultures, and places we come from."
+              title={t("about_Diversity")}
+              content={t("about_DiversityP")}
             />
           </Grid>
 
           <Grid item sm={6} md={3}>
             <ListItem
               image={InnovationIcon}
-              title="Innovation"
-              content="We partner people with technology to create an impact-first work environment."
+              title={t("about_Innovation")}
+              content={t("about_InnovationP")}
             />
           </Grid>
 
           <Grid item sm={6} md={3}>
             <ListItem
               image={CommunityIcon}
-              title="Community"
-              content="Our approach is simple. Great people and a vibrant community, make a good company."
+              title={t("about_Community")}
+              content={t("about_CommunityP")}
             />
           </Grid>
         </Grid>

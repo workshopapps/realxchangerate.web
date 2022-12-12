@@ -56,4 +56,25 @@ export default [
     fr: "Dernière mise à jour ",
     es: "Última actualización ",
   },
+  {
+    key: "home_card_one",
+    en: "Check out parallel market and bank exchange rates",
+    de: "Informieren Sie sich über Parallelmarkt- und Bankwechselkurse",
+    fr: "Découvrez les taux de change du marché parallèle et des banques",
+    es: "Consulte los tipos de cambio del mercado paralelo y bancario",
+  },
+  {
+    key: "home_card_two",
+    en: "Compare and contrast a wide range of currencies across the world",
+    de: "Vergleichen und kontrastieren Sie eine Vielzahl von Währungen auf der ganzen Welt",
+    fr: "Comparez et contrastez un large éventail de devises à travers le monde",
+    es: "Compare y contraste una amplia gama de monedas en todo el mundo",
+  },
+  {
+    key: "home_card_three",
+    en: "Get the best deals and exchange your money",
+    de: "Holen Sie sich die besten Angebote und tauschen Sie Ihr Geld um",
+    fr: "Obtenez les meilleures offres et échangez votre argent",
+    es: "Consigue las mejores ofertas y cambia tu dinero",
+  },
 ];
