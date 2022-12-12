@@ -5,13 +5,22 @@ import footer from "./component/footer";
 import hero from "./component/hero";
 import convert from "./component/convert";
 import home from "./pages/home";
+import about from "./pages/about";
+import termAndCondition from "./pages/termAndCondition";
+import glossary from "./pages/glossary";
+import cookies from "./pages/cookies";
 
 const resources = {};
 
 const Translations = [
+
   // Pages
+  ...termAndCondition,
+  ...about,
   ...home,
+  ...glossary,
   // Components
+  ...cookies,
   ...navbar,
   ...footer,
   ...hero,
@@ -19,23 +28,23 @@ const Translations = [
 ];
 
 Translations.forEach((o) => {
-  Object.keys(o).forEach((key) => {
-    let langCode = String;
-    let langKey = String;
-    let langKeyVal = String;
+	Object.keys(o).forEach((key) => {
+		let langCode = String;
+		let langKey = String;
+		let langKeyVal = String;
 
-    if (key !== "key") {
-      langCode = key;
-      langKey = o.key;
-      langKeyVal = o[key];
+		if (key !== 'key') {
+			langCode = key;
+			langKey = o.key;
+			langKeyVal = o[key];
 
-      if (resources[langCode] === undefined) {
-        resources[langCode] = { translation: {} };
-      }
+			if (resources[langCode] === undefined) {
+				resources[langCode] = { translation: {} };
+			}
 
-      resources[langCode].translation[langKey] = langKeyVal;
-    }
-  });
+			resources[langCode].translation[langKey] = langKeyVal;
+		}
+	});
 });
 
 export default resources;

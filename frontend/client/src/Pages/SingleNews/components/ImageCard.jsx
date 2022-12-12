@@ -50,7 +50,7 @@ export const ImageCard = ({ category, height, width }) => {
       <Typography
         fontSize="20px"
         lineHeight="24px"
-        color="#fff"
+        color="#FAFAFA"
         textAlign="center"
       >
         {category.charAt(0).toUpperCase() + category.slice(1)} News
