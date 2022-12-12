@@ -365,14 +365,16 @@ const Convert = () => {
               <span>{currency}</span>
             </h3>
             <div className="xchng">
-              <h4>
+              <h4 style={{ color: dark ? "#f0f0f0" : "" }}>
                 1 {base} = {rate}
                 {currency}
               </h4>
             </div>
           </div>
           <div>
-            <h6>{t("convert_street")}</h6>
+            <h6 style={{ color: dark ? "#f0f0f0" : "" }}>
+              {t("convert_street")}
+            </h6>
             <p>
               {t("convert_last")} {date}
             </p>
