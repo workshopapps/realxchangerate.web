@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import styles from "./home.module.css";
 import { HiOutlineSwitchVertical } from "react-icons/hi";
@@ -19,22 +19,25 @@ import {
 
 import autoAnimate from "@formkit/auto-animate";
 import { useSelector } from "react-redux";
+import { setDefaultCurrency } from "../../redux/features/Reducers/servicesReducer";
+import { dispatch } from "../../redux/store";
 
 const Convert = () => {
+  const { currencyList, countryDetails, defaultCurrency } = useSelector(
+    (state) => state.service
+  );
+
   // Adding translation
   const { t } = useTranslation();
   const base_url = process.env.REACT_APP_BASE_URL;
   const localBase = "http://localhost:8000/api";
-  const [rates, setRates] = React.useState({});
-  const [convert, setconvert] = React.useState(1);
-  const [currency, setCurrecy] = React.useState("NGN");
-  const [base, setBase] = React.useState("USD");
-  const [buy, setBuy] = React.useState(true);
-  const [date, setDate] = React.useState("Loading ..");
-  const [rate, setRate] = React.useState("loading ..");
-  const { currencyList, countryDetails } = useSelector(
-    (state) => state.service
-  );
+  const [rates, setRates] = useState({});
+  const [convert, setconvert] = useState(1);
+  const [currency, setCurrency] = useState("NGN");
+  const [base, setBase] = useState("USD");
+  const [buy, setBuy] = useState(true);
+  const [date, setDate] = useState("Loading ..");
+  const [rate, setRate] = useState("loading ..");
 
   const endpoint =
     process.env.NODE_ENV === "development"
@@ -66,11 +69,9 @@ const Convert = () => {
     };
 
     fetchRates().then((ratesData) => {
-      // console.log(ratesData);
       setRates(ratesData.data.parallel_total);
     });
     fetchRate().then((ratesData) => {
-      // console.log(ratesData);
       setRate(ratesData.data.parallel_total);
     });
     fetchDate()
@@ -78,18 +79,35 @@ const Convert = () => {
         setDate(Date(UpdateDate.Time));
       })
       .catch((err) => {
-        console.err(err);
+        console.error(err);
       });
   }, [base_url, endpoint, currency, date, base, convert]);
 
   const handleSwitch = () => {
     setBase(currency);
-    setCurrecy(base);
+    setCurrency(base);
     setBuy(!buy);
   };
 
+  useEffect(() => {
+    const DefaultCurrency = JSON.parse(
+      sessionStorage.getItem("defaultCurrency")
+    );
+    if (DefaultCurrency) {
+      dispatch(setDefaultCurrency(DefaultCurrency));
+    }
+  }, []);
+
+  useEffect(() => {
+    const DefaultCountry = currencyList.find(
+      (x) => x.country === defaultCurrency?.label
+    );
+    const DefaultIsocode = DefaultCountry ? DefaultCountry.isocode : "USD";
+    setCurrency(DefaultIsocode);
+  }, [defaultCurrency, currencyList]);
+
   const parent = React.useRef(null);
-  React.useEffect(() => {
+  useEffect(() => {
     parent.current && autoAnimate(parent.current);
   }, [parent]);
 
@@ -293,7 +311,7 @@ const Convert = () => {
                   id="currency1"
                   sx={{ mt: "6px" }}
                   value={currency}
-                  onChange={(e) => setCurrecy(e.target.value)}
+                  onChange={(e) => setCurrency(e.target.value)}
                 >
                   {currencyList.map((currency) => (
                     <MenuItem key={currency.isocode} value={currency.isocode}>
@@ -321,7 +339,7 @@ const Convert = () => {
                   id="currency1"
                   value={currency}
                   sx={{ mt: "6px" }}
-                  onChange={(e) => setCurrecy(e.target.value)}
+                  onChange={(e) => setCurrency(e.target.value)}
                 >
                   {currencyList.map((currency) => (
                     <MenuItem key={currency.isocode} value={currency.isocode}>
@@ -432,11 +450,11 @@ const AmountInput = styled.div`
     height: 1.45rem;
     padding: 12px 16;
   }
-  @media screen and (min-width: 768px) {
+  /* @media screen and (min-width: 768px) {
     margin-top: 0px;
     height: 65px;
     width: 30%;
-  }
+  } */
   @media screen and (min-width: 1025px) {
     height: 55px;
     width: 30%;
@@ -465,7 +483,7 @@ const SelectCurrency = styled.div`
       padding: 12px 16px;
     }
   }
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 1025px) {
     width: 30%;
     #currency1 {
       padding: 12px 16px;

@@ -19,7 +19,7 @@ const Header = ({ data }) => {
       >
         <Link underline="hover" to="/news">
           <Typography
-            color={darkMode ? "#64748B" : "#00000"}
+            color={darkMode ? "#ECECEC" : "#00000"}
             sx={{
               fontWeight: "400",
               fontSize: { md: "16px", sm: "14px", xs: "12px" },
@@ -66,7 +66,7 @@ const Header = ({ data }) => {
           fontWeight: "400",
           fontSize: "16px",
           lineHeight: "144.02%",
-          color: darkMode ? "#8C9FBC" : "#0F172A",
+          color: darkMode ? "#ECECEC" : "#0F172A",
         }}
       >
         By : {data.creator && <b>{data.creator[0]}</b>}
@@ -75,7 +75,7 @@ const Header = ({ data }) => {
         fontSize="16px"
         sx={{
           display: { xs: "none", sm: "flex" },
-          color: darkMode ? "#8C9FBC" : "#0F172A",
+          color: darkMode ? "#ECECEC" : "#0F172A",
         }}
       >
         {moment(data.pubDate).format("Do MMMM, YYYY  |  h:mmA")}

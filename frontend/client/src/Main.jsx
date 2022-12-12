@@ -4,6 +4,7 @@ import App from "./App";
 import { dispatch } from "./redux/store";
 import {
   GetCurrencies,
+  GetUserIp
 } from "./redux/features/Reducers/serviceActions";
 
 export const ColorModeContext = createContext({ toggleColorMode: () => {} });
@@ -44,6 +45,7 @@ const Main = () => {
   );
 
   useEffect(() => {
+    dispatch(GetUserIp())
     dispatch(GetCurrencies());
   }, []);
 
@@ -55,8 +57,7 @@ const Main = () => {
         <CssBaseline />
         <Box
           width="100%"
-          height="100vh"
-          sx={{ backgroundColor: mode === "dark" ? "#00050c" : "background.default", color: "text.primary" }}
+          sx={{ backgroundColor: mode === "dark" ? "#131825" : "background.default", color: "text.primary" }}
         >
           <App />
         </Box>

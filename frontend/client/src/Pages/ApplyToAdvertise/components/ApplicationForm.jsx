@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import RateService from "../../../redux/features/Utils/Axios/apis";
 import Container from "../style/ApplyToAdvertisement.style";
-import { Snackbar, Alert, Typography } from "@mui/material";
+// import { Snackbar, Alert, Typography } from "@mui/material";
 import { dispatch } from "../../../redux/store";
 import { createResponse } from "../../../redux/features/Reducers/servicesReducer";
 import { ErrorHandler } from "../../../utils/ErrorHandler";

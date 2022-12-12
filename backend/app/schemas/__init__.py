@@ -6,3 +6,6 @@ from .complaints import Complaint, ComplaintCreate,ComplaintUpdate
 from .faq import FaqBase,FaqCreate, FaqUpdate, Faq
 from .contact import ContactBase, ContactCreate, ContactUpdate, Contact
 from .student import StudentAddress, StudentCreate, StudentQuestion, StudentSchool, StudentUpdate, StudentInfo
+
+from .adverts import AdvertBase, AdvertCreate, AdvertUpdate, Advert
+from .suggestion import suggestionCreate

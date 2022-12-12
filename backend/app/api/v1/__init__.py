@@ -12,6 +12,8 @@ from app.api.v1 import faq
 from app.api.v1 import complaints
 from app.api.v1 import contact
 from app.api.v1 import student
+from app.api.v1 import adverts
+from app.api.v1 import suggestion
 
 api_router = APIRouter()
 
@@ -30,3 +32,6 @@ api_router.include_router(faq.router, prefix="/faq", tags=["faq"])
 api_router.include_router(complaints.router, prefix="/complaints", tags=["complaints"])
 api_router.include_router(contact.router, prefix="/contacts", tags=["contacts"])
 api_router.include_router(student.router, prefix="/students", tags=["students"])
+
+api_router.include_router(adverts.router, prefix="/online_adverts", tags=["adverts"])
+api_router.include_router(suggestion.router, prefix="/suggestions", tags=["suggestions"])

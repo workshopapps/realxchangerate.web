@@ -15,6 +15,7 @@ import Card from "./Card";
 
 import AddModalUi from "./AddModal";
 import EditModalUi from "./EditModal";
+import AddRatesModalUi from "./AddRatesModal";
 import { Button, IconButton, Skeleton } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { getTrending } from "../../store/actions/dashboardActions";
@@ -63,6 +64,8 @@ export default function CreateCurrency() {
   });
 
   const [editOpen, setEditOpen] = useState(false);
+  const [addRate, setAddRate] = useState(false);
+
   const [currencyNo, setCurrencyNo] = useState(10);
   const [viewMore, setViewMore] = useState(true);
   const [currs, setCurrs] = useState([]);
@@ -107,6 +110,13 @@ export default function CreateCurrency() {
     setOpen(!open);
   };
 
+  const handleAddRate = () => {
+    setAddRate(!addRate);
+  };
+  const handleAddRateClose = () => {
+    setAddRate(!addRate);
+  };
+
   const handleEditOpen = () => {
     setEditOpen(!editOpen);
   };
@@ -136,21 +146,23 @@ export default function CreateCurrency() {
           img={rafiki}
         />
         <Card
-          title={"Resolve Complaints"}
-          desc={"Get to resolve all user complaints on the web app "}
-          link={"Resolve Complaints"}
+          title={"View Suggestions"}
+          desc={
+            "Get to view and attend to all user suggestions on the web app "
+          }
+          link={"All suggestions"}
           loc={"/admin/complaints"}
           bg={"#FCF7FD"}
           img={cuate}
         />
-        <Card
-          title={"Contact us Responses"}
-          desc={"Get to give feedback to users who submit the Contact Us form"}
-          link={"Give feedback"}
-          loc={"/admin/contact"}
-          bg={"#F7FDF8"}
+        {/* <Card
+          title={'Contact us Responses'}
+          desc={'Get to give feedback to users who submit the Contact Us form'}
+          link={'Give feedback'}
+          loc={'/admin/contact'}
+          bg={'#F7FDF8'}
           img={contact}
-        />
+        /> */}
       </Integration>
       <Container>
         <div className="topSect">
@@ -169,6 +181,12 @@ export default function CreateCurrency() {
             editOpen={editOpen}
             editVal={editVal}
           />
+          <AddRatesModalUi
+            handleAddRate={handleAddRate}
+            handleAddRateClose={handleAddRateClose}
+            addRate={addRate}
+            editVal={editVal}
+          />
         </div>
         <TableContainer
           style={{ margin: "auto -10px", width: "auto", overflowY: "visible" }}
@@ -184,10 +202,10 @@ export default function CreateCurrency() {
                 <StyledTableCell sx={{ fontWeight: "700" }}>
                   Country
                 </StyledTableCell>
-                <StyledTableCell align="left" sx={{ fontWeight: "700" }}>
+                <StyledTableCell align="right" sx={{ fontWeight: "700" }}>
                   Code
                 </StyledTableCell>
-                <StyledTableCell align="left" sx={{ fontWeight: "700" }}>
+                <StyledTableCell align="right" sx={{ fontWeight: "700" }}>
                   {`Rate/${baseCurrencyDetails.symbol}`}
                 </StyledTableCell>
                 <StyledTableCell align="right">
@@ -233,13 +251,13 @@ export default function CreateCurrency() {
                         </div>
                       </StyledTableCell>
                       <StyledTableCell
-                        align="left"
+                        align="right"
                         style={{ color: "rgba(71, 85, 105, 1)" }}
                       >
                         {row.isocode}
                       </StyledTableCell>
                       <StyledTableCell
-                        align="left"
+                        align="right"
                         style={{ color: "rgba(71, 85, 105, 1)" }}
                       >
                         {currs[index]?.status === "fulfilled"
@@ -252,7 +270,7 @@ export default function CreateCurrency() {
                       >
                         <MenuDrop
                           handleEditOpen={handleEditOpen}
-                          handleOpen={handleOpen}
+                          handleAddRate={handleAddRate}
                           rowData={row}
                           setRowData={setEditVal}
                         />

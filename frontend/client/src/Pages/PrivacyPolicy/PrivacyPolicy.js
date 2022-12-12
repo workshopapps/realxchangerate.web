@@ -3,63 +3,55 @@ import { Link } from "react-router-dom";
 import Introduction from "./component/Introduction";
 import PersonalData from "./component/PersonalData";
 import { useTheme, Box } from "@mui/material";
-
 import { Container, List } from "./style/Privacy.styled";
+import { useTranslation } from "react-i18next";
 
 const PrivacyPolicy = () => {
   const theme = useTheme();
   const DarkMode = theme.palette.mode === "dark";
   const textColor = DarkMode ? "#FAFAFA" : "#1e293b";
+  const { t } = useTranslation();
 
   return (
-    <Box display="flex" backgroundColor={DarkMode ? "#00050C" : ""}>
+    <Box display="flex" backgroundColor={DarkMode ? "#131825" : ""}>
       <Container textColor={textColor}>
         <section style={{ marginBottom: "48px" }}>
-          <h1>Privacy Policy</h1>
-          <p>Version 2.0 (effective up to and including 4 August 2022)</p>
-          <p>Version 3.0 (Effective from 5 August 2023)</p>
+          <h1>{t("privacy_policy_title")}</h1>
+          <p>{t("version2")}</p>
+          <p>{t("version3")}</p>
         </section>
 
         <Introduction />
         <PersonalData />
 
         <section>
-          <h2>Our Data Protection Officer</h2>
+          <h2>{t("data_protection_title")}</h2>
           <div>
-            <p>
-              In accordance with data protection legislation, StrreetRates has
-              appointed a Data Protection Officer (DPO). You can contact our DPO
-              in a number of ways:
-            </p>
+            <p>{t("data_protection_list_text")}</p>
             <List>
+              <li>{t("data_protection_list1")}</li>
               <li>
-                In writing. FAO: The DPO, StreetRates App Limited, 6 Blakeville
-                Street, London, England, BSF 45FG, United Kingdom.
-              </li>
-              <li>
-                By email.
+                {t("by_email")}
                 <a href="mailto: DPO@StreetRates.io"> DPO@StreetRates.io</a>
               </li>
             </List>
-            <p>
-              The DPO is there to assist data subjects generally. However, the
-              most efficient way to exercise your rights under data protection
-              legislation is by emailing privacyrequests@StreetRates.io
-            </p>
+            <p>{t("data_protection_text")}</p>
           </div>
         </section>
 
         <section>
-          <h3>Cookie Policy</h3>
+          <h3>{t("cookie_policy")}</h3>
           <span>
-            Check out our cookie <Link to="/Cookie-policy">policy page</Link>
+            {t("link_description")}
+            <Link to="/Cookie-policy"> {t("cookie_policy")} page</Link>
           </span>
         </section>
 
         <section>
-          <h3>Terms and Condition</h3>
+          <h3>{t("terms_and_condition")}</h3>
           <span>
-            Check out our <Link to="/terms">Terms and condition page</Link>
+            {t("link_description")}
+            <Link to="/terms"> {t("terms_and_condition")}</Link>
           </span>
         </section>
       </Container>

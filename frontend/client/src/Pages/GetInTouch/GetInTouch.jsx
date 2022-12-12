@@ -17,8 +17,11 @@ import {
   ImageStyled,
   CardStyled,
 } from "./GetInTouchPage.styled";
+import { useTheme } from "@mui/material";
 
 export default function GetInTouch() {
+  const theme = useTheme();
+  const darkMode = theme.palette.mode === "dark";
   const [data, setData] = useState({
     name: "",
     email: "",
@@ -108,7 +111,7 @@ export default function GetInTouch() {
               fontSize: "28px",
               textAlign: { md: "inherit", xs: "center", sm: "center" },
               lineHeight: "34px",
-              color: "#262A36",
+              color: darkMode ? "#FAFAFA" : "#262A36",
             }}
           >
             Get In Touch
@@ -124,7 +127,7 @@ export default function GetInTouch() {
               textAlign: { md: "inherit", xs: "center", sm: "center" },
               paddingTop: { sm: 1, xs: 1 },
 
-              color: "#555962",
+              color: darkMode ? "#FAFAFA" : "#262A36",
             }}
           >
             If you have any questions about the streetrates or are not sure
@@ -147,7 +150,8 @@ export default function GetInTouch() {
                 fontSize: "18px",
                 lineHeight: "27px",
                 display: { md: "flex", sm: "flex", xs: "flex" },
-                color: "#555962",
+                color: darkMode ? "#FAFAFA" : "#555962",
+
                 alignItems: { md: "center", sm: "center", xs: "center" },
                 textAlign: { md: "inherit", xs: "center", sm: "center" },
               }}
@@ -163,8 +167,7 @@ export default function GetInTouch() {
                 lineHeight: "27px",
                 display: "flex",
                 alignItems: "center",
-
-                color: "#0F172A",
+                color: darkMode ? "#FAFAFA" : "#0F172A",
               }}
             >
               8am - 4pm
@@ -245,8 +248,8 @@ export default function GetInTouch() {
               /* identical to box height, or 171% */
 
               letterSpacing: "-0.02em",
+              color: darkMode ? "#FAFAFA" : "#202020",
 
-              color: "#202020",
               textAlign: "center",
             }}
           >
@@ -264,20 +267,30 @@ export default function GetInTouch() {
           >
             <CardStyled>
               <img src={location} alt="location" width={21} height={30} />
-              <span>Location</span>
-              <SideText>
+              <span style={{ color: darkMode ? "#FAFAFA" : "#202020" }}>
+                Location
+              </span>
+              <SideText style={{ color: darkMode ? "#FAFAFA" : "#202020" }}>
                 2, Hamilton Avenue, Silicon Valley, California
               </SideText>
             </CardStyled>
             <CardStyled>
               <img src={mobile} alt="location" width={27} height={27} />
-              <span>Call Us</span>
-              <SideText>+62 528 124 5600</SideText>
+              <span style={{ color: darkMode ? "#FAFAFA" : "#202020" }}>
+                Call Us
+              </span>
+              <SideText style={{ color: darkMode ? "#FAFAFA" : "#202020" }}>
+                +62 528 124 5600
+              </SideText>
             </CardStyled>
             <CardStyled>
               <img src={mail} alt="location" width={30} height={24} />
-              <span>Email Us</span>
-              <SideText>Contact@streetrates.com</SideText>
+              <span style={{ color: darkMode ? "#FAFAFA" : "#202020" }}>
+                Email Us
+              </span>
+              <SideText style={{ color: darkMode ? "#FAFAFA" : "#202020" }}>
+                Contact@streetrates.com
+              </SideText>
             </CardStyled>
           </Box>
         </Box>
@@ -293,12 +306,13 @@ export default function GetInTouch() {
         >
           <Box
             sx={{
-              border: "1px solid #CBD5E1",
+              border: darkMode ? "1px solid #94A3B8" : "1px solid #CBD5E1",
               borderRadius: "8px",
               padding: { lg: 4, sm: 2, xs: 2 },
               width: { lg: "75%", md: "70%", xs: "100%", sm: "100%" },
               margin: "auto",
               marginBottom: 10,
+              backgroundColor: darkMode ? "#161C2C" : "",
             }}
           >
             <form onSubmit={handleSend}>
@@ -308,7 +322,8 @@ export default function GetInTouch() {
                     fontWeight: "500",
                     fontSize: "14px",
                     lineHeight: "20px",
-                    color: "#0F172A",
+
+                    color: darkMode ? "#FAFAFA" : "#0F172A",
                   }}
                 >
                   Your name{" "}
@@ -328,7 +343,7 @@ export default function GetInTouch() {
                     fontWeight: "500",
                     fontSize: "14px",
                     lineHeight: "20px",
-                    color: "#0F172A",
+                    color: darkMode ? "#FAFAFA" : "#0F172A",
                   }}
                 >
                   Your email{" "}
@@ -348,7 +363,7 @@ export default function GetInTouch() {
                     fontWeight: "500",
                     fontSize: "14px",
                     lineHeight: "20px",
-                    color: "#0F172A",
+                    color: darkMode ? "#FAFAFA" : "#0F172A",
                   }}
                 >
                   Message{" "}
