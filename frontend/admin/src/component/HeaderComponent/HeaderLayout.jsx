@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { StyledHeaderTools, StyledHeaderWrapper } from "./headerLayout.styled";
-import { ReactComponent as NotificationIcon } from "../../assets/icons/notification_icon.svg";
-import { ReactComponent as TitleLogo } from "../../assets/Logo.svg";
+// import { ReactComponent as NotificationIcon } from "../../assets/icons/notification_icon.svg";
+import { ReactComponent as TitleLogo } from "../../assets/mobile-logo.svg";
 import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
-import HeaderSearch from "./search/HeaderSearch";
+// import HeaderSearch from "./search/HeaderSearch";
 import AvatarLoader from "../shared/AvatarLoader/AvatarLoader";
 import Menu from "@mui/material/Menu";
 import Box from "@mui/material/Box";
@@ -64,7 +64,7 @@ function HeaderLayout(props) {
             display: { xs: "none", sm: "block" },
           }}
         >
-          <HeaderSearch />
+          {/* <HeaderSearch /> */}
         </Box>
 
         <StyledHeaderTools>
@@ -112,7 +112,7 @@ function HeaderLayout(props) {
                 onClick={() => setNotificationsOpen(true)}
               >
                 <IconButton>
-                  <NotificationIcon width="28px" height="28px" />
+                  {/* <NotificationIcon width="28px" height="28px" /> */}
                 </IconButton>
               </div>
             </Tooltip>

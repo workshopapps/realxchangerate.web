@@ -21,11 +21,14 @@ const Suggestion = () => {
     const SuggetionData = {
       full_name: nameRef.current.value,
       email: emailRef.current.value,
-      suggestion: messageRef.current.value,
+      complaint: messageRef.current.value,
     };
 
     axios
-      .post('https://api.streetrates.hng.tech/api/suggestions/', SuggetionData)
+      .post(
+        'https://api.streetrates.hng.tech/api/complaints/add_complaints',
+        SuggetionData
+      )
       .then((res) => {
         nameRef.current.value = '';
         emailRef.current.value = '';

@@ -114,7 +114,7 @@ function ComplaintPageLayout() {
       setTimeout(() => {
         navigate("/admin/complaints");
       }, 2000);
-      toast.success(`Complaint #${data?.id} has been deleted`);
+      toast.success(`Suggestion #${data?.id} has been deleted`);
     } else if (deleteStatus === "failed") {
       toast.error(`Deletion failed`);
     }
@@ -154,7 +154,7 @@ function ComplaintPageLayout() {
     <StyledWrapper>
       <StyledPageHeader>
         <BackButton />
-        <h3>Complaint #{params.id}</h3>
+        <h3>Suggestion #{params.id}</h3>
       </StyledPageHeader>
 
       <StyledCardDelete>
@@ -181,7 +181,7 @@ function ComplaintPageLayout() {
           <Fade in={open}>
             <Box sx={style}>
               <StyledDeleteQuestion>
-                Confirm this complaint would be deleted
+                Confirm this suggestion would be deleted
                 <StyledDeleteQuestionWrapper>
                   <StyledDeleteYes onClick={handleDelete}>YES</StyledDeleteYes>
                   <StyledDeleteNo onClick={handleClose}>NO</StyledDeleteNo>
@@ -226,7 +226,7 @@ function ComplaintPageLayout() {
 
           <StyledGrid>
             <div>
-              <label htmlFor="complaint">Complaint</label>
+              <label htmlFor="complaint">Suggestion</label>
               <StyledTextArea
                 style={{ backgroundColor: "inherit" }}
                 disabled
@@ -238,7 +238,7 @@ function ComplaintPageLayout() {
             </div>
 
             <div>
-              <label htmlFor="id">Complaint Number</label>
+              <label htmlFor="id">Suggestion Number</label>
               <StyledInputWrapper>
                 <input
                   disabled
@@ -253,7 +253,7 @@ function ComplaintPageLayout() {
           </StyledGrid>
         </StyledGrayWrapper>
 
-        <h3>Resolve complaint</h3>
+        <h3>Review suggestion</h3>
         <StyledGrid>
           <div>
             <label htmlFor="message">Message</label>
@@ -267,7 +267,7 @@ function ComplaintPageLayout() {
           </div>
 
           <div>
-            <label htmlFor="status">Set Complaint Status</label>
+            <label htmlFor="status">Set Status</label>
             <Select
               fullWidth
               displayEmpty
