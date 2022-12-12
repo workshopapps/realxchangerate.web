@@ -172,8 +172,9 @@ function Liverates() {
                                       // display: "none",
                                       width: "16px",
                                       margin: "auto",
-                                      filter: dark? 
-                                        "invert(100%) sepia(100%) saturate(1%) hue-rotate(228deg) brightness(102%) contrast(101%)":"",
+                                      filter: dark
+                                        ? "invert(100%) sepia(100%) saturate(1%) hue-rotate(228deg) brightness(102%) contrast(101%)"
+                                        : "",
                                     }}
                                     alt=""
                                   />
@@ -182,12 +183,14 @@ function Liverates() {
                               <Menu {...bindMenu(popupState)}>
                                 <MenuItem
                                   onClick={(e) => handleDelete(currency.id)}
+                                  style={{ color: dark ? "#fafafa" : "#333" }}
                                 >
                                   Delete
                                 </MenuItem>
                                 <MenuItem>
                                   <Link
                                     to={`/${currency.isocode}/currency-profile`}
+                                    style={{ color: dark ? "#fafafa" : "#333" }}
                                   >
                                     View currency Profile
                                   </Link>
