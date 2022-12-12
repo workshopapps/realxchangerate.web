@@ -31,7 +31,6 @@ const Home = () => {
           backgroundRepeat: "no-repeat",
 
           backgroundColor: dark ? "#131825" : "",
-
         }}
       >
         <Box
