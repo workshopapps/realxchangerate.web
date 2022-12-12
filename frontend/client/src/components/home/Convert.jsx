@@ -26,20 +26,18 @@ const Convert = () => {
   const { currencyList, countryDetails, defaultCurrency } = useSelector(
     (state) => state.service
   );
- 
+
   // Adding translation
   const { t } = useTranslation();
   const base_url = process.env.REACT_APP_BASE_URL;
   const localBase = "http://localhost:8000/api";
   const [rates, setRates] = useState({});
   const [convert, setconvert] = useState(1);
-  const [currency, setCurrecy] = useState("USD");
+  const [currency, setCurrency] = useState("NGN");
   const [base, setBase] = useState("USD");
   const [buy, setBuy] = useState(true);
   const [date, setDate] = useState("Loading ..");
   const [rate, setRate] = useState("loading ..");
-
-  console.log(base);
 
   const endpoint =
     process.env.NODE_ENV === "development"
@@ -71,11 +69,9 @@ const Convert = () => {
     };
 
     fetchRates().then((ratesData) => {
-
       setRates(ratesData.data.parallel_total);
     });
     fetchRate().then((ratesData) => {
-   
       setRate(ratesData.data.parallel_total);
     });
     fetchDate()
@@ -89,13 +85,13 @@ const Convert = () => {
 
   const handleSwitch = () => {
     setBase(currency);
-    setCurrecy(base);
+    setCurrency(base);
     setBuy(!buy);
   };
 
   useEffect(() => {
     const DefaultCurrency = JSON.parse(
-      sessionStorage.getItem("deflautCurrency")
+      sessionStorage.getItem("defaultCurrency")
     );
     if (DefaultCurrency) {
       dispatch(setDefaultCurrency(DefaultCurrency));
@@ -104,11 +100,11 @@ const Convert = () => {
 
   useEffect(() => {
     const DefaultCountry = currencyList.find(
-      (x) => x.country === defaultCurrency.label
+      (x) => x.country === defaultCurrency?.label
     );
     const DefaultIsocode = DefaultCountry ? DefaultCountry.isocode : "USD";
-    setBase(DefaultIsocode)
-  }, [defaultCurrency, currencyList])
+    setCurrency(DefaultIsocode);
+  }, [defaultCurrency, currencyList]);
 
   const parent = React.useRef(null);
   useEffect(() => {
@@ -314,7 +310,7 @@ const Convert = () => {
                   id="currency1"
                   sx={{ mt: "6px" }}
                   value={currency}
-                  onChange={(e) => setCurrecy(e.target.value)}
+                  onChange={(e) => setCurrency(e.target.value)}
                 >
                   {currencyList.map((currency) => (
                     <MenuItem key={currency.isocode} value={currency.isocode}>
@@ -342,7 +338,7 @@ const Convert = () => {
                   id="currency1"
                   value={currency}
                   sx={{ mt: "6px" }}
-                  onChange={(e) => setCurrecy(e.target.value)}
+                  onChange={(e) => setCurrency(e.target.value)}
                 >
                   {currencyList.map((currency) => (
                     <MenuItem key={currency.isocode} value={currency.isocode}>

@@ -4,7 +4,6 @@ import React from "react";
 import { cardStyle } from "./styles";
 
 function HighLow({ rates }) {
-  console.log("Rates in", rates);
   return (
     <Card elevation={0} sx={{ ...cardStyle, width: { xs: "100%", sm: 300 } }}>
       <Box>
