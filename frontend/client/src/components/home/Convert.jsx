@@ -131,13 +131,14 @@ const Convert = () => {
   const matches = useMediaQuery(theme.breakpoints.up("md"));
   return (
     <Card
+      elevation={4}
       className={styles.convert}
       sx={{
         borderRadius: "1rem",
         width: { xs: "100%" },
-        border: "1px solid #BBBBBB",
+        // border: "1px solid #BBBBBB",
         padding: { lg: "32px", xs: "8px" },
-        boxShadow: "0 0 0 0",
+        // boxShadow: "0 0 0 0",
         backgroundColor: dark ? "#000A1B" : "",
       }}
     >
