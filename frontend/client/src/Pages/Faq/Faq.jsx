@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 // import SearchIcon from "./assets/searchIcon.svg";
-import SearchIcon from "@mui/icons-material/Search";
+import { Search as SearchIcon } from "@mui/icons-material";
 import Paper from "@mui/material/Paper";
 import InputBase from "@mui/material/InputBase";
 import IconButton from "@mui/material/IconButton";

@@ -43,7 +43,7 @@ export default function SingleNews() {
         <LoaderComponent />
       ) : (
         <Box
-          backgroundColor={darkMode ? "#00050C" : ""}
+          backgroundColor={darkMode ? "#131825" : ""}
           display="flex"
           flexDirection="column"
           alignItems="center"
@@ -84,8 +84,8 @@ export default function SingleNews() {
                   padding: { xs: "40px 22px", md: "56px 32px" },
                   width: { xs: "100%", sm: "40%" },
                 }}
-                backgroundColor={darkMode ? "#000A1B" : "#F8FAFC"}
-                border={darkMode ? "1px solid #000A1B" : "1px solid #CBD5E1"}
+                backgroundColor={darkMode ? "#131825" : "#F8FAFC"}
+                border={darkMode ? "" : "1px solid #CBD5E1"}
                 gap="16px"
               >
                 <Typography

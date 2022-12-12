@@ -3,8 +3,9 @@ import React from "react";
 import { List } from "../style/Privacy.styled";
 const Introduction = () => {
   return (
-    <section>
-      <h2 style={{ marginBottom: "28px" }}>{t("introduction_title")}</h2>
+
+    <section style={{ marginBlock: "70px" }}>
+      <h2 style={{ marginBottom: "18px" }}>{t("introduction_title")}</h2>
       <div>
         <p>{t("intro_greeting")}</p>
         <p>{t("intro_text")}</p>

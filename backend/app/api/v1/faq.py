@@ -14,6 +14,7 @@ async def get_all_faqs(*, db: Session = Depends(get_db)):
 
     """Returns all faqs from the database"""
 
+
     faqs = crud.faq.get_all_faqs(db)
 
     if faqs is None:

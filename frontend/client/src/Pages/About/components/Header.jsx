@@ -2,6 +2,7 @@ import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
 import React from "react";
 import tabletImage from "../assets/Tablet.png";
 import mobileImage from "../assets/mobile-image.png";
+import { useTranslation } from "react-i18next";
 
 const Header = () => {
   const theme = useTheme();
@@ -9,16 +10,17 @@ const Header = () => {
   const tabletUpper = useMediaQuery("(max-width:789px)");
   const tabletLower = useMediaQuery("(min-width:481px)");
 
+  const { t } = useTranslation();
+
   const tablet = tabletLower && tabletUpper;
 
   const image = tablet ? tabletImage : mobileImage;
 
   return (
     <Box
-      backgroundColor={darkMode ? "#000A1B" : "#00296B"}
+      backgroundColor={darkMode ? "#131825" : "#00296B"}
       display="flex"
       w="100%"
-     
     >
       <Box
         alignItems="center"
@@ -53,9 +55,9 @@ const Header = () => {
                 fontSize: { xs: "32px", sm: "36px" },
                 lineHeight: { xs: "40px", sm: "44px" },
               }}
-               color="#F5F5F5"
+              color="#F5F5F5"
             >
-              About us
+              {t("about_Us")}
             </Typography>
 
             <Typography
@@ -66,10 +68,7 @@ const Header = () => {
               }}
               color="#F5F5F5"
             >
-              Street Rates is a platform that allows users to recieve/view
-              instant conversion rates using customized areas real-time charts
-              that fit the Ecomony value and a historical conversion record from
-              one to one year and to enhance the customer experience
+              {t("about_p1")}
             </Typography>
           </Box>
 

@@ -13,12 +13,14 @@ const PrivacyPolicy = () => {
   const { t } = useTranslation();
 
   return (
-    <Box display="flex" backgroundColor={DarkMode ? "#00050C" : ""}>
+    <Box display="flex" backgroundColor={DarkMode ? "#131825" : ""}>
       <Container textColor={textColor}>
+
         <section style={{ marginBottom: "48px" }}>
           <h1>{t("privacy_policy_title")}</h1>
           <p>{t("version2")}</p>
           <p>{t("version3")}</p>
+
         </section>
 
         <Introduction />
