@@ -107,13 +107,19 @@ function Liverates() {
     <>
       <StyledBox>
         <TypographyLive
-          sx={{ color: "#0062FF", fontSize: "16px", fontWeight: 500 }}
+          sx={{
+            color: "#0062FF",
+            fontSize: "1.5rem",
+            fontWeight: 500,
+            textAlign: "center",
+          }}
         >
           {t("home_live")}
         </TypographyLive>
         <TypographyHead
+          variant="h4"
           component="h2"
-          sx={{ fontSize: "32px", maxWidth: "595px", fontWeight: 800 }}
+          sx={{ fontWeight: 600, fontSize: "2.3rem", textAlign: "center" }}
         >
           {t("home_title")}
         </TypographyHead>
