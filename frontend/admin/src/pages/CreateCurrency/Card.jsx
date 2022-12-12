@@ -27,6 +27,7 @@ export default Card;
 
 const CardBtn = styled.button`
   outline: none;
+  cursor: pointer;
   margin-top: 40px;
   border: none;
   background: transparent;
