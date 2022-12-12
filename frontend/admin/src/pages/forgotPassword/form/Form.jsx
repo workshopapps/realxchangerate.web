@@ -1,21 +1,28 @@
 import { Container } from './formStyles';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { userForgotPassword } from '../../../store/actions/passwordActions';
+import { toast } from 'react-toastify';
 import Modal from './Modal';
 
-const Form = ({ toggle }) => {
+const Form = () => {
 	const [popup, setPopup] = useState(false);
 	const dispatch = useDispatch();
 	const { requestStatus } = useSelector((state) => state.password);
 	const [email, setEmail] = useState('');
-	const handleSubmit = (e) => {
-		e.preventDefault();
-		dispatch(userForgotPassword({ email }));
-		// console.log(requestStatus);
+
+	useEffect(() => {
+		if (requestStatus === 'failed') {
+			toast.error('user not found');
+		}
 		if (requestStatus === 'success') {
 			setPopup(true);
 		}
+	}, [requestStatus]);
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		dispatch(userForgotPassword({ email }));
 	};
 
 	return (
@@ -35,11 +42,9 @@ const Form = ({ toggle }) => {
 						required
 					/>
 				</div>
-				<button className='button' onClick={() => toggle(email)}>
-					Reset password
-				</button>
+				<button className='button'>Reset password</button>
 			</form>
-			<p>Don’t have an account? Sign up</p>
+			{/* <p>Don’t have an account? Sign up</p> */}
 		</Container>
 	);
 };
