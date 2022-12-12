@@ -11,7 +11,7 @@ function HomeCards() {
   const { t } = useTranslation();
 
   return (
-    <Box sx={{ m: "5rem auto" }}>
+    <Box sx={{ m: "5rem auto", mb: "8rem" }}>
       <Typography
         variant="h4"
         component="h2"
