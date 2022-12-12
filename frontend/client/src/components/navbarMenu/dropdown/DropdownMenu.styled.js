@@ -11,7 +11,8 @@ export const StyledWrapper = styled.li`
 
 export const StyledMenuOption = styled.div`
 
-    --color: #333333;
+    /* --color: #333333; */
+    --color: ${props => props.$darkMode ? '#0062ff' : '#333333'};
 
     display: flex;
     align-items: center;
@@ -47,7 +48,6 @@ export const StyledMenuOption = styled.div`
     }
 
     &:hover {
-        color: #fff;
         .option {
             font-weight: 600;
             color: #fff !important;
@@ -67,6 +67,7 @@ export const StyledMenuOption = styled.div`
     }
     
     .option{
+        color: ${props => props.$darkMode ? '#fff' : '#333333'};
         white-space: nowrap;
         position: relative;
         z-index: 4;
