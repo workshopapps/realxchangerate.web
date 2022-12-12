@@ -66,7 +66,6 @@ export const deleteContact = createAsyncThunk(
 	'delete/contact',
 	async (payload, { rejectWithValue }) => {
 		const token = localStorage.getItem('token');
-		// console.log(payload);
 		try {
 			const res = await axios.delete(
 				`https://api.streetrates.hng.tech/api/contacts/delete_contact_detatil/${payload}`,

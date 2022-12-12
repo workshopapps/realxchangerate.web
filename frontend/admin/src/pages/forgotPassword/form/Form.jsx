@@ -1,16 +1,26 @@
 import { Container } from './formStyles';
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { userForgotPassword } from '../../../store/actions/passwordActions';
+import Modal from './Modal';
 
 const Form = ({ toggle }) => {
-	// const [reset, setReset] = useState(false);
+	const [popup, setPopup] = useState(false);
+	const dispatch = useDispatch();
+	const { requestStatus } = useSelector((state) => state.password);
 	const [email, setEmail] = useState('');
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		// setEmail(email);
+		dispatch(userForgotPassword({ email }));
+		// console.log(requestStatus);
+		if (requestStatus === 'success') {
+			setPopup(true);
+		}
 	};
 
 	return (
 		<Container>
+			{popup && <Modal popup={popup} setPopup={setPopup} />}
 			<form className='form' onSubmit={(e) => handleSubmit(e)}>
 				<h2>Forgot password</h2>
 				<div className='validateInput'>

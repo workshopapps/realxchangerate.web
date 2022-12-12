@@ -13,6 +13,7 @@ import cookies from "./pages/cookies";
 const resources = {};
 
 const Translations = [
+
   // Pages
   ...termAndCondition,
   ...about,
@@ -27,23 +28,23 @@ const Translations = [
 ];
 
 Translations.forEach((o) => {
-  Object.keys(o).forEach((key) => {
-    let langCode = String;
-    let langKey = String;
-    let langKeyVal = String;
+	Object.keys(o).forEach((key) => {
+		let langCode = String;
+		let langKey = String;
+		let langKeyVal = String;
 
-    if (key !== "key") {
-      langCode = key;
-      langKey = o.key;
-      langKeyVal = o[key];
+		if (key !== 'key') {
+			langCode = key;
+			langKey = o.key;
+			langKeyVal = o[key];
 
-      if (resources[langCode] === undefined) {
-        resources[langCode] = { translation: {} };
-      }
+			if (resources[langCode] === undefined) {
+				resources[langCode] = { translation: {} };
+			}
 
-      resources[langCode].translation[langKey] = langKeyVal;
-    }
-  });
+			resources[langCode].translation[langKey] = langKeyVal;
+		}
+	});
 });
 
 export default resources;
