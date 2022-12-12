@@ -1,16 +1,31 @@
 import { Container } from './formStyles';
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { resetPassword } from '../../../store/actions/passwordActions';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const Form = () => {
+	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
+	const { requestStatus } = useSelector((state) => state.password);
+
+	useEffect(() => {
+		if (requestStatus === 'failed') {
+			toast.error('error changing password');
+		}
+		if (requestStatus === 'success') {
+			navigate('/admin/resetpassword');
+		}
+		// eslint-disable-next-line
+	}, [requestStatus]);
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		dispatch(resetPassword({ email, password }));
+		navigate('/admin/resetpassword');
 		// console.log(email, password);
 	};
 

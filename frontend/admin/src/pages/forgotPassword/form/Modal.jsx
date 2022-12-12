@@ -2,7 +2,7 @@
 import styled from 'styled-components';
 import { FaTimes } from 'react-icons/fa';
 import emailIcon from '../../../assets/icons8-mai.png';
-// import { NavLink } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Container = styled.section`
 	position: absolute;
@@ -39,12 +39,16 @@ const Container = styled.section`
 `;
 
 const Modal = ({ popup, setPopup }) => {
-	// const [toggle, setToggle] = useState(state);
+	const navigate = useNavigate();
+	const handleClick = () => {
+		setPopup(!popup);
+		navigate('/admin/resetpassword');
+	};
 	return (
 		<>
 			(
 			<Container>
-				<FaTimes className='close' onClick={() => setPopup(!popup)} />
+				<FaTimes className='close' onClick={() => handleClick()} />
 				<div className='popup'>
 					<h1> we've sent a link to your email!</h1>
 					<img src={emailIcon} alt='success' />
