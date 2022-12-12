@@ -39,8 +39,6 @@ const Convert = () => {
   const [date, setDate] = useState("Loading ..");
   const [rate, setRate] = useState("loading ..");
 
-  console.log(base);
-
   const endpoint =
     process.env.NODE_ENV === "development"
       ? `${localBase}/rate/${currency}`
@@ -48,7 +46,7 @@ const Convert = () => {
       ? `${base_url}/rate/${currency}`
       : "";
 
-  React.useEffect(() => {
+  useEffect(() => {
     const fetchRates = async () => {
       const response = await fetch(
         `${base_url}/rate/convert/calc?from_currency=${base}&to_currency=${currency}&amount=${convert}`
