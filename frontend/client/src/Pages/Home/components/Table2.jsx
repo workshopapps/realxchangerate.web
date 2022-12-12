@@ -29,10 +29,8 @@ function Table2({ isocode, country, deleteIcon, rates, link, symbol }) {
     >
       <StyledTableCell>
         <Link to={`/${isocode}/currency-profile`}>
-
           <Tooltip title={country} placement="right-start">
             <Button>
-
               <Box
                 sx={{
                   display: "flex",
@@ -76,7 +74,7 @@ function Table2({ isocode, country, deleteIcon, rates, link, symbol }) {
           </Box>
         </div>
       </Box> */}
-      <StyledTableCell style={{ fontSize: "1rem" }}>
+      <StyledTableCell style={{ fontSize: "14px" }}>
         {symbol} {Number(rates?.parallel_buy).toFixed(2)}
       </StyledTableCell>
       {/* <Box>
@@ -96,7 +94,7 @@ function Table2({ isocode, country, deleteIcon, rates, link, symbol }) {
           alignItems: "center",
         }}
       >
-        <span style={{ width: "40px" }}>
+        <span style={{ width: "70px", fontSize: "14px", display: "flex" }}>
           {symbol} {Number(rates?.official_buy).toFixed(2)}
         </span>
         <span>{deleteIcon}</span>
