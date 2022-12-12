@@ -6,42 +6,43 @@ const TermsAndConditions = () => {
   const theme = useTheme();
   const DarkMode = theme.palette.mode === "dark";
 
-  const textColor = DarkMode ? "#fff" : "";
+  const textColor = DarkMode ? "#FAFAFA" : "";
   return (
-    <Box
-      sx={{
-        maxWidth: { xs: "90%", lg: "84%" },
-        marginInline: "auto",
-      }}
-    >
-      <div style={{ marginBlockEnd: "60px" }}>
+    <Box backgroundColor={DarkMode ? "#131825" : ""}>
+      <Box
+        sx={{
+          width: { xs: "90%", lg: "84%" },
+          margin: "0px auto",
+        }}
+        backgroundColor={DarkMode ? "#131825" : ""}
+      >
         <PageTitle style={{ color: textColor }}>
           Terms of Use and Liability Disclaimers
         </PageTitle>
 
         <TermsWrapper>
           <h2 style={{ color: textColor }}>Terms of Use</h2>
-          <p>
+          <p style={{ color: textColor }}>
             This website is provided by the Street Rate company as a service to
             its users. Users are defined for the puroses of this statement as
             “You”. Your access to, and use of, this website constitutes your
             agreement to accept theses Terms of Use and Disclaimers
           </p>
-          <p>
+          <p style={{ color: textColor }}>
             If you do not agree with these Terms of Use, or any part of them,
             you may leave the website
           </p>
-          <p>
+          <p style={{ color: textColor }}>
             Street Rate reserves the right to update or modify these Terms of
             Use and Disclaimers without prior notice. You continued use of this
             website followwing any changes constitutes your agreement to accept
             such changes
           </p>
 
-          <h4 style={{ color: textColor, marginBlock: "30px 0px" }}>
+          <h4 style={{ color: textColor, marginBlock: "40px 0px" }}>
             1. Copyright / Permission to Reproduce
           </h4>
-          <p>
+          <p style={{ color: textColor }}>
             Content on this website is produced and/or compiled by Street Rates
             for the purpose of providing users with information related to the
             activities of the currency market. Street Rates permits you to
@@ -50,7 +51,7 @@ const TermsAndConditions = () => {
           </p>
 
           <h5 style={{ color: textColor }}>1.1. Attribution</h5>
-          <p>
+          <p style={{ color: textColor }}>
             Content on this website is produced and/or compiled by Street Rates
             for the purpose of providing users with information related to the
             activities of the currency market. Street Rates permits you to
@@ -61,7 +62,7 @@ const TermsAndConditions = () => {
           <h5 style={{ color: textColor }}>
             1.2. Use of Content: Notice Requirement
           </h5>
-          <p>
+          <p style={{ color: textColor }}>
             If You provide content from this website through paid services or
             incorporate any content in documents for sale (regardless of the
             medium), you must inform any prospective purchaser, prior to its
@@ -70,12 +71,12 @@ const TermsAndConditions = () => {
             of charge.
           </p>
 
-          <h4 style={{ color: textColor, marginBlock: "30px 0px" }}>
+          <h4 style={{ color: textColor, marginBlock: "40px 0px" }}>
             2. Third Parties
           </h4>
 
           <h5 style={{ color: textColor }}>2.1. Third Party Advertisements</h5>
-          <p>
+          <p style={{ color: textColor }}>
             Any dealings with third parties (including advertisers) included
             within the Website and/or participation in promotions, including the
             delivery of and the payment for goods and services, and any other
@@ -87,7 +88,7 @@ const TermsAndConditions = () => {
           </p>
 
           <h5 style={{ color: textColor }}>2.2. Links</h5>
-          <p>
+          <p style={{ color: textColor }}>
             The Website may contain links to websites controlled or offered by
             third parties (non-affiliates of Street Rates). Street Rates
             disclaims liability for any information, materials, products or
@@ -101,10 +102,10 @@ const TermsAndConditions = () => {
             express prior written permission of Street Rate.
           </p>
 
-          <h4 style={{ color: textColor, marginBlock: "30px 0px" }}>
+          <h4 style={{ color: textColor, marginBlock: "40px 0px" }}>
             3. Non-Investment Advice
           </h4>
-          <p>
+          <p style={{ color: textColor }}>
             Street Rate does not endorse or recommend any particular securities,
             currencies, or other financial products. The content published on
             the website is solely for informational purposes and is not to be
@@ -126,10 +127,8 @@ const TermsAndConditions = () => {
         {/* style(STR-17): fixes aligment and spacing */}
 
         <TermsWrapper>
-          <h2 style={{ color: textColor, marginBlock: "60px 20px" }}>
-            Liability Disclaimers
-          </h2>
-          <p>
+          <h2 style={{ color: textColor }}>Liability Disclaimers</h2>
+          <p style={{ color: textColor }}>
             The information on this website is provided for general reference
             purposes only. While every effort is made to ensure that the site is
             up to date and accurate, Street Rates accepts no responsibility or
@@ -137,7 +136,7 @@ const TermsAndConditions = () => {
             loss which may arise from reliance on information contained in this
             website.
           </p>
-          <p>
+          <p style={{ color: textColor }}>
             You acknowledge that your use of the information and data, including
             rates and statistics, provided through this website is at your sole
             and own risk. Under no circumstances shall Street Rates, its
@@ -152,7 +151,7 @@ const TermsAndConditions = () => {
             you draw from it, regardless of whether you received any assistance
             from Street Rates or its employees with regard to such data.
           </p>
-          <p>
+          <p style={{ color: textColor }}>
             Under no circumstances is Street Rates liable to you for any amount.
             Street Rates provides no warranty, express or implied, as to the
             accuracy, timeliness, completeness, merchantability, fitness for any
@@ -163,7 +162,7 @@ const TermsAndConditions = () => {
             the content of those sites or of any external site which links to
             this site.
           </p>
-          <p>
+          <p style={{ color: textColor }}>
             Your use of the website and/or the Tools shall be subject to all
             applicable laws and regulations. Street Rates may enforce the Terms
             of Use in the jurisdiction of any Street Rates affiliate. Certain
@@ -182,7 +181,7 @@ const TermsAndConditions = () => {
             effect.
           </p>
         </TermsWrapper>
-      </div>
+      </Box>
     </Box>
   );
 };

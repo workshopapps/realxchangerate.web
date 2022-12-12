@@ -2,8 +2,11 @@ import { Box, Typography } from "@mui/material";
 import React from "react";
 import styles from "./home.module.css";
 import { useTranslation } from "react-i18next";
+import { useTheme } from "@mui/material";
 
 function Hero() {
+  const theme = useTheme();
+  const dark = theme.palette.mode === "dark";
   const { t } = useTranslation();
   return (
     <Box className={styles.hero}>
@@ -11,6 +14,7 @@ function Hero() {
         variant="h1"
         sx={{
           textTransform: "titlecase",
+          color: `${dark ? "#fafafa1" : "#0F172A"}`,
         }}
         className={styles.simple}
       >

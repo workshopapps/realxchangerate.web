@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const TermsWrapper = styled.div`
-  margin-top: 36px;
+  margin: 6px 0px 80px;
 
   h2 {
     font-size: 28px;

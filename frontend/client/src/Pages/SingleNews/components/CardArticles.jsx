@@ -58,7 +58,7 @@ export default function CardArticles({ data }) {
             fontSize: "12px",
             lineHeight: "143.52%",
 
-            color: darkMode ? "#8C9FBC": "#0F172A",
+            color: darkMode ? "#ECECEC": "#0F172A",
           }}
         >
           {moment(data.date).format("Do MMMM, YYYY")}
@@ -79,6 +79,7 @@ export default function CardArticles({ data }) {
           to={`/blogs/${data.id}`}
           style={{
             color:"#0064F1",
+            textDecoration:"underline"
           }}
         >
           Continue Reading
