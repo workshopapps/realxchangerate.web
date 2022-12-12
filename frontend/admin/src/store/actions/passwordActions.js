@@ -14,8 +14,9 @@ export const userForgotPassword = createAsyncThunk(
 					'Content-Type': 'application/x-www-form-urlencoded',
 				},
 			};
+			const search = payload.email;
 			const res = await axios.post(
-				'https://api.streetrates.hng.tech/api/forgot_password?email=admin%40email.com',
+				`https://api.streetrates.hng.tech/api/forgot_password?email=${search}`,
 				{
 					email: payload.email,
 				},
@@ -23,6 +24,7 @@ export const userForgotPassword = createAsyncThunk(
 			);
 
 			if (res.status && res.status === 200) {
+				// console.log(search);
 				return res.data;
 			} else {
 				return rejectWithValue(res);
