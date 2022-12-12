@@ -66,11 +66,11 @@ const Convert = () => {
     };
 
     fetchRates().then((ratesData) => {
-      // console.log(ratesData);
+
       setRates(ratesData.data.parallel_total);
     });
     fetchRate().then((ratesData) => {
-      // console.log(ratesData);
+   
       setRate(ratesData.data.parallel_total);
     });
     fetchDate()
