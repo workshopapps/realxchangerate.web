@@ -30,21 +30,9 @@ function DropdownMenu({ setMenuOpen, close }) {
               navigate(`${option.route}`);
               setMenuOpen(false);
             }}
+            $darkMode={theme.palette.mode === "dark"}
           >
-            <p
-              className="option"
-              style={
-                theme.palette.mode === "dark"
-                  ? {
-                      color: "#fff",
-                    }
-                  : {
-                      color: "#3a4e6190",
-                    }
-              }
-            >
-              {option.option}
-            </p>
+            <p className="option">{option.option}</p>
           </StyledMenuOption>
         </StyledWrapper>
       ))}

@@ -31,6 +31,7 @@ function HamburgerMenu({ openHamburger }) {
         aria-haspopup="true"
         aria-expanded={open ? "true" : undefined}
         onClick={handleClick}
+        sx={{ p: 0 }}
       >
         <StyledWrapper>
           <StyledHamburger

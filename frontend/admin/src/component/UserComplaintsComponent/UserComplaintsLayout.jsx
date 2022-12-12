@@ -124,12 +124,12 @@ export default function UserComplaintsLayout() {
   return (
     <StyledWrapper>
       <Box sx={{ display: { xs: "none", sm: "block" } }}>
-        <h2 style={{ marginBottom: "32px" }}>Users’ Complaints</h2>
+        <h2 style={{ marginBottom: "32px" }}>Users’ Suggestions</h2>
       </Box>
 
       <StyledFilter>
         <Box sx={{ display: { xs: "block", sm: "none" } }}>
-          <h2>Users’ Complaints</h2>
+          <h2>Users’ Suggestions</h2>
         </Box>
 
         <Select
