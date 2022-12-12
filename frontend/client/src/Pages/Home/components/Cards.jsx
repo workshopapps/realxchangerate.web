@@ -12,7 +12,7 @@ function Cards({ text, image, color, bg }) {
         flex: { sm: "0 1 300px" },
         bgcolor: bg,
         color: color,
-        boxShadow: "0px 5px 10px rgba(180, 180, 180, 0.25)",
+        boxShadow: "0px 5px 10px rgba(73, 73, 73, 0.25)",
         "&:hover": {
           transition: "all 0.3s ease-in",
           transform: "scale(1.04)",

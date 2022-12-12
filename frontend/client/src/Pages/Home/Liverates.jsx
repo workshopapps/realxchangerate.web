@@ -141,7 +141,7 @@ function Liverates() {
                 Currency
               </TableCell>
               <TableCell style={{ fontSize: "1.7rem", fontWeight: "600" }}>
-                parallel
+                Parallel
               </TableCell>
               <TableCell style={{ fontSize: "1.7rem", fontWeight: "600" }}>
                 Bank
