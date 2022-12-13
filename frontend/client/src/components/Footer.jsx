@@ -16,8 +16,9 @@ const Footer = () => {
         margin="0px auto"
         pt="56px"
         style={{
-          maxWidth: "1440px",
+          // maxWidth: "1440px",
           boxSizing: "border-box",
+          maxWidth: { xs: "90%", lg: "84%" },
         }}
         sx={{
           paddingLeft: { xs: 2, sm: 2, md: 2, lg: 9, xl: 9 },

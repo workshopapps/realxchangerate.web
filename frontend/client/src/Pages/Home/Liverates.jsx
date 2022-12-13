@@ -107,13 +107,19 @@ function Liverates() {
     <>
       <StyledBox>
         <TypographyLive
-          sx={{ color: "#0062FF", fontSize: "16px", fontWeight: 500 }}
+          sx={{
+            color: "#0062FF",
+            fontSize: "1.5rem",
+            fontWeight: 500,
+            textAlign: "center",
+          }}
         >
           {t("home_live")}
         </TypographyLive>
         <TypographyHead
+          variant="h4"
           component="h2"
-          sx={{ fontSize: "32px", maxWidth: "595px", fontWeight: 800 }}
+          sx={{ fontWeight: 600, fontSize: "2.3rem", textAlign: "center" }}
         >
           {t("home_title")}
         </TypographyHead>
@@ -127,7 +133,7 @@ function Liverates() {
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead
             sx={{
-              backgroundColor: dark ? "#333" : "#F1F5F9",
+              backgroundColor: dark ? "#333" : "#0062FF",
             }}
           >
             <TableRow>
@@ -137,7 +143,13 @@ function Liverates() {
               <TableCell style={{ fontSize: "1.7rem", fontWeight: "600" }}>
                 Parallel
               </TableCell>
-              <TableCell style={{ fontSize: "1.7rem", fontWeight: "600" }}>
+              <TableCell
+                style={{
+                  fontSize: "1.7rem",
+                  fontWeight: "600",
+                  width: "200px",
+                }}
+              >
                 Bank
               </TableCell>
             </TableRow>

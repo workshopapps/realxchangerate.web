@@ -22,6 +22,7 @@ export default function News() {
     const lastUpdated = sessionStorage.getItem("lastUpdated");
     const News = JSON.parse(sessionStorage.getItem("news"));
     let outdated = new Date().getTime() > lastUpdated;
+    
 
     if (ip && outdated) {
       dispatch(GetNews("155.94.247.229"));

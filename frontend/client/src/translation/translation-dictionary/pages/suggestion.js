@@ -1,0 +1,73 @@
+// eslint-disable-next-line import/no-anonymous-default-export
+export default [
+  {
+    key: "suggestion_title",
+    en: "We Value your Feedback",
+    de: "Wir schätzen Ihr Feedback",
+    fr: "Nous apprécions vos commentaires",
+    es: "Valoramos sus comentarios",
+  },
+  {
+    key: "suggestion_text",
+    en: "We are continuously working to make our platform better. We'd love to hear any suggestions that can help us deliver a better experience.",
+    de: "Wir arbeiten kontinuierlich daran, unsere Plattform zu verbessern. Wir würden gerne Vorschläge hören, die uns helfen können, ein besseres Erlebnis zu bieten.",
+    fr: "Nous travaillons en permanence pour améliorer notre plateforme. Nous aimerions entendre toutes les suggestions qui peuvent nous aider à offrir une meilleure expérience.",
+    es: "Trabajamos continuamente para mejorar nuestra plataforma. Nos encantaría escuchar cualquier sugerencia que pueda ayudarnos a ofrecer una mejor experiencia.",
+  },
+  {
+    key: "name_label",
+    en: "Full Name:",
+    de: "Vollständiger Name:",
+    fr: "Nom et prénom:",
+    es: "Nombre completo:",
+  },
+  {
+    key: "name_placeholder",
+    en: "Enter your name",
+    de: "Gib deinen Namen ein",
+    fr: "Entrez votre nom",
+    es: "Introduzca su nombre",
+  },
+  {
+    key: "email_label",
+    en: "Email Address:",
+    de: "E-Mail-Addresse:",
+    fr: "Adresse e-mail:",
+    es: "Dirección de correo electrónico:",
+  },
+  {
+    key: "email_placeholder",
+    en: "Enter your email",
+    de: "Geben sie ihre E-Mail Adresse ein",
+    fr: "Entrer votre Email",
+    es: "Introduce tu correo electrónico",
+  },
+  {
+    key: "message_label",
+    en: "Your Suggestion:",
+    de: "Ihr Vorschlag:",
+    fr: "Votre suggestion:",
+    es: "Tu sugerencia:",
+  },
+  {
+    key: "message_placeholder",
+    en: "Type your message",
+    de: "Geben Sie Ihre Nachricht ein",
+    fr: "Tapez votre message",
+    es: "Escribe tu mensaje",
+  },
+  {
+    key: "Submit",
+    en: "Submit",
+    de: "Einreichen",
+    fr: "Soumettre",
+    es: "Enviar",
+  },
+  {
+    key: "Submitting",
+    en: "Submitting",
+    de: "Einreichen",
+    fr: "Soumission",
+    es: "Sumisión",
+  },
+];

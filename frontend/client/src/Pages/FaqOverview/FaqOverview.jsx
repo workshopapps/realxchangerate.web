@@ -51,7 +51,7 @@ function FaqOverview() {
               <p style={{ color: `${dark ? "#FAFAFA" : "#161C2C"}` }}>
                 {t("got_que")}
               </p>
-              <div
+              {/* <div
                 className="searchWrapper"
                 style={{ backgroundColor: `${dark ? "#161C2C" : ""}` }}
               >
@@ -76,7 +76,7 @@ function FaqOverview() {
                   }}
                 />
                 <button>{t("search")}</button>
-              </div>
+              </div> */}
             </StyledFaq>
 
             <StyledFaqImage id="imageXD">
@@ -134,7 +134,7 @@ function FaqOverview() {
               ))}
           </>
 
-          <StyledFaqBottom
+          {/* <StyledFaqBottom
             style={{ backgroundColor: `${dark ? "#161C2C" : ""}` }}
           >
             <div>
@@ -148,7 +148,7 @@ function FaqOverview() {
             <button onClick={() => navigate("/get-in-touch")}>
               {t("get_in_touch")}
             </button>
-          </StyledFaqBottom>
+          </StyledFaqBottom> */}
         </StyledWrapper>
       </Box>
     </Box>
