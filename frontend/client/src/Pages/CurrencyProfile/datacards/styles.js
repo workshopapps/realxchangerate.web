@@ -1,7 +1,7 @@
 export const cardStyle = {
   border: "0.5px solid #CBD5E1",
   borderRadius: "12px",
-  p: "2.5rem 1rem",
+  p: "2.5rem",
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
@@ -11,7 +11,7 @@ export const cardStyle = {
 export const cardStyleChange = {
   border: "0.5px solid #CBD5E1",
   borderRadius: "12px",
-  p: "2.5rem 1rem",
+  p: "2.5rem",
   display: "flex",
   flexDirection: "column",
   alignItems: "space-between",
