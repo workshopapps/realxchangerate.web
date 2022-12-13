@@ -48,10 +48,10 @@ const PrivacyPolicy = () => {
         </section>
 
         <section>
-          <h3>{t("terms_and_condition")}</h3>
+          <h3>{t("terms_and_conditions")}</h3>
           <span>
             {t("link_description")}
-            <Link to="/terms"> {t("terms_and_condition")}</Link>
+            <Link to="/terms"> {t("terms_and_conditions")}</Link>
           </span>
         </section>
       </Container>
