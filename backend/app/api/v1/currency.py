@@ -141,7 +141,7 @@ def get_currency(isocode: str, db: Session = Depends(get_db)):
         )
 
     #get rate
-    rate = crud.rate.get(db,model_id = currency.id)
+    rate = crud.rate.get_last_parallel_buy_rate(db)
     #create dictionary for currency object
     currency_dict = currency.dict()
     #append rate to currency object
