@@ -71,6 +71,7 @@ function Liverates() {
           }
           return 0;
         });
+        console.log(data);
         setGetCurrency(data);
         setDateUpdate(data[0].rate.last_updated);
       })
@@ -132,18 +133,14 @@ function Liverates() {
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead
             sx={{
-              backgroundColor: dark ? "#333" : "#00296B",
+              backgroundColor: dark ? "#333" : "#0062FF",
             }}
           >
             <TableRow>
-              <TableCell
-                style={{ fontSize: "1.7rem", fontWeight: "600", color: "#fff" }}
-              >
+              <TableCell style={{ fontSize: "1.7rem", fontWeight: "600" }}>
                 Currency
               </TableCell>
-              <TableCell
-                style={{ fontSize: "1.7rem", fontWeight: "600", color: "#fff" }}
-              >
+              <TableCell style={{ fontSize: "1.7rem", fontWeight: "600" }}>
                 Parallel
               </TableCell>
               <TableCell
@@ -151,7 +148,6 @@ function Liverates() {
                   fontSize: "1.7rem",
                   fontWeight: "600",
                   width: "200px",
-                  color: "#fff",
                 }}
               >
                 Bank
@@ -319,7 +315,7 @@ const StyledSelection = styled.div`
     font-weight: 600;
     font-size: 16px;
     line-height: 22px;
-    color: #00296B;
+    color: #0062ff;
     @media screen and (max-width: 480px) {
       font-size: 10px;
     }
