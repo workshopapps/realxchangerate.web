@@ -1,12 +1,8 @@
 /* .search-table {
   margin: 0;
 }
-.search-table,
-td,
-th {
-  border-collapse: collapse;
-  border-top: 1px solid #cbd5e1;
-}
+
+
 th {
   padding: 20px 7px;
   font-size: 15px;
@@ -87,3 +83,8 @@ td {
 .tooltip:hover .tooltiptext {
   visibility: visible;
   transform: transform 0.4s ease-out; */
+
+td,
+th {
+  border-collapse: collapse;
+}

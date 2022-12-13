@@ -26,7 +26,7 @@ const Convert = () => {
   const { currencyList, countryDetails, defaultCurrency } = useSelector(
     (state) => state.service
   );
-
+  
   // Adding translation
   const { t } = useTranslation();
   const base_url = process.env.REACT_APP_BASE_URL;
@@ -102,6 +102,7 @@ const Convert = () => {
     const DefaultCountry = currencyList.find(
       (x) => x.country === defaultCurrency?.label
     );
+
     const DefaultIsocode = DefaultCountry ? DefaultCountry.isocode : "USD";
     setCurrency(DefaultIsocode);
   }, [defaultCurrency, currencyList]);
