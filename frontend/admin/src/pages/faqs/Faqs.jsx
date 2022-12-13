@@ -32,7 +32,6 @@ function Faqs() {
     };
     fetchFaqs()
       .then((data) => {
-        console.log(data);
         setFaqs(data.faqs);
         setLoading(false);
       })
