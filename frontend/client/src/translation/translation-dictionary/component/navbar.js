@@ -31,8 +31,8 @@ export default [
   {
     key: "nav_contact",
     en: "About Us",
-    de: "Kontakt",
-    fr: "Contact",
-    es: "contacto",
+    de: "Über uns",
+    fr: "À propos de nous",
+    es: "Sobre nosotros",
   },
 ];
