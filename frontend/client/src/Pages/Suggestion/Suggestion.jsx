@@ -1,10 +1,11 @@
-import React, { useRef, useState } from 'react';
-import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import SuggestionImage from './Images/Suggestion.png';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import React, { useRef, useState } from "react";
+import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import SuggestionImage from "./Images/Suggestion.png";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useTranslation } from "react-i18next";
 
 const Suggestion = () => {
   const [disableBtn, setDisableBtn] = useState(false);
@@ -13,6 +14,8 @@ const Suggestion = () => {
   const nameRef = useRef();
   const emailRef = useRef();
   const messageRef = useRef();
+
+  const { t } = useTranslation();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -26,18 +29,18 @@ const Suggestion = () => {
 
     axios
       .post(
-        'https://api.streetrates.hng.tech/api/complaints/add_complaints',
+        "https://api.streetrates.hng.tech/api/complaints/add_complaints",
         SuggetionData
       )
       .then((res) => {
-        nameRef.current.value = '';
-        emailRef.current.value = '';
-        messageRef.current.value = '';
+        nameRef.current.value = "";
+        emailRef.current.value = "";
+        messageRef.current.value = "";
         if (res.status === 200)
-          toast.success('Submitted successfully. Ridirecting to home page');
+          toast.success("Submitted successfully. Ridirecting to home page");
         setDisableBtn(false);
         setTimeout(() => {
-          navigate('/');
+          navigate("/");
         }, 2000);
       })
       .catch((error) => {
@@ -48,46 +51,43 @@ const Suggestion = () => {
   return (
     <Wrapper>
       <StyledComplaintForm>
-        <h3>We Value your Feedback</h3>
-        <p>
-          We are continously working to make our platform better. We'd love to
-          hear any suggestions that can help us deliver a better experince.
-        </p>
+        <h3>{t("suggestion_title")}</h3>
+        <p>{t("suggestion_text")}</p>
 
         <form onSubmit={handleSubmit}>
-          <label htmlFor='name'>Full Name:</label>
+          <label htmlFor="name">{t("name_label")}</label>
           <input
             ref={nameRef}
-            type='text'
-            id='name'
-            placeholder='Enter your name'
+            type="text"
+            id="name"
+            placeholder={t("name_placeholder")}
             required
           />
 
-          <label htmlor='email'>Email Address:</label>
+          <label htmlor="email">{t("email_label")}</label>
           <input
             ref={emailRef}
-            type='text'
-            id='email'
-            placeholder='Enter your email'
+            type="text"
+            id="email"
+            placeholder={t("email_placeholder")}
             required
           />
 
-          <label htmlFor='description'> Your Suggestion:</label>
+          <label htmlFor="description">{t("message_label")}</label>
           <textarea
             ref={messageRef}
-            id='description'
-            placeholder='Type your message'
+            id="description"
+            placeholder={t("message_placeholder")}
             required
           ></textarea>
 
-          <button type='submit' disabled={disableBtn}>
-            {disableBtn ? 'Submitting' : 'Submit'}
+          <button type="submit" disabled={disableBtn}>
+            {disableBtn ? t("Submitting") : t("Submit")}
           </button>
         </form>
       </StyledComplaintForm>
       <ImageWrapper>
-        <img src={SuggestionImage} alt='Suggestion' />
+        <img src={SuggestionImage} alt="Suggestion" />
       </ImageWrapper>
       <ToastContainer />
     </Wrapper>
