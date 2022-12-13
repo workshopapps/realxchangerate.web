@@ -7,7 +7,6 @@ function Referrals() {
   React.useEffect(() => {
     fetchPartners("referral")
       .then((data) => {
-        console.log(data);
         setReferrals(data);
       })
       .catch((error) => {

@@ -52,7 +52,6 @@ const Affiliate = () => {
     setLoading(true);
     addPartner("affiliate", data)
       .then((message) => {
-        console.log(message);
         setLoading(false);
         navigate("/partnerships");
       })

@@ -59,7 +59,7 @@ export const GetCurrencies = () => async () => {
       let country = countries.find((x) => x.label === ele.country);
       return country;
     });
-    console.log(currencies);
+
     dispatch(setCurrencyList(currencies));
     dispatch(setCountryDetails(countryDetails));
     dispatch(setLoading(false));
