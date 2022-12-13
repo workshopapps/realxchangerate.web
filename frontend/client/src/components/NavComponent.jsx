@@ -405,7 +405,7 @@ const NavComponent = () => {
         {/* {isOpen && <DropdownMenu isOpen={isOpen} setMenuOpen={setIsOpen} />} */}
       </Box>
 
-      <Box sx={{ height: "64px" }}></Box>
+      <Box sx={{ height: "74px" }}></Box>
     </>
   );
 };
