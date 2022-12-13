@@ -109,23 +109,9 @@ const CustomTooltip = ({ active, payload, label }) => {
 export default function Chart() {
 	return (
 		<StyledChartWrapper>
-			<StyledChartTop>
-				<StyledTotalTvl>
-					{/* <h4>Total TVL</h4> */}
-					<div>
-						{/* <p className="totalTvl">$41.58b</p> */}
-						<p className='growth'>
-							<TvlGrowth width='7.68px' height='7.68px' />
-							1.3%
-						</p>
-						<p className='compare'>VS LAST YEAR</p>
-					</div>
-				</StyledTotalTvl>
-			</StyledChartTop>
-
 			<div
 				style={{
-					height: 220,
+					height: '400px',
 					width: '100%',
 				}}>
 				<ResponsiveContainer>

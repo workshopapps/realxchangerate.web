@@ -45,7 +45,6 @@ const Referral = () => {
     setLoading(true);
     addPartner("referral", data)
       .then((message) => {
-        console.log(message);
         setLoading(false);
         navigate("/partnerships");
       })

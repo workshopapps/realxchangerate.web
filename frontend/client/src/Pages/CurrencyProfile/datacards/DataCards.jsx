@@ -62,15 +62,15 @@ function DataCards() {
   return (
     <Container
       maxWidth="100%"
-      sx={{ display: "flex", flexDirection: "column", gap: "1rem" }}
+      sx={{ display: "flex", flexDirection: "column", gap: 3 }}
     >
       <ToastContainer />
       <Box
         sx={{
           display: "flex",
-          gap: "1rem",
+          gap: 3,
           flexWrap: "wrap",
-          justifyContent: "space-between",
+          justifyContent: { lg: "space-between" },
         }}
       >
         <OneHour rate={trend.one_hour} />

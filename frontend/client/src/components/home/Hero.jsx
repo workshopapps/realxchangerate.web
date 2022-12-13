@@ -9,7 +9,7 @@ function Hero() {
   const dark = theme.palette.mode === "dark";
   const { t } = useTranslation();
   return (
-    <Box className={styles.hero}>
+    <Box className={styles.hero} sx={{ mt: { lg: "4rem" } }}>
       <Typography
         variant="h1"
         sx={{
@@ -20,7 +20,7 @@ function Hero() {
       >
         {t("hero_title")}
       </Typography>
-      <Typography variant="h4" component="h4">
+      <Typography variant="h5" component="h2" sx={{ fontWeight: 500 }}>
         {t("hero_sub")}
       </Typography>
       {/* <Typography component="p">{t("hero_texte")}</Typography> */}

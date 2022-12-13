@@ -118,14 +118,31 @@ export default function Chart() {
 
   useEffect(() => {
     const hours = [
-      { name: "24h", val: 36 },
-      { name: "21h", val: 72 },
-      { name: "18h", val: 108 },
-      { name: "15h", val: 144 },
-      { name: "12h", val: 180 },
-      { name: "9h", val: 216 },
-      { name: "6h", val: 252 },
-      { name: "3h", val: 287 },
+      { name: "24h", val: 287 },
+      { name: "23h", val: 276 },
+      { name: "22h", val: 264 },
+      { name: "21h", val: 252 },
+      { name: "20h", val: 240 },
+      { name: "19h", val: 228 },
+      { name: "18h", val: 216 },
+      { name: "17h", val: 204 },
+      { name: "16h", val: 192 },
+      { name: "15h", val: 180 },
+      { name: "14h", val: 168 },
+      { name: "13h", val: 156 },
+      { name: "12h", val: 144 },
+      { name: "11h", val: 132 },
+      { name: "10h", val: 120 },
+      { name: "9h", val: 108 },
+      { name: "8h", val: 96 },
+      { name: "7h", val: 84 },
+      { name: "6h", val: 72 },
+      { name: "5h", val: 60 },
+      { name: "4h", val: 48 },
+      { name: "3h", val: 36 },
+      { name: "2h", val: 24 },
+
+      { name: "1h", val: 12 },
     ];
 
     const fetchTrending = async () => {

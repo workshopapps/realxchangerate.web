@@ -13,7 +13,7 @@ const menuItems = [
   },
   {
     option: "About Us",
-    route: "/contact",
+    route: "/about",
   },
 ];
 

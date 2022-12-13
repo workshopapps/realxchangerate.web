@@ -88,7 +88,7 @@ const LoginPage = () => {
                 onChange={handleOnChange}
               />
               <div className="view-icon" onClick={handleViewPassword}>
-                <img src={viewIcon} alt="" />
+                <img src={viewIcon} style={{ cursor: "pointer" }} alt="" />
               </div>
             </div>
           </div>
@@ -107,10 +107,6 @@ const LoginPage = () => {
             Login
           </LoadingButton>
         </form>
-        <div className="signup">
-          <p>Don’t have an account?</p>
-          <p className="signup-btn">Sign up</p>
-        </div>
       </div>
     </LoginSection>
   );

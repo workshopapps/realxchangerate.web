@@ -44,11 +44,22 @@ export const GetDefaultCurrency = (ip) => async () => {
 export const GetCurrencies = () => async () => {
   try {
     const res = await RateService.GetCurrencies();
-    let currencies = res.data.currencies;
+    let currencies = res.data.currencies.sort(function (a, b) {
+      const nameA = a.isocode.toUpperCase();
+      const nameB = b.isocode.toUpperCase();
+      if (nameA < nameB) {
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
+      return 0;
+    });
     const countryDetails = currencies.map((ele) => {
       let country = countries.find((x) => x.label === ele.country);
       return country;
     });
+
     dispatch(setCurrencyList(currencies));
     dispatch(setCountryDetails(countryDetails));
     dispatch(setLoading(false));
@@ -90,7 +101,7 @@ export const GetCurrencyRates = (currencies) => async () => {
 export const GetNews = (ip) => async () => {
   try {
     dispatch(setLoading(true));
-    const res = await RateService.GetNews(ip)
+    const res = await RateService.GetNews(ip);
     if (res.data.results.length > 0) {
       //add IDs to the news
       let news = res.data.results;

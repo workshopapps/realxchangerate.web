@@ -26,7 +26,7 @@ const Convert = () => {
   const { currencyList, countryDetails, defaultCurrency } = useSelector(
     (state) => state.service
   );
-
+  
   // Adding translation
   const { t } = useTranslation();
   const base_url = process.env.REACT_APP_BASE_URL;
@@ -102,6 +102,7 @@ const Convert = () => {
     const DefaultCountry = currencyList.find(
       (x) => x.country === defaultCurrency?.label
     );
+
     const DefaultIsocode = DefaultCountry ? DefaultCountry.isocode : "USD";
     setCurrency(DefaultIsocode);
   }, [defaultCurrency, currencyList]);
@@ -149,14 +150,16 @@ const Convert = () => {
   const matches = useMediaQuery(theme.breakpoints.up("md"));
   return (
     <Card
+      elevation={4}
       className={styles.convert}
       sx={{
         borderRadius: "1rem",
         width: { xs: "100%" },
-        border: "1px solid #BBBBBB",
+        // border: "1px solid #BBBBBB",
         padding: { lg: "32px", xs: "8px" },
-        boxShadow: "0 0 0 0",
+        // boxShadow: "0 0 0 0",
         backgroundColor: dark ? "#000A1B" : "",
+        mb: "6rem",
       }}
     >
       <h2
@@ -363,14 +366,16 @@ const Convert = () => {
               <span>{currency}</span>
             </h3>
             <div className="xchng">
-              <h4>
+              <h4 style={{ color: dark ? "#f0f0f0" : "" }}>
                 1 {base} = {rate}
                 {currency}
               </h4>
             </div>
           </div>
           <div>
-            <h6>{t("convert_street")}</h6>
+            <h6 style={{ color: dark ? "#f0f0f0" : "" }}>
+              {t("convert_street")}
+            </h6>
             <p>
               {t("convert_last")} {date}
             </p>

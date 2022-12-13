@@ -20,7 +20,6 @@ const Table = (props) => {
         return data;
       };
       fetchRates().then((ratesData) => {
-        console.log(ratesData);
         setRate(ratesData.data?.rate);
       });
     }, [base_url, isocode]);
