@@ -42,7 +42,7 @@ export const loginUser = createAsyncThunk(
 				return rejectWithValue(res);
 			}
 		} catch (err) {
-			console.log(err, 'error');
+			// console.log(err, 'error');
 			localStorage.removeItem('token');
 			return rejectWithValue(err.response.data);
 		}
@@ -68,7 +68,7 @@ export const getUser = createAsyncThunk(
 				return rejectWithValue(res);
 			}
 		} catch (err) {
-			console.log(err.message, 'erorr');
+			// console.log(err.message, 'erorr');
 			return rejectWithValue(err.response.data);
 		}
 	}
