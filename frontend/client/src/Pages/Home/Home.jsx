@@ -50,6 +50,7 @@ const Home = () => {
           <Liverates />
         </Box>
       </Box>
+
       <Download />
     </>
   );
