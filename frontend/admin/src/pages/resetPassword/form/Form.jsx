@@ -18,7 +18,7 @@ const Form = () => {
 			// setEmail('');
 		}
 		if (requestStatus === 'success') {
-			navigate('/admin/resetpassword');
+			navigate('/admin/login');
 		}
 		// eslint-disable-next-line
 	}, [requestStatus]);
@@ -26,8 +26,6 @@ const Form = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		dispatch(resetPassword({ email, password }));
-		navigate('/admin/resetpassword');
-		// console.log(email, password);
 	};
 
 	return (
