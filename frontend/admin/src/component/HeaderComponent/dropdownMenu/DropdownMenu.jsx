@@ -28,12 +28,12 @@ const menuItems = [
     iconActive: <AnalyticsIconWhite />,
     route: "/admin/trending",
   },
-  {
-    option: "Account",
-    icon: <AccountIcon />,
-    iconActive: <AccountIconActive />,
-    route: "/admin/account",
-  },
+  // {
+  //   option: "Account",
+  //   icon: <AccountIcon />,
+  //   iconActive: <AccountIconActive />,
+  //   route: "/admin/account",
+  // },
 ];
 
 function DropdownMenu({ setMenuOpen }) {
@@ -53,9 +53,9 @@ function DropdownMenu({ setMenuOpen }) {
       data-aos-duration="500"
       data-aos-mirror="true"
     >
-      <div className="search">
+      {/* <div className="search">
         <Search />
-      </div>
+      </div> */}
 
       <ul>
         {menuItems.map((option, index) => (

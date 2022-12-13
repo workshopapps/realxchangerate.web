@@ -27,12 +27,8 @@ const LoginPage = () => {
     if (loginStatus === "success") {
       navigate("/admin");
     } else {
-      console.log(error);
       if (error && loginStatus === "failed") {
-        toast.error(error.detail, {
-          pauseOnFocusLoss: false,
-          position: toast.POSITION.BOTTOM_RIGHT,
-        });
+        toast.error("Wrong login credentials");
       }
     }
   }, [loginStatus, error, navigate]);

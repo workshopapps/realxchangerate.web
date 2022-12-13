@@ -24,6 +24,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import AddCircleRoundedIcon from "@mui/icons-material/AddCircleRounded";
 
 function createData(name, calories, fat) {
   return { name, calories, fat };
@@ -130,21 +131,27 @@ function Liverates() {
 
       {/* Table  */}
       <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <Table aria-label="simple table">
           <TableHead
             sx={{
-              backgroundColor: dark ? "#333" : "#eaebff",
+              backgroundColor: dark ? "#333" : "#00296B",
             }}
+            // "#eaebff"
           >
             <TableRow>
-              <TableCell style={{ fontSize: "1.7rem", fontWeight: "600" }}>
+              <TableCell
+                style={{ color: "#fff", fontSize: "1.7rem", fontWeight: "600" }}
+              >
                 Currency
               </TableCell>
-              <TableCell style={{ fontSize: "1.7rem", fontWeight: "600" }}>
+              <TableCell
+                style={{ color: "#fff", fontSize: "1.7rem", fontWeight: "600" }}
+              >
                 Parallel
               </TableCell>
               <TableCell
                 style={{
+                  color: "#fff",
                   fontSize: "1.7rem",
                   fontWeight: "600",
                   width: "200px",
@@ -225,9 +232,24 @@ function Liverates() {
         <PopupState variant="popover" popupId="demo-popup-menu">
           {(popupState) => (
             <React.Fragment>
-              <Button {...bindTrigger(popupState)}>
-                <div className="add">
-                  <img src={add} alt="" />
+              <Button
+                {...bindTrigger(popupState)}
+                sx={{ textTransform: "none" }}
+              >
+                <div
+                  className="add"
+                  style={
+                    dark
+                      ? {
+                          color: "#fff",
+                        }
+                      : {
+                          color: "#00296B",
+                        }
+                  }
+                >
+                  {/* <img src={add} alt="" /> */}
+                  <AddCircleRoundedIcon fontSize="large" />
                   <span className="addspan">{t("home_add")}</span>
                 </div>
               </Button>
@@ -315,7 +337,7 @@ const StyledSelection = styled.div`
     font-weight: 600;
     font-size: 16px;
     line-height: 22px;
-    color: #0062ff;
+    // color: #0062ff;
     @media screen and (max-width: 480px) {
       font-size: 10px;
     }
