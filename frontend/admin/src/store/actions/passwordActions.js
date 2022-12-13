@@ -49,6 +49,7 @@ export const resetPassword = createAsyncThunk(
 			const res = await axios.patch(
 				`https://api.streetrates.hng.tech/api/reset_password/${search}`,
 				{
+					email: search,
 					password: payload.password,
 				},
 				config
