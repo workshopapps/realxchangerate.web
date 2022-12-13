@@ -39,7 +39,6 @@ export default function AddContent({ cancel, setNewdata }) {
     fetch(endpoint, requestOptions)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setLoading(false);
         setNewdata(true);
         cancel();
