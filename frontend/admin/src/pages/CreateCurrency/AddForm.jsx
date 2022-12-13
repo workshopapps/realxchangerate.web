@@ -49,7 +49,7 @@ const Form = ({ handleClose }) => {
           handleSubmit(e);
         }}
       >
-        <h2>Add Currrency</h2>
+        <h2>Add Currency</h2>
         <div className="inputs">
           <div className="select">
             <Input text="Country" value={country} handleChange={setCountry} />
