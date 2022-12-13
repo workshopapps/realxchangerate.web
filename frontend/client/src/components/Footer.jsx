@@ -323,9 +323,7 @@ const Footer = () => {
                 t("footer_faq"),
                 t("footer_suggestion"),
               ]}
-
-              Links={["faq-overview", "glossary", "suggestions"]}
-
+              Links={["glossary", "faq-overview", "suggestions"]}
             />
 
             <DropDown
