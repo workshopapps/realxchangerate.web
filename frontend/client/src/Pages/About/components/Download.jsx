@@ -64,7 +64,7 @@ const Download = () => {
               Download the StreetRates App Via
             </Typography>
             <Box display="flex" gap="32px">
-              <a href="https://appetize.io/app/dma6cyb75uzgdhnucyd6oo24wm?device=pixel4&osVersion=12.0&scale=75">
+              <a href="https://appetize.io/app/durjhatq7v27yakhdoxj6nwffa?device=pixel4&osVersion=11.0&scale=75">
                 <img src={PlayStore} alt="" />
               </a>
             </Box>
