@@ -59,10 +59,10 @@ export default [
 
   {
     key: "card_title",
-    en: "The Best Exhange Rates for the World's Popular Currencies",
+    en: "The Best Exchange Rates for the World's Popular Currencies",
     de: "Die besten Wechselkurse für die beliebtesten Währungen der Welt",
     fr: "Les meilleurs taux de change pour les devises populaires du monde",
-    es: "Las mejores tasas de cambio para las monedas populares del mundo",
+    es: "Los mejores tipos de cambio para las monedas populares del mundo",
   },
 
   {
