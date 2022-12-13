@@ -58,7 +58,7 @@ function HeaderLayout(props) {
         </Box>
 
         <StyledHeaderTools>
-          <h1 style={{ marginTop: "32px"}}>Welcome!</h1>
+          {/* <h1 style={{ marginTop: "32px"}}>Welcome!</h1> */}
           {/* <Box sx={{ flexGrow: 0, display: { xs: "none", md: "block" } }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>

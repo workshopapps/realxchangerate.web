@@ -96,7 +96,7 @@ const NavComponent = () => {
           sx={{
             backdropFilter: "blur(7px)",
             justifyContent: "center",
-            height: "64px",
+            height: "74px",
           }}
         >
           <Toolbar
@@ -128,7 +128,7 @@ const NavComponent = () => {
                     src={streetRates}
                     alt=""
                   /> */}
-                  <NewLogo height="46px" />
+                  <NewLogo height="56px" />
                 </Link>
               </Grid>
 
