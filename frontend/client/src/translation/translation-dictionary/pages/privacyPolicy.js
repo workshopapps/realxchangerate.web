@@ -643,8 +643,8 @@ export default [
     es: "Política de cookies",
   },
   {
-    key: "terms_and_condition",
-    en: "Terms and Condition",
+    key: "terms_and_conditions",
+    en: "Terms and Conditions",
     de: "Geschäftsbedingung",
     fr: "Termes et conditions",
     es: "Términos y Condiciones",
