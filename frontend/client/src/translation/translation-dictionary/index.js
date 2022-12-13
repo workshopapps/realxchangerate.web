@@ -12,6 +12,7 @@ import termAndCondition from "./pages/termAndCondition";
 import glossary from "./pages/glossary";
 import cookies from "./pages/cookies";
 import suggestion from "./pages/suggestion";
+import compliance from "./pages/compliance";
 
 const resources = {};
 
@@ -24,6 +25,7 @@ const Translations = [
   ...glossary,
   ...privacyPolicy,
   ...suggestion,
+  ...compliance,
   // Components
   ...cookies,
   ...navbar,
