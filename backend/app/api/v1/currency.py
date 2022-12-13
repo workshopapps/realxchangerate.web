@@ -141,7 +141,7 @@ def get_currency(isocode: str, db: Session = Depends(get_db)):
         )
 
     #get rate
-    rate = db.query(Rate).filter(Currency.isocode == isocode.upper()).order_by(Rate.parallel_buy.desc()).first()
+    rate = db.query(Rate).filter(Rate.currency_id == currency.id).order_by(Rate.parallel_buy.desc()).first()
     #create dictionary for currency object
     currency_dict = currency.dict()
     #append rate to currency object
