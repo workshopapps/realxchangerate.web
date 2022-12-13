@@ -95,7 +95,7 @@ function Table2({ isocode, country, deleteIcon, rates, link, symbol }) {
           width:"200px"
         }}
       >
-        <span style={{ width: "70px", fontSize: "14px", display: "flex" }}>
+        <span style={{ width: "90px", fontSize: "14px", display: "flex" }}>
           {symbol} {Number(rates?.official_buy).toFixed(2)}
         </span>
         <span>{deleteIcon}</span>
