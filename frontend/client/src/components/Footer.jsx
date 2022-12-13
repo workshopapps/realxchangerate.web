@@ -334,7 +334,7 @@ const Footer = () => {
                 t("footer_cookie"),
                 t("footer_compliance"),
               ]}
-              Links={["privacy-policy", "terms", "CookiePolicy", "compliance"]}
+              Links={["privacy-policy", "terms", "Cookie-policy", "compliance"]}
             />
           </Box>
           <Box margin="20px 0px">

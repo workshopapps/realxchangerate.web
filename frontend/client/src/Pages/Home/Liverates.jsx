@@ -71,7 +71,7 @@ function Liverates() {
           }
           return 0;
         });
-        console.log(data);
+
         setGetCurrency(data);
         setDateUpdate(data[0].rate.last_updated);
       })
