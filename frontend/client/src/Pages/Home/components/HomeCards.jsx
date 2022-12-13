@@ -17,7 +17,7 @@ function HomeCards() {
         component="h2"
         sx={{ fontWeight: 600, textAlign: "center", mb: 4, fontSize: "2.3rem" }}
       >
-        Know the best Exhange Rates for the World's popular Currencies
+        {t("card_title")}
       </Typography>
       <Box
         sx={{

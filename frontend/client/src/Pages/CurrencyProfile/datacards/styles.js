@@ -6,7 +6,19 @@ export const cardStyle = {
   alignItems: "center",
   justifyContent: "space-between",
   width: { xs: "100%", sm: 230 },
-  // flex: "1 1 200px",
+  "& h6": { fontWeight: "700", fontSize: "1.5rem" },
+};
+export const cardStyleChange = {
+  border: "0.5px solid #CBD5E1",
+  borderRadius: "12px",
+  p: "2.5rem 1rem",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "space-between",
+  justifyContent: "space-between",
+  width: { xs: "100%", sm: 200 },
+  gap: 1,
+  "& h6": { fontWeight: "700", fontSize: "1.5rem" },
 };
 
 export const childStyle = {
