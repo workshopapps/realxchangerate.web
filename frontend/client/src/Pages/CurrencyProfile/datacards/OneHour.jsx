@@ -1,10 +1,10 @@
 import { Typography, Card } from "@mui/material";
 import React from "react";
-import { cardStyle } from "./styles";
+import { cardStyle, cardStyleChange } from "./styles";
 
 function OneHour({ rate }) {
   return (
-    <Card elevation={0} sx={cardStyle}>
+    <Card elevation={0} sx={cardStyleChange}>
       <Typography variant="h6">Change (1h)</Typography>
       <Typography
         variant="h5"

@@ -56,6 +56,15 @@ export default [
     fr: "Dernière mise à jour ",
     es: "Última actualización ",
   },
+
+  {
+    key: "card_title",
+    en: "The Best Exchange Rates for the World's Popular Currencies",
+    de: "Die besten Wechselkurse für die beliebtesten Währungen der Welt",
+    fr: "Les meilleurs taux de change pour les devises populaires du monde",
+    es: "Los mejores tipos de cambio para las monedas populares del mundo",
+  },
+
   {
     key: "home_card_one",
     en: "Check out parallel market and bank exchange rates",

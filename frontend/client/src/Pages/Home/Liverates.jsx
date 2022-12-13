@@ -231,8 +231,21 @@ function Liverates() {
             <React.Fragment>
               <Button {...bindTrigger(popupState)}>
                 <div className="add">
-                  <img src={add} alt="" />
-                  <span className="addspan">{t("home_add")}</span>
+                  <img
+                    src={add}
+                    alt=""
+                    style={{
+                      filter: dark
+                        ? ""
+                        : "invert(100%) sepia(1%) saturate(4331%) hue-rotate(212deg) brightness(95%) contrast(102%)",
+                    }}
+                  />
+                  <span
+                    className="addspan"
+                    style={{ color: dark ? "" : "#053d99" }}
+                  >
+                    {t("home_add")}
+                  </span>
                 </div>
               </Button>
               <Menu {...bindMenu(popupState)}>
