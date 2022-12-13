@@ -133,7 +133,7 @@ function Liverates() {
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead
             sx={{
-              backgroundColor: dark ? "#333" : "#F1F5F9",
+              backgroundColor: dark ? "#333" : "#0062FF",
             }}
           >
             <TableRow>
@@ -143,7 +143,13 @@ function Liverates() {
               <TableCell style={{ fontSize: "1.7rem", fontWeight: "600" }}>
                 Parallel
               </TableCell>
-              <TableCell style={{ fontSize: "1.7rem", fontWeight: "600" }}>
+              <TableCell
+                style={{
+                  fontSize: "1.7rem",
+                  fontWeight: "600",
+                  width: "200px",
+                }}
+              >
                 Bank
               </TableCell>
             </TableRow>
