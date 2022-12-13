@@ -92,6 +92,7 @@ function Table2({ isocode, country, deleteIcon, rates, link, symbol }) {
           fontSize: "1rem",
           display: "flex",
           alignItems: "center",
+          width:"200px"
         }}
       >
         <span style={{ width: "70px", fontSize: "14px", display: "flex" }}>
