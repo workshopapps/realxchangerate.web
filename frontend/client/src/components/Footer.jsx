@@ -323,7 +323,7 @@ const Footer = () => {
                 t("footer_faq"),
                 t("footer_suggestion"),
               ]}
-              Links={["faq", "glossary", "suggestions"]}
+              Links={["glossary", "faq", "suggestions"]}
             />
 
             <DropDown
@@ -334,7 +334,7 @@ const Footer = () => {
                 t("footer_cookie"),
                 t("footer_compliance"),
               ]}
-              Links={["#", "terms", "CookiePolicy", "compliance"]}
+              Links={["privacy-policy", "terms", "CookiePolicy", "compliance"]}
             />
           </Box>
           <Box margin="20px 0px">
