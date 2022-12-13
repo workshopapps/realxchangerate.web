@@ -57,18 +57,9 @@ function HeaderLayout(props) {
           <TitleLogo width="110px" />
         </Box>
 
-        <Box
-          sx={{
-            flexGrow: 1,
-            ml: "auto",
-            display: { xs: "none", sm: "block" },
-          }}
-        >
-          {/* <HeaderSearch /> */}
-        </Box>
-
         <StyledHeaderTools>
-          <Box sx={{ flexGrow: 0, display: { xs: "none", md: "block" } }}>
+          {/* <h1 style={{ marginTop: "32px", color: }}>Welcome!</h1> */}
+          {/* <Box sx={{ flexGrow: 0, display: { xs: "none", md: "block" } }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <AvatarLoader alt={userData.name} />
@@ -103,8 +94,8 @@ function HeaderLayout(props) {
                 </MenuItem>
               ))}
             </Menu>
-          </Box>
-
+          </Box> */}
+          {/* 
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             <Tooltip title="Notifications">
               <div
@@ -112,11 +103,11 @@ function HeaderLayout(props) {
                 onClick={() => setNotificationsOpen(true)}
               >
                 <IconButton>
-                  {/* <NotificationIcon width="28px" height="28px" /> */}
+
                 </IconButton>
               </div>
             </Tooltip>
-          </Box>
+          </Box> */}
 
           <Box
             sx={{
@@ -130,7 +121,7 @@ function HeaderLayout(props) {
           </Box>
         </StyledHeaderTools>
       </StyledHeaderWrapper>
-      <Divider />
+      {/* <Divider /> */}
       {menuOpen ? (
         <Box
           sx={{

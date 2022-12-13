@@ -21,12 +21,7 @@ const menuItems = [
     iconActive: <DashboardIconWhite />,
     route: "/admin",
   },
-  {
-    option: "Notifications",
-    icon: <NotificationIcon />,
-    iconActive: <NotificationIconWhite />,
-    route: false,
-  },
+
   {
     option: "Trending Data",
     icon: <AnalyticsIcon />,
