@@ -71,7 +71,7 @@ function Liverates() {
           }
           return 0;
         });
-        console.log(data);
+
         setGetCurrency(data);
         setDateUpdate(data[0].rate.last_updated);
       })
@@ -133,7 +133,7 @@ function Liverates() {
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead
             sx={{
-              backgroundColor: dark ? "#333" : "#0062FF",
+              backgroundColor: dark ? "#333" : "#eaebff",
             }}
           >
             <TableRow>
