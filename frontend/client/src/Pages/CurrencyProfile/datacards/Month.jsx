@@ -18,7 +18,7 @@ function OneMonth({ rate }) {
               : "",
         }}
       >
-        {rate} %
+        {rate?.toFixed(2)} %
       </Typography>
     </Card>
   );

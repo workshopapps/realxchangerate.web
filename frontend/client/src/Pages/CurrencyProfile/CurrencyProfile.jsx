@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Container, Typography, Grid, List, ListItem } from "@mui/material";
 import { Box } from "@mui/material";
@@ -114,7 +113,6 @@ const CurrencyProfile = () => {
         maxWidth: "1440px",
         display: "flex",
         gap: "30px",
-        maxWidth: "1440px",
         flexDirection: "column",
       }}
       sx={{
@@ -131,7 +129,6 @@ const CurrencyProfile = () => {
       <Liverates />
     </Container>
   );
-
 };
 
 export default CurrencyProfile;
