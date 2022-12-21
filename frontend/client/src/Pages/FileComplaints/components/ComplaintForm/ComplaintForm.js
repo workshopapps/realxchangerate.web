@@ -30,7 +30,7 @@ const ComplaintForm = () => {
 
     axios
       .post(
-        'https://api.streetrates.hng.tech/api/complaints/add_complaints',
+        'https://api.streetrates.info//api/complaints/add_complaints',
         complaintData
       )
       .then((res) => {

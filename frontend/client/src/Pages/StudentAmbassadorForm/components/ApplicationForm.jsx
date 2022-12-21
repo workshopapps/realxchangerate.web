@@ -128,7 +128,7 @@ const ApplicationForm = () => {
     };
     try {
       const res = await axios.post(
-        "https://api.streetrates.hng.tech/api/students/create/",
+        "https://api.streetrates.info//api/students/create/",
         formData
       );
 

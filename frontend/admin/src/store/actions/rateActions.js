@@ -8,12 +8,12 @@ const initialState = {
   error: null,
   currencyStatus: "idle",
 };
-const endpoint = `https://api.streetrates.hng.tech/api`;
+const endpoint = `https://api.streetrates.info//api`;
 
 export const getCurrencies = async () => {
   try {
     const res = await axios.get(
-      "https://api.streetrates.hng.tech/api/currency/"
+      "https://api.streetrates.info//api/currency/"
     );
     if (res.status && res.status === 200) {
       return res.data;

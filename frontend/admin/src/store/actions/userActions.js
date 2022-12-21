@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const endpoint = `https://api.streetrates.hng.tech/api/auth`;
+const endpoint = `https://api.streetrates.info//api/auth`;
 
 const initialState = {
 	user: null,
@@ -11,7 +11,7 @@ const initialState = {
 };
 // const endpoint =
 //   process.env.NODE_ENV === "production"
-//     ? "https://api.streetrates.hng.tech/api/auth"
+//     ? "https://api.streetrates.info//api/auth"
 //     : process.env.NODE_ENV === "development"
 //     ? "http://localhost:8000/api/auth"
 //     : "";
@@ -54,7 +54,7 @@ export const getUser = createAsyncThunk(
 	async (_, { rejectWithValue }) => {
 		const token = localStorage.getItem('token');
 		try {
-			const res = await axios.get(`https://api.streetrates.hng.tech/api/user`, {
+			const res = await axios.get(`https://api.streetrates.info//api/user`, {
 				headers: {
 					accept: 'application/json',
 					Authorization: `Bearer ${token}`,

@@ -16,7 +16,7 @@ function MenuDrop({ handleAddRate, handleEditOpen, setRowData, rowData }) {
     try {
       const token = localStorage.getItem('token');
       const response = await axios.delete(
-        `https://api.streetrates.hng.tech/api/admin/delete_currency?isocode=${rowData.isocode}`,
+        `https://api.streetrates.info//api/admin/delete_currency?isocode=${rowData.isocode}`,
 
         {
           headers: {

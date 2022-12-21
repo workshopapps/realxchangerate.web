@@ -27,7 +27,7 @@ const ContactForm = ({ textColor }) => {
 
     try {
       const res = await axios.post(
-        "https://api.streetrates.hng.tech/api/contacts",
+        "https://api.streetrates.info//api/contacts",
         {
           name: name,
           email: email,
