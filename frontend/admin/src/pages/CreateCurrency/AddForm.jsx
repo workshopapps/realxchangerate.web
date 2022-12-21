@@ -22,7 +22,7 @@ const Form = ({ handleClose }) => {
       const token = localStorage.getItem("token");
 
       const response = await axios.post(
-        "https://api.streetrates.info//api/admin/add_currency",
+        "https://api.streetrates.info/api/admin/add_currency",
 
         JSON.stringify(form),
         {

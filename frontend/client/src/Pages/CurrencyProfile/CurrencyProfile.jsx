@@ -47,7 +47,7 @@ const CurrencyProfile = () => {
       dispatch(GetCurrencyRates(currencyList));
     }
 
-    fetch("https://api.streetrates.info//api/currency/currencies/flags")
+    fetch("https://api.streetrates.info/api/currency/currencies/flags")
       .then((response) => response.json())
       .then((data) => {
         setGetCurrency(data);

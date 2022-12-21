@@ -14,7 +14,7 @@ export const getContacts = createAsyncThunk(
     const token = localStorage.getItem("token");
     try {
       const res = await axios.get(
-        "https://api.streetrates.info//api/contacts/contact_details",
+        "https://api.streetrates.info/api/contacts/contact_details",
         {
           headers: {
             accept: "application/json",
@@ -42,7 +42,7 @@ export const getContact = createAsyncThunk(
     // console.log(payload);
     try {
       const res = await axios.get(
-        `https://api.streetrates.info//api/contacts/contact_detatils/${payload}`,
+        `https://api.streetrates.info/api/contacts/contact_detatils/${payload}`,
         {
           headers: {
             accept: "application/json",
@@ -68,7 +68,7 @@ export const deleteContact = createAsyncThunk(
     const token = localStorage.getItem("token");
     try {
       const res = await axios.delete(
-        `https://api.streetrates.info//api/contacts/delete_contact_detatil/${payload}`,
+        `https://api.streetrates.info/api/contacts/delete_contact_detatil/${payload}`,
         {
           headers: {
             accept: "application/json",

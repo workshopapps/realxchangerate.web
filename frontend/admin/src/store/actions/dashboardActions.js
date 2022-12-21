@@ -13,7 +13,7 @@ export const getTrending = createAsyncThunk(
   async (payload, { rejectWithValue }) => {
     try {
       const res = await axios.get(
-        "https://api.streetrates.info//api/currency/"
+        "https://api.streetrates.info/api/currency/"
       );
       if (res.status && res.status === 200) {
         return res.data;
@@ -33,7 +33,7 @@ export const addCurrency = createAsyncThunk(
     try {
       const token = localStorage.getItem("token");
       const res = await axios.post(
-        "https://api.streetrates.info//api/admin/add_currency/",
+        "https://api.streetrates.info/api/admin/add_currency/",
         {
           country: payload.country,
           isocode: payload.isocode,
@@ -66,7 +66,7 @@ export const editCurrency = createAsyncThunk(
     try {
       const token = localStorage.getItem("token");
       const res = await axios.put(
-        `https://api.streetrates.info//api/admin/update_currency/${payload.isocode}?iso_code=${payload.isocode}`,
+        `https://api.streetrates.info/api/admin/update_currency/${payload.isocode}?iso_code=${payload.isocode}`,
 
         {
           country: payload.country,

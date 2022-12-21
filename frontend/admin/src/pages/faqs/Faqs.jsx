@@ -21,7 +21,7 @@ function Faqs() {
   React.useEffect(() => {
     const endpoint =
       process.env.NODE_ENV === "production"
-        ? "https://api.streetrates.info//api/faq/get_all_faqs"
+        ? "https://api.streetrates.info/api/faq/get_all_faqs"
         : process.env.NODE_ENV === "development"
         ? "http://localhost:8000/api/faq/get_all_faqs"
         : "";

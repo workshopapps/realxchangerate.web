@@ -9,7 +9,7 @@ const initialState = {
 	deleteStatus: 'idle'
 };
 
-const BASE_URL = `https://api.streetrates.info//api`;
+const BASE_URL = `https://api.streetrates.info/api`;
 
 export const getComplaints = createAsyncThunk(
 	'complaint/all',

@@ -9,7 +9,7 @@ import { style } from "./styles";
 export default function AddContent({ cancel, setNewdata }) {
   const endpoint =
     process.env.NODE_ENV === "production"
-      ? "https://api.streetrates.info//api/admin/add_faq"
+      ? "https://api.streetrates.info/api/admin/add_faq"
       : process.env.NODE_ENV === "development"
       ? "http://localhost:8000/api/admin/add_faq"
       : "";

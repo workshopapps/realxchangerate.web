@@ -11,7 +11,7 @@ export default function EditContent({ cancel, id, setNewdata }) {
   const [loading, setLoading] = React.useState(false);
   const endpoint =
     process.env.NODE_ENV === "production"
-      ? `https://api.streetrates.info//api/admin/update_faq/${id}`
+      ? `https://api.streetrates.info/api/admin/update_faq/${id}`
       : process.env.NODE_ENV === "development"
       ? `http://localhost:8000/api/admin/update_faq/${id}`
       : "";

@@ -148,7 +148,7 @@ export default function Chart() {
     const fetchTrending = async () => {
       try {
         const response = await axios.get(
-          `https://api.streetrates.info//api/rate/all/${
+          `https://api.streetrates.info/api/rate/all/${
             path.pathname.split("/")[1]
           }?limit=15`
         );

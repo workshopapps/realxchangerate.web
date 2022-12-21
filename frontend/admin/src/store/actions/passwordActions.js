@@ -16,7 +16,7 @@ export const userForgotPassword = createAsyncThunk(
 			};
 			const search = payload.email;
 			const res = await axios.post(
-				`https://api.streetrates.info//api/forgot_password?email=${search}`,
+				`https://api.streetrates.info/api/forgot_password?email=${search}`,
 				{
 					email: payload.email,
 				},
@@ -47,7 +47,7 @@ export const resetPassword = createAsyncThunk(
 			};
 			const search = payload.email;
 			const res = await axios.patch(
-				`https://api.streetrates.info//api/reset_password/${search}`,
+				`https://api.streetrates.info/api/reset_password/${search}`,
 				{
 					password: payload.password,
 				},

@@ -13,7 +13,7 @@ export default function DeleteContent({ cancel, id, setNewdata }) {
 
   const endpoint =
     process.env.NODE_ENV === "production"
-      ? `https://api.streetrates.info//api/admin/delete_faq/${id}`
+      ? `https://api.streetrates.info/api/admin/delete_faq/${id}`
       : process.env.NODE_ENV === "development"
       ? `http://localhost:8000/api/admin/delete_faq/${id}`
       : "";
