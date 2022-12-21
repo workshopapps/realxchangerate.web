@@ -27,7 +27,7 @@ const Form = ({ handleEditClose, editVal }) => {
         throw Error("confirm");
       }
       const response = await axios.put(
-        `https://api.streetrates.hng.tech/api/admin/update_currency/${editVal.isocode}?iso_code=${editVal.isocode}`,
+        `https://api.streetrates.info//api/admin/update_currency/${editVal.isocode}?iso_code=${editVal.isocode}`,
 
         form,
 
