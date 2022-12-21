@@ -16,7 +16,7 @@ function DataCards() {
   React.useEffect(() => {
     const fetchHighLowRate = async () => {
       const response = await fetch(
-        `https://api.streetrates.info//api/rate/high_low/${
+        `https://api.streetrates.info/api/rate/high_low/${
           path.pathname.split("/")[1]
         }`
       );
@@ -29,7 +29,7 @@ function DataCards() {
 
     const fetchTrend = async () => {
       const response = await fetch(
-        `https://api.streetrates.info//api/currency/trend/${
+        `https://api.streetrates.info/api/currency/trend/${
           path.pathname.split("/")[1]
         }`
       );

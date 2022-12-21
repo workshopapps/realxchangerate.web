@@ -25,7 +25,7 @@ const Form = ({ handleAddRateClose, editVal }) => {
       const token = localStorage.getItem("token");
 
       const response = await axios.put(
-        `https://api.streetrates.info//api/admin/update_rate/${editVal.isocode}?iso_code=${editVal.isocode}`,
+        `https://api.streetrates.info/api/admin/update_rate/${editVal.isocode}?iso_code=${editVal.isocode}`,
 
         JSON.stringify(form),
 

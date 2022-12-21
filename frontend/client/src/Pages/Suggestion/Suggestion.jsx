@@ -29,7 +29,7 @@ const Suggestion = () => {
 
     axios
       .post(
-        "https://api.streetrates.info//api/complaints/add_complaints",
+        "https://api.streetrates.info/api/complaints/add_complaints",
         SuggetionData
       )
       .then((res) => {

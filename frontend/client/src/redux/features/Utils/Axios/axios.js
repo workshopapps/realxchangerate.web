@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseURL = "https://api.streetrates.info//api";
+const baseURL = "https://api.streetrates.info/api";
 
 const headers = {
   "Access-Control-Allow-Origin": "*",

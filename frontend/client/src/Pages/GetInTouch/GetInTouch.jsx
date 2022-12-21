@@ -41,7 +41,7 @@ export default function GetInTouch() {
     }
     setData(newData);
   };
-  const BASE_URL = "https://api.streetrates.info//api/contacts";
+  const BASE_URL = "https://api.streetrates.info/api/contacts";
 
   const handleSend = (e) => {
     e.preventDefault();

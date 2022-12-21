@@ -13,14 +13,14 @@ export const getTrending = createAsyncThunk(
   async (payload, { rejectWithValue }) => {
     const getIndividualData = async (isocode) => {
       const option = await axios.get(
-        `https://api.streetrates.info//api/currency/trend/${isocode}`
+        `https://api.streetrates.info/api/currency/trend/${isocode}`
       );
       return option.data;
     };
 
     try {
       const res = await axios.get(
-        "https://api.streetrates.info//api/currency/currencies"
+        "https://api.streetrates.info/api/currency/currencies"
       );
 
       if (res.status && res.status === 200) {

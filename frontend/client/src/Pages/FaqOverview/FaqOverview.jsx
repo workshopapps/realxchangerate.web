@@ -29,7 +29,7 @@ function FaqOverview() {
 
   useEffect(() => {
     axios
-      .get(`https://api.streetrates.info//api/faq/get_all_faqs`)
+      .get(`https://api.streetrates.info/api/faq/get_all_faqs`)
       .then(({ data }) => setFaqData(data.faqs));
   }, []);
 
