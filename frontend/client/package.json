@@ -20,6 +20,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.2.0",
     "dayjs": "^1.11.7",
+    "env-cmd": "^10.1.0",
     "firebase": "^9.14.0",
     "i18next": "^22.0.6",
     "i18next-browser-languagedetector": "^7.0.1",
@@ -47,12 +48,13 @@
     "yup": "^0.32.11"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "CI=false && react-scripts build",
-    "test2": "react-scripts test",
-    "eject": "react-scripts eject",
+    "start": "env-cmd -f .env react-scripts start",
+    "build:staging": "env-cmd -f .env.staging react-scripts build",
+    "build:production": "env-cmd -f .env.production react-scripts build",
     "prepare": "cd ../.. && husky install frontend/client/.husky",
-    "test": "jest"
+    "test": "jest",
+    "test2": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
