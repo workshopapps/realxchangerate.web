@@ -21,12 +21,13 @@ import autoAnimate from "@formkit/auto-animate";
 import { useSelector } from "react-redux";
 import { setDefaultCurrency } from "../../redux/features/Reducers/servicesReducer";
 import { dispatch } from "../../redux/store";
+import useAnalyticsEventTracker from "../../useAnalyticsEventTracker";
 
 const Convert = () => {
   const { currencyList, countryDetails, defaultCurrency } = useSelector(
     (state) => state.service
   );
-  
+
   // Adding translation
   const { t } = useTranslation();
   const base_url = process.env.REACT_APP_BASE_URL;
@@ -38,6 +39,7 @@ const Convert = () => {
   const [buy, setBuy] = useState(true);
   const [date, setDate] = useState("Loading ..");
   const [rate, setRate] = useState("loading ..");
+  const gaEventTracker = useAnalyticsEventTracker("Contact us");
 
   const endpoint =
     process.env.NODE_ENV === "development"
@@ -148,6 +150,15 @@ const Convert = () => {
   const theme = useTheme();
   const dark = theme.palette.mode === "dark";
   const matches = useMediaQuery(theme.breakpoints.up("md"));
+  const handleOnChangeConvert = (e) => {
+    setconvert(e.target.value);
+    gaEventTracker("convert");
+  };
+  const handleOnChangeBase = (e) => {
+    setBase(e.target.value);
+    gaEventTracker("convert");
+  };
+
   return (
     <Card
       elevation={4}
@@ -204,7 +215,7 @@ const Convert = () => {
                 type="number"
                 name="amount"
                 value={convert}
-                onChange={(e) => setconvert(e.target.value)}
+                onChange={(e) => handleOnChangeConvert(e)}
               />
             </FormControl>
           </AmountInput>
@@ -238,7 +249,7 @@ const Convert = () => {
                   id="currency1"
                   sx={{ mt: "6px" }}
                   value={base}
-                  onChange={(e) => setBase(e.target.value)}
+                  onChange={(e) => handleOnChangeBase(e)}
                 >
                   {currencyList.map((currency) => (
                     <MenuItem key={currency.isocode} value={currency.isocode}>
@@ -266,7 +277,7 @@ const Convert = () => {
                   id="currency1"
                   sx={{ mt: "6px" }}
                   value={base}
-                  onChange={(e) => setBase(e.target.value)}
+                  onChange={(e) => handleOnChangeBase(e)}
                 >
                   {currencyList.map((currency) => (
                     <MenuItem key={currency.isocode} value={currency.isocode}>
