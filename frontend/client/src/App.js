@@ -58,7 +58,6 @@ import EntrepreneurFrom from "./Pages/EntrepreneurForm/EntrepreneurFrom";
 import FaqOverview from "./Pages/FaqOverview/FaqOverview";
 import ResponseToast from "./components/shared/InputField/ResponseToast";
 import ReactGA from "react-ga";
-import RouteChangeTracker from "./RouteChangeTracker";
 
 const TRACKING_ID = "G-42HRQETJPR"; // OUR_TRACKING_ID
 ReactGA.initialize(TRACKING_ID);
@@ -70,7 +69,6 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      <RouteChangeTracker />
       <Router>
         <div className="App">
           <NavComponent />
