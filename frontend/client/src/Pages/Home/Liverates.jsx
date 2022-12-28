@@ -62,8 +62,8 @@ function Liverates() {
       .then((response) => response.json())
       .then((data) => {
         data.sort(function (a, b) {
-          const nameA = a.isocode.toUpperCase();
-          const nameB = b.isocode.toUpperCase();
+          const nameA = a.country.toUpperCase();
+          const nameB = b.country.toUpperCase();
           if (nameA < nameB) {
             return -1;
           }
