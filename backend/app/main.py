@@ -31,6 +31,8 @@ origins = [
     "https://exchange.hng.tech",
     "https://exchange.hng.tech/*",
     "https://team-bevel-client.netlify.app/*",
+    "https://streetrates.info"
+     "https://streetrates.info/*"
     "http://exchange.hng.tech:3008",
     "http://exchange.hng.tech:3008/*",
     "*",
