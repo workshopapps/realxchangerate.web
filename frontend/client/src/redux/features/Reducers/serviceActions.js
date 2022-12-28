@@ -45,8 +45,8 @@ export const GetCurrencies = () => async () => {
   try {
     const res = await RateService.GetCurrencies();
     let currencies = res.data.currencies.sort(function (a, b) {
-      const nameA = a.isocode.toUpperCase();
-      const nameB = b.isocode.toUpperCase();
+      const nameA = a.country.toUpperCase();
+      const nameB = b.country.toUpperCase();
       if (nameA < nameB) {
         return -1;
       }
