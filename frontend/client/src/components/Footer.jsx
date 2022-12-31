@@ -68,25 +68,25 @@ const Footer = () => {
                 >
                   {t("footer_company")}
                 </Typography>
-                <Link href="/#/about" color="inherit">
+                <Link href="/about" color="inherit">
                   {t("footer_about")}
                 </Link>
-                <Link href="/#/blogs" color="inherit">
+                <Link href="/blogs" color="inherit">
                   {t("footer_news")}
                 </Link>
-                {/* <Link href="/#/careers" color="inherit">
+                {/* <Link href="/careers" color="inherit">
               {t("footer_Careers")}
             </Link> */}
-                {/* <Link href="/#/partnerships" color="inherit">
+                {/* <Link href="/partnerships" color="inherit">
               {t("footer_Partnership")}
             </Link>
-            <Link href='/#/teams' color='inherit'>
+            <Link href='/teams' color='inherit'>
               {t('footer_Meet')}
             </Link>
-            <Link href='/#/press' color='inherit'>
+            <Link href='/press' color='inherit'>
               {t('footer_Press')}
             </Link>
-            <Link href="/#/bod" color="inherit">
+            <Link href="/bod" color="inherit">
               {t("footer_directors")}
             </Link> */}
               </Stack>
@@ -120,7 +120,7 @@ const Footer = () => {
               {t('footer_links')}
             </Typography>
 
-            <Link href="/#/contact" color="inherit">
+            <Link href="/contact" color="inherit">
               {t("footer_contact")}
             </Link>
           </Stack> */}
@@ -153,26 +153,26 @@ const Footer = () => {
                 >
                   {t("footer_resources")}
                 </Typography>
-                {/* <Link href="/#/currency-encyclopedia" color="inherit">
+                {/* <Link href="/currency-encyclopedia" color="inherit">
               {t("Currency_Encyclopedia")}
             </Link>
-            <Link href="/#/historical-currency-exchange" color="inherit">
+            <Link href="/historical-currency-exchange" color="inherit">
               {t("footer_historic")}
             </Link> */}
 
-                <Link href="/#/glossary" color="inherit">
+                <Link href="/glossary" color="inherit">
                   {t("footer_Glossary")}
                 </Link>
-                <Link href="/#/faq-overview" color="inherit">
+                <Link href="/faq-overview" color="inherit">
                   {t("footer_faq")}
                 </Link>
-                <Link href="/#/suggestions" color="inherit">
+                <Link href="/suggestions" color="inherit">
                   {t("footer_suggestion")}
                 </Link>
-                {/* <Link href="/#/advertising" color="inherit">
+                {/* <Link href="/advertising" color="inherit">
               {t("footer_Advertising")}
             </Link>
-            <Link href="/#/ambassadors" color="inherit">
+            <Link href="/ambassadors" color="inherit">
               {t("footer_Ambassadors")}
             </Link> */}
               </Stack>
@@ -205,10 +205,10 @@ const Footer = () => {
             >
               {t("footer_product")}
             </Typography>
-            <Link href='/#/api' color='inherit'>
+            <Link href='/api' color='inherit'>
               API
             </Link>
-            <Link href='/#/integration-matrix' color='inherit'>
+            <Link href='/integration-matrix' color='inherit'>
               {t('footer_integration')}
             </Link>
           </Stack> */}
@@ -241,17 +241,17 @@ const Footer = () => {
             >
               {t('footer_support')}
             </Typography>
-            <Link href='/#/help-center' color='inherit'>
+            <Link href='/help-center' color='inherit'>
               {t('footer_help')}
             </Link>
-            <Link href='/#/faq' color='inherit'>
+            <Link href='/faq' color='inherit'>
               FAQ
             </Link>
 
-            <Link href="/#/complaint" color="inherit">
+            <Link href="/complaint" color="inherit">
               {t("footer_complaint")}
             </Link>
-            <Link href='/#/feedback' color='inherit'>
+            <Link href='/feedback' color='inherit'>
               {t('footer_feedback')}
             </Link>
           </Stack> */}
@@ -284,16 +284,16 @@ const Footer = () => {
                 >
                   {t("footer_legal")}
                 </Typography>
-                <Link href="/#/privacy-policy" color="inherit">
+                <Link href="/privacy-policy" color="inherit">
                   {t("footer_privacy")}
                 </Link>
-                <Link href="/#/terms" color="inherit">
+                <Link href="/terms" color="inherit">
                   {t("footer_terms")}
                 </Link>
-                <Link href="/#/Cookie-policy" color="inherit">
+                <Link href="/Cookie-policy" color="inherit">
                   {t("footer_cookie")}
                 </Link>
-                <Link href="/#/compliance" color="inherit">
+                <Link href="/compliance" color="inherit">
                   {t("footer_compliance")}
                 </Link>
               </Stack>
