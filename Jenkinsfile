@@ -6,7 +6,7 @@ pipeline {
 
 			steps {
 				sh "cd frontend"
-				sh "cd frontend/client && npm i --force && CI=false npm run build"
+				sh "cd frontend/client && npm i --force && CI=false npm run build:production"
 			} 
           }
     
