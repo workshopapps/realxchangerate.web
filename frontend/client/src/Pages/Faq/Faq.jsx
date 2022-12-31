@@ -126,7 +126,7 @@ const Faq = () => {
                 team.
               </Answer>
             </div>
-            <GetInTouch href="/#/get-in-touch">Get in touch</GetInTouch>
+            <GetInTouch href="/get-in-touch">Get in touch</GetInTouch>
           </Wrapper>
         </FaqContainer>
       </Container>

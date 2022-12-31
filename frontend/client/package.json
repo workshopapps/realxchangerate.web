@@ -50,8 +50,7 @@
   },
   "scripts": {
     "start": "env-cmd -f .env react-scripts start",
-    "build:staging": "env-cmd -f .env.staging react-scripts build",
-    "build:production": "env-cmd -f .env.production react-scripts build",
+    "build": "react-scripts build",
     "prepare": "cd ../.. && husky install frontend/client/.husky",
     "test": "jest",
     "test2": "react-scripts test",

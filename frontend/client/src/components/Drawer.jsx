@@ -38,9 +38,9 @@ const DrawerComponent = ({ isOpen, setIsOpen }) => {
       >
         <Link href="/">{t("nav_home")}</Link>
 
-        <Link href="/#/blogs">{t("nav_news")}</Link>
+        <Link href="/blogs">{t("nav_news")}</Link>
 
-        <Link href="/#/contact">{t("nav_contact")}</Link>
+        <Link href="/contact">{t("nav_contact")}</Link>
       </Box>
     </Box>
   );
